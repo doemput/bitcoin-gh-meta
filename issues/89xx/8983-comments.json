@@ -1,0 +1,436 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84383636"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84383636"
+         }
+      },
+      "body" : "Why do you duplicate this line?",
+      "commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "created_at" : "2016-10-20T21:52:34Z",
+      "diff_hunk" : "@@ -3753,9 +3753,14 @@ bool ProcessNewBlock(CValidationState& state, const CChainParams& chainparams, C\n         CBlockIndex *pindex = NULL;\n         bool fNewBlock = false;\n         bool ret = AcceptBlock(*pblock, state, chainparams, &pindex, fRequested, dbp, &fNewBlock);\n-        if (pindex && pfrom) {\n-            mapBlockSource[pindex->GetBlockHash()] = pfrom->GetId();\n-            if (fNewBlock) pfrom->nLastBlockTime = GetTime();\n+        if (pfrom) {\n+            if (pindex) {\n+                LogPrint(\"block\", \"recv block %s (%d) size=%d peer=%d\\n\", pblock->GetHash().ToString(), pindex->nHeight,",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84383636",
+      "id" : 84383636,
+      "original_commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "original_position" : 9,
+      "path" : "src/main.cpp",
+      "position" : 9,
+      "pull_request_review_id" : 5166298,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983",
+      "updated_at" : "2016-10-20T21:52:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84383636",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84383935"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84383935"
+         }
+      },
+      "body" : "That's not needed, and it's a layer violation, as this is the *serialized* size, not the block size.",
+      "commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "created_at" : "2016-10-20T21:54:39Z",
+      "diff_hunk" : "@@ -6019,10 +6024,9 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv,\n     else if (strCommand == NetMsgType::BLOCK && !fImporting && !fReindex) // Ignore blocks received while importing\n     {\n         CBlock block;\n+        pfrom->nBlockSize = vRecv.size(); // Used by ProcessNewBlock() debug",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84383935",
+      "id" : 84383935,
+      "original_commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "original_position" : 22,
+      "path" : "src/main.cpp",
+      "position" : 22,
+      "pull_request_review_id" : 5166575,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983",
+      "updated_at" : "2016-10-20T21:54:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84383935",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84384192"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84384192"
+         }
+      },
+      "body" : "You can use `::GetSerializeSize(*pblock, SER_DISK, CLIENT_VERSION)` to obtain the total block size, or `GetBlockWeight(*pblock)` to get the weight (the limited resource after segwit, which may be more useful longer term).",
+      "commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "created_at" : "2016-10-20T21:56:13Z",
+      "diff_hunk" : "@@ -3753,9 +3753,14 @@ bool ProcessNewBlock(CValidationState& state, const CChainParams& chainparams, C\n         CBlockIndex *pindex = NULL;\n         bool fNewBlock = false;\n         bool ret = AcceptBlock(*pblock, state, chainparams, &pindex, fRequested, dbp, &fNewBlock);\n-        if (pindex && pfrom) {\n-            mapBlockSource[pindex->GetBlockHash()] = pfrom->GetId();\n-            if (fNewBlock) pfrom->nLastBlockTime = GetTime();\n+        if (pfrom) {\n+            if (pindex) {\n+                LogPrint(\"block\", \"recv block %s (%d) size=%d peer=%d\\n\", pblock->GetHash().ToString(), pindex->nHeight,\n+                    pfrom->nBlockSize, pfrom->id);\n+                mapBlockSource[pindex->GetBlockHash()] = pfrom->GetId();\n+                if (fNewBlock) pfrom->nLastBlockTime = GetTime();\n+            } else\n+                LogPrint(\"block\", \"recv block %s size=%d peer=%d\\n\", pblock->GetHash().ToString(), pfrom->nBlockSize, pfrom->id);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84384192",
+      "id" : 84384192,
+      "original_commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "original_position" : 14,
+      "path" : "src/main.cpp",
+      "position" : 14,
+      "pull_request_review_id" : 5166823,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983",
+      "updated_at" : "2016-10-20T21:56:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84384192",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84573377"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84573377"
+         }
+      },
+      "body" : "@sipa thanks. ok, so I need to add the size of the header to get the block size, or subtract it? Do you say it's not needed as there is the function GetSerializeSize()? Happy to call that instead, but I somehow felt I was saving resources by not needing to.",
+      "commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "created_at" : "2016-10-22T09:16:40Z",
+      "diff_hunk" : "@@ -6019,10 +6024,9 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv,\n     else if (strCommand == NetMsgType::BLOCK && !fImporting && !fReindex) // Ignore blocks received while importing\n     {\n         CBlock block;\n+        pfrom->nBlockSize = vRecv.size(); // Used by ProcessNewBlock() debug",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84573377",
+      "id" : 84573377,
+      "original_commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "original_position" : 22,
+      "path" : "src/main.cpp",
+      "position" : 22,
+      "pull_request_review_id" : 5346062,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983",
+      "updated_at" : "2016-10-22T09:16:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84573377",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84573419"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84573419"
+         }
+      },
+      "body" : "Which is more useful to report? the height or the weight? (I am not actually sure what the weight even is!)\r\n\r\nShall I close this PR until I've made the changes or is it preferable to leave it open? Or shall I change the title to include WIP since it's still WIP?",
+      "commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "created_at" : "2016-10-22T09:18:56Z",
+      "diff_hunk" : "@@ -3753,9 +3753,14 @@ bool ProcessNewBlock(CValidationState& state, const CChainParams& chainparams, C\n         CBlockIndex *pindex = NULL;\n         bool fNewBlock = false;\n         bool ret = AcceptBlock(*pblock, state, chainparams, &pindex, fRequested, dbp, &fNewBlock);\n-        if (pindex && pfrom) {\n-            mapBlockSource[pindex->GetBlockHash()] = pfrom->GetId();\n-            if (fNewBlock) pfrom->nLastBlockTime = GetTime();\n+        if (pfrom) {\n+            if (pindex) {\n+                LogPrint(\"block\", \"recv block %s (%d) size=%d peer=%d\\n\", pblock->GetHash().ToString(), pindex->nHeight,\n+                    pfrom->nBlockSize, pfrom->id);\n+                mapBlockSource[pindex->GetBlockHash()] = pfrom->GetId();\n+                if (fNewBlock) pfrom->nLastBlockTime = GetTime();\n+            } else\n+                LogPrint(\"block\", \"recv block %s size=%d peer=%d\\n\", pblock->GetHash().ToString(), pfrom->nBlockSize, pfrom->id);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84573419",
+      "id" : 84573419,
+      "original_commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "original_position" : 14,
+      "path" : "src/main.cpp",
+      "position" : 14,
+      "pull_request_review_id" : 5346097,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983",
+      "updated_at" : "2016-10-22T09:18:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84573419",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "What does this gain over the logging in UpdateTip that we already do?",
+      "created_at" : "2016-10-24T16:53:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#issuecomment-255798182",
+      "id" : 255798182,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8983",
+      "updated_at" : "2016-10-24T16:53:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/255798182",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84746001"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84746001"
+         }
+      },
+      "body" : "My question is more what do you want to log? How many bytes are being transferred, or the consensus-critical block size?\r\n\r\nAssuming compact blocks and other better relay mechanisms take off, the size on the wire will be less and less relevant.",
+      "commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "created_at" : "2016-10-24T18:00:33Z",
+      "diff_hunk" : "@@ -6019,10 +6024,9 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv,\n     else if (strCommand == NetMsgType::BLOCK && !fImporting && !fReindex) // Ignore blocks received while importing\n     {\n         CBlock block;\n+        pfrom->nBlockSize = vRecv.size(); // Used by ProcessNewBlock() debug",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84746001",
+      "id" : 84746001,
+      "original_commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "original_position" : 22,
+      "path" : "src/main.cpp",
+      "position" : 22,
+      "pull_request_review_id" : 5504015,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983",
+      "updated_at" : "2016-10-24T18:00:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84746001",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84749304"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84749304"
+         }
+      },
+      "body" : "Weight is (4 * size_without_witness + 1 * size_of_witness). In segwit, weight is limited to 4000000.",
+      "commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "created_at" : "2016-10-24T18:15:55Z",
+      "diff_hunk" : "@@ -3753,9 +3753,14 @@ bool ProcessNewBlock(CValidationState& state, const CChainParams& chainparams, C\n         CBlockIndex *pindex = NULL;\n         bool fNewBlock = false;\n         bool ret = AcceptBlock(*pblock, state, chainparams, &pindex, fRequested, dbp, &fNewBlock);\n-        if (pindex && pfrom) {\n-            mapBlockSource[pindex->GetBlockHash()] = pfrom->GetId();\n-            if (fNewBlock) pfrom->nLastBlockTime = GetTime();\n+        if (pfrom) {\n+            if (pindex) {\n+                LogPrint(\"block\", \"recv block %s (%d) size=%d peer=%d\\n\", pblock->GetHash().ToString(), pindex->nHeight,\n+                    pfrom->nBlockSize, pfrom->id);\n+                mapBlockSource[pindex->GetBlockHash()] = pfrom->GetId();\n+                if (fNewBlock) pfrom->nLastBlockTime = GetTime();\n+            } else\n+                LogPrint(\"block\", \"recv block %s size=%d peer=%d\\n\", pblock->GetHash().ToString(), pfrom->nBlockSize, pfrom->id);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#discussion_r84749304",
+      "id" : 84749304,
+      "original_commit_id" : "b475a41368a6d7e3ce3f2c3af7ad5c6a00e06b91",
+      "original_position" : 14,
+      "path" : "src/main.cpp",
+      "position" : 14,
+      "pull_request_review_id" : 5507122,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8983",
+      "updated_at" : "2016-10-24T18:15:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84749304",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@gmaxwell The thinking behind this was more along the lines of logging the serialized size of messages received with a view to adding more logging later, perhaps with a command line option to turn this on/off. Blocks, being the largest messages sent/recved, I felt to be particularly notable. \r\n\r\nTODO - still needs changing so that ProcessNewBlock detects whether it's called from receiving a block or a compact block, as I don't want it to log \"recv block\" when it's actually a compact block that was received and a block constructed from that.\r\n",
+      "created_at" : "2016-10-25T01:37:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#issuecomment-255912596",
+      "id" : 255912596,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8983",
+      "updated_at" : "2016-10-25T01:37:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/255912596",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "What's the status of this? If it's still a WIP, can you close the PR for now, and re-open it when it's been finished & rebased?",
+      "created_at" : "2016-11-13T07:42:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#issuecomment-260171732",
+      "id" : 260171732,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8983",
+      "updated_at" : "2016-11-13T07:42:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260171732",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Closing for now, see comment above.",
+      "created_at" : "2016-11-25T08:33:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8983#issuecomment-262905154",
+      "id" : 262905154,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8983",
+      "updated_at" : "2016-11-25T08:33:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/262905154",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   }
+]

@@ -1,0 +1,836 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87689230"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87689230"
+         }
+      },
+      "body" : "Hmm... this would result in not longer coupling the hash with the data-structure. This can result in difficult states for future changes.\nWould a new primitive (maybe `CIncompleteTransaction` or similar) make more sense?\n",
+      "commit_id" : "a63ec0e10325d902b3563078fb969d042830a220",
+      "created_at" : "2016-11-12T08:31:34Z",
+      "diff_hunk" : "@@ -62,9 +62,14 @@ uint256 CMutableTransaction::GetHash() const\n     return SerializeHash(*this, SER_GETHASH, SERIALIZE_TRANSACTION_NO_WITNESS);\n }\n \n-void CTransaction::UpdateHash() const\n+void CTransaction::SetHash(const uint256 &tx_hash)\n {\n-    *const_cast<uint256*>(&hash) = SerializeHash(*this, SER_GETHASH, SERIALIZE_TRANSACTION_NO_WITNESS);\n+    *const_cast<uint256*>(&hash) = tx_hash;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87689230",
+      "id" : 87689230,
+      "original_commit_id" : "3fc45351717db4f5e06e18d060f86fbd9783f4b4",
+      "original_position" : 8,
+      "path" : "src/primitives/transaction.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8295141,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137",
+      "updated_at" : "2017-02-16T11:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87689230",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87689280"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87689280"
+         }
+      },
+      "body" : "Would there be a better way to keep the wallet separated from the UTXO set?\nDuring wallet creation (`init.cpp`) it could pass-in a lambda that would take care about finding the corresponding `CCoins`.\n",
+      "commit_id" : "a63ec0e10325d902b3563078fb969d042830a220",
+      "created_at" : "2016-11-12T08:35:19Z",
+      "diff_hunk" : "@@ -1506,6 +1507,29 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate)\n     return ret;\n }\n \n+void CWallet::ScanForWalletUTXOs()\n+{\n+    for (std::unique_ptr<CCoinsViewCursor> pcursor(pcoinsTip->Cursor());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87689280",
+      "id" : 87689280,
+      "original_commit_id" : "3fc45351717db4f5e06e18d060f86fbd9783f4b4",
+      "original_position" : 41,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8295166,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137",
+      "updated_at" : "2017-02-16T11:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87689280",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Conceptual questions:\r\n* I guess the new `importmulti` call should also be covered in this change?\r\n* Idea: We could deprecate the other import calls in favor of `importmulti` (which has more features and makes generally more sense).\r\n\r\n* Does spending those incomplete transactions work well? IMO some checks (isFinal()) do read the nSequence value of the (now missing) inputs?\r\n\r\nThings that would need to be done:\r\n-> Visual attribution in the GUI\r\n-> the `fIncomplete` status should probably be added to the RPC TxToJSON (or similar) function\r\n-> Add tests",
+      "created_at" : "2016-11-12T08:47:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-260110132",
+      "id" : 260110132,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-11-12T08:47:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260110132",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "~~NACK when done this way. If you need an incomplete transaction, use CMutableTransaction instead of hacking that functionality around CTransaction.~~\n\nThinking more about the above, this is not useful advice. I said it in response to seeing the suggestion of a CIncompleteTransaction, assuming we were calling SetHash after it became complete.\n\nWhat we want here is a hash that does travel with the transaction, and is complete. I don't think it needs to break CTransaction's immutability, though. What about a constructor to CTransaction that takes a CMutableTransaction and a hash?",
+      "created_at" : "2016-11-12T10:32:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-260114312",
+      "id" : 260114312,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-11-12T10:46:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260114312",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87690967"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87690967"
+         }
+      },
+      "body" : "Shouldn't there be some way to scan for UTXOs on non-pruned nodes?\n",
+      "commit_id" : "a63ec0e10325d902b3563078fb969d042830a220",
+      "created_at" : "2016-11-12T11:08:32Z",
+      "diff_hunk" : "@@ -398,7 +395,10 @@ UniValue importpubkey(const JSONRPCRequest& request)\n \n     if (fRescan)\n     {\n-        pwalletMain->ScanForWalletTransactions(chainActive.Genesis(), true);\n+        if (fPruneMode)\n+          pwalletMain->ScanForWalletUTXOs();\n+        else\n+          pwalletMain->ScanForWalletTransactions(chainActive.Genesis(), true);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87690967",
+      "id" : 87690967,
+      "original_commit_id" : "3fc45351717db4f5e06e18d060f86fbd9783f4b4",
+      "original_position" : 62,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8296662,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137",
+      "updated_at" : "2017-02-16T11:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87690967",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87690997"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87690997"
+         }
+      },
+      "body" : "These errors leave much to be desired...\n",
+      "commit_id" : "a63ec0e10325d902b3563078fb969d042830a220",
+      "created_at" : "2016-11-12T11:10:28Z",
+      "diff_hunk" : "@@ -1506,6 +1507,29 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate)\n     return ret;\n }\n \n+void CWallet::ScanForWalletUTXOs()\n+{\n+    for (std::unique_ptr<CCoinsViewCursor> pcursor(pcoinsTip->Cursor());\n+         pcursor->Valid(); pcursor->Next())\n+    {\n+        uint256 hash;\n+        CCoins coins;\n+        if (!pcursor->GetKey(hash))\n+            LogPrintf(\"GetKey failed\");\n+        else if (!pcursor->GetValue(coins))\n+            LogPrintf(\"GetValue failed\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87690997",
+      "id" : 87690997,
+      "original_commit_id" : "3fc45351717db4f5e06e18d060f86fbd9783f4b4",
+      "original_position" : 49,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8296677,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137",
+      "updated_at" : "2017-02-16T11:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87690997",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87692076"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87692076"
+         }
+      },
+      "body" : "I don't know if @sipa's suggestion of making a new `CTransaction` constructor that accepts a hash would sufficiently address your concern. (It would not eliminate the risk that some code could make a seemingly harmless `UpdateHash()` call on the wallet transaction and overwrite the correct hash).\n\nPersonally, the way I would go about this would be to change `CWalletTx` not to inherit from `CMerkleTx`, and instead just contain either a `variant<CMerkleTx, CCoins>` or an  `optional<CMerkleTx>` member. I can try this in a separate PR (since would create a lot of unrelated code churn in the wallet) if you are amenable to the idea.\n",
+      "commit_id" : "a63ec0e10325d902b3563078fb969d042830a220",
+      "created_at" : "2016-11-12T12:39:32Z",
+      "diff_hunk" : "@@ -62,9 +62,14 @@ uint256 CMutableTransaction::GetHash() const\n     return SerializeHash(*this, SER_GETHASH, SERIALIZE_TRANSACTION_NO_WITNESS);\n }\n \n-void CTransaction::UpdateHash() const\n+void CTransaction::SetHash(const uint256 &tx_hash)\n {\n-    *const_cast<uint256*>(&hash) = SerializeHash(*this, SER_GETHASH, SERIALIZE_TRANSACTION_NO_WITNESS);\n+    *const_cast<uint256*>(&hash) = tx_hash;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87692076",
+      "id" : 87692076,
+      "original_commit_id" : "3fc45351717db4f5e06e18d060f86fbd9783f4b4",
+      "original_position" : 8,
+      "path" : "src/primitives/transaction.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8297582,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137",
+      "updated_at" : "2017-02-16T11:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87692076",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87692085"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87692085"
+         }
+      },
+      "body" : "Sounds good, will change.\n",
+      "commit_id" : "a63ec0e10325d902b3563078fb969d042830a220",
+      "created_at" : "2016-11-12T12:40:20Z",
+      "diff_hunk" : "@@ -1506,6 +1507,29 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate)\n     return ret;\n }\n \n+void CWallet::ScanForWalletUTXOs()\n+{\n+    for (std::unique_ptr<CCoinsViewCursor> pcursor(pcoinsTip->Cursor());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87692085",
+      "id" : 87692085,
+      "original_commit_id" : "3fc45351717db4f5e06e18d060f86fbd9783f4b4",
+      "original_position" : 41,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8297590,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137",
+      "updated_at" : "2017-02-16T11:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87692085",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87692241"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87692241"
+         }
+      },
+      "body" : "I could definitely add it as another option to the RPC. I guess the benefit to the RPC caller would be that if they're importing a key which they already know is unspent, calling `ScanForWalletUTXOs` would be faster than calling `ScanForWalletTransactions`?\n",
+      "commit_id" : "a63ec0e10325d902b3563078fb969d042830a220",
+      "created_at" : "2016-11-12T12:52:35Z",
+      "diff_hunk" : "@@ -398,7 +395,10 @@ UniValue importpubkey(const JSONRPCRequest& request)\n \n     if (fRescan)\n     {\n-        pwalletMain->ScanForWalletTransactions(chainActive.Genesis(), true);\n+        if (fPruneMode)\n+          pwalletMain->ScanForWalletUTXOs();\n+        else\n+          pwalletMain->ScanForWalletTransactions(chainActive.Genesis(), true);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87692241",
+      "id" : 87692241,
+      "original_commit_id" : "3fc45351717db4f5e06e18d060f86fbd9783f4b4",
+      "original_position" : 62,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8297721,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137",
+      "updated_at" : "2017-02-16T11:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87692241",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Thanks @jonasschnelli, I am planning to get to the various todos you mentioned. The one I might like to know more about is \"Visual attribution in the GUI.\" Do you have any thoughts on what this should look like? And what would be the reasons for making the distinction? E.g. are there particular wallet features or RPC calls that won't work with incomplete transaction data? (Asking because I actually haven't used the wallet UI very much myself yet.)",
+      "created_at" : "2016-11-12T13:05:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-260121079",
+      "id" : 260121079,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-11-12T13:05:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260121079",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "@ryanofsky: I think the GUI stuff can be done in a separate PR after this has been merged.",
+      "created_at" : "2016-11-12T13:07:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-260121171",
+      "id" : 260121171,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-11-12T13:07:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260121171",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Thanks @jonasschnelli, that makes sense. I still would appreciate knowing any thoughts you may have on the GUI implementation either here or in the original issue #8497.",
+      "created_at" : "2016-11-12T13:12:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-260121393",
+      "id" : 260121393,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-11-12T13:12:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260121393",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "I'm working on a series of changes to the serialization code, the result of which will be that CTransaction is fully immutable, so UpdateHash will go away.",
+      "created_at" : "2016-11-12T18:03:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-260138143",
+      "id" : 260138143,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-11-12T18:03:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260138143",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87720751"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87720751"
+         }
+      },
+      "body" : "Won't this miss unconfirmed TXOs?\n",
+      "commit_id" : "a63ec0e10325d902b3563078fb969d042830a220",
+      "created_at" : "2016-11-13T20:28:38Z",
+      "diff_hunk" : "@@ -1506,6 +1507,29 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate)\n     return ret;\n }\n \n+void CWallet::ScanForWalletUTXOs()\n+{\n+    for (std::unique_ptr<CCoinsViewCursor> pcursor(pcoinsTip->Cursor());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87720751",
+      "id" : 87720751,
+      "original_commit_id" : "3fc45351717db4f5e06e18d060f86fbd9783f4b4",
+      "original_position" : 41,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8321654,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137",
+      "updated_at" : "2017-02-16T11:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87720751",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87905166"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87905166"
+         }
+      },
+      "body" : "This doesn't deal with unconfirmed TXOs, but neither does `ScanForWalletTransactions`, which this is just intended to be a lightweight fallback for.\n\nI don't know the wallet code well enough to know how it does deal with unconfirmed TXOs, but I expect that if there are issues tracking them, they would be orthogonal to this change.\n",
+      "commit_id" : "a63ec0e10325d902b3563078fb969d042830a220",
+      "created_at" : "2016-11-14T22:14:01Z",
+      "diff_hunk" : "@@ -1506,6 +1507,29 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate)\n     return ret;\n }\n \n+void CWallet::ScanForWalletUTXOs()\n+{\n+    for (std::unique_ptr<CCoinsViewCursor> pcursor(pcoinsTip->Cursor());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87905166",
+      "id" : 87905166,
+      "original_commit_id" : "3fc45351717db4f5e06e18d060f86fbd9783f4b4",
+      "original_position" : 41,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8497555,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9137",
+      "updated_at" : "2017-02-16T11:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87905166",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "This is better tested now and ready to be reviewed and merged. There are a few extra things that could be done based on comments above, but they don't necessarily have to be part of this PR:\r\n\r\n- [x] Maybe add test to confirm IsFinal works after an incomplete transaction output is spent. ([jonasschnelli comment](https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-260110132))\r\n- [ ] Maybe add visual attribution for incomplete transactions in gui ([jonasschnelli comment](https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-260110132))\r\n- [ ] Maybe add incomplete status to TxToJSON ([jonasschnelli comment](https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-260110132))\r\n- [ ] Maybe allow UTXO rescanning on non -prune nodes ([luke-jr comment](https://github.com/bitcoin/bitcoin/pull/9137#discussion_r87690967))\r\n- [ ] Maybe add ability for wallet to scan mempool for when importing keys ([luke-jr comment](https://github.com/bitcoin/bitcoin/pull/9137#pullrequestreview-8321654))",
+      "created_at" : "2016-11-29T21:48:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-263710088",
+      "id" : 263710088,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-11-30T00:08:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263710088",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Added test code to `import-rescan.py` to make sure spends of incomplete transactions are picked up by the wallet and finalized.",
+      "created_at" : "2016-11-30T00:11:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-263742010",
+      "id" : 263742010,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-11-30T00:11:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263742010",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Updated to fix conflicts after #8580 merge.",
+      "created_at" : "2016-12-05T17:05:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-264912477",
+      "id" : 264912477,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-12-05T17:05:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264912477",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "rescan=true and importing pruned things are not the same though. Rescan makes sure you get the historical transactions and a utxo scan doesn't.   I think we may want to track a global state for a wallet that indicates if it believes its history is complete or not, and report that.  (e.g. in the GUI there could be a bar at the top of the transaction list \"some historical transactions may be missing\")",
+      "created_at" : "2016-12-12T23:12:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-266583702",
+      "id" : 266583702,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-12-12T23:12:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/266583702",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Having a gui indication of an incomplete historical transaction list seems like a good idea with this change, but it would probably also be a good idea without this change. (The transaction list will be incomplete now if you import with a key without rescanning, or if you use the removeprunedfunds API.) The goal of this change is to make possible to see and spend balances after importing keys on `-prune` nodes as described in #8497.\r\n\r\n",
+      "created_at" : "2016-12-13T18:45:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-266825238",
+      "id" : 266825238,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-12-13T18:45:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/266825238",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "I do think it would be a good idea not overload to the meaning of `rescan=true`, though. Maybe `rescan` could be changed from a bool to a string argument where `rescan=\"history\"` would scan the blockchain and `rescan=\"utxo\"` would scan the utxo set. `rescan=true` could still be kept for backwards compatibility.",
+      "created_at" : "2016-12-13T18:51:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-266826654",
+      "id" : 266826654,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2016-12-13T18:51:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/266826654",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Haven't worked on this in a while. Will close and reopen if I make more more progress.",
+      "created_at" : "2017-06-12T19:02:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-307888044",
+      "id" : 307888044,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2017-06-12T19:02:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/307888044",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "This is a feature I'd love to see added. I've been following the progress in this and related issues and PRs. Regarding the most recent comments, I think it would make sense to leave rescan=true as is, and have rescan=utxo only check an address or key against the utxo set and not do a full rescan for historical transactions.\r\n\r\nI'm new to contributing to this project but let me know if I can help with testing or anything for this PR. Or, @ryanofsky, if you don't feel like you'll be revisiting this issue in the foreseeable future maybe I can try to pick up where you left off. Thanks. ",
+      "created_at" : "2017-08-23T05:40:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-324226789",
+      "id" : 324226789,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2017-08-23T05:40:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324226789",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3440835?v=4",
+         "events_url" : "https://api.github.com/users/sangaman/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sangaman/followers",
+         "following_url" : "https://api.github.com/users/sangaman/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sangaman/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sangaman",
+         "id" : 3440835,
+         "login" : "sangaman",
+         "organizations_url" : "https://api.github.com/users/sangaman/orgs",
+         "received_events_url" : "https://api.github.com/users/sangaman/received_events",
+         "repos_url" : "https://api.github.com/users/sangaman/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sangaman/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sangaman/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sangaman"
+      }
+   },
+   {
+      "body" : "@sangaman, it'd be great if you want to pick this up. As mentioned in my last update I haven't worked on this on a while and don't have plans to continue at the moment.",
+      "created_at" : "2017-08-24T21:41:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9137#issuecomment-324765352",
+      "id" : 324765352,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9137",
+      "updated_at" : "2017-08-24T21:41:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324765352",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   }
+]

@@ -1,0 +1,798 @@
+[
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2016-11-29T19:28:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-263672541",
+      "id" : 263672541,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-11-29T19:28:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263672541",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Concept ACK. Maybe we want to disable for 2 as well?",
+      "created_at" : "2016-11-29T19:50:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-263678954",
+      "id" : 263678954,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-11-29T19:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263678954",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90206418"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90206418"
+         }
+      },
+      "body" : "Don't we need to explicitly deal with the state where the `nSmartFeeSliderPosition` (persisted position) is set to `1`?",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-11-30T10:33:30Z",
+      "diff_hunk" : "@@ -175,7 +175,7 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n         // set the smartfee-sliders default value (wallets default conf.target or last stored value)\n         QSettings settings;\n         if (settings.value(\"nSmartFeeSliderPosition\").toInt() == 0)\n-            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 1);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90206418",
+      "id" : 90206418,
+      "original_commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "original_position" : 4,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 10727528,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-11-30T10:33:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90206418",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "It seems what is exorbitant is a matter of opinion, and it might make sense to allow users to choose it. But I don't care strongly about this. Another possibility is to only have it in the GUI when coin control is enabled, but that may not be worth the effort.",
+      "created_at" : "2016-11-30T10:37:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-263840098",
+      "id" : 263840098,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-11-30T10:37:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263840098",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90207189"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90207189"
+         }
+      },
+      "body" : "Wait, I mean where `nSmartFeeSliderPosition` is `24` (=conf target 1).",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-11-30T10:38:20Z",
+      "diff_hunk" : "@@ -175,7 +175,7 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n         // set the smartfee-sliders default value (wallets default conf.target or last stored value)\n         QSettings settings;\n         if (settings.value(\"nSmartFeeSliderPosition\").toInt() == 0)\n-            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 1);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90207189",
+      "id" : 90207189,
+      "original_commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "original_position" : 4,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 10728320,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-11-30T10:38:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90207189",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Tested ACK e878689e5539d8de30283d1461d6466eac65f894\r\nAlso tested with a persistent slider position on confirmation target 1.\r\n\r\n<img width=\"1086\" alt=\"bildschirmfoto 2016-11-30 um 11 30 35\" src=\"https://cloud.githubusercontent.com/assets/178464/20748942/8a4ea86c-b6f0-11e6-8afe-75260aff75bc.png\">",
+      "created_at" : "2016-11-30T10:39:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-263840698",
+      "id" : 263840698,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-11-30T10:39:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263840698",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90233263"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90233263"
+         }
+      },
+      "body" : "I don't think so.  We already weren't bounds checking what was passed in as nTxConfirmTarget and it turns out that QT sliders make values fit between the min and max, so it just works...",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-11-30T13:41:23Z",
+      "diff_hunk" : "@@ -175,7 +175,7 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n         // set the smartfee-sliders default value (wallets default conf.target or last stored value)\n         QSettings settings;\n         if (settings.value(\"nSmartFeeSliderPosition\").toInt() == 0)\n-            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 1);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90233263",
+      "id" : 90233263,
+      "original_commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "original_position" : 4,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 10754596,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-11-30T13:41:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90233263",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "@luke-jr Yeah it was hard to explain concisely in the PR description.  It's not necessarily that the answer is a high fee rate, its that it seems to be the case that when it is a high fee rate, (e.g. 1000 sat/byte), that a much lower fee rate (say 100 sat/byte) is almost just as good an answer, maybe being included in a block 93% of the time instead of 95%.\r\n\r\nI think any dumb algorithm is always going to have edge cases that human inspection will indicate aren't the best answer, and we can't go chase them all down, and just add more rules to try to deal with them.  However in this case, from the very inception of the algorithm we knew that setting a very high confirmation target (95%) for the first block would be problematic if for no other reason that you would see some amount of transactions that miners hadn't even seen yet when they created the block just due to timing differences.  This was the reason the original target was 85%, hopefully low enough that we'd get decent answer for 1 confirmation.  Then we changed the target to 95% to make the algorithm more responsive to changes in market conditions, and I should have thought more at the time how the persistent flakiness of answers at a block target of 1 would be confusing to users.\r\n\r\nI do think its possible a future improvement may give better answers for a target of 1, but I'd rather get this small change out there now.",
+      "created_at" : "2016-11-30T13:50:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-263877674",
+      "id" : 263877674,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-11-30T16:28:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263877674",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "> It seems what is exorbitant is a matter of opinion,\r\n\r\nNot really, I've observed returning values that were 5x higher than the highest feerate transaction in the mempool in the brief window before and long after.  That is objectively too high.  A somewhat different approach is probably needed for estimatefee 1-- including ignoring transactions which arrived too soon before the block, clamping it based on mempool observations, etc.\r\n\r\nutACK.",
+      "created_at" : "2016-11-30T15:23:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-263900726",
+      "id" : 263900726,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-11-30T15:25:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263900726",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90534728"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90534728"
+         }
+      },
+      "body" : "maybe an assert or an exception would be better here?\r\nEDIT: or return CFeeRate(0) like in CBlockPolicyEstimator::estimateFee",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-12-01T20:52:09Z",
+      "diff_hunk" : "@@ -423,6 +424,10 @@ CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoun\n     if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n         return CFeeRate(0);\n \n+    // It's not possible to get reasonable estimates for confTarget of 1\n+    if (confTarget == 1)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90534728",
+      "id" : 90534728,
+      "original_commit_id" : "d824ad030e70bc72e0c63e1b0d00b08413024b55",
+      "original_position" : 15,
+      "path" : "src/policy/fees.cpp",
+      "position" : 15,
+      "pull_request_review_id" : 11054305,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-12-01T20:54:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90534728",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90535576"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90535576"
+         }
+      },
+      "body" : "A constant would be nice\r\n```\r\n#define MIN_CONFIRM_TARGET 2\r\n```\r\n?",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-12-01T20:56:58Z",
+      "diff_hunk" : "@@ -175,7 +175,7 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n         // set the smartfee-sliders default value (wallets default conf.target or last stored value)\n         QSettings settings;\n         if (settings.value(\"nSmartFeeSliderPosition\").toInt() == 0)\n-            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 1);\n+            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 2);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90535576",
+      "id" : 90535576,
+      "original_commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "original_position" : 5,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 11055157,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-12-01T20:57:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90535576",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "utACK e878689 besides nits.",
+      "created_at" : "2016-12-01T20:58:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-264292860",
+      "id" : 264292860,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-12-01T20:58:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264292860",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "lightly tested ACK e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-12-01T21:56:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-264307912",
+      "id" : 264307912,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-12-01T21:56:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264307912",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90567713"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90567713"
+         }
+      },
+      "body" : "@jtimon I wanted to leave the external behavior essentially unchanged.  For estimatefee, it often returned -1, so making it always do that would not be unexpected.  It would be very unexpected for estimatesmartfee to not return a reasonable answer.  Note that because of this the GUI changes are actually optional, but I think provide for a more clear experience.\r\n",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-12-02T00:33:32Z",
+      "diff_hunk" : "@@ -423,6 +424,10 @@ CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoun\n     if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n         return CFeeRate(0);\n \n+    // It's not possible to get reasonable estimates for confTarget of 1\n+    if (confTarget == 1)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90567713",
+      "id" : 90567713,
+      "original_commit_id" : "d824ad030e70bc72e0c63e1b0d00b08413024b55",
+      "original_position" : 15,
+      "path" : "src/policy/fees.cpp",
+      "position" : 15,
+      "pull_request_review_id" : 11087235,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-12-02T00:33:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90567713",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90567955"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90567955"
+         }
+      },
+      "body" : "I agree this is slightly non-ideal, but it's convoluted a bit by the fact that the sliderSmartFee value is not the actual confirmation target.  I'd rather not make an additional change here, but when we make a change to support estimates greater than 25, we'll have to figure out the right way to do it...",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-12-02T00:35:58Z",
+      "diff_hunk" : "@@ -175,7 +175,7 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n         // set the smartfee-sliders default value (wallets default conf.target or last stored value)\n         QSettings settings;\n         if (settings.value(\"nSmartFeeSliderPosition\").toInt() == 0)\n-            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 1);\n+            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 2);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90567955",
+      "id" : 90567955,
+      "original_commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "original_position" : 5,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 11087492,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-12-02T00:35:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90567955",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90571501"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90571501"
+         }
+      },
+      "body" : "I don't understand. \r\nWho is currently calling estimateSmartFee with confTarget = 1 ?\r\nAnd how is 0 less \"reasonable\" than the answer for another value?\r\nWhy do we want the GUI changes to be optimal?",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-12-02T01:15:40Z",
+      "diff_hunk" : "@@ -423,6 +424,10 @@ CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoun\n     if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n         return CFeeRate(0);\n \n+    // It's not possible to get reasonable estimates for confTarget of 1\n+    if (confTarget == 1)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90571501",
+      "id" : 90571501,
+      "original_commit_id" : "d824ad030e70bc72e0c63e1b0d00b08413024b55",
+      "original_position" : 15,
+      "path" : "src/policy/fees.cpp",
+      "position" : 15,
+      "pull_request_review_id" : 11091128,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-12-02T01:15:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90571501",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90572195"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90572195"
+         }
+      },
+      "body" : "Right, I agree it is convoluted. Everything would probably look clearer if the \"fast\" side of the bar was on the left or if we at least had a function that does the conversion ie \r\n```\r\nreturn ui->sliderSmartFee->maximum() - ui->sliderSmartFee->value() + 2\r\n```\r\nBut I don't see how a constant would make it any less readable.\r\nAt the same time, it doesn't mean it cannot be done later.",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-12-02T01:23:06Z",
+      "diff_hunk" : "@@ -175,7 +175,7 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n         // set the smartfee-sliders default value (wallets default conf.target or last stored value)\n         QSettings settings;\n         if (settings.value(\"nSmartFeeSliderPosition\").toInt() == 0)\n-            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 1);\n+            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 2);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90572195",
+      "id" : 90572195,
+      "original_commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "original_position" : 5,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 11091840,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-12-02T01:23:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90572195",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90575029"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90575029"
+         }
+      },
+      "body" : "Before this PR anybody could have been using the RPC call estimatesmartfee and not expecting it to return -1 (which is what CFeeRate(0) gets translated into via RPC).  estimatesmartfee **already** gave you the answer for another value when it couldn't give you one for the target you asked for, it would have been exceedingly unusually for it to give you a -1 except right at startup.  So for any outside users of estimatesmartfee, this is the expected result.  You should be able to ask for a target of 1, and it'll give you the best answer it can.\r\n\r\nEDIT:  Also anyone that has a config file or a command line option setting nTxConfirmTarget = 1 will be calling the internal function estimateSmartFee and their behavior would become unnecessarily broken if it returns -1.\r\n\r\nWe don't want to GUI changes to be optional, but it points out why the other changes are the correct ones, they don't break the existing API. ",
+      "commit_id" : "e878689e5539d8de30283d1461d6466eac65f894",
+      "created_at" : "2016-12-02T01:55:45Z",
+      "diff_hunk" : "@@ -423,6 +424,10 @@ CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoun\n     if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n         return CFeeRate(0);\n \n+    // It's not possible to get reasonable estimates for confTarget of 1\n+    if (confTarget == 1)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#discussion_r90575029",
+      "id" : 90575029,
+      "original_commit_id" : "d824ad030e70bc72e0c63e1b0d00b08413024b55",
+      "original_position" : 15,
+      "path" : "src/policy/fees.cpp",
+      "position" : 15,
+      "pull_request_review_id" : 11094771,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9239",
+      "updated_at" : "2016-12-02T01:58:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90575029",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "The GUI changes may be difficult to backport here because the fee slider behavior changed in master in the meantime.",
+      "created_at" : "2016-12-02T07:27:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-264391128",
+      "id" : 264391128,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-12-02T07:27:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264391128",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "What about backporting https://github.com/bitcoin/bitcoin/pull/8989 (this woulds simplify a backport of this PR)",
+      "created_at" : "2016-12-02T07:28:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-264391332",
+      "id" : 264391332,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-12-02T07:28:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264391332",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "@jonasschnelli I think it is perfectly fine to backport without the GUI changes.  As mentioned to @jtimon, that was the intent.  Will create separate PR.\r\n\r\nEDIT: Oh it's already a separate commit.  You can just grab the first commit.\r\nEDIT2: made separate backport",
+      "created_at" : "2016-12-02T13:07:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-264450132",
+      "id" : 264450132,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-12-02T19:08:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264450132",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "This was already backported in #9267",
+      "created_at" : "2016-12-14T12:03:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9239#issuecomment-267017400",
+      "id" : 267017400,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9239",
+      "updated_at" : "2016-12-14T12:03:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/267017400",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

@@ -1,0 +1,671 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69093493"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69093493"
+         }
+      },
+      "body" : "or just:\r\n```if (std::string(\"Bitcoin Core\") != COPYRIGHT_HOLDERS_SUBSTITUTION)```\r\nNo need to use compare() if you don't need to know the relative sorting.\r\n",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-06-30T08:38:13Z",
+      "diff_hunk" : "@@ -801,11 +801,9 @@ int GetNumCores()\n \n std::string CopyrightHolders(const std::string& strPrefix)\n {\n-    std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n-        strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n-    }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n+    if (std::string(\"Bitcoin Core\").compare(COPYRIGHT_HOLDERS_SUBSTITUTION) != 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69093493",
+      "id" : 69093493,
+      "original_commit_id" : "fa9eaa9a29dccfccfa4668c885efdda93d2eda8e",
+      "original_position" : 10,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T08:48:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69093493",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Yes I think this is an improvement, utACK",
+      "created_at" : "2016-06-30T08:38:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#issuecomment-229597644",
+      "id" : 229597644,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8291",
+      "updated_at" : "2016-06-30T08:38:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/229597644",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69276141"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69276141"
+         }
+      },
+      "body" : "Why not `if (\"Bitcoin Core\" != COPYRIGHT_HOLDERS_SUBSTITUTION) {`?  At least `g++(1)` is able to evaluate that during compilation. When using `std::string` it generates code to create a `std::string` object and then calls the comparison function on that. The right hand side of the comparison is a `\"Ã¢ÂÂ¦\"` and not a `std::string` anyway.\r\nOr is there a style-reason for using `std::string`? This code is definitely neither size- nor speed-critical.",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-01T09:56:12Z",
+      "diff_hunk" : "@@ -802,10 +802,11 @@ int GetNumCores()\n std::string CopyrightHolders(const std::string& strPrefix)\n {\n     std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n+    if (strCopyrightHolders.find(\"%s\") != std::string::npos) {\n         strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n     }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    if (std::string(\"Bitcoin Core\") != COPYRIGHT_HOLDERS_SUBSTITUTION) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69276141",
+      "id" : 69276141,
+      "original_commit_id" : "fa7a206990bf31fba3fb5f00be5c810f7c54225f",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T08:48:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69276141",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/523218?v=3",
+         "events_url" : "https://api.github.com/users/roques/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/roques/followers",
+         "following_url" : "https://api.github.com/users/roques/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/roques/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/roques",
+         "id" : 523218,
+         "login" : "roques",
+         "organizations_url" : "https://api.github.com/users/roques/orgs",
+         "received_events_url" : "https://api.github.com/users/roques/received_events",
+         "repos_url" : "https://api.github.com/users/roques/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/roques/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/roques/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/roques"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69279209"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69279209"
+         }
+      },
+      "body" : "I have no background in cpp but the compiler tells me on your suggestion\r\n\r\n```cpp\r\nutil.cpp: In function Ã¢ÂÂstd::__cxx11::string CopyrightHolders(const string&)Ã¢ÂÂ:\r\nutil.cpp:805:27: warning: comparison with string literal results in unspecified behaviour [-Waddress]\r\n     if (\"Bitcoin Core\" != COPYRIGHT_HOLDERS_SUBSTITUTION) {\r\n                           ^\r\n",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-01T10:18:25Z",
+      "diff_hunk" : "@@ -802,10 +802,11 @@ int GetNumCores()\n std::string CopyrightHolders(const std::string& strPrefix)\n {\n     std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n+    if (strCopyrightHolders.find(\"%s\") != std::string::npos) {\n         strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n     }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    if (std::string(\"Bitcoin Core\") != COPYRIGHT_HOLDERS_SUBSTITUTION) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69279209",
+      "id" : 69279209,
+      "original_commit_id" : "fa7a206990bf31fba3fb5f00be5c810f7c54225f",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T08:48:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69279209",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69280845"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69280845"
+         }
+      },
+      "body" : "Noooo please keep the std::string, comparing char*'s will not do what you want it to.\r\n",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-01T10:33:22Z",
+      "diff_hunk" : "@@ -802,10 +802,11 @@ int GetNumCores()\n std::string CopyrightHolders(const std::string& strPrefix)\n {\n     std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n+    if (strCopyrightHolders.find(\"%s\") != std::string::npos) {\n         strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n     }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    if (std::string(\"Bitcoin Core\") != COPYRIGHT_HOLDERS_SUBSTITUTION) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69280845",
+      "id" : 69280845,
+      "original_commit_id" : "fa7a206990bf31fba3fb5f00be5c810f7c54225f",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T08:48:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69280845",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69281198"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69281198"
+         }
+      },
+      "body" : "Comparing two string literals will likely do what you want due to the compiler merging the constants to the same memory location. This is not behaviour to rely on though.",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-01T10:37:06Z",
+      "diff_hunk" : "@@ -802,10 +802,11 @@ int GetNumCores()\n std::string CopyrightHolders(const std::string& strPrefix)\n {\n     std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n+    if (strCopyrightHolders.find(\"%s\") != std::string::npos) {\n         strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n     }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    if (std::string(\"Bitcoin Core\") != COPYRIGHT_HOLDERS_SUBSTITUTION) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69281198",
+      "id" : 69281198,
+      "original_commit_id" : "fa7a206990bf31fba3fb5f00be5c810f7c54225f",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T08:48:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69281198",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69285135"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69285135"
+         }
+      },
+      "body" : "@sipa, definitely.\r\nPlease, don't do what I suggested.\r\n`if (strcmp(\"Bitcoin Core\", COPYRIGHT_HOLDERS_SUBSTITUTION) != 0)` can also be evaluated at compile time, but that's C, not C++ and is harder to read than what the patch currently does. Thus, just forget my suggestion.",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-01T11:18:27Z",
+      "diff_hunk" : "@@ -802,10 +802,11 @@ int GetNumCores()\n std::string CopyrightHolders(const std::string& strPrefix)\n {\n     std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n+    if (strCopyrightHolders.find(\"%s\") != std::string::npos) {\n         strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n     }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    if (std::string(\"Bitcoin Core\") != COPYRIGHT_HOLDERS_SUBSTITUTION) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69285135",
+      "id" : 69285135,
+      "original_commit_id" : "fa7a206990bf31fba3fb5f00be5c810f7c54225f",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T08:48:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69285135",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/523218?v=3",
+         "events_url" : "https://api.github.com/users/roques/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/roques/followers",
+         "following_url" : "https://api.github.com/users/roques/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/roques/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/roques",
+         "id" : 523218,
+         "login" : "roques",
+         "organizations_url" : "https://api.github.com/users/roques/orgs",
+         "received_events_url" : "https://api.github.com/users/roques/received_events",
+         "repos_url" : "https://api.github.com/users/roques/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/roques/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/roques/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/roques"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69286398"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69286398"
+         }
+      },
+      "body" : "> Comparing two string literals will likely do what you want due to the compiler merging the constants to the same memory location. This is not behaviour to rely on though.\r\n\r\nLOL yes 'it will mostly work' is the worst kind of working.\r\n\r\n> if (strcmp(\"Bitcoin Core\", COPYRIGHT_HOLDERS_SUBSTITUTION) != 0) can also be evaluated at compile time\r\n\r\nI don't think we care here, it's not like this is a performance critical inner loop.\r\n",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-01T11:33:00Z",
+      "diff_hunk" : "@@ -802,10 +802,11 @@ int GetNumCores()\n std::string CopyrightHolders(const std::string& strPrefix)\n {\n     std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n+    if (strCopyrightHolders.find(\"%s\") != std::string::npos) {\n         strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n     }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    if (std::string(\"Bitcoin Core\") != COPYRIGHT_HOLDERS_SUBSTITUTION) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69286398",
+      "id" : 69286398,
+      "original_commit_id" : "fa7a206990bf31fba3fb5f00be5c810f7c54225f",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T08:48:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69286398",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69327113"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69327113"
+         }
+      },
+      "body" : "This will break when COPYRIGHT_HOLDERS might not have \"%s\" to be replaced.",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-01T16:49:04Z",
+      "diff_hunk" : "@@ -801,11 +801,9 @@ int GetNumCores()\n \n std::string CopyrightHolders(const std::string& strPrefix)\n {\n-    std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n-        strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n-    }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69327113",
+      "id" : 69327113,
+      "original_commit_id" : "fa97c3d40cfbfb297445adddb74cfec01ef75416",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : 9,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T08:48:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69327113",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69327296"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69327296"
+         }
+      },
+      "body" : "Bitcoin Core developers could very well  be mentioned in COPYRIGHT_HOLDERS rather than COPYRIGHT_HOLDERS_SUBSTITUTION. For example:\r\n\r\n```C++\r\n define(_COPYRIGHT_HOLDERS,[The %s and Bitcoin Core developers])\r\n define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[Altcoin Core])\r\n```",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-01T16:50:52Z",
+      "diff_hunk" : "@@ -801,11 +801,9 @@ int GetNumCores()\n \n std::string CopyrightHolders(const std::string& strPrefix)\n {\n-    std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n-        strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n-    }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n+    if (std::string(\"Bitcoin Core\") != COPYRIGHT_HOLDERS_SUBSTITUTION) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69327296",
+      "id" : 69327296,
+      "original_commit_id" : "fa97c3d40cfbfb297445adddb74cfec01ef75416",
+      "original_position" : 10,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T08:48:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69327296",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69375093"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69375093"
+         }
+      },
+      "body" : "I don't think we support COPYRIGHT_HOLDERS with no \"%s\" in it. (If you really wanted to do that you'd also have to assert that COPYRIGHT_HOLDERS_SUBSTITUTION is empty? etc)\r\n\r\nIf someone feels like breaking that, they can figure out a fix for themselves. There is no need to keep unused code in our repo because someday someone might or might not use it.",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-02T08:49:06Z",
+      "diff_hunk" : "@@ -801,11 +801,9 @@ int GetNumCores()\n \n std::string CopyrightHolders(const std::string& strPrefix)\n {\n-    std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n-        strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n-    }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69375093",
+      "id" : 69375093,
+      "original_commit_id" : "fa97c3d40cfbfb297445adddb74cfec01ef75416",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : 9,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-02T09:01:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69375093",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69863083"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69863083"
+         }
+      },
+      "body" : "@luke-jr In that case strprintf will explode in your face\r\nBut I don't see that as a problem, really. We support with %s, if you really want to do something differently you have to change this code too.\r\n",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-07T07:39:08Z",
+      "diff_hunk" : "@@ -801,11 +801,9 @@ int GetNumCores()\n \n std::string CopyrightHolders(const std::string& strPrefix)\n {\n-    std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n-        strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n-    }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69863083",
+      "id" : 69863083,
+      "original_commit_id" : "fa97c3d40cfbfb297445adddb74cfec01ef75416",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : 9,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-07T07:40:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69863083",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69864509"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69864509"
+         }
+      },
+      "body" : "It will only explode during run time, but I still think we should not keep fancy logic and several unused lines of code.",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-07T07:52:46Z",
+      "diff_hunk" : "@@ -801,11 +801,9 @@ int GetNumCores()\n \n std::string CopyrightHolders(const std::string& strPrefix)\n {\n-    std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n-        strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n-    }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r69864509",
+      "id" : 69864509,
+      "original_commit_id" : "fa97c3d40cfbfb297445adddb74cfec01ef75416",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : 9,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-07T07:52:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/69864509",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r71016445"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71016445"
+         }
+      },
+      "body" : "@luke-jr Ideally there should be documentation (and commented out sample code) in configure.ac about the preferred method of adding a copyright string. Adding some heuristics to detect such additional string in some downstream helper method is good intention but doesn't really help, imo.",
+      "commit_id" : "33336e1aacb36607d0950d681d8e24821e64f8df",
+      "created_at" : "2016-07-15T18:08:26Z",
+      "diff_hunk" : "@@ -801,11 +801,9 @@ int GetNumCores()\n \n std::string CopyrightHolders(const std::string& strPrefix)\n {\n-    std::string strCopyrightHolders = strPrefix + _(COPYRIGHT_HOLDERS);\n-    if (strCopyrightHolders.find(\"%s\") != strCopyrightHolders.npos) {\n-        strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));\n-    }\n-    if (strCopyrightHolders.find(\"Bitcoin Core developers\") == strCopyrightHolders.npos) {\n+    std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#discussion_r71016445",
+      "id" : 71016445,
+      "original_commit_id" : "fa97c3d40cfbfb297445adddb74cfec01ef75416",
+      "original_position" : 9,
+      "path" : "src/util.cpp",
+      "position" : 9,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8291",
+      "updated_at" : "2016-07-15T18:08:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71016445",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Test 1:\r\n```diff\r\n define(_COPYRIGHT_YEAR, 2016)\r\n-define(_COPYRIGHT_HOLDERS,[The %s developers])\r\n+define(_COPYRIGHT_HOLDERS,[The %s and other developers])\r\n define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin Core]])\r\n```\r\n\r\nResult 1: :white_check_mark: \r\n```shell\r\n src/bitcoind -version | head -2\r\nBitcoin Core Daemon version v0.12.99.0-33336e1-dirty\r\nCopyright (C) 2009-2016 The Bitcoin Core and other developers\r\n```\r\n\r\n----\r\nTest 2:\r\n```diff\r\n define(_COPYRIGHT_YEAR, 2016)\r\n-define(_COPYRIGHT_HOLDERS,[The %s developers])\r\n-define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin Core]])\r\n+define(_COPYRIGHT_HOLDERS,[The %s and other developers])\r\n+define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin Core and Other Core]])\r\n AC_INIT([Bitcoin Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/bitcoin/bitcoin/issues],[bitcoin],[https://bitcoincore.org/])\r\n```\r\n\r\nResult 2: :white_check_mark: \r\n```shell\r\nsrc/bitcoind -version | head -3\r\nBitcoin Core Daemon version v0.12.99.0-33336e1-dirty\r\nCopyright (C) 2009-2016 The Bitcoin Core and Other Core and other developers\r\n```\r\n\r\n----\r\nTest 3:\r\n```diff\r\n define(_COPYRIGHT_YEAR, 2016)\r\n-define(_COPYRIGHT_HOLDERS,[The %s developers])\r\n+define(_COPYRIGHT_HOLDERS,[The other developers])\r\n define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin Core]])\r\n```\r\n\r\nResult 3: :white_check_mark: \r\n```shell\r\nsrc/bitcoind -version | head -3\r\nterminate called after throwing an instance of 'std::runtime_error'\r\n  what():  tinyformat: Not enough conversion specifiers in format string\r\n",
+      "created_at" : "2016-07-18T09:13:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#issuecomment-233280692",
+      "id" : 233280692,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8291",
+      "updated_at" : "2016-08-06T10:27:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/233280692",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "utACK 33336e1",
+      "created_at" : "2016-08-31T14:17:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8291#issuecomment-243778348",
+      "id" : 243778348,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8291",
+      "updated_at" : "2016-08-31T14:17:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243778348",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

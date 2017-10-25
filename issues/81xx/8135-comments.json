@@ -1,0 +1,159 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8135#discussion_r65498262"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8135"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/65498262"
+         }
+      },
+      "body" : "This is not really elegant. Fixing the upstream pip package would probably the way to go.",
+      "commit_id" : "06642026d0c0316336c9ed7dbfad50c2383c90c2",
+      "created_at" : "2016-06-02T07:56:57Z",
+      "diff_hunk" : "@@ -68,6 +68,7 @@ AC_PATH_TOOL(GCOV, gcov)\n AC_PATH_PROG(LCOV, lcov)\n AC_PATH_PROG(JAVA, java)\n AC_PATH_PROGS([PYTHON], [python3 python2.7 python2 python])\n+AC_PATH_PROGS([PYTHON2], [python2.7 python2 python])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8135#discussion_r65498262",
+      "id" : 65498262,
+      "original_commit_id" : "4ee30fc5056617bc5d1e116c8cd64fb8f5c6c8e8",
+      "original_position" : 4,
+      "path" : "configure.ac",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8135",
+      "updated_at" : "2016-06-02T08:48:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/65498262",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "This seems to work, but still required some playing around with pip to get the correct packages installed. It didn't seem to find the brew installed python2 packages?\r\n\r\nCould you rebase the doc changes off #8029 ?\r\nAlso, should we just delete the readme in contrib/macdeploy ?",
+      "created_at" : "2016-06-02T08:24:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8135#issuecomment-223227162",
+      "id" : 223227162,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8135",
+      "updated_at" : "2016-06-02T08:24:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/223227162",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "ping @theuni, does this still make sense? I guess https://github.com/bitcoin/bitcoin/issues/8120 is still unfixed?",
+      "created_at" : "2016-07-20T12:35:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8135#issuecomment-233936008",
+      "id" : 233936008,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8135",
+      "updated_at" : "2016-07-20T12:35:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/233936008",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Ahhh, I just stumbled across this issue today. Glad to see that people are looking into it.\r\n\r\nHaving looked at the proposed solutions, I think theuni's proposal that ds_store and mac_alias be pulled into the repo is reasonable. They're ~1300 lines of Python code each. Not tiny but quite manageable.",
+      "created_at" : "2016-08-02T00:17:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8135#issuecomment-236751055",
+      "id" : 236751055,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8135",
+      "updated_at" : "2016-08-02T00:17:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/236751055",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5931802?v=3",
+         "events_url" : "https://api.github.com/users/droark/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/droark/followers",
+         "following_url" : "https://api.github.com/users/droark/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/droark/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/droark",
+         "id" : 5931802,
+         "login" : "droark",
+         "organizations_url" : "https://api.github.com/users/droark/orgs",
+         "received_events_url" : "https://api.github.com/users/droark/received_events",
+         "repos_url" : "https://api.github.com/users/droark/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/droark/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/droark/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/droark"
+      }
+   },
+   {
+      "body" : "Closing in the hope @theuni will PR https://github.com/theuni/bitcoin/commit/c622254170d4bd8c5ca75077214105cef666f4c4.",
+      "created_at" : "2016-08-26T07:27:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8135#issuecomment-242650799",
+      "id" : 242650799,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8135",
+      "updated_at" : "2016-08-26T07:27:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242650799",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   }
+]

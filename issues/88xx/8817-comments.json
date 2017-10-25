@@ -1,0 +1,992 @@
+[
+   {
+      "body" : "utACK 76992bf22987ead0c2643685a228769ef0932a1b\r\n\r\nSide note: it seems we have no tests for bitcoin-tx JSON functionality, despite there being some other tests for it. Perhaps it can be added (see `src/test/data/bitcoin-util-test.py`).",
+      "created_at" : "2016-09-28T02:46:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-250057803",
+      "id" : 250057803,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-09-28T02:46:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/250057803",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK 76992bf22987ead0c2643685a228769ef0932a1b\r\nAgree with @sipa about the tests.",
+      "created_at" : "2016-09-28T13:04:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-250160335",
+      "id" : 250160335,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-09-28T13:04:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/250160335",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "I've added JSON test cases in https://github.com/bitcoin/bitcoin/pull/8829",
+      "created_at" : "2016-09-28T17:53:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-250245150",
+      "id" : 250245150,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-09-28T17:53:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/250245150",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "I assume this needs backport?",
+      "created_at" : "2016-09-29T08:58:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-250409787",
+      "id" : 250409787,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-09-29T08:58:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/250409787",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "utACK 76992bf\r\n",
+      "created_at" : "2016-09-29T11:00:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-250435044",
+      "id" : 250435044,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-09-29T11:00:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/250435044",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "body" : "I'll reference this here as well since it all seems (to me) to be setting some kind of precedent wrt blank transactions.\r\nWould love a bit of insight into this.\r\n~~https://github.com/bitcoin/bitcoin/pull/8837#issuecomment-250542708~~\r\n\r\nCleared.",
+      "created_at" : "2016-09-29T18:28:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-250551384",
+      "id" : 250551384,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-09-29T22:16:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/250551384",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5624963?v=3",
+         "events_url" : "https://api.github.com/users/fivepiece/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fivepiece/followers",
+         "following_url" : "https://api.github.com/users/fivepiece/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fivepiece/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fivepiece",
+         "id" : 5624963,
+         "login" : "fivepiece",
+         "organizations_url" : "https://api.github.com/users/fivepiece/orgs",
+         "received_events_url" : "https://api.github.com/users/fivepiece/received_events",
+         "repos_url" : "https://api.github.com/users/fivepiece/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fivepiece/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fivepiece/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fivepiece"
+      }
+   },
+   {
+      "body" : "Concept ACK. I believe it would be simpler and not harder for me to review if you go with your \"full solution that doesn't duplicate code\" in the same PR, but that may just be me...",
+      "created_at" : "2016-09-30T15:24:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-250773912",
+      "id" : 250773912,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-09-30T15:24:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/250773912",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "utACK 76992bf22987ead0c2643685a228769ef0932a1b",
+      "created_at" : "2016-10-03T00:26:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-251006595",
+      "id" : 251006595,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-10-03T00:26:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251006595",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "ACK",
+      "created_at" : "2016-10-03T07:24:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-251042434",
+      "id" : 251042434,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-10-03T07:24:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251042434",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81622154"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81622154"
+         }
+      },
+      "body" : "Might be good to use BOOST_FOREACH here (for readability and to avoid copying the stack items).",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T19:30:26Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {\n+                if (!tx.wit.vtxinwit[i].IsNull()) {\n+                    UniValue txinwitness(UniValue::VARR);\n+                    for (unsigned int j = 0; j < tx.wit.vtxinwit[i].scriptWitness.stack.size(); j++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81622154",
+      "id" : 81622154,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 22,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2589050,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81622154",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81623699"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81623699"
+         }
+      },
+      "body" : "This check is redundant with the check above, and might be worth removing.\r\n\r\nIt would probably also be good to add an (i < tx.wit.vtxinwit.size()) check or assertion.",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T19:39:31Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {\n+                if (!tx.wit.vtxinwit[i].IsNull()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81623699",
+      "id" : 81623699,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 20,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2589050,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81623699",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81624272"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81624272"
+         }
+      },
+      "body" : "For clarity and efficiency would suggest moving this outside the for loop, since internally CTxWitness::IsNull loops over all the i's.",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T19:42:49Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81624272",
+      "id" : 81624272,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 19,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2589050,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81624272",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81628648"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81628648"
+         }
+      },
+      "body" : "I don't think we need to be too concerned about efficiency here. ScriptPubKeyToUniv() isn't heavily used, so looping through the CTxIn isn't going to cause any performance issues.",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T20:06:23Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81628648",
+      "id" : 81628648,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 19,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2595143,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81628648",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81628848"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81628848"
+         }
+      },
+      "body" : "I've added your `(i < tx.wit.vtxinwit.size())` check and moved all checks into a single if statement.",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T20:07:29Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {\n+                if (!tx.wit.vtxinwit[i].IsNull()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81628848",
+      "id" : 81628848,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 20,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2595312,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81628848",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81629621"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81629621"
+         }
+      },
+      "body" : "We're trying to move away from BOOST in favour of c++11. See https://github.com/bitcoin/bitcoin/projects/3",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T20:11:40Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {\n+                if (!tx.wit.vtxinwit[i].IsNull()) {\n+                    UniValue txinwitness(UniValue::VARR);\n+                    for (unsigned int j = 0; j < tx.wit.vtxinwit[i].scriptWitness.stack.size(); j++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81629621",
+      "id" : 81629621,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 22,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2596078,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81629621",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81629825"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81629825"
+         }
+      },
+      "body" : "Sounds good. I was suggesting this more for clarity than efficiency, though. Right now I would be surprised looking at this code to learn that if that any /single/ vtxinwit is null, then no output will be produced for all other vtxinwit. Adding a well named bool variable outside the for loop might make it a little clearer. Anyway, thanks for considering this, and for making the other changes.",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T20:12:53Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81629825",
+      "id" : 81629825,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 19,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2596266,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81629825",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81630219"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81630219"
+         }
+      },
+      "body" : "In that case, for (const auto& item : tx.wit.vtxinwit[i].scriptWitness.stack) would be great.",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T20:15:08Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {\n+                if (!tx.wit.vtxinwit[i].IsNull()) {\n+                    UniValue txinwitness(UniValue::VARR);\n+                    for (unsigned int j = 0; j < tx.wit.vtxinwit[i].scriptWitness.stack.size(); j++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81630219",
+      "id" : 81630219,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 22,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2596621,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81630219",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81635242"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81635242"
+         }
+      },
+      "body" : "Actually, I'm wrong about this. CTxWitness::IsNull returns true if all vtxinwits are null, not if any are null, so having this check isn't actually misleading w.r.t the individual entries, just redundant.",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T20:40:54Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81635242",
+      "id" : 81635242,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 19,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2601224,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81635242",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81645039"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81645039"
+         }
+      },
+      "body" : "Yep. Much better. Thanks!",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-03T21:33:50Z",
+      "diff_hunk" : "@@ -166,6 +168,16 @@ void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n             o.pushKV(\"asm\", ScriptToAsmStr(txin.scriptSig, true));\n             o.pushKV(\"hex\", HexStr(txin.scriptSig.begin(), txin.scriptSig.end()));\n             in.pushKV(\"scriptSig\", o);\n+            if (!tx.wit.IsNull()) {\n+                if (!tx.wit.vtxinwit[i].IsNull()) {\n+                    UniValue txinwitness(UniValue::VARR);\n+                    for (unsigned int j = 0; j < tx.wit.vtxinwit[i].scriptWitness.stack.size(); j++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81645039",
+      "id" : 81645039,
+      "original_commit_id" : "76992bf22987ead0c2643685a228769ef0932a1b",
+      "original_position" : 22,
+      "path" : "src/core_write.cpp",
+      "position" : null,
+      "pull_request_review_id" : 2610265,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81645039",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "I've applied @ryanofsky's changes and rebased.",
+      "created_at" : "2016-10-03T22:25:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-251245195",
+      "id" : 251245195,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-10-03T22:25:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251245195",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Fails with `Output data mismatch for blanktx.json`",
+      "created_at" : "2016-10-04T09:03:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-251333892",
+      "id" : 251333892,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-10-04T09:03:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251333892",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81713988"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81713988"
+         }
+      },
+      "body" : "Why? Please keep it at BOOST or make it cpp11",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-04T09:06:21Z",
+      "diff_hunk" : "@@ -151,11 +151,13 @@ void ScriptPubKeyToUniv(const CScript& scriptPubKey,\n void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n {\n     entry.pushKV(\"txid\", tx.GetHash().GetHex());\n+    entry.pushKV(\"hash\", tx.GetWitnessHash().GetHex());\n     entry.pushKV(\"version\", tx.nVersion);\n     entry.pushKV(\"locktime\", (int64_t)tx.nLockTime);\n \n     UniValue vin(UniValue::VARR);\n-    BOOST_FOREACH(const CTxIn& txin, tx.vin) {\n+    for (unsigned int i = 0; i < tx.vin.size(); i++) {\n+        const CTxIn& txin = tx.vin[i];",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81713988",
+      "id" : 81713988,
+      "original_commit_id" : "9f85db7c69ec400301d507c92839520266a50504",
+      "original_position" : 11,
+      "path" : "src/core_write.cpp",
+      "position" : 11,
+      "pull_request_review_id" : 2672925,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81713988",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81721340"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81721340"
+         }
+      },
+      "body" : "I think it's because he needs index `i` below. I've wondered this before: does c++11 have a canonical way to do enumerated iteration (like `enumerate()` in python or `for i, a := range ... {` in golang)",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-04T09:47:37Z",
+      "diff_hunk" : "@@ -151,11 +151,13 @@ void ScriptPubKeyToUniv(const CScript& scriptPubKey,\n void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n {\n     entry.pushKV(\"txid\", tx.GetHash().GetHex());\n+    entry.pushKV(\"hash\", tx.GetWitnessHash().GetHex());\n     entry.pushKV(\"version\", tx.nVersion);\n     entry.pushKV(\"locktime\", (int64_t)tx.nLockTime);\n \n     UniValue vin(UniValue::VARR);\n-    BOOST_FOREACH(const CTxIn& txin, tx.vin) {\n+    for (unsigned int i = 0; i < tx.vin.size(); i++) {\n+        const CTxIn& txin = tx.vin[i];",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81721340",
+      "id" : 81721340,
+      "original_commit_id" : "9f85db7c69ec400301d507c92839520266a50504",
+      "original_position" : 11,
+      "path" : "src/core_write.cpp",
+      "position" : 11,
+      "pull_request_review_id" : 2679623,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81721340",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Failing test:\r\n```\r\n\r\nmake  check-TESTS check-local\r\nmake[3]: Entering directory `/home/travis/build/bitcoin/bitcoin/build/src'\r\nRunning test/bitcoin-util-test.py...\r\nmake[4]: Entering directory `/home/travis/build/bitcoin/bitcoin/build/src'\r\nOutput data mismatch for blanktx.json\r\nmake[3]: *** [check-local] Error 1\r\nmake[3]: *** Waiting for unfinished jobs....\r\n```",
+      "created_at" : "2016-10-04T11:41:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-251365007",
+      "id" : 251365007,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-10-04T11:41:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251365007",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81753406"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81753406"
+         }
+      },
+      "body" : "That's correct. I don't think there's a direct equivalent for python's enumerate in c++11. The most common suggestions I can find on stackoverflow are zipping with an index or tracking the index outside the for loop. I think it's clearer just to iterate through the indexes in the for loop.",
+      "commit_id" : "4408558843c6c2b7abeb4160f641dfdbf5be5eb4",
+      "created_at" : "2016-10-04T13:16:46Z",
+      "diff_hunk" : "@@ -151,11 +151,13 @@ void ScriptPubKeyToUniv(const CScript& scriptPubKey,\n void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry)\n {\n     entry.pushKV(\"txid\", tx.GetHash().GetHex());\n+    entry.pushKV(\"hash\", tx.GetWitnessHash().GetHex());\n     entry.pushKV(\"version\", tx.nVersion);\n     entry.pushKV(\"locktime\", (int64_t)tx.nLockTime);\n \n     UniValue vin(UniValue::VARR);\n-    BOOST_FOREACH(const CTxIn& txin, tx.vin) {\n+    for (unsigned int i = 0; i < tx.vin.size(); i++) {\n+        const CTxIn& txin = tx.vin[i];",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#discussion_r81753406",
+      "id" : 81753406,
+      "original_commit_id" : "9f85db7c69ec400301d507c92839520266a50504",
+      "original_position" : 11,
+      "path" : "src/core_write.cpp",
+      "position" : 11,
+      "pull_request_review_id" : 2708901,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8817",
+      "updated_at" : "2016-10-05T13:00:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81753406",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Looks like all tests are now passing.\r\n```\r\nMaking check in src\r\n/Applications/Xcode.app/Contents/Developer/usr/bin/make  check-TESTS check-local\r\nPASS: test/test_bitcoin\r\nPASS: qt/test/test_bitcoin-qt\r\n============================================================================\r\nTestsuite summary for Bitcoin Core 0.13.99\r\n============================================================================\r\n# TOTAL: 2\r\n# PASS:  2\r\n# SKIP:  0\r\n# XFAIL: 0\r\n# FAIL:  0\r\n# XPASS: 0\r\n# ERROR: 0\r\n============================================================================\r\nRunning test/bitcoin-util-test.py...\r\n/Applications/Xcode.app/Contents/Developer/usr/bin/make  check-TESTS\r\nPASS: tests\r\n``",
+      "created_at" : "2016-10-05T04:02:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-251576490",
+      "id" : 251576490,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-10-05T04:02:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251576490",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Commits squashed and commit comment updated.",
+      "created_at" : "2016-10-05T13:01:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8817#issuecomment-251667443",
+      "id" : 251667443,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8817",
+      "updated_at" : "2016-10-05T13:01:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251667443",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   }
+]

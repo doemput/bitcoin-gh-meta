@@ -1,0 +1,1316 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r126172925"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126172925"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Nothing replacing this code?",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-07-07T15:17:55Z",
+      "diff_hunk" : "@@ -187,11 +187,6 @@ void Shutdown()\n     StopREST();\n     StopRPC();\n     StopHTTPServer();\n-#ifdef ENABLE_WALLET",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r126172925",
+      "id" : 126172925,
+      "original_commit_id" : "3696ed0026559892aa45e0c3d3cc69093a8035d4",
+      "original_position" : 13,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 48635992,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126172925",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r126174424"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126174424"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "What about moving these `#ifdef ENABLE_WALLET` to `walletinit.cpp`?",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-07-07T15:24:11Z",
+      "diff_hunk" : "@@ -230,9 +225,7 @@ void Shutdown()\n         pblocktree = NULL;\n     }\n #ifdef ENABLE_WALLET",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r126174424",
+      "id" : 126174424,
+      "original_commit_id" : "3696ed0026559892aa45e0c3d3cc69093a8035d4",
+      "original_position" : 24,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 48635992,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126174424",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r126175956"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126175956"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Because `walletinit.cpp` is in libbitcoin_wallet, so is not linked if `ENABLE_WALLET` isn't defined. #10762 will remove the libbitcoin_server -> libbitcoin_wallet dependencies entirely from init.cpp.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-07-07T15:30:38Z",
+      "diff_hunk" : "@@ -230,9 +225,7 @@ void Shutdown()\n         pblocktree = NULL;\n     }\n #ifdef ENABLE_WALLET",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r126175956",
+      "id" : 126175956,
+      "in_reply_to_id" : 126174424,
+      "original_commit_id" : "3696ed0026559892aa45e0c3d3cc69093a8035d4",
+      "original_position" : 24,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 48639473,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126175956",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r126176298"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126176298"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Correct - I don't believe the early wallet flush is necessary (although I may be wrong). See PR description:\r\n\r\n> The most important one is that Flush() no longer gets called twice on shutdown. I think this is fine, and all the tests pass, but this probably requires some careful consideration from people who are more familiar with the wallet code.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-07-07T15:32:01Z",
+      "diff_hunk" : "@@ -187,11 +187,6 @@ void Shutdown()\n     StopREST();\n     StopRPC();\n     StopHTTPServer();\n-#ifdef ENABLE_WALLET",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r126176298",
+      "id" : 126176298,
+      "in_reply_to_id" : 126172925,
+      "original_commit_id" : "3696ed0026559892aa45e0c3d3cc69093a8035d4",
+      "original_position" : 13,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 48639863,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126176298",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Rebase needed :-)",
+      "created_at" : "2017-07-17T12:52:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-315746555",
+      "id" : 315746555,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-07-17T12:52:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315746555",
+      "user" : {
+         "avatar_url" : "https://avatars7.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "This isn't going in until after 0.15. which includes some wallet changes. I'll rebase after 0.15 has been cut.",
+      "created_at" : "2017-07-17T13:10:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-315750974",
+      "id" : 315750974,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-07-17T13:10:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315750974",
+      "user" : {
+         "avatar_url" : "https://avatars7.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "@jnewbery Got it! Thanks for the clarification.",
+      "created_at" : "2017-07-17T13:19:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-315753121",
+      "id" : 315753121,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-07-17T13:19:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315753121",
+      "user" : {
+         "avatar_url" : "https://avatars7.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "This overlaps significantly with #10976, which is easier to review since it's mostly move-only.\r\n\r\nI'll rebase this on #10976 once that gets merged.",
+      "created_at" : "2017-08-14T15:35:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-322224157",
+      "id" : 322224157,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-08-14T15:35:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322224157",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Rebased on @ryanofsky's #10976 and reduced scope. This PR now only moves the remaining wallet startup/shutdown functions to `wallet/init.cpp` in preparation for #10740 (dynamic loading/unloading of wallets) and #10762 (remove wallet dependencies from init.cpp).\r\n\r\nThere should be no change in behavior from this PR.",
+      "created_at" : "2017-08-28T18:12:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-325432592",
+      "id" : 325432592,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-08-28T18:12:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/325432592",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135645450"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135645450"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "In commit \"[wallet] move wallet flush calls to wallet/init.cpp\"\r\n\r\nI think you need to use `//!` prefix on each line of the comment for doxygen to pick it up.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T21:53:42Z",
+      "diff_hunk" : "@@ -22,4 +22,7 @@ bool WalletVerify();\n //! Load wallet databases.\n bool InitLoadWallet();\n \n+//! Flush all wallets in preparation for shutdown.\n+//  Call with shutdown = true to actually shutdown the wallet.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135645450",
+      "id" : 135645450,
+      "original_commit_id" : "789b5dd47fef3db75d8d6ddfff2e296fb40f2c53",
+      "original_position" : 5,
+      "path" : "src/wallet/init.h",
+      "position" : null,
+      "pull_request_review_id" : 59080147,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135645450",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135646552"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135646552"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "In commit \"[wallet] move wallet detach calls to wallet/init.cpp\"\r\n\r\nMaybe go with \"close\" or \"free\" instead of \"detach\". Detach sounds like it could be keeping the wallets open but handing them off.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T21:59:19Z",
+      "diff_hunk" : "@@ -265,10 +265,7 @@ void Shutdown()\n     UnregisterAllValidationInterfaces();\n     GetMainSignals().UnregisterBackgroundSignalScheduler();\n #ifdef ENABLE_WALLET\n-    for (CWalletRef pwallet : vpwallets) {\n-        delete pwallet;\n-    }\n-    vpwallets.clear();\n+    DetachWallets();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135646552",
+      "id" : 135646552,
+      "original_commit_id" : "f977dcf74cf1243f0b0c1704be6b337cb4d80c3f",
+      "original_position" : 8,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 59080147,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135646552",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135649919"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135649919"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Remove?",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T22:18:47Z",
+      "diff_hunk" : "@@ -6,14 +6,22 @@\n #ifndef BITCOIN_WALLET_INIT_H\n #define BITCOIN_WALLET_INIT_H\n \n+#include \"wallet/rpcwallet.h\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135649919",
+      "id" : 135649919,
+      "original_commit_id" : "3f425ee4263f66ab039c089d189b6cad0abbc23c",
+      "original_position" : 4,
+      "path" : "src/wallet/init.h",
+      "position" : null,
+      "pull_request_review_id" : 59084975,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135649919",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135650402"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135650402"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Offtopic, we could ditch `CWalletRef`.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T22:21:47Z",
+      "diff_hunk" : "@@ -245,3 +253,28 @@ bool InitLoadWallet()\n \n     return true;\n }\n+\n+void WalletCompleteStartup(CScheduler& scheduler) {\n+    for (CWalletRef pwallet : vpwallets) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135650402",
+      "id" : 135650402,
+      "original_commit_id" : "3f425ee4263f66ab039c089d189b6cad0abbc23c",
+      "original_position" : 28,
+      "path" : "src/wallet/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 59084975,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135650402",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135651562"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651562"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Ã°ÂÂÂ `FreeWallets`.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T22:28:44Z",
+      "diff_hunk" : "@@ -265,10 +265,7 @@ void Shutdown()\n     UnregisterAllValidationInterfaces();\n     GetMainSignals().UnregisterBackgroundSignalScheduler();\n #ifdef ENABLE_WALLET\n-    for (CWalletRef pwallet : vpwallets) {\n-        delete pwallet;\n-    }\n-    vpwallets.clear();\n+    DetachWallets();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135651562",
+      "id" : 135651562,
+      "in_reply_to_id" : 135646552,
+      "original_commit_id" : "f977dcf74cf1243f0b0c1704be6b337cb4d80c3f",
+      "original_position" : 8,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 59084975,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651562",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135651661"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651661"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Newline after.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T22:29:30Z",
+      "diff_hunk" : "@@ -22,4 +30,15 @@ bool WalletVerify();\n //! Load wallet databases.\n bool InitLoadWallet();\n \n+//! Complete startup of wallets\n+void WalletCompleteStartup(CScheduler& scheduler);\n+\n+//! Flush all wallets in preparation for shutdown.\n+void FlushWallets();\n+\n+//! Shutdown all wallets. Wallets will be flushed first.\n+void ShutdownWallets();\n+\n+//! Detach all wallets\n+void DetachWallets();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135651661",
+      "id" : 135651661,
+      "original_commit_id" : "3f425ee4263f66ab039c089d189b6cad0abbc23c",
+      "original_position" : 37,
+      "path" : "src/wallet/init.h",
+      "position" : null,
+      "pull_request_review_id" : 59084975,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651661",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135651675"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651675"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Same as above.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T22:29:37Z",
+      "diff_hunk" : "@@ -22,4 +30,15 @@ bool WalletVerify();\n //! Load wallet databases.\n bool InitLoadWallet();\n \n+//! Complete startup of wallets\n+void WalletCompleteStartup(CScheduler& scheduler);\n+\n+//! Flush all wallets in preparation for shutdown.\n+void FlushWallets();\n+\n+//! Shutdown all wallets. Wallets will be flushed first.\n+void ShutdownWallets();\n+\n+//! Detach all wallets",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135651675",
+      "id" : 135651675,
+      "original_commit_id" : "3f425ee4263f66ab039c089d189b6cad0abbc23c",
+      "original_position" : 36,
+      "path" : "src/wallet/init.h",
+      "position" : null,
+      "pull_request_review_id" : 59084975,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651675",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135651695"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651695"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Same as above.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T22:29:43Z",
+      "diff_hunk" : "@@ -22,4 +30,15 @@ bool WalletVerify();\n //! Load wallet databases.\n bool InitLoadWallet();\n \n+//! Complete startup of wallets",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135651695",
+      "id" : 135651695,
+      "original_commit_id" : "3f425ee4263f66ab039c089d189b6cad0abbc23c",
+      "original_position" : 27,
+      "path" : "src/wallet/init.h",
+      "position" : null,
+      "pull_request_review_id" : 59084975,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651695",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135652000"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135652000"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Missing period?",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T22:31:39Z",
+      "diff_hunk" : "@@ -6,14 +6,22 @@\n #ifndef BITCOIN_WALLET_INIT_H\n #define BITCOIN_WALLET_INIT_H\n \n+#include \"wallet/rpcwallet.h\"\n+\n #include <string>\n \n+class CRPCTable;\n+class CScheduler;\n+\n //! Return the wallets help message.\n std::string GetWalletHelpString(bool showDebug);\n \n //! Wallets parameter interaction\n bool WalletParameterInteraction();\n \n+//! Register wallet RPCs",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135652000",
+      "id" : 135652000,
+      "original_commit_id" : "3f425ee4263f66ab039c089d189b6cad0abbc23c",
+      "original_position" : 17,
+      "path" : "src/wallet/init.h",
+      "position" : null,
+      "pull_request_review_id" : 59084975,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135652000",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135652027"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135652027"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Fix above too.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-08-28T22:31:47Z",
+      "diff_hunk" : "@@ -6,14 +6,22 @@\n #ifndef BITCOIN_WALLET_INIT_H\n #define BITCOIN_WALLET_INIT_H\n \n+#include \"wallet/rpcwallet.h\"\n+\n #include <string>\n \n+class CRPCTable;\n+class CScheduler;\n+\n //! Return the wallets help message.\n std::string GetWalletHelpString(bool showDebug);\n \n //! Wallets parameter interaction\n bool WalletParameterInteraction();\n \n+//! Register wallet RPCs",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r135652027",
+      "id" : 135652027,
+      "in_reply_to_id" : 135652000,
+      "original_commit_id" : "3f425ee4263f66ab039c089d189b6cad0abbc23c",
+      "original_position" : 17,
+      "path" : "src/wallet/init.h",
+      "position" : null,
+      "pull_request_review_id" : 59084975,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135652027",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "Re: naming of unload/close/free/detach wallet function. I want the wallet loading/unloading RPC verbs to be antonyms so it's obvious they're carrying out opposite actions. I started with load/unload, but dropped that to avoid any ambiguity with adding keys and addresses to an already open wallet. attach/detach is bad for the reason Russ mentioned. Is everyone happy with open/close?\r\n\r\n(I guess the name of the function doesn't need to map exactly to the name of the RPC, but I think it makes sense to do that if we can)\r\n\r\n",
+      "created_at" : "2017-08-29T14:11:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-325676428",
+      "id" : 325676428,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-08-29T14:11:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/325676428",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "open/close or load/unload is what I would call it",
+      "created_at" : "2017-08-29T14:20:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-325679193",
+      "id" : 325679193,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-08-29T14:20:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/325679193",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "I've addressed the comments and changed names a little. @ryanofsky do you mind taking a look?",
+      "created_at" : "2017-08-29T16:21:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-325717368",
+      "id" : 325717368,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-08-29T16:21:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/325717368",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Also just a suggestion, but this might be easier to review if it were just 2 commits, one commit for RPC stuff and one commit for the start/stop/flush stuff, so you could see the related parts together.",
+      "created_at" : "2017-08-29T17:41:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-325739856",
+      "id" : 325739856,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-08-29T17:41:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/325739856",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Thanks @ryanofsky .\r\n\r\nOther reviewers/maintainers - I'm happy to rebase/squash as Russ suggests if that makes things easier to review. Please let me know if you want that.",
+      "created_at" : "2017-08-29T18:15:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-325749327",
+      "id" : 325749327,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-08-29T18:15:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/325749327",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "utACK https://github.com/bitcoin/bitcoin/commit/ca94bf2c39b06f1ed643c24dfcd78ef5af00562a\r\n",
+      "created_at" : "2017-08-30T21:05:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-326119106",
+      "id" : 326119106,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-08-30T21:05:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326119106",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137642623"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137642623"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Holy fuck yes, kill the imports.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-09-07T20:08:08Z",
+      "diff_hunk" : "@@ -44,7 +44,6 @@\n #include \"validationinterface.h\"\n #ifdef ENABLE_WALLET\n #include \"wallet/init.h\"\n-#include \"wallet/wallet.h\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137642623",
+      "id" : 137642623,
+      "original_commit_id" : "ca94bf2c39b06f1ed643c24dfcd78ef5af00562a",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 61337363,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137642623",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137644756"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137644756"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Can you add the rationale for rename in the commit message? Why not keep it?",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-09-07T20:18:19Z",
+      "diff_hunk" : "@@ -1567,7 +1559,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n \n     // ********************************************************* Step 8: load wallet\n #ifdef ENABLE_WALLET\n-    if (!InitLoadWallet())\n+    if (!OpenWallets())",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137644756",
+      "id" : 137644756,
+      "original_commit_id" : "ca94bf2c39b06f1ed643c24dfcd78ef5af00562a",
+      "original_position" : 65,
+      "path" : "src/init.cpp",
+      "position" : 65,
+      "pull_request_review_id" : 61339869,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137644756",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137646621"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137646621"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Comment should say \"WalletParameterInteraction\"",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-09-07T20:26:38Z",
+      "diff_hunk" : "@@ -8,18 +8,36 @@\n \n #include <string>\n \n+class CRPCTable;\n+class CScheduler;\n+\n //! Return the wallets help message.\n std::string GetWalletHelpString(bool showDebug);\n \n //! Wallets parameter interaction\n bool WalletParameterInteraction();\n \n+//! Register wallet RPCs.\n+void RegisterWalletRPC(CRPCTable &tableRPC);\n+\n //! Responsible for reading and validating the -wallet arguments and verifying the wallet database.\n //  This function will perform salvage on the wallet if requested, as long as only one wallet is\n //  being loaded (CWallet::ParameterInteraction forbids -salvagewallet, -zapwallettxes or -upgradewallet with multiwallet).",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137646621",
+      "id" : 137646621,
+      "original_commit_id" : "ca94bf2c39b06f1ed643c24dfcd78ef5af00562a",
+      "original_position" : 18,
+      "path" : "src/wallet/init.h",
+      "position" : null,
+      "pull_request_review_id" : 61339869,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137646621",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137678471"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137678471"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "@jnewbery Or add it to the OP, so it can be seen in the merge commit.",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-09-07T23:19:43Z",
+      "diff_hunk" : "@@ -1567,7 +1559,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n \n     // ********************************************************* Step 8: load wallet\n #ifdef ENABLE_WALLET\n-    if (!InitLoadWallet())\n+    if (!OpenWallets())",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137678471",
+      "id" : 137678471,
+      "in_reply_to_id" : 137644756,
+      "original_commit_id" : "ca94bf2c39b06f1ed643c24dfcd78ef5af00562a",
+      "original_position" : 65,
+      "path" : "src/init.cpp",
+      "position" : 65,
+      "pull_request_review_id" : 61378480,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:22:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137678471",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137679102"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137679102"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "done!",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-09-07T23:24:08Z",
+      "diff_hunk" : "@@ -1567,7 +1559,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n \n     // ********************************************************* Step 8: load wallet\n #ifdef ENABLE_WALLET\n-    if (!InitLoadWallet())\n+    if (!OpenWallets())",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137679102",
+      "id" : 137679102,
+      "in_reply_to_id" : 137644756,
+      "original_commit_id" : "ca94bf2c39b06f1ed643c24dfcd78ef5af00562a",
+      "original_position" : 65,
+      "path" : "src/init.cpp",
+      "position" : 65,
+      "pull_request_review_id" : 61379191,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:24:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137679102",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137679124"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137679124"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "added as trivial commit",
+      "commit_id" : "5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-09-07T23:24:16Z",
+      "diff_hunk" : "@@ -8,18 +8,36 @@\n \n #include <string>\n \n+class CRPCTable;\n+class CScheduler;\n+\n //! Return the wallets help message.\n std::string GetWalletHelpString(bool showDebug);\n \n //! Wallets parameter interaction\n bool WalletParameterInteraction();\n \n+//! Register wallet RPCs.\n+void RegisterWalletRPC(CRPCTable &tableRPC);\n+\n //! Responsible for reading and validating the -wallet arguments and verifying the wallet database.\n //  This function will perform salvage on the wallet if requested, as long as only one wallet is\n //  being loaded (CWallet::ParameterInteraction forbids -salvagewallet, -zapwallettxes or -upgradewallet with multiwallet).",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#discussion_r137679124",
+      "id" : 137679124,
+      "in_reply_to_id" : 137646621,
+      "original_commit_id" : "ca94bf2c39b06f1ed643c24dfcd78ef5af00562a",
+      "original_position" : 18,
+      "path" : "src/wallet/init.h",
+      "position" : null,
+      "pull_request_review_id" : 61379208,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10767",
+      "updated_at" : "2017-09-07T23:24:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137679124",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "@MarcoFalke - nits addressed. Should be ready for merge if Travis agrees.",
+      "created_at" : "2017-09-07T23:24:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-327954676",
+      "id" : 327954676,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-09-07T23:24:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/327954676",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "re-utACK commit-by-commit 5d2a3995e7035b3607a11660a2c8330a548f733d",
+      "created_at" : "2017-09-07T23:29:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10767#issuecomment-327955643",
+      "id" : 327955643,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10767",
+      "updated_at" : "2017-09-07T23:29:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/327955643",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

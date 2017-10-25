@@ -1,0 +1,1456 @@
+[
+   {
+      "body" : "I don't like the coupling and the `#ifdef ENABLE_WALLET` in `rpc/server.cpp|.h`.\r\nI'd recommend to keep the `CRPCRequestInfo` wallet-free.\r\n\r\nI think we should pack the request path (URI) into the `CRPCRequestInfo` and or informations about the authentication (in case we want to distinct wallets based on authentication).\r\nThen I think there should be a method in `wallet.cpp` (or in `rpcwallet.cpp`) that maps a `CWallet *` pointer from a given URI, Auth-Info or the complete `CRPCRequestInfo` instance.\r\n\r\nInstead of the `CWallet *& pwallet = reqinfo.wallet;` there could be then something like `CWallet *pwallet = CWallets::getWalletFromRequest(reqinfo)`",
+      "created_at" : "2016-09-21T13:07:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-248606601",
+      "id" : 248606601,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2016-09-21T13:07:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/248606601",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "General ConceptACK on a `CRPCRequestInfo` for the RPC table commands.\r\nMaybe it could also include the `UniValue params` and `fHelp`?",
+      "created_at" : "2016-09-21T13:09:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-248607190",
+      "id" : 248607190,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2016-09-21T13:09:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/248607190",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r79872956"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/79872956"
+         }
+      },
+      "body" : "`*&`?\n",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2016-09-21T16:17:01Z",
+      "diff_hunk" : "@@ -70,7 +70,8 @@ UniValue getinfo(const UniValue& params, bool fHelp)\n         );\n \n #ifdef ENABLE_WALLET\n-    LOCK2(cs_main, pwalletMain ? &pwalletMain->cs_wallet : NULL);\n+    CWallet *& pwallet = reqinfo.wallet;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r79872956",
+      "id" : 79872956,
+      "original_commit_id" : "041f4e06a664b7e31ba77bbfbb2f7bc8d04174ca",
+      "original_position" : 14,
+      "path" : "src/rpc/misc.cpp",
+      "position" : null,
+      "pull_request_review_id" : 987864,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/79872956",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r79913896"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/79913896"
+         }
+      },
+      "body" : "Yes, pwallet is an alias to reqinfo.wallet which is of type CWallet*.\n",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2016-09-21T19:30:55Z",
+      "diff_hunk" : "@@ -70,7 +70,8 @@ UniValue getinfo(const UniValue& params, bool fHelp)\n         );\n \n #ifdef ENABLE_WALLET\n-    LOCK2(cs_main, pwalletMain ? &pwalletMain->cs_wallet : NULL);\n+    CWallet *& pwallet = reqinfo.wallet;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r79913896",
+      "id" : 79913896,
+      "original_commit_id" : "041f4e06a664b7e31ba77bbfbb2f7bc8d04174ca",
+      "original_position" : 14,
+      "path" : "src/rpc/misc.cpp",
+      "position" : null,
+      "pull_request_review_id" : 1025287,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/79913896",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "> I think we should pack the request path (URI) into the CRPCRequestInfo and or informations about the authentication (in case we want to distinct wallets based on authentication).\r\nThen I think there should be a method in wallet.cpp (or in rpcwallet.cpp) that maps a CWallet * pointer from a given URI, Auth-Info or the complete CRPCRequestInfo instance.\r\n\r\nThat sounds nice, but greatly complicates the implementation. :(",
+      "created_at" : "2016-09-21T20:40:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-248736144",
+      "id" : 248736144,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2016-09-21T20:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/248736144",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "I think this can be closed after #8788?",
+      "created_at" : "2016-10-19T15:16:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-254844599",
+      "id" : 254844599,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2016-10-19T15:16:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/254844599",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Closing in favor of merged #8788",
+      "created_at" : "2016-10-19T15:28:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-254848523",
+      "id" : 254848523,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2016-10-19T15:28:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/254848523",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Rebased and refactored based on @jonasschnelli 's idea.",
+      "created_at" : "2016-10-25T09:14:49Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-255981434",
+      "id" : 255981434,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2016-10-25T09:14:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/255981434",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Makes sense, utACK ab5ce98",
+      "created_at" : "2016-10-25T11:18:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-256007423",
+      "id" : 256007423,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2016-10-25T11:18:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/256007423",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r84880152"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84880152"
+         }
+      },
+      "body" : "Not sure how this can pass the build w/ `--disable-wallet`, but this should be bracketed with `#ifdef ENABLE_WALLET`\n",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2016-10-25T11:19:35Z",
+      "diff_hunk" : "@@ -26,6 +26,8 @@\n \n using namespace std;\n \n+CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest&);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r84880152",
+      "id" : 84880152,
+      "original_commit_id" : "ab5ce98587e74e8a5a44664ac890bc48fed58a09",
+      "original_position" : 4,
+      "path" : "src/rpc/misc.cpp",
+      "position" : null,
+      "pull_request_review_id" : 5628661,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/84880152",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Rebased and addressed nit",
+      "created_at" : "2016-11-12T01:44:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-260093239",
+      "id" : 260093239,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2016-11-12T01:44:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260093239",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "utACK 7de55733c5690350c48ec94660b5be56fbb5eb39",
+      "created_at" : "2017-01-04T18:25:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-270446395",
+      "id" : 270446395,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-04T18:25:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270446395",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "Minor change: Forward-declared CWallet even for non-wallet builds so it can be used in a pointer type, avoiding unnecessary casting.",
+      "created_at" : "2017-01-05T22:53:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-270781446",
+      "id" : 270781446,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-05T22:53:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270781446",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94981313"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94981313"
+         }
+      },
+      "body" : "I'd kinda prefer we add another declaration outside of a header in an unrelated file...can we keep it in server.h and ifdef ENABLE_WALLET it?",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-06T17:10:15Z",
+      "diff_hunk" : "@@ -35,6 +35,11 @@\n \n using namespace std;\n \n+#ifdef ENABLE_WALLET\n+std::string HelpRequiringPassphrase(CWallet *);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94981313",
+      "id" : 94981313,
+      "original_commit_id" : "e7f063cf8dfde459d06fce490cb10f8d32ed8a3d",
+      "original_position" : 5,
+      "path" : "src/rpc/rawtransaction.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15526274,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94981313",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94982250"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94982250"
+         }
+      },
+      "body" : "I suppose we could. But then it's more likely to get used in new code (which I think we want to discourage?)",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-06T17:15:50Z",
+      "diff_hunk" : "@@ -35,6 +35,11 @@\n \n using namespace std;\n \n+#ifdef ENABLE_WALLET\n+std::string HelpRequiringPassphrase(CWallet *);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94982250",
+      "id" : 94982250,
+      "original_commit_id" : "e7f063cf8dfde459d06fce490cb10f8d32ed8a3d",
+      "original_position" : 5,
+      "path" : "src/rpc/rawtransaction.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15527269,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94982250",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94982599"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94982599"
+         }
+      },
+      "body" : "I'd think we can (and, more importantly, would) still nag people submitting PRs which add more uses of it outside of src/wallet/rpc*.",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-06T17:17:52Z",
+      "diff_hunk" : "@@ -35,6 +35,11 @@\n \n using namespace std;\n \n+#ifdef ENABLE_WALLET\n+std::string HelpRequiringPassphrase(CWallet *);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94982599",
+      "id" : 94982599,
+      "original_commit_id" : "e7f063cf8dfde459d06fce490cb10f8d32ed8a3d",
+      "original_position" : 5,
+      "path" : "src/rpc/rawtransaction.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15527497,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94982599",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94982649"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94982649"
+         }
+      },
+      "body" : "Here as well.\r\n",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-06T17:18:13Z",
+      "diff_hunk" : "@@ -26,6 +26,10 @@\n \n using namespace std;\n \n+#ifdef ENABLE_WALLET\n+CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest&);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94982649",
+      "id" : 94982649,
+      "original_commit_id" : "5cc62b207e94d1bd3ea192f52a6058319906dec9",
+      "original_position" : 5,
+      "path" : "src/rpc/misc.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15527497,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94982649",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94984718"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94984718"
+         }
+      },
+      "body" : "Can we move these to some rpc.h in src/wallet? Why are we declaring functions in another file from the definition if they're both in src/wallet???",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-06T17:30:53Z",
+      "diff_hunk" : "@@ -29,6 +29,7 @@\n \n using namespace std;\n \n+CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest&);\n void EnsureWalletIsUnlocked(CWallet *);\n bool EnsureWalletIsAvailable(CWallet *, bool avoidException);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94984718",
+      "id" : 94984718,
+      "original_commit_id" : "5cc62b207e94d1bd3ea192f52a6058319906dec9",
+      "original_position" : 6,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15529813,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94984718",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94985339"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94985339"
+         }
+      },
+      "body" : "Can you document this function somewhere (also probably move its definition to src/wallet/rpcwallet.h) - a few places in src/wallet assume it always returns non-NULL but this is not documented (I havent looked at the actual multi-wallet PR, but does this function then throw an RPC exception if you ask for a wallet that isnt loaded, or does it return NULL then)?",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-06T17:34:56Z",
+      "diff_hunk" : "@@ -30,6 +30,11 @@ using namespace std;\n int64_t nWalletUnlockTime;\n static CCriticalSection cs_nWalletUnlockTime;\n \n+CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r94985339",
+      "id" : 94985339,
+      "original_commit_id" : "5cc62b207e94d1bd3ea192f52a6058319906dec9",
+      "original_position" : 4,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15530490,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94985339",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "So in some cases in the RPC you get the wallet pointer from json but then the check if it's available is far below.  This is begging for someone to insert code that uses a potentially null pointer between to two and doesn't notice because their function doesn't get tested with a missing wallet.  I would recommend moving the creation of that local pointer down to the point where you're going to test it.\r\n\r\nAlternatively or in addition,  rename GetWalletForJSONRPCRequest to TryGetWalletForJSONRPCRequest and make GetWalletForJSONRPCRequest a wrapper for it that throws when it fails?\r\n\r\nOther than this nit that perhaps getting the pointer and testing it are too separated in some cases, utACK.",
+      "created_at" : "2017-01-07T15:18:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-271089411",
+      "id" : 271089411,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-07T15:28:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271089411",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "I liked the TryGetWalletForJSONRPCRequest/GetWalletForJSONRPCRequest refactor idea, but I don't see any clean way to do it without changing the `help` behaviours.\r\n\r\nSo I moved the one case EnsureWalletIsAvailable was delayed up, and removed the blank line between them and GetWalletForJSONRPCRequest.",
+      "created_at" : "2017-01-07T19:15:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-271103735",
+      "id" : 271103735,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-07T19:15:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271103735",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95066473"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95066473"
+         }
+      },
+      "body" : "Note that there are a ton of uses of pwalletMain in ImportScript after the first commit (\"RPC/Wallet: Pass CWallet as pointer to helper functions\") which are fixed in the next (\"RPC: Do all wallet access through new GetWalletForJSONRPCRequest\") when they belong in the first.",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-07T21:49:43Z",
+      "diff_hunk" : "@@ -153,8 +150,8 @@ UniValue importprivkey(const JSONRPCRequest& request)\n     return NullUniValue;\n }\n \n-void ImportAddress(const CBitcoinAddress& address, const string& strLabel);\n-void ImportScript(const CScript& script, const string& strLabel, bool isRedeemScript)\n+void ImportAddress(CWallet*, const CBitcoinAddress& address, const string& strLabel);\n+void ImportScript(CWallet * const pwallet, const CScript& script, const string& strLabel, bool isRedeemScript)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95066473",
+      "id" : 95066473,
+      "original_commit_id" : "6c25cf78a50cb5ca515e626ae3e42629c590f524",
+      "original_position" : 35,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : 84,
+      "pull_request_review_id" : 15612881,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95066473",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95066866"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95066866"
+         }
+      },
+      "body" : "Note that there are a ton of uses of pwalletMain in ListReceived after the first commit (\"RPC/Wallet: Pass CWallet as pointer to helper functions\") which are fixed in the next (\"RPC: Do all wallet access through new GetWalletForJSONRPCRequest\") when they belong in the first.",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-07T22:16:04Z",
+      "diff_hunk" : "@@ -1126,7 +1129,7 @@ struct tallyitem\n     }\n };\n \n-UniValue ListReceived(const UniValue& params, bool fByAccounts)\n+UniValue ListReceived(CWallet * const pwallet, const UniValue& params, bool fByAccounts)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95066866",
+      "id" : 95066866,
+      "original_commit_id" : "6c25cf78a50cb5ca515e626ae3e42629c590f524",
+      "original_position" : 427,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 848,
+      "pull_request_review_id" : 15612881,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95066866",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95067629"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067629"
+         }
+      },
+      "body" : "I super dont like the fact that the pointer to the wallet will end up in debug.log if you have debug=rpc enabled.",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-07T23:01:33Z",
+      "diff_hunk" : "@@ -2019,9 +2016,8 @@ UniValue walletpassphrase(const JSONRPCRequest& request)\n     pwallet->TopUpKeyPool();\n \n     int64_t nSleepTime = request.params[1].get_int64();\n-    LOCK(cs_nWalletUnlockTime);\n-    nWalletUnlockTime = GetTime() + nSleepTime;\n-    RPCRunLater(\"lockwallet\", boost::bind(LockWallet, pwallet), nSleepTime);\n+    pwallet->nRelockTime = GetTime() + nSleepTime;\n+    RPCRunLater(strprintf(\"lockwallet_%u\", uintptr_t(pwallet)), boost::bind(LockWallet, pwallet), nSleepTime);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95067629",
+      "id" : 95067629,
+      "original_commit_id" : "8bf69fde13da2e0dffd6222852e67337eacaf56d",
+      "original_position" : 29,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15612881,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067629",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95067711"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067711"
+         }
+      },
+      "body" : "nit: I believe you can remove the PAIRTYPE and replace with std::pair since we're not using BOOST_FOREACH now.",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-07T23:07:42Z",
+      "diff_hunk" : "@@ -340,8 +349,7 @@ UniValue getaddressesbyaccount(const JSONRPCRequest& request)\n \n     // Find all addresses that have the given account\n     UniValue ret(UniValue::VARR);\n-    BOOST_FOREACH(const PAIRTYPE(CBitcoinAddress, CAddressBookData)& item, pwallet->mapAddressBook)\n-    {\n+    for (const PAIRTYPE(CBitcoinAddress, CAddressBookData)& item : pwallet->mapAddressBook) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95067711",
+      "id" : 95067711,
+      "original_commit_id" : "ddc1c76d5ba5aad4f789c762a13616acc4e7d6be",
+      "original_position" : 152,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15612881,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067711",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95067762"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067762"
+         }
+      },
+      "body" : "nit: Here as well (no PAIRTYPE).",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-07T23:11:30Z",
+      "diff_hunk" : "@@ -1219,8 +1241,7 @@ UniValue ListReceived(CWallet * const pwallet, const UniValue& params, bool fByA\n     // Reply\n     UniValue ret(UniValue::VARR);\n     map<string, tallyitem> mapAccountTally;\n-    BOOST_FOREACH(const PAIRTYPE(CBitcoinAddress, CAddressBookData)& item, pwallet->mapAddressBook)\n-    {\n+    for (const PAIRTYPE(CBitcoinAddress, CAddressBookData)& item : pwallet->mapAddressBook) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95067762",
+      "id" : 95067762,
+      "original_commit_id" : "ddc1c76d5ba5aad4f789c762a13616acc4e7d6be",
+      "original_position" : 429,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15612881,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067762",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95067777"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067777"
+         }
+      },
+      "body" : "nit: Here as well (no PAIRTYPE).",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-01-07T23:12:10Z",
+      "diff_hunk" : "@@ -1635,14 +1665,14 @@ UniValue listaccounts(const JSONRPCRequest& request)\n             includeWatchonly = includeWatchonly | ISMINE_WATCH_ONLY;\n \n     map<string, CAmount> mapAccountBalances;\n-    BOOST_FOREACH(const PAIRTYPE(CTxDestination, CAddressBookData)& entry, pwallet->mapAddressBook) {\n-        if (IsMine(*pwallet, entry.first) & includeWatchonly) // This address belongs to me\n+    for (const PAIRTYPE(CTxDestination, CAddressBookData)& entry : pwallet->mapAddressBook) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r95067777",
+      "id" : 95067777,
+      "original_commit_id" : "ddc1c76d5ba5aad4f789c762a13616acc4e7d6be",
+      "original_position" : 531,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15612881,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067777",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@luke-jr Looks good to me, will test as soon as you update for matt's latest comments.",
+      "created_at" : "2017-01-08T08:36:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-271138168",
+      "id" : 271138168,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-08T08:36:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271138168",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Made changes requested by @TheBlueMatt, and rebased to resolve conflict. Also includes a quick sanity check that -wallet doesn't include path separators.",
+      "created_at" : "2017-01-08T21:17:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-271180110",
+      "id" : 271180110,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-08T21:17:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271180110",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "While you're at it, can you call SanitizeString (in addition to the \"/\\\\\" check) on the wallet param?",
+      "created_at" : "2017-01-09T16:59:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-271340666",
+      "id" : 271340666,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-09T16:59:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271340666",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK 7d1228bf7f1c398d9fcda6161e6aebfc5e5e3700",
+      "created_at" : "2017-01-09T18:03:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-271357593",
+      "id" : 271357593,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-09T18:03:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271357593",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Needs rebase.",
+      "created_at" : "2017-01-11T22:12:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-272012262",
+      "id" : 272012262,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-11T22:12:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272012262",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "ACK.",
+      "created_at" : "2017-01-12T06:34:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-272087816",
+      "id" : 272087816,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-12T06:34:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272087816",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Needs rebasing again.",
+      "created_at" : "2017-01-12T13:04:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-272158119",
+      "id" : 272158119,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-12T13:04:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272158119",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Rebased yet again.",
+      "created_at" : "2017-01-12T16:57:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-272218728",
+      "id" : 272218728,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-12T16:57:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272218728",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "still ACK",
+      "created_at" : "2017-01-15T04:48:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-272673655",
+      "id" : 272673655,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-01-15T04:48:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272673655",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r101655579"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/101655579"
+         }
+      },
+      "body" : "Should this not be \"count\" i.e for multiple wallet files to be created ? Adding perhaps a for loop to iterate over required num of wallets? ",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-02-16T23:42:24Z",
+      "diff_hunk" : "@@ -3740,6 +3740,12 @@ bool CWallet::InitLoadWallet()\n \n     std::string walletFile = GetArg(\"-wallet\", DEFAULT_WALLET_DAT);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r101655579",
+      "id" : 101655579,
+      "original_commit_id" : "5093d41c66942a7d6949e1e607b2b67badf30fd7",
+      "original_position" : 2,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 2,
+      "pull_request_review_id" : 22392019,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/101655579",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/24528627?v=3",
+         "events_url" : "https://api.github.com/users/BlockMechanic/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BlockMechanic/followers",
+         "following_url" : "https://api.github.com/users/BlockMechanic/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BlockMechanic/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BlockMechanic",
+         "id" : 24528627,
+         "login" : "BlockMechanic",
+         "organizations_url" : "https://api.github.com/users/BlockMechanic/orgs",
+         "received_events_url" : "https://api.github.com/users/BlockMechanic/received_events",
+         "repos_url" : "https://api.github.com/users/BlockMechanic/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BlockMechanic/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BlockMechanic/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BlockMechanic"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r101656142"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/101656142"
+         }
+      },
+      "body" : "No, because this PR is not multiwallet...",
+      "commit_id" : "3ade29aa2654f9a5fc0d64013c2f106cd490b997",
+      "created_at" : "2017-02-16T23:46:32Z",
+      "diff_hunk" : "@@ -3740,6 +3740,12 @@ bool CWallet::InitLoadWallet()\n \n     std::string walletFile = GetArg(\"-wallet\", DEFAULT_WALLET_DAT);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#discussion_r101656142",
+      "id" : 101656142,
+      "original_commit_id" : "5093d41c66942a7d6949e1e607b2b67badf30fd7",
+      "original_position" : 2,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 2,
+      "pull_request_review_id" : 22392611,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8775",
+      "updated_at" : "2017-02-17T09:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/101656142",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Great PR. I think we should get this in as soon as possible.\r\nutACK d678771c660c936a6222dd43a204cb2699100f3e",
+      "created_at" : "2017-03-02T19:28:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-283753931",
+      "id" : 283753931,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-03-02T19:28:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/283753931",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "utACK d678771",
+      "created_at" : "2017-03-03T12:38:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-283943067",
+      "id" : 283943067,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-03-03T12:38:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/283943067",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "By the way, I reviewed this partially after merged when rebasing #9845 (making it mostly pointless since most was done here already).\r\n",
+      "created_at" : "2017-03-23T20:31:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8775#issuecomment-288850691",
+      "id" : 288850691,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8775",
+      "updated_at" : "2017-03-23T20:31:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/288850691",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   }
+]

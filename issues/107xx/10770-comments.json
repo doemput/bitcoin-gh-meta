@@ -1,0 +1,865 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126248902"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126248902"
+         }
+      },
+      "body" : "Don't you need to invoke `setBreakAction(nullptr)` here when `cancel_possible` is false?\r\n\r\nMaybe better would be to get rid of this `std::function` madness and replace the `SplashScreen::breakAction` pointer with a simpler boolean `std::atomic<bool> m_cancel_possible` which you can just assign directly.",
+      "commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "created_at" : "2017-07-07T21:26:02Z",
+      "diff_hunk" : "@@ -170,27 +170,28 @@ static void InitMessage(SplashScreen *splash, const std::string &message)\n         Q_ARG(QColor, QColor(55,55,55)));\n }\n \n-static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress)\n-{\n-    InitMessage(splash, title + strprintf(\"%d\", nProgress) + \"%\");\n-}\n-\n void SplashScreen::setBreakAction(const std::function<void(void)> &action)\n {\n     breakAction = action;\n }\n \n-static void SetProgressBreakAction(SplashScreen *splash, const std::function<void(void)> &action)\n+static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress, bool cancel_possible)\n {\n-    QMetaObject::invokeMethod(splash, \"setBreakAction\",\n-        Qt::QueuedConnection,\n-        Q_ARG(std::function<void(void)>, action));\n+    InitMessage(splash, title + strprintf(\"%d\", nProgress) + \"%\" +\n+            (cancel_possible ? (std::string(\"\\n\") + _(\"(press q to shutdown and continue later)\"))\n+                                : std::string(\"\")));\n+\n+    if (cancel_possible) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126248902",
+      "id" : 126248902,
+      "original_commit_id" : "26c368a57f90dbfd9575f453935f294e04a0c2d4",
+      "original_position" : 24,
+      "path" : "src/qt/splashscreen.cpp",
+      "position" : null,
+      "pull_request_review_id" : 48722158,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770",
+      "updated_at" : "2017-08-16T21:37:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126248902",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126250056"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126250056"
+         }
+      },
+      "body" : "Nice.",
+      "commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "created_at" : "2017-07-07T21:33:22Z",
+      "diff_hunk" : "@@ -170,27 +170,28 @@ static void InitMessage(SplashScreen *splash, const std::string &message)\n         Q_ARG(QColor, QColor(55,55,55)));\n }\n \n-static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress)\n-{\n-    InitMessage(splash, title + strprintf(\"%d\", nProgress) + \"%\");\n-}\n-\n void SplashScreen::setBreakAction(const std::function<void(void)> &action)\n {\n     breakAction = action;\n }\n \n-static void SetProgressBreakAction(SplashScreen *splash, const std::function<void(void)> &action)\n+static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress, bool cancel_possible)\n {\n-    QMetaObject::invokeMethod(splash, \"setBreakAction\",\n-        Qt::QueuedConnection,\n-        Q_ARG(std::function<void(void)>, action));\n+    InitMessage(splash, title + strprintf(\"%d\", nProgress) + \"%\" +\n+            (cancel_possible ? (std::string(\"\\n\") + _(\"(press q to shutdown and continue later)\"))\n+                                : std::string(\"\")));\n+\n+    if (cancel_possible) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126250056",
+      "id" : 126250056,
+      "original_commit_id" : "26c368a57f90dbfd9575f453935f294e04a0c2d4",
+      "original_position" : 24,
+      "path" : "src/qt/splashscreen.cpp",
+      "position" : null,
+      "pull_request_review_id" : 48723460,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770",
+      "updated_at" : "2017-08-16T21:37:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126250056",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Makes sense. I guess I over-engineered the flexible callback (I thought we should have a way to not only shutdown and have the future option to \"continue\" but this really makes little sense).\r\n\r\nutACK 1d62f6eb35f248ff44aeac39673014bb1c9cbe71",
+      "created_at" : "2017-07-09T18:52:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-313938704",
+      "id" : 313938704,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-07-09T18:52:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313938704",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126435654"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126435654"
+         }
+      },
+      "body" : "I'd consider replacing \"cancel possible\" with \"shutdown possible\" everywhere in this PR. The function this is controlling is called `StartShutdown`. The display text is `press q to shutdown`. Why should this thing be named differently?",
+      "commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "created_at" : "2017-07-10T14:23:51Z",
+      "diff_hunk" : "@@ -36,8 +36,8 @@ public Q_SLOTS:\n     /** Show message and progress */\n     void showMessage(const QString &message, int alignment, const QColor &color);\n \n-    /** Sets the break action */\n-    void setBreakAction(const std::function<void(void)> &action);\n+    /** Sets if cancel is currently possible */",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126435654",
+      "id" : 126435654,
+      "original_commit_id" : "1d62f6eb35f248ff44aeac39673014bb1c9cbe71",
+      "original_position" : 6,
+      "path" : "src/qt/splashscreen.h",
+      "position" : null,
+      "pull_request_review_id" : 48918819,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770",
+      "updated_at" : "2017-08-16T21:37:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126435654",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126440472"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126440472"
+         }
+      },
+      "body" : "\"shutdown\" is always possible (just may be slow), what you care about is cancelling the currnent \"in progress\" thing (and shutting down). I dont really care, but also dont think its particularly unclear?",
+      "commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "created_at" : "2017-07-10T14:38:37Z",
+      "diff_hunk" : "@@ -36,8 +36,8 @@ public Q_SLOTS:\n     /** Show message and progress */\n     void showMessage(const QString &message, int alignment, const QColor &color);\n \n-    /** Sets the break action */\n-    void setBreakAction(const std::function<void(void)> &action);\n+    /** Sets if cancel is currently possible */",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126440472",
+      "id" : 126440472,
+      "original_commit_id" : "1d62f6eb35f248ff44aeac39673014bb1c9cbe71",
+      "original_position" : 6,
+      "path" : "src/qt/splashscreen.h",
+      "position" : null,
+      "pull_request_review_id" : 48924097,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770",
+      "updated_at" : "2017-08-16T21:37:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126440472",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126494301"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126494301"
+         }
+      },
+      "body" : "> I dont really care, but also dont think its particularly unclear?\r\n\r\nIt's unclear to me what the flag is supposed to indicate or why it wouldn't always be true if shutdown is always possible. Maybe it should be called `fast_shutdown_possible` if that's what it actually means. Acked this because the PR is definitely a simplification, but I don't think the code or the reason for preventing the quit option from working after the upgrade is clear. I think better naming could help.",
+      "commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "created_at" : "2017-07-10T18:02:40Z",
+      "diff_hunk" : "@@ -36,8 +36,8 @@ public Q_SLOTS:\n     /** Show message and progress */\n     void showMessage(const QString &message, int alignment, const QColor &color);\n \n-    /** Sets the break action */\n-    void setBreakAction(const std::function<void(void)> &action);\n+    /** Sets if cancel is currently possible */",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126494301",
+      "id" : 126494301,
+      "original_commit_id" : "1d62f6eb35f248ff44aeac39673014bb1c9cbe71",
+      "original_position" : 6,
+      "path" : "src/qt/splashscreen.h",
+      "position" : null,
+      "pull_request_review_id" : 48983871,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770",
+      "updated_at" : "2017-08-16T21:37:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126494301",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126575615"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126575615"
+         }
+      },
+      "body" : "Added some additional comments. I'm not really sure if thats a better name, though I agree cancel_possible is a bit strange.",
+      "commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "created_at" : "2017-07-11T01:27:24Z",
+      "diff_hunk" : "@@ -36,8 +36,8 @@ public Q_SLOTS:\n     /** Show message and progress */\n     void showMessage(const QString &message, int alignment, const QColor &color);\n \n-    /** Sets the break action */\n-    void setBreakAction(const std::function<void(void)> &action);\n+    /** Sets if cancel is currently possible */",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r126575615",
+      "id" : 126575615,
+      "original_commit_id" : "1d62f6eb35f248ff44aeac39673014bb1c9cbe71",
+      "original_position" : 6,
+      "path" : "src/qt/splashscreen.h",
+      "position" : null,
+      "pull_request_review_id" : 49072174,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770",
+      "updated_at" : "2017-08-16T21:37:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126575615",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "This begs the question whether we shouldn't just have 'q for shutdown' always available? Maybe in some cases there is some initializationstep-specific cleanup, but there shouldn't be much as we're always allowed to crash anyway.",
+      "created_at" : "2017-07-11T07:43:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-314362163",
+      "id" : 314362163,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-07-11T07:43:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314362163",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@sipa yea, I thought about that. We should maybe move the boolean to just change the message to \"will complete later if you shutdown now\". I still think this is a nice cleanup, and given we're already in freeze for 0.15 it'd be too late to make that change for 0.15. If this sits for the next month without any movement I'll make that change for 16.",
+      "created_at" : "2017-07-11T15:01:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-314472928",
+      "id" : 314472928,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-07-11T15:01:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314472928",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Tested. Segfaults when cancelling during upgrade:\r\n```\r\nThread 4 \"bitcoin-shutoff\" received signal SIGSEGV, Segmentation fault.\r\n[Switching to Thread 0x7fffe117d700 (LWP 6034)]\r\nCCoinsViewCache::DynamicMemoryUsage (this=0x0) at coins.cpp:40\r\n40\t    return memusage::DynamicUsage(cacheCoins) + cachedCoinsUsage;\r\n(gdb) bt\r\n#0  CCoinsViewCache::DynamicMemoryUsage (this=0x0) at coins.cpp:40\r\n#1  0x0000555555850c4e in FlushStateToDisk (chainparams=..., state=..., mode=mode@entry=FLUSH_STATE_ALWAYS, nManualPruneHeight=nManualPruneHeight@entry=0) at validation.cpp:1899\r\n#2  0x00005555558521bc in FlushStateToDisk () at validation.cpp:1969\r\n#3  0x00005555556f6bf5 in Shutdown () at init.cpp:219\r\n#4  0x00005555555d0ed0 in BitcoinCore::shutdown (this=0x55555698e330) at qt/bitcoin.cpp:309\r\n#5  0x00007ffff5962359 in QObject::event(QEvent*) () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5\r\n#6  0x00007ffff689835c in QApplicationPrivate::notify_helper(QObject*, QEvent*) () from /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5\r\n#7  0x00007ffff689fb11 in QApplication::notify(QObject*, QEvent*) () from /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5\r\n#8  0x00007ffff59358a0 in QCoreApplication::notifyInternal2(QObject*, QEvent*) () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5\r\n#9  0x00007ffff593802d in QCoreApplicationPrivate::sendPostedEvents(QObject*, int, QThreadData*) () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5\r\n#10 0x00007ffff5989b03 in ?? () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5\r\n#11 0x00007ffff1644377 in g_main_context_dispatch () from /lib/x86_64-linux-gnu/libglib-2.0.so.0\r\n#12 0x00007ffff16445e0 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0\r\n#13 0x00007ffff164468c in g_main_context_iteration () from /lib/x86_64-linux-gnu/libglib-2.0.so.0\r\n#14 0x00007ffff5989f0f in QEventDispatcherGlib::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5\r\n#15 0x00007ffff593388a in QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>) () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5\r\n#16 0x00007ffff5760fe3 in QThread::exec() () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5\r\n#17 0x00007ffff5765c98 in ?? () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5\r\n#18 0x00007ffff504e6da in start_thread (arg=0x7fffe117d700) at pthread_create.c:456\r\n#19 0x00007ffff387ed7f in clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:105\r\n```\r\n",
+      "created_at" : "2017-07-15T20:07:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-315558931",
+      "id" : 315558931,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-07-15T20:07:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315558931",
+      "user" : {
+         "avatar_url" : "https://avatars5.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@sipa hmm, I could be wrong but that strikes me as an issue that would also be present prior to the changes in this PR.",
+      "created_at" : "2017-07-15T23:56:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-315571336",
+      "id" : 315571336,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-07-15T23:56:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315571336",
+      "user" : {
+         "avatar_url" : "https://avatars4.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@sipa yes, that appears to be another bug introduced in #10179 after d6af06d68aae985436cbc942f0d11078041d121b changed some semantics, I'll fix it in #10758 with my other pile of fixes that are gonna need to land for 15 anyway.",
+      "created_at" : "2017-07-16T00:01:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-315571520",
+      "id" : 315571520,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-07-16T00:02:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315571520",
+      "user" : {
+         "avatar_url" : "https://avatars4.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Como faÃÂ§o para criar minha prÃÂ³pria moeda virtual\n\nEm sÃÂ¡bado, 15 de julho de 2017, Matt Corallo <notifications@github.com>\nescreveu:\n\n> @sipa <https://github.com/sipa> yes, that appears to be another bug\n> introduced in d6af06d\n> <https://github.com/bitcoin/bitcoin/commit/d6af06d68aae985436cbc942f0d11078041d121b>,\n> I'll fix it in #10758 <https://github.com/bitcoin/bitcoin/pull/10758>\n> with my other pile of fixes that are gonna need to land for 15 anyway.\n>\n> Ã¢ÂÂ\n> You are receiving this because you are subscribed to this thread.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-315571520>,\n> or mute the thread\n> <https://github.com/notifications/unsubscribe-auth/AcTu4glrwOGKax3kzh1ChzF8nR621hhHks5sOVLmgaJpZM4ORcVD>\n> .\n>\n",
+      "created_at" : "2017-07-16T04:42:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-315585138",
+      "id" : 315585138,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-07-16T04:42:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315585138",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/29683426?v=4",
+         "events_url" : "https://api.github.com/users/jj1010/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jj1010/followers",
+         "following_url" : "https://api.github.com/users/jj1010/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jj1010/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jj1010",
+         "id" : 29683426,
+         "login" : "jj1010",
+         "organizations_url" : "https://api.github.com/users/jj1010/orgs",
+         "received_events_url" : "https://api.github.com/users/jj1010/received_events",
+         "repos_url" : "https://api.github.com/users/jj1010/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jj1010/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jj1010/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jj1010"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r127614608"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127614608"
+         }
+      },
+      "body" : "Please put a space or a newline between the title and the progress.",
+      "commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "created_at" : "2017-07-16T19:27:31Z",
+      "diff_hunk" : "@@ -170,27 +170,24 @@ static void InitMessage(SplashScreen *splash, const std::string &message)\n         Q_ARG(QColor, QColor(55,55,55)));\n }\n \n-static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress)\n+void SplashScreen::setCancelPossible(bool cancel_possible)\n {\n-    InitMessage(splash, title + strprintf(\"%d\", nProgress) + \"%\");\n+    m_cancel_possible = cancel_possible;\n }\n \n-void SplashScreen::setBreakAction(const std::function<void(void)> &action)\n+static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress, bool cancel_possible)\n {\n-    breakAction = action;\n-}\n+    InitMessage(splash, title + strprintf(\"%d\", nProgress) + \"%\" +",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r127614608",
+      "id" : 127614608,
+      "original_commit_id" : "d1db1f1112328bdee02d6f047197b353ee4916f1",
+      "original_position" : 27,
+      "path" : "src/qt/splashscreen.cpp",
+      "position" : null,
+      "pull_request_review_id" : 50218284,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770",
+      "updated_at" : "2017-08-16T21:37:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127614608",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r127619781"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127619781"
+         }
+      },
+      "body" : "OK, cleaned it up.",
+      "commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "created_at" : "2017-07-16T23:21:38Z",
+      "diff_hunk" : "@@ -170,27 +170,24 @@ static void InitMessage(SplashScreen *splash, const std::string &message)\n         Q_ARG(QColor, QColor(55,55,55)));\n }\n \n-static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress)\n+void SplashScreen::setCancelPossible(bool cancel_possible)\n {\n-    InitMessage(splash, title + strprintf(\"%d\", nProgress) + \"%\");\n+    m_cancel_possible = cancel_possible;\n }\n \n-void SplashScreen::setBreakAction(const std::function<void(void)> &action)\n+static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress, bool cancel_possible)\n {\n-    breakAction = action;\n-}\n+    InitMessage(splash, title + strprintf(\"%d\", nProgress) + \"%\" +",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r127619781",
+      "id" : 127619781,
+      "original_commit_id" : "d1db1f1112328bdee02d6f047197b353ee4916f1",
+      "original_position" : 27,
+      "path" : "src/qt/splashscreen.cpp",
+      "position" : null,
+      "pull_request_review_id" : 50223216,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770",
+      "updated_at" : "2017-08-16T21:37:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127619781",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Having this would make fixing #10992 much easier.",
+      "created_at" : "2017-08-07T23:47:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-320810682",
+      "id" : 320810682,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-08-07T23:47:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/320810682",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt: can you rebase?",
+      "created_at" : "2017-08-15T18:46:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-322554081",
+      "id" : 322554081,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-08-15T18:46:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322554081",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "\"Rebased\", but also just dropped the \"cancelable\" idea (as @sipa originally suggested) and always allow shutdown, using the passd-up boolean just to change the message to inform the user the current action will resume on restart.",
+      "created_at" : "2017-08-16T21:38:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-322906981",
+      "id" : 322906981,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-08-16T21:38:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322906981",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt There may be a use for keeping the cancellation boolean, so the interface can be reused to make the \"rescanning\" dialog in the GUI interruptible (cc @achow101).",
+      "created_at" : "2017-08-16T21:54:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-322910672",
+      "id" : 322910672,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-08-16T21:54:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322910672",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r133579589"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133579589"
+         }
+      },
+      "body" : "This seems to be set but not actually used anywhere?",
+      "commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "created_at" : "2017-08-16T22:05:14Z",
+      "diff_hunk" : "@@ -170,27 +170,25 @@ static void InitMessage(SplashScreen *splash, const std::string &message)\n         Q_ARG(QColor, QColor(55,55,55)));\n }\n \n-static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress)\n+void SplashScreen::setResumePossible(bool resume_possible)\n {\n-    InitMessage(splash, title + strprintf(\"%d\", nProgress) + \"%\");\n+    m_resume_possible = resume_possible;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#discussion_r133579589",
+      "id" : 133579589,
+      "original_commit_id" : "e7797eb770373060f24b9b7c90da882ce87d1de6",
+      "original_position" : 19,
+      "path" : "src/qt/splashscreen.cpp",
+      "position" : 19,
+      "pull_request_review_id" : 56778416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10770",
+      "updated_at" : "2017-08-16T22:05:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133579589",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "@sipa that is going to need a very different interface anyway, as StartShutdown() is not appropriate there (better to separate the interface between during-init progress and other-things progress IMO).",
+      "created_at" : "2017-08-16T22:11:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-322914064",
+      "id" : 322914064,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-08-16T22:11:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322914064",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@achow101: for the rescan progress work, would having this PR be better or not having it?",
+      "created_at" : "2017-08-18T10:16:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-323316718",
+      "id" : 323316718,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-08-18T10:16:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323316718",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "For rescan progress we needed the cancellation boolean, But since that has been dropped, it doesn't matter.",
+      "created_at" : "2017-08-18T16:22:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-323398297",
+      "id" : 323398297,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-08-18T16:22:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323398297",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "body" : "@achow101 well the cancellation boolean wouldn't have really helped, because the cancellation boolean in the previous version of this PR indicated to the GUI that it can call StartShutdown() to cancel, which is most definitely not what you want to do when its a rescan we're talking about.\r\n\r\n@ryanofsky thanks, fixed.",
+      "created_at" : "2017-08-21T00:04:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-323620590",
+      "id" : 323620590,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-08-21T00:04:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323620590",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Tested ACK ee4d1493e2a871b26201580c5a990a1df7a5e3f7",
+      "created_at" : "2017-09-07T16:20:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10770#issuecomment-327850595",
+      "id" : 327850595,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10770",
+      "updated_at" : "2017-09-07T16:20:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/327850595",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   }
+]

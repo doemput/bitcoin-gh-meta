@@ -1,0 +1,490 @@
+[
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "In #10286 the commit *Fix zmq tests now that txn/blocks are unordered* (04feed) can be removed after this is merged. cc @TheBlueMatt ",
+      "created_at" : "2017-10-02T21:30:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#issuecomment-333671224",
+      "id" : 333671224,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11439",
+      "updated_at" : "2017-10-02T21:41:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333671224",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Hmm, I removed the commit in question from #10286 (replaced with https://github.com/bitcoin/bitcoin/pull/10286/commits/fdfd31355bfd1401c60e1ff3ec581d8f3ff29291). Its really unclear to me what the ZMQ API is, even - its not defined anywhere if clients should or should not rely on the ordering here. The fact that it was possible for our test to implies to me that we should maybe keep the ordering consistent, but I'm open to someone doing the work to document an stable API with or without a consistent ordering.",
+      "created_at" : "2017-10-02T21:35:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#issuecomment-333672328",
+      "id" : 333672328,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11439",
+      "updated_at" : "2017-10-02T21:35:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333672328",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "There is no order guarantee and as such the clients can't and shouldn't rely on that - that's why the type is the first piece in each message. IMO we should avoid the ordering in the test because it is a bad example on how to subscribe and process the notifications.",
+      "created_at" : "2017-10-02T21:40:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#issuecomment-333673366",
+      "id" : 333673366,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11439",
+      "updated_at" : "2017-10-02T21:40:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333673366",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "After some discussion with @TheBlueMatt on IRC we came to the conclusion that there should be an improvement to the ZMQ interface documentation regarding all notifications, respective payloads and guarantees.",
+      "created_at" : "2017-10-02T22:06:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#issuecomment-333679017",
+      "id" : 333679017,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11439",
+      "updated_at" : "2017-10-02T22:06:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333679017",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142446199"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142446199"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "nit: prefer `ZMQSubscriber`",
+      "commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "created_at" : "2017-10-03T16:02:55Z",
+      "diff_hunk" : "@@ -13,14 +13,39 @@\n                                  hash256,\n                                 )\n \n-class ZMQTest (BitcoinTestFramework):\n+class Subscriber():",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142446199",
+      "id" : 142446199,
+      "original_commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "original_position" : 5,
+      "path" : "test/functional/zmq_test.py",
+      "position" : 5,
+      "pull_request_review_id" : 66808440,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439",
+      "updated_at" : "2017-10-03T16:38:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142446199",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142453332"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142453332"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Why not move this logic into `ZMQSubscriber.__init__()`? Then you'd just need to pass in `self.zmqContext`. Port could be taken from a class variable to ensure uniqueness.",
+      "commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "created_at" : "2017-10-03T16:30:14Z",
+      "diff_hunk" : "@@ -13,14 +13,39 @@\n                                  hash256,\n                                 )\n \n-class ZMQTest (BitcoinTestFramework):\n+class Subscriber():\n+    def __init__(self, socket, address):\n+        self.address = address\n+        self.sequence = 0\n+        self.socket = socket\n+\n+class ZMQTest(BitcoinTestFramework):\n     def set_test_params(self):\n         self.num_nodes = 2\n+        self.subscribers = {}\n+\n+    def subscribe(self, type):\n+        import zmq",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142453332",
+      "id" : 142453332,
+      "original_commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "original_position" : 17,
+      "path" : "test/functional/zmq_test.py",
+      "position" : 17,
+      "pull_request_review_id" : 66808440,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439",
+      "updated_at" : "2017-10-03T16:38:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142453332",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142470348"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142470348"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Ok.",
+      "commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "created_at" : "2017-10-03T17:37:50Z",
+      "diff_hunk" : "@@ -13,14 +13,39 @@\n                                  hash256,\n                                 )\n \n-class ZMQTest (BitcoinTestFramework):\n+class Subscriber():",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142470348",
+      "id" : 142470348,
+      "in_reply_to_id" : 142446199,
+      "original_commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "original_position" : 5,
+      "path" : "test/functional/zmq_test.py",
+      "position" : 5,
+      "pull_request_review_id" : 66836464,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439",
+      "updated_at" : "2017-10-03T17:37:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142470348",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142470886"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142470886"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "`ZMQSubscriber` is like a C++ POD, did't want to have logic there. Is this a strong suggestion?",
+      "commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "created_at" : "2017-10-03T17:39:49Z",
+      "diff_hunk" : "@@ -13,14 +13,39 @@\n                                  hash256,\n                                 )\n \n-class ZMQTest (BitcoinTestFramework):\n+class Subscriber():\n+    def __init__(self, socket, address):\n+        self.address = address\n+        self.sequence = 0\n+        self.socket = socket\n+\n+class ZMQTest(BitcoinTestFramework):\n     def set_test_params(self):\n         self.num_nodes = 2\n+        self.subscribers = {}\n+\n+    def subscribe(self, type):\n+        import zmq",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142470886",
+      "id" : 142470886,
+      "in_reply_to_id" : 142453332,
+      "original_commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "original_position" : 17,
+      "path" : "test/functional/zmq_test.py",
+      "position" : 17,
+      "pull_request_review_id" : 66837106,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439",
+      "updated_at" : "2017-10-03T17:39:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142470886",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@jnewbery I believe we don't want the loop right?\r\n\r\nhttps://github.com/bitcoin/bitcoin/blob/dbc4ae03963014ab4b7957d62ba59dbd8f938c33/contrib/zmq/zmq_sub.py#L41",
+      "created_at" : "2017-10-03T17:40:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#issuecomment-333921956",
+      "id" : 333921956,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11439",
+      "updated_at" : "2017-10-03T17:42:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333921956",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142474301"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142474301"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "It makes more sense to me to have `ZMQSubscriber` handle the initialization logic (and also preferably the receive logic). That makes it more portable if for some reason we want to use the interface in another test.\r\n\r\nConceptually it doesn't make sense to me to have a TestFramework object subscribing to a zmq interface. Owning ZMQ subscribers makes more sense to me.",
+      "commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "created_at" : "2017-10-03T17:53:02Z",
+      "diff_hunk" : "@@ -13,14 +13,39 @@\n                                  hash256,\n                                 )\n \n-class ZMQTest (BitcoinTestFramework):\n+class Subscriber():\n+    def __init__(self, socket, address):\n+        self.address = address\n+        self.sequence = 0\n+        self.socket = socket\n+\n+class ZMQTest(BitcoinTestFramework):\n     def set_test_params(self):\n         self.num_nodes = 2\n+        self.subscribers = {}\n+\n+    def subscribe(self, type):\n+        import zmq",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142474301",
+      "id" : 142474301,
+      "in_reply_to_id" : 142453332,
+      "original_commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "original_position" : 17,
+      "path" : "test/functional/zmq_test.py",
+      "position" : 17,
+      "pull_request_review_id" : 66841204,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439",
+      "updated_at" : "2017-10-03T17:53:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142474301",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142683344"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142683344"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Unnecessary parentheses.",
+      "commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "created_at" : "2017-10-04T14:17:37Z",
+      "diff_hunk" : "@@ -13,14 +13,39 @@\n                                  hash256,\n                                 )\n \n-class ZMQTest (BitcoinTestFramework):\n+class Subscriber():",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#discussion_r142683344",
+      "id" : 142683344,
+      "original_commit_id" : "7e0ee167dcba08d55648a501edf85e7d9f7b35d1",
+      "original_position" : 5,
+      "path" : "test/functional/zmq_test.py",
+      "position" : 5,
+      "pull_request_review_id" : 67079437,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11439",
+      "updated_at" : "2017-10-04T14:21:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142683344",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Useful discussion of zmq notification ordering here: https://botbot.me/freenode/bitcoin-core-dev/2017-10-03/?msg=91859584&page=1\r\n\r\nI still think this PR could be a useful simplification in the test code.",
+      "created_at" : "2017-10-04T14:25:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#issuecomment-334172725",
+      "id" : 334172725,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11439",
+      "updated_at" : "2017-10-04T14:25:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334172725",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "This is controversial and unneeded at the moment, as @TheBlueMatt said, the current order (although not documented) will not change and this test (as it is in master) helps to verify it.\r\n\r\nTherefore I'm closing this and I'll submit another with the cleanup and another with improved ZMQ interface documentation.",
+      "created_at" : "2017-10-04T14:50:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11439#issuecomment-334181141",
+      "id" : 334181141,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11439",
+      "updated_at" : "2017-10-04T14:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334181141",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   }
+]

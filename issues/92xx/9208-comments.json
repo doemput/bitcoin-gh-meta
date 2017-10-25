@@ -1,0 +1,1732 @@
+[
+   {
+      "body" : "~~I just realized there's a potential issue here with the callbacks for conflicted transactions; in the case where a disconnected block transaction ends up conflicting with some tx in a block on the reorg, the call to ATMP will fail (because some input is spent) but not be reported via SyncTransaction() as a conflicted transaction.~~\r\n\r\nEDIT: After some discussion with @morcos I think there's not an issue here.  Mempool conflict tracking in general is basically just best-efforts and, in the case of reorgs, dependent on mempool policy already.",
+      "created_at" : "2016-11-29T02:05:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-263455075",
+      "id" : 263455075,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2016-11-29T16:02:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263455075",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Rebased, and removed WIP tag as this is now ready for review.",
+      "created_at" : "2017-01-04T21:05:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-270486202",
+      "id" : 270486202,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-01-04T21:05:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270486202",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "concept ACK,  will review",
+      "created_at" : "2017-01-04T21:48:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-270496625",
+      "id" : 270496625,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-01-04T21:48:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270496625",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "Needs rebase. utACK.   ",
+      "created_at" : "2017-01-08T09:08:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-271139397",
+      "id" : 271139397,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-01-08T09:08:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271139397",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Rebased",
+      "created_at" : "2017-01-08T15:13:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-271156931",
+      "id" : 271156931,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-01-08T15:13:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271156931",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r103533832"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/103533832"
+         }
+      },
+      "body" : "DRY: Maybe use removeEntry here?",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-02-28T19:31:53Z",
+      "diff_hunk" : "@@ -719,4 +725,81 @@ struct TxCoinAgePriorityCompare\n     }\n };\n \n+/**\n+ * DisconnectedBlockTransactions\n+\n+ * During the reorg, it's desirable to re-add previously confirmed transactions\n+ * to the mempool, so that anything not re-confirmed in the new chain is\n+ * available to be mined. However, it's more efficient to wait until the reorg\n+ * is complete and process all still-unconfirmed transactions at that time,\n+ * since we expect most confirmed transactions to (typically) still be\n+ * confirmed in the new chain, and re-accepting to the memory pool is expensive\n+ * (and therefore better to not do in the middle of reorg-processing).\n+ * Instead, store the disconnected transactions (in order!) as we go, remove any\n+ * that are included in blocks in the new chain, and then process the remaining\n+ * still-unconfirmed transactions at the end.\n+ */\n+\n+// multi_index tag names\n+struct txid_index {};\n+struct insertion_order {};\n+\n+struct DisconnectedBlockTransactions {\n+    typedef boost::multi_index_container<\n+        CTransactionRef,\n+        boost::multi_index::indexed_by<\n+            // sorted by txid\n+            boost::multi_index::hashed_unique<\n+                boost::multi_index::tag<txid_index>,\n+                mempoolentry_txid,\n+                SaltedTxidHasher\n+            >,\n+            // sorted by order in the blockchain\n+            boost::multi_index::sequenced<\n+                boost::multi_index::tag<insertion_order>\n+            >\n+        >\n+    > indexed_disconnected_transactions;\n+\n+    indexed_disconnected_transactions queuedTx;\n+    uint64_t cachedInnerUsage = 0;\n+\n+    // Estimate the overhead of queuedTx to be 6 pointers + an allocation, as\n+    // no exact formula for boost::multi_index_contained is implemented.\n+    size_t DynamicMemoryUsage() const {\n+        return memusage::MallocUsage(sizeof(CTransactionRef) + 6 * sizeof(void*)) * queuedTx.size() + cachedInnerUsage;\n+    }\n+\n+    void addTransaction(CTransactionRef tx)\n+    {\n+        queuedTx.insert(tx);\n+        cachedInnerUsage += RecursiveDynamicUsage(tx);\n+    }\n+\n+    // Remove entries based on txid_index, and update memory usage.\n+    void removeForBlock(const std::vector<CTransactionRef>& vtx)\n+    {\n+        for (auto const &tx : vtx) {\n+            auto it = queuedTx.find(tx->GetHash());\n+            if (it != queuedTx.end()) {\n+                cachedInnerUsage -= RecursiveDynamicUsage(*it);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r103533832",
+      "id" : 103533832,
+      "original_commit_id" : "37a90f1ad0b57de2ab4294dfa4a97d2e666dd479",
+      "original_position" : 90,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_review_id" : 24323765,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/103533832",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK 37a90f1ad0b57de2ab4294dfa4a97d2e666dd479\r\n\r\nPR makes sense, and nothing has changed except a few comments since my last review (for 4d70f47a94cc739e92f7d3f8f4f7b11cf7457ca9).\r\n\r\nOne thing I don't understand is why the pruning test needs to change when it sounds like you are saying the disconnect pool memory bound is large enough that losing transactions \"shouldn't practically occur.\" Are you just updating the pruning test as a precaution, or are changes there needed because the chain it creates is unusual?\r\n\r\nAlso this PR has merge conflicts, but they are very minor. The validation.cpp conflict can be fixed by updating AcceptToMemoryPool arguments which changed in edded808fc4eee94c178e1779b90d1c87a08c23a (#9499).\r\n",
+      "created_at" : "2017-02-28T22:33:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-283182978",
+      "id" : 283182978,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-02-28T22:33:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/283182978",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Rebased.\r\n\r\n@ryanofsky The changes to pruning.py are because:\r\n * Policy limits get applied differently than before; we used to ignore some of the chain limits when adding transactions back to the mempool during a reorg (because we wouldn't look for in-mempool descendants until the end).\r\n * The pruning test is trying to build really big blocks in a number of places, to make the chain big enough to be pruned, and in particular in a few places it relies on the mempool being populated with disconnected transactions after a reorg (so changes to policy that would prevent that are problematic for the test).\r\n\r\nSo I mitigated this in part by increasing the chain limits and in part by trying to keep the mempool somewhat populated with a node's wallet transactions at a couple relevant places in the test.\r\n\r\n[I actually briefly thought that because we now save the mempool in between restarts, we may not need the `resendwallettransactions()` calls I added (which I use to populate the mempool somewhat in a couple places), but I tested locally that removing them results in test failure (plausibly because the mined blocks aren't big enough, which I think is due to the reorg behavior change).  I do think this test needs to be overhauled now that many of the assumptions around mempool behavior have changed, but I think we should do that in another PR.]",
+      "created_at" : "2017-03-01T18:34:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-283428044",
+      "id" : 283428044,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-03-01T18:34:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/283428044",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Rebased after #9602.",
+      "created_at" : "2017-03-07T19:38:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-284835087",
+      "id" : 284835087,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-03-07T19:38:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/284835087",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r104984128"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104984128"
+         }
+      },
+      "body" : "In commit \"Store disconnected block transactions outside mempool during reorg\":\r\n\r\nIt looks like the new `MemPoolRemovalReason::REORG` argument for removeRecursive got dropped during the rebase. (Shame that we don't a have test that would catch this, and that the argument is optional to begin with.)\r\n\r\n",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-08T18:15:48Z",
+      "diff_hunk" : "@@ -570,6 +570,44 @@ static bool IsCurrentForFeeEstimation()\n     return true;\n }\n \n+/* Add disconnected block transactions back to mempool.\n+ * If a tx fails, then remove all in-mempool descendants.\n+ * Note: we assume that disconnectpool only contains transactions that are NOT\n+ * confirmed in the current chain nor already in the mempool (otherwise,\n+ * in-mempool descendants of such transactions would be removed).\n+ */\n+void ReacceptToMemoryPool(DisconnectedBlockTransactions &disconnectpool)\n+{\n+    AssertLockHeld(cs_main);\n+    std::vector<uint256> vHashUpdate;\n+    // disconnectpool's insertion_order index sorts the entries from\n+    // oldest to newest, but the oldest entry will be the last tx from the\n+    // latest mined block that was disconnected.\n+    // Iterate disconnectpool in reverse, so that we add transactions\n+    // back to the mempool starting with the earliest transaction that had\n+    // been previously seen in a block.\n+    auto it = disconnectpool.queuedTx.get<insertion_order>().rbegin();\n+    while (it != disconnectpool.queuedTx.get<insertion_order>().rend()) {\n+        // ignore validation errors in resurrected transactions\n+        CValidationState stateDummy;\n+        if ((*it)->IsCoinBase() || !AcceptToMemoryPool(mempool, stateDummy, *it, false, NULL, NULL, true)) {\n+            // If the transaction doesn't make it in to the mempool, remove any\n+            // transactions that depend on it (which would now be orphans).\n+            mempool.removeRecursive(**it);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r104984128",
+      "id" : 104984128,
+      "original_commit_id" : "344862a0aca6e622653132f2be5592e4d26be3cf",
+      "original_position" : 27,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 25842851,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104984128",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Rebased again to pick up the `pruning.py` fix from #9972 ",
+      "created_at" : "2017-03-11T02:27:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-285834888",
+      "id" : 285834888,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-03-11T02:27:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/285834888",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105523003"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105523003"
+         }
+      },
+      "body" : "Thanks for catching this!  Fixed.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-11T02:28:03Z",
+      "diff_hunk" : "@@ -570,6 +570,44 @@ static bool IsCurrentForFeeEstimation()\n     return true;\n }\n \n+/* Add disconnected block transactions back to mempool.\n+ * If a tx fails, then remove all in-mempool descendants.\n+ * Note: we assume that disconnectpool only contains transactions that are NOT\n+ * confirmed in the current chain nor already in the mempool (otherwise,\n+ * in-mempool descendants of such transactions would be removed).\n+ */\n+void ReacceptToMemoryPool(DisconnectedBlockTransactions &disconnectpool)\n+{\n+    AssertLockHeld(cs_main);\n+    std::vector<uint256> vHashUpdate;\n+    // disconnectpool's insertion_order index sorts the entries from\n+    // oldest to newest, but the oldest entry will be the last tx from the\n+    // latest mined block that was disconnected.\n+    // Iterate disconnectpool in reverse, so that we add transactions\n+    // back to the mempool starting with the earliest transaction that had\n+    // been previously seen in a block.\n+    auto it = disconnectpool.queuedTx.get<insertion_order>().rbegin();\n+    while (it != disconnectpool.queuedTx.get<insertion_order>().rend()) {\n+        // ignore validation errors in resurrected transactions\n+        CValidationState stateDummy;\n+        if ((*it)->IsCoinBase() || !AcceptToMemoryPool(mempool, stateDummy, *it, false, NULL, NULL, true)) {\n+            // If the transaction doesn't make it in to the mempool, remove any\n+            // transactions that depend on it (which would now be orphans).\n+            mempool.removeRecursive(**it);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105523003",
+      "id" : 105523003,
+      "original_commit_id" : "344862a0aca6e622653132f2be5592e4d26be3cf",
+      "original_position" : 27,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 26413001,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105523003",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105548855"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105548855"
+         }
+      },
+      "body" : "Pass the CTransactionRef by reference? That will avoid an atomic inc/dec when copying/destroing the CTransactionRef.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-12T04:53:29Z",
+      "diff_hunk" : "@@ -191,14 +192,19 @@ struct update_lock_points\n     const LockPoints& lp;\n };\n \n-// extracts a TxMemPoolEntry's transaction hash\n+// extracts a transaction hash from CTxMempoolEntry or CTransactionRef\n struct mempoolentry_txid\n {\n     typedef uint256 result_type;\n     result_type operator() (const CTxMemPoolEntry &entry) const\n     {\n         return entry.GetTx().GetHash();\n     }\n+\n+    result_type operator() (CTransactionRef tx) const",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105548855",
+      "id" : 105548855,
+      "original_commit_id" : "286390107010781973a872a513184058e35d7f71",
+      "original_position" : 22,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_review_id" : 26437231,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105548855",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105549132"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105549132"
+         }
+      },
+      "body" : "`const CTransactionRef&` here as well, or `queuedTx.insert(std::move(tx))` below.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-12T05:13:35Z",
+      "diff_hunk" : "@@ -690,4 +696,81 @@ class CCoinsViewMemPool : public CCoinsViewBacked\n     bool HaveCoins(const uint256 &txid) const;\n };\n \n+/**\n+ * DisconnectedBlockTransactions\n+\n+ * During the reorg, it's desirable to re-add previously confirmed transactions\n+ * to the mempool, so that anything not re-confirmed in the new chain is\n+ * available to be mined. However, it's more efficient to wait until the reorg\n+ * is complete and process all still-unconfirmed transactions at that time,\n+ * since we expect most confirmed transactions to (typically) still be\n+ * confirmed in the new chain, and re-accepting to the memory pool is expensive\n+ * (and therefore better to not do in the middle of reorg-processing).\n+ * Instead, store the disconnected transactions (in order!) as we go, remove any\n+ * that are included in blocks in the new chain, and then process the remaining\n+ * still-unconfirmed transactions at the end.\n+ */\n+\n+// multi_index tag names\n+struct txid_index {};\n+struct insertion_order {};\n+\n+struct DisconnectedBlockTransactions {\n+    typedef boost::multi_index_container<\n+        CTransactionRef,\n+        boost::multi_index::indexed_by<\n+            // sorted by txid\n+            boost::multi_index::hashed_unique<\n+                boost::multi_index::tag<txid_index>,\n+                mempoolentry_txid,\n+                SaltedTxidHasher\n+            >,\n+            // sorted by order in the blockchain\n+            boost::multi_index::sequenced<\n+                boost::multi_index::tag<insertion_order>\n+            >\n+        >\n+    > indexed_disconnected_transactions;\n+\n+    indexed_disconnected_transactions queuedTx;\n+    uint64_t cachedInnerUsage = 0;\n+\n+    // Estimate the overhead of queuedTx to be 6 pointers + an allocation, as\n+    // no exact formula for boost::multi_index_contained is implemented.\n+    size_t DynamicMemoryUsage() const {\n+        return memusage::MallocUsage(sizeof(CTransactionRef) + 6 * sizeof(void*)) * queuedTx.size() + cachedInnerUsage;\n+    }\n+\n+    void addTransaction(CTransactionRef tx)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105549132",
+      "id" : 105549132,
+      "original_commit_id" : "286390107010781973a872a513184058e35d7f71",
+      "original_position" : 78,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_review_id" : 26437231,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105549132",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105550013"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105550013"
+         }
+      },
+      "body" : "I don't see `MemPoolRemovalReason::REORG` anywhere?",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-12T06:24:26Z",
+      "diff_hunk" : "@@ -570,6 +570,44 @@ static bool IsCurrentForFeeEstimation()\n     return true;\n }\n \n+/* Add disconnected block transactions back to mempool.\n+ * If a tx fails, then remove all in-mempool descendants.\n+ * Note: we assume that disconnectpool only contains transactions that are NOT\n+ * confirmed in the current chain nor already in the mempool (otherwise,\n+ * in-mempool descendants of such transactions would be removed).\n+ */\n+void ReacceptToMemoryPool(DisconnectedBlockTransactions &disconnectpool)\n+{\n+    AssertLockHeld(cs_main);\n+    std::vector<uint256> vHashUpdate;\n+    // disconnectpool's insertion_order index sorts the entries from\n+    // oldest to newest, but the oldest entry will be the last tx from the\n+    // latest mined block that was disconnected.\n+    // Iterate disconnectpool in reverse, so that we add transactions\n+    // back to the mempool starting with the earliest transaction that had\n+    // been previously seen in a block.\n+    auto it = disconnectpool.queuedTx.get<insertion_order>().rbegin();\n+    while (it != disconnectpool.queuedTx.get<insertion_order>().rend()) {\n+        // ignore validation errors in resurrected transactions\n+        CValidationState stateDummy;\n+        if ((*it)->IsCoinBase() || !AcceptToMemoryPool(mempool, stateDummy, *it, false, NULL, NULL, true)) {\n+            // If the transaction doesn't make it in to the mempool, remove any\n+            // transactions that depend on it (which would now be orphans).\n+            mempool.removeRecursive(**it);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105550013",
+      "id" : 105550013,
+      "original_commit_id" : "344862a0aca6e622653132f2be5592e4d26be3cf",
+      "original_position" : 27,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 26437231,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105550013",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@sipa Thanks for reviewing (yikes, I think I must have done my second rebase on Friday using an older branch).  All the comments should be addressed in the last two fixup commits; let me know if I should go ahead and squash.",
+      "created_at" : "2017-03-13T11:03:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-286076957",
+      "id" : 286076957,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-03-13T11:03:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/286076957",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105688521"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105688521"
+         }
+      },
+      "body" : "nit: Any reason to put `ReacceptToMemoryPool` here and not under `if (fBlocksDisconnected)`?\r\nIt might make the logic slightly clearer.\r\n\r\n",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-13T15:25:53Z",
+      "diff_hunk" : "@@ -2402,6 +2444,10 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c\n         }\n     }\n \n+    // If any blocks were disconnected, disconnectpool may be non empty.  Add\n+    // any disconnected transactions back to the mempool.\n+    ReacceptToMemoryPool(disconnectpool);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105688521",
+      "id" : 105688521,
+      "original_commit_id" : "286390107010781973a872a513184058e35d7f71",
+      "original_position" : 144,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 26579582,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105688521",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "fast review utACK",
+      "created_at" : "2017-03-13T15:27:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-286142016",
+      "id" : 286142016,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-03-13T15:27:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/286142016",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105694341"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105694341"
+         }
+      },
+      "body" : "I dont think this is always true. Callers dont always enforce this (eg ActivateBestChains in net_processing, PreciousBlock from RPC, etc,e tc) and callees dont either (eg DisconnectBlock's UndoReadFromDisk doesnt appear to generate an AbortNode). These might actually also be bugs, but I think you're introducing a stronger assumption than previously here.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-13T15:46:49Z",
+      "diff_hunk" : "@@ -2351,9 +2389,13 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c\n \n     // Disconnect active blocks which are no longer in the best chain.\n     bool fBlocksDisconnected = false;\n+    DisconnectedBlockTransactions disconnectpool;\n     while (chainActive.Tip() && chainActive.Tip() != pindexFork) {\n-        if (!DisconnectTip(state, chainparams))\n+        if (!DisconnectTip(state, chainparams, disconnectpool)) {\n+            // The mempool will be inconsistent, but we're about to shutdown",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105694341",
+      "id" : 105694341,
+      "original_commit_id" : "10853b3517b3a125cc168aec76d0dd0d9e00f182",
+      "original_position" : 122,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 24323765,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105694341",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105700916"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105700916"
+         }
+      },
+      "body" : "Hmm, thats a super confusing API now....maybe either pass in a pointer to a DisconnectedBlockTransactions as both fBare and the pool?",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-13T16:10:48Z",
+      "diff_hunk" : "@@ -3697,7 +3751,9 @@ bool RewindBlockIndex(const CChainParams& params)\n             // of the blockchain).\n             break;\n         }\n-        if (!DisconnectTip(state, params, true)) {\n+        DisconnectedBlockTransactions dummypool;\n+        // fBare=true means nothing will actually be added to dummypool",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105700916",
+      "id" : 105700916,
+      "original_commit_id" : "10853b3517b3a125cc168aec76d0dd0d9e00f182",
+      "original_position" : 184,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 24323765,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105700916",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105701085"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105701085"
+         }
+      },
+      "body" : "nit: Yeesh, isnt that a bit high? Maybe like 10MB - if we reorg something larger than 2/3 blocks throwing away tons of txn is fine by me.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-13T16:11:28Z",
+      "diff_hunk" : "@@ -69,6 +69,8 @@ static const unsigned int DEFAULT_DESCENDANT_LIMIT = 25;\n static const unsigned int DEFAULT_DESCENDANT_SIZE_LIMIT = 101;\n /** Default for -mempoolexpiry, expiration time for mempool transactions in hours */\n static const unsigned int DEFAULT_MEMPOOL_EXPIRY = 336;\n+/** Maximum kilobytes for transactions to store for processing during reorg */\n+static const unsigned int MAX_DISCONNECTED_TX_POOL_SIZE = 75000;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r105701085",
+      "id" : 105701085,
+      "original_commit_id" : "10853b3517b3a125cc168aec76d0dd0d9e00f182",
+      "original_position" : 5,
+      "path" : "src/validation.h",
+      "position" : null,
+      "pull_request_review_id" : 24323765,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105701085",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Needs rebase?",
+      "created_at" : "2017-03-24T07:05:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-288948732",
+      "id" : 288948732,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-03-24T07:05:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/288948732",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512804"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512804"
+         }
+      },
+      "body" : "Fixed",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-28T19:16:01Z",
+      "diff_hunk" : "@@ -2402,6 +2444,10 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c\n         }\n     }\n \n+    // If any blocks were disconnected, disconnectpool may be non empty.  Add\n+    // any disconnected transactions back to the mempool.\n+    ReacceptToMemoryPool(disconnectpool);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512804",
+      "id" : 108512804,
+      "original_commit_id" : "286390107010781973a872a513184058e35d7f71",
+      "original_position" : 144,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 29548348,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512804",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512817"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512817"
+         }
+      },
+      "body" : "I'm going to leave this, since `removeEntry` takes an iterator into a different multi_index index, and I'd rather removeForBlock be as fast as possible.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-28T19:16:05Z",
+      "diff_hunk" : "@@ -719,4 +725,81 @@ struct TxCoinAgePriorityCompare\n     }\n };\n \n+/**\n+ * DisconnectedBlockTransactions\n+\n+ * During the reorg, it's desirable to re-add previously confirmed transactions\n+ * to the mempool, so that anything not re-confirmed in the new chain is\n+ * available to be mined. However, it's more efficient to wait until the reorg\n+ * is complete and process all still-unconfirmed transactions at that time,\n+ * since we expect most confirmed transactions to (typically) still be\n+ * confirmed in the new chain, and re-accepting to the memory pool is expensive\n+ * (and therefore better to not do in the middle of reorg-processing).\n+ * Instead, store the disconnected transactions (in order!) as we go, remove any\n+ * that are included in blocks in the new chain, and then process the remaining\n+ * still-unconfirmed transactions at the end.\n+ */\n+\n+// multi_index tag names\n+struct txid_index {};\n+struct insertion_order {};\n+\n+struct DisconnectedBlockTransactions {\n+    typedef boost::multi_index_container<\n+        CTransactionRef,\n+        boost::multi_index::indexed_by<\n+            // sorted by txid\n+            boost::multi_index::hashed_unique<\n+                boost::multi_index::tag<txid_index>,\n+                mempoolentry_txid,\n+                SaltedTxidHasher\n+            >,\n+            // sorted by order in the blockchain\n+            boost::multi_index::sequenced<\n+                boost::multi_index::tag<insertion_order>\n+            >\n+        >\n+    > indexed_disconnected_transactions;\n+\n+    indexed_disconnected_transactions queuedTx;\n+    uint64_t cachedInnerUsage = 0;\n+\n+    // Estimate the overhead of queuedTx to be 6 pointers + an allocation, as\n+    // no exact formula for boost::multi_index_contained is implemented.\n+    size_t DynamicMemoryUsage() const {\n+        return memusage::MallocUsage(sizeof(CTransactionRef) + 6 * sizeof(void*)) * queuedTx.size() + cachedInnerUsage;\n+    }\n+\n+    void addTransaction(CTransactionRef tx)\n+    {\n+        queuedTx.insert(tx);\n+        cachedInnerUsage += RecursiveDynamicUsage(tx);\n+    }\n+\n+    // Remove entries based on txid_index, and update memory usage.\n+    void removeForBlock(const std::vector<CTransactionRef>& vtx)\n+    {\n+        for (auto const &tx : vtx) {\n+            auto it = queuedTx.find(tx->GetHash());\n+            if (it != queuedTx.end()) {\n+                cachedInnerUsage -= RecursiveDynamicUsage(*it);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512817",
+      "id" : 108512817,
+      "original_commit_id" : "37a90f1ad0b57de2ab4294dfa4a97d2e666dd479",
+      "original_position" : 90,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_review_id" : 29548367,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512817",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512872"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512872"
+         }
+      },
+      "body" : "Fixed.  I do think that a failure in DisconnectTip() should always cause shutdown, as we can no longer be sure we're in consensus, but no need to worry about that here.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-28T19:16:20Z",
+      "diff_hunk" : "@@ -2351,9 +2389,13 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c\n \n     // Disconnect active blocks which are no longer in the best chain.\n     bool fBlocksDisconnected = false;\n+    DisconnectedBlockTransactions disconnectpool;\n     while (chainActive.Tip() && chainActive.Tip() != pindexFork) {\n-        if (!DisconnectTip(state, chainparams))\n+        if (!DisconnectTip(state, chainparams, disconnectpool)) {\n+            // The mempool will be inconsistent, but we're about to shutdown",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512872",
+      "id" : 108512872,
+      "original_commit_id" : "10853b3517b3a125cc168aec76d0dd0d9e00f182",
+      "original_position" : 122,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 29548417,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512872",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512887"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512887"
+         }
+      },
+      "body" : "Fixed.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-28T19:16:24Z",
+      "diff_hunk" : "@@ -3697,7 +3751,9 @@ bool RewindBlockIndex(const CChainParams& params)\n             // of the blockchain).\n             break;\n         }\n-        if (!DisconnectTip(state, params, true)) {\n+        DisconnectedBlockTransactions dummypool;\n+        // fBare=true means nothing will actually be added to dummypool",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512887",
+      "id" : 108512887,
+      "original_commit_id" : "10853b3517b3a125cc168aec76d0dd0d9e00f182",
+      "original_position" : 184,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 29548440,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512887",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512900"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512900"
+         }
+      },
+      "body" : "Dropping it to 20 (segwit blocks can be bigger).",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-28T19:16:28Z",
+      "diff_hunk" : "@@ -69,6 +69,8 @@ static const unsigned int DEFAULT_DESCENDANT_LIMIT = 25;\n static const unsigned int DEFAULT_DESCENDANT_SIZE_LIMIT = 101;\n /** Default for -mempoolexpiry, expiration time for mempool transactions in hours */\n static const unsigned int DEFAULT_MEMPOOL_EXPIRY = 336;\n+/** Maximum kilobytes for transactions to store for processing during reorg */\n+static const unsigned int MAX_DISCONNECTED_TX_POOL_SIZE = 75000;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108512900",
+      "id" : 108512900,
+      "original_commit_id" : "10853b3517b3a125cc168aec76d0dd0d9e00f182",
+      "original_position" : 5,
+      "path" : "src/validation.h",
+      "position" : null,
+      "pull_request_review_id" : 29548456,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108512900",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "First, I rebased https://github.com/sdaftuar/bitcoin/commits/fd-rebased.2 -> https://github.com/sdaftuar/bitcoin/commits/fd-rebased.3, no actual conflicts.\r\n\r\nThen I added 4 fixup commits to address the nits mentioned so far.  I also added an assertion that a DisconnectedBlockTransactions object can't be destroyed if it's non-empty...  Not sure how good an idea that is, but I thought it might catch code bugs in the future related to mempool consistency?\r\n\r\n\r\n\r\n",
+      "created_at" : "2017-03-28T19:17:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-289875652",
+      "id" : 289875652,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-03-28T19:17:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289875652",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Squashed all those commits down (https://github.com/sdaftuar/bitcoin/commits/fd-rebased.4 -> https://github.com/bitcoin/bitcoin/pull/9208/commits/5685657564e7a19635529eabea6af829a3a4996c)",
+      "created_at" : "2017-03-28T19:21:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-289876759",
+      "id" : 289876759,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-03-28T19:21:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289876759",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108821343"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108821343"
+         }
+      },
+      "body" : "We'll now assert() on L2445 when we return false if ConnectTip fails, instead of gracefully AbortNode()ing.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-30T00:54:46Z",
+      "diff_hunk" : "@@ -2379,7 +2429,7 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c\n \n         // Connect new blocks.\n         BOOST_REVERSE_FOREACH(CBlockIndex *pindexConnect, vpindexToConnect) {\n-            if (!ConnectTip(state, chainparams, pindexConnect, pindexConnect == pindexMostWork ? pblock : std::shared_ptr<const CBlock>(), connectTrace)) {\n+            if (!ConnectTip(state, chainparams, pindexConnect, pindexConnect == pindexMostWork ? pblock : std::shared_ptr<const CBlock>(), connectTrace, disconnectpool)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108821343",
+      "id" : 108821343,
+      "original_commit_id" : "5685657564e7a19635529eabea6af829a3a4996c",
+      "original_position" : 144,
+      "path" : "src/validation.cpp",
+      "position" : 151,
+      "pull_request_review_id" : 29879510,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108821343",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108997062"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108997062"
+         }
+      },
+      "body" : "I don't know what the best answer here is.  I could call ReacceptToMemoryPool(), but doing so after we've invoked AbortNode() seems either annoying (trying to lookup UTXOs from disk when we're potentially having disk trouble seems bad), or potentially problematic (is it okay to trigger SyncTransaction() callbacks when our on-disk state is potentially corrupt?). \r\n\r\nOne idea: check to see if fShutdownRequested is set, and if so, just wipe the disconnectpool and the mempool so that any observers of the mempool won't see a potentially inconsistent state (and if fShutdownRequested is not set, call ReacceptToMemoryPool() -- this should never happen).  Then the mempool saving won't work in the event of an AbortNode(), but maybe that's okay, we're probably out of disk space anyway.\r\n\r\n@sipa Any suggestions on how to handle this?",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-30T18:07:42Z",
+      "diff_hunk" : "@@ -2379,7 +2429,7 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c\n \n         // Connect new blocks.\n         BOOST_REVERSE_FOREACH(CBlockIndex *pindexConnect, vpindexToConnect) {\n-            if (!ConnectTip(state, chainparams, pindexConnect, pindexConnect == pindexMostWork ? pblock : std::shared_ptr<const CBlock>(), connectTrace)) {\n+            if (!ConnectTip(state, chainparams, pindexConnect, pindexConnect == pindexMostWork ? pblock : std::shared_ptr<const CBlock>(), connectTrace, disconnectpool)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r108997062",
+      "id" : 108997062,
+      "original_commit_id" : "5685657564e7a19635529eabea6af829a3a4996c",
+      "original_position" : 144,
+      "path" : "src/validation.cpp",
+      "position" : 151,
+      "pull_request_review_id" : 30069566,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108997062",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r109029835"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109029835"
+         }
+      },
+      "body" : "For posterity: meeting conclusion, broadly, appeared to be that we should move forward with AbortNode() eventually migrating towards being used only for non-critical errors that result in a \"we should shutdown soonish\", and critical errors such as on-disk corruption should be an assert(false), ie that we should move forward here ensuring that the mempool is consistent when we return.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-30T20:31:32Z",
+      "diff_hunk" : "@@ -2379,7 +2429,7 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c\n \n         // Connect new blocks.\n         BOOST_REVERSE_FOREACH(CBlockIndex *pindexConnect, vpindexToConnect) {\n-            if (!ConnectTip(state, chainparams, pindexConnect, pindexConnect == pindexMostWork ? pblock : std::shared_ptr<const CBlock>(), connectTrace)) {\n+            if (!ConnectTip(state, chainparams, pindexConnect, pindexConnect == pindexMostWork ? pblock : std::shared_ptr<const CBlock>(), connectTrace, disconnectpool)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r109029835",
+      "id" : 109029835,
+      "original_commit_id" : "5685657564e7a19635529eabea6af829a3a4996c",
+      "original_position" : 144,
+      "path" : "src/validation.cpp",
+      "position" : 151,
+      "pull_request_review_id" : 30105565,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109029835",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r109039071"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109039071"
+         }
+      },
+      "body" : "@TheBlueMatt I pushed up a commit that addresses the edge-cases better, I think -- it now will just erase from the mempool to become consistent again.  Also patches up the missing `mempool.removeForReorg` calls in a couple places, and moves all the reorg consistency handling into one function to get rid of some code duplication.",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-03-30T21:13:47Z",
+      "diff_hunk" : "@@ -2379,7 +2429,7 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c\n \n         // Connect new blocks.\n         BOOST_REVERSE_FOREACH(CBlockIndex *pindexConnect, vpindexToConnect) {\n-            if (!ConnectTip(state, chainparams, pindexConnect, pindexConnect == pindexMostWork ? pblock : std::shared_ptr<const CBlock>(), connectTrace)) {\n+            if (!ConnectTip(state, chainparams, pindexConnect, pindexConnect == pindexMostWork ? pblock : std::shared_ptr<const CBlock>(), connectTrace, disconnectpool)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r109039071",
+      "id" : 109039071,
+      "original_commit_id" : "5685657564e7a19635529eabea6af829a3a4996c",
+      "original_position" : 144,
+      "path" : "src/validation.cpp",
+      "position" : 151,
+      "pull_request_review_id" : 30115732,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109039071",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "utACK 65a4dcc46f1ef942d52d8445cdc4a2ef385c816b, though please squash it with e4a0440fab759a0a3c2d4d03f9bd7463d84dde9a",
+      "created_at" : "2017-04-12T22:26:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-293724921",
+      "id" : 293724921,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-04-12T22:26:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/293724921",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Squashed 65a4dcc -> 688417b",
+      "created_at" : "2017-04-13T02:03:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-293756387",
+      "id" : 293756387,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-04-13T02:03:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/293756387",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r111411972"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/111411972"
+         }
+      },
+      "body" : "probably should shortcut to skip this loop if disconnectpool is empty which is the common case in connecttip",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-04-13T15:05:31Z",
+      "diff_hunk" : "@@ -690,4 +696,91 @@ class CCoinsViewMemPool : public CCoinsViewBacked\n     bool HaveCoins(const uint256 &txid) const;\n };\n \n+/**\n+ * DisconnectedBlockTransactions\n+\n+ * During the reorg, it's desirable to re-add previously confirmed transactions\n+ * to the mempool, so that anything not re-confirmed in the new chain is\n+ * available to be mined. However, it's more efficient to wait until the reorg\n+ * is complete and process all still-unconfirmed transactions at that time,\n+ * since we expect most confirmed transactions to (typically) still be\n+ * confirmed in the new chain, and re-accepting to the memory pool is expensive\n+ * (and therefore better to not do in the middle of reorg-processing).\n+ * Instead, store the disconnected transactions (in order!) as we go, remove any\n+ * that are included in blocks in the new chain, and then process the remaining\n+ * still-unconfirmed transactions at the end.\n+ */\n+\n+// multi_index tag names\n+struct txid_index {};\n+struct insertion_order {};\n+\n+struct DisconnectedBlockTransactions {\n+    typedef boost::multi_index_container<\n+        CTransactionRef,\n+        boost::multi_index::indexed_by<\n+            // sorted by txid\n+            boost::multi_index::hashed_unique<\n+                boost::multi_index::tag<txid_index>,\n+                mempoolentry_txid,\n+                SaltedTxidHasher\n+            >,\n+            // sorted by order in the blockchain\n+            boost::multi_index::sequenced<\n+                boost::multi_index::tag<insertion_order>\n+            >\n+        >\n+    > indexed_disconnected_transactions;\n+\n+    // It's almost certainly a logic bug if we don't clear out queuedTx before\n+    // destruction, as we add to it while disconnecting blocks, and then we\n+    // need to re-process remaining transactions to ensure mempool consistency.\n+    // For now, assert() that we've emptied out this object on destruction.\n+    // This assert() can always be removed if the reorg-processing code were\n+    // to be refactored such that this assumption is no longer true (for\n+    // instance if there was some other way we cleaned up the mempool after a\n+    // reorg, besides draining this object).\n+    ~DisconnectedBlockTransactions() { assert(queuedTx.empty()); }\n+\n+    indexed_disconnected_transactions queuedTx;\n+    uint64_t cachedInnerUsage = 0;\n+\n+    // Estimate the overhead of queuedTx to be 6 pointers + an allocation, as\n+    // no exact formula for boost::multi_index_contained is implemented.\n+    size_t DynamicMemoryUsage() const {\n+        return memusage::MallocUsage(sizeof(CTransactionRef) + 6 * sizeof(void*)) * queuedTx.size() + cachedInnerUsage;\n+    }\n+\n+    void addTransaction(const CTransactionRef& tx)\n+    {\n+        queuedTx.insert(tx);\n+        cachedInnerUsage += RecursiveDynamicUsage(tx);\n+    }\n+\n+    // Remove entries based on txid_index, and update memory usage.\n+    void removeForBlock(const std::vector<CTransactionRef>& vtx)\n+    {\n+        for (auto const &tx : vtx) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r111411972",
+      "id" : 111411972,
+      "original_commit_id" : "688417b93201d5228331cfee6b24f74f5df6fdbb",
+      "original_position" : 97,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_review_id" : 32656633,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/111411972",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "utACK 688417b modulo performance nit\r\n",
+      "created_at" : "2017-04-13T15:12:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-293924519",
+      "id" : 293924519,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-04-13T15:12:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/293924519",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r111423418"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/111423418"
+         }
+      },
+      "body" : "Agreed, fixed in 15b46d94b53af6429f808bb47ebc2a40da9dc791",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-04-13T15:54:07Z",
+      "diff_hunk" : "@@ -690,4 +696,91 @@ class CCoinsViewMemPool : public CCoinsViewBacked\n     bool HaveCoins(const uint256 &txid) const;\n };\n \n+/**\n+ * DisconnectedBlockTransactions\n+\n+ * During the reorg, it's desirable to re-add previously confirmed transactions\n+ * to the mempool, so that anything not re-confirmed in the new chain is\n+ * available to be mined. However, it's more efficient to wait until the reorg\n+ * is complete and process all still-unconfirmed transactions at that time,\n+ * since we expect most confirmed transactions to (typically) still be\n+ * confirmed in the new chain, and re-accepting to the memory pool is expensive\n+ * (and therefore better to not do in the middle of reorg-processing).\n+ * Instead, store the disconnected transactions (in order!) as we go, remove any\n+ * that are included in blocks in the new chain, and then process the remaining\n+ * still-unconfirmed transactions at the end.\n+ */\n+\n+// multi_index tag names\n+struct txid_index {};\n+struct insertion_order {};\n+\n+struct DisconnectedBlockTransactions {\n+    typedef boost::multi_index_container<\n+        CTransactionRef,\n+        boost::multi_index::indexed_by<\n+            // sorted by txid\n+            boost::multi_index::hashed_unique<\n+                boost::multi_index::tag<txid_index>,\n+                mempoolentry_txid,\n+                SaltedTxidHasher\n+            >,\n+            // sorted by order in the blockchain\n+            boost::multi_index::sequenced<\n+                boost::multi_index::tag<insertion_order>\n+            >\n+        >\n+    > indexed_disconnected_transactions;\n+\n+    // It's almost certainly a logic bug if we don't clear out queuedTx before\n+    // destruction, as we add to it while disconnecting blocks, and then we\n+    // need to re-process remaining transactions to ensure mempool consistency.\n+    // For now, assert() that we've emptied out this object on destruction.\n+    // This assert() can always be removed if the reorg-processing code were\n+    // to be refactored such that this assumption is no longer true (for\n+    // instance if there was some other way we cleaned up the mempool after a\n+    // reorg, besides draining this object).\n+    ~DisconnectedBlockTransactions() { assert(queuedTx.empty()); }\n+\n+    indexed_disconnected_transactions queuedTx;\n+    uint64_t cachedInnerUsage = 0;\n+\n+    // Estimate the overhead of queuedTx to be 6 pointers + an allocation, as\n+    // no exact formula for boost::multi_index_contained is implemented.\n+    size_t DynamicMemoryUsage() const {\n+        return memusage::MallocUsage(sizeof(CTransactionRef) + 6 * sizeof(void*)) * queuedTx.size() + cachedInnerUsage;\n+    }\n+\n+    void addTransaction(const CTransactionRef& tx)\n+    {\n+        queuedTx.insert(tx);\n+        cachedInnerUsage += RecursiveDynamicUsage(tx);\n+    }\n+\n+    // Remove entries based on txid_index, and update memory usage.\n+    void removeForBlock(const std::vector<CTransactionRef>& vtx)\n+    {\n+        for (auto const &tx : vtx) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r111423418",
+      "id" : 111423418,
+      "original_commit_id" : "688417b93201d5228331cfee6b24f74f5df6fdbb",
+      "original_position" : 97,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_review_id" : 32669605,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/111423418",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Squashed 15b46d94b53af6429f808bb47ebc2a40da9dc791 -> 75b072df512442829bf288f82ed8ce0830512763",
+      "created_at" : "2017-04-13T15:55:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-293937004",
+      "id" : 293937004,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-04-13T15:55:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/293937004",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "utACK 75b072d\r\n",
+      "created_at" : "2017-04-17T17:25:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-294534382",
+      "id" : 294534382,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-04-17T17:25:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/294534382",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r112508318"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/112508318"
+         }
+      },
+      "body" : "Watch the null deref:\r\n```c++\r\nreturn p ? memusage::DynamicUsage(p) + RecursiveDynamicUsage(*p) : 0;\r\n```",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-04-20T17:12:11Z",
+      "diff_hunk" : "@@ -63,4 +63,9 @@ static inline size_t RecursiveDynamicUsage(const CBlockLocator& locator) {\n     return memusage::DynamicUsage(locator.vHave);\n }\n \n+template<typename X>\n+static inline size_t RecursiveDynamicUsage(const std::shared_ptr<X>& p) {\n+    return RecursiveDynamicUsage(*p) + memusage::DynamicUsage(p);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r112508318",
+      "id" : 112508318,
+      "original_commit_id" : "75b072df512442829bf288f82ed8ce0830512763",
+      "original_position" : 6,
+      "path" : "src/core_memusage.h",
+      "position" : null,
+      "pull_request_review_id" : 33829792,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/112508318",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r112680054"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/112680054"
+         }
+      },
+      "body" : "Thanks, fixed in ea1b122",
+      "commit_id" : "2cb9509440de6ff76506fed18fbd3172e970afb2",
+      "created_at" : "2017-04-21T12:52:00Z",
+      "diff_hunk" : "@@ -63,4 +63,9 @@ static inline size_t RecursiveDynamicUsage(const CBlockLocator& locator) {\n     return memusage::DynamicUsage(locator.vHave);\n }\n \n+template<typename X>\n+static inline size_t RecursiveDynamicUsage(const std::shared_ptr<X>& p) {\n+    return RecursiveDynamicUsage(*p) + memusage::DynamicUsage(p);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#discussion_r112680054",
+      "id" : 112680054,
+      "original_commit_id" : "75b072df512442829bf288f82ed8ce0830512763",
+      "original_position" : 6,
+      "path" : "src/core_memusage.h",
+      "position" : null,
+      "pull_request_review_id" : 34014553,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9208",
+      "updated_at" : "2017-04-21T12:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/112680054",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Fixed @theuni's nit in ea1b122 (https://github.com/sdaftuar/bitcoin/commits/fd-rebased.7), and squashed  in 2cb9509",
+      "created_at" : "2017-04-21T12:59:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-296183745",
+      "id" : 296183745,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-04-21T12:59:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/296183745",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Rebased again due to merge conflict in pruning.py",
+      "created_at" : "2017-05-04T21:12:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-299310568",
+      "id" : 299310568,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-05-04T21:12:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299310568",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Anything else needed here?",
+      "created_at" : "2017-05-12T01:25:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-300959118",
+      "id" : 300959118,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-05-12T01:25:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/300959118",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "re-utACK c1235e3f2dd5b01b63b020d1b8f7283e8badaf09",
+      "created_at" : "2017-05-29T21:26:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-304733199",
+      "id" : 304733199,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-05-29T21:26:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304733199",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "\r\nre-utACK c1235e3",
+      "created_at" : "2017-05-30T15:20:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9208#issuecomment-304912645",
+      "id" : 304912645,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9208",
+      "updated_at" : "2017-05-30T15:20:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304912645",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   }
+]

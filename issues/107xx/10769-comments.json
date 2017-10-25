@@ -1,0 +1,1056 @@
+[
+   {
+      "body" : "I probably need to mention why a dropbox and not a slider.\r\n\r\n* Sliders tend to be linear (otherwise nobody would understand them and I bet it would require a custom, non standard UI object) which would make it useless if we would support conf. targets up to 1008.\r\n* A dropbox allows one to give a better overview (slider: you only see the underlaying value if you change it).\r\n* Dropbox would allow to show the feerate and or a text (\"fast\", \"economy\", etc,), ... and eventual the absolute fee by running the coin-selections if the parameters are provided.",
+      "created_at" : "2017-07-07T20:19:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-313783182",
+      "id" : 313783182,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-07T20:19:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313783182",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126263179"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126263179"
+         }
+      },
+      "body" : "Rename `conf_targets`.",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-07T23:15:09Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 8> confTargets = { {2, 4, 6, 12, 48, 144, 504, 1008} };",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126263179",
+      "id" : 126263179,
+      "original_commit_id" : "e20f45fe85aed91005f45c3a965d231724741290",
+      "original_position" : 4,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : null,
+      "pull_request_review_id" : 48737271,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-10T14:41:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126263179",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126263584"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126263584"
+         }
+      },
+      "body" : "```cpp\r\nif (index >= ...\r\n```",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-07T23:18:22Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 8> confTargets = { {2, 4, 6, 12, 48, 144, 504, 1008} };\n+int getConfTargetForIndex(int index) {\n+    if (index+1 > static_cast<int>(confTargets.size())) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126263584",
+      "id" : 126263584,
+      "original_commit_id" : "e20f45fe85aed91005f45c3a965d231724741290",
+      "original_position" : 6,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : null,
+      "pull_request_review_id" : 48737271,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-10T14:41:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126263584",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126264241"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126264241"
+         }
+      },
+      "body" : "Or just:\r\n```cpp\r\n  return conf_targets[max(0, min(conf_targets.size() - 1, index)]\r\n```",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-07T23:25:42Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 8> confTargets = { {2, 4, 6, 12, 48, 144, 504, 1008} };\n+int getConfTargetForIndex(int index) {\n+    if (index+1 > static_cast<int>(confTargets.size())) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126264241",
+      "id" : 126264241,
+      "original_commit_id" : "e20f45fe85aed91005f45c3a965d231724741290",
+      "original_position" : 6,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : null,
+      "pull_request_review_id" : 48737271,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-10T14:41:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126264241",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "Looking at the screenshot, I would drop the tilde before the number of blocks, i.e. `2 Blocks, ~20 minutes` instead of `~2 Blocks, ~20 minutes`. It already says \"confirmation target\", so it should be obvious that it's not exactly x blocks. In other words, make it say \"target x blocks (approx. y minutes)\" instead of \"target approx. x blocks (approx. y minutes)\".\r\n\r\nAlso, shouldn't blocks have a lowercase b?",
+      "created_at" : "2017-07-08T16:09:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-313865129",
+      "id" : 313865129,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-08T16:09:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313865129",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/425166?v=3",
+         "events_url" : "https://api.github.com/users/flack/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/flack/followers",
+         "following_url" : "https://api.github.com/users/flack/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/flack/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/flack",
+         "id" : 425166,
+         "login" : "flack",
+         "organizations_url" : "https://api.github.com/users/flack/orgs",
+         "received_events_url" : "https://api.github.com/users/flack/received_events",
+         "repos_url" : "https://api.github.com/users/flack/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/flack/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/flack/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/flack"
+      }
+   },
+   {
+      "body" : "Will review shortly.  Thanks for doing!\r\n\r\nAlso please add a target for 24 for compatibility with the old estimates (where 25 was the highest possible target).  It may be a target that people are used to using.\r\n\r\n",
+      "created_at" : "2017-07-08T16:14:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-313865423",
+      "id" : 313865423,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-08T16:14:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313865423",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Confirmation is when it's 6 blocks deep, so +5 to all the numbers here? Or change it to \"begin confirmation\" like we currently have...",
+      "created_at" : "2017-07-08T21:10:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-313881199",
+      "id" : 313881199,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-08T21:10:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313881199",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "I like how it looks, @morcos any concerns about missing 3,5 making users fee choices more clumpy?",
+      "created_at" : "2017-07-09T11:43:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-313915047",
+      "id" : 313915047,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-09T11:43:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313915047",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Re-added targets 3, 5, 24 and removed the tilde in front of the target-in-blocks/-time.",
+      "created_at" : "2017-07-10T14:41:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-314126812",
+      "id" : 314126812,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-10T14:41:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314126812",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126451274"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126451274"
+         }
+      },
+      "body" : "Should call `settings.remove(\"nSmartFeeSliderPosition\")`?",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-10T15:14:36Z",
+      "diff_hunk" : "@@ -177,10 +199,10 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n \n         // set the smartfee-sliders default value (wallets default conf.target or last stored value)\n         QSettings settings;\n-        if (settings.value(\"nSmartFeeSliderPosition\").toInt() == 0)\n-            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 2);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126451274",
+      "id" : 126451274,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 47,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 47,
+      "pull_request_review_id" : 48936040,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-10T15:28:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126451274",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126453585"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126453585"
+         }
+      },
+      "body" : "Alternative format: `\"%2 (%1 blocks)\"` since the label is `Confirmation time`.",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-10T15:20:46Z",
+      "diff_hunk" : "@@ -152,9 +171,12 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n         coinControlUpdateLabels();\n \n         // fee section\n-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateSmartFeeLabel()));\n-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateGlobalFeeVariables()));\n-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(coinControlUpdateLabels()));\n+        for (const int &n : confTargets) {\n+            ui->confTargetSelector->addItem(tr(\"%1 blocks, %2\").arg(n).arg(GUIUtil::formatNiceTimeOffset(n*Params().GetConsensus().nPowTargetSpacing)));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126453585",
+      "id" : 126453585,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 34,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 34,
+      "pull_request_review_id" : 48936040,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-10T15:28:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126453585",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126455546"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126455546"
+         }
+      },
+      "body" : "Update block style. Same for `getIndexForConfTarget`.",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-10T15:27:42Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 11> confTargets = { {2, 3, 4, 5, 6, 12, 24, 48, 144, 504, 1008} };\n+int getConfTargetForIndex(int index) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126455546",
+      "id" : 126455546,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 5,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 48936040,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-10T15:28:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126455546",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126455575"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126455575"
+         }
+      },
+      "body" : "Snake case.",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-10T15:27:48Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 11> confTargets = { {2, 3, 4, 5, 6, 12, 24, 48, 144, 504, 1008} };",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r126455575",
+      "id" : 126455575,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 4,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 48936040,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-10T15:28:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126455575",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "ACK 19eae9c\r\n\r\n@gmaxwell Actually my preference would be to remove the 3 and 5 targets.  I think it gives a false sense of accuracy with the estimates.  I don't imagine much clumping concern as those estimates often aren't that different from each other and there is a much larger range of estimates to choose from as well as time variability.  I also think its a bit cleaner not to be faced with too many choices in a dropdown.\r\n\r\n\r\n\r\n",
+      "created_at" : "2017-07-10T17:28:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-314176920",
+      "id" : 314176920,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-10T17:28:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314176920",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127046798"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127046798"
+         }
+      },
+      "body" : "nit: not sure its worth having 5 here, maybe not 3 either.",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-12T19:18:09Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 11> confTargets = { {2, 3, 4, 5, 6, 12, 24, 48, 144, 504, 1008} };",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127046798",
+      "id" : 127046798,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 4,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 49592059,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-12T19:18:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127046798",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127046821"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127046821"
+         }
+      },
+      "body" : "I think you meant .size() - 1.",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-12T19:18:15Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 11> confTargets = { {2, 3, 4, 5, 6, 12, 24, 48, 144, 504, 1008} };\n+int getConfTargetForIndex(int index) {\n+    if (index+1 > static_cast<int>(confTargets.size())) {\n+        return confTargets.back();\n+    }\n+    if (index < 0) {\n+        return confTargets[0];\n+    }\n+    return confTargets[index];\n+}\n+int getIndexForConfTarget(int target) {\n+    for (unsigned int i = 0; i < confTargets.size(); i++) {\n+        if (confTargets[i] >= target) {\n+            return i;\n+        }\n+    }\n+    return confTargets.back();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127046821",
+      "id" : 127046821,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 20,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 20,
+      "pull_request_review_id" : 49592059,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-12T19:18:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127046821",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "GUI-screenshot-looks-nice-ACK. Didn't look at the code.",
+      "created_at" : "2017-07-12T19:19:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-314870176",
+      "id" : 314870176,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-12T19:19:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314870176",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127047119"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127047119"
+         }
+      },
+      "body" : "Also, why the extra set of {}?",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-12T19:19:42Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 11> confTargets = { {2, 3, 4, 5, 6, 12, 24, 48, 144, 504, 1008} };",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127047119",
+      "id" : 127047119,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 4,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 49592418,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-12T19:19:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127047119",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127047260"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127047260"
+         }
+      },
+      "body" : "Oh. Yes. Will fix.",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-12T19:20:16Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 11> confTargets = { {2, 3, 4, 5, 6, 12, 24, 48, 144, 504, 1008} };\n+int getConfTargetForIndex(int index) {\n+    if (index+1 > static_cast<int>(confTargets.size())) {\n+        return confTargets.back();\n+    }\n+    if (index < 0) {\n+        return confTargets[0];\n+    }\n+    return confTargets[index];\n+}\n+int getIndexForConfTarget(int target) {\n+    for (unsigned int i = 0; i < confTargets.size(); i++) {\n+        if (confTargets[i] >= target) {\n+            return i;\n+        }\n+    }\n+    return confTargets.back();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127047260",
+      "id" : 127047260,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 20,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 20,
+      "pull_request_review_id" : 49592552,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-12T19:20:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127047260",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127047319"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127047319"
+         }
+      },
+      "body" : "> Also, why the extra set of {}?\r\n\r\nCompiler warning.",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-12T19:20:31Z",
+      "diff_hunk" : "@@ -31,6 +31,25 @@\n #include <QTextDocument>\n #include <QTimer>\n \n+static const std::array<int, 11> confTargets = { {2, 3, 4, 5, 6, 12, 24, 48, 144, 504, 1008} };",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127047319",
+      "id" : 127047319,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 4,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 49592622,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-12T19:20:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127047319",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "utACK 19eae9c3602c784d55f8edc94300da1ece686a6c modulo the thing @TheBlueMatt pointed out.\r\n\r\nI don't think we need the 3, 4, or 5 block target estimates.\r\n\r\nIt may also be useful to include a tooltip that explains why you see the line \"Estimated to begin confirmation within N blocks\" where N is less than the confirmation target that you chose as seen in the screenshot below. This discrepancy may confuse users.\r\n\r\n![image](https://user-images.githubusercontent.com/3782274/28143521-d5348182-671a-11e7-9476-f4ab3436098a.png)\r\n",
+      "created_at" : "2017-07-12T22:57:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-314921257",
+      "id" : 314921257,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-12T22:57:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314921257",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3782274?v=3",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "body" : ">  tooltip that explains why you see the line \"Estimated to begin confirmation within N blocks\" where N is less than the confirmation target that you chose\r\n\r\nYes would be a nice improvement, could be left for another PR as it's a preexisting issue.  Would be great to get than in for 0.15 as well, but wouldn't want it to hold up this.\r\n\r\nThe other feature that I'd ideally like is the ability to force estimates conservative or economical regardless of the Replace-By-Fee setting.  Again just a wish list item.",
+      "created_at" : "2017-07-12T23:21:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-314925179",
+      "id" : 314925179,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-12T23:21:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314925179",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127152601"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127152601"
+         }
+      },
+      "body" : "Yes. Your right.. will fix.",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-13T08:07:50Z",
+      "diff_hunk" : "@@ -152,9 +171,12 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n         coinControlUpdateLabels();\n \n         // fee section\n-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateSmartFeeLabel()));\n-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateGlobalFeeVariables()));\n-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(coinControlUpdateLabels()));\n+        for (const int &n : confTargets) {\n+            ui->confTargetSelector->addItem(tr(\"%1 blocks, %2\").arg(n).arg(GUIUtil::formatNiceTimeOffset(n*Params().GetConsensus().nPowTargetSpacing)));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127152601",
+      "id" : 127152601,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 34,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 34,
+      "pull_request_review_id" : 49705594,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-13T08:07:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127152601",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127152883"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127152883"
+         }
+      },
+      "body" : "Hmm... I think an addition is required: we probably need to migrate the old slider value to the new dropdown?",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-13T08:09:24Z",
+      "diff_hunk" : "@@ -177,10 +199,10 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n \n         // set the smartfee-sliders default value (wallets default conf.target or last stored value)\n         QSettings settings;\n-        if (settings.value(\"nSmartFeeSliderPosition\").toInt() == 0)\n-            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 2);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127152883",
+      "id" : 127152883,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 47,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 47,
+      "pull_request_review_id" : 49705906,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-13T08:09:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127152883",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127158636"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127158636"
+         }
+      },
+      "body" : "That doesn't seem particularly important to me. ",
+      "commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "created_at" : "2017-07-13T08:37:12Z",
+      "diff_hunk" : "@@ -177,10 +199,10 @@ void SendCoinsDialog::setModel(WalletModel *_model)\n \n         // set the smartfee-sliders default value (wallets default conf.target or last stored value)\n         QSettings settings;\n-        if (settings.value(\"nSmartFeeSliderPosition\").toInt() == 0)\n-            ui->sliderSmartFee->setValue(ui->sliderSmartFee->maximum() - model->getDefaultConfirmTarget() + 2);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#discussion_r127158636",
+      "id" : 127158636,
+      "original_commit_id" : "19eae9c3602c784d55f8edc94300da1ece686a6c",
+      "original_position" : 47,
+      "path" : "src/qt/sendcoinsdialog.cpp",
+      "position" : 47,
+      "pull_request_review_id" : 49712134,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10769",
+      "updated_at" : "2017-07-13T08:37:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127158636",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Removed again target 3 and 5 and fixed points found by @TheBlueMatt and @promag.\r\nAdded another commit that add a tiny migration logic.\r\n\r\nThanks for a retest/re-ack.",
+      "created_at" : "2017-07-13T10:22:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-315037880",
+      "id" : 315037880,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-13T10:22:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315037880",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Tested ACK 2aef1f1",
+      "created_at" : "2017-07-13T14:47:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-315100456",
+      "id" : 315100456,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-13T14:47:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315100456",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "utACK 2aef1f18296fcd3aa3c91afdf152add8a8e80bd4",
+      "created_at" : "2017-07-14T20:36:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10769#issuecomment-315461410",
+      "id" : 315461410,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10769",
+      "updated_at" : "2017-07-14T20:36:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315461410",
+      "user" : {
+         "avatar_url" : "https://avatars4.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   }
+]

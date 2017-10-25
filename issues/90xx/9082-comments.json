@@ -1,0 +1,780 @@
+[
+   {
+      "body" : "NAK. Non-witness peers are still connected to, though the node makes sure that it doesn't get partitioned. This undoes an intentional design decision. It is not acceptable to have the network topology suddenly change all at once time when segwit activates, due to the risk of creating partitioning (we can't fetch blocks from non-witness peers once segwit is active: so we need to be sure that we're connecting to witness peers before it activates).  The approach used in the codebase was intended to only have nodes behavior change when they are upgraded, so that the change would phase in gradually in the network (and if it caused problems users could revert to escape it).\r\n",
+      "created_at" : "2016-11-04T08:57:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-258375327",
+      "id" : 258375327,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-25T21:02:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258375327",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "If it were just limited to feelers, that might be good though-- since we'd like to learn that they've been upgraded, but it doesn't need to know if witness is active or not. It could just ignore the witness flag for feeler probes-- any interest in changing your patch to do just that?\r\n\r\nIt would have been good if the decision to not connect out to witness peers were better documented. ",
+      "created_at" : "2016-11-04T09:03:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-258376339",
+      "id" : 258376339,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-04T09:08:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258376339",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "@gmaxwell  Thank you for reviewing this. I'm not sure I understand the partitioning risk you mention. With the currently implementation, I'd already call this partitioned in that 0.13.1 nodes that can make only  outbound connections rarely and only briefly are connecting to non-witness nodes, whereas with this change, only half would be forced to connect to witness nodes, and the other half would connected \"un-forced\" thereby being roughly related to the general distribution of the network (currently about 20% running with node_witness?) thereby for a configuration of 8 outbound connections, it would mean 5 out of those 8 are connected to Witness nodes, compared to 100% of outbound connections without this PR.\r\n\r\nThe current code behaves in a way that makes me wonder if it is doing what it was designed to do. It looks like it was designed to do similar to what this PR makes it do - i.e. force half the connections to connect to Witness nodes, and allow the other half to do as they wish, however, because it works by enforcing witness nodes once the connection count reaches half, and the number of nodes connected to, once a node is up and running, is very unlikely to suddenly lose half of its outbound connections, then as outbound connections from time to time are lost, those initial 4 connections which may have connected to non-witness nodes would be replaced by connections which can only connect to Witness nodes, meaning that after a short while 100% of the outbound connections are connected to witness nodes only with no ability (unless internet is lost long enough to disconnect all outbound connections) to connect to non-witness nodes.\r\n\r\nIs this current functionality what was intended?\r\n\r\nThe only change that happens when SegWit activates, with this PR, is that the minimum of 4 Witness nodes increases to 6 - I can remove this code though so that it stays at 4 - thereby achieving what I suspect the initial design intended to achieve.",
+      "created_at" : "2016-11-04T11:52:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-258412387",
+      "id" : 258412387,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-04T12:01:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258412387",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "Also, in the event that SegWit doesn't activate and timesout, the code as it currently is with 0.13.1 is such that it will only ever use half of the outgoing connections, i.e. if maxoutbound is 8, then after 4 outbound connections are established, it will not connect to any peer unless it is node_witness, which after the timeout, will be none. (Not that I am wanting this to happen, I am in favor of SegWit).",
+      "created_at" : "2016-11-04T12:20:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-258417235",
+      "id" : 258417235,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-04T12:22:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258417235",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "Concept ACK if you make the behaviour not depend on segwit being active or not, and just whether or not we have 4 connections to node_witness nodes.\r\n\r\nThe reason is that it's critical not to be partitioned off segwit nodes at the time it activates (and afterwards), as there are numerous hard-to-reason about edge cases right at activation time. As connections tend to persist for a long time, this means we need to start preferring a while before (potential) activation.",
+      "created_at" : "2016-11-05T20:19:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-258638043",
+      "id" : 258638043,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-05T20:23:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258638043",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@sipa thank you for reviewing this, and I will make the change you advise.",
+      "created_at" : "2016-11-06T04:01:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-258659039",
+      "id" : 258659039,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-06T04:01:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258659039",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "@sipa I've just re-read your comment and I think you may have misunderstood the functionality of this PR as it was. It forces a minimum of 4 connections to Witness nodes prior to SegWit activation, and after activation is makes the minimum 6. Therefore, the it is already doing the \"start preferring a while before\" that you mention. The current functionality (partly due to #8949), which I think may have been unintended, is to connect exclusively to witness nodes.\r\n\r\nDo you still want me to change it so that it stays at a minimum of 4 connections before and after activation (rather than 4 before and 6 after)? I thought 4 was a little low given the functionality is currently 100% (8 for default MaxOutbound), so I settled on 6 as a middle-road.\r\n\r\nI'm also making a fix so that rather than allowing fWitnessActive to be initialised as false, it's initialised in init.cpp to be true or false based on the active tip at initialization.",
+      "created_at" : "2016-11-06T04:10:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-258659301",
+      "id" : 258659301,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-06T04:53:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258659301",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86680233"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86680233"
+         }
+      },
+      "body" : "Several problems with this:\n- You're reading fWitnessActive here without holding cs_main, so you have a potential data race (even though in this particular case, likely every supported platform will actually do what you'd expect, this is undefined behaviour according to the C++ standard, and the compiler is allowed to make this do anything - including deleting your files). To correctly write what you're trying to do here, you'd need to make fWitnessActive an `std::atomic<bool>` instead.\n- Having an fWitnessActive in the network code is a huge layer violation. The network code shouldn't need to know about such concepts.\n- As I've explained, we need the connectivity with witness nodes at the time the activation occurs - which means the preferential peering is most important _before_ the actual activation. The easiest way to accomplish that is by doing it always.\n",
+      "commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "created_at" : "2016-11-06T06:50:36Z",
+      "diff_hunk" : "@@ -1681,8 +1684,10 @@ void CConnman::ThreadOpenConnections()\n             if (nANow - addr.nLastTry < 600 && nTries < 30)\n                 continue;\n \n-            // only consider nodes missing relevant services after 40 failed attempts and only if less than half the outbound are up.\n-            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 || nOutbound >= (nMaxOutbound >> 1)))\n+            // only consider nodes missing relevant services we have at least 4 already,\n+            // and at least 6 once SegWit has activated\n+            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 &&\n+                    (nRelevant < 5 || (fWitnessActive && nRelevant < 7))) && !fFeeler)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86680233",
+      "id" : 86680233,
+      "original_commit_id" : "59ea0a2d309691b4a1e5f249942e229984833d5a",
+      "original_position" : 32,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 7327833,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082",
+      "updated_at" : "2017-02-16T11:38:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86680233",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@rebroad Yes, I believe the current logic of only allowing non-relevant peers before 4 outbounds results in an unintentionally strong preference for witness peers, so I like using the nRelevant you have instead, and not applying it to feelers. I don't think there is a need for making the behaviour conditional on segwit being active though - that just results in more edge cases.",
+      "created_at" : "2016-11-06T07:17:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-258664763",
+      "id" : 258664763,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-06T07:17:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258664763",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86680539"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86680539"
+         }
+      },
+      "body" : "@sipa preferential peering already happens before the activation with this PR. The only reason for checking IsWitnessEnabled is to make it even more preferential afterwards. In order to make it \"more preferential\" it seems to me that the network code does need to know about such concept - how else could it be done please?\n",
+      "commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "created_at" : "2016-11-06T07:18:54Z",
+      "diff_hunk" : "@@ -1681,8 +1684,10 @@ void CConnman::ThreadOpenConnections()\n             if (nANow - addr.nLastTry < 600 && nTries < 30)\n                 continue;\n \n-            // only consider nodes missing relevant services after 40 failed attempts and only if less than half the outbound are up.\n-            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 || nOutbound >= (nMaxOutbound >> 1)))\n+            // only consider nodes missing relevant services we have at least 4 already,\n+            // and at least 6 once SegWit has activated\n+            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 &&\n+                    (nRelevant < 5 || (fWitnessActive && nRelevant < 7))) && !fFeeler)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86680539",
+      "id" : 86680539,
+      "original_commit_id" : "59ea0a2d309691b4a1e5f249942e229984833d5a",
+      "original_position" : 32,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 7328124,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082",
+      "updated_at" : "2017-02-16T11:38:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86680539",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "@sipa Have now removed the check for Witness activation. Thanks again.",
+      "created_at" : "2016-11-06T07:20:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-258664864",
+      "id" : 258664864,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-06T07:28:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258664864",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86681328"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86681328"
+         }
+      },
+      "body" : "This comment seems outdated.",
+      "commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "created_at" : "2016-11-06T09:33:01Z",
+      "diff_hunk" : "@@ -1681,8 +1683,10 @@ void CConnman::ThreadOpenConnections()\n             if (nANow - addr.nLastTry < 600 && nTries < 30)\n                 continue;\n \n-            // only consider nodes missing relevant services after 40 failed attempts and only if less than half the outbound are up.\n-            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 || nOutbound >= (nMaxOutbound >> 1)))\n+            // only consider nodes missing relevant services we have at least 4 already,\n+            // and at least 6 once SegWit has activated",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86681328",
+      "id" : 86681328,
+      "original_commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "original_position" : 22,
+      "path" : "src/net.cpp",
+      "position" : 22,
+      "pull_request_review_id" : 7328837,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082",
+      "updated_at" : "2016-11-06T09:53:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86681328",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86681659"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86681659"
+         }
+      },
+      "body" : "I believe the `&&` between `nTries < 40` and `nRelevant < 5` should be an `||`.",
+      "commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "created_at" : "2016-11-06T09:52:31Z",
+      "diff_hunk" : "@@ -1681,8 +1683,10 @@ void CConnman::ThreadOpenConnections()\n             if (nANow - addr.nLastTry < 600 && nTries < 30)\n                 continue;\n \n-            // only consider nodes missing relevant services after 40 failed attempts and only if less than half the outbound are up.\n-            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 || nOutbound >= (nMaxOutbound >> 1)))\n+            // only consider nodes missing relevant services we have at least 4 already,\n+            // and at least 6 once SegWit has activated\n+            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 &&",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86681659",
+      "id" : 86681659,
+      "original_commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "original_position" : 23,
+      "path" : "src/net.cpp",
+      "position" : 23,
+      "pull_request_review_id" : 7328837,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082",
+      "updated_at" : "2016-11-06T09:53:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86681659",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86681685"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86681685"
+         }
+      },
+      "body" : "Using `(nMaxOutBound >> 1)` avoided a hard coded constant here.",
+      "commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "created_at" : "2016-11-06T09:53:26Z",
+      "diff_hunk" : "@@ -1681,8 +1683,10 @@ void CConnman::ThreadOpenConnections()\n             if (nANow - addr.nLastTry < 600 && nTries < 30)\n                 continue;\n \n-            // only consider nodes missing relevant services after 40 failed attempts and only if less than half the outbound are up.\n-            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 || nOutbound >= (nMaxOutbound >> 1)))\n+            // only consider nodes missing relevant services we have at least 4 already,\n+            // and at least 6 once SegWit has activated\n+            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 &&\n+                    nRelevant < 5) && !fFeeler)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86681685",
+      "id" : 86681685,
+      "original_commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "original_position" : 24,
+      "path" : "src/net.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 7328837,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082",
+      "updated_at" : "2016-11-06T09:53:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86681685",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86712303"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86712303"
+         }
+      },
+      "body" : "@sipa and by the way, thank you for the comments regarding C++ standards - useful to know I need to brush up on them.\n",
+      "commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "created_at" : "2016-11-07T04:35:34Z",
+      "diff_hunk" : "@@ -1681,8 +1684,10 @@ void CConnman::ThreadOpenConnections()\n             if (nANow - addr.nLastTry < 600 && nTries < 30)\n                 continue;\n \n-            // only consider nodes missing relevant services after 40 failed attempts and only if less than half the outbound are up.\n-            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 || nOutbound >= (nMaxOutbound >> 1)))\n+            // only consider nodes missing relevant services we have at least 4 already,\n+            // and at least 6 once SegWit has activated\n+            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 &&\n+                    (nRelevant < 5 || (fWitnessActive && nRelevant < 7))) && !fFeeler)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86712303",
+      "id" : 86712303,
+      "original_commit_id" : "59ea0a2d309691b4a1e5f249942e229984833d5a",
+      "original_position" : 32,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 7355748,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082",
+      "updated_at" : "2017-02-16T11:38:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86712303",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86719866"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86719866"
+         }
+      },
+      "body" : "@rebroad Read my 3rd point. Just don't.\n",
+      "commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "created_at" : "2016-11-07T06:44:51Z",
+      "diff_hunk" : "@@ -1681,8 +1684,10 @@ void CConnman::ThreadOpenConnections()\n             if (nANow - addr.nLastTry < 600 && nTries < 30)\n                 continue;\n \n-            // only consider nodes missing relevant services after 40 failed attempts and only if less than half the outbound are up.\n-            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 || nOutbound >= (nMaxOutbound >> 1)))\n+            // only consider nodes missing relevant services we have at least 4 already,\n+            // and at least 6 once SegWit has activated\n+            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 &&\n+                    (nRelevant < 5 || (fWitnessActive && nRelevant < 7))) && !fFeeler)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r86719866",
+      "id" : 86719866,
+      "original_commit_id" : "59ea0a2d309691b4a1e5f249942e229984833d5a",
+      "original_position" : 32,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 7362795,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082",
+      "updated_at" : "2017-02-16T11:38:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86719866",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Seems I was wrong:\r\n\r\n```\r\n14:39:41 < gmaxwell> sipa: \"an unintentionally strong preference for witness peers\" <\r\nwell it was as strong as I intend it to be, after SW activates I was planning on merging\r\nthe NODE_WITNESS preference into the node-network one and making it absolute\r\nand not a preference. In releases post sw I think we shouldn't connect out at all to non\r\nsw peers.\r\n```\r\n\r\nSo this should probably just change the nFeelers clause.",
+      "created_at" : "2016-11-08T02:27:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-259027283",
+      "id" : 259027283,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-08T02:27:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/259027283",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r89537525"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/89537525"
+         }
+      },
+      "body" : "I intentionally changed it to && instead of || as I felt || was too strong, but can change it back if this is preferred.",
+      "commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "created_at" : "2016-11-24T18:35:02Z",
+      "diff_hunk" : "@@ -1681,8 +1683,10 @@ void CConnman::ThreadOpenConnections()\n             if (nANow - addr.nLastTry < 600 && nTries < 30)\n                 continue;\n \n-            // only consider nodes missing relevant services after 40 failed attempts and only if less than half the outbound are up.\n-            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 || nOutbound >= (nMaxOutbound >> 1)))\n+            // only consider nodes missing relevant services we have at least 4 already,\n+            // and at least 6 once SegWit has activated\n+            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 &&",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r89537525",
+      "id" : 89537525,
+      "original_commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "original_position" : 23,
+      "path" : "src/net.cpp",
+      "position" : 23,
+      "pull_request_review_id" : 10083426,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082",
+      "updated_at" : "2016-11-24T18:35:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/89537525",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r89537560"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/89537560"
+         }
+      },
+      "body" : "I felt a minimum of 4 was a better criteria than half of the default 8 as if someone reduced maxOutbound then I think fewer than 4 is too few.",
+      "commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "created_at" : "2016-11-24T18:35:51Z",
+      "diff_hunk" : "@@ -1681,8 +1683,10 @@ void CConnman::ThreadOpenConnections()\n             if (nANow - addr.nLastTry < 600 && nTries < 30)\n                 continue;\n \n-            // only consider nodes missing relevant services after 40 failed attempts and only if less than half the outbound are up.\n-            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 || nOutbound >= (nMaxOutbound >> 1)))\n+            // only consider nodes missing relevant services we have at least 4 already,\n+            // and at least 6 once SegWit has activated\n+            if ((addr.nServices & nRelevantServices) != nRelevantServices && (nTries < 40 &&\n+                    nRelevant < 5) && !fFeeler)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#discussion_r89537560",
+      "id" : 89537560,
+      "original_commit_id" : "050f44836e95ab538eb57874a37fca7b5552c66b",
+      "original_position" : 24,
+      "path" : "src/net.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 10083466,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9082",
+      "updated_at" : "2016-11-24T18:35:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/89537560",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "@sipa still seems odd to me that it'll only connect to non SegWit nodes upon start-up and then never again once those connections have dropped. Intentional or not.",
+      "created_at" : "2016-11-24T18:37:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-262830207",
+      "id" : 262830207,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-24T18:38:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/262830207",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "@rebroad The goal is to never connect to anything but segwit nodes. The connection count rule is just there because initially there may just not be enough segwit peers. Old nodes are not useful for you to connect out to, as they can't give blocks anymore after activation. We of course still allow them to connect in.",
+      "created_at" : "2016-11-24T20:18:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-262840167",
+      "id" : 262840167,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2016-11-24T20:18:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/262840167",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@sipa Given that SegWit has not activated, and from the current charts never will, then it seems entirely premature to be avoiding non-SegWit nodes at all, doesn't it? At least until there is a reasonable chance of SegWit looking likely to activate.",
+      "created_at" : "2017-01-26T04:54:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9082#issuecomment-275307851",
+      "id" : 275307851,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9082",
+      "updated_at" : "2017-01-26T04:54:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/275307851",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   }
+]

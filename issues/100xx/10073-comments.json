@@ -1,0 +1,308 @@
+[
+   {
+      "body" : "utACK.  We need to get in the habit of testing the tests by breaking the code, -- I do this sometimes, but clearly not enough.",
+      "created_at" : "2017-03-25T05:51:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10073#issuecomment-289191171",
+      "id" : 289191171,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10073",
+      "updated_at" : "2017-03-25T05:51:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289191171",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Concept ACK. I was wondering if it makes sense to put the rpc tests in a separate folder and then run a check in test_runner, that all files in the folder are mentioned at least once in the test_runner file. ",
+      "created_at" : "2017-03-25T14:14:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10073#issuecomment-289214313",
+      "id" : 289214313,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10073",
+      "updated_at" : "2017-03-25T14:14:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289214313",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "@MarcoFalke - I've already got a branch that does almost that (in my version I added an extra list `NON_TESTS` to test_runner and then check that all files in the functional directory appear in one of the test lists or NON_TESTS.\r\n\r\nI think your version is tidier. I'm happy to rework my branch or review a PR if you want to implement it. Whichever you prefer.",
+      "created_at" : "2017-03-25T16:46:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10073#issuecomment-289223757",
+      "id" : 289223757,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10073",
+      "updated_at" : "2017-03-25T16:46:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289223757",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "utACK 717ad131f6b665b2e7cf55db689da9616e727d78",
+      "created_at" : "2017-03-26T09:01:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10073#issuecomment-289267467",
+      "id" : 289267467,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10073",
+      "updated_at" : "2017-03-26T09:01:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289267467",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "> I was wondering if it makes sense to put the rpc tests in a separate folder \r\n\r\nNot sure about this. I agree that a way to identify 'orphan' tests would be great, however having scripts in multiple folders is unfortunately kind of annoying with Python and its automatic directory hierarchy for packages. Also it means having to think/search where the test is when manually running it. I think I prefer one directory with all the executable scripts.",
+      "created_at" : "2017-03-27T07:48:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10073#issuecomment-289378723",
+      "id" : 289378723,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10073",
+      "updated_at" : "2017-03-27T07:48:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289378723",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "The test is failing intermittently on master, it seems:\r\n```\r\n2017-03-27 14:09:57.475000 TestFramework (ERROR): Assertion failed\r\nTraceback (most recent call last):\r\n  File \"/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/test_framework.py\", line 150, in main\r\n    self.run_test()\r\n  File \"/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/assumevalid.py\", line 197, in run_test\r\n    assert_equal(self.nodes[1].getblock(self.nodes[1].getbestblockhash())['height'], 2202)\r\n  File \"/home/travis/build/bitcoin/bitcoin/build/bitcoin-x86_64-unknown-linux-gnu/test/functional/test_framework/util.py\", line 476, in assert_equal\r\n    raise AssertionError(\"not(%s)\" % \" == \".join(str(arg) for arg in (thing1, thing2) + args))\r\nAssertionError: not(1051 == 2202)\r\n```",
+      "created_at" : "2017-03-27T14:15:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10073#issuecomment-289466653",
+      "id" : 289466653,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10073",
+      "updated_at" : "2017-03-27T14:15:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289466653",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10073#discussion_r108334165"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10073"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108334165"
+         }
+      },
+      "body" : "using `assert_blockchain_height` should prevent it to fails intermittently. @jnewbery thoughts ?",
+      "commit_id" : "717ad131f6b665b2e7cf55db689da9616e727d78",
+      "created_at" : "2017-03-28T04:54:49Z",
+      "diff_hunk" : "@@ -166,25 +186,19 @@ def run_test(self):\n         node1.send_header_for_blocks(self.blocks[2000:])\n         node2.send_header_for_blocks(self.blocks[0:200])\n \n-        # Send 102 blocks to node0. Block 102 will be rejected.\n-        for i in range(101):\n-            node0.send_message(msg_block(self.blocks[i]))\n-        node0.sync_with_ping() # make sure the most recent block is synced\n-        node0.send_message(msg_block(self.blocks[101]))\n-        assert_equal(self.nodes[0].getblock(self.nodes[0].getbestblockhash())['height'], 101)\n+        # Send blocks to node0. Block 102 will be rejected.\n+        self.send_blocks_until_disconnected(node0)\n+        self.assert_blockchain_height(self.nodes[0], 101)\n \n-        # Send 3102 blocks to node1. All blocks will be accepted.\n+        # Send all blocks to node1. All blocks will be accepted.\n         for i in range(2202):\n             node1.send_message(msg_block(self.blocks[i]))\n-        node1.sync_with_ping() # make sure the most recent block is synced\n+        node1.sync_with_ping()  # make sure the most recent block is synced\n         assert_equal(self.nodes[1].getblock(self.nodes[1].getbestblockhash())['height'], 2202)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10073#discussion_r108334165",
+      "id" : 108334165,
+      "original_commit_id" : "717ad131f6b665b2e7cf55db689da9616e727d78",
+      "original_position" : 143,
+      "path" : "test/functional/assumevalid.py",
+      "position" : 143,
+      "pull_request_review_id" : 29357649,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10073",
+      "updated_at" : "2017-03-28T04:57:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108334165",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10073#discussion_r108524262"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10073"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108524262"
+         }
+      },
+      "body" : "@NicolasDorier you may be right. I think that sync_with_ping() _should_ be enough to make sure the node is sync'ed to the tip (p2p messages are processed sequentially and single threaded by bitcoind, so it shouldn't send a pong back until it's worked through all the block messages).\r\n\r\nSadly there aren't quite enough logs to see what's going on here. I'm going to leave this as it is for a few more nightly runs to see if we can get a better set of diags. This is in the extended test suite so it won't cause PR or merge travis builds to fail.\r\n\r\nIf I can't get to the bottom of why this is failing, I'll try with your change, but I'd like to understand what the problem is before trying your fix.",
+      "commit_id" : "717ad131f6b665b2e7cf55db689da9616e727d78",
+      "created_at" : "2017-03-28T20:08:59Z",
+      "diff_hunk" : "@@ -166,25 +186,19 @@ def run_test(self):\n         node1.send_header_for_blocks(self.blocks[2000:])\n         node2.send_header_for_blocks(self.blocks[0:200])\n \n-        # Send 102 blocks to node0. Block 102 will be rejected.\n-        for i in range(101):\n-            node0.send_message(msg_block(self.blocks[i]))\n-        node0.sync_with_ping() # make sure the most recent block is synced\n-        node0.send_message(msg_block(self.blocks[101]))\n-        assert_equal(self.nodes[0].getblock(self.nodes[0].getbestblockhash())['height'], 101)\n+        # Send blocks to node0. Block 102 will be rejected.\n+        self.send_blocks_until_disconnected(node0)\n+        self.assert_blockchain_height(self.nodes[0], 101)\n \n-        # Send 3102 blocks to node1. All blocks will be accepted.\n+        # Send all blocks to node1. All blocks will be accepted.\n         for i in range(2202):\n             node1.send_message(msg_block(self.blocks[i]))\n-        node1.sync_with_ping() # make sure the most recent block is synced\n+        node1.sync_with_ping()  # make sure the most recent block is synced\n         assert_equal(self.nodes[1].getblock(self.nodes[1].getbestblockhash())['height'], 2202)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10073#discussion_r108524262",
+      "id" : 108524262,
+      "original_commit_id" : "717ad131f6b665b2e7cf55db689da9616e727d78",
+      "original_position" : 143,
+      "path" : "test/functional/assumevalid.py",
+      "position" : 143,
+      "pull_request_review_id" : 29560898,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10073",
+      "updated_at" : "2017-03-28T20:08:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108524262",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10073#discussion_r108717162"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10073"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108717162"
+         }
+      },
+      "body" : "sigh. sync_with_ping() doesn't assert that the node has sync'ed. It's up to the caller to assert on the return value. Sadly, none of the test cases that call sync_with_ping() actually assert on the return value. Proposed fix here: https://github.com/bitcoin/bitcoin/pull/10114",
+      "commit_id" : "717ad131f6b665b2e7cf55db689da9616e727d78",
+      "created_at" : "2017-03-29T16:03:31Z",
+      "diff_hunk" : "@@ -166,25 +186,19 @@ def run_test(self):\n         node1.send_header_for_blocks(self.blocks[2000:])\n         node2.send_header_for_blocks(self.blocks[0:200])\n \n-        # Send 102 blocks to node0. Block 102 will be rejected.\n-        for i in range(101):\n-            node0.send_message(msg_block(self.blocks[i]))\n-        node0.sync_with_ping() # make sure the most recent block is synced\n-        node0.send_message(msg_block(self.blocks[101]))\n-        assert_equal(self.nodes[0].getblock(self.nodes[0].getbestblockhash())['height'], 101)\n+        # Send blocks to node0. Block 102 will be rejected.\n+        self.send_blocks_until_disconnected(node0)\n+        self.assert_blockchain_height(self.nodes[0], 101)\n \n-        # Send 3102 blocks to node1. All blocks will be accepted.\n+        # Send all blocks to node1. All blocks will be accepted.\n         for i in range(2202):\n             node1.send_message(msg_block(self.blocks[i]))\n-        node1.sync_with_ping() # make sure the most recent block is synced\n+        node1.sync_with_ping()  # make sure the most recent block is synced\n         assert_equal(self.nodes[1].getblock(self.nodes[1].getbestblockhash())['height'], 2202)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10073#discussion_r108717162",
+      "id" : 108717162,
+      "original_commit_id" : "717ad131f6b665b2e7cf55db689da9616e727d78",
+      "original_position" : 143,
+      "path" : "test/functional/assumevalid.py",
+      "position" : 143,
+      "pull_request_review_id" : 29766929,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10073",
+      "updated_at" : "2017-03-29T16:03:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108717162",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   }
+]

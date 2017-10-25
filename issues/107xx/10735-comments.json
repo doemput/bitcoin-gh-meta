@@ -1,0 +1,492 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r125320386"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125320386"
+         }
+      },
+      "body" : "While you're at it, make these `static const` ?",
+      "commit_id" : "dcc0e0f2c93888f904001703a7ef6be11f61a9e4",
+      "created_at" : "2017-07-03T15:56:12Z",
+      "diff_hunk" : "@@ -13,28 +13,30 @@\n \n static void Base58Encode(benchmark::State& state)\n {\n-    unsigned char buff[32] = {\n-        17, 79, 8, 99, 150, 189, 208, 162, 22, 23, 203, 163, 36, 58, 147,\n-        227, 139, 2, 215, 100, 91, 38, 11, 141, 253, 40, 117, 21, 16, 90,\n-        200, 24\n+    std::array<unsigned char, 32> buff = {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r125320386",
+      "id" : 125320386,
+      "original_commit_id" : "397af13a146c8d9c0380d33125006c94c6948ec8",
+      "original_position" : 8,
+      "path" : "src/bench/base58.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47698706,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735",
+      "updated_at" : "2017-07-03T20:00:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125320386",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r125351786"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125351786"
+         }
+      },
+      "body" : "@sipa Good point! Fixed! :-)",
+      "commit_id" : "dcc0e0f2c93888f904001703a7ef6be11f61a9e4",
+      "created_at" : "2017-07-03T20:10:12Z",
+      "diff_hunk" : "@@ -13,28 +13,30 @@\n \n static void Base58Encode(benchmark::State& state)\n {\n-    unsigned char buff[32] = {\n-        17, 79, 8, 99, 150, 189, 208, 162, 22, 23, 203, 163, 36, 58, 147,\n-        227, 139, 2, 215, 100, 91, 38, 11, 141, 253, 40, 117, 21, 16, 90,\n-        200, 24\n+    std::array<unsigned char, 32> buff = {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r125351786",
+      "id" : 125351786,
+      "original_commit_id" : "397af13a146c8d9c0380d33125006c94c6948ec8",
+      "original_position" : 8,
+      "path" : "src/bench/base58.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47733136,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735",
+      "updated_at" : "2017-07-03T20:10:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125351786",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "utACK dcc0e0f2c93888f904001703a7ef6be11f61a9e4",
+      "created_at" : "2017-07-13T07:27:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#issuecomment-314995532",
+      "id" : 314995532,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10735",
+      "updated_at" : "2017-07-13T07:27:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314995532",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "OS X, Apple LLVM version 7.0.2:\r\n```\r\n  CXX      bench/bench_bench_bitcoin-verify_script.o\r\nbench/verify_script.cpp:58:48: error: implicit instantiation of undefined template 'std::__1::array<unsigned char, 32>'\r\n    static const std::array<unsigned char, 32> vchKey = {\r\n                                               ^\r\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__tuple:95:65: note: template is declared here\r\ntemplate <class _Tp, size_t _Size> struct _LIBCPP_TYPE_VIS_ONLY array;\r\n                                                                ^\r\n1 error generated.\r\n```",
+      "created_at" : "2017-07-13T08:36:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#issuecomment-315011180",
+      "id" : 315011180,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10735",
+      "updated_at" : "2017-07-13T08:36:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315011180",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127530159"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127530159"
+         }
+      },
+      "body" : "tiny nit: I might prefer this if it kept the benchmarked-against data on stack instead of heap, but it doesnt matter much.\r\n",
+      "commit_id" : "dcc0e0f2c93888f904001703a7ef6be11f61a9e4",
+      "created_at" : "2017-07-14T19:18:06Z",
+      "diff_hunk" : "@@ -13,28 +13,30 @@\n \n static void Base58Encode(benchmark::State& state)\n {\n-    unsigned char buff[32] = {\n-        17, 79, 8, 99, 150, 189, 208, 162, 22, 23, 203, 163, 36, 58, 147,\n-        227, 139, 2, 215, 100, 91, 38, 11, 141, 253, 40, 117, 21, 16, 90,\n-        200, 24\n+    std::array<unsigned char, 32> buff = {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127530159",
+      "id" : 127530159,
+      "original_commit_id" : "397af13a146c8d9c0380d33125006c94c6948ec8",
+      "original_position" : 8,
+      "path" : "src/bench/base58.cpp",
+      "position" : null,
+      "pull_request_review_id" : 50130578,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735",
+      "updated_at" : "2017-07-14T19:18:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127530159",
+      "user" : {
+         "avatar_url" : "https://avatars4.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127530528"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127530528"
+         }
+      },
+      "body" : "std::array stores on the stack",
+      "commit_id" : "dcc0e0f2c93888f904001703a7ef6be11f61a9e4",
+      "created_at" : "2017-07-14T19:20:06Z",
+      "diff_hunk" : "@@ -13,28 +13,30 @@\n \n static void Base58Encode(benchmark::State& state)\n {\n-    unsigned char buff[32] = {\n-        17, 79, 8, 99, 150, 189, 208, 162, 22, 23, 203, 163, 36, 58, 147,\n-        227, 139, 2, 215, 100, 91, 38, 11, 141, 253, 40, 117, 21, 16, 90,\n-        200, 24\n+    std::array<unsigned char, 32> buff = {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127530528",
+      "id" : 127530528,
+      "original_commit_id" : "397af13a146c8d9c0380d33125006c94c6948ec8",
+      "original_position" : 8,
+      "path" : "src/bench/base58.cpp",
+      "position" : null,
+      "pull_request_review_id" : 50131004,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735",
+      "updated_at" : "2017-07-14T19:20:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127530528",
+      "user" : {
+         "avatar_url" : "https://avatars5.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127563362"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127563362"
+         }
+      },
+      "body" : "static implies not-on-stack, no?",
+      "commit_id" : "dcc0e0f2c93888f904001703a7ef6be11f61a9e4",
+      "created_at" : "2017-07-14T22:48:18Z",
+      "diff_hunk" : "@@ -13,28 +13,30 @@\n \n static void Base58Encode(benchmark::State& state)\n {\n-    unsigned char buff[32] = {\n-        17, 79, 8, 99, 150, 189, 208, 162, 22, 23, 203, 163, 36, 58, 147,\n-        227, 139, 2, 215, 100, 91, 38, 11, 141, 253, 40, 117, 21, 16, 90,\n-        200, 24\n+    std::array<unsigned char, 32> buff = {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127563362",
+      "id" : 127563362,
+      "original_commit_id" : "397af13a146c8d9c0380d33125006c94c6948ec8",
+      "original_position" : 8,
+      "path" : "src/bench/base58.cpp",
+      "position" : null,
+      "pull_request_review_id" : 50168090,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735",
+      "updated_at" : "2017-07-14T22:48:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127563362",
+      "user" : {
+         "avatar_url" : "https://avatars4.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127573325"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127573325"
+         }
+      },
+      "body" : "@TheBlueMatt static const is just statically allocated by the binary, not even on the heap.",
+      "commit_id" : "dcc0e0f2c93888f904001703a7ef6be11f61a9e4",
+      "created_at" : "2017-07-15T01:41:39Z",
+      "diff_hunk" : "@@ -13,28 +13,30 @@\n \n static void Base58Encode(benchmark::State& state)\n {\n-    unsigned char buff[32] = {\n-        17, 79, 8, 99, 150, 189, 208, 162, 22, 23, 203, 163, 36, 58, 147,\n-        227, 139, 2, 215, 100, 91, 38, 11, 141, 253, 40, 117, 21, 16, 90,\n-        200, 24\n+    std::array<unsigned char, 32> buff = {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127573325",
+      "id" : 127573325,
+      "original_commit_id" : "397af13a146c8d9c0380d33125006c94c6948ec8",
+      "original_position" : 8,
+      "path" : "src/bench/base58.cpp",
+      "position" : null,
+      "pull_request_review_id" : 50178835,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735",
+      "updated_at" : "2017-07-15T01:41:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127573325",
+      "user" : {
+         "avatar_url" : "https://avatars5.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127573727"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127573727"
+         }
+      },
+      "body" : "Yes, indeed, my point was to prefer stack over binary or other allocations. It shouldnt matter cause the memory usage of these benchmarks should be trivial, so whatever, it doesnt matter.",
+      "commit_id" : "dcc0e0f2c93888f904001703a7ef6be11f61a9e4",
+      "created_at" : "2017-07-15T01:57:27Z",
+      "diff_hunk" : "@@ -13,28 +13,30 @@\n \n static void Base58Encode(benchmark::State& state)\n {\n-    unsigned char buff[32] = {\n-        17, 79, 8, 99, 150, 189, 208, 162, 22, 23, 203, 163, 36, 58, 147,\n-        227, 139, 2, 215, 100, 91, 38, 11, 141, 253, 40, 117, 21, 16, 90,\n-        200, 24\n+    std::array<unsigned char, 32> buff = {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#discussion_r127573727",
+      "id" : 127573727,
+      "original_commit_id" : "397af13a146c8d9c0380d33125006c94c6948ec8",
+      "original_position" : 8,
+      "path" : "src/bench/base58.cpp",
+      "position" : null,
+      "pull_request_review_id" : 50179213,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10735",
+      "updated_at" : "2017-07-15T01:57:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127573727",
+      "user" : {
+         "avatar_url" : "https://avatars4.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@paveljanik Missing `#include <array>` added. Thanks for reviewing! :-)",
+      "created_at" : "2017-07-15T12:27:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#issuecomment-315530846",
+      "id" : 315530846,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10735",
+      "updated_at" : "2017-07-15T12:27:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315530846",
+      "user" : {
+         "avatar_url" : "https://avatars7.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "utACK https://github.com/bitcoin/bitcoin/pull/10735/commits/6835cb0ab26c913423cc2307c989579d05aabdcb",
+      "created_at" : "2017-07-15T13:05:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#issuecomment-315532837",
+      "id" : 315532837,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10735",
+      "updated_at" : "2017-07-15T13:05:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315532837",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/6848764?v=4",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "utACK 6835cb0ab26c913423cc2307c989579d05aabdcb",
+      "created_at" : "2017-07-15T18:02:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#issuecomment-315551566",
+      "id" : 315551566,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10735",
+      "updated_at" : "2017-07-15T18:02:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315551566",
+      "user" : {
+         "avatar_url" : "https://avatars5.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK 6835cb0ab26c913423cc2307c989579d05aabdcb",
+      "created_at" : "2017-07-16T15:19:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10735#issuecomment-315616142",
+      "id" : 315616142,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10735",
+      "updated_at" : "2017-07-16T15:19:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315616142",
+      "user" : {
+         "avatar_url" : "https://avatars4.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   }
+]

@@ -1,0 +1,309 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8635#discussion_r77512976"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8635"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77512976"
+         }
+      },
+      "body" : "I believe this is harmless in this specific case, but not necessary, and makes reasoning about forking risks much harder. The flags enabled for block validation should purely depend on consensus rules.\n",
+      "commit_id" : "234d2e63cb8245f2b05e45abdfee837e26b92b4d",
+      "created_at" : "2016-09-05T12:12:48Z",
+      "diff_hunk" : "@@ -2405,6 +2408,11 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     std::vector<std::pair<uint256, CDiskTxPos> > vPos;\n     vPos.reserve(block.vtx.size());\n     blockundo.vtxundo.reserve(block.vtx.size() - 1);\n+    bool fHaveWitness = false;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8635#discussion_r77512976",
+      "id" : 77512976,
+      "original_commit_id" : "b47f7a07dcd06fd03a1942bf63576d6298054b3a",
+      "original_position" : 66,
+      "path" : "src/main.cpp",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8635",
+      "updated_at" : "2017-02-16T11:38:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77512976",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8635#discussion_r77536123"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8635"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77536123"
+         }
+      },
+      "body" : "This piece of code is removed in #8525. It may be worth it to rebase on top of that, to reduce the changes?\n",
+      "commit_id" : "234d2e63cb8245f2b05e45abdfee837e26b92b4d",
+      "created_at" : "2016-09-05T15:22:16Z",
+      "diff_hunk" : "@@ -1492,12 +1494,12 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C\n \n         // Check against previous transactions\n         // This is done last to help prevent CPU exhaustion denial-of-service attacks.\n-        if (!CheckInputs(tx, state, view, true, scriptVerifyFlags, true)) {\n+        if (!CheckInputs(tx, state, view, true, scriptVerifyFlags, true, NULL, fHaveWitness)) {\n             // SCRIPT_VERIFY_CLEANSTACK requires SCRIPT_VERIFY_WITNESS, so we\n             // need to turn both off, and compare against just turning off CLEANSTACK\n             // to see if the failure is specifically due to witness validation.\n-            if (CheckInputs(tx, state, view, true, scriptVerifyFlags & ~(SCRIPT_VERIFY_WITNESS | SCRIPT_VERIFY_CLEANSTACK), true) &&\n-                !CheckInputs(tx, state, view, true, scriptVerifyFlags & ~SCRIPT_VERIFY_CLEANSTACK, true)) {\n+            if (CheckInputs(tx, state, view, true, scriptVerifyFlags & ~(SCRIPT_VERIFY_WITNESS | SCRIPT_VERIFY_CLEANSTACK), true, NULL, fHaveWitness) &&",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8635#discussion_r77536123",
+      "id" : 77536123,
+      "original_commit_id" : "b47f7a07dcd06fd03a1942bf63576d6298054b3a",
+      "original_position" : 20,
+      "path" : "src/main.cpp",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8635",
+      "updated_at" : "2017-02-16T11:38:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77536123",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8635#discussion_r77537615"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8635"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77537615"
+         }
+      },
+      "body" : "Actually, this shouldn't even have any effect. Since flags in the call to `CheckInputs` below only contains consensus flags, it should never overlap with STANDARD_NOT_MANDATORY_SEGWIT_VERIFY_FLAGS.\n",
+      "commit_id" : "234d2e63cb8245f2b05e45abdfee837e26b92b4d",
+      "created_at" : "2016-09-05T15:36:48Z",
+      "diff_hunk" : "@@ -2405,6 +2408,11 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     std::vector<std::pair<uint256, CDiskTxPos> > vPos;\n     vPos.reserve(block.vtx.size());\n     blockundo.vtxundo.reserve(block.vtx.size() - 1);\n+    bool fHaveWitness = false;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8635#discussion_r77537615",
+      "id" : 77537615,
+      "original_commit_id" : "b47f7a07dcd06fd03a1942bf63576d6298054b3a",
+      "original_position" : 66,
+      "path" : "src/main.cpp",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8635",
+      "updated_at" : "2017-02-16T11:38:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77537615",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Rebased and removed the codes for block validation",
+      "created_at" : "2016-09-08T13:44:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8635#issuecomment-245601634",
+      "id" : 245601634,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8635",
+      "updated_at" : "2016-09-08T13:44:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/245601634",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/8403418?v=3",
+         "events_url" : "https://api.github.com/users/jl2012/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jl2012/followers",
+         "following_url" : "https://api.github.com/users/jl2012/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jl2012/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jl2012",
+         "id" : 8403418,
+         "login" : "jl2012",
+         "organizations_url" : "https://api.github.com/users/jl2012/orgs",
+         "received_events_url" : "https://api.github.com/users/jl2012/received_events",
+         "repos_url" : "https://api.github.com/users/jl2012/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jl2012/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jl2012/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jl2012"
+      }
+   },
+   {
+      "body" : "Is this a target of 0.13.1?",
+      "created_at" : "2016-09-08T17:00:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8635#issuecomment-245665810",
+      "id" : 245665810,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8635",
+      "updated_at" : "2016-09-08T17:00:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/245665810",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/8403418?v=3",
+         "events_url" : "https://api.github.com/users/jl2012/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jl2012/followers",
+         "following_url" : "https://api.github.com/users/jl2012/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jl2012/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jl2012",
+         "id" : 8403418,
+         "login" : "jl2012",
+         "organizations_url" : "https://api.github.com/users/jl2012/orgs",
+         "received_events_url" : "https://api.github.com/users/jl2012/received_events",
+         "repos_url" : "https://api.github.com/users/jl2012/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jl2012/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jl2012/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jl2012"
+      }
+   },
+   {
+      "body" : "Looks like you snagged a couple commits from another PR in here. That intentional?\r\n\r\nFollowing this logic, any follow-up softfork from Core codebase would assume previous softforks will be followed then?",
+      "created_at" : "2016-09-12T17:50:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8635#issuecomment-246432019",
+      "id" : 246432019,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8635",
+      "updated_at" : "2016-09-12T17:50:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/246432019",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "@instagibbs I just rebased on top of that PR. It was not merged at that time. Should I rebase again?\r\n\r\nThis one is special. Since segwit is a completely new tx format, there is no excuse for not respecting any known softforks, which have been enforced for months.\r\n\r\nFollowing this logic, it should have been mandatory for version 2 transactions to follow all existing softforks (expect segwit), since no one should produce or relay v2 tx without knowing BIP68.\r\n\r\nHowever, before the CSV softfork, we couldn't simply enforce mandatory flags since no change had been made in transaction version or format.",
+      "created_at" : "2016-09-12T18:14:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8635#issuecomment-246439740",
+      "id" : 246439740,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8635",
+      "updated_at" : "2016-09-12T18:14:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/246439740",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/8403418?v=3",
+         "events_url" : "https://api.github.com/users/jl2012/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jl2012/followers",
+         "following_url" : "https://api.github.com/users/jl2012/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jl2012/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jl2012",
+         "id" : 8403418,
+         "login" : "jl2012",
+         "organizations_url" : "https://api.github.com/users/jl2012/orgs",
+         "received_events_url" : "https://api.github.com/users/jl2012/received_events",
+         "repos_url" : "https://api.github.com/users/jl2012/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jl2012/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jl2012/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jl2012"
+      }
+   },
+   {
+      "body" : "Needs rebase. Not sure what the real value of this is, though...why is it a serious offense to relay such blocks? (we'd need careful to avoid any potential network-splitting issues with compact-fast-relay).",
+      "created_at" : "2017-07-11T20:42:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8635#issuecomment-314565474",
+      "id" : 314565474,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8635",
+      "updated_at" : "2017-07-11T20:42:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314565474",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "close due to lack of interests",
+      "created_at" : "2017-10-06T07:11:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8635#issuecomment-334676910",
+      "id" : 334676910,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8635",
+      "updated_at" : "2017-10-06T07:11:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334676910",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/8403418?v=4",
+         "events_url" : "https://api.github.com/users/jl2012/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jl2012/followers",
+         "following_url" : "https://api.github.com/users/jl2012/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jl2012/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jl2012",
+         "id" : 8403418,
+         "login" : "jl2012",
+         "organizations_url" : "https://api.github.com/users/jl2012/orgs",
+         "received_events_url" : "https://api.github.com/users/jl2012/received_events",
+         "repos_url" : "https://api.github.com/users/jl2012/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jl2012/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jl2012/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jl2012"
+      }
+   }
+]

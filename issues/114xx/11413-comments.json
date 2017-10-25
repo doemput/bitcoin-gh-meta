@@ -1,0 +1,402 @@
+[
+   {
+      "author_association" : "MEMBER",
+      "body" : "Not opposed to add that. Though IMO the more experience users (which are those who may use explicit fee-rates) should use create/fund/sendrawtx.\r\n\r\nConcept ACK",
+      "created_at" : "2017-09-28T14:19:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#issuecomment-332851094",
+      "id" : 332851094,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11413",
+      "updated_at" : "2017-09-28T14:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332851094",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141638786"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141638786"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "The intent sounds more like no estimation so `{\"NONE\", FeeEstimateMode::NONE}`?",
+      "commit_id" : "1768936ee2804df4ec62bb9a4202962c8566a83c",
+      "created_at" : "2017-09-28T14:43:36Z",
+      "diff_hunk" : "@@ -54,6 +54,7 @@ bool FeeModeFromString(const std::string& mode_string, FeeEstimateMode& fee_esti\n         {\"UNSET\", FeeEstimateMode::UNSET},\n         {\"ECONOMICAL\", FeeEstimateMode::ECONOMICAL},\n         {\"CONSERVATIVE\", FeeEstimateMode::CONSERVATIVE},\n+        {\"EXPLICIT\", FeeEstimateMode::EXPLICIT},",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141638786",
+      "id" : 141638786,
+      "original_commit_id" : "973f9a88ac883dbd52b62b35c46e2e432249c979",
+      "original_position" : 4,
+      "path" : "src/policy/fees.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 65884527,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413",
+      "updated_at" : "2017-09-29T02:20:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141638786",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141639109"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141639109"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Mention that `estimate_mode` must be set to (currenlty) `EXPLICIT` to use this value?",
+      "commit_id" : "1768936ee2804df4ec62bb9a4202962c8566a83c",
+      "created_at" : "2017-09-28T14:44:49Z",
+      "diff_hunk" : "@@ -445,12 +445,15 @@ UniValue sendtoaddress(const JSONRPCRequest& request)\n             \"       \\\"UNSET\\\"\\n\"\n             \"       \\\"ECONOMICAL\\\"\\n\"\n             \"       \\\"CONSERVATIVE\\\"\\n\"\n+            \"       \\\"EXPLICIT\\\"\\n\"\n+            \"9. feerate                (numeric, optional) Fee rate (sat/kb) to use for EXPLICIT mode.\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141639109",
+      "id" : 141639109,
+      "original_commit_id" : "973f9a88ac883dbd52b62b35c46e2e432249c979",
+      "original_position" : 14,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65884527,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413",
+      "updated_at" : "2017-09-29T02:20:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141639109",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141639175"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141639175"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Add test for error.",
+      "commit_id" : "1768936ee2804df4ec62bb9a4202962c8566a83c",
+      "created_at" : "2017-09-28T14:45:05Z",
+      "diff_hunk" : "@@ -494,6 +497,12 @@ UniValue sendtoaddress(const JSONRPCRequest& request)\n         }\n     }\n \n+    if (!request.params[8].isNull()) {\n+        if (coin_control.m_fee_mode != FeeEstimateMode::EXPLICIT) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Explicit fee rate can only be used when estimate mode is set to EXPLICIT\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141639175",
+      "id" : 141639175,
+      "original_commit_id" : "973f9a88ac883dbd52b62b35c46e2e432249c979",
+      "original_position" : 31,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 31,
+      "pull_request_review_id" : 65884527,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413",
+      "updated_at" : "2017-09-29T02:20:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141639175",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Concept ACK. I don't like that this results in sendtoaddress having 8 parameters but I don't see an immediately obvious way to avoid that.\r\n\r\nSendmany could get it too?",
+      "created_at" : "2017-09-28T16:29:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#issuecomment-332891318",
+      "id" : 332891318,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11413",
+      "updated_at" : "2017-09-28T16:29:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332891318",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141768042"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141768042"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "I don't know. People could mistake that to mean \"no fee\".",
+      "commit_id" : "1768936ee2804df4ec62bb9a4202962c8566a83c",
+      "created_at" : "2017-09-29T00:39:47Z",
+      "diff_hunk" : "@@ -54,6 +54,7 @@ bool FeeModeFromString(const std::string& mode_string, FeeEstimateMode& fee_esti\n         {\"UNSET\", FeeEstimateMode::UNSET},\n         {\"ECONOMICAL\", FeeEstimateMode::ECONOMICAL},\n         {\"CONSERVATIVE\", FeeEstimateMode::CONSERVATIVE},\n+        {\"EXPLICIT\", FeeEstimateMode::EXPLICIT},",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141768042",
+      "id" : 141768042,
+      "in_reply_to_id" : 141638786,
+      "original_commit_id" : "973f9a88ac883dbd52b62b35c46e2e432249c979",
+      "original_position" : 4,
+      "path" : "src/policy/fees.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 66035052,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413",
+      "updated_at" : "2017-09-29T02:20:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141768042",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/250224?v=4",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141768072"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141768072"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "`to use for EXPLICIT mode` is not enough?",
+      "commit_id" : "1768936ee2804df4ec62bb9a4202962c8566a83c",
+      "created_at" : "2017-09-29T00:40:04Z",
+      "diff_hunk" : "@@ -445,12 +445,15 @@ UniValue sendtoaddress(const JSONRPCRequest& request)\n             \"       \\\"UNSET\\\"\\n\"\n             \"       \\\"ECONOMICAL\\\"\\n\"\n             \"       \\\"CONSERVATIVE\\\"\\n\"\n+            \"       \\\"EXPLICIT\\\"\\n\"\n+            \"9. feerate                (numeric, optional) Fee rate (sat/kb) to use for EXPLICIT mode.\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r141768072",
+      "id" : 141768072,
+      "in_reply_to_id" : 141639109,
+      "original_commit_id" : "973f9a88ac883dbd52b62b35c46e2e432249c979",
+      "original_position" : 14,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66035086,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413",
+      "updated_at" : "2017-09-29T02:20:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141768072",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/250224?v=4",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Can't fix people putting too high fees in, but if they put too low, they should be able to bump the fee unless they specifically disable it. As such, RBF is default-on when fees are explicit (3d14d35).\r\n\r\n@promag Added tests (1768936).\r\n\r\n@esotericnonsense I don't know how frequently this will be used. I suggest it for sendtoaddress because I see a lot of people asking how to fire off a tx with a given fee. There's also `settxfee`.",
+      "created_at" : "2017-09-29T02:22:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#issuecomment-333013746",
+      "id" : 333013746,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11413",
+      "updated_at" : "2017-09-29T02:24:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333013746",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/250224?v=4",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Re: the 8 parameter issue @esotericnonsense mentioned, it would be cleaner to convert most parameters to a JSON object input like `bumpfee`, `listunspent`, etc. use since most are independent of each other and optional",
+      "created_at" : "2017-09-29T12:45:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#issuecomment-333116435",
+      "id" : 333116435,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11413",
+      "updated_at" : "2017-09-29T12:45:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333116435",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r142021679"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142021679"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Self-nit: space after `\"feerate\"`",
+      "commit_id" : "1768936ee2804df4ec62bb9a4202962c8566a83c",
+      "created_at" : "2017-10-01T06:17:58Z",
+      "diff_hunk" : "@@ -39,6 +39,7 @@ static const CRPCConvertParam vRPCConvertParams[] =\n     { \"sendtoaddress\", 4, \"subtractfeefromamount\" },\n     { \"sendtoaddress\", 5 , \"replaceable\" },\n     { \"sendtoaddress\", 6 , \"conf_target\" },\n+    { \"sendtoaddress\", 8, \"feerate\"},",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11413#discussion_r142021679",
+      "id" : 142021679,
+      "original_commit_id" : "1768936ee2804df4ec62bb9a4202962c8566a83c",
+      "original_position" : 4,
+      "path" : "src/rpc/client.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 66328812,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11413",
+      "updated_at" : "2017-10-01T06:19:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142021679",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/250224?v=4",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   }
+]

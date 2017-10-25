@@ -1,0 +1,586 @@
+[
+   {
+      "body" : "Also includes a simple mempool limiting RPC test, PR passed this new test (confirmations = 0) as well as the `txn_doublespend.py` (confirmations = -1).",
+      "created_at" : "2015-11-20T12:28:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#issuecomment-158384251",
+      "id" : 158384251,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7067",
+      "updated_at" : "2015-11-20T12:28:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158384251",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Added two commits:\r\n\r\n* 4006e1e69a932544bae8cb704e10b2f8bf49494c reaccept/rebroadcast all wtx with a height of 0 (the current code only reaccepted wtx with a height of < 0 which is the indicator for conflicted wtx). IMO it shouldn't hurt if we try to `AcceptToMemoryPool()` an already existing wtx.\r\n\r\n* 88c1ed7f7a7e62032e629e701353031eeb977cab does prevent wtxs from being markt as conflicted if they already known in the utxo set\r\n\r\nAll tests are passing.",
+      "created_at" : "2015-11-20T13:57:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#issuecomment-158409063",
+      "id" : 158409063,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7067",
+      "updated_at" : "2015-11-20T13:57:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158409063",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2015-11-20T14:20:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#issuecomment-158413502",
+      "id" : 158413502,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7067",
+      "updated_at" : "2015-11-20T14:20:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158413502",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "@gmaxwell: Thanks for testing!\r\nYour absolutely right. The test order was wrong. Fixed, .. now lets see if travis can pass the `walletbackup.py` RPC test.",
+      "created_at" : "2015-11-24T12:03:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#issuecomment-159248089",
+      "id" : 159248089,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7067",
+      "updated_at" : "2015-11-24T12:03:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159248089",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Reviewing, haven't tested. Will test when robo tests pass! :) ",
+      "created_at" : "2015-11-24T12:18:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#issuecomment-159250754",
+      "id" : 159250754,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7067",
+      "updated_at" : "2015-11-24T12:18:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159250754",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "binaries if some likes to test without self-compiling: https://bitcoin.jonasschnelli.ch/pulls/7067/",
+      "created_at" : "2015-11-25T14:46:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#issuecomment-159629461",
+      "id" : 159629461,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7067",
+      "updated_at" : "2015-11-25T14:46:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159629461",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45990609"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45990609"
+         }
+      },
+      "body" : "The conflicted check can move up here (no need to compute depth in that case).",
+      "commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "created_at" : "2015-11-26T15:47:45Z",
+      "diff_hunk" : "@@ -2849,8 +2870,8 @@ int CMerkleTx::GetDepthInMainChain(const CBlockIndex* &pindexRet) const\n {\n     AssertLockHeld(cs_main);\n     int nResult = GetDepthInMainChainINTERNAL(pindexRet);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45990609",
+      "id" : 45990609,
+      "original_commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "original_position" : 40,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 40,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067",
+      "updated_at" : "2015-11-26T15:47:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45990609",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45990851"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45990851"
+         }
+      },
+      "body" : "This is recursive logic. You're computing the value of the conflicted flag based on the output of GetDepthInMainChain, while conflicted is used to determine the output value of it. I know it doesn't matter here because you check for 0 or -1, but it's be much cleaner to call the INTERNAL version here, I think?",
+      "commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "created_at" : "2015-11-26T15:50:35Z",
+      "diff_hunk" : "@@ -289,6 +289,27 @@ void CWallet::SetBestChain(const CBlockLocator& loc)\n {\n     CWalletDB walletdb(strWalletFile);\n     walletdb.WriteBestBlock(loc);\n+\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdatedBlockTip(const CBlockIndex *pindex)\n+{\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdateConflicted()\n+{\n+    //check for conflicted transactions\n+    LOCK2(cs_main, cs_wallet);\n+    for (map<uint256, CWalletTx>::iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)\n+    {\n+        CWalletTx* wtx = &((*it).second);\n+\n+        // update the conflicted cache flag\n+        if (wtx->GetDepthInMainChain() <= 0)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45990851",
+      "id" : 45990851,
+      "original_commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "original_position" : 22,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 22,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067",
+      "updated_at" : "2015-11-26T15:50:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45990851",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45990901"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45990901"
+         }
+      },
+      "body" : "Iterating over all wallet transactions on every block update? That seems very inefficient...",
+      "commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "created_at" : "2015-11-26T15:51:10Z",
+      "diff_hunk" : "@@ -289,6 +289,27 @@ void CWallet::SetBestChain(const CBlockLocator& loc)\n {\n     CWalletDB walletdb(strWalletFile);\n     walletdb.WriteBestBlock(loc);\n+\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdatedBlockTip(const CBlockIndex *pindex)\n+{\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdateConflicted()\n+{\n+    //check for conflicted transactions\n+    LOCK2(cs_main, cs_wallet);\n+    for (map<uint256, CWalletTx>::iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45990901",
+      "id" : 45990901,
+      "original_commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "original_position" : 17,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 17,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067",
+      "updated_at" : "2015-11-26T15:51:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45990901",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45990941"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45990941"
+         }
+      },
+      "body" : "This accesses pcoinsTip, so it also needs to lock cs_main.",
+      "commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "created_at" : "2015-11-26T15:51:29Z",
+      "diff_hunk" : "@@ -800,6 +800,37 @@ static std::string FormatStateMessage(const CValidationState &state)\n         state.GetRejectCode());\n }\n \n+bool CheckForConflicts(const CTransaction &tx)\n+{\n+    LOCK(mempool.cs);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45990941",
+      "id" : 45990941,
+      "original_commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "original_position" : 6,
+      "path" : "src/main.cpp",
+      "position" : 6,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067",
+      "updated_at" : "2015-11-26T15:51:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45990941",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45991952"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45991952"
+         }
+      },
+      "body" : "This PR changes `GetDepthInMainChain()` that it only calls `GetDepthInMainChainINTERNAL`, *plus* it evaluates the boolean cache flag if the transaction is conflicted.\r\nShould be okay IMO.",
+      "commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "created_at" : "2015-11-26T16:01:53Z",
+      "diff_hunk" : "@@ -289,6 +289,27 @@ void CWallet::SetBestChain(const CBlockLocator& loc)\n {\n     CWalletDB walletdb(strWalletFile);\n     walletdb.WriteBestBlock(loc);\n+\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdatedBlockTip(const CBlockIndex *pindex)\n+{\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdateConflicted()\n+{\n+    //check for conflicted transactions\n+    LOCK2(cs_main, cs_wallet);\n+    for (map<uint256, CWalletTx>::iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)\n+    {\n+        CWalletTx* wtx = &((*it).second);\n+\n+        // update the conflicted cache flag\n+        if (wtx->GetDepthInMainChain() <= 0)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45991952",
+      "id" : 45991952,
+      "original_commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "original_position" : 22,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 22,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067",
+      "updated_at" : "2015-11-26T16:01:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45991952",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45992043"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45992043"
+         }
+      },
+      "body" : "Right.. but this only gets when fInitialSync = false. But I agree and I could not found a better solution...",
+      "commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "created_at" : "2015-11-26T16:02:53Z",
+      "diff_hunk" : "@@ -289,6 +289,27 @@ void CWallet::SetBestChain(const CBlockLocator& loc)\n {\n     CWalletDB walletdb(strWalletFile);\n     walletdb.WriteBestBlock(loc);\n+\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdatedBlockTip(const CBlockIndex *pindex)\n+{\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdateConflicted()\n+{\n+    //check for conflicted transactions\n+    LOCK2(cs_main, cs_wallet);\n+    for (map<uint256, CWalletTx>::iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45992043",
+      "id" : 45992043,
+      "original_commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "original_position" : 17,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 17,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067",
+      "updated_at" : "2015-11-26T16:02:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45992043",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45992532"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45992532"
+         }
+      },
+      "body" : "You could have a ```const CTxMemPool& pool``` parameter instead of using the global mempool (like AcceptToMemoryPool).\r\nThe same goes for pcoinsTip.",
+      "commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "created_at" : "2015-11-26T16:09:14Z",
+      "diff_hunk" : "@@ -800,6 +800,37 @@ static std::string FormatStateMessage(const CValidationState &state)\n         state.GetRejectCode());\n }\n \n+bool CheckForConflicts(const CTransaction &tx)\n+{\n+    LOCK(mempool.cs);\n+\n+    CCoinsView dummy;\n+    CCoinsViewCache view(&dummy);\n+\n+    CCoinsViewMemPool viewMemPool(pcoinsTip, mempool);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45992532",
+      "id" : 45992532,
+      "original_commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "original_position" : 11,
+      "path" : "src/main.cpp",
+      "position" : 11,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067",
+      "updated_at" : "2015-11-26T16:09:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45992532",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45993334"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45993334"
+         }
+      },
+      "body" : "I don't disagree that it is okay. But it's extremely ugly (and very easily turned into an inconsistent result if the logic ever gets changed).",
+      "commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "created_at" : "2015-11-26T16:17:26Z",
+      "diff_hunk" : "@@ -289,6 +289,27 @@ void CWallet::SetBestChain(const CBlockLocator& loc)\n {\n     CWalletDB walletdb(strWalletFile);\n     walletdb.WriteBestBlock(loc);\n+\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdatedBlockTip(const CBlockIndex *pindex)\n+{\n+    UpdateConflicted();\n+}\n+\n+void CWallet::UpdateConflicted()\n+{\n+    //check for conflicted transactions\n+    LOCK2(cs_main, cs_wallet);\n+    for (map<uint256, CWalletTx>::iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)\n+    {\n+        CWalletTx* wtx = &((*it).second);\n+\n+        // update the conflicted cache flag\n+        if (wtx->GetDepthInMainChain() <= 0)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#discussion_r45993334",
+      "id" : 45993334,
+      "original_commit_id" : "76972400c54210ce68a02458b2642de18c3c1f7a",
+      "original_position" : 22,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 22,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7067",
+      "updated_at" : "2015-11-26T16:18:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45993334",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "See alternative (but more invasive change) in #7105.",
+      "created_at" : "2015-11-28T12:58:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#issuecomment-160292293",
+      "id" : 160292293,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7067",
+      "updated_at" : "2015-11-28T12:58:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160292293",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Closing in favor of #7105",
+      "created_at" : "2015-11-28T14:42:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7067#issuecomment-160306231",
+      "id" : 160306231,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7067",
+      "updated_at" : "2015-11-28T14:42:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160306231",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   }
+]

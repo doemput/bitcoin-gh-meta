@@ -1,0 +1,625 @@
+[
+   {
+      "body" : "Negative fee rates imply that you pay a smaller, more negative fee the larger the transaction? What do negative fees even mean, steal from the miner? Or is this so that anti-transactions of negative size pay a positive fee?\r\n\r\nI'd say this is an edge case better to get rid of (e.g. assert or throw an error).",
+      "created_at" : "2016-04-03T11:28:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-204947683",
+      "id" : 204947683,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-03T11:29:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/204947683",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Uninformed guess: maybe they are relevant for priotizetransaction?\n",
+      "created_at" : "2016-04-03T11:30:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-204947736",
+      "id" : 204947736,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-03T11:30:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/204947736",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "According to @MarcoFalke they already don't work on 64-bit architectures, which is probably 90%+ of all nodes. Better to remove it for 32 bit as well.\r\n",
+      "created_at" : "2016-04-03T11:31:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-204947781",
+      "id" : 204947781,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-03T11:31:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/204947781",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@sipa is correct\r\n\r\n@laanwj I have pushed the fix as a second commit, so the travis result can be compared. The fix is probably a lot smaller than the fix which  removes support.",
+      "created_at" : "2016-04-03T11:35:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-204948093",
+      "id" : 204948093,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-03T11:35:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/204948093",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r58308944"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/58308944"
+         }
+      },
+      "body" : "Instead of the temporary variable, why not just:\r\n\r\n    nSatoshisPerK = nFeePaid * 1000 / static_cast<int64_t>(nSize);\r\n\r\nAlso at least theoretically you should handle the case where nSize is outside the range of `int64_t`, though I doubt someone will ever care about transactions that large.",
+      "commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "created_at" : "2016-04-03T11:46:47Z",
+      "diff_hunk" : "@@ -9,16 +9,18 @@\n \n const std::string CURRENCY_UNIT = \"BTC\";\n \n-CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize)\n+CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize_)\n {\n+    int64_t nSize = nSize_;\n     if (nSize > 0)\n-        nSatoshisPerK = nFeePaid*1000/nSize;\n+        nSatoshisPerK = nFeePaid * 1000 / nSize;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r58308944",
+      "id" : 58308944,
+      "original_commit_id" : "fa064427abbddbdc93e767ac662cc9803c333975",
+      "original_position" : 10,
+      "path" : "src/amount.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796",
+      "updated_at" : "2016-04-09T13:28:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/58308944",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Ok, at least document this then, for example in the doc comment of the constructor. It's extremely unintuitive to me and probably to others reading this code as well.\r\n",
+      "created_at" : "2016-04-03T11:48:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-204949199",
+      "id" : 204949199,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-03T11:48:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/204949199",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r58309089"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/58309089"
+         }
+      },
+      "body" : "If it is used more than once, you'd rather want to do the cast only once. I guess an alternative would be to change it in the constructor arguments, but that is less verbose, imo.",
+      "commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "created_at" : "2016-04-03T12:00:42Z",
+      "diff_hunk" : "@@ -9,16 +9,18 @@\n \n const std::string CURRENCY_UNIT = \"BTC\";\n \n-CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize)\n+CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize_)\n {\n+    int64_t nSize = nSize_;\n     if (nSize > 0)\n-        nSatoshisPerK = nFeePaid*1000/nSize;\n+        nSatoshisPerK = nFeePaid * 1000 / nSize;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r58309089",
+      "id" : 58309089,
+      "original_commit_id" : "fa064427abbddbdc93e767ac662cc9803c333975",
+      "original_position" : 10,
+      "path" : "src/amount.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796",
+      "updated_at" : "2016-04-09T13:28:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/58309089",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Ok, will add the doc later...",
+      "created_at" : "2016-04-03T12:00:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-204951227",
+      "id" : 204951227,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-03T12:00:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/204951227",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r58309225"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/58309225"
+         }
+      },
+      "body" : "> I guess an alternative would be to change it in the constructor arguments\r\n\r\nI thought of that, but didn't mention it at second thought. Before you know it people will want full support for negative sizes as well. The appropriate type is size_t.\r\n",
+      "commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "created_at" : "2016-04-03T12:12:37Z",
+      "diff_hunk" : "@@ -9,16 +9,18 @@\n \n const std::string CURRENCY_UNIT = \"BTC\";\n \n-CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize)\n+CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize_)\n {\n+    int64_t nSize = nSize_;\n     if (nSize > 0)\n-        nSatoshisPerK = nFeePaid*1000/nSize;\n+        nSatoshisPerK = nFeePaid * 1000 / nSize;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r58309225",
+      "id" : 58309225,
+      "original_commit_id" : "fa064427abbddbdc93e767ac662cc9803c333975",
+      "original_position" : 10,
+      "path" : "src/amount.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796",
+      "updated_at" : "2016-04-09T13:28:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/58309225",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "ping @sdaftuar ",
+      "created_at" : "2016-04-03T13:54:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-204981991",
+      "id" : 204981991,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-03T13:54:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/204981991",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "I think it's probably better to fix support for negative fee rates on 64-bit platforms, because (a) fixing the `prioritisetransaction` RPC to disallow negative feerates would be difficult/annoying because fee deltas can be stored prior to transaction acceptance, (b) it would be counterintuitive if you called `prioritisetransaction` with -X and then later with X but didn't get back to where you started, and (c) I think there might be legitimate reasons to want to keep an ordering of transactions you don't want to mine right now (which you'd lose if you tried to floor everything at zero, which is the easiest reasonable alternative I can come up with).\r\n\r\nBut to be fair, I'm surprised that no one has complained about this before, because as far as I can tell, up until 0.12, if you used prioritisetransaction to apply a negative feerate, then the mining code would immediately select it as a super-high-fee transaction.  (I stumbled upon this behavior while working on #7063.)\r\n\r\nSo, concept ACK.  I agree with @laanwj's [comment about the cast](https://github.com/bitcoin/bitcoin/pull/7796#discussion_r58308944).  Also, I think it probably makes most sense to enforce the property that `CFeeRate(X).GetFee(size) == -1 * CFeeRate(-X).GetFee(size)`; if everyone agrees, then we should make the special case rounding recently introduced (where we return CFeeRate(1)) also apply in the negative fee rate case.\r\n\r\nAlso, we should add a unit test that exercises the constructor `CFeeRate(const CAmount& nFeePaid, size_t nSize_)` that is changed in this PR.",
+      "created_at" : "2016-04-05T14:08:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-205825692",
+      "id" : 205825692,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-05T14:08:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/205825692",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r59056658"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59056658"
+         }
+      },
+      "body" : "This would require a cast in 4 places instead of two (see diff below) but I am happy to apply the diff an squash. Please let me know how to proceed so we can finalize this.\r\n\r\n```diff\r\ndiff --git a/src/amount.cpp b/src/amount.cpp\r\nindex 7b8618d..3966c5f 100644\r\n--- a/src/amount.cpp\r\n+++ b/src/amount.cpp\r\n@@ -13,8 +13,7 @@ CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nBytes_)\r\n {\r\n     assert(nBytes_ <= uint64_t(std::numeric_limits<int64_t>::max()));\r\n-    int64_t nSize = int64_t(nBytes_);\r\n \r\n-    if (nSize > 0)\r\n-        nSatoshisPerK = nFeePaid * 1000 / nSize;\r\n+    if (int64_t(nBytes_) > 0)\r\n+        nSatoshisPerK = nFeePaid * 1000 / int64_t(nBytes_);\r\n     else\r\n         nSatoshisPerK = 0;\r\n@@ -24,9 +23,8 @@ CAmount CFeeRate::GetFee(size_t nBytes_) const\r\n {\r\n     assert(nBytes_ <= uint64_t(std::numeric_limits<int64_t>::max()));\r\n-    int64_t nSize = int64_t(nBytes_);\r\n \r\n-    CAmount nFee = nSatoshisPerK * nSize / 1000;\r\n+    CAmount nFee = nSatoshisPerK * int64_t(nBytes_) / 1000;\r\n \r\n-    if (nFee == 0 && nSize != 0) {\r\n+    if (nFee == 0 && int64_t(nBytes_) != 0) {\r\n         if (nSatoshisPerK > 0)\r\n             nFee = CAmount(1);\r\n",
+      "commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "created_at" : "2016-04-08T17:01:45Z",
+      "diff_hunk" : "@@ -9,16 +9,18 @@\n \n const std::string CURRENCY_UNIT = \"BTC\";\n \n-CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize)\n+CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize_)\n {\n+    int64_t nSize = nSize_;\n     if (nSize > 0)\n-        nSatoshisPerK = nFeePaid*1000/nSize;\n+        nSatoshisPerK = nFeePaid * 1000 / nSize;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r59056658",
+      "id" : 59056658,
+      "original_commit_id" : "fa064427abbddbdc93e767ac662cc9803c333975",
+      "original_position" : 10,
+      "path" : "src/amount.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796",
+      "updated_at" : "2016-04-09T13:28:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59056658",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "> I think it probably makes most sense to enforce the property that CFeeRate(X).GetFee(size) == -1 * CFeeRate(-X).GetFee(size);\r\n\r\nMakes sense, done.\r\n\r\n> add a unit test that exercises the constructor CFeeRate(const CAmount& nFeePaid, size_t nSize_)\r\n\r\nDone.",
+      "created_at" : "2016-04-08T17:01:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-207516697",
+      "id" : 207516697,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-08T17:01:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/207516697",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Before on 64-bit:\r\n\r\n```\r\ntest/amount_tests.cpp(33): error: feeRate.GetFee(1) == -1 has failed [18446744073709550 != -1]\r\ntest/amount_tests.cpp(34): error: feeRate.GetFee(121) == -121 has failed [18446744073709430 != -121]\r\ntest/amount_tests.cpp(35): error: feeRate.GetFee(999) == -999 has failed [18446744073708552 != -999]\r\ntest/amount_tests.cpp(36): error: feeRate.GetFee(1e3) == -1e3 has failed [18446744073708551 != -1000]\r\ntest/amount_tests.cpp(37): error: feeRate.GetFee(9e3) == -9e3 has failed [18446744073700551 != -9000]\r\ntest/amount_tests.cpp(53): error: feeRate.GetFee(8) == -1 has failed [18446744073709550 != -1]\r\ntest/amount_tests.cpp(54): error: feeRate.GetFee(9) == -1 has failed [18446744073709550 != -1]\r\ntest/amount_tests.cpp(58): error: CFeeRate(CAmount(-1), 1000) == CFeeRate(-1) has failed\r\n```\r\n\r\nAfter:\r\ntests pass\r\n",
+      "created_at" : "2016-04-09T11:54:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-207777672",
+      "id" : 207777672,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-09T11:54:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/207777672",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "utACK facf5a4",
+      "created_at" : "2016-04-14T09:54:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#issuecomment-209857572",
+      "id" : 209857572,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7796",
+      "updated_at" : "2016-04-14T09:54:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/209857572",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r59721346"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59721346"
+         }
+      },
+      "body" : "Couldn't have we just removed this special case from here (ie move this check to the callers that need it)?\r\nI know that would be more disruptive, but it will also make increasing the internal precision easier later.",
+      "commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "created_at" : "2016-04-14T13:58:48Z",
+      "diff_hunk" : "@@ -9,20 +9,30 @@\n \n const std::string CURRENCY_UNIT = \"BTC\";\n \n-CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize)\n+CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nBytes_)\n {\n+    assert(nBytes_ <= uint64_t(std::numeric_limits<int64_t>::max()));\n+    int64_t nSize = int64_t(nBytes_);\n+\n     if (nSize > 0)\n-        nSatoshisPerK = nFeePaid*1000/nSize;\n+        nSatoshisPerK = nFeePaid * 1000 / nSize;\n     else\n         nSatoshisPerK = 0;\n }\n \n-CAmount CFeeRate::GetFee(size_t nSize) const\n+CAmount CFeeRate::GetFee(size_t nBytes_) const\n {\n+    assert(nBytes_ <= uint64_t(std::numeric_limits<int64_t>::max()));\n+    int64_t nSize = int64_t(nBytes_);\n+\n     CAmount nFee = nSatoshisPerK * nSize / 1000;\n \n-    if (nFee == 0 && nSize != 0 && nSatoshisPerK > 0)\n-        nFee = CAmount(1);\n+    if (nFee == 0 && nSize != 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r59721346",
+      "id" : 59721346,
+      "original_commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "original_position" : 27,
+      "path" : "src/amount.cpp",
+      "position" : 27,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796",
+      "updated_at" : "2016-04-14T13:58:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59721346",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r59732039"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59732039"
+         }
+      },
+      "body" : "Sure!\r\n\r\nI am only aware of the wallet using it: https://github.com/bitcoin/bitcoin/blob/430fffefaab6832b8f6605f14a992e7e55b9547e/src/wallet/wallet.cpp#L2335",
+      "commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "created_at" : "2016-04-14T14:55:57Z",
+      "diff_hunk" : "@@ -9,20 +9,30 @@\n \n const std::string CURRENCY_UNIT = \"BTC\";\n \n-CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize)\n+CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nBytes_)\n {\n+    assert(nBytes_ <= uint64_t(std::numeric_limits<int64_t>::max()));\n+    int64_t nSize = int64_t(nBytes_);\n+\n     if (nSize > 0)\n-        nSatoshisPerK = nFeePaid*1000/nSize;\n+        nSatoshisPerK = nFeePaid * 1000 / nSize;\n     else\n         nSatoshisPerK = 0;\n }\n \n-CAmount CFeeRate::GetFee(size_t nSize) const\n+CAmount CFeeRate::GetFee(size_t nBytes_) const\n {\n+    assert(nBytes_ <= uint64_t(std::numeric_limits<int64_t>::max()));\n+    int64_t nSize = int64_t(nBytes_);\n+\n     CAmount nFee = nSatoshisPerK * nSize / 1000;\n \n-    if (nFee == 0 && nSize != 0 && nSatoshisPerK > 0)\n-        nFee = CAmount(1);\n+    if (nFee == 0 && nSize != 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r59732039",
+      "id" : 59732039,
+      "original_commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "original_position" : 27,
+      "path" : "src/amount.cpp",
+      "position" : 27,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796",
+      "updated_at" : "2016-04-14T14:55:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59732039",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r59753604"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59753604"
+         }
+      },
+      "body" : "Oh, that's great. Moving from nSatoshisPerK to 1 was already and step forward. But I've strong reason to believe that this special case was the most important impediment for not being able to \"easily\" do more than *2 on internal precision in #7731(in fact, I don't think it would pass all the tests if I rebased this now due to this change).\r\n\r\nIf you create a PR to move the special case to the wallet only, please ping me for review, I am very interested in seeing that happening. Looking at the code you link to, it looks like that part can actually be simplified as a result, instead of complicating it. But tests will break...",
+      "commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "created_at" : "2016-04-14T17:03:44Z",
+      "diff_hunk" : "@@ -9,20 +9,30 @@\n \n const std::string CURRENCY_UNIT = \"BTC\";\n \n-CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nSize)\n+CFeeRate::CFeeRate(const CAmount& nFeePaid, size_t nBytes_)\n {\n+    assert(nBytes_ <= uint64_t(std::numeric_limits<int64_t>::max()));\n+    int64_t nSize = int64_t(nBytes_);\n+\n     if (nSize > 0)\n-        nSatoshisPerK = nFeePaid*1000/nSize;\n+        nSatoshisPerK = nFeePaid * 1000 / nSize;\n     else\n         nSatoshisPerK = 0;\n }\n \n-CAmount CFeeRate::GetFee(size_t nSize) const\n+CAmount CFeeRate::GetFee(size_t nBytes_) const\n {\n+    assert(nBytes_ <= uint64_t(std::numeric_limits<int64_t>::max()));\n+    int64_t nSize = int64_t(nBytes_);\n+\n     CAmount nFee = nSatoshisPerK * nSize / 1000;\n \n-    if (nFee == 0 && nSize != 0 && nSatoshisPerK > 0)\n-        nFee = CAmount(1);\n+    if (nFee == 0 && nSize != 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7796#discussion_r59753604",
+      "id" : 59753604,
+      "original_commit_id" : "facf5a494708df755a15d63d339412201512e13f",
+      "original_position" : 27,
+      "path" : "src/amount.cpp",
+      "position" : 27,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7796",
+      "updated_at" : "2016-04-14T17:03:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59753604",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   }
+]

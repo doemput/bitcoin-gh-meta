@@ -1,0 +1,580 @@
+[
+   {
+      "body" : "> event_base_loopbreak was not doing what I expected it to. What I expected was that it sets a timeout, given that no other pending events it would exit in N seconds. However, what it does was delay the event loop exit with N seconds, even if nothing is pending.\r\n\r\n~~Sounds like you wanted `event_base_loopexit`? Ref:~~\r\n\r\n> The next event_base_loop() iteration after the given timer expires will complete normally (handling all queued events) then exit without blocking for events again.\r\n\r\n~~In any case, `event_base_loopbreak` should still exit immediately, stopping any `loop`s after the next event:~~\r\n\r\n> event_base_loop() will abort the loop after the next event is completed; event_base_loopbreak() is typically invoked from this event's callback. This behavior is analogous to the \"break;\" statement.\r\n\r\nAre you sure this isn't symptomatic of something else?\r\n\r\nReference: http://www.wangafu.net/~nickm/libevent-2.0/doxygen/html/event_8h.html#a07a7599e478e4031fa8cf52e26d8aa1e\r\n\r\n**edit**: Right, never mind, you were using `event_base_loopexit`, hence the confusion.  You're OP (before it was edited) makes it sound like you switched from `event_base_loopbreak`.",
+      "created_at" : "2015-11-11T21:01:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-155908505",
+      "id" : 155908505,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-13T00:57:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/155908505",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44586134"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44586134"
+         }
+      },
+      "body" : "Out of interest, why do we have to wait [a hard coded timeout]?  Why can't we wait for all events to finish (and maybe just ignore all new incoming connections?)",
+      "commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "created_at" : "2015-11-11T21:06:00Z",
+      "diff_hunk" : "@@ -480,6 +475,14 @@ void StopHTTPServer()\n         workQueue->WaitExit();\n         delete workQueue;\n     }\n+    if (eventBase) {\n+        LogPrint(\"http\", \"Waiting for HTTP event thread to exit\\n\");\n+        // Give event loop a few seconds to exit (to send back last RPC responses), then break it\n+        if (!threadHTTP.try_join_for(boost::chrono::milliseconds(2000))) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44586134",
+      "id" : 44586134,
+      "original_commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "original_position" : 42,
+      "path" : "src/httpserver.cpp",
+      "position" : 42,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990",
+      "updated_at" : "2015-11-11T21:06:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44586134",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2015-11-11T21:06:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-155910770",
+      "id" : 155910770,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-11T21:06:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/155910770",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44586809"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44586809"
+         }
+      },
+      "body" : "> all events to finish\r\n\r\nmay take a long time (minutes) depending what was going in in the past?",
+      "commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "created_at" : "2015-11-11T21:11:48Z",
+      "diff_hunk" : "@@ -480,6 +475,14 @@ void StopHTTPServer()\n         workQueue->WaitExit();\n         delete workQueue;\n     }\n+    if (eventBase) {\n+        LogPrint(\"http\", \"Waiting for HTTP event thread to exit\\n\");\n+        // Give event loop a few seconds to exit (to send back last RPC responses), then break it\n+        if (!threadHTTP.try_join_for(boost::chrono::milliseconds(2000))) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44586809",
+      "id" : 44586809,
+      "original_commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "original_position" : 42,
+      "path" : "src/httpserver.cpp",
+      "position" : 42,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990",
+      "updated_at" : "2015-11-11T21:11:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44586809",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44588682"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44588682"
+         }
+      },
+      "body" : "@MarcoFalke but this doesn't stop new connections (or is that done elsewhere?) in that waiting time.  So conceptually, the status quo could be the same?\r\nThat is, new connections coming in, old ones still finishing. ",
+      "commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "created_at" : "2015-11-11T21:27:44Z",
+      "diff_hunk" : "@@ -480,6 +475,14 @@ void StopHTTPServer()\n         workQueue->WaitExit();\n         delete workQueue;\n     }\n+    if (eventBase) {\n+        LogPrint(\"http\", \"Waiting for HTTP event thread to exit\\n\");\n+        // Give event loop a few seconds to exit (to send back last RPC responses), then break it\n+        if (!threadHTTP.try_join_for(boost::chrono::milliseconds(2000))) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44588682",
+      "id" : 44588682,
+      "original_commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "original_position" : 42,
+      "path" : "src/httpserver.cpp",
+      "position" : 42,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990",
+      "updated_at" : "2015-11-11T21:28:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44588682",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44620210"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44620210"
+         }
+      },
+      "body" : "New connections are stopped just above, see where the accept sockets are torn down.\r\n\r\nThough it does look like we should close connected sockets in http_reject_request_cb as well for good measure. @laanwj Is there a reason to keep them open once they've had a req rejected?",
+      "commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "created_at" : "2015-11-12T04:14:29Z",
+      "diff_hunk" : "@@ -480,6 +475,14 @@ void StopHTTPServer()\n         workQueue->WaitExit();\n         delete workQueue;\n     }\n+    if (eventBase) {\n+        LogPrint(\"http\", \"Waiting for HTTP event thread to exit\\n\");\n+        // Give event loop a few seconds to exit (to send back last RPC responses), then break it\n+        if (!threadHTTP.try_join_for(boost::chrono::milliseconds(2000))) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44620210",
+      "id" : 44620210,
+      "original_commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "original_position" : 42,
+      "path" : "src/httpserver.cpp",
+      "position" : 42,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990",
+      "updated_at" : "2015-11-12T04:14:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44620210",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44625420"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44625420"
+         }
+      },
+      "body" : "- Waiting for all events to finish could take forever. There's tons of ways that someone could keep a connection option by slowly sending data. Also, timing events (such as the `walletpassphrase` timeout) may hold up the event queue.\r\n\r\n- Just breaking off everything in progress immediately prevents the answer to `stop` from getting back. We could just declare this a feature of course and be done with it... But it was a race condition, sometimes you would get a reply, sometimes not. We could then define `stop` to cease all RPC activity immediately. I think I like this better.\r\n\r\n- There AFAIK is no way to ask libevent, nor libevent_http if the events in the queue are important enough to wait for or not. And specially tagging the connection that sends 'stop' is quite ugly, not sure if even possible without diving into internal data structures.\r\n\r\nFor context read #6719.\r\n\r\nI'm not 100% happy with this solution either, but I wasn't able to find another way to do it, and it's better than the previous one.\r\n\r\n@cfields sure, you can close the connection afterwards there, but that doesn't solve this issue. ",
+      "commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "created_at" : "2015-11-12T06:34:22Z",
+      "diff_hunk" : "@@ -480,6 +475,14 @@ void StopHTTPServer()\n         workQueue->WaitExit();\n         delete workQueue;\n     }\n+    if (eventBase) {\n+        LogPrint(\"http\", \"Waiting for HTTP event thread to exit\\n\");\n+        // Give event loop a few seconds to exit (to send back last RPC responses), then break it\n+        if (!threadHTTP.try_join_for(boost::chrono::milliseconds(2000))) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44625420",
+      "id" : 44625420,
+      "original_commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "original_position" : 42,
+      "path" : "src/httpserver.cpp",
+      "position" : 42,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990",
+      "updated_at" : "2015-11-12T06:48:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44625420",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44625742"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44625742"
+         }
+      },
+      "body" : "> @MarcoFalke but this doesn't stop new connections (or is that done elsewhere?) in that waiting time.  So conceptually, the status quo could be the same?\r\n\r\nIt does:\r\n```\r\n        // Unlisten sockets\r\n        BOOST_FOREACH (evhttp_bound_socket *socket, boundSockets) {\r\n            evhttp_del_accept_socket(eventHTTP, socket);\r\n        }\r\n        // Reject requests on current connections\r\n        evhttp_set_gencb(eventHTTP, http_reject_request_cb, NULL);\r\n```\r\nThis closes the port and makes new requests error (so that no new work items are created). But that's best-effort. Current connections could still do e.g. a slowloris attack. The two seconds are a belt and suspenders, nothing more.\r\n",
+      "commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "created_at" : "2015-11-12T06:42:49Z",
+      "diff_hunk" : "@@ -480,6 +475,14 @@ void StopHTTPServer()\n         workQueue->WaitExit();\n         delete workQueue;\n     }\n+    if (eventBase) {\n+        LogPrint(\"http\", \"Waiting for HTTP event thread to exit\\n\");\n+        // Give event loop a few seconds to exit (to send back last RPC responses), then break it\n+        if (!threadHTTP.try_join_for(boost::chrono::milliseconds(2000))) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#discussion_r44625742",
+      "id" : 44625742,
+      "original_commit_id" : "856be4fe46bfc4194afc10f424a03a5fb09af76a",
+      "original_position" : 42,
+      "path" : "src/httpserver.cpp",
+      "position" : 42,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6990",
+      "updated_at" : "2015-11-12T06:42:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44625742",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK.",
+      "created_at" : "2015-11-12T07:46:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-156026958",
+      "id" : 156026958,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-12T07:46:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156026958",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Some more information: it *appears* that with `libevent` master, this issue doesn't exist.\r\n`event_base_loopexit` does actually do what I expect it to in the OP. As that is the version I'm normally using, that is why I didn't notice before.\r\n\r\nEdit: so I think we should still do this for backward compat, but at least I'm not crazy :)",
+      "created_at" : "2015-11-12T08:48:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-156035713",
+      "id" : 156035713,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-12T08:48:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156035713",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@laanwj maybe just inline a comment to mention this *might* be fixed in latest version of libevent?  Could be useful for some future refactoring,  save someone trying to establish whether there was a reason we moved away from it that they aren't aware of.",
+      "created_at" : "2015-11-13T01:00:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-156285416",
+      "id" : 156285416,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-13T01:01:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156285416",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "Will do\r\n\r\nEdit: OK, added comment and updated commit message.",
+      "created_at" : "2015-11-13T09:14:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-156371163",
+      "id" : 156371163,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-13T09:26:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156371163",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Huh! I pushed this branch to bitcoin/bitcoin instead of my own repository. Oh well, no harm done, I'll just remove it again when it's merged.\r\n",
+      "created_at" : "2015-11-13T09:14:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-156371536",
+      "id" : 156371536,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-13T09:14:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156371536",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "~~@theuni can you take a look here as well?~~\r\nEdit: nm, you already did, but didn't ack",
+      "created_at" : "2015-11-13T11:24:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-156402295",
+      "id" : 156402295,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-13T11:25:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156402295",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "ACK.",
+      "created_at" : "2015-11-13T19:32:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-156535903",
+      "id" : 156535903,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-13T19:32:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156535903",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Awesome, thanks @laanwj :)",
+      "created_at" : "2015-11-14T08:51:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-156671746",
+      "id" : 156671746,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-14T08:51:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156671746",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "Post merge tested ACK!\r\n\r\n@laanwj this makes travis a lot faster. (runtime reduced for some rpc tests by 90%)\r\n\r\nBefore:\r\n```\r\n$ time for i in {1..10};do qa/pull-tester/rpc-tests.py disablewallet;done\r\nreal\t1m53.003s\r\nuser\t0m1.135s\r\nsys\t0m0.437s\r\n\r\n$ time for i in {1..10};do qa/pull-tester/rpc-tests.py wallet;done\r\nreal\t10m4.888s\r\nuser\t0m21.829s\r\nsys\t0m8.239s\r\n```\r\n\r\nAfter:\r\n```\r\ndisablewallet:\r\nreal\t0m13.809s\r\nuser\t0m1.166s\r\nsys\t0m0.510s\r\n\r\nwallet:\r\nreal\t5m7.703s\r\nuser\t0m22.128s\r\nsys\t0m8.222s\r\n",
+      "created_at" : "2015-11-15T13:05:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6990#issuecomment-156810422",
+      "id" : 156810422,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6990",
+      "updated_at" : "2015-11-15T13:05:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156810422",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

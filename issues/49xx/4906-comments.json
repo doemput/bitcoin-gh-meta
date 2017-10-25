@@ -446,5 +446,611 @@
          "type" : "User",
          "url" : "https://api.github.com/users/MarcoFalke"
       }
+   },
+   {
+      "body" : "From what I understand ApproximateBestSubset is an approximate algorithm for the following:\r\n```\r\nInput: [sizes], nLow, nTarget\r\nOutput: X=subset([sizes]) for which nTargetValue <= sum(X) < nLow\r\n        and sum(X)-nTargetValue as small as possible\r\n```\r\nThe \"approximate\" part means that it may select a solution which is not the optimal one (e.g. sum(X)-nTargetValue is not really as small as possible).\r\n\r\nYour fix drops elements i from the result X for which sum(X)-i is still >= nTargetvalue, which if possible leads to a trivially better solution.\r\n\r\nFrom what I understand this can improve the result because vValue is sorted from low to high, and elements are added in that order, it can happen that an element is added to get the sum above nTargetValue, but makes earlier-added small elements redundant.\r\n\r\n- What about moving the post-processing step to the end? This removes the performance impact per checked subset, and still makes sure redundant outputs are removed from the final result.\r\n\r\nI've managed to reproduce this as well. For e.g. these input values:\r\n```\r\nvValues = [10, 10, 10, 10, 10, 10, 10, 10, 10, 100, 1000]\r\nnTargetValue = 251\r\n```\r\nApproximateBestSubset sometimes selects `[10, 10, 1000]`. Postprocessing like this can drop the redundant `10` inputs.\r\n\r\nConcept ACK - this cannot make things worse. Would be nice to have a unit test.\r\n",
+      "created_at" : "2015-11-20T15:41:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-158436086",
+      "id" : 158436086,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-11-20T15:41:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158436086",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@laanwj Great that you had a look at this.\r\n\r\n> vValue is sorted from low to high ...\r\n\r\nGuess I missed that during review.\r\n\r\n> unit test\r\n\r\n@Xekyo are you still working on this? Should I take over?",
+      "created_at" : "2015-11-20T16:10:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-158445938",
+      "id" : 158445938,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-11-20T16:10:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158445938",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Hi,\n\nAm 20.11.2015 11:11 schrieb \"MarcoFalke\" <notifications@github.com>:\n> @Xekyo are you still working on this? Should I take over?\n\nI'd be interested to take another look, but I'm currently traveling. Please\nfeel free to take over. Otherwise, I'll check it out in December.\n\nXekyo\n",
+      "created_at" : "2015-11-21T12:30:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-158635121",
+      "id" : 158635121,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-11-21T12:30:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158635121",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "body" : "@laanwj I've edited my fork to move the post-processing step to the end of ApproximateBestSubset. However, this patch may cause fewer dust outputs to be spent which contradicts [Greg's assessment](https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-59698734) above. Are you sure about \"cannot make things work\"? I feel my simulations have been somewhat inconclusive on that point.",
+      "created_at" : "2015-12-06T21:27:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-162349078",
+      "id" : 162349078,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-12-06T21:27:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/162349078",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "body" : "@MarcoFalke I realized my mistake and fixed it. After all my commits, I did the rebase as you suggested, and pushed to \"Fix-#1643\". I hope I did that right. :)",
+      "created_at" : "2015-12-06T22:30:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-162354532",
+      "id" : 162354532,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-12-06T22:30:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/162354532",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "body" : "I've added a simple test with\r\n\r\n       vValues = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 100, 100]\r\n       nTargetValue = 222\r\n\r\nwith an expected `nBest == 230` on one iteration.\r\n\r\nSorry, I'm not sure how I would run the test on my machine right now, so I figured I'd just push it. I'll check back tomorrow.",
+      "created_at" : "2015-12-06T23:26:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-162367721",
+      "id" : 162367721,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-12-06T23:26:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/162367721",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46812792"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46812792"
+         }
+      },
+      "body" : "I think you can just add this to `src/wallet/test/wallet_tests.cpp`.",
+      "commit_id" : "78cc1af61b55fc04b30bf5e5f163a6100197b4a7",
+      "created_at" : "2015-12-07T11:52:37Z",
+      "diff_hunk" : "@@ -0,0 +1,41 @@\n+// Copyright (c) 2011-2013 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+//\n+// Unit tests for coinselection algorithm in wallet\n+//\n+\n+#include \"uint256.h\"\n+#include \"test/test_bitcoin.h\"\n+#include \"wallet.cpp\"\n+\n+#include <boost/test/unit_test.hpp>\n+\n+using namespace std;\n+\n+BOOST_FIXTURE_TEST_SUITE(coinselection_tests, BasicTestingSetup)\n+\n+BOOST_AUTO_TEST_CASE(sanity)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46812792",
+      "id" : 46812792,
+      "original_commit_id" : "238b7a2bd7165bbee2f9ca6c586d25a7d598a613",
+      "original_position" : 19,
+      "path" : "src/test/coinselection_tests.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906",
+      "updated_at" : "2015-12-07T16:37:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46812792",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46835951"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46835951"
+         }
+      },
+      "body" : "Ah thanks, I had been wondering why there was no wallet tests in the regular test directory.",
+      "commit_id" : "78cc1af61b55fc04b30bf5e5f163a6100197b4a7",
+      "created_at" : "2015-12-07T15:50:28Z",
+      "diff_hunk" : "@@ -0,0 +1,41 @@\n+// Copyright (c) 2011-2013 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+//\n+// Unit tests for coinselection algorithm in wallet\n+//\n+\n+#include \"uint256.h\"\n+#include \"test/test_bitcoin.h\"\n+#include \"wallet.cpp\"\n+\n+#include <boost/test/unit_test.hpp>\n+\n+using namespace std;\n+\n+BOOST_FIXTURE_TEST_SUITE(coinselection_tests, BasicTestingSetup)\n+\n+BOOST_AUTO_TEST_CASE(sanity)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46835951",
+      "id" : 46835951,
+      "original_commit_id" : "238b7a2bd7165bbee2f9ca6c586d25a7d598a613",
+      "original_position" : 19,
+      "path" : "src/test/coinselection_tests.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906",
+      "updated_at" : "2015-12-07T16:37:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46835951",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46840187"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46840187"
+         }
+      },
+      "body" : "Nit: indentation",
+      "commit_id" : "78cc1af61b55fc04b30bf5e5f163a6100197b4a7",
+      "created_at" : "2015-12-07T16:19:09Z",
+      "diff_hunk" : "@@ -1625,13 +1625,21 @@ static void ApproximateBestSubset(vector<pair<CAmount, pair<const CWalletTx*,uns\n                             nBest = nTotal;\n                             vfBest = vfIncluded;\n                         }\n-                        nTotal -= vValue[i].first;\n-                        vfIncluded[i] = false;\n                     }\n                 }\n             }\n         }\n     }\n+\n+    //Reduces the approximate best subset by removing any inputs that are smaller than the surplus of nTotal beyond nTargetValue. \n+    for (unsigned int i = 0; i < vValue.size(); i++)\n+    {                        \n+\tif (vfBest[i] && (nBest - vValue[i].first) >= nTargetValue )",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46840187",
+      "id" : 46840187,
+      "original_commit_id" : "238b7a2bd7165bbee2f9ca6c586d25a7d598a613",
+      "original_position" : 24,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906",
+      "updated_at" : "2015-12-07T16:37:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46840187",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46840536"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46840536"
+         }
+      },
+      "body" : "This (along with `&& !fReachedTarget` is a new, different change to the algorithm than the post-processing step initially proposed.\r\n\r\nI think we should separate these into different PRs, the postprocessing to remove extraneous outputs below is obviously correct, but I'm not sure about this.\r\n",
+      "commit_id" : "78cc1af61b55fc04b30bf5e5f163a6100197b4a7",
+      "created_at" : "2015-12-07T16:21:29Z",
+      "diff_hunk" : "@@ -1625,13 +1625,21 @@ static void ApproximateBestSubset(vector<pair<CAmount, pair<const CWalletTx*,uns\n                             nBest = nTotal;\n                             vfBest = vfIncluded;\n                         }\n-                        nTotal -= vValue[i].first;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46840536",
+      "id" : 46840536,
+      "original_commit_id" : "238b7a2bd7165bbee2f9ca6c586d25a7d598a613",
+      "original_position" : 13,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906",
+      "updated_at" : "2015-12-07T16:37:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46840536",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46841049"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46841049"
+         }
+      },
+      "body" : "@laanwj Fair enough, I'll take it out and create another PR later.",
+      "commit_id" : "78cc1af61b55fc04b30bf5e5f163a6100197b4a7",
+      "created_at" : "2015-12-07T16:25:22Z",
+      "diff_hunk" : "@@ -1625,13 +1625,21 @@ static void ApproximateBestSubset(vector<pair<CAmount, pair<const CWalletTx*,uns\n                             nBest = nTotal;\n                             vfBest = vfIncluded;\n                         }\n-                        nTotal -= vValue[i].first;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46841049",
+      "id" : 46841049,
+      "original_commit_id" : "238b7a2bd7165bbee2f9ca6c586d25a7d598a613",
+      "original_position" : 13,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906",
+      "updated_at" : "2015-12-07T16:37:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46841049",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46841790"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46841790"
+         }
+      },
+      "body" : "I've replaced the tab with four spaces.",
+      "commit_id" : "78cc1af61b55fc04b30bf5e5f163a6100197b4a7",
+      "created_at" : "2015-12-07T16:30:29Z",
+      "diff_hunk" : "@@ -1625,13 +1625,21 @@ static void ApproximateBestSubset(vector<pair<CAmount, pair<const CWalletTx*,uns\n                             nBest = nTotal;\n                             vfBest = vfIncluded;\n                         }\n-                        nTotal -= vValue[i].first;\n-                        vfIncluded[i] = false;\n                     }\n                 }\n             }\n         }\n     }\n+\n+    //Reduces the approximate best subset by removing any inputs that are smaller than the surplus of nTotal beyond nTargetValue. \n+    for (unsigned int i = 0; i < vValue.size(); i++)\n+    {                        \n+\tif (vfBest[i] && (nBest - vValue[i].first) >= nTargetValue )",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#discussion_r46841790",
+      "id" : 46841790,
+      "original_commit_id" : "238b7a2bd7165bbee2f9ca6c586d25a7d598a613",
+      "original_position" : 24,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/4906",
+      "updated_at" : "2015-12-07T16:37:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46841790",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "body" : "ACK",
+      "created_at" : "2015-12-07T16:35:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-162582600",
+      "id" : 162582600,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-12-07T16:35:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/162582600",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "I rebased and used fixup on the commits that only fixed previous mistakes.",
+      "created_at" : "2015-12-07T16:38:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-162584120",
+      "id" : 162584120,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-12-07T16:38:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/162584120",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "body" : "@laanwj Travis had cleared my patch just when I realized that I had also messed up the indentation on the test. I've rebased it into two commits, one commit for the code, and one for the test. I expect this to turn green again momentarily. Sorry for keeping Travis so busy. :(\r\n\r\nIs there anything else that needs to be done about this PR? ",
+      "created_at" : "2015-12-07T19:12:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-162628014",
+      "id" : 162628014,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-12-07T19:12:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/162628014",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "body" : "Penis....",
+      "created_at" : "2015-12-09T06:49:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-163133598",
+      "id" : 163133598,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-12-09T06:49:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/163133598",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/16218930?v=3",
+         "events_url" : "https://api.github.com/users/juggalo71/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/juggalo71/followers",
+         "following_url" : "https://api.github.com/users/juggalo71/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/juggalo71/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/juggalo71",
+         "id" : 16218930,
+         "login" : "juggalo71",
+         "organizations_url" : "https://api.github.com/users/juggalo71/orgs",
+         "received_events_url" : "https://api.github.com/users/juggalo71/received_events",
+         "repos_url" : "https://api.github.com/users/juggalo71/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/juggalo71/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/juggalo71/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/juggalo71"
+      }
+   },
+   {
+      "body" : "Wallet code itself looks good! Post-merge Tested ACK.\r\n\r\n@Xekyo Thanks for sticking with this so long! There seems to be a small issue with the test code but I will create another PR for this...\r\n\r\nNote @laanwj: vValue is **not** sorted from low to high but from high to low but I think you meant it the right way. ;)\r\n",
+      "created_at" : "2015-12-09T13:01:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-163222364",
+      "id" : 163222364,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-12-09T13:01:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/163222364",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Oh, and you mentioned this will improve cases such as #1643. Which is not true, at least for this very transaction mentioned in #1643.\r\n\r\nStill, I assume pruning will help for really large wallets (like the ones of exchanges or heavy users) when they have a odd distribution of input amount sizes.",
+      "created_at" : "2015-12-09T13:10:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/4906#issuecomment-163225809",
+      "id" : 163225809,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4906",
+      "updated_at" : "2015-12-09T13:10:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/163225809",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
    }
 ]

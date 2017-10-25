@@ -1,0 +1,382 @@
+[
+   {
+      "body" : "@morcos @ryanofsky Feel like having a look at this?",
+      "created_at" : "2017-06-16T17:23:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#issuecomment-309084890",
+      "id" : 309084890,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10581",
+      "updated_at" : "2017-06-16T17:23:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/309084890",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10581#discussion_r123555279"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10581"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123555279"
+         }
+      },
+      "body" : "What's the point of the two InsecureRandBits calls skipping the new BOOST_CHECKs? It seems like the checks should always pass and aren't very expensive. Is the point to avoid creating cache entries during the test? Maybe add a comment saying why this only randomly checks HaveCoin results.",
+      "commit_id" : "21180ff73436e198b6828c312ddfd0a1195447b2",
+      "created_at" : "2017-06-22T16:12:19Z",
+      "diff_hunk" : "@@ -147,8 +141,17 @@ BOOST_AUTO_TEST_CASE(coins_cache_simulation_test)\n         {\n             uint256 txid = txids[InsecureRandRange(txids.size())]; // txid we're going to modify in this iteration.\n             Coin& coin = result[COutPoint(txid, 0)];\n+\n+            bool test_havecoin = InsecureRandBits(3) == 0;\n+            bool result_havecoin = test_havecoin ? stack.back()->HaveCoin(COutPoint(txid, 0)) : false;\n             const Coin& entry = (InsecureRandRange(500) == 0) ? AccessByTxid(*stack.back(), txid) : stack.back()->AccessCoin(COutPoint(txid, 0));\n             BOOST_CHECK(coin == entry);\n+            if (test_havecoin) BOOST_CHECK(result_havecoin == !entry.IsSpent());\n+\n+            if (InsecureRandBits(4) == 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#discussion_r123555279",
+      "id" : 123555279,
+      "original_commit_id" : "6ba5394841172944082e0c7447f404d6609337f3",
+      "original_position" : 24,
+      "path" : "src/test/coins_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 45771251,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10581",
+      "updated_at" : "2017-06-26T23:16:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123555279",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10581#discussion_r123636231"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10581"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123636231"
+         }
+      },
+      "body" : "Added a comment, and shuffled the code a bit to make it clearer.",
+      "commit_id" : "21180ff73436e198b6828c312ddfd0a1195447b2",
+      "created_at" : "2017-06-22T22:23:33Z",
+      "diff_hunk" : "@@ -147,8 +141,17 @@ BOOST_AUTO_TEST_CASE(coins_cache_simulation_test)\n         {\n             uint256 txid = txids[InsecureRandRange(txids.size())]; // txid we're going to modify in this iteration.\n             Coin& coin = result[COutPoint(txid, 0)];\n+\n+            bool test_havecoin = InsecureRandBits(3) == 0;\n+            bool result_havecoin = test_havecoin ? stack.back()->HaveCoin(COutPoint(txid, 0)) : false;\n             const Coin& entry = (InsecureRandRange(500) == 0) ? AccessByTxid(*stack.back(), txid) : stack.back()->AccessCoin(COutPoint(txid, 0));\n             BOOST_CHECK(coin == entry);\n+            if (test_havecoin) BOOST_CHECK(result_havecoin == !entry.IsSpent());\n+\n+            if (InsecureRandBits(4) == 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#discussion_r123636231",
+      "id" : 123636231,
+      "original_commit_id" : "6ba5394841172944082e0c7447f404d6609337f3",
+      "original_position" : 24,
+      "path" : "src/test/coins_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 45861321,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10581",
+      "updated_at" : "2017-06-26T23:16:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123636231",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@ryanofsky Oh yes, indeed! Rebased on top of #10559.",
+      "created_at" : "2017-06-23T01:33:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#issuecomment-310546372",
+      "id" : 310546372,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10581",
+      "updated_at" : "2017-06-23T01:39:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/310546372",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10581#discussion_r123935242"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10581"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123935242"
+         }
+      },
+      "body" : "micro nit eachSPCother",
+      "commit_id" : "21180ff73436e198b6828c312ddfd0a1195447b2",
+      "created_at" : "2017-06-26T06:36:44Z",
+      "diff_hunk" : "@@ -147,8 +141,22 @@ BOOST_AUTO_TEST_CASE(coins_cache_simulation_test)\n         {\n             uint256 txid = txids[InsecureRandRange(txids.size())]; // txid we're going to modify in this iteration.\n             Coin& coin = result[COutPoint(txid, 0)];\n+\n+            // Determine whether to test HaveCoin before or after Access* (or both). As these functions\n+            // can influence eachother's behaviour by pulling things into the cache, all combinations",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#discussion_r123935242",
+      "id" : 123935242,
+      "original_commit_id" : "04087f7d83360482e031e9ecbcc97a29fb3b1b8a",
+      "original_position" : 19,
+      "path" : "src/test/coins_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 46181798,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10581",
+      "updated_at" : "2017-06-26T23:16:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123935242",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Rebased.",
+      "created_at" : "2017-06-26T23:15:49Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#issuecomment-311207903",
+      "id" : 311207903,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10581",
+      "updated_at" : "2017-06-26T23:15:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311207903",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10581#discussion_r124145196"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10581"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/124145196"
+         }
+      },
+      "body" : "Fixed.",
+      "commit_id" : "21180ff73436e198b6828c312ddfd0a1195447b2",
+      "created_at" : "2017-06-26T23:16:36Z",
+      "diff_hunk" : "@@ -147,8 +141,22 @@ BOOST_AUTO_TEST_CASE(coins_cache_simulation_test)\n         {\n             uint256 txid = txids[InsecureRandRange(txids.size())]; // txid we're going to modify in this iteration.\n             Coin& coin = result[COutPoint(txid, 0)];\n+\n+            // Determine whether to test HaveCoin before or after Access* (or both). As these functions\n+            // can influence eachother's behaviour by pulling things into the cache, all combinations",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#discussion_r124145196",
+      "id" : 124145196,
+      "original_commit_id" : "04087f7d83360482e031e9ecbcc97a29fb3b1b8a",
+      "original_position" : 19,
+      "path" : "src/test/coins_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 46409456,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10581",
+      "updated_at" : "2017-06-26T23:16:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/124145196",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK 21180ff, certainly makes the API better",
+      "created_at" : "2017-06-27T09:09:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#issuecomment-311299743",
+      "id" : 311299743,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10581",
+      "updated_at" : "2017-06-27T09:09:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311299743",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "posthumous utACK\r\n\r\n@sipa, I'd misinterpreted this https://github.com/bitcoin/bitcoin/pull/10559#issuecomment-307276253 to imply you wanted ViewMempool functions to include whether the mempool contains a spend.  But now I think you didn't want that and are happy with where we are now?  If so, so am I.",
+      "created_at" : "2017-06-27T17:57:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#issuecomment-311436432",
+      "id" : 311436432,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10581",
+      "updated_at" : "2017-06-27T17:57:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311436432",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "@morcos Yes, the CCoinsViewMemPool view is internally consistent and follows all expectations of a CCoinsView. It just still contains outputs spent inside the mempool.",
+      "created_at" : "2017-06-27T18:01:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#issuecomment-311437556",
+      "id" : 311437556,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10581",
+      "updated_at" : "2017-06-27T18:01:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311437556",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Postumous utACK, there are a bunch of places that are only barely safe before this change, and this makes them much more clearly safe :+1: .",
+      "created_at" : "2017-06-27T19:59:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10581#issuecomment-311468163",
+      "id" : 311468163,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10581",
+      "updated_at" : "2017-06-27T19:59:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311468163",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   }
+]

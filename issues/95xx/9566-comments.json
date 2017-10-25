@@ -1,0 +1,643 @@
+[
+   {
+      "body" : "Failed on both Windows builds with:\r\n```\r\nutiltime.cpp: In function Ã¢ÂÂconst tm gmtime_int(time_t)Ã¢ÂÂ:\r\nutiltime.cpp:31:25: error: cannot convert Ã¢ÂÂtime_t* {aka long int*}Ã¢ÂÂ to Ã¢ÂÂtm*Ã¢ÂÂ for argument Ã¢ÂÂ1Ã¢ÂÂ to Ã¢ÂÂerrno_t gmtime_s(tm*, const time_t*)Ã¢ÂÂ\r\n     gmtime_s(&time, &out);\r\n```",
+      "created_at" : "2017-01-17T02:28:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-273006235",
+      "id" : 273006235,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-01-17T02:28:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273006235",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "_Of course_ windows has reversed arguments. Why wouldn't it?\r\n\r\nPushed the reversal.",
+      "created_at" : "2017-01-17T03:58:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-273016693",
+      "id" : 273016693,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-01-17T03:58:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273016693",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r96350569"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96350569"
+         }
+      },
+      "body" : "Needing something like this makes me wonder if we're not better off just using the C time functions, which guarantee being based on the UNIX epoch. \r\n\r\nEspecially as we're already probing for gmtime_int anyway. This seems double.\r\n\r\nDo we need something that is only offered by std::chrono? (or needs much less code with std::chrono)",
+      "commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "created_at" : "2017-01-17T06:28:34Z",
+      "diff_hunk" : "@@ -3,26 +3,85 @@\n // Distributed under the MIT software license, see the accompanying\n // file COPYING or http://www.opensource.org/licenses/mit-license.php.\n \n+#define __STDC_WANT_LIB_EXT1__ 1 // for gmtime_s\n+\n #if defined(HAVE_CONFIG_H)\n #include \"config/bitcoin-config.h\"\n #endif\n \n #include \"utiltime.h\"\n \n+#include <chrono>\n+#include <thread>\n+#include <locale>\n+#include <sstream>\n+#include <string.h>\n+#include <time.h>\n #include <boost/date_time/posix_time/posix_time.hpp>\n #include <boost/thread.hpp>\n \n using namespace std;\n \n static int64_t nMockTime = 0; //!< For unit testing\n \n+static inline const tm gmtime_int(time_t time)\n+{\n+    tm out = {};\n+#if defined(HAVE_W32_GMTIME_S)\n+    gmtime_s(&out, &time);\n+#elif defined(HAVE_C11_GMTIME_S)\n+    gmtime_s(&time, &out);\n+#elif defined(HAVE_GMTIME_R)\n+    gmtime_r(&time, &out);\n+#else\n+    // Not thread-safe!\n+    out = *gmtime(&time);\n+#endif\n+    return out;\n+}\n+\n+bool ChronoSanityCheck()",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r96350569",
+      "id" : 96350569,
+      "original_commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "original_position" : 41,
+      "path" : "src/utiltime.cpp",
+      "position" : 41,
+      "pull_request_review_id" : 16928243,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566",
+      "updated_at" : "2017-01-17T06:30:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96350569",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "There's a few places in Bitcoin Core where non monotonic time stamps can cause the node to act strangely, for example if NTP tweaks the time backwards between a p2p `PING` and `PONG`, the `int64` for node latency can overflow. Without much review, does this change any of the behavior in that respect? `chrono::steady_clock` assures monotone time where required. ",
+      "created_at" : "2017-01-17T14:44:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-273186969",
+      "id" : 273186969,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-01-17T14:44:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273186969",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/22485216?v=3",
+         "events_url" : "https://api.github.com/users/zstardust/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/zstardust/followers",
+         "following_url" : "https://api.github.com/users/zstardust/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/zstardust/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/zstardust",
+         "id" : 22485216,
+         "login" : "zstardust",
+         "organizations_url" : "https://api.github.com/users/zstardust/orgs",
+         "received_events_url" : "https://api.github.com/users/zstardust/received_events",
+         "repos_url" : "https://api.github.com/users/zstardust/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/zstardust/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/zstardust/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/zstardust"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r96455920"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96455920"
+         }
+      },
+      "body" : "@laanwj Best I can tell from google and reading the c spec, it's not guaranteed to be based on the UNIX epoch either :(. Of course, I've never seen an implementation that isn't, as that would likely break years worth of assumptions. And based on that, I would assume that c++ implementations will be using the underlying c implementation.\r\n\r\nSo my logic was: if we can run a quick sanity check here to be sure that c/c++/unix epoch are all aligned, then we can use c apis and std::chrono interchangeably throughout the codebase without worry.\r\n\r\nAs for why chrono here, it was to avoid gettimeofday portability issues. If you'd prefer to work around those instead, no problem.\r\n\r\nYou're right though that DateTimeStrFormat is kinda clunky. I only used c++ there to avoid c string size guessing. I'm also happy to switch that if you'd prefer.",
+      "commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "created_at" : "2017-01-17T16:50:41Z",
+      "diff_hunk" : "@@ -3,26 +3,85 @@\n // Distributed under the MIT software license, see the accompanying\n // file COPYING or http://www.opensource.org/licenses/mit-license.php.\n \n+#define __STDC_WANT_LIB_EXT1__ 1 // for gmtime_s\n+\n #if defined(HAVE_CONFIG_H)\n #include \"config/bitcoin-config.h\"\n #endif\n \n #include \"utiltime.h\"\n \n+#include <chrono>\n+#include <thread>\n+#include <locale>\n+#include <sstream>\n+#include <string.h>\n+#include <time.h>\n #include <boost/date_time/posix_time/posix_time.hpp>\n #include <boost/thread.hpp>\n \n using namespace std;\n \n static int64_t nMockTime = 0; //!< For unit testing\n \n+static inline const tm gmtime_int(time_t time)\n+{\n+    tm out = {};\n+#if defined(HAVE_W32_GMTIME_S)\n+    gmtime_s(&out, &time);\n+#elif defined(HAVE_C11_GMTIME_S)\n+    gmtime_s(&time, &out);\n+#elif defined(HAVE_GMTIME_R)\n+    gmtime_r(&time, &out);\n+#else\n+    // Not thread-safe!\n+    out = *gmtime(&time);\n+#endif\n+    return out;\n+}\n+\n+bool ChronoSanityCheck()",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r96455920",
+      "id" : 96455920,
+      "original_commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "original_position" : 41,
+      "path" : "src/utiltime.cpp",
+      "position" : 41,
+      "pull_request_review_id" : 17038040,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566",
+      "updated_at" : "2017-01-17T16:50:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96455920",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@zstardust There is (should be) no behavioral change here. steady_clock would indeed make sense for some of those cases.",
+      "created_at" : "2017-01-17T16:53:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-273227869",
+      "id" : 273227869,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-01-17T16:53:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273227869",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Agreed, using monotonic clock makes sense where only differences in time are important, when there is no need to print the time (as it will have an arbitrary starting offset). That's orthogonal to the changes here, though.",
+      "created_at" : "2017-01-17T20:31:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-273290634",
+      "id" : 273290634,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-01-17T20:31:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273290634",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r96504428"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96504428"
+         }
+      },
+      "body" : "> Best I can tell from google and reading the c spec, it's not guaranteed to be based on the UNIX epoch either :(\r\n\r\nWhich ones? The man page of \"gmtime\" tells me the following:\r\n```\r\n       The  ctime(),  gmtime()  and localtime() functions all take an argument of data type time_t, which represents calendar time.  When interpreted as an absolute time value, it represents the\r\n       number of seconds elapsed since the Epoch, 1970-01-01 00:00:00 +0000 (UTC).\r\n```\r\nSame for gettimeofday:\r\n```\r\n       and gives the number of seconds and microseconds since the Epoch (see time(2)).  The tz argument is a struct timezone:\r\n```\r\n\r\nIf using std::chrono makes anything less hassle I'm fine with using it. It just seems like a lot of code necessary to work around issues (and that's just to get started using it!), but you're right that gettimeofday and strftime have their own issues.",
+      "commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "created_at" : "2017-01-17T20:35:19Z",
+      "diff_hunk" : "@@ -3,26 +3,85 @@\n // Distributed under the MIT software license, see the accompanying\n // file COPYING or http://www.opensource.org/licenses/mit-license.php.\n \n+#define __STDC_WANT_LIB_EXT1__ 1 // for gmtime_s\n+\n #if defined(HAVE_CONFIG_H)\n #include \"config/bitcoin-config.h\"\n #endif\n \n #include \"utiltime.h\"\n \n+#include <chrono>\n+#include <thread>\n+#include <locale>\n+#include <sstream>\n+#include <string.h>\n+#include <time.h>\n #include <boost/date_time/posix_time/posix_time.hpp>\n #include <boost/thread.hpp>\n \n using namespace std;\n \n static int64_t nMockTime = 0; //!< For unit testing\n \n+static inline const tm gmtime_int(time_t time)\n+{\n+    tm out = {};\n+#if defined(HAVE_W32_GMTIME_S)\n+    gmtime_s(&out, &time);\n+#elif defined(HAVE_C11_GMTIME_S)\n+    gmtime_s(&time, &out);\n+#elif defined(HAVE_GMTIME_R)\n+    gmtime_r(&time, &out);\n+#else\n+    // Not thread-safe!\n+    out = *gmtime(&time);\n+#endif\n+    return out;\n+}\n+\n+bool ChronoSanityCheck()",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r96504428",
+      "id" : 96504428,
+      "original_commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "original_position" : 41,
+      "path" : "src/utiltime.cpp",
+      "position" : 41,
+      "pull_request_review_id" : 17087803,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566",
+      "updated_at" : "2017-01-17T20:36:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96504428",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r96510968"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96510968"
+         }
+      },
+      "body" : "@laanwj Posix uses a value since the Unix epoch, but time_t is implementation-defined according to the c spec. But it really doesn't matter, realistically it'll be the Unix epoch everywhere we run. Sorry for the distraction.\r\n\r\nI only brought it up because the c++ system_clock's epoch is technically implementation-defined as well, I was just making the case that it's probably just as safe to assume as with c.",
+      "commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "created_at" : "2017-01-17T21:10:13Z",
+      "diff_hunk" : "@@ -3,26 +3,85 @@\n // Distributed under the MIT software license, see the accompanying\n // file COPYING or http://www.opensource.org/licenses/mit-license.php.\n \n+#define __STDC_WANT_LIB_EXT1__ 1 // for gmtime_s\n+\n #if defined(HAVE_CONFIG_H)\n #include \"config/bitcoin-config.h\"\n #endif\n \n #include \"utiltime.h\"\n \n+#include <chrono>\n+#include <thread>\n+#include <locale>\n+#include <sstream>\n+#include <string.h>\n+#include <time.h>\n #include <boost/date_time/posix_time/posix_time.hpp>\n #include <boost/thread.hpp>\n \n using namespace std;\n \n static int64_t nMockTime = 0; //!< For unit testing\n \n+static inline const tm gmtime_int(time_t time)\n+{\n+    tm out = {};\n+#if defined(HAVE_W32_GMTIME_S)\n+    gmtime_s(&out, &time);\n+#elif defined(HAVE_C11_GMTIME_S)\n+    gmtime_s(&time, &out);\n+#elif defined(HAVE_GMTIME_R)\n+    gmtime_r(&time, &out);\n+#else\n+    // Not thread-safe!\n+    out = *gmtime(&time);\n+#endif\n+    return out;\n+}\n+\n+bool ChronoSanityCheck()",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r96510968",
+      "id" : 96510968,
+      "original_commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "original_position" : 41,
+      "path" : "src/utiltime.cpp",
+      "position" : 41,
+      "pull_request_review_id" : 17094562,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566",
+      "updated_at" : "2017-01-17T21:10:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96510968",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "I think we need to think more about how we use time everywhere, see eg the issues turned up in #9606 - do we want our own types for time to enforce that we dont compare mock and non-mock time? Do we want multiple types of mock times? etc.",
+      "created_at" : "2017-01-23T16:43:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-274542292",
+      "id" : 274542292,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-01-23T16:43:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274542292",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Concept ACK. With C++ std or with C time functions. Seems like removing boost's dependency here is better irrespective of next steps.\r\nNeeds rebase.",
+      "created_at" : "2017-02-01T01:48:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-276550688",
+      "id" : 276550688,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-02-01T01:48:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/276550688",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r98842126"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/98842126"
+         }
+      },
+      "body" : "Why the `\\` at the end of the line?",
+      "commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "created_at" : "2017-02-01T07:56:29Z",
+      "diff_hunk" : "@@ -3,26 +3,85 @@\n // Distributed under the MIT software license, see the accompanying\n // file COPYING or http://www.opensource.org/licenses/mit-license.php.\n \n+#define __STDC_WANT_LIB_EXT1__ 1 // for gmtime_s\n+\n #if defined(HAVE_CONFIG_H)\n #include \"config/bitcoin-config.h\"\n #endif\n \n #include \"utiltime.h\"\n \n+#include <chrono>\n+#include <thread>\n+#include <locale>\n+#include <sstream>\n+#include <string.h>\n+#include <time.h>\n #include <boost/date_time/posix_time/posix_time.hpp>\n #include <boost/thread.hpp>\n \n using namespace std;\n \n static int64_t nMockTime = 0; //!< For unit testing\n \n+static inline const tm gmtime_int(time_t time)\n+{\n+    tm out = {};\n+#if defined(HAVE_W32_GMTIME_S)\n+    gmtime_s(&out, &time);\n+#elif defined(HAVE_C11_GMTIME_S)\n+    gmtime_s(&time, &out);\n+#elif defined(HAVE_GMTIME_R)\n+    gmtime_r(&time, &out);\n+#else\n+    // Not thread-safe!\n+    out = *gmtime(&time);\n+#endif\n+    return out;\n+}\n+\n+bool ChronoSanityCheck()\n+{\n+    // std::chrono::system_clock.time_since_epoch and time_t(0) are not guaranteed\n+    // to use the Unix epoch timestamp, but in practice they almost certainly will.\n+    // Any differing behavior will be assumed to be an error, unless certain\n+    // platforms prove to consistently deviate, at which point we'll cope with it\n+    // by adding offsets.\n+\n+    // Create a new clock from time_t(0) and make sure that it represents 0\n+    // seconds from the system_clock's time_since_epoch. Then convert that back\n+    // to a time_t and verify that it's the same as before.\n+    const time_t zeroTime{};\n+    auto clock = std::chrono::system_clock::from_time_t(zeroTime);\n+    if (std::chrono::duration_cast<std::chrono::seconds>(clock.time_since_epoch()).count() != 0)\n+        return false;\n+\n+    time_t nTime = std::chrono::system_clock::to_time_t(clock);\n+    if (nTime != zeroTime)\n+        return false;\n+\n+    // Check that the above zero time is actually equal to the known unix timestamp.\n+    tm epoch = gmtime_int(nTime);\n+    if ((epoch.tm_sec != 0)  || \\",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r98842126",
+      "id" : 98842126,
+      "original_commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "original_position" : 63,
+      "path" : "src/utiltime.cpp",
+      "position" : 63,
+      "pull_request_review_id" : 19496216,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566",
+      "updated_at" : "2017-02-01T07:56:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/98842126",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r98842239"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/98842239"
+         }
+      },
+      "body" : "nit: bracing style: we decided to always use braces unless the if and the statement can be on one line: https://github.com/bitcoin/bitcoin/blob/master/doc/developer-notes.md   ",
+      "commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "created_at" : "2017-02-01T07:57:41Z",
+      "diff_hunk" : "@@ -3,26 +3,85 @@\n // Distributed under the MIT software license, see the accompanying\n // file COPYING or http://www.opensource.org/licenses/mit-license.php.\n \n+#define __STDC_WANT_LIB_EXT1__ 1 // for gmtime_s\n+\n #if defined(HAVE_CONFIG_H)\n #include \"config/bitcoin-config.h\"\n #endif\n \n #include \"utiltime.h\"\n \n+#include <chrono>\n+#include <thread>\n+#include <locale>\n+#include <sstream>\n+#include <string.h>\n+#include <time.h>\n #include <boost/date_time/posix_time/posix_time.hpp>\n #include <boost/thread.hpp>\n \n using namespace std;\n \n static int64_t nMockTime = 0; //!< For unit testing\n \n+static inline const tm gmtime_int(time_t time)\n+{\n+    tm out = {};\n+#if defined(HAVE_W32_GMTIME_S)\n+    gmtime_s(&out, &time);\n+#elif defined(HAVE_C11_GMTIME_S)\n+    gmtime_s(&time, &out);\n+#elif defined(HAVE_GMTIME_R)\n+    gmtime_r(&time, &out);\n+#else\n+    // Not thread-safe!\n+    out = *gmtime(&time);\n+#endif\n+    return out;\n+}\n+\n+bool ChronoSanityCheck()\n+{\n+    // std::chrono::system_clock.time_since_epoch and time_t(0) are not guaranteed\n+    // to use the Unix epoch timestamp, but in practice they almost certainly will.\n+    // Any differing behavior will be assumed to be an error, unless certain\n+    // platforms prove to consistently deviate, at which point we'll cope with it\n+    // by adding offsets.\n+\n+    // Create a new clock from time_t(0) and make sure that it represents 0\n+    // seconds from the system_clock's time_since_epoch. Then convert that back\n+    // to a time_t and verify that it's the same as before.\n+    const time_t zeroTime{};\n+    auto clock = std::chrono::system_clock::from_time_t(zeroTime);\n+    if (std::chrono::duration_cast<std::chrono::seconds>(clock.time_since_epoch()).count() != 0)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#discussion_r98842239",
+      "id" : 98842239,
+      "original_commit_id" : "9bd32ce6aa50df95fd5aeaece92b8b908c582c73",
+      "original_position" : 54,
+      "path" : "src/utiltime.cpp",
+      "position" : 54,
+      "pull_request_review_id" : 19496333,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9566",
+      "updated_at" : "2017-02-01T07:57:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/98842239",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Needs rebase/nit fix.",
+      "created_at" : "2017-03-09T09:05:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-285294439",
+      "id" : 285294439,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-03-09T09:05:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/285294439",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Is this still in your plans @theuni?",
+      "created_at" : "2017-04-19T08:27:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-295161111",
+      "id" : 295161111,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-04-19T08:27:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/295161111",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Thanks for the reminder, I'll circle back to this.",
+      "created_at" : "2017-06-27T20:10:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-311470989",
+      "id" : 311470989,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-06-27T20:10:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311470989",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "What is the status here? Going to make it for 0.15?",
+      "created_at" : "2017-07-13T18:10:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-315158329",
+      "id" : 315158329,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-07-13T18:10:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315158329",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "I'll go ahead and rebase/clean this up now, but it's not a priority for 0.15.",
+      "created_at" : "2017-07-13T19:00:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-315171565",
+      "id" : 315171565,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-07-13T19:00:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315171565",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Needs rebase",
+      "created_at" : "2017-09-30T15:34:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9566#issuecomment-333316201",
+      "id" : 333316201,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9566",
+      "updated_at" : "2017-09-30T15:34:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333316201",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/84245?v=4",
+         "events_url" : "https://api.github.com/users/danra/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/danra/followers",
+         "following_url" : "https://api.github.com/users/danra/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/danra/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/danra",
+         "id" : 84245,
+         "login" : "danra",
+         "organizations_url" : "https://api.github.com/users/danra/orgs",
+         "received_events_url" : "https://api.github.com/users/danra/received_events",
+         "repos_url" : "https://api.github.com/users/danra/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/danra/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/danra/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/danra"
+      }
+   }
+]

@@ -1,0 +1,334 @@
+[
+   {
+      "body" : "@wjx Can you provide any numbers as to the performance improvement? Is it inline with what was seen in #7656?",
+      "created_at" : "2016-09-16T03:22:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#issuecomment-247509629",
+      "id" : 247509629,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8736",
+      "updated_at" : "2016-09-16T03:22:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/247509629",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8736#discussion_r79101629"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8736"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/79101629"
+         }
+      },
+      "body" : "[Comments](https://github.com/bitcoin/bitcoin/pull/7656/files#r56476755) from the original PR suggest you should use `++i` here. ",
+      "commit_id" : "e892dc1268d33bfba01f35b70359b286bb9d6376",
+      "created_at" : "2016-09-16T03:24:14Z",
+      "diff_hunk" : "@@ -39,12 +41,14 @@ bool DecodeBase58(const char* psz, std::vector<unsigned char>& vch)\n             return false;\n         // Apply \"b256 = b256 * 58 + ch\".\n         int carry = ch - pszBase58;\n-        for (std::vector<unsigned char>::reverse_iterator it = b256.rbegin(); it != b256.rend(); it++) {\n+        int i = 0;\n+        for (std::vector<unsigned char>::reverse_iterator it = b256.rbegin(); (carry != 0 || i < length) && (it != b256.rend()); it++, i++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#discussion_r79101629",
+      "id" : 79101629,
+      "original_commit_id" : "159ed95f7452ab5454e9d660f6f095b8476b1eed",
+      "original_position" : 22,
+      "path" : "src/base58.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8736",
+      "updated_at" : "2016-09-16T11:28:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/79101629",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8736#discussion_r79152717"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8736"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/79152717"
+         }
+      },
+      "body" : "Updated, and benchmark number attached.",
+      "commit_id" : "e892dc1268d33bfba01f35b70359b286bb9d6376",
+      "created_at" : "2016-09-16T11:44:10Z",
+      "diff_hunk" : "@@ -39,12 +41,14 @@ bool DecodeBase58(const char* psz, std::vector<unsigned char>& vch)\n             return false;\n         // Apply \"b256 = b256 * 58 + ch\".\n         int carry = ch - pszBase58;\n-        for (std::vector<unsigned char>::reverse_iterator it = b256.rbegin(); it != b256.rend(); it++) {\n+        int i = 0;\n+        for (std::vector<unsigned char>::reverse_iterator it = b256.rbegin(); (carry != 0 || i < length) && (it != b256.rend()); it++, i++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#discussion_r79152717",
+      "id" : 79152717,
+      "original_commit_id" : "159ed95f7452ab5454e9d660f6f095b8476b1eed",
+      "original_position" : 22,
+      "path" : "src/base58.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8736",
+      "updated_at" : "2016-09-16T11:44:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/79152717",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1243274?v=3",
+         "events_url" : "https://api.github.com/users/wjx/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/wjx/followers",
+         "following_url" : "https://api.github.com/users/wjx/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/wjx/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/wjx",
+         "id" : 1243274,
+         "login" : "wjx",
+         "organizations_url" : "https://api.github.com/users/wjx/orgs",
+         "received_events_url" : "https://api.github.com/users/wjx/received_events",
+         "repos_url" : "https://api.github.com/users/wjx/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/wjx/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/wjx/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/wjx"
+      }
+   },
+   {
+      "body" : "code review ACK https://github.com/bitcoin/bitcoin/pull/8736/commits/e892dc1268d33bfba01f35b70359b286bb9d6376",
+      "created_at" : "2016-09-22T04:49:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#issuecomment-248810973",
+      "id" : 248810973,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8736",
+      "updated_at" : "2016-09-22T04:49:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/248810973",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Code Review utACK e892dc1268d33bfba01f35b70359b286bb9d6376",
+      "created_at" : "2016-10-24T11:23:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#issuecomment-255714531",
+      "id" : 255714531,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8736",
+      "updated_at" : "2016-10-24T11:23:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/255714531",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "utACK e892dc1268d33bfba01f35b70359b286bb9d6376",
+      "created_at" : "2016-10-24T18:17:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#issuecomment-255821829",
+      "id" : 255821829,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8736",
+      "updated_at" : "2016-10-24T18:17:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/255821829",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Benchmarks\r\n#### Before\r\nBase58Decode,786432,0.000000720581738,0.000001479576895,0.000001459018677\r\nBase58Decode,786432,0.000000731757609,0.000001487409463,0.000001467602791\r\nBase58Decode,786432,0.000000714662747,0.000001470549250,0.000001451156398\r\nBase58Decode,786432,0.000000723695848,0.000001477301339,0.000001463891143\r\n#### After\r\nBase58Decode,1048576,0.000000478641596,0.000001010337655,0.000000991023853\r\nBase58Decode,1048576,0.000000484878910,0.000000999572876,0.000000988008424\r\nBase58Decode,1048576,0.000000494663254,0.000001009095286,0.000000993179128\r\nBase58Decode,1048576,0.000000960510079,0.000000998141331,0.000000973840770",
+      "created_at" : "2016-11-07T07:45:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#issuecomment-258766949",
+      "id" : 258766949,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8736",
+      "updated_at" : "2016-11-07T07:45:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258766949",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8736#discussion_r86729666"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8736"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86729666"
+         }
+      },
+      "body" : "SPC before 1000",
+      "commit_id" : "e892dc1268d33bfba01f35b70359b286bb9d6376",
+      "created_at" : "2016-11-07T08:36:34Z",
+      "diff_hunk" : "@@ -25,12 +25,14 @@ bool DecodeBase58(const char* psz, std::vector<unsigned char>& vch)\n         psz++;\n     // Skip and count leading '1's.\n     int zeroes = 0;\n+    int length = 0;\n     while (*psz == '1') {\n         zeroes++;\n         psz++;\n     }\n     // Allocate enough space in big-endian base256 representation.\n-    std::vector<unsigned char> b256(strlen(psz) * 733 / 1000 + 1); // log(58) / log(256), rounded up.\n+    int size = strlen(psz) * 733 /1000 + 1; // log(58) / log(256), rounded up.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#discussion_r86729666",
+      "id" : 86729666,
+      "original_commit_id" : "e892dc1268d33bfba01f35b70359b286bb9d6376",
+      "original_position" : 11,
+      "path" : "src/base58.cpp",
+      "position" : 11,
+      "pull_request_review_id" : 7371988,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8736",
+      "updated_at" : "2016-11-07T08:36:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/86729666",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Confirming the numbers:\r\n```\r\n$ pwd; while :; do ./bench_bitcoin | grep -m1 Base58Decode; done\r\n/tmp/bitcoin-master/src/bench\r\nBase58Decode,786432,0.000000705200364,0.000001495651304,0.000001435880222\r\nBase58Decode,786432,0.000000754334906,0.000001533042450,0.000001507242814\r\nBase58Decode,786432,0.000000738342351,0.000001584410711,0.000001496629011\r\n...\r\n$ pwd; while :; do ./bench_bitcoin | grep -m1 Base58Decode; done\r\n/tmp/bitcoin-8736/src/bench\r\nBase58Decode,1310720,0.000000458023351,0.000000963798811,0.000000941479630\r\nBase58Decode,1048576,0.000000513755367,0.000001057205736,0.000000997559710\r\nBase58Decode,1048576,0.000000455460395,0.000001009773769,0.000000967173719\r\n...\r\n```",
+      "created_at" : "2016-11-07T08:51:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#issuecomment-258778034",
+      "id" : 258778034,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8736",
+      "updated_at" : "2016-11-07T08:51:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258778034",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "ACK https://github.com/bitcoin/bitcoin/pull/8736/commits/e892dc1268d33bfba01f35b70359b286bb9d6376",
+      "created_at" : "2016-11-07T08:52:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8736#issuecomment-258778348",
+      "id" : 258778348,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8736",
+      "updated_at" : "2016-11-07T08:52:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258778348",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   }
+]

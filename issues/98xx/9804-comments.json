@@ -1,0 +1,1148 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r101943952"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/101943952"
+         }
+      },
+      "body" : "`std::string` maybe?",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-20T03:39:16Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)vchRet.data(), vchRet.size());\n+    return string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r101943952",
+      "id" : 101943952,
+      "original_commit_id" : "2937635978454c5102aff96cc025cda7184cb0b3",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : null,
+      "pull_request_review_id" : 22684273,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/101943952",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "Sorry for the bit of line noise, there was some UB when I removed some of the branches (memset/memcpy/read/write 0 bytes on nullptr/invalid ptr) that was causing one of the builds (with more aggressive runtime checks) to fail. I added them back in and all seems well now.\r\n",
+      "created_at" : "2017-02-20T05:23:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-280990910",
+      "id" : 280990910,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-02-20T05:23:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/280990910",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "Whoa, good catch. \r\n\r\nI'm shocked that &vch[0] use was still so rampant in the code. We'd  introduced `begin_ptr` with the intention to replace those, and phased even that out again with C++11 `.data()`.\r\n\r\nAnyhow, concept ACK.",
+      "created_at" : "2017-02-20T15:49:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-281113538",
+      "id" : 281113538,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-02-20T15:49:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/281113538",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102046393"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102046393"
+         }
+      },
+      "body" : "I wonder why we're casting to `(char*)` here iso `(const char*)`, even though these are write operations and the type passed in is `const`.\r\n\r\nThere's a couple more of these. Though seems out of scope to fix in this pull.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-20T15:53:21Z",
+      "diff_hunk" : "@@ -571,7 +571,7 @@ void Serialize_impl(Stream& os, const prevector<N, T>& v, const unsigned char&)\n {\n     WriteCompactSize(os, v.size());\n     if (!v.empty())\n-        os.write((char*)&v[0], v.size() * sizeof(T));\n+        os.write((char*) v.data(), v.size() * sizeof(T));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102046393",
+      "id" : 102046393,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 41,
+      "path" : "src/serialize.h",
+      "position" : 41,
+      "pull_request_review_id" : 22790457,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102046393",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102058371"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102058371"
+         }
+      },
+      "body" : "Yeah that seems obviously incorrect, but I _think_ I understand why it was done (or at least have a theory). Because the methods are all generic w.r.t. the stream type, they probably are made to work with some arbitrary stream that can't accept a `const char *`. Hopefully not the case anymore...\r\n\r\nAnyways, probably best to fix those up separately as you suggest.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-20T16:53:24Z",
+      "diff_hunk" : "@@ -571,7 +571,7 @@ void Serialize_impl(Stream& os, const prevector<N, T>& v, const unsigned char&)\n {\n     WriteCompactSize(os, v.size());\n     if (!v.empty())\n-        os.write((char*)&v[0], v.size() * sizeof(T));\n+        os.write((char*) v.data(), v.size() * sizeof(T));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102058371",
+      "id" : 102058371,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 41,
+      "path" : "src/serialize.h",
+      "position" : 41,
+      "pull_request_review_id" : 22803197,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102058371",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "There are still a few more places that were trickier/not possible to correct (where the type passed in is templated, such that it would be a pointer or a vector).\r\n\r\nI also didn't fix anything in subdirectories, because I felt this PR was getting a bit large already, and there are a few you can still grep for pretty easily there:\r\n ```\r\nÃ¢ÂÂ¯ grep '\\&v[A-z0-9_]*\\[0\\]' */*.cpp | nl\r\n     1\tqt/signverifymessagedialog.cpp:    ui->signatureOut_SM->setText(QString::fromStdString(EncodeBase64(&vchSig[0], vchSig.size())));\r\n     2\trpc/misc.cpp:    return EncodeBase64(&vchSig[0], vchSig.size());\r\n     3\tscript/ismine.cpp:        CRIPEMD160().Write(&vSolutions[0][0], vSolutions[0].size()).Finalize(hash.begin());\r\n     4\tscript/sigcache.cpp:        CSHA256().Write(nonce.begin(), 32).Write(hash.begin(), 32).Write(&pubkey[0], pubkey.size()).Write(&vchSig[0], vchSig.size()).Finalize(entry.begin());\r\n     5\tscript/sign.cpp:        CRIPEMD160().Write(&vSolutions[0][0], vSolutions[0].size()).Finalize(h160.begin());\r\n     6\tscript/standard.cpp:            CHash160().Write(&vSolutions[0][0], vSolutions[0].size()).Finalize(h160);\r\n     7\ttest/getarg_tests.cpp:    ParseParameters(vecChar.size(), &vecChar[0]);\r\n     8\ttest/skiplist_tests.cpp:        BOOST_CHECK(vIndex[from].GetAncestor(0) == &vIndex[0]);\r\n     9\twallet/crypter.cpp:    size_t nLen = enc.Encrypt(&vchPlaintext[0], vchPlaintext.size(), &vchCiphertext[0]);\r\n    10\twallet/crypter.cpp:    nLen = dec.Decrypt(&vchCiphertext[0], vchCiphertext.size(), &vchPlaintext[0]);\r\n    11\twallet/rpcwallet.cpp:    return EncodeBase64(&vchSig[0], vchSig.size());\r\n    12\twallet/wallet.cpp:    GetStrongRandBytes(&vMasterKey[0], WALLET_CRYPTO_KEY_SIZE);\r\n```\r\n(there are a lot more worth checking if you don't use the hungarian notation `v` prefix as a filter)",
+      "created_at" : "2017-02-20T17:14:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-281135098",
+      "id" : 281135098,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-02-20T17:14:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/281135098",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102106369"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102106369"
+         }
+      },
+      "body" : "AFAICT, this is equivalent to sizeof(C) (std::basic_string\\<C\\>::value_type is std::basic_string\\<C, std::char_traits\\<C\\>\\>::value_type which is std::char_traits\\<C\\>::char_type, which is C).",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-20T23:16:48Z",
+      "diff_hunk" : "@@ -549,7 +549,7 @@ void Serialize(Stream& os, const std::basic_string<C>& str)\n {\n     WriteCompactSize(os, str.size());\n     if (!str.empty())\n-        os.write((char*)&str[0], str.size() * sizeof(str[0]));\n+        os.write((char*) str.data(), str.size() * sizeof(typename std::basic_string<C>::value_type));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102106369",
+      "id" : 102106369,
+      "original_commit_id" : "db3d75b4171fa46e32c3520c4c26645aab66275d",
+      "original_position" : 23,
+      "path" : "src/serialize.h",
+      "position" : null,
+      "pull_request_review_id" : 22852039,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102106369",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102111560"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102111560"
+         }
+      },
+      "body" : "Hmm, based on cppreference I cant tell if this is well-defined with vchRet.size() == 0 or not.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-21T00:20:12Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)&vchRet[0], vchRet.size());\n+    return std::string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102111560",
+      "id" : 102111560,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 22857122,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102111560",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102113656"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102113656"
+         }
+      },
+      "body" : "From my understanding (it doesn't seem ambiguous, but, it certainly isn't definitive),  a `len` of `0` is well-defined,  and simply an empty string.  Aka,  equivalent to `std::string()`.\r\nI don't have a definitive statement from the reference.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-21T00:48:08Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)&vchRet[0], vchRet.size());\n+    return std::string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102113656",
+      "id" : 102113656,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 22859248,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102113656",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "Concept ACK.",
+      "created_at" : "2017-02-21T00:57:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-281215939",
+      "id" : 281215939,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-02-21T00:57:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/281215939",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102205393"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102205393"
+         }
+      },
+      "body" : "Sure, but it would be wrong for a stream write to take a char* i.s.o. const char*, so fixing those just means the const-correctness spreads.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-21T13:25:14Z",
+      "diff_hunk" : "@@ -571,7 +571,7 @@ void Serialize_impl(Stream& os, const prevector<N, T>& v, const unsigned char&)\n {\n     WriteCompactSize(os, v.size());\n     if (!v.empty())\n-        os.write((char*)&v[0], v.size() * sizeof(T));\n+        os.write((char*) v.data(), v.size() * sizeof(T));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102205393",
+      "id" : 102205393,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 41,
+      "path" : "src/serialize.h",
+      "position" : 41,
+      "pull_request_review_id" : 22953483,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102205393",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102205675"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102205675"
+         }
+      },
+      "body" : "Yes, a string with size 0 is well-defined. Calling `.data()` on a string of size 0 is also defined. This should be ok.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-21T13:26:52Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)&vchRet[0], vchRet.size());\n+    return std::string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102205675",
+      "id" : 102205675,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 22953798,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102205675",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102205900"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102205900"
+         }
+      },
+      "body" : "@thebluematt is right",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-21T13:28:17Z",
+      "diff_hunk" : "@@ -549,7 +549,7 @@ void Serialize(Stream& os, const std::basic_string<C>& str)\n {\n     WriteCompactSize(os, str.size());\n     if (!str.empty())\n-        os.write((char*)&str[0], str.size() * sizeof(str[0]));\n+        os.write((char*) str.data(), str.size() * sizeof(typename std::basic_string<C>::value_type));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102205900",
+      "id" : 102205900,
+      "original_commit_id" : "db3d75b4171fa46e32c3520c4c26645aab66275d",
+      "original_position" : 23,
+      "path" : "src/serialize.h",
+      "position" : null,
+      "pull_request_review_id" : 22954065,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102205900",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102274691"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102274691"
+         }
+      },
+      "body" : "The question is whether calling `std::string(garbage_pointer, 0)` is well-defined. I can't tell from what cppreference.com says (*The behavior is undefined if s does not point at an array of at least count elements of CharT, including the case when s is a null pointer.*).\r\n\r\nAs an alternative, what about `std::string(vchRet.begin(), vchRet.end())`?",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-21T18:00:45Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)&vchRet[0], vchRet.size());\n+    return std::string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102274691",
+      "id" : 102274691,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 23026895,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102274691",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102279614"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102279614"
+         }
+      },
+      "body" : "I read that as: If the count is 0, it always points at least 0 elements,  thus \"point at an array of at least count elements of CharT\" is always satisfied. \r\n\r\nAlternatively: if count is 0 it would be wrong to dereference the  pointer's address at all.\r\n",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-21T18:22:51Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)&vchRet[0], vchRet.size());\n+    return std::string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102279614",
+      "id" : 102279614,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 23031938,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102279614",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102282566"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102282566"
+         }
+      },
+      "body" : "I'm not convinced that \"a pointer to an array of 0 elements of type T\" can be any pointer. I think it's extremely unlikely to matter, and that every C++ std library effectively is implemented in a way that makes the constructor, when invoked with (pointer, 0) effectively ignore pointer, however.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-21T18:35:06Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)&vchRet[0], vchRet.size());\n+    return std::string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102282566",
+      "id" : 102282566,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 23034856,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102282566",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102294018"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102294018"
+         }
+      },
+      "body" : "I mean when cppreference is ambiguous thats probably a good sign that trying to parse a wiki is going to get your an incorrect result...best to go to the standard if in doubt in that case. :/",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-21T19:23:46Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)&vchRet[0], vchRet.size());\n+    return std::string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102294018",
+      "id" : 102294018,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 23046918,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102294018",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102354092"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102354092"
+         }
+      },
+      "body" : "Yep, I was aware :) I felt that the version I chose was more similar to the existing code (the size of whatever str[0] returns), but if everyone is comfortable with sizeof(C) I can change it.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-22T00:17:39Z",
+      "diff_hunk" : "@@ -549,7 +549,7 @@ void Serialize(Stream& os, const std::basic_string<C>& str)\n {\n     WriteCompactSize(os, str.size());\n     if (!str.empty())\n-        os.write((char*)&str[0], str.size() * sizeof(str[0]));\n+        os.write((char*) str.data(), str.size() * sizeof(typename std::basic_string<C>::value_type));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102354092",
+      "id" : 102354092,
+      "original_commit_id" : "db3d75b4171fa46e32c3520c4c26645aab66275d",
+      "original_position" : 23,
+      "path" : "src/serialize.h",
+      "position" : null,
+      "pull_request_review_id" : 23107815,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102354092",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102360084"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102360084"
+         }
+      },
+      "body" : "I don't think it is can be a garbage pointer. vector.data() is guaranteed to return a valid range (even when empty), which I think would require that it have proper alignment.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-22T00:59:40Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)&vchRet[0], vchRet.size());\n+    return std::string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102360084",
+      "id" : 102360084,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 23113546,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102360084",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102405187"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102405187"
+         }
+      },
+      "body" : "Just to be complete: this is *not* the same as `std::string(vchRet.begin(), vchRet.end())` in the general case. When creating an iterator range, if the type of vch is different from the type of string, a per-element cast will happen. So `string.size()` will be `vch.size()`. Usual issues with casting between signed and unsigned apply.\r\n\r\n`std::string((const char*)vchRet.data(), vchRet.size())` however just return the memory area with all the elements of the vector as a string. So `string.size()` will be `vch.size()*sizeof(vch::value_type)`. It is likely also more efficient.",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-22T08:25:32Z",
+      "diff_hunk" : "@@ -229,7 +229,7 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)\n string DecodeBase64(const string& str)\n {\n     vector<unsigned char> vchRet = DecodeBase64(str.c_str());\n-    return (vchRet.size() == 0) ? string() : string((const char*)&vchRet[0], vchRet.size());\n+    return std::string((const char*)vchRet.data(), vchRet.size());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102405187",
+      "id" : 102405187,
+      "original_commit_id" : "efa6deae0f0cbf4f1648a49c160696fc9021d15f",
+      "original_position" : 5,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 23158030,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:08:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102405187",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102437254"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102437254"
+         }
+      },
+      "body" : "Ã°ÂÂÂ fixed",
+      "commit_id" : "d5fd8b5d44cc411f0c1b19c3563780e094463317",
+      "created_at" : "2017-02-22T11:09:23Z",
+      "diff_hunk" : "@@ -549,7 +549,7 @@ void Serialize(Stream& os, const std::basic_string<C>& str)\n {\n     WriteCompactSize(os, str.size());\n     if (!str.empty())\n-        os.write((char*)&str[0], str.size() * sizeof(str[0]));\n+        os.write((char*) str.data(), str.size() * sizeof(typename std::basic_string<C>::value_type));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#discussion_r102437254",
+      "id" : 102437254,
+      "original_commit_id" : "db3d75b4171fa46e32c3520c4c26645aab66275d",
+      "original_position" : 23,
+      "path" : "src/serialize.h",
+      "position" : null,
+      "pull_request_review_id" : 23190984,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9804",
+      "updated_at" : "2017-02-22T11:09:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102437254",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "Concept ACK! Ã°ÂÂÂ ",
+      "created_at" : "2017-02-28T15:53:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-283078011",
+      "id" : 283078011,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-02-28T15:53:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/283078011",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "Rebased. ",
+      "created_at" : "2017-03-27T17:22:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-289522795",
+      "id" : 289522795,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-03-27T17:22:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289522795",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "@ryanofsky feedback addressed.",
+      "created_at" : "2017-03-28T15:45:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-289813161",
+      "id" : 289813161,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-03-28T15:45:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289813161",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "Needs rebase again (sorry).",
+      "created_at" : "2017-06-26T10:52:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-311026625",
+      "id" : 311026625,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-06-26T10:52:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311026625",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@laanwj rebased.\r\n\r\nThe addrdb commit went away because of https://github.com/bitcoin/bitcoin/commit/cf68a488a4cc78d711ca6e5e3236c6d89d689079",
+      "created_at" : "2017-07-08T21:05:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-313881004",
+      "id" : 313881004,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-07-08T21:05:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313881004",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "Looks good to me, utACK ",
+      "created_at" : "2017-07-11T08:24:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-314371191",
+      "id" : 314371191,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-07-11T08:24:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314371191",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3211283?v=3",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "body" : "utACK 30ac7688e398bbe5400a48ecf0726b679ffb845d",
+      "created_at" : "2017-07-11T17:42:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-314519370",
+      "id" : 314519370,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-07-11T17:42:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314519370",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK 30ac7688e398bbe5400a48ecf0726b679ffb845d",
+      "created_at" : "2017-07-11T22:20:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-314588762",
+      "id" : 314588762,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-07-11T22:20:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314588762",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK 30ac7688e398bbe5400a48ecf0726b679ffb845d",
+      "created_at" : "2017-07-12T23:23:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9804#issuecomment-314925542",
+      "id" : 314925542,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9804",
+      "updated_at" : "2017-07-12T23:23:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314925542",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

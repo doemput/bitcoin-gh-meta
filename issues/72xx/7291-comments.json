@@ -1,0 +1,924 @@
+[
+   {
+      "body" : "Nice! Concept ACK  5609f88",
+      "created_at" : "2016-01-04T19:07:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#issuecomment-168772807",
+      "id" : 168772807,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7291",
+      "updated_at" : "2016-01-04T19:08:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/168772807",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48770392"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48770392"
+         }
+      },
+      "body" : "s/constructior/constructor",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-04T19:34:53Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructior with CService constructior",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48770392",
+      "id" : 48770392,
+      "original_commit_id" : "5609f882da9f078cb9c01bb48a8edd1bb6ec0048",
+      "original_position" : 19,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-04T20:35:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48770392",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Thanks!\r\nutACK.",
+      "created_at" : "2016-01-04T19:36:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#issuecomment-168779831",
+      "id" : 168779831,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7291",
+      "updated_at" : "2016-01-04T19:36:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/168779831",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48777881"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48777881"
+         }
+      },
+      "body" : "fixed.",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-04T20:36:20Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructior with CService constructior",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48777881",
+      "id" : 48777881,
+      "original_commit_id" : "5609f882da9f078cb9c01bb48a8edd1bb6ec0048",
+      "original_position" : 19,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-04T20:36:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48777881",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/274814?v=3",
+         "events_url" : "https://api.github.com/users/EthanHeilman/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/EthanHeilman/followers",
+         "following_url" : "https://api.github.com/users/EthanHeilman/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/EthanHeilman/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/EthanHeilman",
+         "id" : 274814,
+         "login" : "EthanHeilman",
+         "organizations_url" : "https://api.github.com/users/EthanHeilman/orgs",
+         "received_events_url" : "https://api.github.com/users/EthanHeilman/received_events",
+         "repos_url" : "https://api.github.com/users/EthanHeilman/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/EthanHeilman/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/EthanHeilman/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/EthanHeilman"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48835764"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48835764"
+         }
+      },
+      "body" : "Is this really behavior that we want to write into tests?\r\n\r\nI'd prefer adding an 'IsInvalid' status to CNetAddr and signal that (akin to CService) if unparseable nonsense is being fed into the constructor, instead of randomly resolving to the IPv6 localhost \"::\".\r\n\r\nEdit: there is an IsValid on CNetAddr. This would need to return `false` in these cases, instead of valid nonsense.",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-05T11:28:01Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48835764",
+      "id" : 48835764,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 11,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 11,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-05T11:30:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48835764",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48836172"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48836172"
+         }
+      },
+      "body" : "Also here: I don't think this is behavior that should be set into stone.\r\nIMO, parsing should be more strict and providing a partial IPv4 address should simply fail (return !IsValid()).\r\n",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-05T11:33:47Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48836172",
+      "id" : 48836172,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 4,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-05T11:33:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48836172",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48866226"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48866226"
+         }
+      },
+      "body" : "I don't think it should be set in stone and in fact I want to change it, but my view is that having the tests confirm the behavior prior to making the change is valuable. If such a view is not-consistent with the Bitcoin testing philosophy I'm happy to remove these values.\r\n\r\nThere is an additional reason for these tests beyond just documenting undesirable behavior. Bitcoin uses different IP address parsing libraries for different platforms such as linux and windows. We want to avoid a case in which a change to one library results in differing results between platforms (maybe 1111 -> 1.1.0.1 or 1.0.1.1). These tests ensure that, at least for some of these strange values, we would catch such behavior.\r\n\r\n>Edit: there is an IsValid on CNetAddr. This would need to return false in these cases, instead of valid nonsense.\r\n\r\nI agree and that is a good point. If you don't mind I might take a look at fixing this behavior over the weekend.",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-05T16:48:42Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48866226",
+      "id" : 48866226,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 11,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 11,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-05T16:49:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48866226",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/274814?v=3",
+         "events_url" : "https://api.github.com/users/EthanHeilman/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/EthanHeilman/followers",
+         "following_url" : "https://api.github.com/users/EthanHeilman/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/EthanHeilman/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/EthanHeilman",
+         "id" : 274814,
+         "login" : "EthanHeilman",
+         "organizations_url" : "https://api.github.com/users/EthanHeilman/orgs",
+         "received_events_url" : "https://api.github.com/users/EthanHeilman/received_events",
+         "repos_url" : "https://api.github.com/users/EthanHeilman/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/EthanHeilman/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/EthanHeilman/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/EthanHeilman"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48874369"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48874369"
+         }
+      },
+      "body" : "> parsing should be more strict and providing a partial IPv4 address should simply fail (return !IsValid()).\r\n\r\nAgreed, I want to move on this slowly and carefully to ensure we don't introduce a crash via IP strings which work now but should fail. Should I open an issue for this?",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-05T17:59:45Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48874369",
+      "id" : 48874369,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 4,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-05T17:59:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48874369",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/274814?v=3",
+         "events_url" : "https://api.github.com/users/EthanHeilman/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/EthanHeilman/followers",
+         "following_url" : "https://api.github.com/users/EthanHeilman/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/EthanHeilman/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/EthanHeilman",
+         "id" : 274814,
+         "login" : "EthanHeilman",
+         "organizations_url" : "https://api.github.com/users/EthanHeilman/orgs",
+         "received_events_url" : "https://api.github.com/users/EthanHeilman/received_events",
+         "repos_url" : "https://api.github.com/users/EthanHeilman/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/EthanHeilman/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/EthanHeilman/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/EthanHeilman"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48903175"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48903175"
+         }
+      },
+      "body" : "Were these meant to be different? (`IsIPv6` vs `IsIPv4`)",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-05T22:08:39Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48903175",
+      "id" : 48903175,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-05T22:08:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48903175",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48905679"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48905679"
+         }
+      },
+      "body" : "Yes. The point of this test that while the constructor strings are identical one creates a IPv4 address and one creates a IPv6 address. This tripped me up and I wanted to document the functionality as this was being discussed in another pull request: https://github.com/bitcoin/bitcoin/pull/7212",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-05T22:31:09Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48905679",
+      "id" : 48905679,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-05T22:31:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48905679",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/274814?v=3",
+         "events_url" : "https://api.github.com/users/EthanHeilman/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/EthanHeilman/followers",
+         "following_url" : "https://api.github.com/users/EthanHeilman/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/EthanHeilman/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/EthanHeilman",
+         "id" : 274814,
+         "login" : "EthanHeilman",
+         "organizations_url" : "https://api.github.com/users/EthanHeilman/orgs",
+         "received_events_url" : "https://api.github.com/users/EthanHeilman/received_events",
+         "repos_url" : "https://api.github.com/users/EthanHeilman/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/EthanHeilman/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/EthanHeilman/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/EthanHeilman"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48906893"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48906893"
+         }
+      },
+      "body" : ":+1: ",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-05T22:42:41Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r48906893",
+      "id" : 48906893,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-05T22:42:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48906893",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49014417"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49014417"
+         }
+      },
+      "body" : "@EthanHeilman The question is if someone expects `CNetAddr` to construct a IPv6 here. If this is just a fallback-behavior, I'd rather not `BOOST_CHECK` that.\r\n\r\nMaybe you could comment those out for now. (The IPv4 stuff looks ok to go into the tests)",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-06T21:48:54Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49014417",
+      "id" : 49014417,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-06T21:52:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49014417",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49015765"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49015765"
+         }
+      },
+      "body" : "@MarcoFalke I see no reason why wouldn't want to test as much behaviour as possible.\r\nIf you intend to make any changes, it becomes explicit what is broken and you can just amend the tests or the implementation code, depending on what assumptions changed.",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-06T22:00:25Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49015765",
+      "id" : 49015765,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-06T22:00:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49015765",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49050996"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49050996"
+         }
+      },
+      "body" : "Right. There's something to be said for that, but IMO tests are there to test desired behavior, not just lock in wrong behavior that happens to be the case but has been missed over all this time.\r\n\r\nSo IMO the right way to progress would be to make tests that check the behavior that we want; e.g. \r\n\r\n    BOOST_CHECK(!CNetAddr(\"1.1.1\").IsValid());\r\n\r\nThen adapt the implementation to pass these tests.\r\n\r\n> Bitcoin uses different IP address parsing libraries for different platforms such as linux and windows.\r\n\r\nSure. Though I think verifying that windows and linux have the same weird, broken-ish behavior is a mixed blessing. \r\nLuckily we never pass these strings over the P2P network, only binary address blobs, so this is mostly an UI issue.\r\n",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-07T08:37:10Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49050996",
+      "id" : 49050996,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 11,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 11,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-07T08:40:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49050996",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49063891"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49063891"
+         }
+      },
+      "body" : "@dcousens In case the behaviour is unwanted, we shouldn't test it. (Tests are worthless if their only goal is to pass and return true. I can remember three cases in the last 4 months where such `return true;` tests caused us quite some hassle.)",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-07T11:20:42Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49063891",
+      "id" : 49063891,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-07T11:20:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49063891",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49074161"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49074161"
+         }
+      },
+      "body" : "If the existing behaviour is **not** desired, then the tests should be changed to the desired behaviour and the implementation fail until that is rectified.\r\nIMHO it is better to define the behaviour (even if it is undesired) than just leave it up in the air.\r\n\r\nYMMV though,  and its a bit of a bike shed.",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-07T13:51:30Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49074161",
+      "id" : 49074161,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-07T13:52:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49074161",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "utACK 9bafdbc",
+      "created_at" : "2016-01-07T13:51:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#issuecomment-169669226",
+      "id" : 169669226,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7291",
+      "updated_at" : "2016-01-07T13:51:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/169669226",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49264103"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49264103"
+         }
+      },
+      "body" : "I don't care too much but at least add a comment to describe why this is tested.",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-09T13:32:27Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49264103",
+      "id" : 49264103,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-09T13:32:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49264103",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49265116"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49265116"
+         }
+      },
+      "body" : "No, I don't think we should test unwanted behavior. This happens to be the case, but it's wrong and should be fixed. There have been users confused by this behavior before (at least @gmaxwell) which expected incomplete IP addresses to do something else and were baffled by this. Just failing them would be better.\r\n\r\nTests are not there to fix the code's behavior in stone, they are there to strategically or thoroughly test that the behavior is correct.\r\n",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-09T15:52:42Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49265116",
+      "id" : 49265116,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-09T15:52:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49265116",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49270997"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49270997"
+         }
+      },
+      "body" : "@laanwj sure,  so lets add tests to test the desired behaviour? [and subsequently fail until fixed]",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-10T03:08:43Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r49270997",
+      "id" : 49270997,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-10T03:09:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49270997",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r50007997"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/50007997"
+         }
+      },
+      "body" : "@dcousens Agreed. The usual idea would be to make tests that test the desired behavior (e.g. stricter parsing, return !IsValid() if there is something clearly invalid), then fix the code so that the tests pass.",
+      "commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "created_at" : "2016-01-18T15:05:10Z",
+      "diff_hunk" : "@@ -45,6 +45,30 @@ BOOST_AUTO_TEST_CASE(netbase_properties)\n     BOOST_CHECK(CNetAddr(\"8.8.8.8\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"2001::1\").IsRoutable());\n     BOOST_CHECK(CNetAddr(\"127.0.0.1\").IsValid());\n+    BOOST_CHECK(CNetAddr(\"1.1.1\").ToString() == \"1.1.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1.1\").ToString() == \"1.0.0.1\");\n+    BOOST_CHECK(CNetAddr(\"1111\").ToString() == \"0.0.4.87\");\n+    BOOST_CHECK(CNetAddr(\"1111111111\").ToString() == \"66.58.53.199\");\n+\n+    // CNetAddr does not support ports making it dangerous to treat like CService\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\", 7777).ToString() == \"250.2.2.2\");\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == CNetAddr(\"2.2.2:1\").ToString());\n+    BOOST_CHECK(CNetAddr(\"1.1.1.1:1\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").ToString() == \"::\");\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv6());\n+    BOOST_CHECK(CNetAddr(\"2.2.2.2:2\").IsIPv4() == false);\n+\n+    // Comparing with CNetAddr constructor with CService constructor\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2\").ToString() == CNetAddr(\"250.2.2.2\", 7777).ToString());\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:7777\").ToString() != CService(\"250.2.2.2:7777\").ToString());\n+    BOOST_CHECK(CService(\"250.2.2.2:7777\").ToString() == CService(\"250.2.2.2\",7777).ToString());\n+\n+    BOOST_CHECK(CNetAddr(\"250.2.2.2:8333\").IsIPv6());\n+    BOOST_CHECK(CService(\"250.2.2.2:8333\").IsIPv4());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#discussion_r50007997",
+      "id" : 50007997,
+      "original_commit_id" : "9bafdbcbcf35c70d3171592368cd6f862e6d9de0",
+      "original_position" : 25,
+      "path" : "src/test/netbase_tests.cpp",
+      "position" : 25,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7291",
+      "updated_at" : "2016-01-18T15:05:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/50007997",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "See #7435.",
+      "created_at" : "2016-01-29T12:27:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7291#issuecomment-176729379",
+      "id" : 176729379,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7291",
+      "updated_at" : "2016-01-29T12:27:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/176729379",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

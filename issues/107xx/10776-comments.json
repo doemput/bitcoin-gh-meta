@@ -1,0 +1,464 @@
+[
+   {
+      "body" : "PR title too long. Please keep it short and clear.",
+      "created_at" : "2017-07-08T23:04:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#issuecomment-313886066",
+      "id" : 313886066,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10776",
+      "updated_at" : "2017-07-08T23:04:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313886066",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126292823"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126292823"
+         }
+      },
+      "body" : "Why these changes?",
+      "commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "created_at" : "2017-07-09T00:00:32Z",
+      "diff_hunk" : "@@ -1683,7 +1683,7 @@ CAmount CWalletTx::GetCredit(const isminefilter& filter) const\n     return credit;\n }\n \n-CAmount CWalletTx::GetImmatureCredit(bool fUseCache) const\n+CAmount CWalletTx::GetImmatureCredit(const bool fUseCache) const",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126292823",
+      "id" : 126292823,
+      "original_commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "original_position" : 5,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 48766440,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776",
+      "updated_at" : "2017-07-09T00:09:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126292823",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "@promag Generally, anything larger than 1 or 2 pointers is better passed by reference.",
+      "created_at" : "2017-07-09T00:28:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#issuecomment-313889304",
+      "id" : 313889304,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10776",
+      "updated_at" : "2017-07-09T00:28:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313889304",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126296217"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126296217"
+         }
+      },
+      "body" : "To get signature consistency with `GetImmatureWatchOnlyCredit`. See the other changes made to the same file.",
+      "commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "created_at" : "2017-07-09T05:24:54Z",
+      "diff_hunk" : "@@ -1683,7 +1683,7 @@ CAmount CWalletTx::GetCredit(const isminefilter& filter) const\n     return credit;\n }\n \n-CAmount CWalletTx::GetImmatureCredit(bool fUseCache) const\n+CAmount CWalletTx::GetImmatureCredit(const bool fUseCache) const",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126296217",
+      "id" : 126296217,
+      "original_commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "original_position" : 5,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 48769567,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776",
+      "updated_at" : "2017-07-09T05:31:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126296217",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "@promag See @sipa:s answer for the common definition of (non-)cheaply-copied types.\r\n\r\nRegarding completeness: I only targeted `const` arguments.",
+      "created_at" : "2017-07-09T05:31:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#issuecomment-313900078",
+      "id" : 313900078,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10776",
+      "updated_at" : "2017-07-09T05:31:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313900078",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126318388"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126318388"
+         }
+      },
+      "body" : "This is broken - txidIn is std::move()d two lines down.",
+      "commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "created_at" : "2017-07-09T23:29:23Z",
+      "diff_hunk" : "@@ -66,7 +66,7 @@ bool CFeeBumper::preconditionChecks(const CWallet *pWallet, const CWalletTx& wtx\n     return true;\n }\n \n-CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256 txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)\n+CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256& txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126318388",
+      "id" : 126318388,
+      "original_commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "original_position" : 5,
+      "path" : "src/wallet/feebumper.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 48789993,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776",
+      "updated_at" : "2017-07-09T23:31:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126318388",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "cheers",
+      "created_at" : "2017-07-09T23:44:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#issuecomment-313973398",
+      "id" : 313973398,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10776",
+      "updated_at" : "2017-07-09T23:44:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313973398",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/15623546?v=3",
+         "events_url" : "https://api.github.com/users/MIGUELWAXX/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MIGUELWAXX/followers",
+         "following_url" : "https://api.github.com/users/MIGUELWAXX/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MIGUELWAXX/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MIGUELWAXX",
+         "id" : 15623546,
+         "login" : "MIGUELWAXX",
+         "organizations_url" : "https://api.github.com/users/MIGUELWAXX/orgs",
+         "received_events_url" : "https://api.github.com/users/MIGUELWAXX/received_events",
+         "repos_url" : "https://api.github.com/users/MIGUELWAXX/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MIGUELWAXX/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MIGUELWAXX/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MIGUELWAXX"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt Good point! I missed the `std::move(Ã¢ÂÂ¦)`. Closing this PR - I'll have to evaluate it deeper and contemplate if the performance reward is worth it. Thanks for reviewing!",
+      "created_at" : "2017-07-10T05:18:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#issuecomment-314008164",
+      "id" : 314008164,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10776",
+      "updated_at" : "2017-07-10T05:18:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314008164",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126358134"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126358134"
+         }
+      },
+      "body" : "It certainly seems misplaced, but it's not actually wrong, as std::move in this case just casts to `const uint256&&`, which won't be moved from (also, uint256 doesn't have a move constructor that destroys the argument).",
+      "commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "created_at" : "2017-07-10T08:13:21Z",
+      "diff_hunk" : "@@ -66,7 +66,7 @@ bool CFeeBumper::preconditionChecks(const CWallet *pWallet, const CWalletTx& wtx\n     return true;\n }\n \n-CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256 txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)\n+CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256& txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126358134",
+      "id" : 126358134,
+      "original_commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "original_position" : 5,
+      "path" : "src/wallet/feebumper.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 48832827,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776",
+      "updated_at" : "2017-07-10T08:13:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126358134",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126358329"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126358329"
+         }
+      },
+      "body" : "`const uint256&` will not be moved,  `std::move` is simply a cast,  it will do nothing here.\r\nRef: https://stackoverflow.com/questions/28595117/why-can-we-use-stdmove-on-a-const-object",
+      "commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "created_at" : "2017-07-10T08:14:36Z",
+      "diff_hunk" : "@@ -66,7 +66,7 @@ bool CFeeBumper::preconditionChecks(const CWallet *pWallet, const CWalletTx& wtx\n     return true;\n }\n \n-CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256 txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)\n+CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256& txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126358329",
+      "id" : 126358329,
+      "original_commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "original_position" : 5,
+      "path" : "src/wallet/feebumper.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 48833054,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776",
+      "updated_at" : "2017-07-10T08:15:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126358329",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126422741"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126422741"
+         }
+      },
+      "body" : "```txidIn``` should not be const nor pass-by-reference.\r\nIf ```CFeeBumper``` is going to cannibalize ```txidIn``` two lines down it should be copied in the case it was an lvalue. In the case that it was an rvalue, it will not be copied anyway.\r\n```const uint256&``` only causes inefficiencies (due to unnecessary copying) when the caller sends ```txidIn``` as an rvalue\r\n\r\nedit: My mistake, the inefficiency I mentioned above only applies when having to reallocate data for each pointer in uint256, which there are none. While using pass by reference will save you 1 copy.",
+      "commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "created_at" : "2017-07-10T13:36:23Z",
+      "diff_hunk" : "@@ -66,7 +66,7 @@ bool CFeeBumper::preconditionChecks(const CWallet *pWallet, const CWalletTx& wtx\n     return true;\n }\n \n-CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256 txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)\n+CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256& txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126422741",
+      "id" : 126422741,
+      "original_commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "original_position" : 5,
+      "path" : "src/wallet/feebumper.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 48904095,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776",
+      "updated_at" : "2017-07-10T14:41:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126422741",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3879942?v=3",
+         "events_url" : "https://api.github.com/users/ArielLorenzo-Luaces/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ArielLorenzo-Luaces/followers",
+         "following_url" : "https://api.github.com/users/ArielLorenzo-Luaces/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ArielLorenzo-Luaces/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ArielLorenzo-Luaces",
+         "id" : 3879942,
+         "login" : "ArielLorenzo-Luaces",
+         "organizations_url" : "https://api.github.com/users/ArielLorenzo-Luaces/orgs",
+         "received_events_url" : "https://api.github.com/users/ArielLorenzo-Luaces/received_events",
+         "repos_url" : "https://api.github.com/users/ArielLorenzo-Luaces/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ArielLorenzo-Luaces/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ArielLorenzo-Luaces/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ArielLorenzo-Luaces"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126425841"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126425841"
+         }
+      },
+      "body" : "@sipa sorry, broken is a bad word there, I meant \"unsafe code\", ie we want to be careful of having code like that.",
+      "commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "created_at" : "2017-07-10T13:48:41Z",
+      "diff_hunk" : "@@ -66,7 +66,7 @@ bool CFeeBumper::preconditionChecks(const CWallet *pWallet, const CWalletTx& wtx\n     return true;\n }\n \n-CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256 txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)\n+CFeeBumper::CFeeBumper(const CWallet *pWallet, const uint256& txidIn, int newConfirmTarget, bool ignoreGlobalPayTxFee, CAmount totalFee, bool newTxReplaceable)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10776#discussion_r126425841",
+      "id" : 126425841,
+      "original_commit_id" : "2b7df00a5c6217e08e77a6b2421f22f297100abd",
+      "original_position" : 5,
+      "path" : "src/wallet/feebumper.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 48907640,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10776",
+      "updated_at" : "2017-07-10T13:48:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126425841",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   }
+]

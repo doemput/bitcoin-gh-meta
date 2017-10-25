@@ -1,0 +1,344 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r115778800"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115778800"
+         }
+      },
+      "body" : "I don't think you actually need these casts.",
+      "commit_id" : "1dd6c6151381a39d4f734e05a38f71021c9c719c",
+      "created_at" : "2017-05-10T15:49:30Z",
+      "diff_hunk" : "@@ -207,6 +207,30 @@ static std::mutex cs_rng_state;\n static unsigned char rng_state[32] = {0};\n static uint64_t rng_counter = 0;\n \n+void RandAddSeedSleep()\n+{\n+    int64_t nPerfCounter1 = GetPerformanceCounter();\n+    std::this_thread::sleep_for(std::chrono::milliseconds(1));\n+    int64_t nPerfCounter2 = GetPerformanceCounter();\n+\n+    unsigned char buf[64];\n+    CSHA512 hasher;\n+    // Combine with and update state\n+    {\n+        std::unique_lock<std::mutex> lock(cs_rng_state);\n+        hasher.Write(rng_state, sizeof(rng_state));\n+        hasher.Write((const unsigned char*)&rng_counter, sizeof(rng_counter));\n+        ++rng_counter;\n+        hasher.Write((const unsigned char*)&nPerfCounter1, sizeof(nPerfCounter1));\n+        hasher.Write((const unsigned char*)&nPerfCounter2, sizeof(nPerfCounter2));\n+        hasher.Finalize(buf);\n+        memcpy(rng_state, buf + 32, 32);\n+    }\n+    memory_cleanse((void*)&nPerfCounter1, sizeof(nPerfCounter1));\n+    memory_cleanse((void*)&nPerfCounter2, sizeof(nPerfCounter2));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r115778800",
+      "id" : 115778800,
+      "original_commit_id" : "addee9fe03d4529b3e13c829861f98374f6f0d92",
+      "original_position" : 24,
+      "path" : "src/random.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37347367,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372",
+      "updated_at" : "2017-05-10T18:10:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115778800",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r115778934"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115778934"
+         }
+      },
+      "body" : "Maybe move declaration up nearer to `RandAddSeed()`",
+      "commit_id" : "1dd6c6151381a39d4f734e05a38f71021c9c719c",
+      "created_at" : "2017-05-10T15:50:00Z",
+      "diff_hunk" : "@@ -24,6 +24,13 @@ int GetRandInt(int nMax);\n uint256 GetRandHash();\n \n /**\n+ * Add a little bit of randomness to the output of GetStrongRangBytes.\n+ * This sleeps for a millisecond, so should only be called when there is\n+ * no other work to be done.\n+ */\n+void RandAddSeedSleep();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r115778934",
+      "id" : 115778934,
+      "original_commit_id" : "addee9fe03d4529b3e13c829861f98374f6f0d92",
+      "original_position" : 8,
+      "path" : "src/random.h",
+      "position" : 8,
+      "pull_request_review_id" : 37347367,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372",
+      "updated_at" : "2017-05-10T18:10:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115778934",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r115812809"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115812809"
+         }
+      },
+      "body" : "Removed, I had just copied code from above.",
+      "commit_id" : "1dd6c6151381a39d4f734e05a38f71021c9c719c",
+      "created_at" : "2017-05-10T18:10:35Z",
+      "diff_hunk" : "@@ -207,6 +207,30 @@ static std::mutex cs_rng_state;\n static unsigned char rng_state[32] = {0};\n static uint64_t rng_counter = 0;\n \n+void RandAddSeedSleep()\n+{\n+    int64_t nPerfCounter1 = GetPerformanceCounter();\n+    std::this_thread::sleep_for(std::chrono::milliseconds(1));\n+    int64_t nPerfCounter2 = GetPerformanceCounter();\n+\n+    unsigned char buf[64];\n+    CSHA512 hasher;\n+    // Combine with and update state\n+    {\n+        std::unique_lock<std::mutex> lock(cs_rng_state);\n+        hasher.Write(rng_state, sizeof(rng_state));\n+        hasher.Write((const unsigned char*)&rng_counter, sizeof(rng_counter));\n+        ++rng_counter;\n+        hasher.Write((const unsigned char*)&nPerfCounter1, sizeof(nPerfCounter1));\n+        hasher.Write((const unsigned char*)&nPerfCounter2, sizeof(nPerfCounter2));\n+        hasher.Finalize(buf);\n+        memcpy(rng_state, buf + 32, 32);\n+    }\n+    memory_cleanse((void*)&nPerfCounter1, sizeof(nPerfCounter1));\n+    memory_cleanse((void*)&nPerfCounter2, sizeof(nPerfCounter2));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r115812809",
+      "id" : 115812809,
+      "original_commit_id" : "addee9fe03d4529b3e13c829861f98374f6f0d92",
+      "original_position" : 24,
+      "path" : "src/random.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37384862,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372",
+      "updated_at" : "2017-05-10T18:10:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115812809",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r115813035"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115813035"
+         }
+      },
+      "body" : "I deliberately left it down by the GetStrongRandBytes instead of up by the RAND_add stuff. I'll let @sipa handle moving things around when he removes OpenSSL's rng.",
+      "commit_id" : "1dd6c6151381a39d4f734e05a38f71021c9c719c",
+      "created_at" : "2017-05-10T18:11:41Z",
+      "diff_hunk" : "@@ -24,6 +24,13 @@ int GetRandInt(int nMax);\n uint256 GetRandHash();\n \n /**\n+ * Add a little bit of randomness to the output of GetStrongRangBytes.\n+ * This sleeps for a millisecond, so should only be called when there is\n+ * no other work to be done.\n+ */\n+void RandAddSeedSleep();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r115813035",
+      "id" : 115813035,
+      "original_commit_id" : "addee9fe03d4529b3e13c829861f98374f6f0d92",
+      "original_position" : 8,
+      "path" : "src/random.h",
+      "position" : 8,
+      "pull_request_review_id" : 37385124,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372",
+      "updated_at" : "2017-05-10T18:11:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115813035",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r116946100"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116946100"
+         }
+      },
+      "body" : "Would be nice to factor out the 'add this data to the random state' to a function, to make sure the same algorithm is used everywhere (e.g. to reduce the chance of accidental 'oops I replaced the state with all zeros' when there are more of these functions that add different entropy measurements).",
+      "commit_id" : "1dd6c6151381a39d4f734e05a38f71021c9c719c",
+      "created_at" : "2017-05-17T08:59:30Z",
+      "diff_hunk" : "@@ -207,6 +207,30 @@ static std::mutex cs_rng_state;\n static unsigned char rng_state[32] = {0};\n static uint64_t rng_counter = 0;\n \n+void RandAddSeedSleep()\n+{\n+    int64_t nPerfCounter1 = GetPerformanceCounter();\n+    std::this_thread::sleep_for(std::chrono::milliseconds(1));\n+    int64_t nPerfCounter2 = GetPerformanceCounter();\n+\n+    unsigned char buf[64];\n+    CSHA512 hasher;\n+    // Combine with and update state\n+    {\n+        std::unique_lock<std::mutex> lock(cs_rng_state);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10372#discussion_r116946100",
+      "id" : 116946100,
+      "original_commit_id" : "1dd6c6151381a39d4f734e05a38f71021c9c719c",
+      "original_position" : 14,
+      "path" : "src/random.cpp",
+      "position" : 14,
+      "pull_request_review_id" : 38607463,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10372",
+      "updated_at" : "2017-05-17T09:01:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116946100",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK 1dd6c6151381a39d4f734e05a38f71021c9c719c. Only change since last review was removing void* casts.",
+      "created_at" : "2017-05-17T15:03:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10372#issuecomment-302119364",
+      "id" : 302119364,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10372",
+      "updated_at" : "2017-05-17T15:03:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302119364",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Added a separate AddDataToRng function for general use later.",
+      "created_at" : "2017-05-22T20:02:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10372#issuecomment-303204811",
+      "id" : 303204811,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10372",
+      "updated_at" : "2017-05-22T20:02:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303204811",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK 888cce5",
+      "created_at" : "2017-05-23T15:54:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10372#issuecomment-303444093",
+      "id" : 303444093,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10372",
+      "updated_at" : "2017-05-23T15:54:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303444093",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK 888cce57a67c901b89c86cc645f275071d021285",
+      "created_at" : "2017-05-23T16:42:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10372#issuecomment-303461746",
+      "id" : 303461746,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10372",
+      "updated_at" : "2017-05-23T16:42:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303461746",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

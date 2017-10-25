@@ -1,0 +1,2101 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74680851"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74680851"
+         }
+      },
+      "body" : "is this semicolon unintentional?\n",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2016-08-13T03:35:42Z",
+      "diff_hunk" : "@@ -0,0 +1,147 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+const uint32_t CStats::SAMPLE_MIN_DELTA_IN_SEC = 2;\n+const int CStats::CLEANUP_SAMPLES_THRESHOLD = 100;\n+size_t CStats::maxStatsMemory = 0;\n+const size_t CStats::DEFAULT_MAX_STATS_MEMORY = 10 * 1024 * 1024; //10 MB\n+const bool CStats::DEFAULT_STATISTICS_ENABLED = false;\n+std::atomic<bool> CStats::statsEnabled(false); //disable stats by default\n+\n+CStats defaultStats;\n+\n+CStats* CStats::sharedInstance = NULL;\n+\n+CStats* CStats::DefaultStats()\n+{\n+    if (!sharedInstance)\n+        sharedInstance = new CStats();\n+\n+    return sharedInstance;\n+}\n+\n+void CStats::addMempoolSample(int64_t txcount, int64_t dynUsage, int64_t currentMinRelayFee)\n+{\n+    if (!statsEnabled)\n+        return;\n+\n+    uint64_t now = GetTime();\n+    {\n+        LOCK(cs_stats);\n+\n+        // set the mempool stats start time if this is the first sample\n+        if (mempoolStats.startTime == 0)\n+            mempoolStats.startTime = now;\n+\n+        // ensure the minimum time delta between samples\n+        if (mempoolStats.vSamples.size() && mempoolStats.vSamples.back().timeDelta + SAMPLE_MIN_DELTA_IN_SEC >= now - mempoolStats.startTime)\n+            return;\n+\n+        // calculate the current time detla and add a sample\n+        uint32_t timeDelta = now - mempoolStats.startTime; //truncate to uint32_t should be sufficient\n+        mempoolStats.vSamples.push_back({timeDelta, txcount, dynUsage, currentMinRelayFee});\n+        mempoolStats.cleanupCounter++;\n+\n+        // check if we should cleanup the container\n+        if (mempoolStats.cleanupCounter >= CLEANUP_SAMPLES_THRESHOLD) {\n+            //check memory usage\n+            int32_t memDelta = memusage::DynamicUsage(mempoolStats.vSamples) - maxStatsMemory;\n+            if (memDelta > 0 && mempoolStats.vSamples.size()) {\n+                // only shrink if the vector.capacity() is > the target for performance reasons\n+                mempoolStats.vSamples.shrink_to_fit();\n+                int32_t memUsage = memusage::DynamicUsage(mempoolStats.vSamples);\n+                // calculate the amount of samples we need to remove\n+                size_t itemsToRemove = ceil((memUsage - maxStatsMemory) / sizeof(mempoolStats.vSamples[0]));\n+\n+                // make sure the vector contains more items then we'd like to remove\n+                if (mempoolStats.vSamples.size() > itemsToRemove)\n+                    mempoolStats.vSamples.erase(mempoolStats.vSamples.begin(), mempoolStats.vSamples.begin() + itemsToRemove);\n+            }\n+            // shrink vector\n+            mempoolStats.vSamples.shrink_to_fit();\n+            mempoolStats.cleanupCounter = 0;\n+        }\n+\n+        // fire signal\n+        MempoolStatsDidChange();\n+    }\n+}\n+\n+mempoolSamples_t CStats::mempoolGetValuesInRange(uint64_t& fromTime, uint64_t& toTime)\n+{\n+    if (!statsEnabled)\n+        return mempoolSamples_t();\n+\n+    LOCK(cs_stats);\n+\n+    // if empty, return directly\n+    if (!mempoolStats.vSamples.size())\n+        return mempoolStats.vSamples;\n+\n+\n+    if (!(fromTime == 0 && toTime == 0) && (fromTime > mempoolStats.startTime + mempoolStats.vSamples.front().timeDelta || toTime < mempoolStats.startTime + mempoolStats.vSamples.back().timeDelta)) {\n+        mempoolSamples_t::iterator fromSample = mempoolStats.vSamples.begin();\n+        mempoolSamples_t::iterator toSample = std::prev(mempoolStats.vSamples.end());\n+\n+        // create subset of samples\n+        bool fromSet = false;\n+        for (mempoolSamples_t::iterator it = mempoolStats.vSamples.begin(); it != mempoolStats.vSamples.end(); ++it) {\n+            if (mempoolStats.startTime + (*it).timeDelta >= fromTime && !fromSet) {\n+                fromSample = it;\n+                fromSet = true;\n+            }\n+            if (mempoolStats.startTime + (*it).timeDelta > toTime) {\n+                toSample = std::prev(it);\n+                break;\n+            }\n+        }\n+\n+        mempoolSamples_t subset(fromSample, toSample + 1);\n+\n+        // set the fromTime and toTime pass-by-ref parameters\n+        fromTime = mempoolStats.startTime + (*fromSample).timeDelta;\n+        toTime = mempoolStats.startTime + (*toSample).timeDelta;\n+\n+        // return subset\n+        return subset;\n+    }\n+\n+    // return all available samples\n+    fromTime = mempoolStats.startTime + mempoolStats.vSamples.front().timeDelta;\n+    ;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74680851",
+      "id" : 74680851,
+      "original_commit_id" : "4149b34c0a70a298a312180b2c8aea69399a6cea",
+      "original_position" : 119,
+      "path" : "src/stats/stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74680851",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/20916903?v=3",
+         "events_url" : "https://api.github.com/users/isle2983/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/isle2983/followers",
+         "following_url" : "https://api.github.com/users/isle2983/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/isle2983/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/isle2983",
+         "id" : 20916903,
+         "login" : "isle2983",
+         "organizations_url" : "https://api.github.com/users/isle2983/orgs",
+         "received_events_url" : "https://api.github.com/users/isle2983/received_events",
+         "repos_url" : "https://api.github.com/users/isle2983/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/isle2983/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/isle2983/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/isle2983"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74693795"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74693795"
+         }
+      },
+      "body" : "s/memmory/memory/\n",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2016-08-14T00:03:56Z",
+      "diff_hunk" : "@@ -0,0 +1,79 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_STATS_H\n+#define BITCOIN_STATS_H\n+\n+#include <sync.h>\n+\n+#include <atomic>\n+#include <stdlib.h>\n+#include <vector>\n+\n+#include <boost/signals2/signal.hpp>\n+\n+struct CStatsMempoolSample {\n+    uint32_t timeDelta;  //use 32bit time delta to save memmory",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74693795",
+      "id" : 74693795,
+      "original_commit_id" : "4149b34c0a70a298a312180b2c8aea69399a6cea",
+      "original_position" : 17,
+      "path" : "src/stats/stats.h",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74693795",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/20916903?v=3",
+         "events_url" : "https://api.github.com/users/isle2983/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/isle2983/followers",
+         "following_url" : "https://api.github.com/users/isle2983/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/isle2983/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/isle2983",
+         "id" : 20916903,
+         "login" : "isle2983",
+         "organizations_url" : "https://api.github.com/users/isle2983/orgs",
+         "received_events_url" : "https://api.github.com/users/isle2983/received_events",
+         "repos_url" : "https://api.github.com/users/isle2983/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/isle2983/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/isle2983/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/isle2983"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74693828"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74693828"
+         }
+      },
+      "body" : "s/statictis/statistics/\n",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2016-08-14T00:07:37Z",
+      "diff_hunk" : "@@ -0,0 +1,79 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_STATS_H\n+#define BITCOIN_STATS_H\n+\n+#include <sync.h>\n+\n+#include <atomic>\n+#include <stdlib.h>\n+#include <vector>\n+\n+#include <boost/signals2/signal.hpp>\n+\n+struct CStatsMempoolSample {\n+    uint32_t timeDelta;  //use 32bit time delta to save memmory\n+    int64_t txCount;     //transaction count\n+    int64_t dynMemUsage; //dynamic mempool usage\n+    int64_t minFeePerK;  //min fee per K\n+};\n+\n+typedef std::vector<struct CStatsMempoolSample> mempoolSamples_t;\n+\n+// simple mempool stats container\n+class CStatsMempool\n+{\n+public:\n+    uint64_t startTime; //start time\n+    mempoolSamples_t vSamples;\n+    uint64_t cleanupCounter; //internal counter for cleanups\n+\n+    CStatsMempool()\n+    {\n+        startTime = 0;\n+        cleanupCounter = 0;\n+    }\n+};\n+\n+// Class that manages various types of statistics and its memory consumption\n+class CStats\n+{\n+private:\n+    static const uint32_t SAMPLE_MIN_DELTA_IN_SEC; //minimum delta in seconds between samples\n+    static const int CLEANUP_SAMPLES_THRESHOLD;    //amount of samples until we perform a cleanup (remove old samples)\n+    static size_t maxStatsMemory;                  //maximum amount of memory to use for the stats\n+\n+    static CStats* sharedInstance;\n+    mutable CCriticalSection cs_stats;\n+\n+    CStatsMempool mempoolStats; //mempool stats container\n+\n+public:\n+    static const size_t DEFAULT_MAX_STATS_MEMORY; //default maximum of memory to use\n+    static const bool DEFAULT_STATISTICS_ENABLED; //default value for enabling statistics\n+\n+    static std::atomic<bool> statsEnabled;\n+    static CStats* DefaultStats(); //shared instance\n+\n+    /* signals */\n+    boost::signals2::signal<void(void)> MempoolStatsDidChange; //mempool signal\n+\n+    /* add a mempool stats sample */\n+    void addMempoolSample(int64_t txcount, int64_t dynUsage, int64_t currentMinRelayFee);\n+\n+    /* get all mempool samples (non interpolated) */\n+    mempoolSamples_t mempoolGetValuesInRange(uint64_t& fromTime, uint64_t& toTime);\n+\n+    /* set the target for the maximum memory consuption (in bytes) */\n+    void setMaxMemoryUsageTarget(size_t maxMem);\n+\n+    /* get the statictis module help strings */",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74693828",
+      "id" : 74693828,
+      "original_commit_id" : "4149b34c0a70a298a312180b2c8aea69399a6cea",
+      "original_position" : 72,
+      "path" : "src/stats/stats.h",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74693828",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/20916903?v=3",
+         "events_url" : "https://api.github.com/users/isle2983/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/isle2983/followers",
+         "following_url" : "https://api.github.com/users/isle2983/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/isle2983/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/isle2983",
+         "id" : 20916903,
+         "login" : "isle2983",
+         "organizations_url" : "https://api.github.com/users/isle2983/orgs",
+         "received_events_url" : "https://api.github.com/users/isle2983/received_events",
+         "repos_url" : "https://api.github.com/users/isle2983/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/isle2983/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/isle2983/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/isle2983"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74693833"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74693833"
+         }
+      },
+      "body" : "s/consuption/consumption/\n",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2016-08-14T00:08:06Z",
+      "diff_hunk" : "@@ -0,0 +1,79 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_STATS_H\n+#define BITCOIN_STATS_H\n+\n+#include <sync.h>\n+\n+#include <atomic>\n+#include <stdlib.h>\n+#include <vector>\n+\n+#include <boost/signals2/signal.hpp>\n+\n+struct CStatsMempoolSample {\n+    uint32_t timeDelta;  //use 32bit time delta to save memmory\n+    int64_t txCount;     //transaction count\n+    int64_t dynMemUsage; //dynamic mempool usage\n+    int64_t minFeePerK;  //min fee per K\n+};\n+\n+typedef std::vector<struct CStatsMempoolSample> mempoolSamples_t;\n+\n+// simple mempool stats container\n+class CStatsMempool\n+{\n+public:\n+    uint64_t startTime; //start time\n+    mempoolSamples_t vSamples;\n+    uint64_t cleanupCounter; //internal counter for cleanups\n+\n+    CStatsMempool()\n+    {\n+        startTime = 0;\n+        cleanupCounter = 0;\n+    }\n+};\n+\n+// Class that manages various types of statistics and its memory consumption\n+class CStats\n+{\n+private:\n+    static const uint32_t SAMPLE_MIN_DELTA_IN_SEC; //minimum delta in seconds between samples\n+    static const int CLEANUP_SAMPLES_THRESHOLD;    //amount of samples until we perform a cleanup (remove old samples)\n+    static size_t maxStatsMemory;                  //maximum amount of memory to use for the stats\n+\n+    static CStats* sharedInstance;\n+    mutable CCriticalSection cs_stats;\n+\n+    CStatsMempool mempoolStats; //mempool stats container\n+\n+public:\n+    static const size_t DEFAULT_MAX_STATS_MEMORY; //default maximum of memory to use\n+    static const bool DEFAULT_STATISTICS_ENABLED; //default value for enabling statistics\n+\n+    static std::atomic<bool> statsEnabled;\n+    static CStats* DefaultStats(); //shared instance\n+\n+    /* signals */\n+    boost::signals2::signal<void(void)> MempoolStatsDidChange; //mempool signal\n+\n+    /* add a mempool stats sample */\n+    void addMempoolSample(int64_t txcount, int64_t dynUsage, int64_t currentMinRelayFee);\n+\n+    /* get all mempool samples (non interpolated) */\n+    mempoolSamples_t mempoolGetValuesInRange(uint64_t& fromTime, uint64_t& toTime);\n+\n+    /* set the target for the maximum memory consuption (in bytes) */",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74693833",
+      "id" : 74693833,
+      "original_commit_id" : "4149b34c0a70a298a312180b2c8aea69399a6cea",
+      "original_position" : 69,
+      "path" : "src/stats/stats.h",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74693833",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/20916903?v=3",
+         "events_url" : "https://api.github.com/users/isle2983/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/isle2983/followers",
+         "following_url" : "https://api.github.com/users/isle2983/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/isle2983/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/isle2983",
+         "id" : 20916903,
+         "login" : "isle2983",
+         "organizations_url" : "https://api.github.com/users/isle2983/orgs",
+         "received_events_url" : "https://api.github.com/users/isle2983/received_events",
+         "repos_url" : "https://api.github.com/users/isle2983/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/isle2983/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/isle2983/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/isle2983"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74693876"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74693876"
+         }
+      },
+      "body" : "s/detla/delta/\n",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2016-08-14T00:12:58Z",
+      "diff_hunk" : "@@ -0,0 +1,147 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+const uint32_t CStats::SAMPLE_MIN_DELTA_IN_SEC = 2;\n+const int CStats::CLEANUP_SAMPLES_THRESHOLD = 100;\n+size_t CStats::maxStatsMemory = 0;\n+const size_t CStats::DEFAULT_MAX_STATS_MEMORY = 10 * 1024 * 1024; //10 MB\n+const bool CStats::DEFAULT_STATISTICS_ENABLED = false;\n+std::atomic<bool> CStats::statsEnabled(false); //disable stats by default\n+\n+CStats defaultStats;\n+\n+CStats* CStats::sharedInstance = NULL;\n+\n+CStats* CStats::DefaultStats()\n+{\n+    if (!sharedInstance)\n+        sharedInstance = new CStats();\n+\n+    return sharedInstance;\n+}\n+\n+void CStats::addMempoolSample(int64_t txcount, int64_t dynUsage, int64_t currentMinRelayFee)\n+{\n+    if (!statsEnabled)\n+        return;\n+\n+    uint64_t now = GetTime();\n+    {\n+        LOCK(cs_stats);\n+\n+        // set the mempool stats start time if this is the first sample\n+        if (mempoolStats.startTime == 0)\n+            mempoolStats.startTime = now;\n+\n+        // ensure the minimum time delta between samples\n+        if (mempoolStats.vSamples.size() && mempoolStats.vSamples.back().timeDelta + SAMPLE_MIN_DELTA_IN_SEC >= now - mempoolStats.startTime)\n+            return;\n+\n+        // calculate the current time detla and add a sample",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74693876",
+      "id" : 74693876,
+      "original_commit_id" : "4149b34c0a70a298a312180b2c8aea69399a6cea",
+      "original_position" : 48,
+      "path" : "src/stats/stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74693876",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/20916903?v=3",
+         "events_url" : "https://api.github.com/users/isle2983/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/isle2983/followers",
+         "following_url" : "https://api.github.com/users/isle2983/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/isle2983/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/isle2983",
+         "id" : 20916903,
+         "login" : "isle2983",
+         "organizations_url" : "https://api.github.com/users/isle2983/orgs",
+         "received_events_url" : "https://api.github.com/users/isle2983/received_events",
+         "repos_url" : "https://api.github.com/users/isle2983/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/isle2983/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/isle2983/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/isle2983"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74694040"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74694040"
+         }
+      },
+      "body" : "This 'defaultStats' instance is not used.\n",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2016-08-14T00:33:20Z",
+      "diff_hunk" : "@@ -0,0 +1,147 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+const uint32_t CStats::SAMPLE_MIN_DELTA_IN_SEC = 2;\n+const int CStats::CLEANUP_SAMPLES_THRESHOLD = 100;\n+size_t CStats::maxStatsMemory = 0;\n+const size_t CStats::DEFAULT_MAX_STATS_MEMORY = 10 * 1024 * 1024; //10 MB\n+const bool CStats::DEFAULT_STATISTICS_ENABLED = false;\n+std::atomic<bool> CStats::statsEnabled(false); //disable stats by default\n+\n+CStats defaultStats;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r74694040",
+      "id" : 74694040,
+      "original_commit_id" : "4149b34c0a70a298a312180b2c8aea69399a6cea",
+      "original_position" : 19,
+      "path" : "src/stats/stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/74694040",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/20916903?v=3",
+         "events_url" : "https://api.github.com/users/isle2983/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/isle2983/followers",
+         "following_url" : "https://api.github.com/users/isle2983/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/isle2983/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/isle2983",
+         "id" : 20916903,
+         "login" : "isle2983",
+         "organizations_url" : "https://api.github.com/users/isle2983/orgs",
+         "received_events_url" : "https://api.github.com/users/isle2983/received_events",
+         "repos_url" : "https://api.github.com/users/isle2983/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/isle2983/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/isle2983/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/isle2983"
+      }
+   },
+   {
+      "body" : "Hi Jonas,\r\n\r\nI understand the concern in your description for the addMempoolSample() stat\r\nbookkeeping designed to be as lightweight as possible in the critical execution\r\npath. However, I have a few (perhaps under-informed, neophyte) questions which\r\nwould help me understand the design considerations better:\r\n\r\n1) the comment in rpc_stats.cpp hints that the overhead of the JSON string\r\ngeneration is best optimized to be this 'flat' encoding as opposed to some\r\nencoding like:\r\n\r\n`\r\n{\r\n\"fieldNames\" : [\"delta_in_secs\", \"tx_count\",\r\n               \"dynamic_mem_usage\", \"min_fee_per_k\"],\r\n\"samples\" : [[val1, val2, val3, val4],\r\n           [val1, val2, val3, val4],\r\n          ]\r\n}\r\n`\r\n\r\nIs the 'flat' encoding strictly needed? or is there some other concern with\r\noutputting a slightly more convenient format than 'flat'?\r\n\r\n2) It appears possible to set the maximum memory target very hight such that\r\nmany, many samples are collected and the overhead of the computation\r\nmempoolGetValuesInRange() inside the lock might become onerus (assuming I am\r\ncorrectly understanding how the lock works and the implications of holding it\r\ntoo long). Have you considered taking a copy of 'mempoolStats' in a way that\r\nlets you return the lock earlier, and doing the dataset computation outside the\r\nlock? (Is that even currently possible under the current execution model?)\r\n\r\nCheers,\r\n\r\nIsle",
+      "created_at" : "2016-08-15T04:03:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-239725630",
+      "id" : 239725630,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-08-15T04:03:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/239725630",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/20916903?v=3",
+         "events_url" : "https://api.github.com/users/isle2983/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/isle2983/followers",
+         "following_url" : "https://api.github.com/users/isle2983/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/isle2983/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/isle2983",
+         "id" : 20916903,
+         "login" : "isle2983",
+         "organizations_url" : "https://api.github.com/users/isle2983/orgs",
+         "received_events_url" : "https://api.github.com/users/isle2983/received_events",
+         "repos_url" : "https://api.github.com/users/isle2983/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/isle2983/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/isle2983/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/isle2983"
+      }
+   },
+   {
+      "body" : "@isle2983 Welcome to github.\r\nThanks for your feedback and your nitpicks. I really appreciate this and i'll process them during the next hours.\r\n\r\nFor your questions/inputs:\r\n1) My idea with the JSON flat output was to bypass the JSON encoding/decoding.`[val1, val2, val3, val4], [val1, val2, val3, val4], ` should also work. I just though a single string would result in faster encoding and decoding performance. But your approach seems to be the better choice, although not sure if we want to use `UniValue` for encoding or just appending strings... maybe we should start with the first and use a more optimized encoding if the JSON overhead is a problem.\r\n\r\n2) Yes. That's a good point. Copying the samples vector could result in a memory peak when using large amount of `-maxmemorytarget`.",
+      "created_at" : "2016-08-15T12:03:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-239786592",
+      "id" : 239786592,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-08-15T12:03:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/239786592",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r75543469"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/75543469"
+         }
+      },
+      "body" : "Would it make sense to add a line break after each sample's values?\n",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2016-08-19T20:03:47Z",
+      "diff_hunk" : "@@ -0,0 +1,66 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"rpc/server.h\"\n+#include \"stats/stats.h\"\n+#include \"util.h\"\n+#include \"utilstrencodings.h\"\n+\n+#include <stdint.h>\n+\n+#include <univalue.h>\n+\n+UniValue getmempoolstats(const UniValue& params, bool fHelp)\n+{\n+    if (fHelp || params.size() != 0)\n+        throw std::runtime_error(\n+            \"getmempoolstats\\n\"\n+            \"\\nReturns the collected mempool statictics (non-linear non-interpolated samples).\\n\"\n+            \"\\nResult:\\n\"\n+            \"  {\\n\"\n+            \"    \\\"time_from\\\" : \\\"timestamp\\\",     (numeric) Timestamp, first sample\\n\"\n+            \"    \\\"time_to\\\"   : \\\"timestamp\\\",     (numeric) Timestamp, last sample\\n\"\n+            \"    \\\"flatdata\\\"  : \\\"<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>,<delta_in_secs_2>,...>\\\"\\n\"\n+            \"                   (all samples in a single string, 4 numeric values per sample, no delimiter between samples)\"\n+            \"  }\\n\"\n+            \"\\nExamples:\\n\" +\n+            HelpExampleCli(\"getmempoolstats\", \"\") + HelpExampleRpc(\"getmempoolstats\", \"\"));\n+\n+    // get stats from the core stats model\n+    uint64_t timeFrom = 0;\n+    uint64_t timeTo = 0;\n+    mempoolSamples_t samples = CStats::DefaultStats()->mempoolGetValuesInRange(timeFrom, timeTo);\n+\n+    // use \"flat\" json encoding for performance reasons\n+    std::string flatData;\n+    for (struct CStatsMempoolSample& sample : samples) {\n+        flatData += std::to_string(sample.timeDelta) + \",\";\n+        flatData += std::to_string(sample.txCount) + \",\";\n+        flatData += std::to_string(sample.dynMemUsage) + \",\";\n+        flatData += std::to_string(sample.minFeePerK) + \",\";\n+    }",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r75543469",
+      "id" : 75543469,
+      "original_commit_id" : "c76840b835982ecd2cb39cda900f3770f2a7c328",
+      "original_position" : 42,
+      "path" : "src/stats/rpc_stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/75543469",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r75551478"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/75551478"
+         }
+      },
+      "body" : "Or just add the names of the columns as another entry in the dict.\n\nOtherwise I fail to see how this rpc call is useful.\n",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2016-08-19T21:06:38Z",
+      "diff_hunk" : "@@ -0,0 +1,66 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"rpc/server.h\"\n+#include \"stats/stats.h\"\n+#include \"util.h\"\n+#include \"utilstrencodings.h\"\n+\n+#include <stdint.h>\n+\n+#include <univalue.h>\n+\n+UniValue getmempoolstats(const UniValue& params, bool fHelp)\n+{\n+    if (fHelp || params.size() != 0)\n+        throw std::runtime_error(\n+            \"getmempoolstats\\n\"\n+            \"\\nReturns the collected mempool statictics (non-linear non-interpolated samples).\\n\"\n+            \"\\nResult:\\n\"\n+            \"  {\\n\"\n+            \"    \\\"time_from\\\" : \\\"timestamp\\\",     (numeric) Timestamp, first sample\\n\"\n+            \"    \\\"time_to\\\"   : \\\"timestamp\\\",     (numeric) Timestamp, last sample\\n\"\n+            \"    \\\"flatdata\\\"  : \\\"<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>,<delta_in_secs_2>,...>\\\"\\n\"\n+            \"                   (all samples in a single string, 4 numeric values per sample, no delimiter between samples)\"\n+            \"  }\\n\"\n+            \"\\nExamples:\\n\" +\n+            HelpExampleCli(\"getmempoolstats\", \"\") + HelpExampleRpc(\"getmempoolstats\", \"\"));\n+\n+    // get stats from the core stats model\n+    uint64_t timeFrom = 0;\n+    uint64_t timeTo = 0;\n+    mempoolSamples_t samples = CStats::DefaultStats()->mempoolGetValuesInRange(timeFrom, timeTo);\n+\n+    // use \"flat\" json encoding for performance reasons\n+    std::string flatData;\n+    for (struct CStatsMempoolSample& sample : samples) {\n+        flatData += std::to_string(sample.timeDelta) + \",\";\n+        flatData += std::to_string(sample.txCount) + \",\";\n+        flatData += std::to_string(sample.dynMemUsage) + \",\";\n+        flatData += std::to_string(sample.minFeePerK) + \",\";\n+    }",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r75551478",
+      "id" : 75551478,
+      "original_commit_id" : "c76840b835982ecd2cb39cda900f3770f2a7c328",
+      "original_position" : 42,
+      "path" : "src/stats/rpc_stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/75551478",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "I have been playing around making my own changes off these commits (isle2983:getmempoolstats). Mostly to just to get some hands on with the code and try to get my C++ up to  par.\r\n\r\nBut anyway, I made the rpc output of the samples full JSON:\r\n```\r\n{\r\n  \"enabled\": true,\r\n  \"maxmemorytarget\": 10485760,\r\n  \"currentusage\": 1734416,\r\n  \"time_from\": 1471573271,\r\n  \"time_to\": 1471657376,\r\n  \"sampleCount\": 27131,\r\n  \"sampleFieldNames\": [\r\n    \"timeDelta\", \r\n    \"txCount\", \r\n    \"dynMemUsage\", \r\n    \"minFeePerK\"\r\n  ],\r\n  \"samples\": [\r\n    [\r\n      0, \r\n      1, \r\n      1728, \r\n      0\r\n    ], \r\n    [\r\n      4, \r\n      11, \r\n      15232, \r\n      0\r\n    ], \r\n    ...\r\n    (snip)\r\n    ]\r\n}\r\n```\r\nThe JSON 'pretty' print through bitcoin-cli is definitely unwieldy. However, the computational overhead in doing the wrangling doesn't seem so bad.\r\n\r\nThe 1.7MM of stat data is from collecting just overnight. With that data, I can pull it off the node, parse and convert the JSON into CSV with a python script and plot it in gnuplot in under a second.\r\n\r\n```\r\n$ time myJunk/plotTxCount.sh \r\n\r\nreal    0m0.966s\r\nuser    0m0.460s\r\nsys     0m0.128s\r\n```\r\n\r\nNot sure what the comparable is with the qt gui stuff branch that is running, but this doesn't seem too bad on the face of it.\r\n\r\nAlso, if getting this info from the node to the UI quickly is a concern, perhaps a more dense, binary-like format is worth considering i.e:\r\n```\r\n{\"stats_blob\":\"8b292cf.....\"}\r\n```\r\nOne could imagine it being more efficient than even the 'flat' format, depending on the sophistication.",
+      "created_at" : "2016-08-20T02:36:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-241173926",
+      "id" : 241173926,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-08-20T02:36:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/241173926",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/20916903?v=3",
+         "events_url" : "https://api.github.com/users/isle2983/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/isle2983/followers",
+         "following_url" : "https://api.github.com/users/isle2983/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/isle2983/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/isle2983",
+         "id" : 20916903,
+         "login" : "isle2983",
+         "organizations_url" : "https://api.github.com/users/isle2983/orgs",
+         "received_events_url" : "https://api.github.com/users/isle2983/received_events",
+         "repos_url" : "https://api.github.com/users/isle2983/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/isle2983/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/isle2983/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/isle2983"
+      }
+   },
+   {
+      "body" : "Thanks @isle2983 for the testing, benchmarks and improvements.\r\nI have switched to the proposed array format for the samples (rather then the flat structure). A more performant binary format (inside of the JSON format) would be a hack. More performance would probably be possible over ZMQ.. but its currently a push only channel.\r\n\r\nI also though again about copy the samples hash before filtering it. I came to the conclusion that it's not worth generating a memory peak (by a copy of the whole samples vector) in order to allow a faster release of the LOCK. The filtering should be very fast because it only compares some uint32 and does construct a new vector with a from-/to-iterators (should also preform fast).",
+      "created_at" : "2016-08-22T13:02:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-241405658",
+      "id" : 241405658,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-08-22T13:02:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/241405658",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Needed rebase.",
+      "created_at" : "2016-09-09T06:54:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-245834655",
+      "id" : 245834655,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-09-09T06:54:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/245834655",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Rebased.",
+      "created_at" : "2016-10-20T08:31:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-255042584",
+      "id" : 255042584,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-10-20T08:31:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/255042584",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Assigning \"would be nice to have\" for 0.14 per meeting today.",
+      "created_at" : "2016-11-10T22:02:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-259820789",
+      "id" : 259820789,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-11-10T22:02:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/259820789",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Just saw @gmaxwell's comment on #8550 (which I completely agree with) and it reminded to look at that PR and this one.  Sorry for not getting involved sooner, but I really like the idea.  Unfortunately I can think of many many stats (dozens and dozens) that we might want to collect, both to potentially show to users in whiz-bangy gui's and also would be useful for developers and businesses trying to understand unusual behavior on the network.  \r\n\r\nIf we envision that there might be 1 KB of different stats data, then maybe rather than just saving sample data points and trimming when they hit memory usage, we should be smart about saving it along different time frames.  For instance we could have second, minute, hour, day sampling intervals and we could save 1000 points or more on each and still have quite reasonable memory usage, but they could be auto trimmed..  so if you wanted to look at data from hours ago, you couldn't look at it on the second time frame...\r\n\r\n",
+      "created_at" : "2016-12-05T00:51:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-264745780",
+      "id" : 264745780,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-12-05T00:51:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264745780",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "@morcos: thanks for the comment. Yes. I completely agree. I think this is a first start and the current design allows features like you mentioned.\r\nI once started with interpolating values instead of just trimming the back, you could in theory just reduce the \"density\" of the sample and interpolate the in-between values (to a point where this could make sense).\r\nBut yes, adding more stats probably require individual limits and trim-behaviours.\r\n",
+      "created_at" : "2016-12-05T13:06:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-264849304",
+      "id" : 264849304,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-12-05T13:06:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264849304",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "@jonasschnelli Well I guess what I was thinking was that one general framework might fit all stats.  You log it with whatever frequency you want.  And it's stored in up to 4 different histories (by second, minute, hour, day) and each of those is trimmed to some limit (say 1000 or 2000 data points each).   Is there any type of stat that such a general framework might not work well with?  \r\n",
+      "created_at" : "2016-12-05T15:04:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-264876764",
+      "id" : 264876764,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-12-05T15:04:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264876764",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "@morcos: the original idea I was trying to follow was to not collect in a fixed frequency. A) To avoid locking a thread for just collecting stats samples. B) To not collect over and over the same value if it was unchanged.\r\nTake the traffic report as an example. If you like to collect stats of all peers traffic segmented into all available p2p commands, then you would probably \"loose\" plenty of memory by storing samples with identical values.\r\n\r\nI had the idea of recording samples in the most restrained way possible. Collect lock free and only if values have changes; collect the according timestamp.\r\nIf you want to retrieve data with a fixed frequency/step-size, interpolate.\r\n\r\nBut not sure if this is stupid.",
+      "created_at" : "2016-12-05T15:15:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-264879895",
+      "id" : 264879895,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-12-05T15:15:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264879895",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Rebased (main split)",
+      "created_at" : "2016-12-06T10:37:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-265116687",
+      "id" : 265116687,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-12-06T10:37:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/265116687",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "c0af3664360e26333f8e16f20b0e21efa6ce2f1a has unresolved conflicts :(",
+      "created_at" : "2016-12-10T22:22:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-266244149",
+      "id" : 266244149,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-12-10T22:22:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/266244149",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "@luke-jr All checks have passed ;-)",
+      "created_at" : "2016-12-10T22:25:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-266244294",
+      "id" : 266244294,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-12-10T22:25:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/266244294",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "@paveljanik They're removed in the subsequent commit.",
+      "created_at" : "2016-12-10T22:36:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-266244810",
+      "id" : 266244810,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-12-10T22:36:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/266244810",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Yes (I noticed that), this is why we should take Travis' results as a help only.",
+      "created_at" : "2016-12-10T22:40:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-266245018",
+      "id" : 266245018,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2016-12-10T22:40:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/266245018",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "@jonasschnelli whatever happened to this plan?\r\n```\r\n09:19:49 < jonasschnelli> I think you convinced me to do the 1000s 1000m 1000h 1000d approach.\r\n09:19:59 < jonasschnelli> maybe the 1000 is configurable.\r\n09:20:04 < morcos> doesn't matter to me how we do it... i think a delta version coudl be just as good\r\n09:20:14 < morcos> and you could just be smart about trimming the delta list or something\r\n09:20:28 < morcos> yes, 1000 should be configurable i thik... actually maybe isn't enough for a default\r\n09:20:45 < jonasschnelli> also, I liked the configurability of the buffer in MB.\r\n09:20:52 < jonasschnelli> That's what you probably care about.\r\n09:20:56 < jonasschnelli> Not the 1000\r\n09:20:59 < morcos> 1000 secs is just 16 minutes...  you would not want to have to only have 16 data points\r\n09:21:12 < jonasschnelli> You would say, I reserve 300MB for stats.\r\n09:21:37 < jonasschnelli> Right... just en \r\n09:21:45 < jonasschnelli> just as an example\r\n09:22:14 < jonasschnelli> So,.. you convinced me for high frequency recent and low frequency long time horizon,...\r\n09:22:21 < morcos> ok cool...   any approach that automatically keeps both recent fine-grained and long time horizon bigger step, is fine with me\r\n```",
+      "created_at" : "2017-01-05T18:09:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-270714233",
+      "id" : 270714233,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2017-01-05T18:09:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270714233",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2017-02-23T23:45:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-282158818",
+      "id" : 282158818,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2017-02-23T23:45:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/282158818",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "Needs rebase / reply to @morcos' review comment",
+      "created_at" : "2017-05-02T13:24:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-298634471",
+      "id" : 298634471,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2017-05-02T13:24:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298634471",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Completely rewrote this PR.\r\n\r\nCurrent features are \r\n-> CScheduler driven sample collecting (current interval 2000ms)\r\n-> Relevant mempool data (size, memory requirement, minfee) gets written to an atomic cache (no additional locking required)\r\n-> Multiple precision levels (currently three, 2s, 60s, 1800s)\r\n-> Memory target that will calculate how many samples do fit in the given target\r\n-> Sample do only have a 2byte time-delta to the last sample, allowing to save some memory\r\n-> Flexible design, adding more data-points should be simple (bandwidth, utxo-stats, etc.).\r\n\r\nping @morcos ",
+      "created_at" : "2017-05-08T14:04:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-299876023",
+      "id" : 299876023,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2017-05-08T14:04:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299876023",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115800129"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115800129"
+         }
+      },
+      "body" : "Should s/percision/precision/ throughout PR. Also maybe this field should be called \"sample_interval\" to be consistent with \"samples\" field below.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-10T17:19:58Z",
+      "diff_hunk" : "@@ -0,0 +1,82 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"rpc/server.h\"\n+#include \"stats/stats.h\"\n+#include \"util.h\"\n+#include \"utilstrencodings.h\"\n+\n+#include <stdint.h>\n+\n+#include <univalue.h>\n+\n+UniValue getmempoolstats(const JSONRPCRequest& request)\n+{\n+    if (request.fHelp || request.params.size() != 0)\n+        throw std::runtime_error(\n+            \"getmempoolstats\\n\"\n+            \"\\nReturns the collected mempool statictics.\\n\"\n+            \"\\nThe samples are segregated in multiple percision groups.\\n\"\n+            \"\\nSamples time interval is not guaranteed to be constant, hence there\\n\"\n+            \"is a time delta in each sample relative to the last sample.\\n\"\n+            \"\\nResult:\\n\"\n+            \"  [\\n\"\n+            \"    {\\n\"\n+            \"      \\\"percision_interval\\\" : \\\"interval\\\",      (numeric) Interval target in seconds between samples\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115800129",
+      "id" : 115800129,
+      "original_commit_id" : "a2a71128d1d899437063c34fd2736f594bb75130",
+      "original_position" : 26,
+      "path" : "src/stats/rpc_stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37371306,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115800129",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115805878"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115805878"
+         }
+      },
+      "body" : "This seems like it would belong in `AppInitParameterInteraction` more than `AppInitSanityChecks`",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-10T17:43:08Z",
+      "diff_hunk" : "@@ -1164,6 +1166,9 @@ bool AppInitSanityChecks()\n {\n     // ********************************************************* Step 4: sanity checks\n \n+    if (!CStats::parameterInteraction())",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115805878",
+      "id" : 115805878,
+      "original_commit_id" : "a2a71128d1d899437063c34fd2736f594bb75130",
+      "original_position" : 20,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37371306,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115805878",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115806758"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115806758"
+         }
+      },
+      "body" : "Seems like this could be switched to unique_ptr.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-10T17:46:36Z",
+      "diff_hunk" : "@@ -0,0 +1,64 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_STATS_H\n+#define BITCOIN_STATS_H\n+\n+#include \"amount.h\"\n+#include \"scheduler.h\"\n+#include \"stats/stats_mempool.h\"\n+\n+#include <atomic>\n+#include <stdlib.h>\n+\n+#include <boost/signals2/signal.hpp>\n+\n+// Class that manages various types of statistics and its memory consumption\n+class CStats\n+{\n+private:\n+    static CStats* sharedInstance; //!< singleton instance\n+    std::atomic<bool> statsEnabled;\n+\n+    //maximum amount of memory to use for the stats\n+    std::atomic<size_t> maxStatsMemory;\n+\n+    // mempool collector\n+    CStatsMempool *mempoolStatsCollector;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115806758",
+      "id" : 115806758,
+      "original_commit_id" : "a2a71128d1d899437063c34fd2736f594bb75130",
+      "original_position" : 28,
+      "path" : "src/stats/stats.h",
+      "position" : null,
+      "pull_request_review_id" : 37371306,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115806758",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115807922"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115807922"
+         }
+      },
+      "body" : "Should replace with `for (unsigned int interval : precisionIntervals)`",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-10T17:51:19Z",
+      "diff_hunk" : "@@ -0,0 +1,133 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats_mempool.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const static unsigned int precisionIntervals[] = {\n+    2, // == every 2 secs == 1800 samples per hour\n+    60, // == every minute = 1440 samples per day\n+    1800 // == every half-hour = ~2'160 per Month\n+};\n+\n+const static unsigned int MIN_SAMPLES = 5;\n+const static unsigned int MAX_SAMPLES = 5000;\n+\n+\n+const static unsigned int fallbackMaxSamplesPerPercision = 1000;\n+\n+std::atomic<size_t> CStatsMempool::cacheMempoolSize;\n+std::atomic<size_t> CStatsMempool::cacheMempoolDynamicMemoryUsage;\n+std::atomic<CAmount> CStatsMempool::cacheMempoolMinRelayFee;\n+\n+CStatsMempool::CStatsMempool(unsigned int collectIntervalIn) : collectInterval(collectIntervalIn)\n+{\n+    startTime = 0;\n+    intervalCounter = 0;\n+\n+    // setup the samples per percision vector\n+    for (unsigned int i = 0; i < sizeof(precisionIntervals) / sizeof(precisionIntervals[0]); i++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115807922",
+      "id" : 115807922,
+      "original_commit_id" : "a2a71128d1d899437063c34fd2736f594bb75130",
+      "original_position" : 35,
+      "path" : "src/stats/stats_mempool.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37371306,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115807922",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115808304"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115808304"
+         }
+      },
+      "body" : "Could simplify to `vSamplesPerPrecision.emplace_back()`",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-10T17:52:48Z",
+      "diff_hunk" : "@@ -0,0 +1,133 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats_mempool.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const static unsigned int precisionIntervals[] = {\n+    2, // == every 2 secs == 1800 samples per hour\n+    60, // == every minute = 1440 samples per day\n+    1800 // == every half-hour = ~2'160 per Month\n+};\n+\n+const static unsigned int MIN_SAMPLES = 5;\n+const static unsigned int MAX_SAMPLES = 5000;\n+\n+\n+const static unsigned int fallbackMaxSamplesPerPercision = 1000;\n+\n+std::atomic<size_t> CStatsMempool::cacheMempoolSize;\n+std::atomic<size_t> CStatsMempool::cacheMempoolDynamicMemoryUsage;\n+std::atomic<CAmount> CStatsMempool::cacheMempoolMinRelayFee;\n+\n+CStatsMempool::CStatsMempool(unsigned int collectIntervalIn) : collectInterval(collectIntervalIn)\n+{\n+    startTime = 0;\n+    intervalCounter = 0;\n+\n+    // setup the samples per percision vector\n+    for (unsigned int i = 0; i < sizeof(precisionIntervals) / sizeof(precisionIntervals[0]); i++) {\n+        vSamplesPerPrecision.push_back(MempoolSamplesVector());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115808304",
+      "id" : 115808304,
+      "original_commit_id" : "a2a71128d1d899437063c34fd2736f594bb75130",
+      "original_position" : 36,
+      "path" : "src/stats/stats_mempool.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37371306,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115808304",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115809727"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115809727"
+         }
+      },
+      "body" : "I think you could drop the loop and just `return {std::begin(precisionIntervals), std::end(precisionIntervals)};`",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-10T17:58:01Z",
+      "diff_hunk" : "@@ -0,0 +1,133 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats_mempool.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const static unsigned int precisionIntervals[] = {\n+    2, // == every 2 secs == 1800 samples per hour\n+    60, // == every minute = 1440 samples per day\n+    1800 // == every half-hour = ~2'160 per Month\n+};\n+\n+const static unsigned int MIN_SAMPLES = 5;\n+const static unsigned int MAX_SAMPLES = 5000;\n+\n+\n+const static unsigned int fallbackMaxSamplesPerPercision = 1000;\n+\n+std::atomic<size_t> CStatsMempool::cacheMempoolSize;\n+std::atomic<size_t> CStatsMempool::cacheMempoolDynamicMemoryUsage;\n+std::atomic<CAmount> CStatsMempool::cacheMempoolMinRelayFee;\n+\n+CStatsMempool::CStatsMempool(unsigned int collectIntervalIn) : collectInterval(collectIntervalIn)\n+{\n+    startTime = 0;\n+    intervalCounter = 0;\n+\n+    // setup the samples per percision vector\n+    for (unsigned int i = 0; i < sizeof(precisionIntervals) / sizeof(precisionIntervals[0]); i++) {\n+        vSamplesPerPrecision.push_back(MempoolSamplesVector());\n+\n+        // use the fallback max in case max memory will not be set\n+        vMaxSamplesPerPrecision.push_back(fallbackMaxSamplesPerPercision);\n+\n+        // add starttime 0 to each level\n+        vTimeLastSample.push_back(0);\n+    }\n+}\n+\n+std::vector<unsigned int> CStatsMempool::getPercisionGroupsAndIntervals() {\n+    std::vector<unsigned int> grps;\n+    for (unsigned int i = 0; i < sizeof(precisionIntervals) / sizeof(precisionIntervals[0]); i++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115809727",
+      "id" : 115809727,
+      "original_commit_id" : "a2a71128d1d899437063c34fd2736f594bb75130",
+      "original_position" : 48,
+      "path" : "src/stats/stats_mempool.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37371306,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115809727",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115811850"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115811850"
+         }
+      },
+      "body" : "Using uint16_t here probably doesn't save any space due to struct padding.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-10T18:06:34Z",
+      "diff_hunk" : "@@ -0,0 +1,73 @@\n+// Copyright (c) 2017 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_STATS_MEMPOOL_H\n+#define BITCOIN_STATS_MEMPOOL_H\n+\n+#include <amount.h>\n+#include \"scheduler.h\"\n+#include <sync.h>\n+\n+#include <atomic>\n+#include <stdlib.h>\n+#include <vector>\n+\n+struct CStatsMempoolSample {\n+\n+    /* time delta to last item as 16bit unsigned integer\n+     * allows a max delta of ~18h */\n+    uint16_t timeDelta;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r115811850",
+      "id" : 115811850,
+      "original_commit_id" : "a2a71128d1d899437063c34fd2736f594bb75130",
+      "original_position" : 20,
+      "path" : "src/stats/stats_mempool.h",
+      "position" : 20,
+      "pull_request_review_id" : 37371306,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115811850",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Addressed @ryanofsky points.",
+      "created_at" : "2017-05-12T13:04:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-301070750",
+      "id" : 301070750,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2017-05-12T13:04:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/301070750",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116241764"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116241764"
+         }
+      },
+      "body" : "Some C++11 magic needed here instead?",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-12T14:18:55Z",
+      "diff_hunk" : "@@ -0,0 +1,82 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"rpc/server.h\"\n+#include \"stats/stats.h\"\n+#include \"util.h\"\n+#include \"utilstrencodings.h\"\n+\n+#include <stdint.h>\n+\n+#include <univalue.h>\n+\n+UniValue getmempoolstats(const JSONRPCRequest& request)\n+{\n+    if (request.fHelp || request.params.size() != 0)\n+        throw std::runtime_error(\n+            \"getmempoolstats\\n\"\n+            \"\\nReturns the collected mempool statictics.\\n\"\n+            \"\\nThe samples are segregated in multiple percision groups.\\n\"\n+            \"\\nSamples time interval is not guaranteed to be constant, hence there\\n\"\n+            \"is a time delta in each sample relative to the last sample.\\n\"\n+            \"\\nResult:\\n\"\n+            \"  [\\n\"\n+            \"    {\\n\"\n+            \"      \\\"sample_interval\\\"    : \\\"interval\\\",      (numeric) Interval target in seconds\\n\"\n+            \"      \\\"time_from\\\"          : \\\"timestamp\\\",     (numeric) Timestamp, first sample\\n\"\n+            \"      \\\"samples\\\"            : [\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 ...\\n\"\n+            \"                             ]\\n\"\n+            \"    }\\n\"\n+            \"    ,...\\n\"\n+            \"  ]\\n\"\n+            \"\\nExamples:\\n\" +\n+            HelpExampleCli(\"getmempoolstats\", \"\") + HelpExampleRpc(\"getmempoolstats\", \"\"));\n+\n+    // get stats from the core stats model\n+    uint64_t timeFrom = 0;\n+    std::vector<unsigned int> groups = CStats::DefaultStats()->mempoolCollector->getPercisionGroupsAndIntervals();\n+\n+    UniValue groupsUni(UniValue::VARR);\n+    for (unsigned int i = 0; i < groups.size(); i++) {\n+\n+        MempoolSamplesVector samples = CStats::DefaultStats()->mempoolCollector->getSamplesForPercision(i, timeFrom);\n+\n+        // use \"flat\" json encoding for performance reasons\n+        UniValue samplesObj(UniValue::VARR);\n+        for (const struct CStatsMempoolSample& sample : samples) {\n+            UniValue singleSample(UniValue::VARR);\n+            singleSample.push_back(UniValue((uint64_t)sample.timeDelta));\n+            singleSample.push_back(UniValue((uint64_t)sample.txCount));\n+            singleSample.push_back(UniValue((uint64_t)sample.dynMemUsage));\n+            singleSample.push_back(UniValue(sample.minFeePerK));\n+            samplesObj.push_back(singleSample);\n+        }\n+\n+        UniValue sampleGroup(UniValue::VOBJ);\n+        sampleGroup.push_back(Pair(\"percision_interval\", (int)groups[i]));\n+        sampleGroup.push_back(Pair(\"time_from\", timeFrom));\n+        sampleGroup.push_back(Pair(\"samples\", samplesObj));\n+\n+        groupsUni.push_back(sampleGroup);\n+    }\n+\n+    return groupsUni;\n+}\n+\n+static const CRPCCommand commands[] =\n+{\n+    //  category              name                      actor (function)         okSafe argNames\n+    //  --------------------- ------------------------  -----------------------  ------ ----------\n+        {\"stats\",             \"getmempoolstats\",        &getmempoolstats,        true,  {}},\n+\n+};\n+\n+void RegisterStatsRPCCommands(CRPCTable& tableRPC)\n+{\n+    for (unsigned int vcidx = 0; vcidx < ARRAYLEN(commands); vcidx++)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116241764",
+      "id" : 116241764,
+      "original_commit_id" : "353a1fc875311175c051bc1950b0ec527ed24140",
+      "original_position" : 80,
+      "path" : "src/stats/rpc_stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37851705,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116241764",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116241861"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116241861"
+         }
+      },
+      "body" : "supermicronit: space before 10MB",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-12T14:19:21Z",
+      "diff_hunk" : "@@ -0,0 +1,81 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const size_t DEFAULT_MAX_STATS_MEMORY = 10 * 1024 * 1024; //10 MB",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116241861",
+      "id" : 116241861,
+      "original_commit_id" : "353a1fc875311175c051bc1950b0ec527ed24140",
+      "original_position" : 13,
+      "path" : "src/stats/stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37851823,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116241861",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116242148"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116242148"
+         }
+      },
+      "body" : "statictics -> statistics",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-12T14:20:32Z",
+      "diff_hunk" : "@@ -0,0 +1,81 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const size_t DEFAULT_MAX_STATS_MEMORY = 10 * 1024 * 1024; //10 MB\n+const bool DEFAULT_STATISTICS_ENABLED = false;\n+const static unsigned int STATS_COLLECT_INTERVAL = 2000; // 2 secs\n+\n+CStats* CStats::sharedInstance = NULL;\n+\n+CStats* CStats::DefaultStats()\n+{\n+    if (!sharedInstance)\n+        sharedInstance = new CStats();\n+\n+    return sharedInstance;\n+}\n+\n+CStats::CStats() : statsEnabled(false), maxStatsMemory(0)\n+{\n+    /* initialize the mempool stats collector */\n+    mempoolCollector = std::unique_ptr<CStatsMempool>(new CStatsMempool(STATS_COLLECT_INTERVAL));\n+}\n+\n+CStats::~CStats()\n+{\n+\n+}\n+\n+std::string CStats::getHelpString(bool showDebug)\n+{\n+    std::string strUsage = HelpMessageGroup(_(\"Statistic options:\"));\n+    strUsage += HelpMessageOpt(\"-statsenable=\", strprintf(\"Enable statistics (default: %u)\", DEFAULT_STATISTICS_ENABLED));\n+    strUsage += HelpMessageOpt(\"-statsmaxmemorytarget=<n>\", strprintf(_(\"Set the memory limit target for statictics in bytes (default: %u)\"), DEFAULT_MAX_STATS_MEMORY));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116242148",
+      "id" : 116242148,
+      "original_commit_id" : "353a1fc875311175c051bc1950b0ec527ed24140",
+      "original_position" : 42,
+      "path" : "src/stats/stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37852148,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116242148",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116242430"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116242430"
+         }
+      },
+      "body" : "`fallbackMaxSamplesPerPercision` -> `fallbackMaxSamplesPerPrecision`",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-12T14:21:51Z",
+      "diff_hunk" : "@@ -0,0 +1,129 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats_mempool.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const static unsigned int precisionIntervals[] = {\n+    2, // == every 2 secs == 1800 samples per hour\n+    60, // == every minute = 1440 samples per day\n+    1800 // == every half-hour = ~2'160 per Month\n+};\n+\n+const static unsigned int MIN_SAMPLES = 5;\n+const static unsigned int MAX_SAMPLES = 5000;\n+\n+\n+const static unsigned int fallbackMaxSamplesPerPercision = 1000;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116242430",
+      "id" : 116242430,
+      "original_commit_id" : "353a1fc875311175c051bc1950b0ec527ed24140",
+      "original_position" : 23,
+      "path" : "src/stats/stats_mempool.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37852475,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116242430",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116246352"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116246352"
+         }
+      },
+      "body" : "I think we better fix this together with all other `Register*RPCCommands` calls.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-12T14:38:44Z",
+      "diff_hunk" : "@@ -0,0 +1,82 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"rpc/server.h\"\n+#include \"stats/stats.h\"\n+#include \"util.h\"\n+#include \"utilstrencodings.h\"\n+\n+#include <stdint.h>\n+\n+#include <univalue.h>\n+\n+UniValue getmempoolstats(const JSONRPCRequest& request)\n+{\n+    if (request.fHelp || request.params.size() != 0)\n+        throw std::runtime_error(\n+            \"getmempoolstats\\n\"\n+            \"\\nReturns the collected mempool statictics.\\n\"\n+            \"\\nThe samples are segregated in multiple percision groups.\\n\"\n+            \"\\nSamples time interval is not guaranteed to be constant, hence there\\n\"\n+            \"is a time delta in each sample relative to the last sample.\\n\"\n+            \"\\nResult:\\n\"\n+            \"  [\\n\"\n+            \"    {\\n\"\n+            \"      \\\"sample_interval\\\"    : \\\"interval\\\",      (numeric) Interval target in seconds\\n\"\n+            \"      \\\"time_from\\\"          : \\\"timestamp\\\",     (numeric) Timestamp, first sample\\n\"\n+            \"      \\\"samples\\\"            : [\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 ...\\n\"\n+            \"                             ]\\n\"\n+            \"    }\\n\"\n+            \"    ,...\\n\"\n+            \"  ]\\n\"\n+            \"\\nExamples:\\n\" +\n+            HelpExampleCli(\"getmempoolstats\", \"\") + HelpExampleRpc(\"getmempoolstats\", \"\"));\n+\n+    // get stats from the core stats model\n+    uint64_t timeFrom = 0;\n+    std::vector<unsigned int> groups = CStats::DefaultStats()->mempoolCollector->getPercisionGroupsAndIntervals();\n+\n+    UniValue groupsUni(UniValue::VARR);\n+    for (unsigned int i = 0; i < groups.size(); i++) {\n+\n+        MempoolSamplesVector samples = CStats::DefaultStats()->mempoolCollector->getSamplesForPercision(i, timeFrom);\n+\n+        // use \"flat\" json encoding for performance reasons\n+        UniValue samplesObj(UniValue::VARR);\n+        for (const struct CStatsMempoolSample& sample : samples) {\n+            UniValue singleSample(UniValue::VARR);\n+            singleSample.push_back(UniValue((uint64_t)sample.timeDelta));\n+            singleSample.push_back(UniValue((uint64_t)sample.txCount));\n+            singleSample.push_back(UniValue((uint64_t)sample.dynMemUsage));\n+            singleSample.push_back(UniValue(sample.minFeePerK));\n+            samplesObj.push_back(singleSample);\n+        }\n+\n+        UniValue sampleGroup(UniValue::VOBJ);\n+        sampleGroup.push_back(Pair(\"percision_interval\", (int)groups[i]));\n+        sampleGroup.push_back(Pair(\"time_from\", timeFrom));\n+        sampleGroup.push_back(Pair(\"samples\", samplesObj));\n+\n+        groupsUni.push_back(sampleGroup);\n+    }\n+\n+    return groupsUni;\n+}\n+\n+static const CRPCCommand commands[] =\n+{\n+    //  category              name                      actor (function)         okSafe argNames\n+    //  --------------------- ------------------------  -----------------------  ------ ----------\n+        {\"stats\",             \"getmempoolstats\",        &getmempoolstats,        true,  {}},\n+\n+};\n+\n+void RegisterStatsRPCCommands(CRPCTable& tableRPC)\n+{\n+    for (unsigned int vcidx = 0; vcidx < ARRAYLEN(commands); vcidx++)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116246352",
+      "id" : 116246352,
+      "original_commit_id" : "353a1fc875311175c051bc1950b0ec527ed24140",
+      "original_position" : 80,
+      "path" : "src/stats/rpc_stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37857093,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116246352",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Fixed @paveljanik points and nits.",
+      "created_at" : "2017-05-12T14:39:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-301094855",
+      "id" : 301094855,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2017-05-12T14:39:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/301094855",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116246501"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116246501"
+         }
+      },
+      "body" : "Wshadow emits:\r\n```\r\nstats/rpc_stats.cpp:78:42: warning: declaration shadows a variable in the global namespace [-Wshadow]\r\n```",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-12T14:39:23Z",
+      "diff_hunk" : "@@ -0,0 +1,82 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"rpc/server.h\"\n+#include \"stats/stats.h\"\n+#include \"util.h\"\n+#include \"utilstrencodings.h\"\n+\n+#include <stdint.h>\n+\n+#include <univalue.h>\n+\n+UniValue getmempoolstats(const JSONRPCRequest& request)\n+{\n+    if (request.fHelp || request.params.size() != 0)\n+        throw std::runtime_error(\n+            \"getmempoolstats\\n\"\n+            \"\\nReturns the collected mempool statistics.\\n\"\n+            \"\\nThe samples are segregated in multiple precision groups.\\n\"\n+            \"\\nSamples time interval is not guaranteed to be constant, hence there\\n\"\n+            \"is a time delta in each sample relative to the last sample.\\n\"\n+            \"\\nResult:\\n\"\n+            \"  [\\n\"\n+            \"    {\\n\"\n+            \"      \\\"sample_interval\\\"    : \\\"interval\\\",      (numeric) Interval target in seconds\\n\"\n+            \"      \\\"time_from\\\"          : \\\"timestamp\\\",     (numeric) Timestamp, first sample\\n\"\n+            \"      \\\"samples\\\"            : [\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 ...\\n\"\n+            \"                             ]\\n\"\n+            \"    }\\n\"\n+            \"    ,...\\n\"\n+            \"  ]\\n\"\n+            \"\\nExamples:\\n\" +\n+            HelpExampleCli(\"getmempoolstats\", \"\") + HelpExampleRpc(\"getmempoolstats\", \"\"));\n+\n+    // get stats from the core stats model\n+    uint64_t timeFrom = 0;\n+    std::vector<unsigned int> groups = CStats::DefaultStats()->mempoolCollector->getPrecisionGroupsAndIntervals();\n+\n+    UniValue groupsUni(UniValue::VARR);\n+    for (unsigned int i = 0; i < groups.size(); i++) {\n+\n+        MempoolSamplesVector samples = CStats::DefaultStats()->mempoolCollector->getSamplesForPrecision(i, timeFrom);\n+\n+        // use \"flat\" json encoding for performance reasons\n+        UniValue samplesObj(UniValue::VARR);\n+        for (const struct CStatsMempoolSample& sample : samples) {\n+            UniValue singleSample(UniValue::VARR);\n+            singleSample.push_back(UniValue((uint64_t)sample.timeDelta));\n+            singleSample.push_back(UniValue((uint64_t)sample.txCount));\n+            singleSample.push_back(UniValue((uint64_t)sample.dynMemUsage));\n+            singleSample.push_back(UniValue(sample.minFeePerK));\n+            samplesObj.push_back(singleSample);\n+        }\n+\n+        UniValue sampleGroup(UniValue::VOBJ);\n+        sampleGroup.push_back(Pair(\"sample_interval\", (int)groups[i]));\n+        sampleGroup.push_back(Pair(\"time_from\", timeFrom));\n+        sampleGroup.push_back(Pair(\"samples\", samplesObj));\n+\n+        groupsUni.push_back(sampleGroup);\n+    }\n+\n+    return groupsUni;\n+}\n+\n+static const CRPCCommand commands[] =\n+{\n+    //  category              name                      actor (function)         okSafe argNames\n+    //  --------------------- ------------------------  -----------------------  ------ ----------\n+        {\"stats\",             \"getmempoolstats\",        &getmempoolstats,        true,  {}},\n+\n+};\n+\n+void RegisterStatsRPCCommands(CRPCTable& tableRPC)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116246501",
+      "id" : 116246501,
+      "original_commit_id" : "400eb315bc50a2f39d9c8b93a1f1727b767f3b41",
+      "original_position" : 78,
+      "path" : "src/stats/rpc_stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37857278,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:42:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116246501",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116247542"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116247542"
+         }
+      },
+      "body" : "Fixed.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-05-12T14:43:17Z",
+      "diff_hunk" : "@@ -0,0 +1,82 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"rpc/server.h\"\n+#include \"stats/stats.h\"\n+#include \"util.h\"\n+#include \"utilstrencodings.h\"\n+\n+#include <stdint.h>\n+\n+#include <univalue.h>\n+\n+UniValue getmempoolstats(const JSONRPCRequest& request)\n+{\n+    if (request.fHelp || request.params.size() != 0)\n+        throw std::runtime_error(\n+            \"getmempoolstats\\n\"\n+            \"\\nReturns the collected mempool statistics.\\n\"\n+            \"\\nThe samples are segregated in multiple precision groups.\\n\"\n+            \"\\nSamples time interval is not guaranteed to be constant, hence there\\n\"\n+            \"is a time delta in each sample relative to the last sample.\\n\"\n+            \"\\nResult:\\n\"\n+            \"  [\\n\"\n+            \"    {\\n\"\n+            \"      \\\"sample_interval\\\"    : \\\"interval\\\",      (numeric) Interval target in seconds\\n\"\n+            \"      \\\"time_from\\\"          : \\\"timestamp\\\",     (numeric) Timestamp, first sample\\n\"\n+            \"      \\\"samples\\\"            : [\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 ...\\n\"\n+            \"                             ]\\n\"\n+            \"    }\\n\"\n+            \"    ,...\\n\"\n+            \"  ]\\n\"\n+            \"\\nExamples:\\n\" +\n+            HelpExampleCli(\"getmempoolstats\", \"\") + HelpExampleRpc(\"getmempoolstats\", \"\"));\n+\n+    // get stats from the core stats model\n+    uint64_t timeFrom = 0;\n+    std::vector<unsigned int> groups = CStats::DefaultStats()->mempoolCollector->getPrecisionGroupsAndIntervals();\n+\n+    UniValue groupsUni(UniValue::VARR);\n+    for (unsigned int i = 0; i < groups.size(); i++) {\n+\n+        MempoolSamplesVector samples = CStats::DefaultStats()->mempoolCollector->getSamplesForPrecision(i, timeFrom);\n+\n+        // use \"flat\" json encoding for performance reasons\n+        UniValue samplesObj(UniValue::VARR);\n+        for (const struct CStatsMempoolSample& sample : samples) {\n+            UniValue singleSample(UniValue::VARR);\n+            singleSample.push_back(UniValue((uint64_t)sample.timeDelta));\n+            singleSample.push_back(UniValue((uint64_t)sample.txCount));\n+            singleSample.push_back(UniValue((uint64_t)sample.dynMemUsage));\n+            singleSample.push_back(UniValue(sample.minFeePerK));\n+            samplesObj.push_back(singleSample);\n+        }\n+\n+        UniValue sampleGroup(UniValue::VOBJ);\n+        sampleGroup.push_back(Pair(\"sample_interval\", (int)groups[i]));\n+        sampleGroup.push_back(Pair(\"time_from\", timeFrom));\n+        sampleGroup.push_back(Pair(\"samples\", samplesObj));\n+\n+        groupsUni.push_back(sampleGroup);\n+    }\n+\n+    return groupsUni;\n+}\n+\n+static const CRPCCommand commands[] =\n+{\n+    //  category              name                      actor (function)         okSafe argNames\n+    //  --------------------- ------------------------  -----------------------  ------ ----------\n+        {\"stats\",             \"getmempoolstats\",        &getmempoolstats,        true,  {}},\n+\n+};\n+\n+void RegisterStatsRPCCommands(CRPCTable& tableRPC)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r116247542",
+      "id" : 116247542,
+      "original_commit_id" : "400eb315bc50a2f39d9c8b93a1f1727b767f3b41",
+      "original_position" : 78,
+      "path" : "src/stats/rpc_stats.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37858439,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-05-12T14:43:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116247542",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121769118"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121769118"
+         }
+      },
+      "body" : "In commit \"Add mempool statistics collector\"\r\n\r\nIt seems like it would be more user friendly and extensible if this were an object instead of an array, so the elements could be named. It's a little awkard to have to remember that the first element in the array is time delta, second element is transaction count, etc.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-06-13T19:05:46Z",
+      "diff_hunk" : "@@ -0,0 +1,82 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"rpc/server.h\"\n+#include \"stats/stats.h\"\n+#include \"util.h\"\n+#include \"utilstrencodings.h\"\n+\n+#include <stdint.h>\n+\n+#include <univalue.h>\n+\n+UniValue getmempoolstats(const JSONRPCRequest& request)\n+{\n+    if (request.fHelp || request.params.size() != 0)\n+        throw std::runtime_error(\n+            \"getmempoolstats\\n\"\n+            \"\\nReturns the collected mempool statistics.\\n\"\n+            \"\\nThe samples are segregated in multiple precision groups.\\n\"\n+            \"\\nSamples time interval is not guaranteed to be constant, hence there\\n\"\n+            \"is a time delta in each sample relative to the last sample.\\n\"\n+            \"\\nResult:\\n\"\n+            \"  [\\n\"\n+            \"    {\\n\"\n+            \"      \\\"sample_interval\\\"    : \\\"interval\\\",      (numeric) Interval target in seconds\\n\"\n+            \"      \\\"time_from\\\"          : \\\"timestamp\\\",     (numeric) Timestamp, first sample\\n\"\n+            \"      \\\"samples\\\"            : [\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 [<delta_in_secs>,<tx_count>,<dynamic_mem_usage>,<min_fee_per_k>],\\n\"\n+            \"                                 ...\\n\"\n+            \"                             ]\\n\"\n+            \"    }\\n\"\n+            \"    ,...\\n\"\n+            \"  ]\\n\"\n+            \"\\nExamples:\\n\" +\n+            HelpExampleCli(\"getmempoolstats\", \"\") + HelpExampleRpc(\"getmempoolstats\", \"\"));\n+\n+    // get stats from the core stats model\n+    uint64_t timeFrom = 0;\n+    std::vector<unsigned int> groups = CStats::DefaultStats()->mempoolCollector->getPrecisionGroupsAndIntervals();\n+\n+    UniValue groupsUni(UniValue::VARR);\n+    for (unsigned int i = 0; i < groups.size(); i++) {\n+\n+        MempoolSamplesVector samples = CStats::DefaultStats()->mempoolCollector->getSamplesForPrecision(i, timeFrom);\n+\n+        // use \"flat\" json encoding for performance reasons\n+        UniValue samplesObj(UniValue::VARR);\n+        for (const struct CStatsMempoolSample& sample : samples) {\n+            UniValue singleSample(UniValue::VARR);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121769118",
+      "id" : 121769118,
+      "original_commit_id" : "d8eb9456fce0bc44ba8599851d02be8c06d1a12b",
+      "original_position" : 51,
+      "path" : "src/stats/rpc_stats.cpp",
+      "position" : 51,
+      "pull_request_review_id" : 43824230,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-06-13T19:49:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121769118",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121771708"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121771708"
+         }
+      },
+      "body" : "In commit \"Add mempool statistics collector\"\r\n\r\nWould be good to move declaration closer to where this is being set (at least as close as possible).",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-06-13T19:16:11Z",
+      "diff_hunk" : "@@ -545,6 +546,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C\n {\n     const CTransaction& tx = *ptx;\n     const uint256 hash = tx.GetHash();\n+    CFeeRate poolMinFeeRate;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121771708",
+      "id" : 121771708,
+      "original_commit_id" : "d8eb9456fce0bc44ba8599851d02be8c06d1a12b",
+      "original_position" : 12,
+      "path" : "src/validation.cpp",
+      "position" : 12,
+      "pull_request_review_id" : 43824230,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-06-13T19:49:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121771708",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121771983"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121771983"
+         }
+      },
+      "body" : "In commit \"Add mempool statistics collector\"\r\n\r\nMost of the other settings seem to be in seconds instead of milliseconds. Seems like it would be good to switch this one to seconds for consistency, and to be able to get rid of the division by 1000 in CStatsMempool::addMempoolSamples.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-06-13T19:17:20Z",
+      "diff_hunk" : "@@ -0,0 +1,81 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const size_t DEFAULT_MAX_STATS_MEMORY = 10 * 1024 * 1024; // 10 MB\n+const bool DEFAULT_STATISTICS_ENABLED = false;\n+const static unsigned int STATS_COLLECT_INTERVAL = 2000; // 2 secs",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121771983",
+      "id" : 121771983,
+      "original_commit_id" : "d8eb9456fce0bc44ba8599851d02be8c06d1a12b",
+      "original_position" : 15,
+      "path" : "src/stats/stats.cpp",
+      "position" : 15,
+      "pull_request_review_id" : 43824230,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-06-13T19:49:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121771983",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121774280"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121774280"
+         }
+      },
+      "body" : "In commit \"Add mempool statistics collector\"\r\n\r\nSeems like it would be more efficient to switch to a circular buffer, or use std::deque instead of deleting from the beginning of the vector.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-06-13T19:27:17Z",
+      "diff_hunk" : "@@ -0,0 +1,130 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats_mempool.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const static unsigned int precisionIntervals[] = {\n+    2, // == every 2 secs == 1800 samples per hour\n+    60, // == every minute = 1440 samples per day\n+    1800 // == every half-hour = ~2'160 per Month\n+};\n+\n+const static unsigned int MIN_SAMPLES = 5;\n+const static unsigned int MAX_SAMPLES = 5000;\n+\n+\n+const static unsigned int fallbackMaxSamplesPerPrecision = 1000;\n+\n+std::atomic<size_t> CStatsMempool::cacheMempoolSize;\n+std::atomic<size_t> CStatsMempool::cacheMempoolDynamicMemoryUsage;\n+std::atomic<CAmount> CStatsMempool::cacheMempoolMinRelayFee;\n+\n+CStatsMempool::CStatsMempool(unsigned int collectIntervalIn) : collectInterval(collectIntervalIn)\n+{\n+    startTime = 0;\n+    intervalCounter = 0;\n+\n+    // setup the samples per precision vector\n+    for (unsigned int interval : precisionIntervals) {\n+        (void)(interval);\n+        vSamplesPerPrecision.emplace_back();\n+\n+        // use the fallback max in case max memory will not be set\n+        vMaxSamplesPerPrecision.push_back(fallbackMaxSamplesPerPrecision);\n+\n+        // add starttime 0 to each level\n+        vTimeLastSample.push_back(0);\n+    }\n+}\n+\n+std::vector<unsigned int> CStatsMempool::getPrecisionGroupsAndIntervals() {\n+    return {std::begin(precisionIntervals), std::end(precisionIntervals)};\n+}\n+\n+bool CStatsMempool::addMempoolSamples(const size_t maxStatsMemory)\n+{\n+    bool statsChanged = false;\n+    uint64_t now = GetTime();\n+    {\n+        LOCK(cs_mempool_stats);\n+\n+        // set the mempool stats start time if this is the first sample\n+        if (startTime == 0)\n+            startTime = now;\n+\n+        unsigned int biggestInterval = 0;\n+        for (unsigned int i = 0; i < sizeof(precisionIntervals) / sizeof(precisionIntervals[0]); i++) {\n+            // check if it's time to collect a samples for the given precision level\n+            uint16_t timeDelta = 0;\n+            if (intervalCounter % (precisionIntervals[i] / (collectInterval / 1000)) == 0) {\n+                if (vTimeLastSample[i] == 0) {\n+                    // first sample, calc delta to starttime\n+                    timeDelta = now - startTime;\n+                } else {\n+                    timeDelta = now - vTimeLastSample[i];\n+                }\n+                vSamplesPerPrecision[i].push_back({timeDelta, CStatsMempool::cacheMempoolSize, CStatsMempool::cacheMempoolDynamicMemoryUsage, CStatsMempool::cacheMempoolMinRelayFee});\n+                statsChanged = true;\n+\n+                // check if we need to remove items at the beginning\n+                if (vSamplesPerPrecision[i].size() > vMaxSamplesPerPrecision[i]) {\n+                    // increase starttime by the removed deltas\n+                    for (unsigned int j = (vSamplesPerPrecision[i].size() - vMaxSamplesPerPrecision[i]); j > 0; j--) {\n+                        startTime += vSamplesPerPrecision[i][j].timeDelta;\n+                    }\n+                    // remove element(s) at vector front\n+                    vSamplesPerPrecision[i].erase(vSamplesPerPrecision[i].begin(), vSamplesPerPrecision[i].begin() + (vSamplesPerPrecision[i].size() - vMaxSamplesPerPrecision[i]));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121774280",
+      "id" : 121774280,
+      "original_commit_id" : "d8eb9456fce0bc44ba8599851d02be8c06d1a12b",
+      "original_position" : 83,
+      "path" : "src/stats/stats_mempool.cpp",
+      "position" : 83,
+      "pull_request_review_id" : 43824230,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-06-13T19:49:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121774280",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121776192"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121776192"
+         }
+      },
+      "body" : "In commit \"Add mempool statistics collector\"\r\n\r\nAll three of these vectors have the same length (number of precision levels). Seems like it would be cleaner to have one vector containing a struct with all the information that needs to be stored for a given precision level. It would also make the c++ data structure more consistent with the json data structure returned from rpc.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-06-13T19:35:50Z",
+      "diff_hunk" : "@@ -0,0 +1,73 @@\n+// Copyright (c) 2017 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_STATS_MEMPOOL_H\n+#define BITCOIN_STATS_MEMPOOL_H\n+\n+#include <amount.h>\n+#include \"scheduler.h\"\n+#include <sync.h>\n+\n+#include <atomic>\n+#include <stdlib.h>\n+#include <vector>\n+\n+struct CStatsMempoolSample {\n+\n+    /* time delta to last item as 16bit unsigned integer\n+     * allows a max delta of ~18h */\n+    uint16_t timeDelta;\n+\n+    size_t txCount;     //!<transaction count\n+    size_t dynMemUsage; //!<dynamic mempool usage\n+    CAmount minFeePerK;  //!<min fee per K\n+};\n+\n+typedef std::vector<struct CStatsMempoolSample> MempoolSamplesVector;\n+\n+class CStatsMempool\n+{\n+private:\n+\n+    /* caches */\n+    static std::atomic<size_t> cacheMempoolSize;\n+    static std::atomic<size_t> cacheMempoolDynamicMemoryUsage;\n+    static std::atomic<CAmount> cacheMempoolMinRelayFee;\n+    mutable CCriticalSection cs_mempool_stats; //!<protects the sample/max/time vectors\n+\n+    std::atomic<uint64_t> startTime; //start time\n+    std::vector<MempoolSamplesVector> vSamplesPerPrecision; //!<multiple samples vector per precision level\n+    std::vector<size_t> vMaxSamplesPerPrecision; //!<vector with the maximum amount of samples per precision level\n+    std::vector<size_t> vTimeLastSample; //!<vector with the maximum amount of samples per precision level",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121776192",
+      "id" : 121776192,
+      "original_commit_id" : "d8eb9456fce0bc44ba8599851d02be8c06d1a12b",
+      "original_position" : 42,
+      "path" : "src/stats/stats_mempool.h",
+      "position" : 42,
+      "pull_request_review_id" : 43824230,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-06-13T19:49:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121776192",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121777841"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121777841"
+         }
+      },
+      "body" : "In commit \"Add mempool statistics collector\"\r\n\r\nI don't understand what this is doing. It seems unnecessary, and strange because it is comparing the counter against numbers of seconds without taking collectInterval into account. If you will keep this, I think it'd be good to add a comment with an example of interval and counter values that explains how this is supposed to work.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-06-13T19:43:18Z",
+      "diff_hunk" : "@@ -0,0 +1,130 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats_mempool.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const static unsigned int precisionIntervals[] = {\n+    2, // == every 2 secs == 1800 samples per hour\n+    60, // == every minute = 1440 samples per day\n+    1800 // == every half-hour = ~2'160 per Month\n+};\n+\n+const static unsigned int MIN_SAMPLES = 5;\n+const static unsigned int MAX_SAMPLES = 5000;\n+\n+\n+const static unsigned int fallbackMaxSamplesPerPrecision = 1000;\n+\n+std::atomic<size_t> CStatsMempool::cacheMempoolSize;\n+std::atomic<size_t> CStatsMempool::cacheMempoolDynamicMemoryUsage;\n+std::atomic<CAmount> CStatsMempool::cacheMempoolMinRelayFee;\n+\n+CStatsMempool::CStatsMempool(unsigned int collectIntervalIn) : collectInterval(collectIntervalIn)\n+{\n+    startTime = 0;\n+    intervalCounter = 0;\n+\n+    // setup the samples per precision vector\n+    for (unsigned int interval : precisionIntervals) {\n+        (void)(interval);\n+        vSamplesPerPrecision.emplace_back();\n+\n+        // use the fallback max in case max memory will not be set\n+        vMaxSamplesPerPrecision.push_back(fallbackMaxSamplesPerPrecision);\n+\n+        // add starttime 0 to each level\n+        vTimeLastSample.push_back(0);\n+    }\n+}\n+\n+std::vector<unsigned int> CStatsMempool::getPrecisionGroupsAndIntervals() {\n+    return {std::begin(precisionIntervals), std::end(precisionIntervals)};\n+}\n+\n+bool CStatsMempool::addMempoolSamples(const size_t maxStatsMemory)\n+{\n+    bool statsChanged = false;\n+    uint64_t now = GetTime();\n+    {\n+        LOCK(cs_mempool_stats);\n+\n+        // set the mempool stats start time if this is the first sample\n+        if (startTime == 0)\n+            startTime = now;\n+\n+        unsigned int biggestInterval = 0;\n+        for (unsigned int i = 0; i < sizeof(precisionIntervals) / sizeof(precisionIntervals[0]); i++) {\n+            // check if it's time to collect a samples for the given precision level\n+            uint16_t timeDelta = 0;\n+            if (intervalCounter % (precisionIntervals[i] / (collectInterval / 1000)) == 0) {\n+                if (vTimeLastSample[i] == 0) {\n+                    // first sample, calc delta to starttime\n+                    timeDelta = now - startTime;\n+                } else {\n+                    timeDelta = now - vTimeLastSample[i];\n+                }\n+                vSamplesPerPrecision[i].push_back({timeDelta, CStatsMempool::cacheMempoolSize, CStatsMempool::cacheMempoolDynamicMemoryUsage, CStatsMempool::cacheMempoolMinRelayFee});\n+                statsChanged = true;\n+\n+                // check if we need to remove items at the beginning\n+                if (vSamplesPerPrecision[i].size() > vMaxSamplesPerPrecision[i]) {\n+                    // increase starttime by the removed deltas\n+                    for (unsigned int j = (vSamplesPerPrecision[i].size() - vMaxSamplesPerPrecision[i]); j > 0; j--) {\n+                        startTime += vSamplesPerPrecision[i][j].timeDelta;\n+                    }\n+                    // remove element(s) at vector front\n+                    vSamplesPerPrecision[i].erase(vSamplesPerPrecision[i].begin(), vSamplesPerPrecision[i].begin() + (vSamplesPerPrecision[i].size() - vMaxSamplesPerPrecision[i]));\n+\n+                    // release memory\n+                    vSamplesPerPrecision[i].shrink_to_fit();\n+                }\n+\n+                vTimeLastSample[i] = now;\n+            }\n+            biggestInterval = precisionIntervals[i];\n+        }\n+\n+        intervalCounter++;\n+\n+        if (intervalCounter > biggestInterval) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121777841",
+      "id" : 121777841,
+      "original_commit_id" : "d8eb9456fce0bc44ba8599851d02be8c06d1a12b",
+      "original_position" : 96,
+      "path" : "src/stats/stats_mempool.cpp",
+      "position" : 96,
+      "pull_request_review_id" : 43824230,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-06-13T19:49:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121777841",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121788868"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121788868"
+         }
+      },
+      "body" : "I have added this to avoid an overflow of `intervalCounter`. I though resetting it when we exceeded the highest possible interval seems sane but I agree that a size_t overflow will very likely happens never... would you recommend to remove it?",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-06-13T20:32:53Z",
+      "diff_hunk" : "@@ -0,0 +1,130 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats_mempool.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const static unsigned int precisionIntervals[] = {\n+    2, // == every 2 secs == 1800 samples per hour\n+    60, // == every minute = 1440 samples per day\n+    1800 // == every half-hour = ~2'160 per Month\n+};\n+\n+const static unsigned int MIN_SAMPLES = 5;\n+const static unsigned int MAX_SAMPLES = 5000;\n+\n+\n+const static unsigned int fallbackMaxSamplesPerPrecision = 1000;\n+\n+std::atomic<size_t> CStatsMempool::cacheMempoolSize;\n+std::atomic<size_t> CStatsMempool::cacheMempoolDynamicMemoryUsage;\n+std::atomic<CAmount> CStatsMempool::cacheMempoolMinRelayFee;\n+\n+CStatsMempool::CStatsMempool(unsigned int collectIntervalIn) : collectInterval(collectIntervalIn)\n+{\n+    startTime = 0;\n+    intervalCounter = 0;\n+\n+    // setup the samples per precision vector\n+    for (unsigned int interval : precisionIntervals) {\n+        (void)(interval);\n+        vSamplesPerPrecision.emplace_back();\n+\n+        // use the fallback max in case max memory will not be set\n+        vMaxSamplesPerPrecision.push_back(fallbackMaxSamplesPerPrecision);\n+\n+        // add starttime 0 to each level\n+        vTimeLastSample.push_back(0);\n+    }\n+}\n+\n+std::vector<unsigned int> CStatsMempool::getPrecisionGroupsAndIntervals() {\n+    return {std::begin(precisionIntervals), std::end(precisionIntervals)};\n+}\n+\n+bool CStatsMempool::addMempoolSamples(const size_t maxStatsMemory)\n+{\n+    bool statsChanged = false;\n+    uint64_t now = GetTime();\n+    {\n+        LOCK(cs_mempool_stats);\n+\n+        // set the mempool stats start time if this is the first sample\n+        if (startTime == 0)\n+            startTime = now;\n+\n+        unsigned int biggestInterval = 0;\n+        for (unsigned int i = 0; i < sizeof(precisionIntervals) / sizeof(precisionIntervals[0]); i++) {\n+            // check if it's time to collect a samples for the given precision level\n+            uint16_t timeDelta = 0;\n+            if (intervalCounter % (precisionIntervals[i] / (collectInterval / 1000)) == 0) {\n+                if (vTimeLastSample[i] == 0) {\n+                    // first sample, calc delta to starttime\n+                    timeDelta = now - startTime;\n+                } else {\n+                    timeDelta = now - vTimeLastSample[i];\n+                }\n+                vSamplesPerPrecision[i].push_back({timeDelta, CStatsMempool::cacheMempoolSize, CStatsMempool::cacheMempoolDynamicMemoryUsage, CStatsMempool::cacheMempoolMinRelayFee});\n+                statsChanged = true;\n+\n+                // check if we need to remove items at the beginning\n+                if (vSamplesPerPrecision[i].size() > vMaxSamplesPerPrecision[i]) {\n+                    // increase starttime by the removed deltas\n+                    for (unsigned int j = (vSamplesPerPrecision[i].size() - vMaxSamplesPerPrecision[i]); j > 0; j--) {\n+                        startTime += vSamplesPerPrecision[i][j].timeDelta;\n+                    }\n+                    // remove element(s) at vector front\n+                    vSamplesPerPrecision[i].erase(vSamplesPerPrecision[i].begin(), vSamplesPerPrecision[i].begin() + (vSamplesPerPrecision[i].size() - vMaxSamplesPerPrecision[i]));\n+\n+                    // release memory\n+                    vSamplesPerPrecision[i].shrink_to_fit();\n+                }\n+\n+                vTimeLastSample[i] = now;\n+            }\n+            biggestInterval = precisionIntervals[i];\n+        }\n+\n+        intervalCounter++;\n+\n+        if (intervalCounter > biggestInterval) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121788868",
+      "id" : 121788868,
+      "original_commit_id" : "d8eb9456fce0bc44ba8599851d02be8c06d1a12b",
+      "original_position" : 96,
+      "path" : "src/stats/stats_mempool.cpp",
+      "position" : 96,
+      "pull_request_review_id" : 43846371,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-06-13T20:32:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121788868",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121789267"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121789267"
+         }
+      },
+      "body" : "That would be possible though I think that the current approach makes the core more readable.",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-06-13T20:34:26Z",
+      "diff_hunk" : "@@ -0,0 +1,73 @@\n+// Copyright (c) 2017 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_STATS_MEMPOOL_H\n+#define BITCOIN_STATS_MEMPOOL_H\n+\n+#include <amount.h>\n+#include \"scheduler.h\"\n+#include <sync.h>\n+\n+#include <atomic>\n+#include <stdlib.h>\n+#include <vector>\n+\n+struct CStatsMempoolSample {\n+\n+    /* time delta to last item as 16bit unsigned integer\n+     * allows a max delta of ~18h */\n+    uint16_t timeDelta;\n+\n+    size_t txCount;     //!<transaction count\n+    size_t dynMemUsage; //!<dynamic mempool usage\n+    CAmount minFeePerK;  //!<min fee per K\n+};\n+\n+typedef std::vector<struct CStatsMempoolSample> MempoolSamplesVector;\n+\n+class CStatsMempool\n+{\n+private:\n+\n+    /* caches */\n+    static std::atomic<size_t> cacheMempoolSize;\n+    static std::atomic<size_t> cacheMempoolDynamicMemoryUsage;\n+    static std::atomic<CAmount> cacheMempoolMinRelayFee;\n+    mutable CCriticalSection cs_mempool_stats; //!<protects the sample/max/time vectors\n+\n+    std::atomic<uint64_t> startTime; //start time\n+    std::vector<MempoolSamplesVector> vSamplesPerPrecision; //!<multiple samples vector per precision level\n+    std::vector<size_t> vMaxSamplesPerPrecision; //!<vector with the maximum amount of samples per precision level\n+    std::vector<size_t> vTimeLastSample; //!<vector with the maximum amount of samples per precision level",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121789267",
+      "id" : 121789267,
+      "original_commit_id" : "d8eb9456fce0bc44ba8599851d02be8c06d1a12b",
+      "original_position" : 42,
+      "path" : "src/stats/stats_mempool.h",
+      "position" : 42,
+      "pull_request_review_id" : 43846803,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-06-13T20:34:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121789267",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121796336"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121796336"
+         }
+      },
+      "body" : "> would you recommend to remove it?\r\n\r\nI'd say remove it unless there's a way to reset it that makes sense (I'm sure there is one but nothing immediately comes to mind).",
+      "commit_id" : "c412d0a66ed8dec02ecb99c16bde1377370b8aab",
+      "created_at" : "2017-06-13T21:03:58Z",
+      "diff_hunk" : "@@ -0,0 +1,130 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"stats/stats_mempool.h\"\n+\n+#include \"memusage.h\"\n+#include \"utiltime.h\"\n+\n+#include \"util.h\"\n+\n+\n+const static unsigned int precisionIntervals[] = {\n+    2, // == every 2 secs == 1800 samples per hour\n+    60, // == every minute = 1440 samples per day\n+    1800 // == every half-hour = ~2'160 per Month\n+};\n+\n+const static unsigned int MIN_SAMPLES = 5;\n+const static unsigned int MAX_SAMPLES = 5000;\n+\n+\n+const static unsigned int fallbackMaxSamplesPerPrecision = 1000;\n+\n+std::atomic<size_t> CStatsMempool::cacheMempoolSize;\n+std::atomic<size_t> CStatsMempool::cacheMempoolDynamicMemoryUsage;\n+std::atomic<CAmount> CStatsMempool::cacheMempoolMinRelayFee;\n+\n+CStatsMempool::CStatsMempool(unsigned int collectIntervalIn) : collectInterval(collectIntervalIn)\n+{\n+    startTime = 0;\n+    intervalCounter = 0;\n+\n+    // setup the samples per precision vector\n+    for (unsigned int interval : precisionIntervals) {\n+        (void)(interval);\n+        vSamplesPerPrecision.emplace_back();\n+\n+        // use the fallback max in case max memory will not be set\n+        vMaxSamplesPerPrecision.push_back(fallbackMaxSamplesPerPrecision);\n+\n+        // add starttime 0 to each level\n+        vTimeLastSample.push_back(0);\n+    }\n+}\n+\n+std::vector<unsigned int> CStatsMempool::getPrecisionGroupsAndIntervals() {\n+    return {std::begin(precisionIntervals), std::end(precisionIntervals)};\n+}\n+\n+bool CStatsMempool::addMempoolSamples(const size_t maxStatsMemory)\n+{\n+    bool statsChanged = false;\n+    uint64_t now = GetTime();\n+    {\n+        LOCK(cs_mempool_stats);\n+\n+        // set the mempool stats start time if this is the first sample\n+        if (startTime == 0)\n+            startTime = now;\n+\n+        unsigned int biggestInterval = 0;\n+        for (unsigned int i = 0; i < sizeof(precisionIntervals) / sizeof(precisionIntervals[0]); i++) {\n+            // check if it's time to collect a samples for the given precision level\n+            uint16_t timeDelta = 0;\n+            if (intervalCounter % (precisionIntervals[i] / (collectInterval / 1000)) == 0) {\n+                if (vTimeLastSample[i] == 0) {\n+                    // first sample, calc delta to starttime\n+                    timeDelta = now - startTime;\n+                } else {\n+                    timeDelta = now - vTimeLastSample[i];\n+                }\n+                vSamplesPerPrecision[i].push_back({timeDelta, CStatsMempool::cacheMempoolSize, CStatsMempool::cacheMempoolDynamicMemoryUsage, CStatsMempool::cacheMempoolMinRelayFee});\n+                statsChanged = true;\n+\n+                // check if we need to remove items at the beginning\n+                if (vSamplesPerPrecision[i].size() > vMaxSamplesPerPrecision[i]) {\n+                    // increase starttime by the removed deltas\n+                    for (unsigned int j = (vSamplesPerPrecision[i].size() - vMaxSamplesPerPrecision[i]); j > 0; j--) {\n+                        startTime += vSamplesPerPrecision[i][j].timeDelta;\n+                    }\n+                    // remove element(s) at vector front\n+                    vSamplesPerPrecision[i].erase(vSamplesPerPrecision[i].begin(), vSamplesPerPrecision[i].begin() + (vSamplesPerPrecision[i].size() - vMaxSamplesPerPrecision[i]));\n+\n+                    // release memory\n+                    vSamplesPerPrecision[i].shrink_to_fit();\n+                }\n+\n+                vTimeLastSample[i] = now;\n+            }\n+            biggestInterval = precisionIntervals[i];\n+        }\n+\n+        intervalCounter++;\n+\n+        if (intervalCounter > biggestInterval) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#discussion_r121796336",
+      "id" : 121796336,
+      "original_commit_id" : "d8eb9456fce0bc44ba8599851d02be8c06d1a12b",
+      "original_position" : 96,
+      "path" : "src/stats/stats_mempool.cpp",
+      "position" : 96,
+      "pull_request_review_id" : 43854331,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8501",
+      "updated_at" : "2017-06-13T21:03:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/121796336",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Rebased on my repo.\r\n\r\n```\r\ngit checkout stats_rpc && git fetch git://github.com/luke-jr/bitcoin stats_rpc && git reset --hard FETCH_HEAD && git push ...\r\n```",
+      "created_at" : "2017-08-21T22:19:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-323867729",
+      "id" : 323867729,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2017-08-21T22:19:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323867729",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/1095675?v=4",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Rebased (rebased @luke-jr's version).",
+      "created_at" : "2017-10-05T05:00:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8501#issuecomment-334359570",
+      "id" : 334359570,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8501",
+      "updated_at" : "2017-10-05T05:00:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334359570",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   }
+]

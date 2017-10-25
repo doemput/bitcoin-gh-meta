@@ -1,0 +1,612 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115093689"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115093689"
+         }
+      },
+      "body" : "`txIn` indicates a `CTransaction` type. Better to make it lowercase `txin`.",
+      "commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-05T21:47:36Z",
+      "diff_hunk" : "@@ -1142,24 +1142,24 @@ class CTransactionSignatureSerializer {\n \n uint256 GetPrevoutHash(const CTransaction& txTo) {\n     CHashWriter ss(SER_GETHASH, 0);\n-    for (unsigned int n = 0; n < txTo.vin.size(); n++) {\n-        ss << txTo.vin[n].prevout;\n+    for (const auto& txIn : txTo.vin) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115093689",
+      "id" : 115093689,
+      "original_commit_id" : "3d5a6b491e89974af889b4d4eba9d3f1d826eea5",
+      "original_position" : 6,
+      "path" : "src/script/interpreter.cpp",
+      "position" : null,
+      "pull_request_review_id" : 36616287,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347",
+      "updated_at" : "2017-05-08T07:42:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115093689",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115094028"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115094028"
+         }
+      },
+      "body" : "Needs to be non-const",
+      "commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-05T21:49:54Z",
+      "diff_hunk" : "@@ -1781,8 +1781,8 @@ bool CWalletTx::IsEquivalentTo(const CWalletTx& _tx) const\n {\n         CMutableTransaction tx1 = *this->tx;\n         CMutableTransaction tx2 = *_tx.tx;\n-        for (unsigned int i = 0; i < tx1.vin.size(); i++) tx1.vin[i].scriptSig = CScript();\n-        for (unsigned int i = 0; i < tx2.vin.size(); i++) tx2.vin[i].scriptSig = CScript();\n+        for (const auto& txIn : tx1.vin) txIn.scriptSig = CScript();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115094028",
+      "id" : 115094028,
+      "original_commit_id" : "3d5a6b491e89974af889b4d4eba9d3f1d826eea5",
+      "original_position" : 6,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 36616620,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347",
+      "updated_at" : "2017-05-08T07:42:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115094028",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115094713"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115094713"
+         }
+      },
+      "body" : "@luke-jr Likely I'm missing something here, but `txTo.vin` is `std::vector<CTxIn>` and not `CTransaction`. Shouldn't `txIn` then indicate `CTxIn`. What am I missing? :-)",
+      "commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-05T21:55:21Z",
+      "diff_hunk" : "@@ -1142,24 +1142,24 @@ class CTransactionSignatureSerializer {\n \n uint256 GetPrevoutHash(const CTransaction& txTo) {\n     CHashWriter ss(SER_GETHASH, 0);\n-    for (unsigned int n = 0; n < txTo.vin.size(); n++) {\n-        ss << txTo.vin[n].prevout;\n+    for (const auto& txIn : txTo.vin) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115094713",
+      "id" : 115094713,
+      "original_commit_id" : "3d5a6b491e89974af889b4d4eba9d3f1d826eea5",
+      "original_position" : 6,
+      "path" : "src/script/interpreter.cpp",
+      "position" : null,
+      "pull_request_review_id" : 36617396,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347",
+      "updated_at" : "2017-05-08T07:42:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115094713",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115095782"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115095782"
+         }
+      },
+      "body" : "Hungarian notation uses the lowercase type identifier (eg, \"tx\") followed by camel case variable name (eg, \"In\"). While it's not required to use this notation, your \"txIn\" variable name *looks* like it  is, while not matching the usage expectation.",
+      "commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-05T22:04:08Z",
+      "diff_hunk" : "@@ -1142,24 +1142,24 @@ class CTransactionSignatureSerializer {\n \n uint256 GetPrevoutHash(const CTransaction& txTo) {\n     CHashWriter ss(SER_GETHASH, 0);\n-    for (unsigned int n = 0; n < txTo.vin.size(); n++) {\n-        ss << txTo.vin[n].prevout;\n+    for (const auto& txIn : txTo.vin) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115095782",
+      "id" : 115095782,
+      "original_commit_id" : "3d5a6b491e89974af889b4d4eba9d3f1d826eea5",
+      "original_position" : 6,
+      "path" : "src/script/interpreter.cpp",
+      "position" : null,
+      "pull_request_review_id" : 36618568,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347",
+      "updated_at" : "2017-05-08T07:42:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115095782",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115095970"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115095970"
+         }
+      },
+      "body" : "@luke-jr I think I get it now. `CTransactionRef &txOut` and `CTransactionRef& txIn` are used in other parts of the code base. The suggestions is that I change all `txIn`/`txOut` to `txin`/`txout` in my PR?",
+      "commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-05T22:05:52Z",
+      "diff_hunk" : "@@ -1142,24 +1142,24 @@ class CTransactionSignatureSerializer {\n \n uint256 GetPrevoutHash(const CTransaction& txTo) {\n     CHashWriter ss(SER_GETHASH, 0);\n-    for (unsigned int n = 0; n < txTo.vin.size(); n++) {\n-        ss << txTo.vin[n].prevout;\n+    for (const auto& txIn : txTo.vin) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115095970",
+      "id" : 115095970,
+      "original_commit_id" : "3d5a6b491e89974af889b4d4eba9d3f1d826eea5",
+      "original_position" : 6,
+      "path" : "src/script/interpreter.cpp",
+      "position" : null,
+      "pull_request_review_id" : 36618777,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347",
+      "updated_at" : "2017-05-08T07:42:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115095970",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115096759"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115096759"
+         }
+      },
+      "body" : "Right. Might also change `transactionRef` to simply `tx` also, but it's less confusing.",
+      "commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-05T22:12:19Z",
+      "diff_hunk" : "@@ -1142,24 +1142,24 @@ class CTransactionSignatureSerializer {\n \n uint256 GetPrevoutHash(const CTransaction& txTo) {\n     CHashWriter ss(SER_GETHASH, 0);\n-    for (unsigned int n = 0; n < txTo.vin.size(); n++) {\n-        ss << txTo.vin[n].prevout;\n+    for (const auto& txIn : txTo.vin) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115096759",
+      "id" : 115096759,
+      "original_commit_id" : "3d5a6b491e89974af889b4d4eba9d3f1d826eea5",
+      "original_position" : 6,
+      "path" : "src/script/interpreter.cpp",
+      "position" : null,
+      "pull_request_review_id" : 36619659,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347",
+      "updated_at" : "2017-05-08T07:42:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115096759",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "@luke-jr Nit addressed! Looks good? :-)",
+      "created_at" : "2017-05-08T07:44:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#issuecomment-299796216",
+      "id" : 299796216,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10347",
+      "updated_at" : "2017-05-08T07:44:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299796216",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115190194"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115190194"
+         }
+      },
+      "body" : "@ryanofsky Thanks! Fixed!",
+      "commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-08T07:46:20Z",
+      "diff_hunk" : "@@ -1781,8 +1781,8 @@ bool CWalletTx::IsEquivalentTo(const CWalletTx& _tx) const\n {\n         CMutableTransaction tx1 = *this->tx;\n         CMutableTransaction tx2 = *_tx.tx;\n-        for (unsigned int i = 0; i < tx1.vin.size(); i++) tx1.vin[i].scriptSig = CScript();\n-        for (unsigned int i = 0; i < tx2.vin.size(); i++) tx2.vin[i].scriptSig = CScript();\n+        for (const auto& txIn : tx1.vin) txIn.scriptSig = CScript();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r115190194",
+      "id" : 115190194,
+      "original_commit_id" : "3d5a6b491e89974af889b4d4eba9d3f1d826eea5",
+      "original_position" : 6,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 36709300,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347",
+      "updated_at" : "2017-05-08T07:46:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115190194",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "ACK https://github.com/bitcoin/bitcoin/pull/10347/commits/660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-12T06:34:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#issuecomment-300995740",
+      "id" : 300995740,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10347",
+      "updated_at" : "2017-05-12T06:34:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/300995740",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r116410153"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116410153"
+         }
+      },
+      "body" : "For consistency I would call this just `tx`.",
+      "commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-15T04:49:51Z",
+      "diff_hunk" : "@@ -3058,8 +3058,8 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, const Co\n \n     // No witness data is allowed in blocks that don't commit to witness data, as this would otherwise leave room for spam\n     if (!fHaveWitness) {\n-        for (size_t i = 0; i < block.vtx.size(); i++) {\n-            if (block.vtx[i]->HasWitness()) {\n+      for (const auto& transactionRef : block.vtx) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r116410153",
+      "id" : 116410153,
+      "original_commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "original_position" : 47,
+      "path" : "src/validation.cpp",
+      "position" : 47,
+      "pull_request_review_id" : 38028546,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347",
+      "updated_at" : "2017-05-15T04:50:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116410153",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r116410200"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116410200"
+         }
+      },
+      "body" : "Simply call this `input` or `coin`, to avoid making it look like Hungarian notation for a transaction input?",
+      "commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "created_at" : "2017-05-15T04:50:42Z",
+      "diff_hunk" : "@@ -2149,10 +2149,10 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, const int nConfMin\n \n     if (nTotalLower == nTargetValue)\n     {\n-        for (unsigned int i = 0; i < vValue.size(); ++i)\n+        for (const auto& inputCoin : vValue)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#discussion_r116410200",
+      "id" : 116410200,
+      "original_commit_id" : "660b5237c4f7a4fb216ae5c9207e90156f843ea0",
+      "original_position" : 16,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 16,
+      "pull_request_review_id" : 38028546,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10347",
+      "updated_at" : "2017-05-15T04:50:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116410200",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@sipa Good points! Nits addressed.\r\n\r\nThanks for reviewing.",
+      "created_at" : "2017-05-15T07:30:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#issuecomment-301397948",
+      "id" : 301397948,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10347",
+      "updated_at" : "2017-05-15T07:30:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/301397948",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "utACK 83e8c9207733ad5d3013ee3009632514b15a9347",
+      "created_at" : "2017-05-17T04:53:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#issuecomment-301985058",
+      "id" : 301985058,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10347",
+      "updated_at" : "2017-05-17T04:53:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/301985058",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Needs rebase.",
+      "created_at" : "2017-05-18T00:23:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#issuecomment-302266842",
+      "id" : 302266842,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10347",
+      "updated_at" : "2017-05-18T00:23:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302266842",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@sipa Thanks for the ping. Now rebased! :-)",
+      "created_at" : "2017-05-18T07:43:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#issuecomment-302327082",
+      "id" : 302327082,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10347",
+      "updated_at" : "2017-05-18T07:43:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302327082",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "Rebased again!",
+      "created_at" : "2017-05-19T07:57:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10347#issuecomment-302635963",
+      "id" : 302635963,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10347",
+      "updated_at" : "2017-05-19T07:57:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302635963",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   }
+]

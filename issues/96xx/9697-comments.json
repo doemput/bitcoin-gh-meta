@@ -1,0 +1,1638 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r99691757"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99691757"
+         }
+      },
+      "body" : "wtx && SignalsOptInRBF(*wtx)",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-02-06T21:43:36Z",
+      "diff_hunk" : "@@ -692,6 +694,34 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx || SignalsOptInRBF(*wtx))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r99691757",
+      "id" : 99691757,
+      "original_commit_id" : "8d7bbff188cec1bcbe57293bc25626e6443dafd4",
+      "original_position" : 24,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : null,
+      "pull_request_review_id" : 20376313,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99691757",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r99693542"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99693542"
+         }
+      },
+      "body" : "I'm surprised it's ok to be holding onto the cs_main and cs_wallet locks while waiting for user input from a confirmation dialog, since it would seem to grind the whole bitcoin node to a halt. But maybe there are other precedents for doing this.\r\n\r\nIf you wanted to avoid it, though, I think you easily could by splitting bumpfee into two functions: one which creates the new transaction, and the other which commits this.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-02-06T21:52:28Z",
+      "diff_hunk" : "@@ -692,6 +694,34 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx || SignalsOptInRBF(*wtx))\n+        return true;\n+    return false;\n+}\n+\n+bool WalletModel::bumpFee(uint256 hash, const std::function<bool(const CTransaction& tx, const CAmount& oldFee, const CAmount& newFee)> verificationCallback) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    CAmount nOldFee(0);\n+    CAmount nNewFee(0);\n+    std::shared_ptr<CWalletTx> wtxRef;\n+    std::vector<std::string> vErrors;\n+\n+    // do a simple feebump with default confirmation target\n+    CWallet::BumpFeeResult res = wallet->BumpFee(hash, 0, false, 0, true, nOldFee, nNewFee, wtxRef, vErrors, verificationCallback);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r99693542",
+      "id" : 99693542,
+      "original_commit_id" : "8d7bbff188cec1bcbe57293bc25626e6443dafd4",
+      "original_position" : 38,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : null,
+      "pull_request_review_id" : 20378202,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99693542",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Thanks for the review @ryanofsky. Yes. The current situation with holding cs_main/cs_wallet during the QMessageBox must be avoided. Using `LEAVE_CRITICAL_SECTION` and `ENTER_CRITICAL_SECTION` would be another alternative, but I'd like your idea about splitting bumpFee into a part where we create the tx and a part where we sign and commit.\r\nThe signing part could potentially be shared with `CreateTransaction` in future.",
+      "created_at" : "2017-02-07T08:12:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-277929191",
+      "id" : 277929191,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-02-07T08:12:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/277929191",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Rebased on top of #9681.\r\nFixed the `cs_main` & `cs_wallet` lock problems mentioned by @ryanofsky.",
+      "created_at" : "2017-02-14T08:51:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-279644561",
+      "id" : 279644561,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-02-14T08:51:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/279644561",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102968464"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102968464"
+         }
+      },
+      "body" : "Doesn't look like lock is needed here (GetWalletTx acquires lock internally). ",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-02-24T15:51:56Z",
+      "diff_hunk" : "@@ -692,6 +697,65 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102968464",
+      "id" : 102968464,
+      "original_commit_id" : "f7132c3b14cf714f71a2fe59241223fc30520814",
+      "original_position" : 35,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : 36,
+      "pull_request_review_id" : 23744146,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102968464",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102968986"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102968986"
+         }
+      },
+      "body" : "I'd slightly prefer SignalsOptInRBF(wtx->tx), because the implicit CWalletTx -> CTransaction conversion seems kind of hacky to me.\r\n\r\nMaybe also get rid of if statement and just `return wtx && SignalsOptInRBF(wtx->tx)`;",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-02-24T15:54:03Z",
+      "diff_hunk" : "@@ -692,6 +697,65 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102968986",
+      "id" : 102968986,
+      "original_commit_id" : "f7132c3b14cf714f71a2fe59241223fc30520814",
+      "original_position" : 37,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : 38,
+      "pull_request_review_id" : 23744146,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102968986",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102969834"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102969834"
+         }
+      },
+      "body" : "Maybe prefer unique_ptr to shared_ptr since pointer isn't being shared.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-02-24T15:57:33Z",
+      "diff_hunk" : "@@ -692,6 +697,65 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))\n+        return true;\n+    return false;\n+}\n+\n+bool WalletModel::bumpFee(uint256 hash)\n+{\n+    std::shared_ptr<CFeeBumper> feeBump;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102969834",
+      "id" : 102969834,
+      "original_commit_id" : "f7132c3b14cf714f71a2fe59241223fc30520814",
+      "original_position" : 44,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : null,
+      "pull_request_review_id" : 23744146,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102969834",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102971669"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102971669"
+         }
+      },
+      "body" : "Are we able to write unit tests to exercise our qt interface code? I don't know very much about qt, but googling around it seems to be possible: http://doc.qt.io/qt-5/qttestlib-tutorial3-example.html\r\n\r\nAsking because the logic here isn't totally trivial, and this seems like something we would want automated testing for to ensure it doesn't break in the future, especially if there will be more refactorings.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-02-24T16:05:29Z",
+      "diff_hunk" : "@@ -692,6 +697,65 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))\n+        return true;\n+    return false;\n+}\n+\n+bool WalletModel::bumpFee(uint256 hash)\n+{\n+    std::shared_ptr<CFeeBumper> feeBump;\n+    {\n+        LOCK2(cs_main, wallet->cs_wallet);\n+        feeBump = std::make_shared<CFeeBumper>(CFeeBumper(wallet, hash, 0, false, 0, true));\n+    }\n+    if (feeBump->getResult() != CFeeBumper::BumpFeeResult::OK)\n+    {\n+        QMessageBox::critical(0, tr(\"Fee bump error\"), tr(\"Increasing transaction fee failed\") + \"<br />(\" +\n+            (feeBump->getErrors().size() ? QString::fromStdString(feeBump->getErrors()[0]) : \"\") +\")\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102971669",
+      "id" : 102971669,
+      "original_commit_id" : "f7132c3b14cf714f71a2fe59241223fc30520814",
+      "original_position" : 52,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : null,
+      "pull_request_review_id" : 23744146,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102971669",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102974487"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102974487"
+         }
+      },
+      "body" : "Seems like it would be nice for this code if CFeeBumper constructor, wallet SignTransaction method, and CFeeBumper commit could acquire the locks they need themselves. Not asking for a change, since I don't want to hold up #9697, but curious if there was something that got in the way of doing this.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-02-24T16:18:03Z",
+      "diff_hunk" : "@@ -692,6 +697,65 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))\n+        return true;\n+    return false;\n+}\n+\n+bool WalletModel::bumpFee(uint256 hash)\n+{\n+    std::shared_ptr<CFeeBumper> feeBump;\n+    {\n+        LOCK2(cs_main, wallet->cs_wallet);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r102974487",
+      "id" : 102974487,
+      "original_commit_id" : "f7132c3b14cf714f71a2fe59241223fc30520814",
+      "original_position" : 46,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : null,
+      "pull_request_review_id" : 23744146,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/102974487",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r105293825"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105293825"
+         }
+      },
+      "body" : "I started writing unit tests for this change: https://github.com/ryanofsky/bitcoin/commit/9bfbdd88dd0f1e11f06403e81f39fd8df1d047c7\r\n\r\nThey are mostly complete, but have a few things I want to fix up. They also required changes to the testing framework which I'm going to split off and make a separate PR.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-03-09T23:08:34Z",
+      "diff_hunk" : "@@ -692,6 +697,65 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))\n+        return true;\n+    return false;\n+}\n+\n+bool WalletModel::bumpFee(uint256 hash)\n+{\n+    std::shared_ptr<CFeeBumper> feeBump;\n+    {\n+        LOCK2(cs_main, wallet->cs_wallet);\n+        feeBump = std::make_shared<CFeeBumper>(CFeeBumper(wallet, hash, 0, false, 0, true));\n+    }\n+    if (feeBump->getResult() != CFeeBumper::BumpFeeResult::OK)\n+    {\n+        QMessageBox::critical(0, tr(\"Fee bump error\"), tr(\"Increasing transaction fee failed\") + \"<br />(\" +\n+            (feeBump->getErrors().size() ? QString::fromStdString(feeBump->getErrors()[0]) : \"\") +\")\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r105293825",
+      "id" : 105293825,
+      "original_commit_id" : "f7132c3b14cf714f71a2fe59241223fc30520814",
+      "original_position" : 52,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : null,
+      "pull_request_review_id" : 26168832,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105293825",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Adding milestone for 0.15",
+      "created_at" : "2017-03-14T08:12:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-286350160",
+      "id" : 286350160,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-03-14T08:12:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/286350160",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r106788916"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/106788916"
+         }
+      },
+      "body" : "The function doesn't seem to return anything and the enum is not used anywhere it seems.\r\nPerhaps the function could start as void in this code movement and change it afterwards?",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-03-18T19:23:50Z",
+      "diff_hunk" : "@@ -791,6 +791,21 @@ class CWallet : public CCryptoKeyStore, public CValidationInterface\n     bool FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, bool overrideEstimatedFeeRate, const CFeeRate& specificFeeRate, int& nChangePosInOut, std::string& strFailReason, bool includeWatching, bool lockUnspents, const std::set<int>& setSubtractFeeFromOutputs, bool keepReserveKey = true, const CTxDestination& destChange = CNoDestination());\n \n     /**\n+     * Bumps the fee of an opt-in-RBF transaction <txid>,\n+     * replacing it with a new transaction <wtxNew>\n+     */\n+    enum BumpFeeResult\n+    {\n+        BumpFeeResult_OK,\n+        BumpFeeResult_INVALID_ADDRESS_OR_KEY,\n+        BumpFeeResult_INVALID_REQUEST,\n+        BumpFeeResult_INVALID_PARAMETER,\n+        BumpFeeResult_WALLET_ERROR,\n+        BumpFeeResult_MISC_ERROR,\n+    };",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r106788916",
+      "id" : 106788916,
+      "original_commit_id" : "641c99cb6f96afa166a293917f36f3cf8f28a08a",
+      "original_position" : 15,
+      "path" : "src/wallet/wallet.h",
+      "position" : null,
+      "pull_request_review_id" : 27732033,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/106788916",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r106789031"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/106789031"
+         }
+      },
+      "body" : "Did the previous commit compile without hash?\r\nI though we wanted every commit to compile and pass tests (for git bisect but also for general history cleanness).",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-03-18T19:29:05Z",
+      "diff_hunk" : "@@ -2313,71 +2313,85 @@ int64_t CalculateMaximumSignedTxSize(const CTransaction &tx)\n     if (!pwalletMain->DummySignTx(txNew, vCoins)) {\n         // This should never happen, because IsAllFromMe(ISMINE_SPENDABLE)\n         // implies that we can sign for every input.\n-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, \"Transaction contains inputs that cannot be signed\");\n+        return -1;\n     }\n     return GetVirtualTransactionSize(txNew);\n }\n \n enum CWallet::BumpFeeResult CWallet::BumpFee(uint256 txid, int newConfirmTarget, bool specifiedConfirmTarget, CAmount totalFee, bool newTxReplaceable, CAmount& nOldFee, CAmount& nNewFee, std::shared_ptr<CWalletTx>& wtxNew, std::vector<std::string>& vErrors)\n {\n-    if (!pwalletMain->mapWallet.count(hash)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r106789031",
+      "id" : 106789031,
+      "original_commit_id" : "f0c98b9bfa763fbef87f1d9d37853f28e9451c87",
+      "original_position" : 12,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 27732159,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/106789031",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r106789092"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/106789092"
+         }
+      },
+      "body" : "This could be done when making nOldFee a parameter of this function too (ie the function doesn't need to start in his final form).",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-03-18T19:31:37Z",
+      "diff_hunk" : "@@ -2313,71 +2313,85 @@ int64_t CalculateMaximumSignedTxSize(const CTransaction &tx)\n     if (!pwalletMain->DummySignTx(txNew, vCoins)) {\n         // This should never happen, because IsAllFromMe(ISMINE_SPENDABLE)\n         // implies that we can sign for every input.\n-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, \"Transaction contains inputs that cannot be signed\");\n+        return -1;\n     }\n     return GetVirtualTransactionSize(txNew);\n }\n \n enum CWallet::BumpFeeResult CWallet::BumpFee(uint256 txid, int newConfirmTarget, bool specifiedConfirmTarget, CAmount totalFee, bool newTxReplaceable, CAmount& nOldFee, CAmount& nNewFee, std::shared_ptr<CWalletTx>& wtxNew, std::vector<std::string>& vErrors)\n {\n-    if (!pwalletMain->mapWallet.count(hash)) {\n-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, \"Invalid or non-wallet transaction id\");\n+    vErrors.clear();\n+    AssertLockHeld(cs_wallet);\n+    if (!mapWallet.count(txid)) {\n+        vErrors.push_back(\"Invalid or non-wallet transaction id\");\n+        return CWallet::BumpFeeResult_INVALID_ADDRESS_OR_KEY;\n     }\n-    CWalletTx& wtx = pwalletMain->mapWallet[hash];\n+    CWalletTx& wtx = mapWallet[txid];\n \n-    if (pwalletMain->HasWalletSpend(hash)) {\n-        throw JSONRPCError(RPC_MISC_ERROR, \"Transaction has descendants in the wallet\");\n+    if (HasWalletSpend(txid)) {\n+        vErrors.push_back(\"Transaction has descendants in the wallet\");\n+        return CWallet::BumpFeeResult_MISC_ERROR;\n     }\n \n     {\n         LOCK(mempool.cs);\n-        auto it = mempool.mapTx.find(hash);\n+        auto it = mempool.mapTx.find(txid);\n         if (it != mempool.mapTx.end() && it->GetCountWithDescendants() > 1) {\n-            throw JSONRPCError(RPC_MISC_ERROR, \"Transaction has descendants in the mempool\");\n+            vErrors.push_back(\"Transaction has descendants in the mempool\");\n+            return CWallet::BumpFeeResult_MISC_ERROR;\n         }\n     }\n \n     if (wtx.GetDepthInMainChain() != 0) {\n-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, \"Transaction has been mined, or is conflicted with a mined transaction\");\n+        vErrors.push_back(\"Transaction has been mined, or is conflicted with a mined transaction\");\n+        return CWallet::BumpFeeResult_INVALID_ADDRESS_OR_KEY;\n     }\n \n     if (!SignalsOptInRBF(wtx)) {\n-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, \"Transaction is not BIP 125 replaceable\");\n+        vErrors.push_back(\"Transaction is not BIP 125 replaceable\");\n+        return CWallet::BumpFeeResult_INVALID_ADDRESS_OR_KEY;\n     }\n \n     if (wtx.mapValue.count(\"replaced_by_txid\")) {\n-        throw JSONRPCError(RPC_INVALID_REQUEST, strprintf(\"Cannot bump transaction %s which was already bumped by transaction %s\", hash.ToString(), wtx.mapValue.at(\"replaced_by_txid\")));\n+        vErrors.push_back(strprintf(\"Cannot bump transaction %s which was already bumped by transaction %s\", txid.ToString(), wtx.mapValue.at(\"replaced_by_txid\")));\n+        return CWallet::BumpFeeResult_INVALID_REQUEST;\n     }\n \n     // check that original tx consists entirely of our inputs\n     // if not, we can't bump the fee, because the wallet has no way of knowing the value of the other inputs (thus the fee)\n-    if (!pwalletMain->IsAllFromMe(wtx, ISMINE_SPENDABLE)) {\n-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, \"Transaction contains inputs that don't belong to this wallet\");\n+    if (!IsAllFromMe(wtx, ISMINE_SPENDABLE)) {\n+        vErrors.push_back(\"Transaction contains inputs that don't belong to this wallet\");\n+        return CWallet::BumpFeeResult_INVALID_ADDRESS_OR_KEY;\n     }\n \n     // figure out which output was change\n     // if there was no change output or multiple change outputs, fail\n     int nOutput = -1;\n     for (size_t i = 0; i < wtx.tx->vout.size(); ++i) {\n-        if (pwalletMain->IsChange(wtx.tx->vout[i])) {\n+        if (IsChange(wtx.tx->vout[i])) {\n             if (nOutput != -1) {\n-                throw JSONRPCError(RPC_MISC_ERROR, \"Transaction has multiple change outputs\");\n+                vErrors.push_back(\"Transaction has multiple change outputs\");\n+                return CWallet::BumpFeeResult_MISC_ERROR;\n             }\n             nOutput = i;\n         }\n     }\n     if (nOutput == -1) {\n-        throw JSONRPCError(RPC_MISC_ERROR, \"Transaction does not have a change output\");\n+        vErrors.push_back(\"Transaction does not have a change output\");\n+        return CWallet::BumpFeeResult_MISC_ERROR;\n     }\n \n     // Calculate the expected size of the new transaction.\n     int64_t txSize = GetVirtualTransactionSize(*(wtx.tx));\n     const int64_t maxNewTxSize = CalculateMaximumSignedTxSize(*wtx.tx);\n+    if (maxNewTxSize < 0) {\n+        vErrors.push_back(\"Transaction contains inputs that cannot be signed\");\n+        return CWallet::BumpFeeResult_INVALID_ADDRESS_OR_KEY;\n+    }\n \n     // calculate the old fee and fee-rate\n-    CAmount nOldFee = wtx.GetDebit(ISMINE_SPENDABLE) - wtx.tx->GetValueOut();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r106789092",
+      "id" : 106789092,
+      "original_commit_id" : "f0c98b9bfa763fbef87f1d9d37853f28e9451c87",
+      "original_position" : 97,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 27732210,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/106789092",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r106789188"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/106789188"
+         }
+      },
+      "body" : "Seems weird and unnecessary to move this to wallet and then move it back here. Perhaps SignTransaction/BumpFeePrepare/BumpFeeCommit should be created before BumpFee (ie BumpFee never being created to just remove it in the same PR) ?",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-03-18T19:38:09Z",
+      "diff_hunk" : "@@ -2749,37 +2749,46 @@ UniValue bumpfee(const JSONRPCRequest& request)\n         }\n     }\n \n-    // retrieve the original tx from the wallet\n     LOCK2(cs_main, pwalletMain->cs_wallet);\n     EnsureWalletIsUnlocked();\n \n     CAmount nOldFee(0);\n     CAmount nNewFee(0);\n-    std::shared_ptr<CWalletTx> wtxRef;\n+    std::shared_ptr<CMutableTransaction> txRef;\n     std::vector<std::string> vErrors;\n-    CWallet::BumpFeeResult res = pwalletMain->BumpFee(hash, newConfirmTarget, specifiedConfirmTarget, totalFee, replaceable, nOldFee, nNewFee, wtxRef, vErrors);\n-    if (res != CWallet::BumpFeeResult_OK)\n+    CWallet::BumpFeeResult res = pwalletMain->BumpFeePrepare(hash, newConfirmTarget, specifiedConfirmTarget, totalFee, replaceable, nOldFee, nNewFee, txRef, vErrors);\n+    if (res != CWallet::BumpFeeResult::OK)\n     {\n         switch(res) {\n-            case CWallet::BumpFeeResult_INVALID_ADDRESS_OR_KEY:\n+            case CWallet::BumpFeeResult::INVALID_ADDRESS_OR_KEY:\n                 throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, vErrors[0]);\n                 break;\n-            case CWallet::BumpFeeResult_INVALID_REQUEST:\n+            case CWallet::BumpFeeResult::INVALID_REQUEST:\n                 throw JSONRPCError(RPC_INVALID_REQUEST, vErrors[0]);\n                 break;\n-            case CWallet::BumpFeeResult_INVALID_PARAMETER:\n+            case CWallet::BumpFeeResult::INVALID_PARAMETER:\n                 throw JSONRPCError(RPC_INVALID_PARAMETER, vErrors[0]);\n                 break;\n-            case CWallet::BumpFeeResult_WALLET_ERROR:\n-                throw JSONRPCError(RPC_WALLET_ERROR, vErrors[0]);\n-                break;\n             default:\n                 throw JSONRPCError(RPC_MISC_ERROR, vErrors[0]);\n                 break;\n         }\n     }\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r106789188",
+      "id" : 106789188,
+      "original_commit_id" : "65e2e0085a608d9f570bc911349a5953a6ca88ee",
+      "original_position" : 39,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 27732348,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/106789188",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "utACK individual commits: 8c6316038e8ebb1877d712f29171afc4bb76a159 641c99cb6f96afa166a293917f36f3cf8f28a08a (without fully verifying code movements, but look ok) f0c98b9bfa763fbef87f1d9d37853f28e9451c87\r\nFast review 65e2e0085a608d9f570bc911349a5953a6ca88ee\r\nIt seems to me that the history in this PR is unnecessarily complicated and not very clean (and I believe it doesn't compile commit by commit, but I haven't checked).\r\nNeeds rebase.",
+      "created_at" : "2017-03-18T19:39:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-287569595",
+      "id" : 287569595,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-03-18T19:39:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/287569595",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "@jtimon, if you are interested in reviewing this PR, the only commit worth looking at is the final one: \"[Qt] simple fee bumper with user verification\" (f7132c3b14cf714f71a2fe59241223fc30520814). The preceding commits which you reviewed were just pulled in from an old version of #9681, and they will disappear after #9681 is merged and this is rebased.\r\n\r\nIf you want to review the latest version of the feebumper code in #9681, that would be very helpful. #9681 is fully up to date and its commit history has been simplified.\r\n\r\n\r\n",
+      "created_at" : "2017-03-18T20:31:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-287572727",
+      "id" : 287572727,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-03-18T20:31:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/287572727",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Rebased (since #9681 is now merged) and overhauled.\r\nThis now also works with encrypted wallets.",
+      "created_at" : "2017-04-10T12:07:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-292930336",
+      "id" : 292930336,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-04-10T12:07:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/292930336",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "It's kind of hard to see in the confirmation dialog by how much the fee will actually increase. Could you work that somehow into your sentence, or maybe add a table like this:\r\n\r\nCurrent fee |  0.00010595\r\n------ | -------\r\nincrease |  0.00000960\r\n**New fee** |  **0.00011555**\r\n",
+      "created_at" : "2017-04-25T20:47:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-297159929",
+      "id" : 297159929,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-04-25T20:47:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297159929",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/425166?v=3",
+         "events_url" : "https://api.github.com/users/flack/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/flack/followers",
+         "following_url" : "https://api.github.com/users/flack/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/flack/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/flack",
+         "id" : 425166,
+         "login" : "flack",
+         "organizations_url" : "https://api.github.com/users/flack/orgs",
+         "received_events_url" : "https://api.github.com/users/flack/received_events",
+         "repos_url" : "https://api.github.com/users/flack/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/flack/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/flack/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/flack"
+      }
+   },
+   {
+      "body" : "Implemented @flack's idea.\r\nNow it looks like:\r\n\r\n<img width=\"455\" alt=\"bildschirmfoto 2017-04-26 um 09 59 11\" src=\"https://cloud.githubusercontent.com/assets/178464/25424009/03e651a4-2a67-11e7-849f-017d5ef522c6.png\">\r\n\r\n<img width=\"332\" alt=\"bildschirmfoto 2017-04-26 um 10 20 40\" src=\"https://cloud.githubusercontent.com/assets/178464/25424798/0925c462-2a6a-11e7-978d-7b9ec24decb2.png\">\r\n\r\n",
+      "created_at" : "2017-04-26T08:21:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-297286324",
+      "id" : 297286324,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-04-26T08:21:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297286324",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Perhaps it is too much info for the confirmation form, but what about showing the current feerate and the new feerate as well?",
+      "created_at" : "2017-04-26T19:15:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-297512960",
+      "id" : 297512960,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-04-26T19:15:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297512960",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "@jonasschnelli  that looks good!",
+      "created_at" : "2017-05-01T13:29:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-298333568",
+      "id" : 298333568,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-01T13:29:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298333568",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114126567"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114126567"
+         }
+      },
+      "body" : "In commit \"[Qt] simple fee bumper with user verification\"\r\n\r\nMaybe get rid of the SEND_CONFIRM_DELAY usage in sendcoinsdialog.cpp now that this is the default. This would make it easier to see that changing the default doesn't actually affect current behavior.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-01T13:47:37Z",
+      "diff_hunk" : "@@ -100,13 +100,14 @@ private Q_SLOTS:\n };\n \n \n+#define SEND_CONFIRM_DELAY   3\n \n class SendConfirmationDialog : public QMessageBox\n {\n     Q_OBJECT\n \n public:\n-    SendConfirmationDialog(const QString &title, const QString &text, int secDelay = 0, QWidget *parent = 0);\n+    SendConfirmationDialog(const QString &title, const QString &text, int secDelay = SEND_CONFIRM_DELAY, QWidget *parent = 0);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114126567",
+      "id" : 114126567,
+      "original_commit_id" : "f1485f9979dc55afd712a1ed137fe12f32efe7d1",
+      "original_position" : 12,
+      "path" : "src/qt/sendcoinsdialog.h",
+      "position" : 12,
+      "pull_request_review_id" : 35568096,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114126567",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "I tested this out a bit on testnet; seems to work! one nit. I bumped a single transaction a few times, and it showed it as being sent multiple times:\r\n![untitled2](https://cloud.githubusercontent.com/assets/126646/25581395/d866a806-2e87-11e7-8bff-9f45f633db35.png)\r\n\r\nThis could be scary to users, as it looks like the transaction is sent successfully multiple times, and will possibly be mined multiple times.\r\n\r\nAfter restart it was better:\r\n![untitled3](https://cloud.githubusercontent.com/assets/126646/25581399/e3d0d9dc-2e87-11e7-941b-0afd8719f8fa.png)\r\n\r\nAfter mining the transaction, proving it works:\r\n![untitled3](https://cloud.githubusercontent.com/assets/126646/25581520/9c3ed2ee-2e88-11e7-9929-2cad7866c2c6.png)\r\n\r\n\r\n",
+      "created_at" : "2017-05-01T14:06:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-298339022",
+      "id" : 298339022,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-01T14:10:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298339022",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114140663"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114140663"
+         }
+      },
+      "body" : "Here's an updated version of the tests I wrote previously: https://github.com/ryanofsky/bitcoin/commit/71c0a80fbfe95262be3b81c45474aceaccddfad3\r\n\r\nFeel free to cherry-pick or I can submit as a separate PR.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-01T15:30:04Z",
+      "diff_hunk" : "@@ -692,6 +697,65 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))\n+        return true;\n+    return false;\n+}\n+\n+bool WalletModel::bumpFee(uint256 hash)\n+{\n+    std::shared_ptr<CFeeBumper> feeBump;\n+    {\n+        LOCK2(cs_main, wallet->cs_wallet);\n+        feeBump = std::make_shared<CFeeBumper>(CFeeBumper(wallet, hash, 0, false, 0, true));\n+    }\n+    if (feeBump->getResult() != CFeeBumper::BumpFeeResult::OK)\n+    {\n+        QMessageBox::critical(0, tr(\"Fee bump error\"), tr(\"Increasing transaction fee failed\") + \"<br />(\" +\n+            (feeBump->getErrors().size() ? QString::fromStdString(feeBump->getErrors()[0]) : \"\") +\")\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114140663",
+      "id" : 114140663,
+      "original_commit_id" : "f7132c3b14cf714f71a2fe59241223fc30520814",
+      "original_position" : 52,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : null,
+      "pull_request_review_id" : 35568096,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114140663",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "What would be the best solution regarding bump conflicts?\r\n\r\nAt the moment RPCs `listtransaction` does also list all previous tx in a bump (you can see the `walletconflicts` there).\r\n\r\nCompletely hiding the conflicted transactions (only own bump conflicts) would be a solution though I would provide to just \"flagging\" (color or opacity) the conflicts in mempool.\r\nI once had a PR for that: https://github.com/bitcoin/bitcoin/pull/7826\r\n(EDIT: Maybe this comments makes sense: https://github.com/bitcoin/bitcoin/pull/7826#issuecomment-220760567)\r\n\r\nAny ideas?",
+      "created_at" : "2017-05-04T07:34:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-299115652",
+      "id" : 299115652,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-04T07:36:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299115652",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114716024"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114716024"
+         }
+      },
+      "body" : "@ryanofsky: because setting `QWidget *parent = 0` is required, that would either result in swapping `QWidget *parent = 0` with `int secDelay = SEND_CONFIRM_DELAY` or passing `SEND_CONFIRM_DELAY` in `sendcoinsdialog.cpp` (as it is by now), right?\r\nThe current situation seems to be okay to me.\r\nOr do I misunderstand something?",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-04T07:53:23Z",
+      "diff_hunk" : "@@ -100,13 +100,14 @@ private Q_SLOTS:\n };\n \n \n+#define SEND_CONFIRM_DELAY   3\n \n class SendConfirmationDialog : public QMessageBox\n {\n     Q_OBJECT\n \n public:\n-    SendConfirmationDialog(const QString &title, const QString &text, int secDelay = 0, QWidget *parent = 0);\n+    SendConfirmationDialog(const QString &title, const QString &text, int secDelay = SEND_CONFIRM_DELAY, QWidget *parent = 0);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114716024",
+      "id" : 114716024,
+      "original_commit_id" : "f1485f9979dc55afd712a1ed137fe12f32efe7d1",
+      "original_position" : 12,
+      "path" : "src/qt/sendcoinsdialog.h",
+      "position" : 12,
+      "pull_request_review_id" : 36204024,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114716024",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Fixed @laanwj's point.\r\nAdded a commit that ensures the table model row gets updated correctly after a bump.",
+      "created_at" : "2017-05-04T08:27:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-299124941",
+      "id" : 299124941,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-04T08:27:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299124941",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114816793"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114816793"
+         }
+      },
+      "body" : "> Or do I misunderstand something?\r\n\r\nNo you're right. I didn't see sendcoinsdialog is also passing a this argument, so there is no way to use the default delay argument.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-04T15:46:47Z",
+      "diff_hunk" : "@@ -100,13 +100,14 @@ private Q_SLOTS:\n };\n \n \n+#define SEND_CONFIRM_DELAY   3\n \n class SendConfirmationDialog : public QMessageBox\n {\n     Q_OBJECT\n \n public:\n-    SendConfirmationDialog(const QString &title, const QString &text, int secDelay = 0, QWidget *parent = 0);\n+    SendConfirmationDialog(const QString &title, const QString &text, int secDelay = SEND_CONFIRM_DELAY, QWidget *parent = 0);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114816793",
+      "id" : 114816793,
+      "original_commit_id" : "f1485f9979dc55afd712a1ed137fe12f32efe7d1",
+      "original_position" : 12,
+      "path" : "src/qt/sendcoinsdialog.h",
+      "position" : 12,
+      "pull_request_review_id" : 36308595,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114816793",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114818531"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114818531"
+         }
+      },
+      "body" : "In commit \"Make sure we always update the table row after a bumpfee call\"\r\n\r\nI was surprised that passing false for the `updateTransaction` `showTransaction` parameter doesn't hide the transaction, though it's good that it doesn't. Do you think this parameter should be removed (separately, not part of this change)? I'm not seeing what it does other than set a temporary state that gets immediately overwritten.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-04T15:53:37Z",
+      "diff_hunk" : "@@ -415,6 +415,9 @@ void TransactionView::bumpFee()\n \n     // Bump tx fee over the walletModel\n     model->bumpFee(hash);\n+\n+    // Update the table\n+    model->getTransactionTableModel()->updateTransaction(hashQStr, CT_UPDATED, false);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114818531",
+      "id" : 114818531,
+      "original_commit_id" : "1015ef40ea37a33faeded844e2da62cc6c66b0bf",
+      "original_position" : 6,
+      "path" : "src/qt/transactionview.cpp",
+      "position" : null,
+      "pull_request_review_id" : 36308595,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114818531",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114872872"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114872872"
+         }
+      },
+      "body" : "Heh. Yes. This is really surprising and yes, I think we should remove it (in a clean follow up PR).",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-04T19:57:04Z",
+      "diff_hunk" : "@@ -415,6 +415,9 @@ void TransactionView::bumpFee()\n \n     // Bump tx fee over the walletModel\n     model->bumpFee(hash);\n+\n+    // Update the table\n+    model->getTransactionTableModel()->updateTransaction(hashQStr, CT_UPDATED, false);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r114872872",
+      "id" : 114872872,
+      "original_commit_id" : "1015ef40ea37a33faeded844e2da62cc6c66b0bf",
+      "original_position" : 6,
+      "path" : "src/qt/transactionview.cpp",
+      "position" : null,
+      "pull_request_review_id" : 36371016,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114872872",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115568518"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115568518"
+         }
+      },
+      "body" : "Why not just get rid of the argument entirely? I dont see any callers of the constructor using a non-default value?",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-09T18:39:50Z",
+      "diff_hunk" : "@@ -100,13 +100,14 @@ private Q_SLOTS:\n };\n \n \n+#define SEND_CONFIRM_DELAY   3\n \n class SendConfirmationDialog : public QMessageBox\n {\n     Q_OBJECT\n \n public:\n-    SendConfirmationDialog(const QString &title, const QString &text, int secDelay = 0, QWidget *parent = 0);\n+    SendConfirmationDialog(const QString &title, const QString &text, int secDelay = SEND_CONFIRM_DELAY, QWidget *parent = 0);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115568518",
+      "id" : 115568518,
+      "original_commit_id" : "f1485f9979dc55afd712a1ed137fe12f32efe7d1",
+      "original_position" : 12,
+      "path" : "src/qt/sendcoinsdialog.h",
+      "position" : 12,
+      "pull_request_review_id" : 37117791,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115568518",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115569899"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115569899"
+         }
+      },
+      "body" : "Should probably check that it is also unconfirmed, no? And, if you do keep the cs_main lock, maybe the in-mempool deps check that the CFeeBumper does.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-09T18:45:01Z",
+      "diff_hunk" : "@@ -692,6 +697,65 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115569899",
+      "id" : 115569899,
+      "original_commit_id" : "f7132c3b14cf714f71a2fe59241223fc30520814",
+      "original_position" : 37,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : 38,
+      "pull_request_review_id" : 37117791,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115569899",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115571471"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115571471"
+         }
+      },
+      "body" : "I'm confused...looks like this will either use the payTxFee per-wallet global or fall back to fallbackFee (as we call into GetMinimumFee with nConfirmTarget set to 0, which will fail the estimateSmartFee). This will likely normally result in the user always just bumping by walletIncrementalRelayFee, which seems like a strange choice. Was this intentional, or are you just planning on following up with a tweak to that in the future?",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-09T18:51:27Z",
+      "diff_hunk" : "@@ -692,6 +697,86 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))\n+        return true;\n+    return false;\n+}\n+\n+bool WalletModel::bumpFee(uint256 hash)\n+{\n+    std::unique_ptr<CFeeBumper> feeBump;\n+    {\n+        LOCK2(cs_main, wallet->cs_wallet);\n+        feeBump.reset(new CFeeBumper(wallet, hash, 0, false, 0, true));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115571471",
+      "id" : 115571471,
+      "original_commit_id" : "1015ef40ea37a33faeded844e2da62cc6c66b0bf",
+      "original_position" : 47,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37117791,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115571471",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115574972"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115574972"
+         }
+      },
+      "body" : "I believe this is the first use of CFeeBumper without holding cs_wallet through the object's entire lifetime, so more thourough review of that is merited. I read through it and /think/ its OK, but it would probably be good to duplicate a few of the checks in the CFeeBumper constructor in commit, specifically the HasWalletSpend/mempool descendant count, wtx.mapValue.count(\"replaced_by_txid\"), and GetDepthInMainChain() != 0 ones.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-09T19:05:06Z",
+      "diff_hunk" : "@@ -692,6 +697,86 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))\n+        return true;\n+    return false;\n+}\n+\n+bool WalletModel::bumpFee(uint256 hash)\n+{\n+    std::unique_ptr<CFeeBumper> feeBump;\n+    {\n+        LOCK2(cs_main, wallet->cs_wallet);\n+        feeBump.reset(new CFeeBumper(wallet, hash, 0, false, 0, true));\n+    }\n+    if (feeBump->getResult() != BumpFeeResult::OK)\n+    {\n+        QMessageBox::critical(0, tr(\"Fee bump error\"), tr(\"Increasing transaction fee failed\") + \"<br />(\" +\n+            (feeBump->getErrors().size() ? QString::fromStdString(feeBump->getErrors()[0]) : \"\") +\")\");\n+         return false;\n+    }\n+\n+    // allow a user based fee verification\n+    QString questionString = tr(\"Do you want to increase the fee?\");\n+    questionString.append(\"<br />\");\n+    CAmount oldFee = feeBump->getOldFee();\n+    CAmount newFee = feeBump->getNewFee();\n+    questionString.append(\"<table style=\\\"text-align: left;\\\">\");\n+    questionString.append(\"<tr><td>\");\n+    questionString.append(tr(\"Current fee:\"));\n+    questionString.append(\"</td><td>\");\n+    questionString.append(BitcoinUnits::formatHtmlWithUnit(getOptionsModel()->getDisplayUnit(), oldFee));\n+    questionString.append(\"</td></tr><tr><td>\");\n+    questionString.append(tr(\"Increase:\"));\n+    questionString.append(\"</td><td>\");\n+    questionString.append(BitcoinUnits::formatHtmlWithUnit(getOptionsModel()->getDisplayUnit(), newFee - oldFee));\n+    questionString.append(\"</td></tr><tr><td>\");\n+    questionString.append(tr(\"New fee:\"));\n+    questionString.append(\"</td><td>\");\n+    questionString.append(BitcoinUnits::formatHtmlWithUnit(getOptionsModel()->getDisplayUnit(), newFee));\n+    questionString.append(\"</td></tr></table>\");\n+    SendConfirmationDialog confirmationDialog(tr(\"Confirm fee bump\"), questionString);\n+    confirmationDialog.exec();\n+    QMessageBox::StandardButton retval = (QMessageBox::StandardButton)confirmationDialog.result();\n+\n+    // cancel sign&broadcast if users doesn't want to bump the fee\n+    if (retval != QMessageBox::Yes) {\n+        return false;\n+    }\n+\n+    WalletModel::UnlockContext ctx(requestUnlock());\n+    if(!ctx.isValid())\n+    {\n+        return false;\n+    }\n+\n+    // sign bumped transaction\n+    bool res = false;\n+    {\n+        LOCK2(cs_main, wallet->cs_wallet);\n+        res = feeBump->signTransaction(wallet);\n+    }\n+    if (!res) {\n+        QMessageBox::critical(0, tr(\"Fee bump error\"), tr(\"Can't sign transaction.\"));\n+        return false;\n+    }\n+    // commit the bumped transaction\n+    {\n+        LOCK2(cs_main, wallet->cs_wallet);\n+        res = feeBump->commit(wallet);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115574972",
+      "id" : 115574972,
+      "original_commit_id" : "1015ef40ea37a33faeded844e2da62cc6c66b0bf",
+      "original_position" : 103,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : 104,
+      "pull_request_review_id" : 37117791,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115574972",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115918784"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115918784"
+         }
+      },
+      "body" : "Oh. Right. Here it misses `nTxConfirmTarget`. Will fix.",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-11T07:15:31Z",
+      "diff_hunk" : "@@ -692,6 +697,86 @@ bool WalletModel::abandonTransaction(uint256 hash) const\n     return wallet->AbandonTransaction(hash);\n }\n \n+bool WalletModel::transactionSignalsRBF(uint256 hash) const\n+{\n+    LOCK2(cs_main, wallet->cs_wallet);\n+    const CWalletTx *wtx = wallet->GetWalletTx(hash);\n+    if (wtx && SignalsOptInRBF(*wtx))\n+        return true;\n+    return false;\n+}\n+\n+bool WalletModel::bumpFee(uint256 hash)\n+{\n+    std::unique_ptr<CFeeBumper> feeBump;\n+    {\n+        LOCK2(cs_main, wallet->cs_wallet);\n+        feeBump.reset(new CFeeBumper(wallet, hash, 0, false, 0, true));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r115918784",
+      "id" : 115918784,
+      "original_commit_id" : "1015ef40ea37a33faeded844e2da62cc6c66b0bf",
+      "original_position" : 47,
+      "path" : "src/qt/walletmodel.cpp",
+      "position" : null,
+      "pull_request_review_id" : 37497981,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-11T13:27:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115918784",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Added 3 commits to address @TheBlueMatt findings.\r\n\r\n* Make sure to pass `nConfirmTarget` during Qt fee bumps (d9afe0192c9ad83594074661d55a4242f33de462)\r\n* Re-check the conditions during feebump \"commit\". Because the Qt dialog may stay open for a couple of seconds (or even minutes), we need to re-check the descendants and if the tx has been mined (717495875b995c63e3e4166245e88e8def7f1e47). This still has room to optimise. We may want to timeout a bump...\r\n*  Don't hide rows when the bump has been cancelled (c9c48ea36fab3c0c36665289cbb4038491aa1354)",
+      "created_at" : "2017-05-11T07:40:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-300708721",
+      "id" : 300708721,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-11T07:40:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/300708721",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Rebased.",
+      "created_at" : "2017-05-11T13:27:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-300788715",
+      "id" : 300788715,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-11T13:27:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/300788715",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r116944045"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116944045"
+         }
+      },
+      "body" : "typo \"hasen't\"",
+      "commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "created_at" : "2017-05-17T08:50:10Z",
+      "diff_hunk" : "@@ -248,6 +255,11 @@ bool CFeeBumper::commit(CWallet *pWallet)\n     }\n     CWalletTx& oldWtx = pWallet->mapWallet[txid];\n \n+    // make sure the transaction still has no descendants and hasen't been mined in the meantime",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#discussion_r116944045",
+      "id" : 116944045,
+      "original_commit_id" : "a38783747b1c9a9209f70204639e4efcea4193c6",
+      "original_position" : 63,
+      "path" : "src/wallet/feebumper.cpp",
+      "position" : 63,
+      "pull_request_review_id" : 38605307,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9697",
+      "updated_at" : "2017-05-17T08:50:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116944045",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Minor nit: can we gray \"Increase transaction fee\" menu entry when on transaction that was already fee-bumped?\r\n\r\nIt has no reason to allow bumping the fee when it already was fee bumped and clicking on the menu entry will show\r\n\r\n```\r\nIncreasing transaction fee failed\r\n(Cannot bump transaction xyz which was already bumped by transaction abc)\r\n```\r\n",
+      "created_at" : "2017-05-17T08:56:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-302028820",
+      "id" : 302028820,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-17T08:56:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302028820",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "... and now when my tx has been mined, there is no reason to show this menu entry at all (because clicking on it will tell me it is mined already).",
+      "created_at" : "2017-05-17T08:59:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-302029671",
+      "id" : 302029671,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-17T08:59:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302029671",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "utACK a387837\r\n\r\nI think this is ready for merging. Sure, it's not perfect yet, but it's usable and can be improved later.\r\nIt has a reasonable number of ACKs/utACKs and nits have been fixed a few times.\r\n\r\nAnyone disagree?",
+      "created_at" : "2017-05-18T08:06:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-302332000",
+      "id" : 302332000,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-18T08:06:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302332000",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK a387837. I agree with merging.\r\n\r\nChanges since my last review were just rebase on updated master and 3 new commits.",
+      "created_at" : "2017-05-18T09:08:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9697#issuecomment-302346533",
+      "id" : 302346533,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9697",
+      "updated_at" : "2017-05-18T09:08:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302346533",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   }
+]

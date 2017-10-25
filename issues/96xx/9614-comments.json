@@ -1,0 +1,234 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9614#discussion_r97492558"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9614"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97492558"
+         }
+      },
+      "body" : "I think this results in no longer throwing `RPC_WALLET_INVALID_ACCOUNT_NAME` when someone tries to get balance of `\"*\"`, instead, it returns back the total balance. But I think this is what we want....",
+      "commit_id" : "e8ce6a4877186940e95e67aeaa12fd11a23b1e0d",
+      "created_at" : "2017-01-24T08:12:29Z",
+      "diff_hunk" : "@@ -687,6 +687,8 @@ UniValue getbalance(const JSONRPCRequest& request)\n     if (request.params.size() == 0)\n         return  ValueFromAmount(pwalletMain->GetBalance());\n \n+    const string* account = request.params[0].get_str() != \"*\" ? &request.params[0].get_str() : nullptr;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9614#discussion_r97492558",
+      "id" : 97492558,
+      "original_commit_id" : "4b49ed65ede769617eab048e4bbab6d5219600c6",
+      "original_position" : 4,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 18102464,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9614",
+      "updated_at" : "2017-02-06T17:42:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97492558",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9614#discussion_r97593534"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9614"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97593534"
+         }
+      },
+      "body" : "Yes, this is just keeping the current behavior (line 698 before this commit, which is removed in the next commit).",
+      "commit_id" : "e8ce6a4877186940e95e67aeaa12fd11a23b1e0d",
+      "created_at" : "2017-01-24T16:46:57Z",
+      "diff_hunk" : "@@ -687,6 +687,8 @@ UniValue getbalance(const JSONRPCRequest& request)\n     if (request.params.size() == 0)\n         return  ValueFromAmount(pwalletMain->GetBalance());\n \n+    const string* account = request.params[0].get_str() != \"*\" ? &request.params[0].get_str() : nullptr;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9614#discussion_r97593534",
+      "id" : 97593534,
+      "original_commit_id" : "4b49ed65ede769617eab048e4bbab6d5219600c6",
+      "original_position" : 4,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 18207783,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9614",
+      "updated_at" : "2017-02-06T17:42:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97593534",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Rebased 4b49ed65ede769617eab048e4bbab6d5219600c6 -> e8ce6a4877186940e95e67aeaa12fd11a23b1e0d ([getbalance-cleanup.0](https://github.com/ryanofsky/bitcoin/commits/pr/getbalance-cleanup.0) -> [getbalance-cleanup.1](https://github.com/ryanofsky/bitcoin/commits/pr/getbalance-cleanup.1)), fixing trivial merge conflict with #9613.\r\n",
+      "created_at" : "2017-02-06T17:45:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9614#issuecomment-277757331",
+      "id" : 277757331,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9614",
+      "updated_at" : "2017-02-06T17:45:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/277757331",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Rebased e8ce6a4877186940e95e67aeaa12fd11a23b1e0d -> be74f34671ac89feaafe80b3ac43ff108c9ceb29 ([getbalance-cleanup.1](https://github.com/ryanofsky/bitcoin/commits/pr/getbalance-cleanup.1) -> [getbalance-cleanup.2](https://github.com/ryanofsky/bitcoin/commits/pr/getbalance-cleanup.2)) because of conflict with #9764.",
+      "created_at" : "2017-03-01T10:38:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9614#issuecomment-283305390",
+      "id" : 283305390,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9614",
+      "updated_at" : "2017-03-01T10:38:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/283305390",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Rebased be74f34671ac89feaafe80b3ac43ff108c9ceb29 -> 0b9520d1fb242864b8bd3f6ec68fa91b231467df ([pr/getbalance-cleanup.2](https://github.com/ryanofsky/bitcoin/commits/pr/getbalance-cleanup.2) -> [pr/getbalance-cleanup.3](https://github.com/ryanofsky/bitcoin/commits/pr/getbalance-cleanup.3)) because of conflicts with pwalletMain renames in #9775.\r\n",
+      "created_at" : "2017-03-03T19:40:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9614#issuecomment-284050615",
+      "id" : 284050615,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9614",
+      "updated_at" : "2017-03-03T19:40:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/284050615",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Needs rebase again (sorry!)\r\n\r\nutACK otherwise.",
+      "created_at" : "2017-04-26T09:59:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9614#issuecomment-297329025",
+      "id" : 297329025,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9614",
+      "updated_at" : "2017-04-26T10:00:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297329025",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "No problem, thanks for the review!\r\n\r\nRebased 0b9520d1fb242864b8bd3f6ec68fa91b231467df -> 02d9f50d5f3c96fe888c230d59c5afdab4c7c6a3 ([pr/getbalance-cleanup.3](https://github.com/ryanofsky/bitcoin/commits/pr/getbalance-cleanup.3) -> [pr/getbalance-cleanup.4](https://github.com/ryanofsky/bitcoin/commits/pr/getbalance-cleanup.4)). No changes except adding another `std::` prefix and passing the right new argument to the `CWalletDB` constructor.",
+      "created_at" : "2017-04-26T10:43:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9614#issuecomment-297348842",
+      "id" : 297348842,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9614",
+      "updated_at" : "2017-04-26T10:46:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297348842",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   }
+]

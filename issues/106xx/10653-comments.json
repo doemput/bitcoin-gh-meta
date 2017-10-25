@@ -1,0 +1,1086 @@
+[
+   {
+      "body" : "This is a simple and effective change. I could think this is viable for a first step.\r\n\r\nThe downsides of this are:\r\n-> Incompatible with non name based RPC calls\r\n-> Harder for later process separation (wallet switch is then in the JSON/Data layer)",
+      "created_at" : "2017-06-23T08:50:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-310610290",
+      "id" : 310610290,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-23T08:50:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/310610290",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r123700777"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123700777"
+         }
+      },
+      "body" : "I guess `vpwallets` needs concurrency protection. ",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-06-23T08:51:33Z",
+      "diff_hunk" : "@@ -31,7 +31,14 @@\n \n CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)\n {\n-    // TODO: Some way to access secondary wallets\n+    if (!request.wallet.empty()) {\n+        for (const auto& wallet : ::vpwallets) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r123700777",
+      "id" : 123700777,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 6,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 6,
+      "pull_request_review_id" : 45930463,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-06-23T08:51:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123700777",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "I kind of like this solution. It's simple and elegant. A pity no one brought this up at the IRC meeting two weeks ago when this was discussed. I hadn't realized name-based arguments had made this so easy.\r\n\r\nEndpoint-based has the slight advantage that the RPC client code only has to make one change to use a different wallet: use a different URL. This needs a change to pass the argument for every RPC call, and forgetting one may result in hard-to-troubleshoot, possibly even dangerous issues (as it is not enforced, so it uses the default wallet by accident).\r\n",
+      "created_at" : "2017-06-24T11:26:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-310833084",
+      "id" : 310833084,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-24T11:26:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/310833084",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "> A pity no one brought this up at the IRC meeting two weeks ago when this was discussed\r\n\r\n> 12:46 < luke-jr> BTW, did we consider a generic JSON-RPC \"wallet\" named param?\r\n> 12:46 < sipa> luke-jr: i suggested that before, yes\r\n> 12:46 < sipa> luke-jr: i'd be fine with it, except it's less compatible with a future change that moves it to a different process (which will necessarily have a new endpoint)\r\n> 12:46 < jonasschnelli> luke-jr: generic wallet named parameter seems fine. Is it mixable with the non-named parameter?\r\n> 12:47 < sipa> so i think this guideline may help: arguments that select something that may in the future move to another process, should go into the path\r\n> 12:47 < sipa> other things should be RPC named args\r\n\r\nI'm fine with supporting this however, it would certainly be easier to use in some cases. We don't have to support the entire future today-- when the wallet is separated the API could change.\r\n\r\nOr not.\r\n\r\nI'm just commenting to point out that it did come up in the meeting! :)\r\n",
+      "created_at" : "2017-06-27T19:21:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311458573",
+      "id" : 311458573,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-27T19:21:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311458573",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "I like this approach. It seems like the simplest and most straightforward way of exposing multiwallet functionality through the RPC interface. Longer term, if we do separate wallets out into separate processes, then I think multiple endpoints (#10650) makes sense. So my preference would be to do this now, with a warning that the API is unstable and will likely change in the future.\r\n\r\nI haven't reviewed the code for any of the PRs yet. The above comment is simply on the concept. I intend to to look at the code for all four proposals soon.\r\n\r\nNote that the OP for this PR has a wrong link. *#10653 is an alternate implementation ...* should be *#10661 is an alternate implementation ...*",
+      "created_at" : "2017-06-27T19:47:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311465199",
+      "id" : 311465199,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-27T19:47:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311465199",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Thanks, updated the description. I do think #10661 is preferable to this PR. Although #10661 and this PR look almost the same externally (both accepting new wallet= named parameters for wallet methods), there are some differences:\r\n\r\n- Wallet parameters are documented in #10661, while in this PR they are completely undocumented.\r\n- Extra wallet= parameters on non-wallet methods trigger errors in #10661, while here they are silently ignored.\r\n- Passing wallet values as positional arguments is possible in #10661, while here they have to be passed as named arguments.",
+      "created_at" : "2017-06-28T00:34:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311523589",
+      "id" : 311523589,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-28T00:34:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311523589",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Just want to point out that both this PR and #10661 are compatible with #10615 and #10650. Accepting wallet JSON-RPC arguments doesn't prevent us from restricting access to wallets based on endpoint or user authorization in the future. (In #10661, I'm keeping the unused `request` argument to `GetWalletForJSONRPCRequest` specifically to make sure this is easy to do later on.)\r\n\r\n> This needs a change to pass the argument for every RPC call, and forgetting one may result in hard-to-troubleshoot, possibly even dangerous issues (as it is not enforced, so it uses the default wallet by accident).\r\n\r\nThis is a really good point that I didn't think of. I think in general this could be a dangerous side effect of supporting a \"default wallet\" for RPC calls in any of the 4 PRs. A user could accidentally forget to specify the wallet in a single API call, and wind up affecting a different wallet than intended. Maybe it would be good to kill the notion of a \"default wallet\" for RPCs entirely by requiring the wallet to be explicitly specified whenever more than one is loaded. This could be done by returning null from `GetWalletForJSONRPCRequest` whenever `vpwallets.size() > 1` when no wallet is specified in any of the PRs.\r\n",
+      "created_at" : "2017-06-28T00:50:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311525753",
+      "id" : 311525753,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-28T00:50:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311525753",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "> Extra wallet= parameters on non-wallet methods trigger errors in #10661, while here they are silently ignored.\r\n\r\nThis seems to be the largest downside of this approach to me, but it seems fixable by adding a flag to the RPC dispatch tables to mark wallet RPC specially?",
+      "created_at" : "2017-06-28T00:54:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311526218",
+      "id" : 311526218,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-28T00:55:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311526218",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "> This seems to be the largest downside of this approach to me, but it seems fixable by adding a flag to the RPC dispatch tables to mark wallet RPC specially?\r\n\r\nSure, but adding more special treatment of wallet parameters to this PR would just make me prefer #10661 even more. I don't like the idea of wallet parameters having magical attributes that make them different from other parameters when #10661 shows they can work just fine as normal arguments.",
+      "created_at" : "2017-06-28T01:02:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311527551",
+      "id" : 311527551,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-28T01:04:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311527551",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "@ryanofsky I don't think that's so bad if you see it as a preparation for moving the wallet to a separate process entirely.",
+      "created_at" : "2017-06-28T01:07:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311528150",
+      "id" : 311528150,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-28T01:07:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311528150",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "> @ryanofsky I don't think that's so bad if you see it as a preparation for moving the wallet to a separate process entirely.\r\n\r\nAgree that magic arguments are less bad if they are magic _and_ disappearing (i.e. temporary). But I don't see any advantage in having them at all when you can have normal arguments that don't require special treatment. Am I missing something?",
+      "created_at" : "2017-06-28T01:26:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311530911",
+      "id" : 311530911,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-28T01:26:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311530911",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "@ryanofsky I think it's very ugly that wallet RPCs need to even be aware of the fact that there is such a thing as multiple wallets. In a hypothetical future where every wallet runs as its own process, there is no need for something like that. It seems much cleaner to add some plumbing to make sure RPCs don't need to be written with that in mind.",
+      "created_at" : "2017-06-28T01:37:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311532389",
+      "id" : 311532389,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-28T01:37:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311532389",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "I've read the code for all the proposals now, and my preference is for #10650, implemented as a query option, since it seems like that's what we'd want for wallet separation (I think we'd also want to be able to access the wallet RPC calls directly on the wallet process). If that's going to take a long time to review/argue over/merge, then I don't see any harm in merging this PR sooner with a warning that the API may change in future.\r\n\r\nI agree with sipa that adding a wallet argument to all of the RPCs is ugly and should be removed if multiwallet is implemented on separate processes, so I prefer this PR over #10661, despite the drawbacks mentioned above.\r\n\r\nObviously this should be accompanied by tests if we decide to merge it. If there are concept ACKs, I'd be happy to help with those. The multiwallet.py test in #10604 may be a good starting point.",
+      "created_at" : "2017-06-28T14:12:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-311672219",
+      "id" : 311672219,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-06-28T14:12:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311672219",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125448408"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125448408"
+         }
+      },
+      "body" : "Why? `vpwallets` is initialized in `InitLoadWallet` and then never changes.",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-04T11:12:02Z",
+      "diff_hunk" : "@@ -31,7 +31,14 @@\n \n CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)\n {\n-    // TODO: Some way to access secondary wallets\n+    if (!request.wallet.empty()) {\n+        for (const auto& wallet : ::vpwallets) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125448408",
+      "id" : 125448408,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 6,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 6,
+      "pull_request_review_id" : 47837884,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-04T11:12:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125448408",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125448657"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125448657"
+         }
+      },
+      "body" : "Because we may want to add dynamic loading/unloading/creation of wallets in future. In fact, I'm working on a branch that does just that.",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-04T11:13:31Z",
+      "diff_hunk" : "@@ -31,7 +31,14 @@\n \n CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)\n {\n-    // TODO: Some way to access secondary wallets\n+    if (!request.wallet.empty()) {\n+        for (const auto& wallet : ::vpwallets) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125448657",
+      "id" : 125448657,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 6,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 6,
+      "pull_request_review_id" : 47838159,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-04T11:13:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125448657",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125448706"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125448706"
+         }
+      },
+      "body" : "I would say `wallet` argument **must** be a string otherwise `RPC_INVALID_PARAMETER` should be raised.",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-04T11:13:53Z",
+      "diff_hunk" : "@@ -456,6 +456,11 @@ static inline JSONRPCRequest transformNamedArguments(const JSONRPCRequest& in, c\n             hole += 1;\n         }\n     }\n+    auto wallet = argsIn.find(\"wallet\");\n+    if (wallet != argsIn.end() && wallet->second->isStr()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125448706",
+      "id" : 125448706,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 5,
+      "path" : "src/rpc/server.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 47838208,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-04T11:17:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125448706",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125450106"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125450106"
+         }
+      },
+      "body" : "Sure! When that happens proper concurrency protection must be added no? IMO is work for other PR.",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-04T11:21:54Z",
+      "diff_hunk" : "@@ -31,7 +31,14 @@\n \n CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)\n {\n-    // TODO: Some way to access secondary wallets\n+    if (!request.wallet.empty()) {\n+        for (const auto& wallet : ::vpwallets) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125450106",
+      "id" : 125450106,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 6,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 6,
+      "pull_request_review_id" : 47839635,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-04T11:24:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125450106",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125450369"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125450369"
+         }
+      },
+      "body" : "Mixed feelings here, could we just return `nullptr` because if no wallet is loaded then it is the same outcome: wallet not found?",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-04T11:23:48Z",
+      "diff_hunk" : "@@ -31,7 +31,14 @@\n \n CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)\n {\n-    // TODO: Some way to access secondary wallets\n+    if (!request.wallet.empty()) {\n+        for (const auto& wallet : ::vpwallets) {\n+            if (request.wallet == wallet->GetName()) {\n+                return wallet;\n+            }\n+        }\n+        throw JSONRPCError(RPC_INVALID_PARAMETER, \"Requested wallet does not exist or is not loaded\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125450369",
+      "id" : 125450369,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 11,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 11,
+      "pull_request_review_id" : 47839635,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-04T11:24:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125450369",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125519434"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125519434"
+         }
+      },
+      "body" : "Wallets should be passed as a CWallet reference, not as a string...",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-04T18:46:06Z",
+      "diff_hunk" : "@@ -42,11 +42,25 @@ class JSONRPCRequest\n public:\n     UniValue id;\n     std::string strMethod;\n+    /**\n+     * Parameters from JSON-RPC request.\n+     * This will be either an object or an array when the JSONRPCRequest object is\n+     * originally created and parsed. But it will be transformed into an\n+     * array before being passed to the RPC method implementation (using the\n+     * list of named arguments provided by the implementation).\n+     */\n     UniValue params;\n     bool fHelp;\n     std::string URI;\n     std::string authUser;\n \n+    /**\n+     * Optional wallet name, set for backwards compatibility if the RPC method\n+     * was called with a named \"wallet\" parameter and the RPC method\n+     * implementation doesn't handle it itself.\n+     */\n+    std::string wallet;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125519434",
+      "id" : 125519434,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 21,
+      "path" : "src/rpc/server.h",
+      "position" : 21,
+      "pull_request_review_id" : 47915494,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-04T18:46:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125519434",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125717917"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125717917"
+         }
+      },
+      "body" : "`RPC_INVALID_PARAMETER` will be raised when wallet isn't a string because `!argsIn.empty()` will be true below.",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-05T18:10:41Z",
+      "diff_hunk" : "@@ -456,6 +456,11 @@ static inline JSONRPCRequest transformNamedArguments(const JSONRPCRequest& in, c\n             hole += 1;\n         }\n     }\n+    auto wallet = argsIn.find(\"wallet\");\n+    if (wallet != argsIn.end() && wallet->second->isStr()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125717917",
+      "id" : 125717917,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 5,
+      "path" : "src/rpc/server.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 48134688,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-05T18:59:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125717917",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125724879"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125724879"
+         }
+      },
+      "body" : "> Wallets should be passed as a CWallet reference, not as a string...\r\n\r\nAdvantage of doing that is that it could simplify test code wanting to emulate RPC calls by avoiding the need for it to have to manipulate `vpwallets.` Disadvantage is it would require sticking an `#ifdef ENABLE_WALLET` in the PR and moving wallet-selection logic from the wallet layer (`GetWalletForJSONRPCRequest`) to the rpc layer (`transformNamedArguments`).",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-05T18:39:06Z",
+      "diff_hunk" : "@@ -42,11 +42,25 @@ class JSONRPCRequest\n public:\n     UniValue id;\n     std::string strMethod;\n+    /**\n+     * Parameters from JSON-RPC request.\n+     * This will be either an object or an array when the JSONRPCRequest object is\n+     * originally created and parsed. But it will be transformed into an\n+     * array before being passed to the RPC method implementation (using the\n+     * list of named arguments provided by the implementation).\n+     */\n     UniValue params;\n     bool fHelp;\n     std::string URI;\n     std::string authUser;\n \n+    /**\n+     * Optional wallet name, set for backwards compatibility if the RPC method\n+     * was called with a named \"wallet\" parameter and the RPC method\n+     * implementation doesn't handle it itself.\n+     */\n+    std::string wallet;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125724879",
+      "id" : 125724879,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 21,
+      "path" : "src/rpc/server.h",
+      "position" : 21,
+      "pull_request_review_id" : 48134688,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-05T18:59:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125724879",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125725439"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125725439"
+         }
+      },
+      "body" : "Yeah, I don't think anyone is suggesting it's needed in this PR.",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-05T18:41:36Z",
+      "diff_hunk" : "@@ -31,7 +31,14 @@\n \n CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)\n {\n-    // TODO: Some way to access secondary wallets\n+    if (!request.wallet.empty()) {\n+        for (const auto& wallet : ::vpwallets) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125725439",
+      "id" : 125725439,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 6,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 6,
+      "pull_request_review_id" : 48134688,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-05T18:59:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125725439",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125727292"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125727292"
+         }
+      },
+      "body" : "Reason for throwing here instead of returning `nullptr` is to make it an error to pass an invalid wallet filename to RPC calls like `validateaddress`, `createmultisig`, or `getinfo` where having a wallet is optional.",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-05T18:49:24Z",
+      "diff_hunk" : "@@ -31,7 +31,14 @@\n \n CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)\n {\n-    // TODO: Some way to access secondary wallets\n+    if (!request.wallet.empty()) {\n+        for (const auto& wallet : ::vpwallets) {\n+            if (request.wallet == wallet->GetName()) {\n+                return wallet;\n+            }\n+        }\n+        throw JSONRPCError(RPC_INVALID_PARAMETER, \"Requested wallet does not exist or is not loaded\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125727292",
+      "id" : 125727292,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 11,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 11,
+      "pull_request_review_id" : 48134688,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-05T18:59:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125727292",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125781777"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125781777"
+         }
+      },
+      "body" : "Another advantage is to properly call RPCs from the GUI without going wallet->string->wallet (which would be just begging for bugs).",
+      "commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "created_at" : "2017-07-05T23:30:26Z",
+      "diff_hunk" : "@@ -42,11 +42,25 @@ class JSONRPCRequest\n public:\n     UniValue id;\n     std::string strMethod;\n+    /**\n+     * Parameters from JSON-RPC request.\n+     * This will be either an object or an array when the JSONRPCRequest object is\n+     * originally created and parsed. But it will be transformed into an\n+     * array before being passed to the RPC method implementation (using the\n+     * list of named arguments provided by the implementation).\n+     */\n     UniValue params;\n     bool fHelp;\n     std::string URI;\n     std::string authUser;\n \n+    /**\n+     * Optional wallet name, set for backwards compatibility if the RPC method\n+     * was called with a named \"wallet\" parameter and the RPC method\n+     * implementation doesn't handle it itself.\n+     */\n+    std::string wallet;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#discussion_r125781777",
+      "id" : 125781777,
+      "original_commit_id" : "01bd4bef23d0f3c81bb11fb8ecba409898ff01f1",
+      "original_position" : 21,
+      "path" : "src/rpc/server.h",
+      "position" : 21,
+      "pull_request_review_id" : 48204117,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10653",
+      "updated_at" : "2017-07-05T23:30:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125781777",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Closing in favor of 10650 (https://botbot.me/freenode/bitcoin-core-dev/msg/88240462/), even though I do think 10650 is a worse solution: https://github.com/bitcoin/bitcoin/pull/10650#issuecomment-315066331\r\n\r\nThere is a newer version of the code in this PR which adds a test & makes it an error not to specify a wallet when more than one is loaded: https://github.com/bitcoin/bitcoin/compare/master...ryanofsky:pr/multiparam",
+      "created_at" : "2017-07-06T19:26:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-313494869",
+      "id" : 313494869,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-07-13T18:30:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313494869",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "> Longer term, if we do separate wallets out into separate processes, then I think multiple endpoints (#10650) makes sense.\r\n\r\nFWIW, I was implementing RPC dispatch to wallet processes yesterday and found the opposite. With #10653 and #10661, rpc/server.cpp can take the wallet name directly from the RPC params and dispatch the request to the right wallet process, while with #10653, because the wallet URL demangling happens in `GetWalletForJSONRPCRequest` which is called by individual wallet methods, the RPC server has no way of knowing which wallet process to forward incoming requests to, so the URL demangling logic either has to be moved, or the server has to forward RPC requests to multiple wallet processes.\r\n\r\nI don't think these issues are very significant, but I'm just pointing this out because I think discussion around wallet process separation and multiwallet RPC support has been muddled and confused. I think pretty much any multiwallet RPC selection mechanism could be made to work cleanly with different multiprocess setups. I also think that the best multiprocess setup would just let wallet processes handle RPC calls on their own, which would eliminate the need for any multiwallet RPC selection mechanism.\r\n",
+      "created_at" : "2017-07-13T18:09:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-315158014",
+      "id" : 315158014,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-07-13T18:09:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315158014",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "@ryanofsky The reason why endpoints are preferable as a preparation for multiprocess has nothing to do with the server side, but with the client side. Having clients treat your wallet as a separate endpoint means they're well prepared for a future where it's a separate process - just change the endpoint.",
+      "created_at" : "2017-07-13T18:32:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-315164126",
+      "id" : 315164126,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-07-13T18:32:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315164126",
+      "user" : {
+         "avatar_url" : "https://avatars5.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "> @ryanofsky The reason why endpoints are preferable as a preparation for multiprocess has nothing to do with the server side, but with the client side. Having clients treat your wallet as a separate endpoint means they're well prepared for a future where it's a separate process - just change the endpoint.\r\n\r\nThanks, that is helpful. I was thinking all along that endpoints are an unnecessary and mildly obnoxious change to want to roll out right now, but I guess you are saying the obnoxiousness is more of a feature than a bug because it will prepare users for more obnoxiousness in the future. Or maybe that's not a completely fair description, but I think I get the idea a little better now.",
+      "created_at" : "2017-07-13T18:55:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-315170318",
+      "id" : 315170318,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-07-13T18:55:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315170318",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Do we not want the behavior here where defaulting to vpwallets[0] only works if vpwallets.size() == 1?\r\n",
+      "created_at" : "2017-07-14T19:56:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-315452733",
+      "id" : 315452733,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-07-14T19:56:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315452733",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/4360349?v=4",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "> Do we not want the behavior here where defaulting to vpwallets[0] only works if vpwallets.size() == 1?\r\n\r\nThat behavior is implemented in the branch ( https://github.com/bitcoin/bitcoin/compare/master...ryanofsky:pr/multiparam), it's just not showing up in the PR because the PR is closed\r\n\r\n",
+      "created_at" : "2017-07-14T19:57:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-315453048",
+      "id" : 315453048,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-07-14T19:57:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315453048",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Reopened as #10829.",
+      "created_at" : "2017-07-14T20:06:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10653#issuecomment-315454960",
+      "id" : 315454960,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10653",
+      "updated_at" : "2017-07-14T20:06:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315454960",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   }
+]

@@ -1,0 +1,1702 @@
+[
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "If #11359 gets in it might be nice to have the prune hwm in there too, but I didn't want to add the dependency.",
+      "created_at" : "2017-09-19T08:54:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-330474562",
+      "id" : 330474562,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-19T08:54:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/330474562",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139772263"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139772263"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "nit: perhaps `disk_usage` or `size_on_disk`?\r\n\r\nAlso consider placing this above `pruned` so all of the pruning-related fields are grouped.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-19T18:08:23Z",
+      "diff_hunk" : "@@ -1137,6 +1137,8 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n             \"  \\\"chainwork\\\": \\\"xxxx\\\"     (string) total amount of work in active chain, in hexadecimal\\n\"\n             \"  \\\"pruned\\\": xx,             (boolean) if the blocks are subject to pruning\\n\"\n             \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored\\n\"\n+            \"  \\\"disk_size\\\": xxxxxx,    (numeric) the estimated size of the block and undo files on disk\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139772263",
+      "id" : 139772263,
+      "original_commit_id" : "a2d851fff5e71a08e596b4713ddbad7176acfdbb",
+      "original_position" : 4,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 63751850,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139772263",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139835587"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139835587"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Also align description.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-19T22:35:32Z",
+      "diff_hunk" : "@@ -1137,6 +1137,8 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n             \"  \\\"chainwork\\\": \\\"xxxx\\\"     (string) total amount of work in active chain, in hexadecimal\\n\"\n             \"  \\\"pruned\\\": xx,             (boolean) if the blocks are subject to pruning\\n\"\n             \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored\\n\"\n+            \"  \\\"disk_size\\\": xxxxxx,    (numeric) the estimated size of the block and undo files on disk\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139835587",
+      "id" : 139835587,
+      "in_reply_to_id" : 139772263,
+      "original_commit_id" : "a2d851fff5e71a08e596b4713ddbad7176acfdbb",
+      "original_position" : 4,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 63823568,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139835587",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139835927"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139835927"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "IMO we should test the response result. In this case, at least, check that the key exists and value is a number. cc @jnewbery ",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-19T22:37:30Z",
+      "diff_hunk" : "@@ -1137,6 +1137,8 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n             \"  \\\"chainwork\\\": \\\"xxxx\\\"     (string) total amount of work in active chain, in hexadecimal\\n\"\n             \"  \\\"pruned\\\": xx,             (boolean) if the blocks are subject to pruning\\n\"\n             \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored\\n\"\n+            \"  \\\"disk_size\\\": xxxxxx,    (numeric) the estimated size of the block and undo files on disk\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139835927",
+      "id" : 139835927,
+      "in_reply_to_id" : 139772263,
+      "original_commit_id" : "a2d851fff5e71a08e596b4713ddbad7176acfdbb",
+      "original_position" : 4,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 63823568,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139835927",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139837089"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139837089"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Ah, @jnewbery already recommended a test! Ã°ÂÂÂ ",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-19T22:44:48Z",
+      "diff_hunk" : "@@ -1137,6 +1137,8 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n             \"  \\\"chainwork\\\": \\\"xxxx\\\"     (string) total amount of work in active chain, in hexadecimal\\n\"\n             \"  \\\"pruned\\\": xx,             (boolean) if the blocks are subject to pruning\\n\"\n             \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored\\n\"\n+            \"  \\\"disk_size\\\": xxxxxx,    (numeric) the estimated size of the block and undo files on disk\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139837089",
+      "id" : 139837089,
+      "in_reply_to_id" : 139772263,
+      "original_commit_id" : "a2d851fff5e71a08e596b4713ddbad7176acfdbb",
+      "original_position" : 4,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 63825238,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139837089",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139837161"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139837161"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Missing lock of `cs_LastBlockFile`.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-19T22:45:13Z",
+      "diff_hunk" : "@@ -1180,6 +1182,7 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n     obj.push_back(Pair(\"verificationprogress\",  GuessVerificationProgress(Params().TxData(), chainActive.Tip())));\n     obj.push_back(Pair(\"chainwork\",             chainActive.Tip()->nChainWork.GetHex()));\n     obj.push_back(Pair(\"pruned\",                fPruneMode));\n+    obj.push_back(Pair(\"disk_size\",             CalculateCurrentUsage()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r139837161",
+      "id" : 139837161,
+      "original_commit_id" : "a2d851fff5e71a08e596b4713ddbad7176acfdbb",
+      "original_position" : 13,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 63825318,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139837161",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Test for `getblockchaininfo` added in #11370.",
+      "created_at" : "2017-09-20T06:48:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-330760846",
+      "id" : 330760846,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-20T06:48:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/330760846",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "A few mishaps with the commit message there, sorry.\r\n\r\nI have merged this with #11366 and closed #11366.",
+      "created_at" : "2017-09-20T15:05:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-330881165",
+      "id" : 330881165,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-20T15:05:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/330881165",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140073685"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140073685"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "The help text for `pruneheight` should also include \"(only present if pruning is enabled)\"",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-20T19:48:16Z",
+      "diff_hunk" : "@@ -1135,8 +1135,10 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n             \"  \\\"mediantime\\\": xxxxxx,     (numeric) median time for the current best block\\n\"\n             \"  \\\"verificationprogress\\\": xxxx, (numeric) estimate of verification progress [0..1]\\n\"\n             \"  \\\"chainwork\\\": \\\"xxxx\\\"     (string) total amount of work in active chain, in hexadecimal\\n\"\n+            \"  \\\"size_on_disk\\\": xxxxxx,   (numeric) the estimated size of the block and undo files on disk\\n\"\n             \"  \\\"pruned\\\": xx,             (boolean) if the blocks are subject to pruning\\n\"\n             \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140073685",
+      "id" : 140073685,
+      "original_commit_id" : "ae3cbb994cc29ef1c921da6aa8a0732073280099",
+      "original_position" : 6,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 64094597,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140073685",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140121000"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140121000"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "4a61af9",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-20T23:53:24Z",
+      "diff_hunk" : "@@ -1135,8 +1135,10 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n             \"  \\\"mediantime\\\": xxxxxx,     (numeric) median time for the current best block\\n\"\n             \"  \\\"verificationprogress\\\": xxxx, (numeric) estimate of verification progress [0..1]\\n\"\n             \"  \\\"chainwork\\\": \\\"xxxx\\\"     (string) total amount of work in active chain, in hexadecimal\\n\"\n+            \"  \\\"size_on_disk\\\": xxxxxx,   (numeric) the estimated size of the block and undo files on disk\\n\"\n             \"  \\\"pruned\\\": xx,             (boolean) if the blocks are subject to pruning\\n\"\n             \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140121000",
+      "id" : 140121000,
+      "in_reply_to_id" : 140073685,
+      "original_commit_id" : "ae3cbb994cc29ef1c921da6aa8a0732073280099",
+      "original_position" : 6,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 64148405,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140121000",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140122508"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140122508"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "I'd rather not expose more variables that are private to validation to the outside world.\r\n\r\nPerhaps you can instead create a wrapper around `CalculateCurrentUsage`, which just grabs `cs_LastBlockFile` and calls the internal one, and expose that? That way the RPC code wouldn't need to know about the existence of that lock eve.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-21T00:05:33Z",
+      "diff_hunk" : "@@ -156,6 +156,7 @@ struct BlockHasher\n \n extern CScript COINBASE_FLAGS;\n extern CCriticalSection cs_main;\n+extern CCriticalSection cs_LastBlockFile;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140122508",
+      "id" : 140122508,
+      "original_commit_id" : "4a61af9666e214b95151e20fd87388e87ea881d8",
+      "original_position" : 4,
+      "path" : "src/validation.h",
+      "position" : null,
+      "pull_request_review_id" : 64150104,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140122508",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140186259"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140186259"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Why not just lock `cs_LastBlockFile` in `CalculateCurrentUsage`? It's a recursive mutex and IMO should be locked where it's needed (BTW the same for remaining locks...).",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-21T09:03:42Z",
+      "diff_hunk" : "@@ -156,6 +156,7 @@ struct BlockHasher\n \n extern CScript COINBASE_FLAGS;\n extern CCriticalSection cs_main;\n+extern CCriticalSection cs_LastBlockFile;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140186259",
+      "id" : 140186259,
+      "in_reply_to_id" : 140122508,
+      "original_commit_id" : "4a61af9666e214b95151e20fd87388e87ea881d8",
+      "original_position" : 4,
+      "path" : "src/validation.h",
+      "position" : null,
+      "pull_request_review_id" : 64220215,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140186259",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140186375"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140186375"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "`CBlockIndex* block = ...`;",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-21T09:04:16Z",
+      "diff_hunk" : "@@ -1179,7 +1181,18 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n     obj.push_back(Pair(\"mediantime\",            (int64_t)chainActive.Tip()->GetMedianTimePast()));\n     obj.push_back(Pair(\"verificationprogress\",  GuessVerificationProgress(Params().TxData(), chainActive.Tip())));\n     obj.push_back(Pair(\"chainwork\",             chainActive.Tip()->nChainWork.GetHex()));\n+    obj.push_back(Pair(\"size_on_disk\",          CalculateCurrentUsage()));\n     obj.push_back(Pair(\"pruned\",                fPruneMode));\n+    if (fPruneMode) {\n+        CBlockIndex *block = chainActive.Tip();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140186375",
+      "id" : 140186375,
+      "original_commit_id" : "4a61af9666e214b95151e20fd87388e87ea881d8",
+      "original_position" : 28,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 64220215,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140186375",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140414272"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140414272"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "As @sipa already commented, `CalculateCurrentUsage()` should be responsible for concurrency locking (not the calling code part).",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-22T05:24:59Z",
+      "diff_hunk" : "@@ -1168,7 +1170,7 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n             + HelpExampleRpc(\"getblockchaininfo\", \"\")\n         );\n \n-    LOCK(cs_main);\n+    LOCK2(cs_main, cs_LastBlockFile); // cs_LastBlockFile for CalculateCurrentUsage()",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140414272",
+      "id" : 140414272,
+      "original_commit_id" : "4a61af9666e214b95151e20fd87388e87ea881d8",
+      "original_position" : 17,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 64484805,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140414272",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140414350"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140414350"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Indentation seems wrong (others need to space-up).",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-22T05:25:51Z",
+      "diff_hunk" : "@@ -1135,8 +1135,10 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n             \"  \\\"mediantime\\\": xxxxxx,     (numeric) median time for the current best block\\n\"\n             \"  \\\"verificationprogress\\\": xxxx, (numeric) estimate of verification progress [0..1]\\n\"\n             \"  \\\"chainwork\\\": \\\"xxxx\\\"     (string) total amount of work in active chain, in hexadecimal\\n\"\n+            \"  \\\"size_on_disk\\\": xxxxxx,   (numeric) the estimated size of the block and undo files on disk\\n\"\n             \"  \\\"pruned\\\": xx,             (boolean) if the blocks are subject to pruning\\n\"\n-            \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored\\n\"\n+            \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored (only present if pruning is enabled)\\n\"\n+            \"  \\\"prune_target_size\\\": xxxxxx,  (numeric) the target size used by pruning (only present if pruning is enabled)\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140414350",
+      "id" : 140414350,
+      "original_commit_id" : "4a61af9666e214b95151e20fd87388e87ea881d8",
+      "original_position" : 8,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 64484900,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140414350",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Concept ACK",
+      "created_at" : "2017-09-22T05:26:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-331353386",
+      "id" : 331353386,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-22T05:26:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/331353386",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140564032"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140564032"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I followed the example of 'verificationprogress'; can indent the others further if you think that makes sense.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-22T18:24:18Z",
+      "diff_hunk" : "@@ -1135,8 +1135,10 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n             \"  \\\"mediantime\\\": xxxxxx,     (numeric) median time for the current best block\\n\"\n             \"  \\\"verificationprogress\\\": xxxx, (numeric) estimate of verification progress [0..1]\\n\"\n             \"  \\\"chainwork\\\": \\\"xxxx\\\"     (string) total amount of work in active chain, in hexadecimal\\n\"\n+            \"  \\\"size_on_disk\\\": xxxxxx,   (numeric) the estimated size of the block and undo files on disk\\n\"\n             \"  \\\"pruned\\\": xx,             (boolean) if the blocks are subject to pruning\\n\"\n-            \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored\\n\"\n+            \"  \\\"pruneheight\\\": xxxxxx,    (numeric) lowest-height complete block stored (only present if pruning is enabled)\\n\"\n+            \"  \\\"prune_target_size\\\": xxxxxx,  (numeric) the target size used by pruning (only present if pruning is enabled)\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r140564032",
+      "id" : 140564032,
+      "in_reply_to_id" : 140414350,
+      "original_commit_id" : "4a61af9666e214b95151e20fd87388e87ea881d8",
+      "original_position" : 8,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 64661115,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140564032",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Rebased on master, moved the lock into CalculateCurrentUsage, `CBlockIndex *block` => `CBlockIndex* block`.\r\n\r\nTravis failed on one platform (iirc linux64) on a timeout in p2p-segwit last time. Not sure why. We'll see how it goes. edit: looks good.",
+      "created_at" : "2017-09-22T18:25:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-331524788",
+      "id" : 331524788,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-22T19:42:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/331524788",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "utACK 071879a6263aa286e166f9cf07f409e6df35bc02",
+      "created_at" : "2017-09-22T18:53:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-331531586",
+      "id" : 331531586,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-22T18:53:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/331531586",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I've just tested this with `-prune=1` and I get the bizarre result:\r\n\r\n```\r\nÃ¢ÂÂ bitcoin-cli getblockchaininfo\r\n{\r\n...\r\n  \"prune_target_size\": 18446744073709551615,\r\n```\r\n\r\nThat's because of this section in `init.cpp`:\r\n\r\n```\r\n    nPruneTarget = (uint64_t) nPruneArg * 1024 * 1024;\r\n    if (nPruneArg == 1) {  // manual pruning: -prune=1\r\n        LogPrintf(\"Block pruning enabled.  Use RPC call pruneblockchain(height) to manually prune block and undo files.\\n\");\r\n        nPruneTarget = std::numeric_limits<uint64_t>::max();\r\n        fPruneMode = true;\r\n...\r\n```\r\n\r\nReturning the max int for `prune_target_size` is meaningless and confusing. I recommend you don't return `prune_target_size` if bitcoind is configured for manual pruning (ie if `-prune=1`) (and perhaps also add *another* field `pruning_mode` that returns whether pruning is automatic or manual).",
+      "created_at" : "2017-09-22T20:27:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-331552341",
+      "id" : 331552341,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-22T20:27:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/331552341",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Hmmm. Yes, that isn't desirable behaviour.\r\n\r\nOptions I can see:\r\na) nPruneArg is exposed from init.cpp, or an fPruneManualMode (in which case it could be explicitly checked for in FindFilesToPrune)\r\nor\r\nb) the RPC checks for int_max to determine whether automatic pruning is disabled\r\n\r\nb) fixes the RPC without having to touch pruning code but otherwise seems a bit messy to me.",
+      "created_at" : "2017-09-22T22:04:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-331571173",
+      "id" : 331571173,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-22T22:04:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/331571173",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Or instead of b) just see if gArgs.GetArg(\"-prune\", 0) is 1?\r\nBut yeah maybe adding a manual prune bool to validation.cpp would be more sensible",
+      "created_at" : "2017-09-23T03:06:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-331606508",
+      "id" : 331606508,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-23T03:09:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/331606508",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I think just testing the value of `gArgs.GetArg(\"-prune\", 0)` is appropriate for this pr. No need to touch the init or validation code.",
+      "created_at" : "2017-09-23T11:36:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-331628311",
+      "id" : 331628311,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-24T17:51:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/331628311",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "```\r\n$ grep \"prune\" ~/.bitcoin/bitcoin.conf\r\nprune=550\r\n$ ./bitcoin-cli getblockchaininfo | grep \"prune\"\r\n  \"pruned\": true,\r\n  \"pruneheight\": 0,\r\n  \"pruneauto\": true,\r\n  \"prune_target_size\": 576716800,\r\n\r\n$ grep \"prune\" ~/.bitcoin/bitcoin.conf\r\nprune=1\r\n$ ./bitcoin-cli getblockchaininfo | grep \"prune\"\r\n  \"pruned\": true,\r\n  \"pruneheight\": 0,\r\n  \"pruneauto\": false,\r\n\r\n$ grep \"prune\" ~/.bitcoin/bitcoin.conf\r\nprune=0\r\n$ ./bitcoin-cli getblockchaininfo | grep \"prune\"\r\n  \"pruned\": false,\r\n```",
+      "created_at" : "2017-09-24T17:07:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-331724085",
+      "id" : 331724085,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-24T17:07:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/331724085",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Please rebase with #11370.",
+      "created_at" : "2017-09-24T20:35:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-331738418",
+      "id" : 331738418,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-24T20:35:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/331738418",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Rebased on master and added tests for the relevant fields in test/functional/blockchain.py.\r\n\r\nMy box:\r\n```\r\n...\r\nblockchain.py                  | Ã¢ÂÂ Passed  | 13 s\r\n...\r\nALL                            | Ã¢ÂÂ Passed  | 695 s (accumulated) \r\nRuntime: 180 s\r\n```",
+      "created_at" : "2017-09-25T22:08:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-332028248",
+      "id" : 332028248,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-25T22:14:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332028248",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141060923"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141060923"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "current code style is snake_case for variables (https://github.com/bitcoin/bitcoin/blob/master/doc/developer-notes.md#developer-notes). `prune_auto` or `auto_prune` should be fine.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-26T13:48:12Z",
+      "diff_hunk" : "@@ -1179,7 +1182,23 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n     obj.push_back(Pair(\"mediantime\",            (int64_t)chainActive.Tip()->GetMedianTimePast()));\n     obj.push_back(Pair(\"verificationprogress\",  GuessVerificationProgress(Params().TxData(), chainActive.Tip())));\n     obj.push_back(Pair(\"chainwork\",             chainActive.Tip()->nChainWork.GetHex()));\n+    obj.push_back(Pair(\"size_on_disk\",          CalculateCurrentUsage()));\n     obj.push_back(Pair(\"pruned\",                fPruneMode));\n+    if (fPruneMode) {\n+        CBlockIndex* block = chainActive.Tip();\n+        assert(block);\n+        while (block->pprev && (block->pprev->nStatus & BLOCK_HAVE_DATA)) {\n+            block = block->pprev;\n+        }\n+\n+        obj.push_back(Pair(\"pruneheight\",        block->nHeight));\n+\n+        bool fPruneAuto = (gArgs.GetArg(\"-prune\", 0) > 1);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141060923",
+      "id" : 141060923,
+      "original_commit_id" : "bbca675c7a1ffa0d843fd55b6431c94161af4004",
+      "original_position" : 28,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65220081,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141060923",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141061064"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141061064"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Please also use snake_case for RPC fields. I think `automatic_pruning` is appropriate here.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-26T13:48:42Z",
+      "diff_hunk" : "@@ -1179,7 +1182,23 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n     obj.push_back(Pair(\"mediantime\",            (int64_t)chainActive.Tip()->GetMedianTimePast()));\n     obj.push_back(Pair(\"verificationprogress\",  GuessVerificationProgress(Params().TxData(), chainActive.Tip())));\n     obj.push_back(Pair(\"chainwork\",             chainActive.Tip()->nChainWork.GetHex()));\n+    obj.push_back(Pair(\"size_on_disk\",          CalculateCurrentUsage()));\n     obj.push_back(Pair(\"pruned\",                fPruneMode));\n+    if (fPruneMode) {\n+        CBlockIndex* block = chainActive.Tip();\n+        assert(block);\n+        while (block->pprev && (block->pprev->nStatus & BLOCK_HAVE_DATA)) {\n+            block = block->pprev;\n+        }\n+\n+        obj.push_back(Pair(\"pruneheight\",        block->nHeight));\n+\n+        bool fPruneAuto = (gArgs.GetArg(\"-prune\", 0) > 1);\n+        obj.push_back(Pair(\"pruneauto\",          fPruneAuto));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141061064",
+      "id" : 141061064,
+      "original_commit_id" : "bbca675c7a1ffa0d843fd55b6431c94161af4004",
+      "original_position" : 29,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65220250,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141061064",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141061511"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141061511"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "No need for `assert_equal` when comparing a value to `True` or `False`. The following is fine:\r\n\r\n```python\r\nassert res['pruned']\r\nassert not res['pruneauto']\r\n```",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-26T13:50:07Z",
+      "diff_hunk" : "@@ -58,20 +58,42 @@ def _test_getblockchaininfo(self):\n             'headers',\n             'mediantime',\n             'pruned',\n+            'size_on_disk',\n             'softforks',\n             'verificationprogress',\n         ]\n         res = self.nodes[0].getblockchaininfo()\n-        # result should have pruneheight and default keys if pruning is enabled\n-        assert_equal(sorted(res.keys()), sorted(['pruneheight'] + keys))\n+\n+        # result should have these additional pruning keys if manual pruning is enabled\n+        assert_equal(sorted(res.keys()), sorted(['pruneheight', 'pruneauto'] + keys))\n+\n+        # size_on_disk should be >= 0\n+        assert res['size_on_disk'] >= 0\n+\n         # pruneheight should be greater or equal to 0\n         assert res['pruneheight'] >= 0\n \n+        # check other pruning fields given that prune=1\n+        assert_equal(res['pruned'], True)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141061511",
+      "id" : 141061511,
+      "original_commit_id" : "bbca675c7a1ffa0d843fd55b6431c94161af4004",
+      "original_position" : 22,
+      "path" : "test/functional/blockchain.py",
+      "position" : null,
+      "pull_request_review_id" : 65220783,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141061511",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141062035"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141062035"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "suggest that you change this to assert that `size_on_disk` is greater than zero. This test would fail unnecessarily if a change in the implementation changed the size on disk.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-26T13:51:45Z",
+      "diff_hunk" : "@@ -58,20 +58,42 @@ def _test_getblockchaininfo(self):\n             'headers',\n             'mediantime',\n             'pruned',\n+            'size_on_disk',\n             'softforks',\n             'verificationprogress',\n         ]\n         res = self.nodes[0].getblockchaininfo()\n-        # result should have pruneheight and default keys if pruning is enabled\n-        assert_equal(sorted(res.keys()), sorted(['pruneheight'] + keys))\n+\n+        # result should have these additional pruning keys if manual pruning is enabled\n+        assert_equal(sorted(res.keys()), sorted(['pruneheight', 'pruneauto'] + keys))\n+\n+        # size_on_disk should be >= 0\n+        assert res['size_on_disk'] >= 0\n+\n         # pruneheight should be greater or equal to 0\n         assert res['pruneheight'] >= 0\n \n+        # check other pruning fields given that prune=1\n+        assert_equal(res['pruned'], True)\n+        assert_equal(res['pruneauto'], False)\n+\n         self.restart_node(0, ['-stopatheight=207'])\n         res = self.nodes[0].getblockchaininfo()\n         # should have exact keys\n         assert_equal(sorted(res.keys()), keys)\n \n+        self.restart_node(0, ['-stopatheight=207', '-prune=550'])\n+        res = self.nodes[0].getblockchaininfo()\n+        # result should have these additional pruning keys if prune=550\n+        assert_equal(sorted(res.keys()), sorted(['pruneheight', 'pruneauto', 'prune_target_size'] + keys))\n+\n+        # check related fields\n+        assert_equal(res['pruned'], True)\n+        assert_equal(res['pruneheight'], 0)\n+        assert_equal(res['pruneauto'], True)\n+        assert_equal(res['prune_target_size'], 576716800)\n+        assert_equal(res['size_on_disk'], 55550)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141062035",
+      "id" : 141062035,
+      "original_commit_id" : "bbca675c7a1ffa0d843fd55b6431c94161af4004",
+      "original_position" : 40,
+      "path" : "test/functional/blockchain.py",
+      "position" : null,
+      "pull_request_review_id" : 65220783,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141062035",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141062427"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141062427"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "`assert_greater_than_or_equal()` is better here (since it will print out the value of `res['size_on_disk']` if the assert fails)",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-26T13:52:57Z",
+      "diff_hunk" : "@@ -58,20 +58,42 @@ def _test_getblockchaininfo(self):\n             'headers',\n             'mediantime',\n             'pruned',\n+            'size_on_disk',\n             'softforks',\n             'verificationprogress',\n         ]\n         res = self.nodes[0].getblockchaininfo()\n-        # result should have pruneheight and default keys if pruning is enabled\n-        assert_equal(sorted(res.keys()), sorted(['pruneheight'] + keys))\n+\n+        # result should have these additional pruning keys if manual pruning is enabled\n+        assert_equal(sorted(res.keys()), sorted(['pruneheight', 'pruneauto'] + keys))\n+\n+        # size_on_disk should be >= 0\n+        assert res['size_on_disk'] >= 0",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141062427",
+      "id" : 141062427,
+      "original_commit_id" : "bbca675c7a1ffa0d843fd55b6431c94161af4004",
+      "original_position" : 16,
+      "path" : "test/functional/blockchain.py",
+      "position" : null,
+      "pull_request_review_id" : 65220783,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141062427",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141065718"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141065718"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "nit: Since `1` is a magic number meaning manual pruning, I think it's clearer to use equality like in init.cpp, rather than greater-than:\r\n\r\n```\r\n        bool fPruneAuto = (gArgs.GetArg(\"-prune\", 0) != 1);\r\n```\r\n\r\n\r\n",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-26T14:03:12Z",
+      "diff_hunk" : "@@ -1179,7 +1182,23 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n     obj.push_back(Pair(\"mediantime\",            (int64_t)chainActive.Tip()->GetMedianTimePast()));\n     obj.push_back(Pair(\"verificationprogress\",  GuessVerificationProgress(Params().TxData(), chainActive.Tip())));\n     obj.push_back(Pair(\"chainwork\",             chainActive.Tip()->nChainWork.GetHex()));\n+    obj.push_back(Pair(\"size_on_disk\",          CalculateCurrentUsage()));\n     obj.push_back(Pair(\"pruned\",                fPruneMode));\n+    if (fPruneMode) {\n+        CBlockIndex* block = chainActive.Tip();\n+        assert(block);\n+        while (block->pprev && (block->pprev->nStatus & BLOCK_HAVE_DATA)) {\n+            block = block->pprev;\n+        }\n+\n+        obj.push_back(Pair(\"pruneheight\",        block->nHeight));\n+\n+        bool fPruneAuto = (gArgs.GetArg(\"-prune\", 0) > 1);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141065718",
+      "id" : 141065718,
+      "in_reply_to_id" : 141060923,
+      "original_commit_id" : "bbca675c7a1ffa0d843fd55b6431c94161af4004",
+      "original_position" : 28,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65220783,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141065718",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141076365"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141076365"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I was torn there, because that actually gives True in the case prune=0, but that case can never happen because execution would skip over the `if (fPruneMode)` block. I'll change it.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-26T14:36:54Z",
+      "diff_hunk" : "@@ -1179,7 +1182,23 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n     obj.push_back(Pair(\"mediantime\",            (int64_t)chainActive.Tip()->GetMedianTimePast()));\n     obj.push_back(Pair(\"verificationprogress\",  GuessVerificationProgress(Params().TxData(), chainActive.Tip())));\n     obj.push_back(Pair(\"chainwork\",             chainActive.Tip()->nChainWork.GetHex()));\n+    obj.push_back(Pair(\"size_on_disk\",          CalculateCurrentUsage()));\n     obj.push_back(Pair(\"pruned\",                fPruneMode));\n+    if (fPruneMode) {\n+        CBlockIndex* block = chainActive.Tip();\n+        assert(block);\n+        while (block->pprev && (block->pprev->nStatus & BLOCK_HAVE_DATA)) {\n+            block = block->pprev;\n+        }\n+\n+        obj.push_back(Pair(\"pruneheight\",        block->nHeight));\n+\n+        bool fPruneAuto = (gArgs.GetArg(\"-prune\", 0) > 1);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141076365",
+      "id" : 141076365,
+      "in_reply_to_id" : 141060923,
+      "original_commit_id" : "bbca675c7a1ffa0d843fd55b6431c94161af4004",
+      "original_position" : 28,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65238426,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141076365",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141079289"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141079289"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "As below I've dropped the 'equal to' because I don't see why it should ever be 0 unless there's some caching going on.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-26T14:46:09Z",
+      "diff_hunk" : "@@ -58,20 +58,42 @@ def _test_getblockchaininfo(self):\n             'headers',\n             'mediantime',\n             'pruned',\n+            'size_on_disk',\n             'softforks',\n             'verificationprogress',\n         ]\n         res = self.nodes[0].getblockchaininfo()\n-        # result should have pruneheight and default keys if pruning is enabled\n-        assert_equal(sorted(res.keys()), sorted(['pruneheight'] + keys))\n+\n+        # result should have these additional pruning keys if manual pruning is enabled\n+        assert_equal(sorted(res.keys()), sorted(['pruneheight', 'pruneauto'] + keys))\n+\n+        # size_on_disk should be >= 0\n+        assert res['size_on_disk'] >= 0",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141079289",
+      "id" : 141079289,
+      "in_reply_to_id" : 141062427,
+      "original_commit_id" : "bbca675c7a1ffa0d843fd55b6431c94161af4004",
+      "original_position" : 16,
+      "path" : "test/functional/blockchain.py",
+      "position" : null,
+      "pull_request_review_id" : 65241790,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141079289",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Changes made and rebased on master (second push, first was a mistake).",
+      "created_at" : "2017-09-26T14:49:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-332223575",
+      "id" : 332223575,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-26T14:49:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332223575",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Tested ACK 2b73ece6e34961a6745114b6932945692ed987e7",
+      "created_at" : "2017-09-26T15:35:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-332238465",
+      "id" : 332238465,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-26T15:35:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332238465",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141445930"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141445930"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "While you're at it can you add this lock to PruneOneBlockFile and GetBlockFileInfo (both of which are only called without lock during testing, so its not an actual issue, just annoying).",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-27T19:35:33Z",
+      "diff_hunk" : "@@ -3230,8 +3230,10 @@ bool TestBlockValidity(CValidationState& state, const CChainParams& chainparams,\n  */\n \n /* Calculate the amount of disk space the block & undo files currently use */\n-static uint64_t CalculateCurrentUsage()\n+uint64_t CalculateCurrentUsage()\n {\n+    LOCK(cs_LastBlockFile);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141445930",
+      "id" : 141445930,
+      "original_commit_id" : "2b73ece6e34961a6745114b6932945692ed987e7",
+      "original_position" : 7,
+      "path" : "src/validation.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 65661297,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:50:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141445930",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Needs rebaseÃ¢ÂÂ¢",
+      "created_at" : "2017-09-29T13:19:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-333123961",
+      "id" : 333123961,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-29T13:19:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333123961",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141941161"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141941161"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Done in b7dfc6c4b89b62f9bb79ea009ee103a6299ac005.",
+      "commit_id" : "b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-29T18:51:26Z",
+      "diff_hunk" : "@@ -3230,8 +3230,10 @@ bool TestBlockValidity(CValidationState& state, const CChainParams& chainparams,\n  */\n \n /* Calculate the amount of disk space the block & undo files currently use */\n-static uint64_t CalculateCurrentUsage()\n+uint64_t CalculateCurrentUsage()\n {\n+    LOCK(cs_LastBlockFile);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#discussion_r141941161",
+      "id" : 141941161,
+      "in_reply_to_id" : 141445930,
+      "original_commit_id" : "2b73ece6e34961a6745114b6932945692ed987e7",
+      "original_position" : 7,
+      "path" : "src/validation.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 66239902,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11367",
+      "updated_at" : "2017-09-29T18:51:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141941161",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "ÃÂ®ebased",
+      "created_at" : "2017-09-29T18:51:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-333208643",
+      "id" : 333208643,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-29T18:51:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333208643",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "utAÃÂ©K b7dfc6c4b89b62f9bb79ea009ee103a6299ac005",
+      "created_at" : "2017-09-30T09:08:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-333295513",
+      "id" : 333295513,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-09-30T09:08:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333295513",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "re-utACK b7dfc6c4b89b62f9bb79ea009ee103a6299ac005. In the future, can you avoid rebasing when squashing unless you need to? Avoiding rebasing onto latest master makes it easier for reviewers to identify what changed between reviews.",
+      "created_at" : "2017-10-02T20:35:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-333657132",
+      "id" : 333657132,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-10-02T20:35:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333657132",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Yes, I can do that in the future. I hadn't considered that.\r\nDo you prefer for each change to be made in an individual commit (with a squash before the PR is implemented)?",
+      "created_at" : "2017-10-02T22:13:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-333680420",
+      "id" : 333680420,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-10-02T22:13:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333680420",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7999704?v=4",
+         "events_url" : "https://api.github.com/users/esotericnonsense/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/esotericnonsense/followers",
+         "following_url" : "https://api.github.com/users/esotericnonsense/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/esotericnonsense/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/esotericnonsense",
+         "id" : 7999704,
+         "login" : "esotericnonsense",
+         "organizations_url" : "https://api.github.com/users/esotericnonsense/orgs",
+         "received_events_url" : "https://api.github.com/users/esotericnonsense/received_events",
+         "repos_url" : "https://api.github.com/users/esotericnonsense/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/esotericnonsense/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/esotericnonsense/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/esotericnonsense"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "It is fine to just amend the existing commits with fix-ups, as reviewers\nhave the original commits fetched locally. So it is easy to compare the two\nversions.\n\nHowever, with a rebase on master in between, the reviewer needs to\npainfully repeat the same rebase in some way.\n",
+      "created_at" : "2017-10-03T05:58:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11367#issuecomment-333747421",
+      "id" : 333747421,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11367",
+      "updated_at" : "2017-10-03T05:58:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333747421",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

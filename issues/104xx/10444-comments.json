@@ -1,0 +1,890 @@
+[
+   {
+      "body" : "`bip68-112-113-p2p.py`-tests are falling... ",
+      "created_at" : "2017-05-24T06:32:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-303630659",
+      "id" : 303630659,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-05-24T06:32:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303630659",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r118819970"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118819970"
+         }
+      },
+      "body" : "This function could be static",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-05-27T12:33:27Z",
+      "diff_hunk" : "@@ -2918,6 +2930,13 @@ bool IsWitnessEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& pa\n     return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_SEGWIT, versionbitscache) == THRESHOLD_ACTIVE);\n }\n \n+// Check if Segregated Witness is Locked In\n+bool IsWitnessLockedIn(const CBlockIndex* pindexPrev, const Consensus::Params& params)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r118819970",
+      "id" : 118819970,
+      "original_commit_id" : "6a3cfb4d2c6cfe0b8eeee92ece8f42c1a7ab4101",
+      "original_position" : 24,
+      "path" : "src/validation.cpp",
+      "position" : 25,
+      "pull_request_review_id" : 40652494,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118819970",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119170378"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119170378"
+         }
+      },
+      "body" : "can these magic numbers - when not being used as actual thresholds - be constants?   ",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-05-30T17:54:10Z",
+      "diff_hunk" : "@@ -148,7 +152,14 @@ class VersionBitsConditionChecker : public AbstractThresholdConditionChecker {\n     int64_t BeginTime(const Consensus::Params& params) const { return params.vDeployments[id].nStartTime; }\n     int64_t EndTime(const Consensus::Params& params) const { return params.vDeployments[id].nTimeout; }\n     int Period(const Consensus::Params& params) const { return params.nMinerConfirmationWindow; }\n-    int Threshold(const Consensus::Params& params) const { return params.nRuleChangeActivationThreshold; }\n+    int Threshold(const Consensus::Params& params) const {\n+        if (params.nRuleChangeActivationThreshold == 1916 && params.nMinerConfirmationWindow == 2016 &&",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119170378",
+      "id" : 119170378,
+      "original_commit_id" : "6a3cfb4d2c6cfe0b8eeee92ece8f42c1a7ab4101",
+      "original_position" : 17,
+      "path" : "src/versionbits.cpp",
+      "position" : null,
+      "pull_request_review_id" : 41026007,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119170378",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119405558"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119405558"
+         }
+      },
+      "body" : "Perhaps this can be a field on Consensus::Params? or at least a properly defined constant",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-05-31T16:24:26Z",
+      "diff_hunk" : "@@ -148,7 +152,13 @@ class VersionBitsConditionChecker : public AbstractThresholdConditionChecker {\n     int64_t BeginTime(const Consensus::Params& params) const { return params.vDeployments[id].nStartTime; }\n     int64_t EndTime(const Consensus::Params& params) const { return params.vDeployments[id].nTimeout; }\n     int Period(const Consensus::Params& params) const { return params.nMinerConfirmationWindow; }\n-    int Threshold(const Consensus::Params& params) const { return params.nRuleChangeActivationThreshold; }\n+    int Threshold(const Consensus::Params& params) const {\n+        if (params.vDeployments[id].bit == params.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].bit &&\n+            params.vDeployments[id].nStartTime == params.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].nStartTime) {\n+            return 1311; // 65% threshold for SEGSIGNAL only",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119405558",
+      "id" : 119405558,
+      "original_commit_id" : "e4b207fc36075e8ee13c5d3310d340d01b78a286",
+      "original_position" : 19,
+      "path" : "src/versionbits.cpp",
+      "position" : null,
+      "pull_request_review_id" : 41282752,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119405558",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119405843"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119405843"
+         }
+      },
+      "body" : "why not just ```if (id == Consensus::DEPLOYMENT_SEGSIGNAL)``` ?",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-05-31T16:25:31Z",
+      "diff_hunk" : "@@ -148,7 +152,13 @@ class VersionBitsConditionChecker : public AbstractThresholdConditionChecker {\n     int64_t BeginTime(const Consensus::Params& params) const { return params.vDeployments[id].nStartTime; }\n     int64_t EndTime(const Consensus::Params& params) const { return params.vDeployments[id].nTimeout; }\n     int Period(const Consensus::Params& params) const { return params.nMinerConfirmationWindow; }\n-    int Threshold(const Consensus::Params& params) const { return params.nRuleChangeActivationThreshold; }\n+    int Threshold(const Consensus::Params& params) const {\n+        if (params.vDeployments[id].bit == params.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].bit &&",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119405843",
+      "id" : 119405843,
+      "original_commit_id" : "e4b207fc36075e8ee13c5d3310d340d01b78a286",
+      "original_position" : 17,
+      "path" : "src/versionbits.cpp",
+      "position" : null,
+      "pull_request_review_id" : 41283076,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119405843",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119406378"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119406378"
+         }
+      },
+      "body" : "why bit 4 ? what's wrong with bit 2 ? ",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-05-31T16:27:38Z",
+      "diff_hunk" : "@@ -97,7 +97,7 @@ class CMainParams : public CChainParams {\n         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1510704000; // November 15th, 2017.\n \n         // Deployment of SEGSIGNAL\n-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].bit = 2;\n+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].bit = 4;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119406378",
+      "id" : 119406378,
+      "original_commit_id" : "d5779e474f4e6d00fc2e5a2c0816404834705dce",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : null,
+      "pull_request_review_id" : 41283647,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119406378",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119406868"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119406868"
+         }
+      },
+      "body" : "I would squash this commit and the previous one into the first commit (perhaps after review would just squash it all in one commit, it's all 1 logical change IMO).",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-05-31T16:29:29Z",
+      "diff_hunk" : "@@ -1135,6 +1135,7 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)\n     softforks.push_back(SoftForkDesc(\"bip65\", 4, tip, consensusParams));\n     BIP9SoftForkDescPushBack(bip9_softforks, \"csv\", consensusParams, Consensus::DEPLOYMENT_CSV);\n     BIP9SoftForkDescPushBack(bip9_softforks, \"segwit\", consensusParams, Consensus::DEPLOYMENT_SEGWIT);\n+    BIP9SoftForkDescPushBack(bip9_softforks, \"segsignal\", consensusParams, Consensus::DEPLOYMENT_SEGSIGNAL);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119406868",
+      "id" : 119406868,
+      "original_commit_id" : "ddf0fce6825a916a715efc0793ecec092f7aad6f",
+      "original_position" : 4,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 41284166,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119406868",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119408469"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119408469"
+         }
+      },
+      "body" : "This commit seems unnecessary, just don't use Consensus::DEPLOYMENT_SEGSIGNAL on chains that shouldn't use it (like regtest and testnet3).\r\n",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-05-31T16:35:40Z",
+      "diff_hunk" : "@@ -148,7 +152,14 @@ class VersionBitsConditionChecker : public AbstractThresholdConditionChecker {\n     int64_t BeginTime(const Consensus::Params& params) const { return params.vDeployments[id].nStartTime; }\n     int64_t EndTime(const Consensus::Params& params) const { return params.vDeployments[id].nTimeout; }\n     int Period(const Consensus::Params& params) const { return params.nMinerConfirmationWindow; }\n-    int Threshold(const Consensus::Params& params) const { return params.nRuleChangeActivationThreshold; }\n+    int Threshold(const Consensus::Params& params) const {\n+        if (params.nRuleChangeActivationThreshold == 1916 && params.nMinerConfirmationWindow == 2016 &&",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r119408469",
+      "id" : 119408469,
+      "original_commit_id" : "6a3cfb4d2c6cfe0b8eeee92ece8f42c1a7ab4101",
+      "original_position" : 17,
+      "path" : "src/versionbits.cpp",
+      "position" : null,
+      "pull_request_review_id" : 41285778,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119408469",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122078771"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122078771"
+         }
+      },
+      "body" : "This was chosen because it was what was listed in the NYC agreement, I made a separate BIP that uses bit 2 however.",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-06-14T22:18:09Z",
+      "diff_hunk" : "@@ -97,7 +97,7 @@ class CMainParams : public CChainParams {\n         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1510704000; // November 15th, 2017.\n \n         // Deployment of SEGSIGNAL\n-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].bit = 2;\n+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].bit = 4;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122078771",
+      "id" : 122078771,
+      "original_commit_id" : "d5779e474f4e6d00fc2e5a2c0816404834705dce",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : null,
+      "pull_request_review_id" : 44163605,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122078771",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3298484?v=3",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122078981"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122078981"
+         }
+      },
+      "body" : "This is now defined in chainparams",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-06-14T22:19:25Z",
+      "diff_hunk" : "@@ -148,7 +152,13 @@ class VersionBitsConditionChecker : public AbstractThresholdConditionChecker {\n     int64_t BeginTime(const Consensus::Params& params) const { return params.vDeployments[id].nStartTime; }\n     int64_t EndTime(const Consensus::Params& params) const { return params.vDeployments[id].nTimeout; }\n     int Period(const Consensus::Params& params) const { return params.nMinerConfirmationWindow; }\n-    int Threshold(const Consensus::Params& params) const { return params.nRuleChangeActivationThreshold; }\n+    int Threshold(const Consensus::Params& params) const {\n+        if (params.vDeployments[id].bit == params.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].bit &&\n+            params.vDeployments[id].nStartTime == params.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].nStartTime) {\n+            return 1311; // 65% threshold for SEGSIGNAL only",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122078981",
+      "id" : 122078981,
+      "original_commit_id" : "e4b207fc36075e8ee13c5d3310d340d01b78a286",
+      "original_position" : 19,
+      "path" : "src/versionbits.cpp",
+      "position" : null,
+      "pull_request_review_id" : 44163821,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122078981",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3298484?v=3",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122079075"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122079075"
+         }
+      },
+      "body" : "Fixed",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-06-14T22:20:01Z",
+      "diff_hunk" : "@@ -148,7 +152,14 @@ class VersionBitsConditionChecker : public AbstractThresholdConditionChecker {\n     int64_t BeginTime(const Consensus::Params& params) const { return params.vDeployments[id].nStartTime; }\n     int64_t EndTime(const Consensus::Params& params) const { return params.vDeployments[id].nTimeout; }\n     int Period(const Consensus::Params& params) const { return params.nMinerConfirmationWindow; }\n-    int Threshold(const Consensus::Params& params) const { return params.nRuleChangeActivationThreshold; }\n+    int Threshold(const Consensus::Params& params) const {\n+        if (params.nRuleChangeActivationThreshold == 1916 && params.nMinerConfirmationWindow == 2016 &&",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122079075",
+      "id" : 122079075,
+      "original_commit_id" : "6a3cfb4d2c6cfe0b8eeee92ece8f42c1a7ab4101",
+      "original_position" : 17,
+      "path" : "src/versionbits.cpp",
+      "position" : null,
+      "pull_request_review_id" : 44163923,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:05:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122079075",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3298484?v=3",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122086735"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122086735"
+         }
+      },
+      "body" : "Any reason IsWitnessEnabled isn't also static?",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-06-14T23:11:13Z",
+      "diff_hunk" : "@@ -2918,6 +2930,13 @@ bool IsWitnessEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& pa\n     return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_SEGWIT, versionbitscache) == THRESHOLD_ACTIVE);\n }\n \n+// Check if Segregated Witness is Locked In\n+bool IsWitnessLockedIn(const CBlockIndex* pindexPrev, const Consensus::Params& params)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122086735",
+      "id" : 122086735,
+      "original_commit_id" : "6a3cfb4d2c6cfe0b8eeee92ece8f42c1a7ab4101",
+      "original_position" : 24,
+      "path" : "src/validation.cpp",
+      "position" : 25,
+      "pull_request_review_id" : 44171918,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-14T23:11:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122086735",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3298484?v=3",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "body" : "I've [modified](https://github.com/bitcoin/bips/pull/547/files) the BIP91 spec slightly with a different threshold and immediate enforcement upon lock-in.",
+      "created_at" : "2017-06-14T23:39:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-308588177",
+      "id" : 308588177,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-06-14T23:39:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/308588177",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3298484?v=3",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122093851"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122093851"
+         }
+      },
+      "body" : "Is the behavior for that identical?",
+      "commit_id" : "e0a9003fee397ba98b968a5e44830cc2a47ff0d1",
+      "created_at" : "2017-06-15T00:07:09Z",
+      "diff_hunk" : "@@ -148,7 +152,13 @@ class VersionBitsConditionChecker : public AbstractThresholdConditionChecker {\n     int64_t BeginTime(const Consensus::Params& params) const { return params.vDeployments[id].nStartTime; }\n     int64_t EndTime(const Consensus::Params& params) const { return params.vDeployments[id].nTimeout; }\n     int Period(const Consensus::Params& params) const { return params.nMinerConfirmationWindow; }\n-    int Threshold(const Consensus::Params& params) const { return params.nRuleChangeActivationThreshold; }\n+    int Threshold(const Consensus::Params& params) const {\n+        if (params.vDeployments[id].bit == params.vDeployments[Consensus::DEPLOYMENT_SEGSIGNAL].bit &&",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#discussion_r122093851",
+      "id" : 122093851,
+      "original_commit_id" : "e4b207fc36075e8ee13c5d3310d340d01b78a286",
+      "original_position" : 17,
+      "path" : "src/versionbits.cpp",
+      "position" : null,
+      "pull_request_review_id" : 44179377,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10444",
+      "updated_at" : "2017-06-15T00:07:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/122093851",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3298484?v=3",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "body" : "I've [updated](https://github.com/bitcoin/bips/pull/548/files) BIP91 to use an even smaller confirmation window and changed it so enforcement isn't until activation in order to give a ~2 day grace period between lock-in and enforcement.",
+      "created_at" : "2017-06-16T05:51:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-308939455",
+      "id" : 308939455,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-06-16T05:51:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/308939455",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3298484?v=3",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "body" : "NACK, this does nothing for users, and is unnecessary with BIP148 around the corner.",
+      "created_at" : "2017-06-19T04:01:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-309333359",
+      "id" : 309333359,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-06-19T04:01:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/309333359",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "ACK: avoiding a chain split in a coordinated manner is certainly not \"doing nothing for users\".  Since the -bip148 option is not available, a BIP91 feature is the best alternative.  I would be fine with either.  ",
+      "created_at" : "2017-06-19T16:45:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-309498362",
+      "id" : 309498362,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-06-19T16:46:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/309498362",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "body" : "Apparently BIP91 was locked in today.\r\n\r\nHow can I make sure my node follows the correct chain? Is this pull request on a branch somewhere or do I need to merge it in my own local repository?\r\n\r\nAnd what about the thousands of other nodes out there? Shouldn't this PR be merged to allow them to track the correct chain?",
+      "created_at" : "2017-07-21T07:04:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-316922088",
+      "id" : 316922088,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-07-21T07:04:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/316922088",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/573356?v=4",
+         "events_url" : "https://api.github.com/users/dooglus/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dooglus/followers",
+         "following_url" : "https://api.github.com/users/dooglus/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dooglus/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dooglus",
+         "id" : 573356,
+         "login" : "dooglus",
+         "organizations_url" : "https://api.github.com/users/dooglus/orgs",
+         "received_events_url" : "https://api.github.com/users/dooglus/received_events",
+         "repos_url" : "https://api.github.com/users/dooglus/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dooglus/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dooglus/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dooglus"
+      }
+   },
+   {
+      "body" : "@dooglus BIP91 is mostly a miner enforced soft fork, you can use [this tree](https://github.com/segsignal/bitcoin).",
+      "created_at" : "2017-07-21T07:25:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-316926028",
+      "id" : 316926028,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-07-21T07:25:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/316926028",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3298484?v=4",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "body" : "As I understand Bitcoins miners don't enforce anything. They mine blocks which are either valid or invalid. It is the users who decide whether to accept their blocks or not, and thereby enforce the rules.\r\n\r\nI don't see any argument here against merging this PR other than Luke's inaccurate complaint that BIP91 does nothing for users. What am I missing?",
+      "created_at" : "2017-07-21T07:31:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-316927176",
+      "id" : 316927176,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-07-21T07:31:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/316927176",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/573356?v=4",
+         "events_url" : "https://api.github.com/users/dooglus/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dooglus/followers",
+         "following_url" : "https://api.github.com/users/dooglus/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dooglus/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dooglus",
+         "id" : 573356,
+         "login" : "dooglus",
+         "organizations_url" : "https://api.github.com/users/dooglus/orgs",
+         "received_events_url" : "https://api.github.com/users/dooglus/received_events",
+         "repos_url" : "https://api.github.com/users/dooglus/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dooglus/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dooglus/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dooglus"
+      }
+   },
+   {
+      "body" : "@dooglus Both miners and users have the ability to enforce rules, a majority of miners can add a new rule without creating a chain split(assuming other nodes don't change their rules). Since a majority of miners are adding a rule with BIP91 the blocks will be valid to existing nodes. There's mostly 2 arguments I'm seeing, one is that more users should enforce the BIP91 rules to strengthen the rule enforcement, the other is that users should not so that there is more consistency among rule enforcement. I somewhat agree with the consistency argument, however any businesses accepting transactions without many confirmations should be running both BIP91 and non-BIP91 nodes and ensuring that the transactions are confirmed on both.",
+      "created_at" : "2017-07-21T07:40:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-316928870",
+      "id" : 316928870,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-07-21T07:40:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/316928870",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3298484?v=4",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "body" : "> however any businesses accepting transactions without many confirmations should be running both BIP91 and non-BIP91 nodes and ensuring that the transactions are confirmed on both\r\n\r\nExactly. That seems like an argument for merging this PR so that I can run a BIP91 node without having to trust or code review a non-core repository.",
+      "created_at" : "2017-07-21T17:08:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-317058102",
+      "id" : 317058102,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-07-21T17:08:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/317058102",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/573356?v=4",
+         "events_url" : "https://api.github.com/users/dooglus/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dooglus/followers",
+         "following_url" : "https://api.github.com/users/dooglus/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dooglus/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dooglus",
+         "id" : 573356,
+         "login" : "dooglus",
+         "organizations_url" : "https://api.github.com/users/dooglus/orgs",
+         "received_events_url" : "https://api.github.com/users/dooglus/received_events",
+         "repos_url" : "https://api.github.com/users/dooglus/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dooglus/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dooglus/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dooglus"
+      }
+   },
+   {
+      "body" : "Can this be squashed and possibly updated with the latest from the segsignal repo?",
+      "created_at" : "2017-07-21T19:12:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-317088400",
+      "id" : 317088400,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-07-21T19:12:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/317088400",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "body" : "Closing this as enforcement of BIP91 is no longer required.",
+      "created_at" : "2017-08-09T14:58:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10444#issuecomment-321281629",
+      "id" : 321281629,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10444",
+      "updated_at" : "2017-08-09T14:58:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/321281629",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3298484?v=4",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   }
+]

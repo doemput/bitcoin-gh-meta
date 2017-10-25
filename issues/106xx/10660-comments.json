@@ -1,0 +1,410 @@
+[
+   {
+      "body" : "Speak up if you have a better, state-less solution for the UI progress callback.",
+      "created_at" : "2017-06-23T07:53:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#issuecomment-310598096",
+      "id" : 310598096,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10660",
+      "updated_at" : "2017-06-23T07:53:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/310598096",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Awesome! Will test.\r\n\r\n> The current splash screen is a drawn pixmap. Adding buttons there will require a complete re-design of the splashscreen (should be done once). It should be an auto-resizing QWidget as used in the other layout situations.\r\n\r\nTBH this doesn't matter much. This is a one-time scenario, it's important to have something that works reliably, it doesn't need to look pretty.",
+      "created_at" : "2017-06-23T08:30:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#issuecomment-310605854",
+      "id" : 310605854,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10660",
+      "updated_at" : "2017-06-23T08:34:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/310605854",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10660#discussion_r123829692"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10660"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123829692"
+         }
+      },
+      "body" : "Couldn't this just be one string with a `\\n` in the middle instead of two separate strings?",
+      "commit_id" : "542ce6e24631a22451fabdb85d545add4024f553",
+      "created_at" : "2017-06-23T19:40:37Z",
+      "diff_hunk" : "@@ -319,13 +321,24 @@ bool CCoinsViewDB::Upgrade() {\n         return true;\n     }\n \n-    LogPrintf(\"Upgrading database...\\n\");\n+    int64_t count = 0;\n+    LogPrintf(\"Upgrading utxo-set database...\\n\");\n+    LogPrintf(\"[0%%]...\");\n     size_t batch_size = 1 << 24;\n     CDBBatch batch(db);\n+    uiInterface.SetProgressContinueAction(StartShutdown);\n     while (pcursor->Valid()) {\n         boost::this_thread::interruption_point();\n+        if (ShutdownRequested()) {\n+            break;\n+        }\n         std::pair<unsigned char, uint256> key;\n         if (pcursor->GetKey(key) && key.first == DB_COINS) {\n+            if (count++ % 256 == 0) {\n+                uint32_t high = 0x100 * *key.second.begin() + *(key.second.begin() + 1);\n+                uiInterface.ShowProgress(_(\"Upgrading UTXO database\") +\"\\n\"+ _(\"(press q to shutdown and continue later\"), (int)(high * 100.0 / 65536.0 + 0.5));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#discussion_r123829692",
+      "id" : 123829692,
+      "original_commit_id" : "8aaf606cec99539a59efd98c5c4fc8897db56556",
+      "original_position" : 29,
+      "path" : "src/txdb.cpp",
+      "position" : null,
+      "pull_request_review_id" : 46074337,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10660",
+      "updated_at" : "2017-06-29T15:48:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123829692",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3782274?v=3",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "body" : "Tried this. Two issues:\r\n* `2017-06-23 21:15:54 [15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...[15%]...`. We should probably only print at most once for each %.\r\n* There seems to be a space missing between the message and the percentage in the spash screen.",
+      "created_at" : "2017-06-23T21:20:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#issuecomment-310775783",
+      "id" : 310775783,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10660",
+      "updated_at" : "2017-06-23T21:20:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/310775783",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10660#discussion_r123875446"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10660"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123875446"
+         }
+      },
+      "body" : "From my experience, translators hate messages with html or newlines in them, increasing the chance to make a mistake there.",
+      "commit_id" : "542ce6e24631a22451fabdb85d545add4024f553",
+      "created_at" : "2017-06-24T11:17:30Z",
+      "diff_hunk" : "@@ -319,13 +321,24 @@ bool CCoinsViewDB::Upgrade() {\n         return true;\n     }\n \n-    LogPrintf(\"Upgrading database...\\n\");\n+    int64_t count = 0;\n+    LogPrintf(\"Upgrading utxo-set database...\\n\");\n+    LogPrintf(\"[0%%]...\");\n     size_t batch_size = 1 << 24;\n     CDBBatch batch(db);\n+    uiInterface.SetProgressContinueAction(StartShutdown);\n     while (pcursor->Valid()) {\n         boost::this_thread::interruption_point();\n+        if (ShutdownRequested()) {\n+            break;\n+        }\n         std::pair<unsigned char, uint256> key;\n         if (pcursor->GetKey(key) && key.first == DB_COINS) {\n+            if (count++ % 256 == 0) {\n+                uint32_t high = 0x100 * *key.second.begin() + *(key.second.begin() + 1);\n+                uiInterface.ShowProgress(_(\"Upgrading UTXO database\") +\"\\n\"+ _(\"(press q to shutdown and continue later\"), (int)(high * 100.0 / 65536.0 + 0.5));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#discussion_r123875446",
+      "id" : 123875446,
+      "original_commit_id" : "8aaf606cec99539a59efd98c5c4fc8897db56556",
+      "original_position" : 29,
+      "path" : "src/txdb.cpp",
+      "position" : null,
+      "pull_request_review_id" : 46124337,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10660",
+      "updated_at" : "2017-06-29T15:48:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123875446",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10660#discussion_r123875481"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10660"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123875481"
+         }
+      },
+      "body" : "`shut down` as two words maybe?",
+      "commit_id" : "542ce6e24631a22451fabdb85d545add4024f553",
+      "created_at" : "2017-06-24T11:19:26Z",
+      "diff_hunk" : "@@ -319,13 +321,24 @@ bool CCoinsViewDB::Upgrade() {\n         return true;\n     }\n \n-    LogPrintf(\"Upgrading database...\\n\");\n+    int64_t count = 0;\n+    LogPrintf(\"Upgrading utxo-set database...\\n\");\n+    LogPrintf(\"[0%%]...\");\n     size_t batch_size = 1 << 24;\n     CDBBatch batch(db);\n+    uiInterface.SetProgressContinueAction(StartShutdown);\n     while (pcursor->Valid()) {\n         boost::this_thread::interruption_point();\n+        if (ShutdownRequested()) {\n+            break;\n+        }\n         std::pair<unsigned char, uint256> key;\n         if (pcursor->GetKey(key) && key.first == DB_COINS) {\n+            if (count++ % 256 == 0) {\n+                uint32_t high = 0x100 * *key.second.begin() + *(key.second.begin() + 1);\n+                uiInterface.ShowProgress(_(\"Upgrading UTXO database\") +\"\\n\"+ _(\"(press q to shutdown and continue later\"), (int)(high * 100.0 / 65536.0 + 0.5));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#discussion_r123875481",
+      "id" : 123875481,
+      "original_commit_id" : "8aaf606cec99539a59efd98c5c4fc8897db56556",
+      "original_position" : 29,
+      "path" : "src/txdb.cpp",
+      "position" : null,
+      "pull_request_review_id" : 46124383,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10660",
+      "updated_at" : "2017-06-29T15:48:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/123875481",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Rebased and overhauled.\r\nAddressed @sipa's points.\r\nAlso reports now `[CANCELLED]` instead of the `[DONE]` when shutting down during txdb upgrade.",
+      "created_at" : "2017-06-28T19:31:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#issuecomment-311763606",
+      "id" : 311763606,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10660",
+      "updated_at" : "2017-06-28T19:32:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311763606",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Tested upgrade w/ my test data up to height=430234: \r\n- quitting with `q` worked, it indeed continues on next start\r\n- killing with `kill -9` also made it continue at next start without problems\r\n- progress logging in debug.log is as expected\r\n- upgrade succeeded, node is running",
+      "created_at" : "2017-06-29T15:17:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#issuecomment-311999162",
+      "id" : 311999162,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10660",
+      "updated_at" : "2017-06-29T15:17:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/311999162",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10660#discussion_r124832552"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10660"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/124832552"
+         }
+      },
+      "body" : "I'd prefer `breakAction` to 'continueAction'.\r\nContinue, to me, implies that it's part of a pause/continue kind of functionality, not early quit.",
+      "commit_id" : "542ce6e24631a22451fabdb85d545add4024f553",
+      "created_at" : "2017-06-29T15:24:06Z",
+      "diff_hunk" : "@@ -131,13 +131,24 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle)\n     move(QApplication::desktop()->screenGeometry().center() - r.center());\n \n     subscribeToCoreSignals();\n+    installEventFilter(this);\n }\n \n SplashScreen::~SplashScreen()\n {\n     unsubscribeFromCoreSignals();\n }\n \n+bool SplashScreen::eventFilter(QObject * obj, QEvent * ev) {\n+    if (ev->type() == QEvent::KeyPress) {\n+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(ev);\n+        if(keyEvent->text()[0] == 'q' && continueAction != nullptr) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#discussion_r124832552",
+      "id" : 124832552,
+      "original_commit_id" : "5b304a180b5ef27f750e0719f2dd7005c193e74f",
+      "original_position" : 15,
+      "path" : "src/qt/splashscreen.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47160877,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10660",
+      "updated_at" : "2017-06-29T15:48:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/124832552",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Agree with @laanwj, changed `continueAction` (and similar function names) to `breakAction`.\r\n(amend commits / force push)",
+      "created_at" : "2017-06-29T15:45:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#issuecomment-312007912",
+      "id" : 312007912,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10660",
+      "updated_at" : "2017-06-29T15:45:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312007912",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "ACK 542ce6e",
+      "created_at" : "2017-06-29T17:51:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#issuecomment-312044930",
+      "id" : 312044930,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10660",
+      "updated_at" : "2017-06-29T17:51:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312044930",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK with the changes at #10770.",
+      "created_at" : "2017-07-07T21:11:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10660#issuecomment-313794159",
+      "id" : 313794159,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10660",
+      "updated_at" : "2017-07-07T21:11:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313794159",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   }
+]

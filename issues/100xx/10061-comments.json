@@ -1,0 +1,344 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r107596605"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107596605"
+         }
+      },
+      "body" : "I don't like this ;-) #ifdef in the middle of the function is worst in my eyes than the previuos solution.",
+      "commit_id" : "ad415bc16afdb4fdb6d619624762f1324751a824",
+      "created_at" : "2017-03-23T06:35:22Z",
+      "diff_hunk" : "@@ -728,6 +724,19 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking)\n     return true;\n }\n \n+bool SetSocketNoDelay(SOCKET& hSocket)\n+{\n+    int set = 1;\n+    int rc = setsockopt(hSocket, IPPROTO_TCP, TCP_NODELAY,\n+#ifdef WIN32",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r107596605",
+      "id" : 107596605,
+      "original_commit_id" : "ffaae8b1cae92f90032122ad9b6c81da45e34766",
+      "original_position" : 29,
+      "path" : "src/netbase.cpp",
+      "position" : null,
+      "pull_request_review_id" : 28577351,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061",
+      "updated_at" : "2017-04-05T18:32:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107596605",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r107599504"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107599504"
+         }
+      },
+      "body" : "You mean in the middle of the function call?  I agree it looks visually worse, but I like deduplicating code as much as possible.\r\n\r\nHowever on longer consideration, I realized that the conversion from (const char*) to (const void*) will happen implicitly on any platform, so this ifdef isn't even needed.",
+      "commit_id" : "ad415bc16afdb4fdb6d619624762f1324751a824",
+      "created_at" : "2017-03-23T07:03:11Z",
+      "diff_hunk" : "@@ -728,6 +724,19 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking)\n     return true;\n }\n \n+bool SetSocketNoDelay(SOCKET& hSocket)\n+{\n+    int set = 1;\n+    int rc = setsockopt(hSocket, IPPROTO_TCP, TCP_NODELAY,\n+#ifdef WIN32",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r107599504",
+      "id" : 107599504,
+      "original_commit_id" : "ffaae8b1cae92f90032122ad9b6c81da45e34766",
+      "original_position" : 29,
+      "path" : "src/netbase.cpp",
+      "position" : null,
+      "pull_request_review_id" : 28580219,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061",
+      "updated_at" : "2017-04-05T18:32:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107599504",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7519582?v=3",
+         "events_url" : "https://api.github.com/users/tjps/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/tjps/followers",
+         "following_url" : "https://api.github.com/users/tjps/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/tjps/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/tjps",
+         "id" : 7519582,
+         "login" : "tjps",
+         "organizations_url" : "https://api.github.com/users/tjps/orgs",
+         "received_events_url" : "https://api.github.com/users/tjps/received_events",
+         "repos_url" : "https://api.github.com/users/tjps/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/tjps/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/tjps/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/tjps"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2017-03-24T22:02:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10061#issuecomment-289153813",
+      "id" : 289153813,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10061",
+      "updated_at" : "2017-03-24T22:02:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289153813",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r109396085"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109396085"
+         }
+      },
+      "body" : "Indeed, seems like the WIN32 check was unnecessary, every pointer can be passed to a `void*` parameter including `char*` so the redundant cast doesn't matter.",
+      "commit_id" : "ad415bc16afdb4fdb6d619624762f1324751a824",
+      "created_at" : "2017-04-03T11:39:48Z",
+      "diff_hunk" : "@@ -728,6 +724,13 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking)\n     return true;\n }\n \n+bool SetSocketNoDelay(SOCKET& hSocket)\n+{\n+    int set = 1;\n+    int rc = setsockopt(hSocket, IPPROTO_TCP, TCP_NODELAY, (const char*)&set, sizeof(int));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r109396085",
+      "id" : 109396085,
+      "original_commit_id" : "b36cc2b2396f35dee9fbfabfb08f44631fc29292",
+      "original_position" : 28,
+      "path" : "src/netbase.cpp",
+      "position" : 28,
+      "pull_request_review_id" : 30493659,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061",
+      "updated_at" : "2017-04-05T18:32:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109396085",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r109396419"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109396419"
+         }
+      },
+      "body" : " I'd feel slightly better with `rc == 0`. 0 is guaranteed to be the success value both in Windows and UNIX, whereas on failure [windows returns](https://msdn.microsoft.com/en-us/library/windows/desktop/ms740476(v=vs.85).aspx) `SOCKET_ERROR` (which may or may not be -1, it's not mentioned).",
+      "commit_id" : "ad415bc16afdb4fdb6d619624762f1324751a824",
+      "created_at" : "2017-04-03T11:41:46Z",
+      "diff_hunk" : "@@ -728,6 +724,13 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking)\n     return true;\n }\n \n+bool SetSocketNoDelay(SOCKET& hSocket)\n+{\n+    int set = 1;\n+    int rc = setsockopt(hSocket, IPPROTO_TCP, TCP_NODELAY, (const char*)&set, sizeof(int));\n+    return rc != -1;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r109396419",
+      "id" : 109396419,
+      "original_commit_id" : "b36cc2b2396f35dee9fbfabfb08f44631fc29292",
+      "original_position" : 29,
+      "path" : "src/netbase.cpp",
+      "position" : null,
+      "pull_request_review_id" : 30494000,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061",
+      "updated_at" : "2017-04-05T18:32:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109396419",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r109993849"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109993849"
+         }
+      },
+      "body" : "But of course, I usually idiomatically check rc == 0 from system calls.  Not sure why I went with != -1.",
+      "commit_id" : "ad415bc16afdb4fdb6d619624762f1324751a824",
+      "created_at" : "2017-04-05T18:32:24Z",
+      "diff_hunk" : "@@ -728,6 +724,13 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking)\n     return true;\n }\n \n+bool SetSocketNoDelay(SOCKET& hSocket)\n+{\n+    int set = 1;\n+    int rc = setsockopt(hSocket, IPPROTO_TCP, TCP_NODELAY, (const char*)&set, sizeof(int));\n+    return rc != -1;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10061#discussion_r109993849",
+      "id" : 109993849,
+      "original_commit_id" : "b36cc2b2396f35dee9fbfabfb08f44631fc29292",
+      "original_position" : 29,
+      "path" : "src/netbase.cpp",
+      "position" : null,
+      "pull_request_review_id" : 31132964,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10061",
+      "updated_at" : "2017-04-05T18:32:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109993849",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7519582?v=3",
+         "events_url" : "https://api.github.com/users/tjps/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/tjps/followers",
+         "following_url" : "https://api.github.com/users/tjps/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/tjps/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/tjps",
+         "id" : 7519582,
+         "login" : "tjps",
+         "organizations_url" : "https://api.github.com/users/tjps/orgs",
+         "received_events_url" : "https://api.github.com/users/tjps/received_events",
+         "repos_url" : "https://api.github.com/users/tjps/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/tjps/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/tjps/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/tjps"
+      }
+   },
+   {
+      "body" : "bump on an easy dedupe merge",
+      "created_at" : "2017-04-21T17:31:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10061#issuecomment-296254216",
+      "id" : 296254216,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10061",
+      "updated_at" : "2017-04-21T17:31:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/296254216",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7519582?v=3",
+         "events_url" : "https://api.github.com/users/tjps/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/tjps/followers",
+         "following_url" : "https://api.github.com/users/tjps/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/tjps/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/tjps",
+         "id" : 7519582,
+         "login" : "tjps",
+         "organizations_url" : "https://api.github.com/users/tjps/orgs",
+         "received_events_url" : "https://api.github.com/users/tjps/received_events",
+         "repos_url" : "https://api.github.com/users/tjps/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/tjps/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/tjps/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/tjps"
+      }
+   },
+   {
+      "body" : "@theuni ping Seems this stuff could generally use a cleanup (merge SetSocketNonBlocking/SetSocketNoDelay, also do we need to set SO_NOSIGPIPE on the newly-listened socket (looks like it inherits), maybe would be nice to merge that too?\r\n\r\nAnyway, utACK ad415bc16afdb4fdb6d619624762f1324751a824 this itself, its still a strict improvement.",
+      "created_at" : "2017-05-08T20:36:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10061#issuecomment-299983326",
+      "id" : 299983326,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10061",
+      "updated_at" : "2017-05-08T20:36:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299983326",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK ad415bc16afdb4fdb6d619624762f1324751a824.\r\n\r\n@TheBlueMatt We're about to get new socket creation handling from libevent (I'm working on it now), so I'm not too worried about further refactors here.",
+      "created_at" : "2017-05-16T16:20:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10061#issuecomment-301835507",
+      "id" : 301835507,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10061",
+      "updated_at" : "2017-05-16T16:20:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/301835507",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   }
+]

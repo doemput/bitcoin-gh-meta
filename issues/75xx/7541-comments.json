@@ -1,0 +1,434 @@
+[
+   {
+      "body" : "utACK",
+      "created_at" : "2016-02-16T19:47:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#issuecomment-184849662",
+      "id" : 184849662,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7541",
+      "updated_at" : "2016-02-16T19:47:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/184849662",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "~~ACK https://github.com/pinheadmz/bitcoin/commit/7f01e4e6411418bee3888caadf9fdb59b4b99622~~\r\nRight, using \"index\" instead of \"position\" is better here.",
+      "created_at" : "2016-02-16T19:59:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#issuecomment-184854878",
+      "id" : 184854878,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7541",
+      "updated_at" : "2016-02-17T15:59:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/184854878",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7541#discussion_r53089427"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7541"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53089427"
+         }
+      },
+      "body" : "tiny nit: `position` seems slightly non-conventional?\r\n\r\n> The **index** of the transaction in the block that includes it.",
+      "commit_id" : "ef40f6b0703fb2004183b85bdd2fb9e88b58b349",
+      "created_at" : "2016-02-16T22:21:58Z",
+      "diff_hunk" : "@@ -1444,7 +1444,7 @@ UniValue listtransactions(const UniValue& params, bool fHelp)\n             \"    \\\"trusted\\\": xxx            (bool) Whether we consider the outputs of this unconfirmed transaction safe to spend.\\n\"\n             \"    \\\"blockhash\\\": \\\"hashvalue\\\", (string) The block hash containing the transaction. Available for 'send' and 'receive'\\n\"\n             \"                                          category of transactions.\\n\"\n-            \"    \\\"blockindex\\\": n,          (numeric) The block index containing the transaction. Available for 'send' and 'receive'\\n\"\n+            \"    \\\"blockindex\\\": n,          (numeric) The position of the transaction in the block that includes it. Available for 'send' and 'receive'\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#discussion_r53089427",
+      "id" : 53089427,
+      "original_commit_id" : "7f01e4e6411418bee3888caadf9fdb59b4b99622",
+      "original_position" : 5,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7541",
+      "updated_at" : "2016-02-17T21:58:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53089427",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "utACK 7f01e4e",
+      "created_at" : "2016-02-16T22:22:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#issuecomment-184899034",
+      "id" : 184899034,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7541",
+      "updated_at" : "2016-02-16T22:22:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/184899034",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7541#discussion_r53092009"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7541"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53092009"
+         }
+      },
+      "body" : "Agreed with this slight re-phrasing",
+      "commit_id" : "ef40f6b0703fb2004183b85bdd2fb9e88b58b349",
+      "created_at" : "2016-02-16T22:40:05Z",
+      "diff_hunk" : "@@ -1444,7 +1444,7 @@ UniValue listtransactions(const UniValue& params, bool fHelp)\n             \"    \\\"trusted\\\": xxx            (bool) Whether we consider the outputs of this unconfirmed transaction safe to spend.\\n\"\n             \"    \\\"blockhash\\\": \\\"hashvalue\\\", (string) The block hash containing the transaction. Available for 'send' and 'receive'\\n\"\n             \"                                          category of transactions.\\n\"\n-            \"    \\\"blockindex\\\": n,          (numeric) The block index containing the transaction. Available for 'send' and 'receive'\\n\"\n+            \"    \\\"blockindex\\\": n,          (numeric) The position of the transaction in the block that includes it. Available for 'send' and 'receive'\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#discussion_r53092009",
+      "id" : 53092009,
+      "original_commit_id" : "7f01e4e6411418bee3888caadf9fdb59b4b99622",
+      "original_position" : 5,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7541",
+      "updated_at" : "2016-02-17T21:58:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53092009",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7541#discussion_r53135937"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7541"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53135937"
+         }
+      },
+      "body" : "I'd prefer to stick with index too. It has a well-defined meaning, while position is too general (it could be a byte offset, or a set of 3D coordinates within the unit block...).\r\n",
+      "commit_id" : "ef40f6b0703fb2004183b85bdd2fb9e88b58b349",
+      "created_at" : "2016-02-17T09:01:01Z",
+      "diff_hunk" : "@@ -1444,7 +1444,7 @@ UniValue listtransactions(const UniValue& params, bool fHelp)\n             \"    \\\"trusted\\\": xxx            (bool) Whether we consider the outputs of this unconfirmed transaction safe to spend.\\n\"\n             \"    \\\"blockhash\\\": \\\"hashvalue\\\", (string) The block hash containing the transaction. Available for 'send' and 'receive'\\n\"\n             \"                                          category of transactions.\\n\"\n-            \"    \\\"blockindex\\\": n,          (numeric) The block index containing the transaction. Available for 'send' and 'receive'\\n\"\n+            \"    \\\"blockindex\\\": n,          (numeric) The position of the transaction in the block that includes it. Available for 'send' and 'receive'\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#discussion_r53135937",
+      "id" : 53135937,
+      "original_commit_id" : "7f01e4e6411418bee3888caadf9fdb59b4b99622",
+      "original_position" : 5,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7541",
+      "updated_at" : "2016-02-17T21:58:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53135937",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7541#discussion_r53238013"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7541"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53238013"
+         }
+      },
+      "body" : "cool, updated",
+      "commit_id" : "ef40f6b0703fb2004183b85bdd2fb9e88b58b349",
+      "created_at" : "2016-02-17T21:59:21Z",
+      "diff_hunk" : "@@ -1444,7 +1444,7 @@ UniValue listtransactions(const UniValue& params, bool fHelp)\n             \"    \\\"trusted\\\": xxx            (bool) Whether we consider the outputs of this unconfirmed transaction safe to spend.\\n\"\n             \"    \\\"blockhash\\\": \\\"hashvalue\\\", (string) The block hash containing the transaction. Available for 'send' and 'receive'\\n\"\n             \"                                          category of transactions.\\n\"\n-            \"    \\\"blockindex\\\": n,          (numeric) The block index containing the transaction. Available for 'send' and 'receive'\\n\"\n+            \"    \\\"blockindex\\\": n,          (numeric) The position of the transaction in the block that includes it. Available for 'send' and 'receive'\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#discussion_r53238013",
+      "id" : 53238013,
+      "original_commit_id" : "7f01e4e6411418bee3888caadf9fdb59b4b99622",
+      "original_position" : 5,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7541",
+      "updated_at" : "2016-02-17T21:59:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53238013",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/2084648?v=3",
+         "events_url" : "https://api.github.com/users/pinheadmz/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pinheadmz/followers",
+         "following_url" : "https://api.github.com/users/pinheadmz/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pinheadmz/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pinheadmz",
+         "id" : 2084648,
+         "login" : "pinheadmz",
+         "organizations_url" : "https://api.github.com/users/pinheadmz/orgs",
+         "received_events_url" : "https://api.github.com/users/pinheadmz/received_events",
+         "repos_url" : "https://api.github.com/users/pinheadmz/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pinheadmz/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pinheadmz/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pinheadmz"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2016-02-17T23:51:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#issuecomment-185463179",
+      "id" : 185463179,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7541",
+      "updated_at" : "2016-02-17T23:51:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/185463179",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "ACK https://github.com/pinheadmz/bitcoin/commit/ef40f6b0703fb2004183b85bdd2fb9e88b58b349 after squash",
+      "created_at" : "2016-02-18T06:23:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#issuecomment-185560565",
+      "id" : 185560565,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7541",
+      "updated_at" : "2016-02-18T06:23:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/185560565",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "ACK ef40f6b0703fb2004183b85bdd2fb9e88b58b349.",
+      "created_at" : "2016-02-18T14:34:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#issuecomment-185747713",
+      "id" : 185747713,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7541",
+      "updated_at" : "2016-02-18T14:34:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/185747713",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Before merging, can you please squash these changes into one commit? e.g.\r\n```bash\r\n$ git rebase -i 8b70a64\r\n```\r\nIn the editor, replace the second 'pick' with 'f', then save and exit.\r\nThen, force-push the result to this branch with\r\n```bash\r\ngit push -f origin master\r\n```\r\n",
+      "created_at" : "2016-02-18T17:48:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#issuecomment-185831600",
+      "id" : 185831600,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7541",
+      "updated_at" : "2016-02-18T17:48:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/185831600",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@laanwj thanks for your help",
+      "created_at" : "2016-02-18T20:44:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#issuecomment-185911713",
+      "id" : 185911713,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7541",
+      "updated_at" : "2016-02-18T20:44:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/185911713",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/2084648?v=3",
+         "events_url" : "https://api.github.com/users/pinheadmz/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pinheadmz/followers",
+         "following_url" : "https://api.github.com/users/pinheadmz/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pinheadmz/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pinheadmz",
+         "id" : 2084648,
+         "login" : "pinheadmz",
+         "organizations_url" : "https://api.github.com/users/pinheadmz/orgs",
+         "received_events_url" : "https://api.github.com/users/pinheadmz/received_events",
+         "repos_url" : "https://api.github.com/users/pinheadmz/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pinheadmz/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pinheadmz/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pinheadmz"
+      }
+   },
+   {
+      "body" : "@laanwj I guess this could be backported to 0.12.1\r\n\r\nAlso, Post-merge ACK. ",
+      "created_at" : "2016-02-26T08:16:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7541#issuecomment-189157378",
+      "id" : 189157378,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7541",
+      "updated_at" : "2016-02-26T08:16:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/189157378",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

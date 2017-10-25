@@ -1,0 +1,1285 @@
+[
+   {
+      "author_association" : "MEMBER",
+      "body" : "Hmm, a fixed icon that is disabled/enabled doesn't extend well to a tri-state when Tor is added. But that can be deferred until adding Tor I guess.",
+      "created_at" : "2017-10-12T21:30:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-336277734",
+      "id" : 336277734,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-12T21:30:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336277734",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/1095675?v=4",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144425785"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144425785"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Sort.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-12T22:26:51Z",
+      "diff_hunk" : "@@ -278,6 +278,8 @@ RES_ICONS = \\\n   qt/res/icons/network_disabled.png \\\n   qt/res/icons/open.png \\\n   qt/res/icons/overview.png \\\n+  qt/res/icons/proxy_enabled.png \\",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144425785",
+      "id" : 144425785,
+      "original_commit_id" : "bd28377bb3606997688280e9e907aa095700b798",
+      "original_position" : 4,
+      "path" : "src/Makefile.qt.include",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144425785",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144426207"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144426207"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Unused, remove?",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-12T22:29:42Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144426207",
+      "id" : 144426207,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 55,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144426207",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144427664"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144427664"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Already visible? Remove.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-12T22:38:45Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);\n+\n+    for(int n=0; n<NET_MAX; ++n)\n+    {\n+        enum Network network = static_cast<enum Network>(n);\n+        if(network == NET_UNROUTABLE || network == NET_INTERNAL)\n+            continue;\n+        GetProxy(network, proxy);\n+        if(proxy.IsValid()) {\n+            proxyEnabled = true;\n+            break;\n+        }\n+    }\n+\n+    labelProxyIcon->show();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144427664",
+      "id" : 144427664,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 69,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144427664",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144428075"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144428075"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Why the cosmetic in the tooltips?",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-12T22:41:23Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);\n+\n+    for(int n=0; n<NET_MAX; ++n)\n+    {\n+        enum Network network = static_cast<enum Network>(n);\n+        if(network == NET_UNROUTABLE || network == NET_INTERNAL)\n+            continue;\n+        GetProxy(network, proxy);\n+        if(proxy.IsValid()) {\n+            proxyEnabled = true;\n+            break;\n+        }\n+    }\n+\n+    labelProxyIcon->show();\n+    labelProxyIcon->setPixmap(platformStyle->SingleColorIcon(proxyEnabled ? \":/icons/proxy_enabled\" : \":/icons/proxy_disabled\").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));\n+    labelProxyIcon->setToolTip(proxyEnabled ? tr(\"Proxy is <b>enabled</b>: %1\").arg(QString::fromStdString(proxy.proxy.ToStringIPPort())) : tr(\"Proxy is <b>disabled</b>\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144428075",
+      "id" : 144428075,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 71,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144428075",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144495765"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144495765"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Nit: If enabled tooltip = `Proxy: %1` else `Proxy disabled`.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T08:40:20Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);\n+\n+    for(int n=0; n<NET_MAX; ++n)\n+    {\n+        enum Network network = static_cast<enum Network>(n);\n+        if(network == NET_UNROUTABLE || network == NET_INTERNAL)\n+            continue;\n+        GetProxy(network, proxy);\n+        if(proxy.IsValid()) {\n+            proxyEnabled = true;\n+            break;\n+        }\n+    }\n+\n+    labelProxyIcon->show();\n+    labelProxyIcon->setPixmap(platformStyle->SingleColorIcon(proxyEnabled ? \":/icons/proxy_enabled\" : \":/icons/proxy_disabled\").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));\n+    labelProxyIcon->setToolTip(proxyEnabled ? tr(\"Proxy is <b>enabled</b>: %1\").arg(QString::fromStdString(proxy.proxy.ToStringIPPort())) : tr(\"Proxy is <b>disabled</b>\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144495765",
+      "id" : 144495765,
+      "in_reply_to_id" : 144428075,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 71,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144495765",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496000"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496000"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "`proxy_enabled`.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T08:41:41Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496000",
+      "id" : 144496000,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 53,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496000",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496149"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496149"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "`for (int n = 0; n < NET_MAX; ++n) {`",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T08:42:28Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);\n+\n+    for(int n=0; n<NET_MAX; ++n)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496149",
+      "id" : 144496149,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 57,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496149",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496209"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496209"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Space after `if`. `continue` in this line.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T08:42:46Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);\n+\n+    for(int n=0; n<NET_MAX; ++n)\n+    {\n+        enum Network network = static_cast<enum Network>(n);\n+        if(network == NET_UNROUTABLE || network == NET_INTERNAL)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496209",
+      "id" : 144496209,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 60,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496209",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496360"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496360"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Space after `if`.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T08:43:31Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);\n+\n+    for(int n=0; n<NET_MAX; ++n)\n+    {\n+        enum Network network = static_cast<enum Network>(n);\n+        if(network == NET_UNROUTABLE || network == NET_INTERNAL)\n+            continue;\n+        GetProxy(network, proxy);\n+        if(proxy.IsValid()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496360",
+      "id" : 144496360,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 63,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496360",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496613"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496613"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Space after `,`.\r\n\r\nNit, split in 2 lines? Or something like:\r\n\r\n```\r\nif (proxy_enabled) {\r\n   ...\r\n} else {\r\n   ...\r\n}\r\n```",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T08:44:46Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);\n+\n+    for(int n=0; n<NET_MAX; ++n)\n+    {\n+        enum Network network = static_cast<enum Network>(n);\n+        if(network == NET_UNROUTABLE || network == NET_INTERNAL)\n+            continue;\n+        GetProxy(network, proxy);\n+        if(proxy.IsValid()) {\n+            proxyEnabled = true;\n+            break;\n+        }\n+    }\n+\n+    labelProxyIcon->show();\n+    labelProxyIcon->setPixmap(platformStyle->SingleColorIcon(proxyEnabled ? \":/icons/proxy_enabled\" : \":/icons/proxy_disabled\").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144496613",
+      "id" : 144496613,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 70,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69082416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144496613",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144497640"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144497640"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "The `#include` above too.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T08:49:45Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144497640",
+      "id" : 144497640,
+      "in_reply_to_id" : 144426207,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 55,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69161972,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144497640",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@luke-jr We can have an icon for each state no?",
+      "created_at" : "2017-10-13T08:51:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-336391506",
+      "id" : 336391506,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-13T08:51:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336391506",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I'm unsure, but does this also need a mention in `contrib/debian/copyright`?",
+      "created_at" : "2017-10-13T09:16:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-336397726",
+      "id" : 336397726,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-13T09:16:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336397726",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144596230"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144596230"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Removed space, prefer it like this for now.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T16:11:08Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);\n+\n+    for(int n=0; n<NET_MAX; ++n)\n+    {\n+        enum Network network = static_cast<enum Network>(n);\n+        if(network == NET_UNROUTABLE || network == NET_INTERNAL)\n+            continue;\n+        GetProxy(network, proxy);\n+        if(proxy.IsValid()) {\n+            proxyEnabled = true;\n+            break;\n+        }\n+    }\n+\n+    labelProxyIcon->show();\n+    labelProxyIcon->setPixmap(platformStyle->SingleColorIcon(proxyEnabled ? \":/icons/proxy_enabled\" : \":/icons/proxy_disabled\").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144596230",
+      "id" : 144596230,
+      "in_reply_to_id" : 144496613,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 70,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69277866,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144596230",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/226170?v=4",
+         "events_url" : "https://api.github.com/users/mess110/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mess110/followers",
+         "following_url" : "https://api.github.com/users/mess110/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mess110/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mess110",
+         "id" : 226170,
+         "login" : "mess110",
+         "organizations_url" : "https://api.github.com/users/mess110/orgs",
+         "received_events_url" : "https://api.github.com/users/mess110/received_events",
+         "repos_url" : "https://api.github.com/users/mess110/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mess110/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mess110/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mess110"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144596344"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144596344"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I think the bold helps readability. Can remove if needed.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T16:11:46Z",
+      "diff_hunk" : "@@ -1084,6 +1092,30 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxyEnabled = false;\n+    proxyType proxy;\n+    UniValue networks(UniValue::VARR);\n+\n+    for(int n=0; n<NET_MAX; ++n)\n+    {\n+        enum Network network = static_cast<enum Network>(n);\n+        if(network == NET_UNROUTABLE || network == NET_INTERNAL)\n+            continue;\n+        GetProxy(network, proxy);\n+        if(proxy.IsValid()) {\n+            proxyEnabled = true;\n+            break;\n+        }\n+    }\n+\n+    labelProxyIcon->show();\n+    labelProxyIcon->setPixmap(platformStyle->SingleColorIcon(proxyEnabled ? \":/icons/proxy_enabled\" : \":/icons/proxy_disabled\").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));\n+    labelProxyIcon->setToolTip(proxyEnabled ? tr(\"Proxy is <b>enabled</b>: %1\").arg(QString::fromStdString(proxy.proxy.ToStringIPPort())) : tr(\"Proxy is <b>disabled</b>\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144596344",
+      "id" : 144596344,
+      "in_reply_to_id" : 144428075,
+      "original_commit_id" : "597cd7bcb08892f5821fb53fd8daf2e592eb3243",
+      "original_position" : 71,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69278015,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144596344",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/226170?v=4",
+         "events_url" : "https://api.github.com/users/mess110/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mess110/followers",
+         "following_url" : "https://api.github.com/users/mess110/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mess110/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mess110",
+         "id" : 226170,
+         "login" : "mess110",
+         "organizations_url" : "https://api.github.com/users/mess110/orgs",
+         "received_events_url" : "https://api.github.com/users/mess110/received_events",
+         "repos_url" : "https://api.github.com/users/mess110/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mess110/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mess110/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mess110"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@promag @MeshCollider Thanks for the reviews. If you think the remaining nits are very important, I can change them.",
+      "created_at" : "2017-10-13T16:14:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-336498475",
+      "id" : 336498475,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-13T16:14:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336498475",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/226170?v=4",
+         "events_url" : "https://api.github.com/users/mess110/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mess110/followers",
+         "following_url" : "https://api.github.com/users/mess110/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mess110/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mess110",
+         "id" : 226170,
+         "login" : "mess110",
+         "organizations_url" : "https://api.github.com/users/mess110/orgs",
+         "received_events_url" : "https://api.github.com/users/mess110/received_events",
+         "repos_url" : "https://api.github.com/users/mess110/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mess110/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mess110/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mess110"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144599300"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144599300"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Nit, sort. :trollface:",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T16:25:14Z",
+      "diff_hunk" : "@@ -53,6 +53,8 @@\n         <file alias=\"hd_enabled\">res/icons/hd_enabled.png</file>\n         <file alias=\"hd_disabled\">res/icons/hd_disabled.png</file>\n         <file alias=\"network_disabled\">res/icons/network_disabled.png</file>\n+        <file alias=\"proxy_enabled\">res/icons/proxy_enabled.png</file>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144599300",
+      "id" : 144599300,
+      "original_commit_id" : "20b397987d51c5b9c2189a7cf2ebe4d8231e4144",
+      "original_position" : 4,
+      "path" : "src/qt/bitcoin.qrc",
+      "position" : null,
+      "pull_request_review_id" : 69281505,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144599300",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144623394"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144623394"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "`GetProxy` returns `IsValid` so something like this should work:\r\n```cpp\r\nfor (int n = 0; !proxy_enabled && n < NET_MAX; ++n) {\r\n    proxy_enabled = GetProxy((Network) n, proxy);\r\n}\r\n```",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T18:14:36Z",
+      "diff_hunk" : "@@ -1084,6 +1091,26 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxy_enabled = false;\n+    proxyType proxy;\n+\n+    for (int n = 0; n < NET_MAX; ++n) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144623394",
+      "id" : 144623394,
+      "original_commit_id" : "20b397987d51c5b9c2189a7cf2ebe4d8231e4144",
+      "original_position" : 51,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69281505,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144623394",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144623767"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144623767"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Missing indentation. No need to be a slot, just a private member.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T18:16:11Z",
+      "diff_hunk" : "@@ -189,6 +190,9 @@ public Q_SLOTS:\n     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label);\n #endif // ENABLE_WALLET\n \n+/** Set the proxy-enabled icon as shown in the UI. */\n+void updateProxyIcon();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144623767",
+      "id" : 144623767,
+      "original_commit_id" : "20b397987d51c5b9c2189a7cf2ebe4d8231e4144",
+      "original_position" : 13,
+      "path" : "src/qt/bitcoingui.h",
+      "position" : null,
+      "pull_request_review_id" : 69281505,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144623767",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144650687"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144650687"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Nice, I didn't notice GetProxy checks for valid.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T20:31:39Z",
+      "diff_hunk" : "@@ -1084,6 +1091,26 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxy_enabled = false;\n+    proxyType proxy;\n+\n+    for (int n = 0; n < NET_MAX; ++n) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144650687",
+      "id" : 144650687,
+      "in_reply_to_id" : 144623394,
+      "original_commit_id" : "20b397987d51c5b9c2189a7cf2ebe4d8231e4144",
+      "original_position" : 51,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69342814,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144650687",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/226170?v=4",
+         "events_url" : "https://api.github.com/users/mess110/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mess110/followers",
+         "following_url" : "https://api.github.com/users/mess110/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mess110/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mess110",
+         "id" : 226170,
+         "login" : "mess110",
+         "organizations_url" : "https://api.github.com/users/mess110/orgs",
+         "received_events_url" : "https://api.github.com/users/mess110/received_events",
+         "repos_url" : "https://api.github.com/users/mess110/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mess110/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mess110/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mess110"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144670340"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144670340"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Instead of directly accessing core features, can you wrap that via clientmodel?\r\nThere are serval tries to detach the GUI from the rest and those little things will cause a lot of work.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-13T22:36:45Z",
+      "diff_hunk" : "@@ -1084,6 +1091,20 @@ void BitcoinGUI::setEncryptionStatus(int status)\n }\n #endif // ENABLE_WALLET\n \n+void BitcoinGUI::updateProxyIcon()\n+{\n+    bool proxy_enabled = false;\n+    proxyType proxy;\n+\n+    for (int n = 0; !proxy_enabled && n < NET_MAX; ++n) {\n+        proxy_enabled = GetProxy((Network) n, proxy);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r144670340",
+      "id" : 144670340,
+      "original_commit_id" : "8767cbbbb204e50079594029cd169ce174af4073",
+      "original_position" : 52,
+      "path" : "src/qt/bitcoingui.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69365986,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T18:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144670340",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Concept ACK.\r\nWould prefer if we could use an icon from http://s-ings.com/typicons/.",
+      "created_at" : "2017-10-13T22:37:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-336583476",
+      "id" : 336583476,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-13T22:37:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336583476",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "First seeing the icon I was confused, meaning was not intuitive for me.\r\nThe icon in the screenshot is so small, I hardly could imagine what the downgoing line is.\r\nIcon looked more like a star.\r\nBut looking at the bigger icon on https://openclipart.org/detail/190624/load-balancer I could finally see that the icon visualizes  \"technically\" correct.\r\nSince You said that You did several searches and ended up with this, I guess it's OK, the user can learn about the meaning and get used to it.",
+      "created_at" : "2017-10-14T02:54:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-336604923",
+      "id" : 336604923,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-14T02:54:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336604923",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/8447873?v=4",
+         "events_url" : "https://api.github.com/users/wodry/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/wodry/followers",
+         "following_url" : "https://api.github.com/users/wodry/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/wodry/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/wodry",
+         "id" : 8447873,
+         "login" : "wodry",
+         "organizations_url" : "https://api.github.com/users/wodry/orgs",
+         "received_events_url" : "https://api.github.com/users/wodry/received_events",
+         "repos_url" : "https://api.github.com/users/wodry/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/wodry/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/wodry/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/wodry"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@wodry guess I wasn't 100% clear. I attempted to construct a proxy icon from 3 copies of https://github.com/bitcoin/bitcoin/blob/master/src/qt/res/icons/debugwindow.png but it was too much to fit in the space and the icon ended up looking too different from the others. So I chose the icon you see because it fits and is public domain\r\n\r\n@jonasschnelli I checked the link you provided. Indeed it would be nice to include from the same set, but I couldn't find one that matches. Imo, the current icon is better. However, here are a few long shots:\r\n\r\n- flow merge\r\n- group\r\n- pinterest (as in Proxy - lol)\r\n- world",
+      "created_at" : "2017-10-14T17:53:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-336652134",
+      "id" : 336652134,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-14T18:08:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336652134",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/226170?v=4",
+         "events_url" : "https://api.github.com/users/mess110/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mess110/followers",
+         "following_url" : "https://api.github.com/users/mess110/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mess110/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mess110",
+         "id" : 226170,
+         "login" : "mess110",
+         "organizations_url" : "https://api.github.com/users/mess110/orgs",
+         "received_events_url" : "https://api.github.com/users/mess110/received_events",
+         "repos_url" : "https://api.github.com/users/mess110/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mess110/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mess110/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mess110"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Tested a bit:\r\n* The icon seems hard to grasp what it is (already mentioned).\r\n* IMO the icon should only be visible when proxy is enabled (not faded out, completely invisible)\r\n* Clicking on the icon should open settings and showing the network/proxy tab",
+      "created_at" : "2017-10-15T04:17:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-336685303",
+      "id" : 336685303,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-15T04:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336685303",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "![image](https://user-images.githubusercontent.com/226170/31680585-72706098-b37d-11e7-88ad-028c4c723f42.png)\r\n\r\nThe new icon is made from 3 device-desktop and 1 rotated chevron from http://s-ings.com/typicons/\r\n\r\nAfter talking with @jonasschnelli, I will do the clickable icon in a different PR.",
+      "created_at" : "2017-10-17T18:10:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-337319065",
+      "id" : 337319065,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-17T18:11:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/337319065",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/226170?v=4",
+         "events_url" : "https://api.github.com/users/mess110/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mess110/followers",
+         "following_url" : "https://api.github.com/users/mess110/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mess110/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mess110",
+         "id" : 226170,
+         "login" : "mess110",
+         "organizations_url" : "https://api.github.com/users/mess110/orgs",
+         "received_events_url" : "https://api.github.com/users/mess110/received_events",
+         "repos_url" : "https://api.github.com/users/mess110/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mess110/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mess110/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mess110"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I think it only makes sense to have this as an icon if the proxy is enableable/disableable from the GUI - otherwise, why? Why not have icons for various things, e.g. bloom filters enabled too then?",
+      "created_at" : "2017-10-17T18:40:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#issuecomment-337328324",
+      "id" : 337328324,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11491",
+      "updated_at" : "2017-10-17T18:40:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/337328324",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/1530283?v=4",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r145266297"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145266297"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Remove.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-17T21:49:02Z",
+      "diff_hunk" : "@@ -10,6 +10,7 @@\n #endif\n \n #include \"amount.h\"\n+#include <univalue.h>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r145266297",
+      "id" : 145266297,
+      "original_commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "original_position" : 4,
+      "path" : "src/qt/bitcoingui.h",
+      "position" : 4,
+      "pull_request_review_id" : 70042323,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T22:04:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145266297",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r145267207"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145267207"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Suggestion to remove `UniValue` dependency:\r\n```cpp\r\nbool ClientModel::GetProxyInfo(std::string& ip_port) const\r\n{\r\n    for (int n = 0; n < NET_MAX; ++n) {\r\n        proxyType proxy;\r\n        if (GetProxy((Network) n, proxy)) {\r\n            ip_port = proxy.proxy.ToStringIPPort();\r\n            return true;\r\n        }\r\n    }\r\n    return false;\r\n}\r\n```\r\nHaven't tested.",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-17T21:53:33Z",
+      "diff_hunk" : "@@ -336,3 +337,20 @@ void ClientModel::unsubscribeFromCoreSignals()\n     uiInterface.NotifyBlockTip.disconnect(boost::bind(BlockTipChanged, this, _1, _2, false));\n     uiInterface.NotifyHeaderTip.disconnect(boost::bind(BlockTipChanged, this, _1, _2, true));\n }\n+\n+UniValue ClientModel::getProxyInfo() const",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r145267207",
+      "id" : 145267207,
+      "original_commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "original_position" : 13,
+      "path" : "src/qt/clientmodel.cpp",
+      "position" : 13,
+      "pull_request_review_id" : 70042323,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-17T22:04:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145267207",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r145317772"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145317772"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I can not see how the new icon relates to proxy. Instead of showing \"something with computer and cable\", maybe simply show a \"P\" ?",
+      "commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "created_at" : "2017-10-18T05:13:58Z",
+      "diff_hunk" : "@@ -336,3 +337,20 @@ void ClientModel::unsubscribeFromCoreSignals()\n     uiInterface.NotifyBlockTip.disconnect(boost::bind(BlockTipChanged, this, _1, _2, false));\n     uiInterface.NotifyHeaderTip.disconnect(boost::bind(BlockTipChanged, this, _1, _2, true));\n }\n+\n+UniValue ClientModel::getProxyInfo() const",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11491#discussion_r145317772",
+      "id" : 145317772,
+      "in_reply_to_id" : 145267207,
+      "original_commit_id" : "15e1282602d2a78ffa5c1867b7fd777cd7c7ff48",
+      "original_position" : 13,
+      "path" : "src/qt/clientmodel.cpp",
+      "position" : 13,
+      "pull_request_review_id" : 70098631,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11491",
+      "updated_at" : "2017-10-18T05:13:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145317772",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/8447873?v=4",
+         "events_url" : "https://api.github.com/users/wodry/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/wodry/followers",
+         "following_url" : "https://api.github.com/users/wodry/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/wodry/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/wodry",
+         "id" : 8447873,
+         "login" : "wodry",
+         "organizations_url" : "https://api.github.com/users/wodry/orgs",
+         "received_events_url" : "https://api.github.com/users/wodry/received_events",
+         "repos_url" : "https://api.github.com/users/wodry/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/wodry/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/wodry/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/wodry"
+      }
+   }
+]

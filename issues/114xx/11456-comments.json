@@ -1,0 +1,1628 @@
+[
+   {
+      "author_association" : "MEMBER",
+      "body" : "> In order to prevent this change from preventing connection to\r\n-connect= nodes which have !WITNESS, -connect nodes are now\r\ngiven the \"addnode\" flag.\r\n\r\nI really disliked that flag anyway, as it's not obvious who should care and why. This change makes sense imo. Mind renaming this to \"m_manual_connection\", or \"!m_from_addrman\" (or hopefully something better) ?",
+      "created_at" : "2017-10-05T15:33:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-334503051",
+      "id" : 334503051,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-05T15:33:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334503051",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@theuni done in a new commit, that is much more descriptive, indeed.",
+      "created_at" : "2017-10-05T15:50:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-334508259",
+      "id" : 334508259,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-05T15:50:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334508259",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r142984466"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142984466"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Can you document what the parameter represents? Hard to tell since it's unused. I assume it's for future compatibility.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-05T16:08:57Z",
+      "diff_hunk" : "@@ -277,6 +277,35 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * Generally, avoid calling with peerServices == NODE_NONE as we may have\n+ * service flags which are optionally relevant (eg NODE_NETWORK_LIMITED).\n+ *\n+ * If the peer is missing any of the returned service flags, they aren't\n+ * interesting to us - we probably shouldn't conenct outbound to them.\n+ */\n+static ServiceFlags GetRelevantServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r142984466",
+      "id" : 142984466,
+      "original_commit_id" : "4c24f4ccc37acbc5d461198c33712a9aaa53e960",
+      "original_position" : 13,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67429582,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142984466",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/881253?v=4",
+         "events_url" : "https://api.github.com/users/jimpo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jimpo/followers",
+         "following_url" : "https://api.github.com/users/jimpo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jimpo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jimpo",
+         "id" : 881253,
+         "login" : "jimpo",
+         "organizations_url" : "https://api.github.com/users/jimpo/orgs",
+         "received_events_url" : "https://api.github.com/users/jimpo/received_events",
+         "repos_url" : "https://api.github.com/users/jimpo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jimpo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jimpo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jimpo"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r142989057"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142989057"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Indeed, its for use in #10387. Will it be clearer when the function reads\r\n```\r\nGetRelevantServiceFlags(services) {\r\n    if (services & NODE_NETWORK_LIMITED && !in_ibd) return NODE_NETWORK_LIMITED | NODE_WITNESS;\r\n    return NODE_NETWORK | NODE_WITNESS;\r\n```\r\nor should I document it further?",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-05T16:27:57Z",
+      "diff_hunk" : "@@ -277,6 +277,35 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * Generally, avoid calling with peerServices == NODE_NONE as we may have\n+ * service flags which are optionally relevant (eg NODE_NETWORK_LIMITED).\n+ *\n+ * If the peer is missing any of the returned service flags, they aren't\n+ * interesting to us - we probably shouldn't conenct outbound to them.\n+ */\n+static ServiceFlags GetRelevantServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r142989057",
+      "id" : 142989057,
+      "in_reply_to_id" : 142984466,
+      "original_commit_id" : "4c24f4ccc37acbc5d461198c33712a9aaa53e960",
+      "original_position" : 13,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67435201,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142989057",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r142994437"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142994437"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Yeah, parameter documentation would be nice because I still find its purpose confusing. Especially since as a parameter of `HasAllRelevantServiceFlags` it represents both the service flags you want to test and a modifier on what you want to test against. Like, why is the future code not just:\r\n\r\n```c++\r\nGetRelevantServiceFlags() {\r\n    if (!in_ibd) return NODE_NETWORK_LIMITED | NODE_WITNESS;\r\n    else return NODE_NETWORK | NODE_WITNESS;\r\n``` ",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-05T16:50:08Z",
+      "diff_hunk" : "@@ -277,6 +277,35 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * Generally, avoid calling with peerServices == NODE_NONE as we may have\n+ * service flags which are optionally relevant (eg NODE_NETWORK_LIMITED).\n+ *\n+ * If the peer is missing any of the returned service flags, they aren't\n+ * interesting to us - we probably shouldn't conenct outbound to them.\n+ */\n+static ServiceFlags GetRelevantServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r142994437",
+      "id" : 142994437,
+      "in_reply_to_id" : 142984466,
+      "original_commit_id" : "4c24f4ccc37acbc5d461198c33712a9aaa53e960",
+      "original_position" : 13,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67441332,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142994437",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/881253?v=4",
+         "events_url" : "https://api.github.com/users/jimpo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jimpo/followers",
+         "following_url" : "https://api.github.com/users/jimpo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jimpo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jimpo",
+         "id" : 881253,
+         "login" : "jimpo",
+         "organizations_url" : "https://api.github.com/users/jimpo/orgs",
+         "received_events_url" : "https://api.github.com/users/jimpo/received_events",
+         "repos_url" : "https://api.github.com/users/jimpo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jimpo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jimpo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jimpo"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I was thinking of opening a PR soon to require WITNESS for outbounds in any case, so ACK on that.",
+      "created_at" : "2017-10-05T17:06:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-334529534",
+      "id" : 334529534,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-05T17:06:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334529534",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/858454?v=4",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Rewrote the function description. Sufficiently descriptive, @jimpo?",
+      "created_at" : "2017-10-05T22:06:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-334605613",
+      "id" : 334605613,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-05T22:06:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334605613",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143200547"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143200547"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I like jimpo's suggestion above for getting rid of the service argument, since this code seems more vague and confusing than it needs to be. Other suggestions for making it clearer could be:\r\n\r\n- Rename \"Relevant\" to \"Required\" or \"RequiredForOutbound.\" \"Relevant\" doesn't suggest what the return value will be used for, while \"Required\" does.\r\n- Rename \"services\" argument to \"peer_service_flags\" if it can't be eliminated so it is clearer where the argument value is coming from.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T14:13:59Z",
+      "diff_hunk" : "@@ -277,6 +277,35 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * Generally, avoid calling with peerServices == NODE_NONE as we may have\n+ * service flags which are optionally relevant (eg NODE_NETWORK_LIMITED).\n+ *\n+ * If the peer is missing any of the returned service flags, they aren't\n+ * interesting to us - we probably shouldn't conenct outbound to them.\n+ */\n+static ServiceFlags GetRelevantServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143200547",
+      "id" : 143200547,
+      "in_reply_to_id" : 142984466,
+      "original_commit_id" : "4c24f4ccc37acbc5d461198c33712a9aaa53e960",
+      "original_position" : 13,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67680888,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143200547",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143203308"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143203308"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "\"Relevant\" doesn't seem like the right word here either, because it doesn't imply anything about the addressdb. Maybe \"Robust\"? \"Good\"? \"Usable\"?",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T14:24:31Z",
+      "diff_hunk" : "@@ -277,6 +277,43 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * These are the flags which are required for a peer to support for them\n+ * to be \"interesting\" to us, ie for us to wish to use one of our few\n+ * outbound connection slots for or for us to wish to prioritize keeping\n+ * their connection around.\n+ *\n+ * Relevant service flags may be peer- and state-specific in that the\n+ * version of the peer may determine which flags are required (eg in the\n+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers\n+ * unless they set NODE_NETWORK_LIMITED and we our out of IBD, in which\n+ * case NODE_NETWORK_LIMITED suffices).\n+ *\n+ * Thus, generally, avoid calling with peerServices == NODE_NONE.\n+ */\n+static ServiceFlags GetRelevantServiceFlags(ServiceFlags services) {\n+    return ServiceFlags(NODE_NETWORK | NODE_WITNESS);\n+}\n+\n+/**\n+ * A shortcut for (services & GetRelevantServiceFlags(services))\n+ * == GetRelevantServiceFlags(services), ie determines whether the given\n+ * set of service flags are sufficient for a peer to be \"relevant\".\n+ */\n+static inline bool HasAllRelevantServiceFlags(ServiceFlags services) {\n+    return (GetRelevantServiceFlags(services) & services) == GetRelevantServiceFlags(services);\n+}\n+\n+/**\n+ * Checks if a peer with the given service flags may be capable of having a\n+ * robust address-storage DB. Currently an alias for checking NODE_NETWORK.\n+ */\n+static inline bool MayHaveRelevantAddressDB(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143203308",
+      "id" : 143203308,
+      "original_commit_id" : "4641bb298e216dd44c7bc3995f76a313628d142d",
+      "original_position" : 37,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67680888,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143203308",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143206195"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143206195"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Again could consider \"Required\" / \"peer_service_flags\" renames suggested above.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T14:35:24Z",
+      "diff_hunk" : "@@ -277,6 +277,43 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * These are the flags which are required for a peer to support for them\n+ * to be \"interesting\" to us, ie for us to wish to use one of our few\n+ * outbound connection slots for or for us to wish to prioritize keeping\n+ * their connection around.\n+ *\n+ * Relevant service flags may be peer- and state-specific in that the\n+ * version of the peer may determine which flags are required (eg in the\n+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers\n+ * unless they set NODE_NETWORK_LIMITED and we our out of IBD, in which\n+ * case NODE_NETWORK_LIMITED suffices).\n+ *\n+ * Thus, generally, avoid calling with peerServices == NODE_NONE.\n+ */\n+static ServiceFlags GetRelevantServiceFlags(ServiceFlags services) {\n+    return ServiceFlags(NODE_NETWORK | NODE_WITNESS);\n+}\n+\n+/**\n+ * A shortcut for (services & GetRelevantServiceFlags(services))\n+ * == GetRelevantServiceFlags(services), ie determines whether the given\n+ * set of service flags are sufficient for a peer to be \"relevant\".\n+ */\n+static inline bool HasAllRelevantServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143206195",
+      "id" : 143206195,
+      "original_commit_id" : "4641bb298e216dd44c7bc3995f76a313628d142d",
+      "original_position" : 29,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67680888,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143206195",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143219778"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143219778"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "You need the NODE_NETWORK_LIMITED check as a proxy for whether the node is new - eg if the node announces NODE_NETWORK_LIMITED (and you're out of IBD) then you're fine with NODE_NETWORK_LIMITED, but if the node only announces NODE_NETWORK they may be an 0.15.X node and you're perfectly OK with them having only NODE_NETWORK and not NODE_NETWORK_LIMITED.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T15:24:10Z",
+      "diff_hunk" : "@@ -277,6 +277,35 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * Generally, avoid calling with peerServices == NODE_NONE as we may have\n+ * service flags which are optionally relevant (eg NODE_NETWORK_LIMITED).\n+ *\n+ * If the peer is missing any of the returned service flags, they aren't\n+ * interesting to us - we probably shouldn't conenct outbound to them.\n+ */\n+static ServiceFlags GetRelevantServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143219778",
+      "id" : 143219778,
+      "in_reply_to_id" : 142984466,
+      "original_commit_id" : "4c24f4ccc37acbc5d461198c33712a9aaa53e960",
+      "original_position" : 13,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67704121,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143219778",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143221802"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143221802"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Oh, ok, I figured that would work because NODE_NETWORK would be a superset of NODE_NETWORK_LIMITED. But if NODE_NETWORK without NODE_NETWORK_LIMITED is a meaningful flag combination then it makes sense that you need the services argument.\r\n\r\nIn any case, I mostly wanted to suggest the renames here.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T15:31:30Z",
+      "diff_hunk" : "@@ -277,6 +277,35 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * Generally, avoid calling with peerServices == NODE_NONE as we may have\n+ * service flags which are optionally relevant (eg NODE_NETWORK_LIMITED).\n+ *\n+ * If the peer is missing any of the returned service flags, they aren't\n+ * interesting to us - we probably shouldn't conenct outbound to them.\n+ */\n+static ServiceFlags GetRelevantServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143221802",
+      "id" : 143221802,
+      "in_reply_to_id" : 142984466,
+      "original_commit_id" : "4c24f4ccc37acbc5d461198c33712a9aaa53e960",
+      "original_position" : 13,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67706462,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143221802",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143229920"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143229920"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "NODE_NETWORK without NODE_NETWORK_LIMITED is not meaningful generally, but old nodes will (obviously) be using that, so it is important that we still treat it correctly.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T16:04:39Z",
+      "diff_hunk" : "@@ -277,6 +277,35 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * Generally, avoid calling with peerServices == NODE_NONE as we may have\n+ * service flags which are optionally relevant (eg NODE_NETWORK_LIMITED).\n+ *\n+ * If the peer is missing any of the returned service flags, they aren't\n+ * interesting to us - we probably shouldn't conenct outbound to them.\n+ */\n+static ServiceFlags GetRelevantServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143229920",
+      "id" : 143229920,
+      "in_reply_to_id" : 142984466,
+      "original_commit_id" : "4c24f4ccc37acbc5d461198c33712a9aaa53e960",
+      "original_position" : 13,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67716030,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143229920",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Concept Ack and a light CR-Ack. \r\n\r\nI agree with @ryanofsky about naming -- I didn't find the new function names you introduced to be particularly elucidating, so maybe you can pick something better.\r\n\r\nAlso, I don't think we want to introduce new hungarian notation member variables (unless the m_ stands for 'matt_' ;) ).",
+      "created_at" : "2017-10-06T16:05:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-334798836",
+      "id" : 334798836,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-06T16:05:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334798836",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@ryanofsky I'm not sure what your comment about -connect is about. The help text still reads correct to me (it still limits you to only that one connection), the only thing it changes is that previously we would disconnect-on-VERSION-message for -connect peers which do not set NODE_NETWORK, now we will keep it connected just the same as -addnode peers. If you think thats a critical change to document I'm happy to do so, but I think thats a rather esoteric case for -connect.",
+      "created_at" : "2017-10-06T16:07:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-334799262",
+      "id" : 334799262,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-06T16:07:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334799262",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143247408"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143247408"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "nit: we are*",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T17:18:18Z",
+      "diff_hunk" : "@@ -277,6 +277,43 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"relevant\" for a given peer.\n+ *\n+ * These are the flags which are required for a peer to support for them\n+ * to be \"interesting\" to us, ie for us to wish to use one of our few\n+ * outbound connection slots for or for us to wish to prioritize keeping\n+ * their connection around.\n+ *\n+ * Relevant service flags may be peer- and state-specific in that the\n+ * version of the peer may determine which flags are required (eg in the\n+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers\n+ * unless they set NODE_NETWORK_LIMITED and we our out of IBD, in which",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143247408",
+      "id" : 143247408,
+      "original_commit_id" : "12524dd366306ea59ec8019e076b9a843d55bcf0",
+      "original_position" : 15,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 67736637,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143247408",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/881253?v=4",
+         "events_url" : "https://api.github.com/users/jimpo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jimpo/followers",
+         "following_url" : "https://api.github.com/users/jimpo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jimpo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jimpo",
+         "id" : 881253,
+         "login" : "jimpo",
+         "organizations_url" : "https://api.github.com/users/jimpo/orgs",
+         "received_events_url" : "https://api.github.com/users/jimpo/received_events",
+         "repos_url" : "https://api.github.com/users/jimpo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jimpo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jimpo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jimpo"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Yeah, I wasn't saying the help text is incorrect, I was saying it was incomplete. Help text says `-connect` does one thing (limit which peers will be connected to) but actually `-connect` does two things (limit peers, and also loosen requirements for those peers). Feel free to leave it alone if you don't think it's worth mentioning, but it seemed like an omission.",
+      "created_at" : "2017-10-06T17:37:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-334822166",
+      "id" : 334822166,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-06T17:37:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334822166",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143267453"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143267453"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "I think services are just acting as a proxy here. Since we enforce service checking for (non-manual) outgoing connections already, and should probably consider incoming nodes as insignificant for the sake of this check, don't we really just want to tally ```fSuccessfullyConnected && !fInbound && !m_manual_connection``` ?",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T18:43:27Z",
+      "diff_hunk" : "@@ -1602,7 +1601,7 @@ void CConnman::ThreadDNSAddressSeed()\n         LOCK(cs_vNodes);\n         int nRelevant = 0;\n         for (auto pnode : vNodes) {\n-            nRelevant += pnode->fSuccessfullyConnected && ((pnode->nServices & nRelevantServices) == nRelevantServices);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143267453",
+      "id" : 143267453,
+      "original_commit_id" : "12524dd366306ea59ec8019e076b9a843d55bcf0",
+      "original_position" : 30,
+      "path" : "src/net.cpp",
+      "position" : 30,
+      "pull_request_review_id" : 67760064,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143267453",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143290913"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143290913"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Agreed, though I went ahead and added OneShot and Feeler into the mix.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T20:47:37Z",
+      "diff_hunk" : "@@ -1602,7 +1601,7 @@ void CConnman::ThreadDNSAddressSeed()\n         LOCK(cs_vNodes);\n         int nRelevant = 0;\n         for (auto pnode : vNodes) {\n-            nRelevant += pnode->fSuccessfullyConnected && ((pnode->nServices & nRelevantServices) == nRelevantServices);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143290913",
+      "id" : 143290913,
+      "in_reply_to_id" : 143267453,
+      "original_commit_id" : "12524dd366306ea59ec8019e076b9a843d55bcf0",
+      "original_position" : 30,
+      "path" : "src/net.cpp",
+      "position" : 30,
+      "pull_request_review_id" : 67788728,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143290913",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "OK, addressed all the feedback except the desire to rename Relevant to something else. I'm not a fan of Required or RequiredForOutbound, as neither really caputures its full user (its also used in eviction logic). I admit Relevant isnt so descriptive either, but it also doesn't give a false impression (and is documented), so I'm open to other suggestions but not a fan of the current options.",
+      "created_at" : "2017-10-06T21:31:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-334875155",
+      "id" : 334875155,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-06T21:31:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334875155",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143300105"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143300105"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "and are",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-06T21:39:59Z",
+      "diff_hunk" : "@@ -201,6 +201,8 @@ UniValue addnode(const JSONRPCRequest& request)\n             \"addnode \\\"node\\\" \\\"add|remove|onetry\\\"\\n\"\n             \"\\nAttempts to add or remove a node from the addnode list.\\n\"\n             \"Or try a connection to a node once.\\n\"\n+            \"Nodes added using addnode (or -connect) are protected from DoS disconnection andare not required to be\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143300105",
+      "id" : 143300105,
+      "original_commit_id" : "6eaa72dde08df54c632f0cc1e3485af5ec1b117c",
+      "original_position" : 4,
+      "path" : "src/rpc/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 67799711,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143300105",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Changed to \"Desirable\" instead of \"Relevant\" at @JeremyRubin's suggestion.",
+      "created_at" : "2017-10-06T21:57:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-334879999",
+      "id" : 334879999,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-06T21:57:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334879999",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143326023"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143326023"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Nit, unused services, comment?",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-07T08:26:57Z",
+      "diff_hunk" : "@@ -277,6 +277,43 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"desirable\" for a given peer.\n+ *\n+ * These are the flags which are required for a peer to support for them\n+ * to be \"interesting\" to us, ie for us to wish to use one of our few\n+ * outbound connection slots for or for us to wish to prioritize keeping\n+ * their connection around.\n+ *\n+ * Relevant service flags may be peer- and state-specific in that the\n+ * version of the peer may determine which flags are required (eg in the\n+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers\n+ * unless they set NODE_NETWORK_LIMITED and we are out of IBD, in which\n+ * case NODE_NETWORK_LIMITED suffices).\n+ *\n+ * Thus, generally, avoid calling with peerServices == NODE_NONE.\n+ */\n+static ServiceFlags GetDesirableServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143326023",
+      "id" : 143326023,
+      "original_commit_id" : "989d2fe652199e367688d5323397930462688854",
+      "original_position" : 20,
+      "path" : "src/protocol.h",
+      "position" : 20,
+      "pull_request_review_id" : 67828507,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143326023",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143326070"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143326070"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "inline?",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-07T08:31:44Z",
+      "diff_hunk" : "@@ -277,6 +277,43 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"desirable\" for a given peer.\n+ *\n+ * These are the flags which are required for a peer to support for them\n+ * to be \"interesting\" to us, ie for us to wish to use one of our few\n+ * outbound connection slots for or for us to wish to prioritize keeping\n+ * their connection around.\n+ *\n+ * Relevant service flags may be peer- and state-specific in that the\n+ * version of the peer may determine which flags are required (eg in the\n+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers\n+ * unless they set NODE_NETWORK_LIMITED and we are out of IBD, in which\n+ * case NODE_NETWORK_LIMITED suffices).\n+ *\n+ * Thus, generally, avoid calling with peerServices == NODE_NONE.\n+ */\n+static ServiceFlags GetDesirableServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143326070",
+      "id" : 143326070,
+      "in_reply_to_id" : 143326023,
+      "original_commit_id" : "989d2fe652199e367688d5323397930462688854",
+      "original_position" : 20,
+      "path" : "src/protocol.h",
+      "position" : 20,
+      "pull_request_review_id" : 67828507,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143326070",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143345814"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143345814"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "See https://github.com/bitcoin/bitcoin/pull/11456#discussion_r142989057, this function should get much more complicated soon, and hopefully move out of protocol.h at the same time.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-08T04:04:14Z",
+      "diff_hunk" : "@@ -277,6 +277,43 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"desirable\" for a given peer.\n+ *\n+ * These are the flags which are required for a peer to support for them\n+ * to be \"interesting\" to us, ie for us to wish to use one of our few\n+ * outbound connection slots for or for us to wish to prioritize keeping\n+ * their connection around.\n+ *\n+ * Relevant service flags may be peer- and state-specific in that the\n+ * version of the peer may determine which flags are required (eg in the\n+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers\n+ * unless they set NODE_NETWORK_LIMITED and we are out of IBD, in which\n+ * case NODE_NETWORK_LIMITED suffices).\n+ *\n+ * Thus, generally, avoid calling with peerServices == NODE_NONE.\n+ */\n+static ServiceFlags GetDesirableServiceFlags(ServiceFlags services) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r143345814",
+      "id" : 143345814,
+      "in_reply_to_id" : 143326023,
+      "original_commit_id" : "989d2fe652199e367688d5323397930462688854",
+      "original_position" : 20,
+      "path" : "src/protocol.h",
+      "position" : 20,
+      "pull_request_review_id" : 67848337,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143345814",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Concept ACK. Though, I believe that these lines demonstrate why \"Desirable\" is so awkward:\r\n```c++\r\nif (!fFeeler && !HasAllDesirableServiceFlags(addr.nServices)) {\r\n    continue;\r\n    } else if (fFeeler && !MayHaveUsefulAddressDB(addr.nServices)) {\r\n    continue;\r\n}\r\n```\r\n```MayHaveUsefulAddressDB()``` is explicit in what it's checking, but ```HasAllDesirableServiceFlags()``` is not.\r\n\r\nI'd be much more comfortable with this (and I think it'd be much more straightforward) if ```HasAllDesirableServiceFlags()``` was replaced with two or three different functions, each representing an explicit functionality check. e.g.: ```MayServeSomeWitnessBlocks()```, ```MayServeAllWitnessBlocks()```, etc.\r\n\r\nAfter all, that's what we're _really_ trying to figure out, right?\r\n\r\nThen the flag checks aren't dependent on app state, because those checks are done in a straightforward way by the caller instead:\r\n\r\n```c++\r\nif ((in_ibd && MayServeAllWitnessBlocks(services))\r\n  || (!in_ibd && MayServeSomeWitnessBlocks(services))) {\r\n    request()\r\n    ...\r\n}\r\n```\r\n\r\nThat also means that \"Desirable\" doesn't have to share the same meaning everywhere. The obvious example where that's useful is the eviction logic.\r\n\r\nSo... basically just a glorified version of the previous binary logic, except that the functions understand cases where multiple flags may be suitable.",
+      "created_at" : "2017-10-10T19:02:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-335575012",
+      "id" : 335575012,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-10T19:02:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/335575012",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "The goal with the naming was to allow the place that owns network logic to have a function which captures whether a peer is interesting to us. Point being you want some function which captures everything net wants to avoid knowing about, even if that's some crazy wrapper for MayServe*WitnessBlocks, that wrapper should still exist outside of CConnman/net. Ideally, eventually, this will be in net_processing.h (ie the place where we know about what stuff we want out of our peers), but the circular deps right now make that a mess. Lacking net_processing being able to take it, protocol.h or some new header seems most reasonable to me.",
+      "created_at" : "2017-10-10T19:42:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-335585421",
+      "id" : 335585421,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-10T19:42:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/335585421",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "The reason for `CNode::nExpected` wasn't so much enforcing services, but checking whether we're connecting out to the right node.\r\n\r\nMany of our assumptions on partition resistance and privacy are based on the fact that outgoing connections are more under our control. If we're making an outgoing connection, and the node we end up connecting to has different service flags than what we expect - even if they're 'better' - we're likely not connected to who we thought we were. If that's the case, I believe it's better to disconnect and pick another node we want to connect to, rather than accepting wasting an outbound connection slot on an unknown peer.",
+      "created_at" : "2017-10-10T20:04:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-335591283",
+      "id" : 335591283,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-10T20:08:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/335591283",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "@sipa I think this logic would roughly mimic that of nExpected, as we only attempt connections with preferred flags anyway.\r\n\r\nThough disconnecting upon receiving preferred but not expected flags would mean that if a node goes from full -> pruned (or the reverse), it would see a bunch of disconnects for a while. Post bip159, that is.\r\n\r\nI think it would also open us up to issues if someone was handing out phony addr's?",
+      "created_at" : "2017-10-10T20:41:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-335601357",
+      "id" : 335601357,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-10T20:41:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/335601357",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "@theuni My view is that at connection time, we're making a certain determination of what to connect to, with biases based on (among other things) the service flags of all things in addrman. Disconnecting if you see that what you connected to was based on wrong information just gives everything a new chance (including the peer you just connected to). In the end, what node you end up connecting to has the same probability distribution to the one you'd have if you had perfect information (about the nodes you tried) from the start. Using nExpected means all the biasing logic can be encapsulated inside the outgoing-connection-logic, without needing to reason about corrections afterwards.\r\n\r\nTalking to @TheBlueMatt about this, I agree that this pretty abstract, as we don't actually want to bias based on service flags anymore (at least for the time being), and even after BIP159, it will likely be a boolean acceptable or not, instead of a complicated bias.\r\n\r\nSo, I withdraw my objection.",
+      "created_at" : "2017-10-11T22:25:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-335966576",
+      "id" : 335966576,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-11T22:30:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/335966576",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144172194"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144172194"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "Slightly easier expression `!(GetDesirableServiceFlags(services) & ~services)`.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-12T00:49:07Z",
+      "diff_hunk" : "@@ -277,6 +277,43 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"desirable\" for a given peer.\n+ *\n+ * These are the flags which are required for a peer to support for them\n+ * to be \"interesting\" to us, ie for us to wish to use one of our few\n+ * outbound connection slots for or for us to wish to prioritize keeping\n+ * their connection around.\n+ *\n+ * Relevant service flags may be peer- and state-specific in that the\n+ * version of the peer may determine which flags are required (eg in the\n+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers\n+ * unless they set NODE_NETWORK_LIMITED and we are out of IBD, in which\n+ * case NODE_NETWORK_LIMITED suffices).\n+ *\n+ * Thus, generally, avoid calling with peerServices == NODE_NONE.\n+ */\n+static ServiceFlags GetDesirableServiceFlags(ServiceFlags services) {\n+    return ServiceFlags(NODE_NETWORK | NODE_WITNESS);\n+}\n+\n+/**\n+ * A shortcut for (services & GetDesirableServiceFlags(services))\n+ * == GetDesirableServiceFlags(services), ie determines whether the given\n+ * set of service flags are sufficient for a peer to be \"relevant\".\n+ */\n+static inline bool HasAllDesirableServiceFlags(ServiceFlags services) {\n+    return (GetDesirableServiceFlags(services) & services) == GetDesirableServiceFlags(services);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144172194",
+      "id" : 144172194,
+      "original_commit_id" : "1e180fdbba2c5381d197853ad96b0737ea1b96d6",
+      "original_position" : 30,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 68792132,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144172194",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144173175"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144173175"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Fixed.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-12T00:59:08Z",
+      "diff_hunk" : "@@ -277,6 +277,43 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"desirable\" for a given peer.\n+ *\n+ * These are the flags which are required for a peer to support for them\n+ * to be \"interesting\" to us, ie for us to wish to use one of our few\n+ * outbound connection slots for or for us to wish to prioritize keeping\n+ * their connection around.\n+ *\n+ * Relevant service flags may be peer- and state-specific in that the\n+ * version of the peer may determine which flags are required (eg in the\n+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers\n+ * unless they set NODE_NETWORK_LIMITED and we are out of IBD, in which\n+ * case NODE_NETWORK_LIMITED suffices).\n+ *\n+ * Thus, generally, avoid calling with peerServices == NODE_NONE.\n+ */\n+static ServiceFlags GetDesirableServiceFlags(ServiceFlags services) {\n+    return ServiceFlags(NODE_NETWORK | NODE_WITNESS);\n+}\n+\n+/**\n+ * A shortcut for (services & GetDesirableServiceFlags(services))\n+ * == GetDesirableServiceFlags(services), ie determines whether the given\n+ * set of service flags are sufficient for a peer to be \"relevant\".\n+ */\n+static inline bool HasAllDesirableServiceFlags(ServiceFlags services) {\n+    return (GetDesirableServiceFlags(services) & services) == GetDesirableServiceFlags(services);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144173175",
+      "id" : 144173175,
+      "in_reply_to_id" : 144172194,
+      "original_commit_id" : "1e180fdbba2c5381d197853ad96b0737ea1b96d6",
+      "original_position" : 30,
+      "path" : "src/protocol.h",
+      "position" : null,
+      "pull_request_review_id" : 68793212,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T00:59:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144173175",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144173735"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144173735"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "Are you sure you wouldn't want `MayHaveUsefulAddressDB` at least here?",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-12T01:04:37Z",
+      "diff_hunk" : "@@ -1601,7 +1601,7 @@ void CConnman::ThreadDNSAddressSeed()\n         LOCK(cs_vNodes);\n         int nRelevant = 0;\n         for (auto pnode : vNodes) {\n-            nRelevant += pnode->fSuccessfullyConnected && HasAllDesirableServiceFlags(pnode->nServices);\n+            nRelevant += pnode->fSuccessfullyConnected && !pnode->fFeeler && !pnode->fOneShot && !pnode->m_manual_connection && !pnode->fInbound;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144173735",
+      "id" : 144173735,
+      "original_commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "original_position" : 5,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 68793768,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T01:04:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144173735",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144186991"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144186991"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "fSuccessfullyConnected && !special_peer_flag implies the peer is useful (and really want to have as few service-bit-aware pieces of logic in net as possible).",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-12T03:26:49Z",
+      "diff_hunk" : "@@ -1601,7 +1601,7 @@ void CConnman::ThreadDNSAddressSeed()\n         LOCK(cs_vNodes);\n         int nRelevant = 0;\n         for (auto pnode : vNodes) {\n-            nRelevant += pnode->fSuccessfullyConnected && HasAllDesirableServiceFlags(pnode->nServices);\n+            nRelevant += pnode->fSuccessfullyConnected && !pnode->fFeeler && !pnode->fOneShot && !pnode->m_manual_connection && !pnode->fInbound;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144186991",
+      "id" : 144186991,
+      "in_reply_to_id" : 144173735,
+      "original_commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "original_position" : 5,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 68808143,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T03:26:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144186991",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144391264"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144391264"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Missing `!`",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-12T19:46:11Z",
+      "diff_hunk" : "@@ -277,6 +277,43 @@ enum ServiceFlags : uint64_t {\n     // BIP process.\n };\n \n+/**\n+ * Gets the set of service flags which are \"desirable\" for a given peer.\n+ *\n+ * These are the flags which are required for a peer to support for them\n+ * to be \"interesting\" to us, ie for us to wish to use one of our few\n+ * outbound connection slots for or for us to wish to prioritize keeping\n+ * their connection around.\n+ *\n+ * Relevant service flags may be peer- and state-specific in that the\n+ * version of the peer may determine which flags are required (eg in the\n+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers\n+ * unless they set NODE_NETWORK_LIMITED and we are out of IBD, in which\n+ * case NODE_NETWORK_LIMITED suffices).\n+ *\n+ * Thus, generally, avoid calling with peerServices == NODE_NONE.\n+ */\n+static ServiceFlags GetDesirableServiceFlags(ServiceFlags services) {\n+    return ServiceFlags(NODE_NETWORK | NODE_WITNESS);\n+}\n+\n+/**\n+ * A shortcut for (services & GetDesirableServiceFlags(services))\n+ * == GetDesirableServiceFlags(services), ie determines whether the given\n+ * set of service flags are sufficient for a peer to be \"relevant\".\n+ */\n+static inline bool HasAllDesirableServiceFlags(ServiceFlags services) {\n+    return GetDesirableServiceFlags(services) & (~services);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144391264",
+      "id" : 144391264,
+      "original_commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "original_position" : 30,
+      "path" : "src/protocol.h",
+      "position" : 30,
+      "pull_request_review_id" : 69043202,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T19:47:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144391264",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "Commit 'Rename fAddnode to a more-descriptive \"manual_connection\"': convert to scripted diff?",
+      "created_at" : "2017-10-12T23:18:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-336307320",
+      "id" : 336307320,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-12T23:18:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336307320",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144434000"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144434000"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "Got it.",
+      "commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "created_at" : "2017-10-12T23:21:59Z",
+      "diff_hunk" : "@@ -1601,7 +1601,7 @@ void CConnman::ThreadDNSAddressSeed()\n         LOCK(cs_vNodes);\n         int nRelevant = 0;\n         for (auto pnode : vNodes) {\n-            nRelevant += pnode->fSuccessfullyConnected && HasAllDesirableServiceFlags(pnode->nServices);\n+            nRelevant += pnode->fSuccessfullyConnected && !pnode->fFeeler && !pnode->fOneShot && !pnode->m_manual_connection && !pnode->fInbound;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#discussion_r144434000",
+      "id" : 144434000,
+      "in_reply_to_id" : 144173735,
+      "original_commit_id" : "b4809fc30be4d27cabf1a81bc954014070fa3117",
+      "original_position" : 5,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69091709,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11456",
+      "updated_at" : "2017-10-12T23:21:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144434000",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "utACK after fixing the incorrect `HasAllDesirableServiceFlags` logic. One nit.",
+      "created_at" : "2017-10-12T23:22:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-336307908",
+      "id" : 336307908,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-12T23:22:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336307908",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Fixed missing `!`, making the fAnnode -> manul_connection commit scripted isnt trivial given some of them are m_manual_connection but some are manul_connection in function parameters. Its a pretty simple commit anyway so I'll just leave it unless you have strong objections.",
+      "created_at" : "2017-10-13T17:30:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-336517182",
+      "id" : 336517182,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-13T17:30:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336517182",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "@ryanofsky nice spot.\r\n\r\nI'm still not a big fan of keeping the relevant concept around, but this is an improvement regardless.\r\n\r\nutACK 15f5d3b17298be96c6c684c195c02ac249ffd392.",
+      "created_at" : "2017-10-13T20:05:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-336554242",
+      "id" : 336554242,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-13T20:05:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336554242",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : ">  making the fAnnode -> manul_connection commit scripted isnt trivial given some of them are m_manual_connection but some are manul_connection in function parameters\r\n\r\nI missed that. The change looks fine without.",
+      "created_at" : "2017-10-13T20:06:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-336554576",
+      "id" : 336554576,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-13T20:06:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336554576",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "utACK 15f5d3b17298be96c6c684c195c02ac249ffd392",
+      "created_at" : "2017-10-13T22:18:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11456#issuecomment-336580811",
+      "id" : 336580811,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11456",
+      "updated_at" : "2017-10-13T22:18:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336580811",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

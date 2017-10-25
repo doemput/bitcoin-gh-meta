@@ -1,0 +1,502 @@
+[
+   {
+      "body" : "Using shared pointers makes much more sense. Thanks.\r\nutACK eb8104aebccd42bbd28f33ea0f2e100cccdf42f7.",
+      "created_at" : "2016-08-15T11:56:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#issuecomment-239785633",
+      "id" : 239785633,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8515",
+      "updated_at" : "2016-08-15T11:56:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/239785633",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "@pstratem You had benchmarks showing removal was taking all the time. Care to do a comparison with this code?",
+      "created_at" : "2016-08-16T23:24:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#issuecomment-240269864",
+      "id" : 240269864,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8515",
+      "updated_at" : "2016-08-16T23:24:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/240269864",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Anyone feel like benchmarking whether this has an impact on invalidateblock/reconsiderblock times (mimicking a large reorg)?",
+      "created_at" : "2016-08-25T10:37:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#issuecomment-242345073",
+      "id" : 242345073,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8515",
+      "updated_at" : "2016-08-25T10:37:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242345073",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76522614"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522614"
+         }
+      },
+      "body" : "Shouldn't there be `<vector>` here?",
+      "commit_id" : "0334430b396acd1b1c248ad98c6fdbd50c4c4309",
+      "created_at" : "2016-08-27T21:29:47Z",
+      "diff_hunk" : "@@ -6,7 +6,6 @@\n #ifndef BITCOIN_TXMEMPOOL_H\n #define BITCOIN_TXMEMPOOL_H\n \n-#include <list>\n #include <memory>\n #include <set>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76522614",
+      "id" : 76522614,
+      "original_commit_id" : "fb464c8c5670e94bd429786e7c8985c4100da811",
+      "original_position" : 6,
+      "path" : "src/txmempool.h",
+      "position" : 6,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515",
+      "updated_at" : "2016-10-22T02:22:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522614",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76522634"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522634"
+         }
+      },
+      "body" : "What changed here?",
+      "commit_id" : "0334430b396acd1b1c248ad98c6fdbd50c4c4309",
+      "created_at" : "2016-08-27T21:32:32Z",
+      "diff_hunk" : "@@ -541,24 +541,24 @@ void CTxMemPool::removeForReorg(const CCoinsViewCache *pcoins, unsigned int nMem\n {\n     // Remove transactions spending a coinbase which are now immature and no-longer-final transactions\n     LOCK(cs);\n-    list<CTransaction> transactionsToRemove;\n+    setEntries txToRemove;\n     for (indexed_transaction_set::const_iterator it = mapTx.begin(); it != mapTx.end(); it++) {\n         const CTransaction& tx = it->GetTx();\n         LockPoints lp = it->GetLockPoints();\n         bool validLP =  TestLockPointValidity(&lp);\n         if (!CheckFinalTx(tx, flags) || !CheckSequenceLocks(tx, flags, &lp, validLP)) {\n             // Note if CheckSequenceLocks fails the LockPoints may still be invalid\n             // So it's critical that we remove the tx and not depend on the LockPoints.\n-            transactionsToRemove.push_back(tx);\n+            txToRemove.insert(it);\n         } else if (it->GetSpendsCoinbase()) {\n             BOOST_FOREACH(const CTxIn& txin, tx.vin) {\n                 indexed_transaction_set::const_iterator it2 = mapTx.find(txin.prevout.hash);\n                 if (it2 != mapTx.end())\n                     continue;\n                 const CCoins *coins = pcoins->AccessCoins(txin.prevout.hash);\n-\t\tif (nCheckFrequency != 0) assert(coins);\n+                if (nCheckFrequency != 0) assert(coins);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76522634",
+      "id" : 76522634,
+      "original_commit_id" : "17df3fdc8320505de7275a9b768a6e749d5b5e01",
+      "original_position" : 22,
+      "path" : "src/txmempool.cpp",
+      "position" : 44,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515",
+      "updated_at" : "2016-10-22T02:22:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522634",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76523073"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523073"
+         }
+      },
+      "body" : "Incorrect indentation.",
+      "commit_id" : "0334430b396acd1b1c248ad98c6fdbd50c4c4309",
+      "created_at" : "2016-08-27T22:13:59Z",
+      "diff_hunk" : "@@ -541,24 +543,24 @@ void CTxMemPool::removeForReorg(const CCoinsViewCache *pcoins, unsigned int nMem\n {\n     // Remove transactions spending a coinbase which are now immature and no-longer-final transactions\n     LOCK(cs);\n-    list<CTransaction> transactionsToRemove;\n+    setEntries txToRemove;\n     for (indexed_transaction_set::const_iterator it = mapTx.begin(); it != mapTx.end(); it++) {\n         const CTransaction& tx = it->GetTx();\n         LockPoints lp = it->GetLockPoints();\n         bool validLP =  TestLockPointValidity(&lp);\n         if (!CheckFinalTx(tx, flags) || !CheckSequenceLocks(tx, flags, &lp, validLP)) {\n             // Note if CheckSequenceLocks fails the LockPoints may still be invalid\n             // So it's critical that we remove the tx and not depend on the LockPoints.\n-            transactionsToRemove.push_back(tx);\n+            txToRemove.insert(it);\n         } else if (it->GetSpendsCoinbase()) {\n             BOOST_FOREACH(const CTxIn& txin, tx.vin) {\n                 indexed_transaction_set::const_iterator it2 = mapTx.find(txin.prevout.hash);\n                 if (it2 != mapTx.end())\n                     continue;\n                 const CCoins *coins = pcoins->AccessCoins(txin.prevout.hash);\n-\t\tif (nCheckFrequency != 0) assert(coins);\n+                if (nCheckFrequency != 0) assert(coins);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76523073",
+      "id" : 76523073,
+      "original_commit_id" : "fb464c8c5670e94bd429786e7c8985c4100da811",
+      "original_position" : 44,
+      "path" : "src/txmempool.cpp",
+      "position" : 44,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515",
+      "updated_at" : "2016-10-22T02:22:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523073",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "ACK\r\n\r\nBenchmarked c072b8fd95cd4fa84f08189a0cd8b173ea2dbb8e vs c072b8fd95cd4fa84f08189a0cd8b173ea2dbb8e + fb464c8c5670e94bd429786e7c8985c4100da811 with testnet blocks 925000-925617 (000000000000020c778212bbe3cdd2ad7f2d102ff4c3ae39515b8008c170d9f6) with no measurable real-time performance difference (~1m10s invalidate, ~30s reconsider)",
+      "created_at" : "2016-08-27T22:20:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#issuecomment-242944052",
+      "id" : 242944052,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8515",
+      "updated_at" : "2016-08-27T22:20:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242944052",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76523667"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523667"
+         }
+      },
+      "body" : "Note: `<vector>` does not render, unless inside ` `.",
+      "commit_id" : "0334430b396acd1b1c248ad98c6fdbd50c4c4309",
+      "created_at" : "2016-08-27T23:20:39Z",
+      "diff_hunk" : "@@ -6,7 +6,6 @@\n #ifndef BITCOIN_TXMEMPOOL_H\n #define BITCOIN_TXMEMPOOL_H\n \n-#include <list>\n #include <memory>\n #include <set>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76523667",
+      "id" : 76523667,
+      "original_commit_id" : "fb464c8c5670e94bd429786e7c8985c4100da811",
+      "original_position" : 6,
+      "path" : "src/txmempool.h",
+      "position" : 6,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515",
+      "updated_at" : "2016-10-22T02:22:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523667",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76523720"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523720"
+         }
+      },
+      "body" : "Added some missing includes (map for std::map, utility for std::pair, vector for std::vector, string for std::string). I'm sure we have many more cases of these missing though.",
+      "commit_id" : "0334430b396acd1b1c248ad98c6fdbd50c4c4309",
+      "created_at" : "2016-08-27T23:28:16Z",
+      "diff_hunk" : "@@ -6,7 +6,6 @@\n #ifndef BITCOIN_TXMEMPOOL_H\n #define BITCOIN_TXMEMPOOL_H\n \n-#include <list>\n #include <memory>\n #include <set>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76523720",
+      "id" : 76523720,
+      "original_commit_id" : "fb464c8c5670e94bd429786e7c8985c4100da811",
+      "original_position" : 6,
+      "path" : "src/txmempool.h",
+      "position" : 6,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515",
+      "updated_at" : "2016-10-22T02:22:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523720",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76720822"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76720822"
+         }
+      },
+      "body" : "a space was missing",
+      "commit_id" : "0334430b396acd1b1c248ad98c6fdbd50c4c4309",
+      "created_at" : "2016-08-30T02:09:34Z",
+      "diff_hunk" : "@@ -541,24 +541,24 @@ void CTxMemPool::removeForReorg(const CCoinsViewCache *pcoins, unsigned int nMem\n {\n     // Remove transactions spending a coinbase which are now immature and no-longer-final transactions\n     LOCK(cs);\n-    list<CTransaction> transactionsToRemove;\n+    setEntries txToRemove;\n     for (indexed_transaction_set::const_iterator it = mapTx.begin(); it != mapTx.end(); it++) {\n         const CTransaction& tx = it->GetTx();\n         LockPoints lp = it->GetLockPoints();\n         bool validLP =  TestLockPointValidity(&lp);\n         if (!CheckFinalTx(tx, flags) || !CheckSequenceLocks(tx, flags, &lp, validLP)) {\n             // Note if CheckSequenceLocks fails the LockPoints may still be invalid\n             // So it's critical that we remove the tx and not depend on the LockPoints.\n-            transactionsToRemove.push_back(tx);\n+            txToRemove.insert(it);\n         } else if (it->GetSpendsCoinbase()) {\n             BOOST_FOREACH(const CTxIn& txin, tx.vin) {\n                 indexed_transaction_set::const_iterator it2 = mapTx.find(txin.prevout.hash);\n                 if (it2 != mapTx.end())\n                     continue;\n                 const CCoins *coins = pcoins->AccessCoins(txin.prevout.hash);\n-\t\tif (nCheckFrequency != 0) assert(coins);\n+                if (nCheckFrequency != 0) assert(coins);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#discussion_r76720822",
+      "id" : 76720822,
+      "original_commit_id" : "17df3fdc8320505de7275a9b768a6e749d5b5e01",
+      "original_position" : 22,
+      "path" : "src/txmempool.cpp",
+      "position" : 44,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8515",
+      "updated_at" : "2016-10-22T02:22:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76720822",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "Rebased.",
+      "created_at" : "2016-09-09T16:29:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#issuecomment-245965608",
+      "id" : 245965608,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8515",
+      "updated_at" : "2016-09-09T16:29:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/245965608",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK, needs rebase again though",
+      "created_at" : "2016-10-18T20:58:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#issuecomment-254637577",
+      "id" : 254637577,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8515",
+      "updated_at" : "2016-10-18T20:58:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/254637577",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Rebased.",
+      "created_at" : "2016-10-20T18:16:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#issuecomment-255185478",
+      "id" : 255185478,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8515",
+      "updated_at" : "2016-10-20T18:16:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/255185478",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK 6ee761c83e3eeea8c685f789758232a1c4325f99.",
+      "created_at" : "2016-10-21T17:49:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8515#issuecomment-255432915",
+      "id" : 255432915,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8515",
+      "updated_at" : "2016-10-21T17:49:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/255432915",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   }
+]

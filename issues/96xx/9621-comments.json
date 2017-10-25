@@ -1,0 +1,372 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97471240"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97471240"
+         }
+      },
+      "body" : "For clarity,  why not put this in an individual function called here?\r\nOr at least comment as to what this mini 'code-block' is for?",
+      "commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "created_at" : "2017-01-24T04:07:55Z",
+      "diff_hunk" : "@@ -693,6 +693,16 @@ bool InitSanityCheck(void)\n     if (!glibc_sanity_test() || !glibcxx_sanity_test())\n         return false;\n \n+    CMutableTransaction tx;\n+    tx.vin.resize(1);\n+    tx.vout.resize(1);\n+    size_t nMinTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);\n+    size_t nMinStrippedTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS);\n+    if (MIN_TRANSACTION_SIZE != nMinTxSize || MIN_TRANSACTION_SIZE != nMinStrippedTxSize) {\n+        InitError(strprintf(\"MIN_TRANSACTION_SIZE verification failure: const %u vs min=%u vs minstripped=%u\", MIN_TRANSACTION_SIZE, nMinTxSize, nMinStrippedTxSize));\n+        return false;\n+    }",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97471240",
+      "id" : 97471240,
+      "original_commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "original_position" : 12,
+      "path" : "src/init.cpp",
+      "position" : 12,
+      "pull_request_review_id" : 18081655,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621",
+      "updated_at" : "2017-01-24T04:07:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97471240",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97473482"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97473482"
+         }
+      },
+      "body" : "Maybe add a comment to explain that this is not an independent consensus rule, but just the shortest otherwise valid serialized transaction?",
+      "commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "created_at" : "2017-01-24T04:40:41Z",
+      "diff_hunk" : "@@ -16,6 +16,8 @@ static const unsigned int MAX_BLOCK_WEIGHT = 4000000;\n static const unsigned int MAX_BLOCK_BASE_SIZE = 1000000;\n /** The maximum allowed number of signature check operations in a block (network rule) */\n static const int64_t MAX_BLOCK_SIGOPS_COST = 80000;\n+/** Smallest possible transaction size */\n+static const unsigned int MIN_TRANSACTION_SIZE = 60;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97473482",
+      "id" : 97473482,
+      "original_commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "original_position" : 5,
+      "path" : "src/consensus/consensus.h",
+      "position" : 5,
+      "pull_request_review_id" : 18083739,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621",
+      "updated_at" : "2017-01-24T04:40:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97473482",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Concept ACK. Having quantities like this defined centrally would be a boon for some of the things that I have worked on.\r\n\r\nI have a latent PR that defines code similar to this for a few other related quantities (but not specifically min_tx_size). I could push up just the constants commit if desired. However, I determined that these are more appropriately placed in validation.h than consensus.h for reasons similar to what @sipa has said above.",
+      "created_at" : "2017-01-24T05:21:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#issuecomment-274712748",
+      "id" : 274712748,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9621",
+      "updated_at" : "2017-01-24T05:21:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274712748",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2017-01-24T08:03:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#issuecomment-274734823",
+      "id" : 274734823,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9621",
+      "updated_at" : "2017-01-24T08:03:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274734823",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97552646"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97552646"
+         }
+      },
+      "body" : "+1 for a comment here.",
+      "commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "created_at" : "2017-01-24T14:08:23Z",
+      "diff_hunk" : "@@ -693,6 +693,16 @@ bool InitSanityCheck(void)\n     if (!glibc_sanity_test() || !glibcxx_sanity_test())\n         return false;\n \n+    CMutableTransaction tx;\n+    tx.vin.resize(1);\n+    tx.vout.resize(1);\n+    size_t nMinTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);\n+    size_t nMinStrippedTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS);\n+    if (MIN_TRANSACTION_SIZE != nMinTxSize || MIN_TRANSACTION_SIZE != nMinStrippedTxSize) {\n+        InitError(strprintf(\"MIN_TRANSACTION_SIZE verification failure: const %u vs min=%u vs minstripped=%u\", MIN_TRANSACTION_SIZE, nMinTxSize, nMinStrippedTxSize));\n+        return false;\n+    }",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97552646",
+      "id" : 97552646,
+      "original_commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "original_position" : 12,
+      "path" : "src/init.cpp",
+      "position" : 12,
+      "pull_request_review_id" : 18164722,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621",
+      "updated_at" : "2017-01-24T14:08:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97552646",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "ut ACK",
+      "created_at" : "2017-01-24T14:08:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#issuecomment-274811722",
+      "id" : 274811722,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9621",
+      "updated_at" : "2017-01-24T14:08:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274811722",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97676069"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97676069"
+         }
+      },
+      "body" : "This is technically incorrect...someone relaying you a valid-to-deserialize and valid-work block which contained a 10-byte transaction would get banned, despite the BIP pretty clearly indicating they should be allowed to do so.",
+      "commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "created_at" : "2017-01-24T23:19:09Z",
+      "diff_hunk" : "@@ -50,7 +48,7 @@ uint64_t CBlockHeaderAndShortTxIDs::GetShortID(const uint256& txhash) const {\n ReadStatus PartiallyDownloadedBlock::InitData(const CBlockHeaderAndShortTxIDs& cmpctblock, const std::vector<std::pair<uint256, CTransactionRef>>& extra_txn) {\n     if (cmpctblock.header.IsNull() || (cmpctblock.shorttxids.empty() && cmpctblock.prefilledtxn.empty()))\n         return READ_STATUS_INVALID;\n-    if (cmpctblock.shorttxids.size() + cmpctblock.prefilledtxn.size() > MAX_BLOCK_BASE_SIZE / MIN_TRANSACTION_BASE_SIZE)\n+    if (cmpctblock.shorttxids.size() + cmpctblock.prefilledtxn.size() > MAX_BLOCK_BASE_SIZE / MIN_TRANSACTION_SIZE)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97676069",
+      "id" : 97676069,
+      "original_commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "original_position" : 14,
+      "path" : "src/blockencodings.cpp",
+      "position" : 14,
+      "pull_request_review_id" : 18293357,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621",
+      "updated_at" : "2017-01-24T23:19:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97676069",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97713911"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97713911"
+         }
+      },
+      "body" : "Hmm. So compact blocks effectively force a specific deserialisation implementation into a consensus-critical status? (Or was it already for some reason I'm not thinking of?)",
+      "commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "created_at" : "2017-01-25T05:56:24Z",
+      "diff_hunk" : "@@ -50,7 +48,7 @@ uint64_t CBlockHeaderAndShortTxIDs::GetShortID(const uint256& txhash) const {\n ReadStatus PartiallyDownloadedBlock::InitData(const CBlockHeaderAndShortTxIDs& cmpctblock, const std::vector<std::pair<uint256, CTransactionRef>>& extra_txn) {\n     if (cmpctblock.header.IsNull() || (cmpctblock.shorttxids.empty() && cmpctblock.prefilledtxn.empty()))\n         return READ_STATUS_INVALID;\n-    if (cmpctblock.shorttxids.size() + cmpctblock.prefilledtxn.size() > MAX_BLOCK_BASE_SIZE / MIN_TRANSACTION_BASE_SIZE)\n+    if (cmpctblock.shorttxids.size() + cmpctblock.prefilledtxn.size() > MAX_BLOCK_BASE_SIZE / MIN_TRANSACTION_SIZE)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#discussion_r97713911",
+      "id" : 97713911,
+      "original_commit_id" : "db626ef05a72c8474d35f865d3011040e48193ae",
+      "original_position" : 14,
+      "path" : "src/blockencodings.cpp",
+      "position" : 14,
+      "pull_request_review_id" : 18331144,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9621",
+      "updated_at" : "2017-01-25T05:56:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97713911",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Compact blocks sets specific rules for things which are valid to relay, even if invalid in blocks.\n\nThe spec says \"As high-bandwidth mode permits relaying of CMPCTBLOCK messages prior to full validation (requiring only that the block header is valid before relay), nodes SHOULD NOT ban a peer for announcing a new block with a CMPCTBLOCK message that is invalid, but has a valid header.\"\n\nBecause of other parts of the spec, a node must be able to respond to GETBLOCKTXN messages with transactions which are in the block, but there is clear implication that you need not verify anything else. In fact, your implementation here, I believe isn't self-consistent - do we check transaction lengths before relay using NewPoWValidNlock?\n\nOn January 25, 2017 12:56:29 AM EST, Luke Dashjr <notifications@github.com> wrote:\n>luke-jr commented on this pull request.\n>\n>\n>\n>> @@ -50,7 +48,7 @@ uint64_t\n>CBlockHeaderAndShortTxIDs::GetShortID(const uint256& txhash) const {\n>ReadStatus PartiallyDownloadedBlock::InitData(const\n>CBlockHeaderAndShortTxIDs& cmpctblock, const\n>std::vector<std::pair<uint256, CTransactionRef>>& extra_txn) {\n>if (cmpctblock.header.IsNull() || (cmpctblock.shorttxids.empty() &&\n>cmpctblock.prefilledtxn.empty()))\n>         return READ_STATUS_INVALID;\n>-    if (cmpctblock.shorttxids.size() + cmpctblock.prefilledtxn.size()\n>> MAX_BLOCK_BASE_SIZE / MIN_TRANSACTION_BASE_SIZE)\n>+    if (cmpctblock.shorttxids.size() + cmpctblock.prefilledtxn.size()\n>> MAX_BLOCK_BASE_SIZE / MIN_TRANSACTION_SIZE)\n>\n>Hmm. So compact blocks effectively force a specific deserialisation\n>implementation into a consensus-critical status? (Or was it already for\n>some reason I'm not thinking of?)\n>\n>-- \n>You are receiving this because you commented.\n>Reply to this email directly or view it on GitHub:\n>https://github.com/bitcoin/bitcoin/pull/9621\n",
+      "created_at" : "2017-01-25T13:37:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#issuecomment-275109311",
+      "id" : 275109311,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9621",
+      "updated_at" : "2017-01-25T13:37:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/275109311",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Okay, this is more complex than anticipated then. Closing for now.",
+      "created_at" : "2017-02-01T23:16:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9621#issuecomment-276814707",
+      "id" : 276814707,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9621",
+      "updated_at" : "2017-02-01T23:16:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/276814707",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   }
+]

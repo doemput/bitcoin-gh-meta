@@ -1,0 +1,895 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45466622"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45466622"
+         }
+      },
+      "body" : "Adding `-server` twice here? See changed line 219. Thanks @instagibbs.",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-20T13:08:47Z",
+      "diff_hunk" : "@@ -214,7 +216,10 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=\n     datadir = os.path.join(dirname, \"node\"+str(i))\n     if binary is None:\n         binary = os.getenv(\"BITCOIND\", \"bitcoind\")\n-    args = [ binary, \"-datadir=\"+datadir, \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    args = [ binary, \"-datadir=\"+datadir, \"-server\", \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    if os.getenv(\"QT\", \"\"):\n+        args[0] = \"bitcoin-qt\"\n+        args.append(\"-server\")",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45466622",
+      "id" : 45466622,
+      "original_commit_id" : "343e26c72139d5284b73327d0fb326b391f32893",
+      "original_position" : 17,
+      "path" : "qa/rpc-tests/test_framework/util.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45466622",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45467521"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45467521"
+         }
+      },
+      "body" : "*219* I think you mean",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-20T13:21:12Z",
+      "diff_hunk" : "@@ -214,7 +216,10 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=\n     datadir = os.path.join(dirname, \"node\"+str(i))\n     if binary is None:\n         binary = os.getenv(\"BITCOIND\", \"bitcoind\")\n-    args = [ binary, \"-datadir=\"+datadir, \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    args = [ binary, \"-datadir=\"+datadir, \"-server\", \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    if os.getenv(\"QT\", \"\"):\n+        args[0] = \"bitcoin-qt\"\n+        args.append(\"-server\")",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45467521",
+      "id" : 45467521,
+      "original_commit_id" : "343e26c72139d5284b73327d0fb326b391f32893",
+      "original_position" : 17,
+      "path" : "qa/rpc-tests/test_framework/util.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45467521",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45470642"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45470642"
+         }
+      },
+      "body" : "Right. There was one to many. Fixed.",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-20T13:59:09Z",
+      "diff_hunk" : "@@ -214,7 +216,10 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=\n     datadir = os.path.join(dirname, \"node\"+str(i))\n     if binary is None:\n         binary = os.getenv(\"BITCOIND\", \"bitcoind\")\n-    args = [ binary, \"-datadir=\"+datadir, \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    args = [ binary, \"-datadir=\"+datadir, \"-server\", \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    if os.getenv(\"QT\", \"\"):\n+        args[0] = \"bitcoin-qt\"\n+        args.append(\"-server\")",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45470642",
+      "id" : 45470642,
+      "original_commit_id" : "343e26c72139d5284b73327d0fb326b391f32893",
+      "original_position" : 17,
+      "path" : "qa/rpc-tests/test_framework/util.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45470642",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45550146"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45550146"
+         }
+      },
+      "body" : "Any reason to do this? This will hinder executing `QT=1 ./qa/pull-tester/rpc-tests.py`?",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-21T20:16:21Z",
+      "diff_hunk" : "@@ -113,6 +113,9 @@ def main(self):\n         self.add_options(parser)\n         (self.options, self.args) = parser.parse_args()\n \n+        if os.getenv(\"QT\", \"\"):\n+            self.options.noshutdown = True",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45550146",
+      "id" : 45550146,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 5,
+      "path" : "qa/rpc-tests/test_framework/test_framework.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45550146",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45552584"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45552584"
+         }
+      },
+      "body" : "QT=0 also triggers?",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-21T23:41:13Z",
+      "diff_hunk" : "@@ -215,6 +218,9 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=\n     if binary is None:\n         binary = os.getenv(\"BITCOIND\", \"bitcoind\")\n     args = [ binary, \"-datadir=\"+datadir, \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    if os.getenv(\"QT\", \"\"):",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45552584",
+      "id" : 45552584,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 14,
+      "path" : "qa/rpc-tests/test_framework/util.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45552584",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "utACK. Any idea why it's slower?",
+      "created_at" : "2015-11-22T22:04:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-158807464",
+      "id" : 158807464,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-11-22T22:04:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158807464",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45705627"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45705627"
+         }
+      },
+      "body" : "I'd also prefer passing noshutdown, if desired, as an explicit option.",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-24T08:01:57Z",
+      "diff_hunk" : "@@ -113,6 +113,9 @@ def main(self):\n         self.add_options(parser)\n         (self.options, self.args) = parser.parse_args()\n \n+        if os.getenv(\"QT\", \"\"):\n+            self.options.noshutdown = True",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45705627",
+      "id" : 45705627,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 5,
+      "path" : "qa/rpc-tests/test_framework/test_framework.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45705627",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45706693"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45706693"
+         }
+      },
+      "body" : "The reason why I added the noshutdown=True is, because i think running a RPC test with the UI needs post-run user based verification (does the GUI looks like expected?). As long as there is no automatic screenshot creating (and maybe auto-comparing) I think the noshutdown flag is appropriate.\r\nThe `QT=1` env flag is a helper IMO. It's not really necessary because one could also pass the path to bitcoin-qt in the `BITCOIND` env var.",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-24T08:21:02Z",
+      "diff_hunk" : "@@ -113,6 +113,9 @@ def main(self):\n         self.add_options(parser)\n         (self.options, self.args) = parser.parse_args()\n \n+        if os.getenv(\"QT\", \"\"):\n+            self.options.noshutdown = True",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45706693",
+      "id" : 45706693,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 5,
+      "path" : "qa/rpc-tests/test_framework/test_framework.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45706693",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45708445"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45708445"
+         }
+      },
+      "body" : "> I think the noshutdown flag is appropriate.\r\n\r\nStill, you could just pass it via the command line. On the other hand, there is no way to disable it, right now when using `QT=`.",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-24T08:47:20Z",
+      "diff_hunk" : "@@ -113,6 +113,9 @@ def main(self):\n         self.add_options(parser)\n         (self.options, self.args) = parser.parse_args()\n \n+        if os.getenv(\"QT\", \"\"):\n+            self.options.noshutdown = True",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45708445",
+      "id" : 45708445,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 5,
+      "path" : "qa/rpc-tests/test_framework/test_framework.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45708445",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45712066"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45712066"
+         }
+      },
+      "body" : "Right. There is no `-shutdown` to override it the other way. I still think it's better not to conflate \"want to use GUI\" and \"don't want to shutdown\".\r\n\r\n",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-24T09:26:48Z",
+      "diff_hunk" : "@@ -113,6 +113,9 @@ def main(self):\n         self.add_options(parser)\n         (self.options, self.args) = parser.parse_args()\n \n+        if os.getenv(\"QT\", \"\"):\n+            self.options.noshutdown = True",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45712066",
+      "id" : 45712066,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 5,
+      "path" : "qa/rpc-tests/test_framework/test_framework.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45712066",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45725081"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45725081"
+         }
+      },
+      "body" : "Yes. Agreed. This is a point.\r\nFixed.",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-24T11:45:43Z",
+      "diff_hunk" : "@@ -113,6 +113,9 @@ def main(self):\n         self.add_options(parser)\n         (self.options, self.args) = parser.parse_args()\n \n+        if os.getenv(\"QT\", \"\"):\n+            self.options.noshutdown = True",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45725081",
+      "id" : 45725081,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 5,
+      "path" : "qa/rpc-tests/test_framework/test_framework.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45725081",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45725273"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45725273"
+         }
+      },
+      "body" : "Right. I used the same way than PYTHON_DEBUG is implemented. But i agree, maybe we should change both variables so that they only trigger if they are set with a non-0 value. ",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-24T11:48:12Z",
+      "diff_hunk" : "@@ -215,6 +218,9 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=\n     if binary is None:\n         binary = os.getenv(\"BITCOIND\", \"bitcoind\")\n     args = [ binary, \"-datadir=\"+datadir, \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    if os.getenv(\"QT\", \"\"):",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45725273",
+      "id" : 45725273,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 14,
+      "path" : "qa/rpc-tests/test_framework/util.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45725273",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "@gmaxwell: I haven't analyzed why they are slower, but i assume it's because of the whole GUI/QT overhead.",
+      "created_at" : "2015-11-24T11:49:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-159242301",
+      "id" : 159242301,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-11-24T11:49:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159242301",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Maybe I should give some directions where this could go to:\r\nQT has easy functions to create a bitmap (example: PNG File) of a window. If there would be a script that runs through all UI situations and create a bunch of screenshots that could help in testing various platforms and all UI change requests (kick a script that builds a html page with screenshots, scroll through them, verify).\r\nTesting multiplatform UI is complicated and time robbing.\r\nI once used a similar system that could also compare screenshots (% divergence) and where capable of detect unwished UI changes.",
+      "created_at" : "2015-11-24T12:01:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-159247663",
+      "id" : 159247663,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-11-24T12:01:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159247663",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45835357"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45835357"
+         }
+      },
+      "body" : "~~bool(\"0\") is True not False. Of strings (which are the only thing that can be returned from getenv), only empty strings evalutate to False. So this is correct.~~\r\nNever mind, that's what you meant",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-11-25T07:20:46Z",
+      "diff_hunk" : "@@ -215,6 +218,9 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=\n     if binary is None:\n         binary = os.getenv(\"BITCOIND\", \"bitcoind\")\n     args = [ binary, \"-datadir=\"+datadir, \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    if os.getenv(\"QT\", \"\"):",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r45835357",
+      "id" : 45835357,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 14,
+      "path" : "qa/rpc-tests/test_framework/util.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45835357",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "> utACK. Any idea why it's slower?\r\n\r\nWith e.g. wallet tests with lots of transactions it's bound to be slower because the UI is doing more in that case, it keeps and maintains its own table of transactions to to do things like sort, as well as draw the screen when core's locks are contended.\r\n",
+      "created_at" : "2015-11-25T07:25:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-159524301",
+      "id" : 159524301,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-11-25T07:25:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159524301",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK ffe8fa6",
+      "created_at" : "2015-11-25T07:26:49Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-159524431",
+      "id" : 159524431,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-11-25T07:26:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159524431",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Needs rebase",
+      "created_at" : "2015-12-03T13:06:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-161632060",
+      "id" : 161632060,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-12-03T13:06:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161632060",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r47485883"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/47485883"
+         }
+      },
+      "body" : "I would suggest changing the environment variable name. `QT` seems to be something that could be legitimately used by the toolkit itself, and defined otherwise. Why not `PYTHON_USE_QT` or so? (it's not that descriptive either but stays with the `PYTHON_DEBUG` pattern, and avoids accidental collisions.)\r\n",
+      "commit_id" : "979698c1715ce86a98934e48acadbc936c95c9a3",
+      "created_at" : "2015-12-14T11:15:53Z",
+      "diff_hunk" : "@@ -215,6 +218,9 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=\n     if binary is None:\n         binary = os.getenv(\"BITCOIND\", \"bitcoind\")\n     args = [ binary, \"-datadir=\"+datadir, \"-keypool=1\", \"-discover=0\", \"-rest\" ]\n+    if os.getenv(\"QT\", \"\"):",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#discussion_r47485883",
+      "id" : 47485883,
+      "original_commit_id" : "72f2722cb1b980c247dc56f6ef7f2a5c51c80eaa",
+      "original_position" : 14,
+      "path" : "qa/rpc-tests/test_framework/util.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7068",
+      "updated_at" : "2015-12-14T11:56:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/47485883",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Rebased and reduced. There are only two changes now:\r\n\r\n1. Pass `-server` arg always\r\n2. Add `src/qt` to the PATH variable\r\n\r\nTests over QT clients can be run like `BITCOIND=bitcoin-qt ./qa/rpc-tests/wallet.py --srcdir=src/`.",
+      "created_at" : "2015-12-14T11:58:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-164419501",
+      "id" : 164419501,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-12-14T11:58:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/164419501",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Awesome, utACK",
+      "created_at" : "2015-12-14T12:03:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-164420485",
+      "id" : 164420485,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-12-14T12:03:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/164420485",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Would be nice to have `./qa/pull-tester/rpc-tests.py` support this as well so one can run all test with the gui and check if it passes.",
+      "created_at" : "2015-12-14T13:06:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-164431628",
+      "id" : 164431628,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-12-14T13:06:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/164431628",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Doesn't this simply work?\r\n```\r\nBITCOIND=bitcoin-qt ./qa/pull-tester/rpc-tests.py\r\n```",
+      "created_at" : "2015-12-14T13:14:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-164432909",
+      "id" : 164432909,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-12-14T13:14:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/164432909",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "> Doesn't this simply work?\r\n\r\nFixed by #7209",
+      "created_at" : "2015-12-14T13:47:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7068#issuecomment-164442439",
+      "id" : 164442439,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7068",
+      "updated_at" : "2015-12-14T13:47:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/164442439",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

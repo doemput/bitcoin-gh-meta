@@ -1,0 +1,1794 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133964122"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133964122"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "```cpp\r\nbool is_locked = ...;\r\n```",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T13:53:51Z",
+      "diff_hunk" : "@@ -2397,6 +2399,40 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool isLocked = pwallet->IsLockedCoin(outpt.hash, outpt.n);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133964122",
+      "id" : 133964122,
+      "original_commit_id" : "fae526df06110c88b51338024ed1fe3131f2cfce",
+      "original_position" : 13,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57207024,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133964122",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133965567"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133965567"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "No need to chain:\r\n```cpp\r\nif (fUnlock && !is_locked) {\r\n    throw ...;\r\n}\r\n\r\nif (!fUnlock && is_locked) {\r\n    throw ...;\r\n}\r\n\r\n...\r\n```",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T13:59:11Z",
+      "diff_hunk" : "@@ -2397,6 +2399,40 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool isLocked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133965567",
+      "id" : 133965567,
+      "original_commit_id" : "fae526df06110c88b51338024ed1fe3131f2cfce",
+      "original_position" : 15,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57207024,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133965567",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133966620"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133966620"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I think is must be either `ISMINE_SPENDABLE` or `ISMINE_WATCH_SOLVABLE`?",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T14:03:47Z",
+      "diff_hunk" : "@@ -2397,6 +2399,40 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool isLocked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock)\n+        {\n+            if (!isLocked)\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+        else if (!isLocked)\n+        {\n+            if (pwallet->IsSpent(outpt.hash, outpt.n))\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected unspent output\");\n+\n+            const auto it = pwallet->mapWallet.find(outpt.hash);\n+            if (it == pwallet->mapWallet.end())\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, unknown transaction\");\n+\n+            const CWalletTx& trans = it->second;\n+\n+            if (outpt.n >= trans.tx->vout.size())\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, vout index out of bounds\");\n+\n+            if (pwallet->IsMine(trans.tx->vout[outpt.n]) == ISMINE_NO)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133966620",
+      "id" : 133966620,
+      "original_commit_id" : "fae526df06110c88b51338024ed1fe3131f2cfce",
+      "original_position" : 34,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57207024,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133966620",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133973376"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133973376"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Do we really have to test `IsMine` and all? In the wallet it's just a `std::set<COutPoint>`, so IMO is enough to check:\r\n- if the input is valid output\r\n- if the lock state is compatible with the argument.\r\n\r\nBut if there is interest in doing these tests, then perform the cheapest first.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T14:33:18Z",
+      "diff_hunk" : "@@ -2397,6 +2399,40 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool isLocked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock)\n+        {\n+            if (!isLocked)\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+        else if (!isLocked)\n+        {\n+            if (pwallet->IsSpent(outpt.hash, outpt.n))\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected unspent output\");\n+\n+            const auto it = pwallet->mapWallet.find(outpt.hash);\n+            if (it == pwallet->mapWallet.end())\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, unknown transaction\");\n+\n+            const CWalletTx& trans = it->second;\n+\n+            if (outpt.n >= trans.tx->vout.size())\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, vout index out of bounds\");\n+\n+            if (pwallet->IsMine(trans.tx->vout[outpt.n]) == ISMINE_NO)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133973376",
+      "id" : 133973376,
+      "in_reply_to_id" : 133966620,
+      "original_commit_id" : "fae526df06110c88b51338024ed1fe3131f2cfce",
+      "original_position" : 34,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57218061,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133973376",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133975714"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133975714"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Thanks for the review! Are you absolutely sure that attempting to lock an already locked output should be an error?",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T14:43:06Z",
+      "diff_hunk" : "@@ -2397,6 +2399,40 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool isLocked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133975714",
+      "id" : 133975714,
+      "in_reply_to_id" : 133965567,
+      "original_commit_id" : "fae526df06110c88b51338024ed1fe3131f2cfce",
+      "original_position" : 15,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57220807,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133975714",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133976609"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133976609"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "IMO yes, it indicates it was locked by other client and as such it is not yours to use?",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T14:46:30Z",
+      "diff_hunk" : "@@ -2397,6 +2399,40 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool isLocked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133976609",
+      "id" : 133976609,
+      "in_reply_to_id" : 133965567,
+      "original_commit_id" : "fae526df06110c88b51338024ed1fe3131f2cfce",
+      "original_position" : 15,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57221839,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133976609",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133979449"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133979449"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Ok, makes sense!",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T14:58:01Z",
+      "diff_hunk" : "@@ -2397,6 +2399,40 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool isLocked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133979449",
+      "id" : 133979449,
+      "in_reply_to_id" : 133965567,
+      "original_commit_id" : "fae526df06110c88b51338024ed1fe3131f2cfce",
+      "original_position" : 15,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57225216,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133979449",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133979518"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133979518"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I'll remove the check for now. It can always be added later.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T14:58:17Z",
+      "diff_hunk" : "@@ -2397,6 +2399,40 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool isLocked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock)\n+        {\n+            if (!isLocked)\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+        else if (!isLocked)\n+        {\n+            if (pwallet->IsSpent(outpt.hash, outpt.n))\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected unspent output\");\n+\n+            const auto it = pwallet->mapWallet.find(outpt.hash);\n+            if (it == pwallet->mapWallet.end())\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, unknown transaction\");\n+\n+            const CWalletTx& trans = it->second;\n+\n+            if (outpt.n >= trans.tx->vout.size())\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, vout index out of bounds\");\n+\n+            if (pwallet->IsMine(trans.tx->vout[outpt.n]) == ISMINE_NO)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133979518",
+      "id" : 133979518,
+      "in_reply_to_id" : 133966620,
+      "original_commit_id" : "fae526df06110c88b51338024ed1fe3131f2cfce",
+      "original_position" : 34,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57225307,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133979518",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "body" : "Amended to:\r\n- comply with variable naming policy\r\n- reject attempts to lock already locked outputs\r\n- remove MINE check",
+      "created_at" : "2017-08-18T14:59:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#issuecomment-323377048",
+      "id" : 323377048,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11087",
+      "updated_at" : "2017-08-18T14:59:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323377048",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133981979"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133981979"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Missing `{}` and `{` is one the same line. Same below. See [developer notes](https://github.com/bitcoin/bitcoin/blob/master/doc/developer-notes.md).",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T15:07:54Z",
+      "diff_hunk" : "@@ -2397,6 +2399,38 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133981979",
+      "id" : 133981979,
+      "original_commit_id" : "764ab3a6d92954e698f13f2b6b4cefde205158a3",
+      "original_position" : 15,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57228083,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133981979",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133983628"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133983628"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Will do! Thanks for caring about consistent style. :)",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-18T15:14:22Z",
+      "diff_hunk" : "@@ -2397,6 +2399,38 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r133983628",
+      "id" : 133983628,
+      "in_reply_to_id" : 133981979,
+      "original_commit_id" : "764ab3a6d92954e698f13f2b6b4cefde205158a3",
+      "original_position" : 15,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 57229962,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133983628",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "body" : "Amended to use curly brackets in accordance with developer notes.",
+      "created_at" : "2017-08-18T15:15:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#issuecomment-323381252",
+      "id" : 323381252,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11087",
+      "updated_at" : "2017-08-18T15:15:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323381252",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "body" : "utACK https://github.com/bitcoin/bitcoin/pull/11087/commits/918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "created_at" : "2017-08-19T01:30:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#issuecomment-323491618",
+      "id" : 323491618,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11087",
+      "updated_at" : "2017-08-19T01:30:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323491618",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "body" : "utACK https://github.com/bitcoin/bitcoin/pull/11087/commits/918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "created_at" : "2017-08-22T15:57:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#issuecomment-324071559",
+      "id" : 324071559,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11087",
+      "updated_at" : "2017-08-22T15:57:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324071559",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628652"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628652"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Assert complete error message? cc @jnewbery",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-22T23:51:22Z",
+      "diff_hunk" : "@@ -93,11 +93,17 @@ def run_test(self):\n         # Exercise locking of unspent outputs\n         unspent_0 = self.nodes[2].listunspent()[0]\n         unspent_0 = {\"txid\": unspent_0[\"txid\"], \"vout\": unspent_0[\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"expected locked output\", self.nodes[2].lockunspent, True, [unspent_0])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628652",
+      "id" : 134628652,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 4,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 57942466,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628652",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628688"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628688"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Same as above.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-22T23:51:36Z",
+      "diff_hunk" : "@@ -93,11 +93,17 @@ def run_test(self):\n         # Exercise locking of unspent outputs\n         unspent_0 = self.nodes[2].listunspent()[0]\n         unspent_0 = {\"txid\": unspent_0[\"txid\"], \"vout\": unspent_0[\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"expected locked output\", self.nodes[2].lockunspent, True, [unspent_0])\n         self.nodes[2].lockunspent(False, [unspent_0])\n+        assert_raises_jsonrpc(-8, \"output already locked\", self.nodes[2].lockunspent, False, [unspent_0])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628688",
+      "id" : 134628688,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 6,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 57942466,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628688",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628801"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628801"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Same as above.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-22T23:52:27Z",
+      "diff_hunk" : "@@ -93,11 +93,17 @@ def run_test(self):\n         # Exercise locking of unspent outputs\n         unspent_0 = self.nodes[2].listunspent()[0]\n         unspent_0 = {\"txid\": unspent_0[\"txid\"], \"vout\": unspent_0[\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"expected locked output\", self.nodes[2].lockunspent, True, [unspent_0])\n         self.nodes[2].lockunspent(False, [unspent_0])\n+        assert_raises_jsonrpc(-8, \"output already locked\", self.nodes[2].lockunspent, False, [unspent_0])\n         assert_raises_jsonrpc(-4, \"Insufficient funds\", self.nodes[2].sendtoaddress, self.nodes[2].getnewaddress(), 20)\n         assert_equal([unspent_0], self.nodes[2].listlockunspent())\n         self.nodes[2].lockunspent(True, [unspent_0])\n         assert_equal(len(self.nodes[2].listlockunspent()), 0)\n+        assert_raises_jsonrpc(-8, \"unknown transaction\",",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628801",
+      "id" : 134628801,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 11,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 57942466,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628801",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628812"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628812"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Same as above.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-22T23:52:34Z",
+      "diff_hunk" : "@@ -93,11 +93,17 @@ def run_test(self):\n         # Exercise locking of unspent outputs\n         unspent_0 = self.nodes[2].listunspent()[0]\n         unspent_0 = {\"txid\": unspent_0[\"txid\"], \"vout\": unspent_0[\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"expected locked output\", self.nodes[2].lockunspent, True, [unspent_0])\n         self.nodes[2].lockunspent(False, [unspent_0])\n+        assert_raises_jsonrpc(-8, \"output already locked\", self.nodes[2].lockunspent, False, [unspent_0])\n         assert_raises_jsonrpc(-4, \"Insufficient funds\", self.nodes[2].sendtoaddress, self.nodes[2].getnewaddress(), 20)\n         assert_equal([unspent_0], self.nodes[2].listlockunspent())\n         self.nodes[2].lockunspent(True, [unspent_0])\n         assert_equal(len(self.nodes[2].listlockunspent()), 0)\n+        assert_raises_jsonrpc(-8, \"unknown transaction\",\n+          self.nodes[2].lockunspent, False, [{\"txid\": \"0000000000000000000000000000000000\", \"vout\": 0}])\n+        assert_raises_jsonrpc(-8, \"vout index out of bounds\",",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628812",
+      "id" : 134628812,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 13,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 57942466,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628812",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628843"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628843"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Same as above.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-22T23:52:46Z",
+      "diff_hunk" : "@@ -136,6 +142,10 @@ def run_test(self):\n         assert_equal(self.nodes[2].getbalance(), 94)\n         assert_equal(self.nodes[2].getbalance(\"from1\"), 94-21)\n \n+        # Verify that a spent output cannot be locked anymore\n+        spent_0 = {\"txid\" : node0utxos[0][\"txid\"], \"vout\" : node0utxos[0][\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"expected unspent output\", self.nodes[2].lockunspent, False, [spent_0])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r134628843",
+      "id" : 134628843,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 24,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 57942466,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134628843",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135064450"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135064450"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Personally, I don't think the complete error message needs to be asserted, as long as the string is long enough to disambiguate. But also fine to change this to the complete string.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-24T16:26:08Z",
+      "diff_hunk" : "@@ -93,11 +93,17 @@ def run_test(self):\n         # Exercise locking of unspent outputs\n         unspent_0 = self.nodes[2].listunspent()[0]\n         unspent_0 = {\"txid\": unspent_0[\"txid\"], \"vout\": unspent_0[\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"expected locked output\", self.nodes[2].lockunspent, True, [unspent_0])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135064450",
+      "id" : 135064450,
+      "in_reply_to_id" : 134628652,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 4,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 58434093,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135064450",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135297929"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135297929"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Why are these three checks (\"expected unspent\", \"unknown transaction\" and \"vout index out of bounds\") only done when trying to lock? Isn't it equally invalid to try to unlock bad txouts? Can you place these three checks above the `const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);` line?",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-25T16:18:00Z",
+      "diff_hunk" : "@@ -2397,6 +2399,42 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+\n+        if (!fUnlock) {\n+            if (is_locked) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, output already locked\");\n+            }\n+\n+            if (pwallet->IsSpent(outpt.hash, outpt.n)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135297929",
+      "id" : 135297929,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 24,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 58699004,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135297929",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135298270"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135298270"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "You could save reparsing the json by saving a vector of `COutPoint`s in the first pass.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-25T16:19:36Z",
+      "diff_hunk" : "@@ -2397,6 +2399,42 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+\n+        if (!fUnlock) {\n+            if (is_locked) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, output already locked\");\n+            }\n+\n+            if (pwallet->IsSpent(outpt.hash, outpt.n)) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected unspent output\");\n+            }\n+\n+            const auto it = pwallet->mapWallet.find(outpt.hash);\n+            if (it == pwallet->mapWallet.end()) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, unknown transaction\");\n+            }\n+\n+            const CWalletTx& trans = it->second;\n+\n+            if (outpt.n >= trans.tx->vout.size()) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, vout index out of bounds\");\n+            }\n+        }\n+    }\n+\n+    // Atomically set (un)locked status for the outputs.\n+    for (unsigned int idx = 0; idx < outputs.size(); idx++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135298270",
+      "id" : 135298270,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 42,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 58699004,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135298270",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135358985"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135358985"
+         }
+      },
+      "author_association" : "NONE",
+      "body" : "These loops don't do any json parsing, because the data is already in a UniValue. The `find_value` calls find the desired value in UniValue's internal std::vector of values.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-25T21:41:23Z",
+      "diff_hunk" : "@@ -2397,6 +2399,42 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+\n+        if (!fUnlock) {\n+            if (is_locked) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, output already locked\");\n+            }\n+\n+            if (pwallet->IsSpent(outpt.hash, outpt.n)) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected unspent output\");\n+            }\n+\n+            const auto it = pwallet->mapWallet.find(outpt.hash);\n+            if (it == pwallet->mapWallet.end()) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, unknown transaction\");\n+            }\n+\n+            const CWalletTx& trans = it->second;\n+\n+            if (outpt.n >= trans.tx->vout.size()) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, vout index out of bounds\");\n+            }\n+        }\n+    }\n+\n+    // Atomically set (un)locked status for the outputs.\n+    for (unsigned int idx = 0; idx < outputs.size(); idx++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135358985",
+      "id" : 135358985,
+      "in_reply_to_id" : 135298270,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 42,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 58769989,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135358985",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/22357?v=4",
+         "events_url" : "https://api.github.com/users/Eelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Eelis/followers",
+         "following_url" : "https://api.github.com/users/Eelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Eelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Eelis",
+         "id" : 22357,
+         "login" : "Eelis",
+         "organizations_url" : "https://api.github.com/users/Eelis/orgs",
+         "received_events_url" : "https://api.github.com/users/Eelis/received_events",
+         "repos_url" : "https://api.github.com/users/Eelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Eelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Eelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Eelis"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135386051"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135386051"
+         }
+      },
+      "author_association" : "NONE",
+      "body" : "The idea was that in all three of those cases (already spent output, unknown transaction, and vout index out of bounds), `IsLockedCoin` should already have returned false, so checking `!is_locked` should be enough.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-26T09:57:53Z",
+      "diff_hunk" : "@@ -2397,6 +2399,42 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+\n+        if (!fUnlock) {\n+            if (is_locked) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, output already locked\");\n+            }\n+\n+            if (pwallet->IsSpent(outpt.hash, outpt.n)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135386051",
+      "id" : 135386051,
+      "in_reply_to_id" : 135297929,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 24,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 58798316,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135386051",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/22357?v=4",
+         "events_url" : "https://api.github.com/users/Eelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Eelis/followers",
+         "following_url" : "https://api.github.com/users/Eelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Eelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Eelis",
+         "id" : 22357,
+         "login" : "Eelis",
+         "organizations_url" : "https://api.github.com/users/Eelis/orgs",
+         "received_events_url" : "https://api.github.com/users/Eelis/received_events",
+         "repos_url" : "https://api.github.com/users/Eelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Eelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Eelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Eelis"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135548030"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135548030"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "You're right. There's no reparsing the JSON, just rereading the string and reconstructing the COutPoint.\r\n\r\nI think either way is fine. Whichever you prefer.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-28T15:04:06Z",
+      "diff_hunk" : "@@ -2397,6 +2399,42 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+\n+        if (!fUnlock) {\n+            if (is_locked) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, output already locked\");\n+            }\n+\n+            if (pwallet->IsSpent(outpt.hash, outpt.n)) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected unspent output\");\n+            }\n+\n+            const auto it = pwallet->mapWallet.find(outpt.hash);\n+            if (it == pwallet->mapWallet.end()) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, unknown transaction\");\n+            }\n+\n+            const CWalletTx& trans = it->second;\n+\n+            if (outpt.n >= trans.tx->vout.size()) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, vout index out of bounds\");\n+            }\n+        }\n+    }\n+\n+    // Atomically set (un)locked status for the outputs.\n+    for (unsigned int idx = 0; idx < outputs.size(); idx++) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135548030",
+      "id" : 135548030,
+      "in_reply_to_id" : 135298270,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 42,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 58970223,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135548030",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135548849"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135548849"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "I agree that the function will correctly return an error, but I think that it's better to return the more precise error if possible. `expected unspent output`, `unknown transaction` and `vout index out of bounds` are better to return than `expected locked output` (the last could infer that the outpoint exists but is unlocked).",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-28T15:07:35Z",
+      "diff_hunk" : "@@ -2397,6 +2399,42 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+\n+        if (!fUnlock) {\n+            if (is_locked) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, output already locked\");\n+            }\n+\n+            if (pwallet->IsSpent(outpt.hash, outpt.n)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135548849",
+      "id" : 135548849,
+      "in_reply_to_id" : 135297929,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 24,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 58971177,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135548849",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135651295"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651295"
+         }
+      },
+      "author_association" : "NONE",
+      "body" : "Makes sense, I'll make the errors more precise.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-28T22:27:04Z",
+      "diff_hunk" : "@@ -2397,6 +2399,42 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n         COutPoint outpt(uint256S(txid), nOutput);\n \n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+\n+        if (!fUnlock) {\n+            if (is_locked) {\n+                throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, output already locked\");\n+            }\n+\n+            if (pwallet->IsSpent(outpt.hash, outpt.n)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r135651295",
+      "id" : 135651295,
+      "in_reply_to_id" : 135297929,
+      "original_commit_id" : "918b6db42b12d86a01bdb70a4fc50244aa2ce623",
+      "original_position" : 24,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 59086500,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/135651295",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/22357?v=4",
+         "events_url" : "https://api.github.com/users/Eelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Eelis/followers",
+         "following_url" : "https://api.github.com/users/Eelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Eelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Eelis",
+         "id" : 22357,
+         "login" : "Eelis",
+         "organizations_url" : "https://api.github.com/users/Eelis/orgs",
+         "received_events_url" : "https://api.github.com/users/Eelis/received_events",
+         "repos_url" : "https://api.github.com/users/Eelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Eelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Eelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Eelis"
+      }
+   },
+   {
+      "body" : "Amended to:\r\n- store COutPoints in vector instead of recomputing them\r\n- include \"invalid parameter:\" error prefix in expectations in test\r\n- make unlock errors more precise\r\n\r\n@ryanofsky Unfortunately, range-for cannot be used to iterate over a UniValue because it does not provide begin()/end().\r\n\r\nThanks for the feedback!\r\n",
+      "created_at" : "2017-08-29T08:45:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#issuecomment-325597154",
+      "id" : 325597154,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11087",
+      "updated_at" : "2017-08-29T08:45:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/325597154",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136415208"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136415208"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "You can remove this check entirely. Type checking is done by the `UniValue.get_xxx()` functions, and returns almost an identical error to that given by this explicit check.\r\n\r\nWith the explicit check:\r\n\r\n```\r\nÃ¢ÂÂ bitcoin-cli -rpcwallet=w1 lockunspent true [\\\"string\\\"]\r\nerror code: -8\r\nerror message:\r\nInvalid parameter, expected\r\n```\r\n\r\nwithout:\r\n\r\n```\r\nÃ¢ÂÂ bitcoin-cli -rpcwallet=w1 lockunspent true [\\\"string\\\"]\r\nerror code: -1\r\nerror message:\r\nJSON value is not an object as expected\r\n```\r\nThe implicit `get_xxx()` check is used extensively in other RPCs.\r\n\r\nYou can also combine the line below with above:\r\n\r\n```\r\nconst UniValue& o = request.params[1].get_obj();\r\n```",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-31T18:36:59Z",
+      "diff_hunk" : "@@ -2389,33 +2389,72 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n     RPCTypeCheckArgument(request.params[1], UniValue::VARR);\n \n-    UniValue outputs = request.params[1].get_array();\n-    for (unsigned int idx = 0; idx < outputs.size(); idx++) {\n-        const UniValue& output = outputs[idx];\n-        if (!output.isObject())\n+    const UniValue output_params = request.params[1];\n+\n+    // Create and validate the COutPoints first.\n+\n+    std::vector<COutPoint> outputs;\n+    outputs.reserve(output_params.size());\n+\n+    for (unsigned int idx = 0; idx < output_params.size(); idx++) {\n+         const UniValue& param = output_params[idx];\n+\n+        if (!param.isObject()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136415208",
+      "id" : 136415208,
+      "original_commit_id" : "82937c042177fc04361850327d2489a3b28ea81c",
+      "original_position" : 18,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 59952168,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136415208",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136415436"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136415436"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "In contrast to my comment above, it makes sense to keep these. `RPCTypeCheckObj` provides slightly more information (both the type expected and type received)",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-31T18:37:46Z",
+      "diff_hunk" : "@@ -2389,33 +2389,72 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n     RPCTypeCheckArgument(request.params[1], UniValue::VARR);\n \n-    UniValue outputs = request.params[1].get_array();\n-    for (unsigned int idx = 0; idx < outputs.size(); idx++) {\n-        const UniValue& output = outputs[idx];\n-        if (!output.isObject())\n+    const UniValue output_params = request.params[1];\n+\n+    // Create and validate the COutPoints first.\n+\n+    std::vector<COutPoint> outputs;\n+    outputs.reserve(output_params.size());\n+\n+    for (unsigned int idx = 0; idx < output_params.size(); idx++) {\n+         const UniValue& param = output_params[idx];\n+\n+        if (!param.isObject()) {\n             throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected object\");\n-        const UniValue& o = output.get_obj();\n+        }\n+\n+        const UniValue& o = param.get_obj();\n \n         RPCTypeCheckObj(o,",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136415436",
+      "id" : 136415436,
+      "original_commit_id" : "82937c042177fc04361850327d2489a3b28ea81c",
+      "original_position" : 25,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 59952168,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136415436",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136415671"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136415671"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "This is the bug. `lockunspent()` should be called on `self.nodes[0]`, not `self.nodes[2]`",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-31T18:38:37Z",
+      "diff_hunk" : "@@ -144,6 +150,10 @@ def run_test(self):\n         assert_equal(self.nodes[2].getbalance(), 94)\n         assert_equal(self.nodes[2].getbalance(\"from1\"), 94-21)\n \n+        # Verify that a spent output cannot be locked anymore\n+        spent_0 = {\"txid\": node0utxos[0][\"txid\"], \"vout\": node0utxos[0][\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"Invalid parameter, expected unspent output\", self.nodes[2].lockunspent, False, [spent_0])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136415671",
+      "id" : 136415671,
+      "original_commit_id" : "82937c042177fc04361850327d2489a3b28ea81c",
+      "original_position" : 24,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 59952168,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136415671",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136418450"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136418450"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "I personally don't like this indentation style. It looks like something between a new line and a new code block.\r\n\r\nWould you mind aligning this continuation line with the opening parens:\r\n\r\n```python\r\n    assert_raises_jsonrpc(-8, \"Invalid parameter, unknown transaction\",\r\n                          self.nodes[2].lockunspent, False, [{\"txid\": \"0000000000000000000000000000000000\", \"vout\": 0}])\r\n```\r\n\r\nsame below",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-08-31T18:49:32Z",
+      "diff_hunk" : "@@ -101,11 +101,17 @@ def run_test(self):\n         # Exercise locking of unspent outputs\n         unspent_0 = self.nodes[2].listunspent()[0]\n         unspent_0 = {\"txid\": unspent_0[\"txid\"], \"vout\": unspent_0[\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"Invalid parameter, expected locked output\", self.nodes[2].lockunspent, True, [unspent_0])\n         self.nodes[2].lockunspent(False, [unspent_0])\n+        assert_raises_jsonrpc(-8, \"Invalid parameter, output already locked\", self.nodes[2].lockunspent, False, [unspent_0])\n         assert_raises_jsonrpc(-4, \"Insufficient funds\", self.nodes[2].sendtoaddress, self.nodes[2].getnewaddress(), 20)\n         assert_equal([unspent_0], self.nodes[2].listlockunspent())\n         self.nodes[2].lockunspent(True, [unspent_0])\n         assert_equal(len(self.nodes[2].listlockunspent()), 0)\n+        assert_raises_jsonrpc(-8, \"Invalid parameter, unknown transaction\",\n+          self.nodes[2].lockunspent, False, [{\"txid\": \"0000000000000000000000000000000000\", \"vout\": 0}])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136418450",
+      "id" : 136418450,
+      "original_commit_id" : "82937c042177fc04361850327d2489a3b28ea81c",
+      "original_position" : 12,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 59955730,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136418450",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136531131"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136531131"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Thanks! This one stumped me because for some reason when I ran the wallet tests locally, they didn't fail..",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-09-01T09:11:10Z",
+      "diff_hunk" : "@@ -144,6 +150,10 @@ def run_test(self):\n         assert_equal(self.nodes[2].getbalance(), 94)\n         assert_equal(self.nodes[2].getbalance(\"from1\"), 94-21)\n \n+        # Verify that a spent output cannot be locked anymore\n+        spent_0 = {\"txid\": node0utxos[0][\"txid\"], \"vout\": node0utxos[0][\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"Invalid parameter, expected unspent output\", self.nodes[2].lockunspent, False, [spent_0])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136531131",
+      "id" : 136531131,
+      "in_reply_to_id" : 136415671,
+      "original_commit_id" : "82937c042177fc04361850327d2489a3b28ea81c",
+      "original_position" : 24,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 60082881,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136531131",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "author_association" : "NONE",
+      "body" : "Amended to:\r\n\r\n- remove isObject check\r\n- indent continued function call lines to match opening parenthesis\r\n- call lockunspent on correct node in test",
+      "created_at" : "2017-09-01T09:36:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#issuecomment-326536740",
+      "id" : 326536740,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11087",
+      "updated_at" : "2017-09-01T09:36:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326536740",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136564156"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136564156"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Yes! I saw the same thing. Very odd. h/t @sdaftuar for spotting the bug.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-09-01T12:33:11Z",
+      "diff_hunk" : "@@ -144,6 +150,10 @@ def run_test(self):\n         assert_equal(self.nodes[2].getbalance(), 94)\n         assert_equal(self.nodes[2].getbalance(\"from1\"), 94-21)\n \n+        # Verify that a spent output cannot be locked anymore\n+        spent_0 = {\"txid\": node0utxos[0][\"txid\"], \"vout\": node0utxos[0][\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"Invalid parameter, expected unspent output\", self.nodes[2].lockunspent, False, [spent_0])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r136564156",
+      "id" : 136564156,
+      "in_reply_to_id" : 136415671,
+      "original_commit_id" : "82937c042177fc04361850327d2489a3b28ea81c",
+      "original_position" : 24,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 60122004,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/136564156",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Tested ACK fe2c95bda22c21252709cc1088d7e61a8c8b1df8. Looks great. Thanks for being receptive to all my feedback!",
+      "created_at" : "2017-09-01T13:27:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#issuecomment-326579724",
+      "id" : 326579724,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11087",
+      "updated_at" : "2017-09-01T13:27:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326579724",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r143553206"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143553206"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Needs rebase and replace with \"assert_raises_rpc_error\"",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-10-09T19:10:26Z",
+      "diff_hunk" : "@@ -144,6 +152,10 @@ def run_test(self):\n         assert_equal(self.nodes[2].getbalance(), 94)\n         assert_equal(self.nodes[2].getbalance(\"from1\"), 94-21)\n \n+        # Verify that a spent output cannot be locked anymore\n+        spent_0 = {\"txid\": node0utxos[0][\"txid\"], \"vout\": node0utxos[0][\"vout\"]}\n+        assert_raises_jsonrpc(-8, \"Invalid parameter, expected unspent output\", self.nodes[0].lockunspent, False, [spent_0])",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r143553206",
+      "id" : 143553206,
+      "original_commit_id" : "fe2c95bda22c21252709cc1088d7e61a8c8b1df8",
+      "original_position" : 26,
+      "path" : "test/functional/wallet.py",
+      "position" : null,
+      "pull_request_review_id" : 68080801,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143553206",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r143850484"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143850484"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Could declare as `const UniValue&` to avoid copying params.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-10-10T20:58:29Z",
+      "diff_hunk" : "@@ -2389,33 +2389,66 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n     RPCTypeCheckArgument(request.params[1], UniValue::VARR);\n \n-    UniValue outputs = request.params[1].get_array();\n-    for (unsigned int idx = 0; idx < outputs.size(); idx++) {\n-        const UniValue& output = outputs[idx];\n-        if (!output.isObject())\n-            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected object\");\n-        const UniValue& o = output.get_obj();\n+    const UniValue output_params = request.params[1];",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r143850484",
+      "id" : 143850484,
+      "original_commit_id" : "fe2c95bda22c21252709cc1088d7e61a8c8b1df8",
+      "original_position" : 10,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 68424001,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143850484",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r143851454"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143851454"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Could declare as `const std::string&` to avoid copying string.",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-10-10T21:02:29Z",
+      "diff_hunk" : "@@ -2389,33 +2389,66 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n     RPCTypeCheckArgument(request.params[1], UniValue::VARR);\n \n-    UniValue outputs = request.params[1].get_array();\n-    for (unsigned int idx = 0; idx < outputs.size(); idx++) {\n-        const UniValue& output = outputs[idx];\n-        if (!output.isObject())\n-            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected object\");\n-        const UniValue& o = output.get_obj();\n+    const UniValue output_params = request.params[1];\n+\n+    // Create and validate the COutPoints first.\n+\n+    std::vector<COutPoint> outputs;\n+    outputs.reserve(output_params.size());\n+\n+    for (unsigned int idx = 0; idx < output_params.size(); idx++) {\n+        const UniValue& o = output_params[idx].get_obj();\n \n         RPCTypeCheckObj(o,\n             {\n                 {\"txid\", UniValueType(UniValue::VSTR)},\n                 {\"vout\", UniValueType(UniValue::VNUM)},\n             });\n \n-        std::string txid = find_value(o, \"txid\").get_str();\n-        if (!IsHex(txid))\n+        const std::string txid = find_value(o, \"txid\").get_str();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r143851454",
+      "id" : 143851454,
+      "original_commit_id" : "fe2c95bda22c21252709cc1088d7e61a8c8b1df8",
+      "original_position" : 28,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 68424001,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T14:01:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/143851454",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Amended/rebased to:\r\n- use `assert_raises_rpc_error`;\r\n- use references to avoid copying a UniValue and std::string, as suggested by ryanofsky.",
+      "created_at" : "2017-10-12T14:04:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#issuecomment-336147475",
+      "id" : 336147475,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11087",
+      "updated_at" : "2017-10-12T14:04:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336147475",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/31100282?v=4",
+         "events_url" : "https://api.github.com/users/BitonicEelis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BitonicEelis/followers",
+         "following_url" : "https://api.github.com/users/BitonicEelis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BitonicEelis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BitonicEelis",
+         "id" : 31100282,
+         "login" : "BitonicEelis",
+         "organizations_url" : "https://api.github.com/users/BitonicEelis/orgs",
+         "received_events_url" : "https://api.github.com/users/BitonicEelis/received_events",
+         "repos_url" : "https://api.github.com/users/BitonicEelis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BitonicEelis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BitonicEelis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BitonicEelis"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r144437376"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144437376"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "Coding style nit; if with else always needs braces/indentation (I know the original code you're rewriting wasn't following this convention, but in new code we try to).",
+      "commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "created_at" : "2017-10-12T23:45:13Z",
+      "diff_hunk" : "@@ -2447,33 +2447,66 @@ UniValue lockunspent(const JSONRPCRequest& request)\n \n     RPCTypeCheckArgument(request.params[1], UniValue::VARR);\n \n-    UniValue outputs = request.params[1].get_array();\n-    for (unsigned int idx = 0; idx < outputs.size(); idx++) {\n-        const UniValue& output = outputs[idx];\n-        if (!output.isObject())\n-            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected object\");\n-        const UniValue& o = output.get_obj();\n+    const UniValue& output_params = request.params[1];\n+\n+    // Create and validate the COutPoints first.\n+\n+    std::vector<COutPoint> outputs;\n+    outputs.reserve(output_params.size());\n+\n+    for (unsigned int idx = 0; idx < output_params.size(); idx++) {\n+        const UniValue& o = output_params[idx].get_obj();\n \n         RPCTypeCheckObj(o,\n             {\n                 {\"txid\", UniValueType(UniValue::VSTR)},\n                 {\"vout\", UniValueType(UniValue::VNUM)},\n             });\n \n-        std::string txid = find_value(o, \"txid\").get_str();\n-        if (!IsHex(txid))\n+        const std::string& txid = find_value(o, \"txid\").get_str();\n+        if (!IsHex(txid)) {\n             throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected hex txid\");\n+        }\n \n-        int nOutput = find_value(o, \"vout\").get_int();\n-        if (nOutput < 0)\n+        const int nOutput = find_value(o, \"vout\").get_int();\n+        if (nOutput < 0) {\n             throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, vout must be positive\");\n+        }\n \n-        COutPoint outpt(uint256S(txid), nOutput);\n+        const COutPoint outpt(uint256S(txid), nOutput);\n \n-        if (fUnlock)\n-            pwallet->UnlockCoin(outpt);\n-        else\n-            pwallet->LockCoin(outpt);\n+        const auto it = pwallet->mapWallet.find(outpt.hash);\n+        if (it == pwallet->mapWallet.end()) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, unknown transaction\");\n+        }\n+\n+        const CWalletTx& trans = it->second;\n+\n+        if (outpt.n >= trans.tx->vout.size()) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, vout index out of bounds\");\n+        }\n+\n+        if (pwallet->IsSpent(outpt.hash, outpt.n)) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected unspent output\");\n+        }\n+\n+        const bool is_locked = pwallet->IsLockedCoin(outpt.hash, outpt.n);\n+\n+        if (fUnlock && !is_locked) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, expected locked output\");\n+        }\n+\n+        if (!fUnlock && is_locked) {\n+            throw JSONRPCError(RPC_INVALID_PARAMETER, \"Invalid parameter, output already locked\");\n+        }\n+\n+        outputs.push_back(outpt);\n+    }\n+\n+    // Atomically set (un)locked status for the outputs.\n+    for (const COutPoint& outpt : outputs) {\n+        if (fUnlock) pwallet->UnlockCoin(outpt);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11087#discussion_r144437376",
+      "id" : 144437376,
+      "original_commit_id" : "28f8b6657764c7746645a6e75dfb09ffc0597322",
+      "original_position" : 77,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 77,
+      "pull_request_review_id" : 69095284,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11087",
+      "updated_at" : "2017-10-12T23:51:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144437376",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

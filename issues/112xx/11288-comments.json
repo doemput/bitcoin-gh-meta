@@ -1,0 +1,230 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11288#discussion_r138023331"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11288"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/138023331"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Nit:\r\n```cpp\r\n// Unable to sign input and verification failed (possible attempt to partially sign).\r\n```",
+      "commit_id" : "df10edfd03fe4c9d1eca43a17ac4c54a14ac4832",
+      "created_at" : "2017-09-11T09:37:50Z",
+      "diff_hunk" : "@@ -873,7 +873,13 @@ UniValue signrawtransaction(const JSONRPCRequest& request)\n \n         ScriptError serror = SCRIPT_ERR_OK;\n         if (!VerifyScript(txin.scriptSig, prevPubKey, &txin.scriptWitness, STANDARD_SCRIPT_VERIFY_FLAGS, TransactionSignatureChecker(&txConst, i, amount), &serror)) {\n-            TxInErrorToJSON(txin, vErrors, ScriptErrorString(serror));\n+            if(serror == SCRIPT_ERR_INVALID_STACK_OPERATION) {\n+                // we haven't been able to sign this input and verification failed, could be attempting to partially sign",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11288#discussion_r138023331",
+      "id" : 138023331,
+      "original_commit_id" : "b0a1413ea15b39dc74f337bc1f2d84804debd620",
+      "original_position" : 6,
+      "path" : "src/rpc/rawtransaction.cpp",
+      "position" : null,
+      "pull_request_review_id" : 61764416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11288",
+      "updated_at" : "2017-09-11T10:15:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/138023331",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11288#discussion_r138023378"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11288"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/138023378"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Nit, remove comment.",
+      "commit_id" : "df10edfd03fe4c9d1eca43a17ac4c54a14ac4832",
+      "created_at" : "2017-09-11T09:38:07Z",
+      "diff_hunk" : "@@ -873,7 +873,13 @@ UniValue signrawtransaction(const JSONRPCRequest& request)\n \n         ScriptError serror = SCRIPT_ERR_OK;\n         if (!VerifyScript(txin.scriptSig, prevPubKey, &txin.scriptWitness, STANDARD_SCRIPT_VERIFY_FLAGS, TransactionSignatureChecker(&txConst, i, amount), &serror)) {\n-            TxInErrorToJSON(txin, vErrors, ScriptErrorString(serror));\n+            if(serror == SCRIPT_ERR_INVALID_STACK_OPERATION) {\n+                // we haven't been able to sign this input and verification failed, could be attempting to partially sign\n+                TxInErrorToJSON(txin, vErrors, \"Unable to sign input, invalid stack size (possibly missing key)\");\n+            } else {\n+               // some other issue",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11288#discussion_r138023378",
+      "id" : 138023378,
+      "original_commit_id" : "b0a1413ea15b39dc74f337bc1f2d84804debd620",
+      "original_position" : 9,
+      "path" : "src/rpc/rawtransaction.cpp",
+      "position" : null,
+      "pull_request_review_id" : 61764416,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11288",
+      "updated_at" : "2017-09-11T10:15:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/138023378",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11288#discussion_r138023586"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11288"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/138023586"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Missing space after `if`.",
+      "commit_id" : "df10edfd03fe4c9d1eca43a17ac4c54a14ac4832",
+      "created_at" : "2017-09-11T09:39:09Z",
+      "diff_hunk" : "@@ -873,7 +873,13 @@ UniValue signrawtransaction(const JSONRPCRequest& request)\n \n         ScriptError serror = SCRIPT_ERR_OK;\n         if (!VerifyScript(txin.scriptSig, prevPubKey, &txin.scriptWitness, STANDARD_SCRIPT_VERIFY_FLAGS, TransactionSignatureChecker(&txConst, i, amount), &serror)) {\n-            TxInErrorToJSON(txin, vErrors, ScriptErrorString(serror));\n+            if(serror == SCRIPT_ERR_INVALID_STACK_OPERATION) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11288#discussion_r138023586",
+      "id" : 138023586,
+      "original_commit_id" : "b0a1413ea15b39dc74f337bc1f2d84804debd620",
+      "original_position" : 5,
+      "path" : "src/rpc/rawtransaction.cpp",
+      "position" : null,
+      "pull_request_review_id" : 61764703,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11288",
+      "updated_at" : "2017-09-11T10:15:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/138023586",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "utACK, to me honest this caught me off-guard too the first time I used multi-signed transactions.",
+      "created_at" : "2017-09-16T09:33:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11288#issuecomment-329957640",
+      "id" : 329957640,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11288",
+      "updated_at" : "2017-09-16T09:33:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/329957640",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "utACK df10edfd03fe4c9d1eca43a17ac4c54a14ac4832",
+      "created_at" : "2017-09-16T16:06:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11288#issuecomment-329977607",
+      "id" : 329977607,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11288",
+      "updated_at" : "2017-09-16T16:06:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/329977607",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "utACK https://github.com/bitcoin/bitcoin/pull/11288/commits/df10edfd03fe4c9d1eca43a17ac4c54a14ac4832\r\n\r\nI've come across this as well too. thanks.",
+      "created_at" : "2017-09-18T18:55:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11288#issuecomment-330321827",
+      "id" : 330321827,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11288",
+      "updated_at" : "2017-09-18T18:55:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/330321827",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/5767891?v=4",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   }
+]

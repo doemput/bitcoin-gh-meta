@@ -1,0 +1,438 @@
+[
+   {
+      "body" : "Thanks for including steps to reproduce. Those should be trivial to translate to our python test suite.\r\n\r\nMind to add a commit with the new test?",
+      "created_at" : "2017-01-11T10:02:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#issuecomment-271827553",
+      "id" : 271827553,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9516",
+      "updated_at" : "2017-01-11T10:02:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271827553",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "@MarcoFalke Will do!",
+      "created_at" : "2017-01-11T10:04:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#issuecomment-271827922",
+      "id" : 271827922,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9516",
+      "updated_at" : "2017-01-11T10:04:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271827922",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "body" : "@MarcoFalke Done. Feedback welcome!",
+      "created_at" : "2017-01-11T11:05:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#issuecomment-271841117",
+      "id" : 271841117,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9516",
+      "updated_at" : "2017-01-11T11:05:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271841117",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9516#discussion_r95559897"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9516"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95559897"
+         }
+      },
+      "body" : "Nit: It is sufficient to only import what you need. (E.g. `assert_equal`)\r\n\r\nAlso, `+x` is missing on the permissions of this file.",
+      "commit_id" : "7ba0a00aae03b438e63d0ada9ff68a7618c7f907",
+      "created_at" : "2017-01-11T11:23:50Z",
+      "diff_hunk" : "@@ -0,0 +1,83 @@\n+#!/usr/bin/env python3\n+# Copyright (c) 2014-2017 The Bitcoin Core developers\n+# Distributed under the MIT software license, see the accompanying\n+# file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+from test_framework.test_framework import BitcoinTestFramework\n+from test_framework.util import *",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#discussion_r95559897",
+      "id" : 95559897,
+      "original_commit_id" : "35ad7efa23c3de1a3305754406af4a7ce3dcb793",
+      "original_position" : 7,
+      "path" : "qa/rpc-tests/listsinceblock.py",
+      "position" : null,
+      "pull_request_review_id" : 16117305,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9516",
+      "updated_at" : "2017-01-18T03:31:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95559897",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9516#discussion_r95560597"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9516"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95560597"
+         }
+      },
+      "body" : "Fixed.",
+      "commit_id" : "7ba0a00aae03b438e63d0ada9ff68a7618c7f907",
+      "created_at" : "2017-01-11T11:29:05Z",
+      "diff_hunk" : "@@ -0,0 +1,83 @@\n+#!/usr/bin/env python3\n+# Copyright (c) 2014-2017 The Bitcoin Core developers\n+# Distributed under the MIT software license, see the accompanying\n+# file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+from test_framework.test_framework import BitcoinTestFramework\n+from test_framework.util import *",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#discussion_r95560597",
+      "id" : 95560597,
+      "original_commit_id" : "35ad7efa23c3de1a3305754406af4a7ce3dcb793",
+      "original_position" : 7,
+      "path" : "qa/rpc-tests/listsinceblock.py",
+      "position" : null,
+      "pull_request_review_id" : 16118034,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9516",
+      "updated_at" : "2017-01-18T03:31:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95560597",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9516#discussion_r95565205"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9516"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95565205"
+         }
+      },
+      "body" : "Thx, feel free to squash.",
+      "commit_id" : "7ba0a00aae03b438e63d0ada9ff68a7618c7f907",
+      "created_at" : "2017-01-11T12:00:28Z",
+      "diff_hunk" : "@@ -0,0 +1,83 @@\n+#!/usr/bin/env python3\n+# Copyright (c) 2014-2017 The Bitcoin Core developers\n+# Distributed under the MIT software license, see the accompanying\n+# file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+from test_framework.test_framework import BitcoinTestFramework\n+from test_framework.util import *",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#discussion_r95565205",
+      "id" : 95565205,
+      "original_commit_id" : "35ad7efa23c3de1a3305754406af4a7ce3dcb793",
+      "original_position" : 7,
+      "path" : "qa/rpc-tests/listsinceblock.py",
+      "position" : null,
+      "pull_request_review_id" : 16122930,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9516",
+      "updated_at" : "2017-01-18T03:31:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95565205",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9516#discussion_r95570293"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9516"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95570293"
+         }
+      },
+      "body" : "Done.",
+      "commit_id" : "7ba0a00aae03b438e63d0ada9ff68a7618c7f907",
+      "created_at" : "2017-01-11T12:37:40Z",
+      "diff_hunk" : "@@ -0,0 +1,83 @@\n+#!/usr/bin/env python3\n+# Copyright (c) 2014-2017 The Bitcoin Core developers\n+# Distributed under the MIT software license, see the accompanying\n+# file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+from test_framework.test_framework import BitcoinTestFramework\n+from test_framework.util import *",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#discussion_r95570293",
+      "id" : 95570293,
+      "original_commit_id" : "35ad7efa23c3de1a3305754406af4a7ce3dcb793",
+      "original_position" : 7,
+      "path" : "qa/rpc-tests/listsinceblock.py",
+      "position" : null,
+      "pull_request_review_id" : 16128360,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9516",
+      "updated_at" : "2017-01-18T03:31:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95570293",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "body" : "Good catch. utACK 8d78648",
+      "created_at" : "2017-01-11T13:06:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#issuecomment-271863561",
+      "id" : 271863561,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9516",
+      "updated_at" : "2017-01-11T13:06:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271863561",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Why isn't this using LastCommonAncestor/FindFork or equivalent? I believe doing that would give precisely the correct behavior.\r\n\r\n(Aside: Good find. I had just assumed this was doing the LCA thing. :( )",
+      "created_at" : "2017-01-13T08:47:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#issuecomment-272391008",
+      "id" : 272391008,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9516",
+      "updated_at" : "2017-01-13T08:59:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272391008",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "@gmaxwell Nice! I didn't realize it existed. `FindFork` works like a charm.",
+      "created_at" : "2017-01-13T09:01:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#issuecomment-272393651",
+      "id" : 272393651,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9516",
+      "updated_at" : "2017-01-13T09:16:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272393651",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "body" : "utACK.",
+      "created_at" : "2017-01-13T18:19:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#issuecomment-272508583",
+      "id" : 272508583,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9516",
+      "updated_at" : "2017-01-13T18:19:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272508583",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Looks like improvement, but I'm not sure it fixes all the issues: if a transaction was confirmed on the \"since\" block, and no longer is, we should include it in the results even if it did not change between the fork-point and tip.",
+      "created_at" : "2017-01-20T21:54:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#issuecomment-274190081",
+      "id" : 274190081,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9516",
+      "updated_at" : "2017-01-20T21:54:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274190081",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "@luke-jr Yeah, a double spend of the same UTXO will result in no transaction showing up, which is definitely not ideal..",
+      "created_at" : "2017-01-23T01:03:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9516#issuecomment-274375378",
+      "id" : 274375378,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9516",
+      "updated_at" : "2017-01-23T01:03:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274375378",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   }
+]

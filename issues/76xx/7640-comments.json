@@ -1,0 +1,608 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55023243"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55023243"
+         }
+      },
+      "body" : "Please put the comment in the h file. And use the formatting according to the guideline (CONTRIBUTING.md)",
+      "commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "created_at" : "2016-03-04T12:16:40Z",
+      "diff_hunk" : "@@ -33,6 +33,17 @@ string SanitizeString(const string& str, int rule)\n     return strResult;\n }\n \n+/// Formats the network peer user agent text (or subversion)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55023243",
+      "id" : 55023243,
+      "original_commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "original_position" : 4,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640",
+      "updated_at" : "2016-03-04T12:16:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55023243",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55023275"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55023275"
+         }
+      },
+      "body" : "Why is the length at least four?",
+      "commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "created_at" : "2016-03-04T12:17:23Z",
+      "diff_hunk" : "@@ -33,6 +33,17 @@ string SanitizeString(const string& str, int rule)\n     return strResult;\n }\n \n+/// Formats the network peer user agent text (or subversion)\n+/// by removing the begining and ending charactors(/).\n+/// example: /Satoshi:0.11.2/ --> Satoshi:0.11.2\n+string SanitizeSubVersionString(const string& str)\n+{\n+    string strResult = SanitizeString(str);\n+    if ((strResult.length() > 3) && (strResult.substr(0,1) == \"/\") && (strResult.substr((strResult.length()-1),1) == \"/\"))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55023275",
+      "id" : 55023275,
+      "original_commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "original_position" : 10,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 10,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640",
+      "updated_at" : "2016-03-04T12:17:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55023275",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "I like making the GUI cleaner but isn't the slash part of the string? https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki#proposal",
+      "created_at" : "2016-03-04T12:18:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-192258549",
+      "id" : 192258549,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-04T12:18:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/192258549",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "It looks like BIP0014 uses the forward slashes as delimiters or separator.  One node doesn't have many user agents, so the delimiter is not needed in this case. \r\n\r\n> They should not be misused beyond what is specified in this section.\r\n> \r\n> *    / separates the code-stack\r\n> *    : specifies the implementation version of the particular stack\r\n> *    ( and ) delimits a comment which optionally separates data using ;\r\n\r\nDisplaying a separator or delimiter in the UI is unnecessary and goes against Jakob Nielsen heuristics: https://www.nngroup.com/articles/ten-usability-heuristics/:\r\n\r\n> * Aesthetic and minimalist design\r\n> Dialogues **should not contain information which is irrelevant or rarely needed**. Every extra unit of information in a dialogue competes with the relevant units of information and diminishes their relative visibility.\r\n",
+      "created_at" : "2016-03-04T15:00:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-192312138",
+      "id" : 192312138,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-04T22:29:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/192312138",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/13896934?v=3",
+         "events_url" : "https://api.github.com/users/CryptoDJ/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/CryptoDJ/followers",
+         "following_url" : "https://api.github.com/users/CryptoDJ/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/CryptoDJ/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/CryptoDJ",
+         "id" : 13896934,
+         "login" : "CryptoDJ",
+         "organizations_url" : "https://api.github.com/users/CryptoDJ/orgs",
+         "received_events_url" : "https://api.github.com/users/CryptoDJ/received_events",
+         "repos_url" : "https://api.github.com/users/CryptoDJ/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/CryptoDJ/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/CryptoDJ/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/CryptoDJ"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55039796"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55039796"
+         }
+      },
+      "body" : "It should be two and I can change, then squash my commits. Thanks!\r\n",
+      "commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "created_at" : "2016-03-04T15:02:26Z",
+      "diff_hunk" : "@@ -33,6 +33,17 @@ string SanitizeString(const string& str, int rule)\n     return strResult;\n }\n \n+/// Formats the network peer user agent text (or subversion)\n+/// by removing the begining and ending charactors(/).\n+/// example: /Satoshi:0.11.2/ --> Satoshi:0.11.2\n+string SanitizeSubVersionString(const string& str)\n+{\n+    string strResult = SanitizeString(str);\n+    if ((strResult.length() > 3) && (strResult.substr(0,1) == \"/\") && (strResult.substr((strResult.length()-1),1) == \"/\"))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55039796",
+      "id" : 55039796,
+      "original_commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "original_position" : 10,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 10,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640",
+      "updated_at" : "2016-03-04T15:02:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55039796",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/13896934?v=3",
+         "events_url" : "https://api.github.com/users/CryptoDJ/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/CryptoDJ/followers",
+         "following_url" : "https://api.github.com/users/CryptoDJ/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/CryptoDJ/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/CryptoDJ",
+         "id" : 13896934,
+         "login" : "CryptoDJ",
+         "organizations_url" : "https://api.github.com/users/CryptoDJ/orgs",
+         "received_events_url" : "https://api.github.com/users/CryptoDJ/received_events",
+         "repos_url" : "https://api.github.com/users/CryptoDJ/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/CryptoDJ/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/CryptoDJ/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/CryptoDJ"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55039929"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55039929"
+         }
+      },
+      "body" : "I will move my comments to the header file and squash the commits into one if the concept is ACK.",
+      "commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "created_at" : "2016-03-04T15:03:26Z",
+      "diff_hunk" : "@@ -33,6 +33,17 @@ string SanitizeString(const string& str, int rule)\n     return strResult;\n }\n \n+/// Formats the network peer user agent text (or subversion)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55039929",
+      "id" : 55039929,
+      "original_commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "original_position" : 4,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640",
+      "updated_at" : "2016-03-04T22:02:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55039929",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/13896934?v=3",
+         "events_url" : "https://api.github.com/users/CryptoDJ/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/CryptoDJ/followers",
+         "following_url" : "https://api.github.com/users/CryptoDJ/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/CryptoDJ/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/CryptoDJ",
+         "id" : 13896934,
+         "login" : "CryptoDJ",
+         "organizations_url" : "https://api.github.com/users/CryptoDJ/orgs",
+         "received_events_url" : "https://api.github.com/users/CryptoDJ/received_events",
+         "repos_url" : "https://api.github.com/users/CryptoDJ/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/CryptoDJ/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/CryptoDJ/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/CryptoDJ"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55114691"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55114691"
+         }
+      },
+      "body" : "You can simplify the condition as (strResult.front() == '/' && strResult.back() == '/').",
+      "commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "created_at" : "2016-03-05T03:35:56Z",
+      "diff_hunk" : "@@ -33,6 +33,17 @@ string SanitizeString(const string& str, int rule)\n     return strResult;\n }\n \n+/// Formats the network peer user agent text (or subversion)\n+/// by removing the begining and ending charactors(/).\n+/// example: /Satoshi:0.11.2/ --> Satoshi:0.11.2\n+string SanitizeSubVersionString(const string& str)\n+{\n+    string strResult = SanitizeString(str);\n+    if ((strResult.length() > 3) && (strResult.substr(0,1) == \"/\") && (strResult.substr((strResult.length()-1),1) == \"/\"))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55114691",
+      "id" : 55114691,
+      "original_commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "original_position" : 10,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 10,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640",
+      "updated_at" : "2016-03-05T03:35:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55114691",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55118868"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55118868"
+         }
+      },
+      "body" : "@sipa, your code is much better and I will change if the concept gets an ACK.  Thanks!",
+      "commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "created_at" : "2016-03-05T09:40:12Z",
+      "diff_hunk" : "@@ -33,6 +33,17 @@ string SanitizeString(const string& str, int rule)\n     return strResult;\n }\n \n+/// Formats the network peer user agent text (or subversion)\n+/// by removing the begining and ending charactors(/).\n+/// example: /Satoshi:0.11.2/ --> Satoshi:0.11.2\n+string SanitizeSubVersionString(const string& str)\n+{\n+    string strResult = SanitizeString(str);\n+    if ((strResult.length() > 3) && (strResult.substr(0,1) == \"/\") && (strResult.substr((strResult.length()-1),1) == \"/\"))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#discussion_r55118868",
+      "id" : 55118868,
+      "original_commit_id" : "123d603f4aa0e0766ad14fd2c59c92c889fa014f",
+      "original_position" : 10,
+      "path" : "src/utilstrencodings.cpp",
+      "position" : 10,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7640",
+      "updated_at" : "2016-03-05T09:40:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/55118868",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/13896934?v=3",
+         "events_url" : "https://api.github.com/users/CryptoDJ/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/CryptoDJ/followers",
+         "following_url" : "https://api.github.com/users/CryptoDJ/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/CryptoDJ/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/CryptoDJ",
+         "id" : 13896934,
+         "login" : "CryptoDJ",
+         "organizations_url" : "https://api.github.com/users/CryptoDJ/orgs",
+         "received_events_url" : "https://api.github.com/users/CryptoDJ/received_events",
+         "repos_url" : "https://api.github.com/users/CryptoDJ/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/CryptoDJ/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/CryptoDJ/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/CryptoDJ"
+      }
+   },
+   {
+      "body" : "It's a debug window... it's full of information which is irrelevant and rarely needed.\r\n\r\nNACK on the concept",
+      "created_at" : "2016-03-05T09:54:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-192614915",
+      "id" : 192614915,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-05T09:54:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/192614915",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "@pstratem, I don't think your NACK would be considered sound technical justification.  The UI is displaying a delimiter for no reason.  ",
+      "created_at" : "2016-03-05T18:52:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-192705936",
+      "id" : 192705936,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-05T19:36:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/192705936",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/13896934?v=3",
+         "events_url" : "https://api.github.com/users/CryptoDJ/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/CryptoDJ/followers",
+         "following_url" : "https://api.github.com/users/CryptoDJ/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/CryptoDJ/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/CryptoDJ",
+         "id" : 13896934,
+         "login" : "CryptoDJ",
+         "organizations_url" : "https://api.github.com/users/CryptoDJ/orgs",
+         "received_events_url" : "https://api.github.com/users/CryptoDJ/received_events",
+         "repos_url" : "https://api.github.com/users/CryptoDJ/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/CryptoDJ/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/CryptoDJ/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/CryptoDJ"
+      }
+   },
+   {
+      "body" : "This also affects the RPC `getpeerinfo` output. So this would be a tiny API change. Not sure if we want this.",
+      "created_at" : "2016-03-06T03:19:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-192791957",
+      "id" : 192791957,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-06T03:19:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/192791957",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "~~I'm neutral on this change itself.~~\r\nHowever, if you do this please add the filtering as a postprocessign step to the GUI code only, not to the core P2P code. RPC should stay the same.\r\n\r\nOn second thought: no, I don't like this. I like the debug window to report exactly the data that goes over the network. This may make the string prettier but makes it less useful too.",
+      "created_at" : "2016-03-06T19:25:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-192967540",
+      "id" : 192967540,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-06T20:07:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/192967540",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@CryptoDJ I think it's a matter of taste which looks better:\r\n\r\n* `/btcwire:0.4.0/btcd:0.12.0/` or `btcwire:0.4.0/btcd:0.12.0`\r\n* `/Satoshi:0.11.2/ljr:20151118/` or `Satoshi:0.11.2/ljr:20151118`\r\n* `/Satoshi:0.12.0/Knots:20160225/` or `Satoshi:0.12.0/Knots:20160225`\r\n\r\nAs the current way is exactly the way how BIP 14 defines it, you can't really say it is \"irrelevant or rarely needed\". Personallly, I'd suggest we just stick with BIP 14 for simplicity and consistency. ",
+      "created_at" : "2016-03-06T20:53:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-192989468",
+      "id" : 192989468,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-06T20:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/192989468",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "The member variable is called cleanSubVer and it is put through a sanitize function.  See the comment in net.h:\r\n\r\n> // strSubVer is whatever byte array we read from the wire. However, this field is intended\r\n> // to be printed out, displayed to humans in various forms and so on. So we sanitize it and\r\n> // store the sanitized version in cleanSubVer. The original should be used when dealing with\r\n> // the network or wire types and the cleaned string used when displayed or logged.\r\n\r\nWhen consuming the API message, the / in cleanSubVer is kept and displayed to end users.  Web sites display it b/c who want to further sanitize the string?  Also, why have strSubVer and cleanSubVer?",
+      "created_at" : "2016-03-06T22:28:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-193008533",
+      "id" : 193008533,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-06T22:28:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/193008533",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/13896934?v=3",
+         "events_url" : "https://api.github.com/users/CryptoDJ/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/CryptoDJ/followers",
+         "following_url" : "https://api.github.com/users/CryptoDJ/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/CryptoDJ/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/CryptoDJ",
+         "id" : 13896934,
+         "login" : "CryptoDJ",
+         "organizations_url" : "https://api.github.com/users/CryptoDJ/orgs",
+         "received_events_url" : "https://api.github.com/users/CryptoDJ/received_events",
+         "repos_url" : "https://api.github.com/users/CryptoDJ/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/CryptoDJ/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/CryptoDJ/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/CryptoDJ"
+      }
+   },
+   {
+      "body" : "https://bitnodes.21.co/nodes/\r\nThere are hundreds of superfluous forward slashes that got propagated because of a sanitation issue:\r\n![cleansubver](https://cloud.githubusercontent.com/assets/13896934/13557693/348c0a40-e3bb-11e5-8c60-7ca046827a3a.png)\r\n\r\nI think BIP 14 pertains to the wire format, NOT the UI.\r\n",
+      "created_at" : "2016-03-06T22:54:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-193011329",
+      "id" : 193011329,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-06T22:54:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/193011329",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/13896934?v=3",
+         "events_url" : "https://api.github.com/users/CryptoDJ/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/CryptoDJ/followers",
+         "following_url" : "https://api.github.com/users/CryptoDJ/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/CryptoDJ/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/CryptoDJ",
+         "id" : 13896934,
+         "login" : "CryptoDJ",
+         "organizations_url" : "https://api.github.com/users/CryptoDJ/orgs",
+         "received_events_url" : "https://api.github.com/users/CryptoDJ/received_events",
+         "repos_url" : "https://api.github.com/users/CryptoDJ/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/CryptoDJ/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/CryptoDJ/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/CryptoDJ"
+      }
+   },
+   {
+      "body" : "> I think BIP 14 pertains to the wire format, NOT the UI.\r\n\r\nCorrect.\r\n\r\nHowever, the reason for the debug window is troubleshooting. For technical diagnostics, it is important to have accurate information. Granted, removing a slash is not a big deal, but we shouldn't make a habit out of presenting things differently than they are on the wire.\r\n\r\nIn any case: if the goal of this is to affect the UI only, this pull request should touch only UI code.\r\n",
+      "created_at" : "2016-03-07T15:20:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-193295656",
+      "id" : 193295656,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-07T15:20:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/193295656",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "This is adding code which is for all intents doing nothing.\r\n\r\nNACK on the simple principle that less code is better.",
+      "created_at" : "2016-03-07T23:04:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-193495842",
+      "id" : 193495842,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-07T23:04:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/193495842",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "My problem is with BIP 14 and I will pull request to change it.  The user-agent string example begins and ends with delimiters (the forward slash or /) that have no use to humans or computers and therefore should be eliminated.  Eliminating these superfluous delimiters will slightly decreased the data size transmitted to peers, stored when consuming API messages and make the UI look better.\r\n\r\nSo far, no one has been able to explain the benefit of the leading and trailing forwards slashes except that it is specified in BIP 14.\r\n\r\nEdit: BIP 14 pull request: [https://github.com/bitcoin/bips/pull/352](https://github.com/bitcoin/bips/pull/352)",
+      "created_at" : "2016-03-11T02:31:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7640#issuecomment-195151522",
+      "id" : 195151522,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7640",
+      "updated_at" : "2016-03-11T02:45:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/195151522",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/13896934?v=3",
+         "events_url" : "https://api.github.com/users/CryptoDJ/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/CryptoDJ/followers",
+         "following_url" : "https://api.github.com/users/CryptoDJ/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/CryptoDJ/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/CryptoDJ",
+         "id" : 13896934,
+         "login" : "CryptoDJ",
+         "organizations_url" : "https://api.github.com/users/CryptoDJ/orgs",
+         "received_events_url" : "https://api.github.com/users/CryptoDJ/received_events",
+         "repos_url" : "https://api.github.com/users/CryptoDJ/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/CryptoDJ/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/CryptoDJ/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/CryptoDJ"
+      }
+   }
+]

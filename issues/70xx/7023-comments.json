@@ -1,0 +1,176 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7023#discussion_r44882607"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7023"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44882607"
+         }
+      },
+      "body" : "This is obviously the smaller change, but,  couldn't `nLastBlockFile` just be `unsigned`?",
+      "commit_id" : "4d29032a6437eaa147a69ce2857fb243bf3a1e49",
+      "created_at" : "2015-11-16T01:32:11Z",
+      "diff_hunk" : "@@ -2577,7 +2577,7 @@ bool FindBlockPos(CValidationState &state, CDiskBlockPos &pos, unsigned int nAdd\n         pos.nPos = vinfoBlockFile[nFile].nSize;\n     }\n \n-    if (nFile != nLastBlockFile) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7023#discussion_r44882607",
+      "id" : 44882607,
+      "original_commit_id" : "4d29032a6437eaa147a69ce2857fb243bf3a1e49",
+      "original_position" : 4,
+      "path" : "src/main.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7023",
+      "updated_at" : "2015-11-16T01:32:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44882607",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7023#discussion_r44882841"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7023"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44882841"
+         }
+      },
+      "body" : "I think it could - but that would require having to check whether that breaks anything...and if we're going down that route, we could also start changing a bunch of other variables...and I don't think I want to go down that path right now :)",
+      "commit_id" : "4d29032a6437eaa147a69ce2857fb243bf3a1e49",
+      "created_at" : "2015-11-16T01:41:13Z",
+      "diff_hunk" : "@@ -2577,7 +2577,7 @@ bool FindBlockPos(CValidationState &state, CDiskBlockPos &pos, unsigned int nAdd\n         pos.nPos = vinfoBlockFile[nFile].nSize;\n     }\n \n-    if (nFile != nLastBlockFile) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7023#discussion_r44882841",
+      "id" : 44882841,
+      "original_commit_id" : "4d29032a6437eaa147a69ce2857fb243bf3a1e49",
+      "original_position" : 4,
+      "path" : "src/main.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7023",
+      "updated_at" : "2015-11-16T01:41:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/44882841",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/894059?v=3",
+         "events_url" : "https://api.github.com/users/CodeShark/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/CodeShark/followers",
+         "following_url" : "https://api.github.com/users/CodeShark/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/CodeShark/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/CodeShark",
+         "id" : 894059,
+         "login" : "CodeShark",
+         "organizations_url" : "https://api.github.com/users/CodeShark/orgs",
+         "received_events_url" : "https://api.github.com/users/CodeShark/received_events",
+         "repos_url" : "https://api.github.com/users/CodeShark/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/CodeShark/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/CodeShark/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/CodeShark"
+      }
+   },
+   {
+      "body" : "ACK. I don't think nLastBlockFile can be usefully negative, but this is clearly the least risky change.\r\n",
+      "created_at" : "2015-11-16T08:47:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7023#issuecomment-156957506",
+      "id" : 156957506,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7023",
+      "updated_at" : "2015-11-16T08:47:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156957506",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "ACK\r\n\r\nThe warning comes from #6948.",
+      "created_at" : "2015-11-16T08:56:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7023#issuecomment-156958955",
+      "id" : 156958955,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7023",
+      "updated_at" : "2015-11-16T08:56:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156958955",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "ACK.",
+      "created_at" : "2015-11-17T00:35:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7023#issuecomment-157220400",
+      "id" : 157220400,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7023",
+      "updated_at" : "2015-11-17T00:35:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157220400",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   }
+]

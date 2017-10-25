@@ -1,0 +1,1399 @@
+[
+   {
+      "author_association" : "MEMBER",
+      "body" : "Most of the rejection reasons are not standardised, and we only care that it fails. It might make the most sense to check that it's a `consensus_rule_violation` exception or such, but I'm not sure checking the specific string is useful.\r\n\r\nYour example is invalid, because for the `bad-blk-sigops` test, we would not care what the outcome is if the subsidy is broken. Instead, the subsidy should be tested separately, not implicitly.",
+      "created_at" : "2017-09-02T22:21:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-326772350",
+      "id" : 326772350,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-09-02T22:21:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326772350",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/1095675?v=4",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Concept ACK.  I think in general checking for the specific error we expect makes it less likely that we inadvertently introduce a bug in the tests; certainly this kind of thing has cropped up in the functional test suite, where bugs introduced into a test harness cause the test to not actually be testing anything, or to be testing the wrong thing.\r\n\r\nIMO the downside (in general) to additional specificity is that it adds overhead when making changes to the consensus code rejection reasons, because now all the tests that were hardcoded for a particular reason need updating.  This patch seems pretty small though, and I don't think that should be much of a concern here.  In fact I think we largely already do similar reject-reason-pattern-matching in the functional tests as well.",
+      "created_at" : "2017-09-02T22:58:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-326773735",
+      "id" : 326773735,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-09-02T22:58:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326773735",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7463573?v=4",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I'll see what I can do about Travis failing on everything but OSX. It's throwing `multiple definition of IsRejectInvalidReason` in a bunch of places.\r\n\r\nI agree the example isn't great. I did actually run into it while trying an extremely high value for MAX_BLOCK_SIGOPS_COST (250x) in an [experiment](https://github.com/Sjors/bitcoin/pull/1). In attempt to make the test pass, I increased the transaction generation loops from 1001 to 250001, which obviously(?) took forever to run. I then tried fewer loops to get a sense of performance. To my surprise the test passed for some seemingly random intermediate value. Once I found the actual error message I realized it was an error in the modified test; it just ran out of coins somewhere in the loop. Lowering the coinbase reward in the test was an easier way to reproduce that specific error.",
+      "created_at" : "2017-09-03T07:09:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-326788435",
+      "id" : 326788435,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-09-03T09:23:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326788435",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I pushed a few improvements, apparently to the satisfaction of Travis:\r\n\r\n1. moved changes from `test_bitcoin.h` to `testutil.h`, which seems more appropriate\r\n2. instead of one function for each validation error type, there's now a `class CheckRejectInvalid` whose constructor takes a string\r\n3. `#define` for validation error strings so they're all in one place. That should make later refactoring easier and also prevent typos.\r\n\r\nSo now each test looks like this:\r\n\r\n```cpp\r\nBOOST_CHECK_EXCEPTION(\r\n    functionThatThrows(),\r\n    std::runtime_error,\r\n    CheckRejectInvalid(REJECT_INVALID_BAD_CB_MULTIPLE)\r\n);\r\n```\r\n\r\nUnfortunately as a result of this change, when a test throws a different exception, it no longer shows what that exception was. I don't know why. However, this is easy for a developer to debug: just put `BOOST_CHECK(functionThatThrows())` above the failing `BOOST_CHECK_EXCEPTION ` and run the test again.",
+      "created_at" : "2017-09-03T12:15:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-326801262",
+      "id" : 326801262,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-09-03T12:16:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326801262",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@sipa and @morcos worked on `miner_tests.cpp` earlier this year.\r\n\r\n@morcos since you refactored `CreateNewBlock` in late 2015 (#6898), could you check that I picked the right specific validation errors? Just to make sure the tests weren't already misbehaving.",
+      "created_at" : "2017-09-03T15:22:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-326811329",
+      "id" : 326811329,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-09-03T15:22:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326811329",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r137139278"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137139278"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Maybe move all of this to the cpp?",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-09-05T23:23:43Z",
+      "diff_hunk" : "@@ -9,7 +9,27 @@\n #define BITCOIN_TEST_TESTUTIL_H\n \n #include \"fs.h\"\n+#include <boost/algorithm/string.hpp>\n \n fs::path GetTempPath();\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_THROW predicates to check the specific validation error\n+class CheckRejectInvalid {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r137139278",
+      "id" : 137139278,
+      "original_commit_id" : "49a7fe240aabdddcf35f7c1dd87881539f4ef55f",
+      "original_position" : 15,
+      "path" : "src/test/testutil.h",
+      "position" : null,
+      "pull_request_review_id" : 60767962,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137139278",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@MarcoFalke  since #11234 just snatched `testutil.h` out from under me, I moved everything into `miner_test.cpp`.\r\n\r\nThere are a lot of other tests that use `BOOST_CHECK_THROW` without checking the precise error, so it might make sense to revert #11234 at some point.",
+      "created_at" : "2017-09-06T08:30:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-327413789",
+      "id" : 327413789,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-09-06T08:30:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/327413789",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Please squash your commits according to https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#squashing-commits",
+      "created_at" : "2017-10-02T19:10:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-333634695",
+      "id" : 333634695,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-02T19:10:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333634695",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Done, as well as rebased to latest master.",
+      "created_at" : "2017-10-03T09:43:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-333792324",
+      "id" : 333792324,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-03T09:43:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333792324",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I pushed again to fix commit message and code comment (it was saying \"BOOST_CHECK_THROW\" instead of \"BOOST_CHECK_EXCEPTION\" in two places).",
+      "created_at" : "2017-10-03T09:47:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-333793268",
+      "id" : 333793268,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-03T09:47:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333793268",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "The `p2p-segwit.py` test failed in one environment. Random time-out? All machines passed on my previous force push.\r\n![schermafbeelding 2017-10-03 om 11 16 49](https://user-images.githubusercontent.com/10217/31120475-713a535c-a82c-11e7-969b-cc0c8a6fc21f.png)\r\n",
+      "created_at" : "2017-10-03T10:19:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-333800243",
+      "id" : 333800243,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-03T10:19:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333800243",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "@Sjors probably just an unrelated failure, Travis does that sometimes. I've restarted that test for you.",
+      "created_at" : "2017-10-03T11:04:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-333809488",
+      "id" : 333809488,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-03T11:04:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333809488",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142387624"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142387624"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "IMO inline these strings.",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T12:36:50Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142387624",
+      "id" : 142387624,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 13,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66740213,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142387624",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142387732"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142387732"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Move down near other boost includes (try to keep it sorted too).",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T12:37:25Z",
+      "diff_hunk" : "@@ -17,6 +17,7 @@\n #include \"uint256.h\"\n #include \"util.h\"\n #include \"utilstrencodings.h\"\n+#include <boost/algorithm/string.hpp>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142387732",
+      "id" : 142387732,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 4,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66740213,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142387732",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142387974"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142387974"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "```cpp\r\nCheckRejectInvalid(const std::string& reason) : m_reason(reason) {}\r\n```",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T12:38:40Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142387974",
+      "id" : 142387974,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 21,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66740213,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142387974",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142388740"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142388740"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Use `std::string::find`?",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T12:42:26Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {\n+        reason = arg;\n+    };\n+    bool operator() (std::runtime_error const& e) const {\n+        return boost::contains(e.what(), reason);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142388740",
+      "id" : 142388740,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 25,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66740213,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142388740",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142388815"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142388815"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Nit, `const std::runtime_error& e`.",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T12:42:53Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {\n+        reason = arg;\n+    };\n+    bool operator() (std::runtime_error const& e) const {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142388815",
+      "id" : 142388815,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 24,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66740213,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142388815",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142389969"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142389969"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "IMO this sounds better:\r\n```cpp\r\n..., std::runtime_error, HasReason(\"bad-blk-sigops\"));\r\n```",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T12:48:03Z",
+      "diff_hunk" : "@@ -264,7 +284,9 @@ BOOST_AUTO_TEST_CASE(CreateNewBlock_validity)\n         mempool.addUnchecked(hash, entry.Fee(LOWFEE).Time(GetTime()).SpendsCoinbase(spendsCoinbase).FromTx(tx));\n         tx.vin[0].prevout.hash = hash;\n     }\n-    BOOST_CHECK_THROW(AssemblerForTest(chainparams).CreateNewBlock(scriptPubKey), std::runtime_error);\n+\n+    // This should throw bad-blk-sigops\n+    BOOST_CHECK_EXCEPTION(AssemblerForTest(chainparams).CreateNewBlock(scriptPubKey), std::runtime_error, CheckRejectInvalid(REJECT_INVALID_BAD_BLK_SIGOPS));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142389969",
+      "id" : 142389969,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 41,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66740213,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142389969",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142391949"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142391949"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "That should indeed help with #8670.",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T12:56:17Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {\n+        reason = arg;\n+    };\n+    bool operator() (std::runtime_error const& e) const {\n+        return boost::contains(e.what(), reason);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142391949",
+      "id" : 142391949,
+      "in_reply_to_id" : 142388740,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 25,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66745333,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142391949",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142392390"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142392390"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I renamed `CheckRejectInvalid` to `HasReason`; seems more readable indeed.",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T12:57:53Z",
+      "diff_hunk" : "@@ -264,7 +284,9 @@ BOOST_AUTO_TEST_CASE(CreateNewBlock_validity)\n         mempool.addUnchecked(hash, entry.Fee(LOWFEE).Time(GetTime()).SpendsCoinbase(spendsCoinbase).FromTx(tx));\n         tx.vin[0].prevout.hash = hash;\n     }\n-    BOOST_CHECK_THROW(AssemblerForTest(chainparams).CreateNewBlock(scriptPubKey), std::runtime_error);\n+\n+    // This should throw bad-blk-sigops\n+    BOOST_CHECK_EXCEPTION(AssemblerForTest(chainparams).CreateNewBlock(scriptPubKey), std::runtime_error, CheckRejectInvalid(REJECT_INVALID_BAD_BLK_SIGOPS));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142392390",
+      "id" : 142392390,
+      "in_reply_to_id" : 142389969,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 41,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66745783,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142392390",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142392603"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142392603"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "ÃÂµnit: Can be `const`",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T12:58:49Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {\n+        reason = arg;\n+    };\n+    bool operator() (std::runtime_error const& e) const {\n+        return boost::contains(e.what(), reason);\n+    };\n+private:\n+    std::string reason;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142392603",
+      "id" : 142392603,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 28,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66746025,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142392603",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142392956"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142392956"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I used `#define` to make it (slightly) easier to find all occurrences in the codebase if these rejection reasons ever need to be renamed. It also helps against typos, although typos would be immediately obvious when you run the test.\r\n\r\nHappy to change it to inline if nobody objects.",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T13:00:20Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142392956",
+      "id" : 142392956,
+      "in_reply_to_id" : 142387624,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 13,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66746426,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142392956",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142393809"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142393809"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Thanks. If it wasn't obvious, I'm not terribly familiar with C++. :-)",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T13:04:11Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142393809",
+      "id" : 142393809,
+      "in_reply_to_id" : 142387974,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 21,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66747448,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142393809",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142407977"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142407977"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "The test will fail if there is a typo. Having inline is good because a rename forces you to update the relevant tests and double check everything related.",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-03T13:52:41Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142407977",
+      "id" : 142407977,
+      "in_reply_to_id" : 142387624,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 13,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66763600,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142407977",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647564"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647564"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I got rid of this dependency.",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-04T11:45:16Z",
+      "diff_hunk" : "@@ -17,6 +17,7 @@\n #include \"uint256.h\"\n #include \"util.h\"\n #include \"utilstrencodings.h\"\n+#include <boost/algorithm/string.hpp>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647564",
+      "id" : 142647564,
+      "in_reply_to_id" : 142387732,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 4,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 67036286,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647564",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647612"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647612"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Using inline now.",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-04T11:45:32Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647612",
+      "id" : 142647612,
+      "in_reply_to_id" : 142387624,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 13,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 67036352,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647612",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647695"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647695"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Done, and renamed the private variable from `reason` to `m_reason` ",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-04T11:45:59Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647695",
+      "id" : 142647695,
+      "in_reply_to_id" : 142387974,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 21,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 67036453,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647695",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647727"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647727"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Done",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-04T11:46:12Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {\n+        reason = arg;\n+    };\n+    bool operator() (std::runtime_error const& e) const {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647727",
+      "id" : 142647727,
+      "in_reply_to_id" : 142388815,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 24,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 67036494,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647727",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647753"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647753"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Done",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-04T11:46:21Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {\n+        reason = arg;\n+    };\n+    bool operator() (std::runtime_error const& e) const {\n+        return boost::contains(e.what(), reason);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647753",
+      "id" : 142647753,
+      "in_reply_to_id" : 142388740,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 25,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 67036526,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647753",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647867"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647867"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Done (Github needs a check-mark emoticon)",
+      "commit_id" : "59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-04T11:47:03Z",
+      "diff_hunk" : "@@ -26,6 +27,25 @@\n \n BOOST_FIXTURE_TEST_SUITE(miner_tests, TestingSetup)\n \n+// Validation errors used in tests (prevent typos and facilitate refactoring):\n+#define REJECT_INVALID_BAD_BLK_SIGOPS \"bad-blk-sigops\"\n+#define REJECT_INVALID_BAD_CB_MULTIPLE \"bad-cb-multiple\"\n+#define REJECT_INVALID_BAD_TXNS_INPUTS_MISSINGORSPENT \"bad-txns-inputs-missingorspent\"\n+#define REJECT_INVALID_BLOCK_VALIDATION_FAILED \"block-validation-failed\"\n+\n+// BOOST_CHECK_EXCEPTION predicates to check the specific validation error\n+class CheckRejectInvalid {\n+public:\n+    CheckRejectInvalid(std::string const& arg) {\n+        reason = arg;\n+    };\n+    bool operator() (std::runtime_error const& e) const {\n+        return boost::contains(e.what(), reason);\n+    };\n+private:\n+    std::string reason;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142647867",
+      "id" : 142647867,
+      "in_reply_to_id" : 142392603,
+      "original_commit_id" : "ddc20fdf24095ff9076cea5a5dc078ad7616f668",
+      "original_position" : 28,
+      "path" : "src/test/miner_tests.cpp",
+      "position" : null,
+      "pull_request_review_id" : 67036651,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11220",
+      "updated_at" : "2017-10-04T11:49:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142647867",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I believe I addressed all code style issued raised. Rebased to latest master. I also signed the commit this time.",
+      "created_at" : "2017-10-04T11:50:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-334130862",
+      "id" : 334130862,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-04T11:50:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334130862",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@JeremyRubin it would be great to get your feedback on this PR, given that you're working on these validation errors. I was able to cherry-pick my commit on top of your #11523 without a problem.",
+      "created_at" : "2017-10-20T11:00:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-338175461",
+      "id" : 338175461,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-20T11:00:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338175461",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Concept Ack!\r\n\r\nI would think one improvement might be if the strings were not to be literals (as Luke points out, they aren't standardized). I think it's ok for now though.",
+      "created_at" : "2017-10-20T22:14:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-338334746",
+      "id" : 338334746,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-20T22:14:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338334746",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@JeremyRubin the downside of squashing commits is you can't see history :-) I actually used `#define REJECT_INVALID_BAD_CB_MULTIPLE \"invalid_bad_cb_multiple\"` in an earlier version, but switched back to literal strings  based on @promag's [feedback](https://github.com/bitcoin/bitcoin/pull/11220#discussion_r142387624).",
+      "created_at" : "2017-10-21T05:41:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-338366005",
+      "id" : 338366005,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-21T05:41:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338366005",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/10217?v=4",
+         "events_url" : "https://api.github.com/users/Sjors/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Sjors/followers",
+         "following_url" : "https://api.github.com/users/Sjors/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Sjors/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Sjors",
+         "id" : 10217,
+         "login" : "Sjors",
+         "organizations_url" : "https://api.github.com/users/Sjors/orgs",
+         "received_events_url" : "https://api.github.com/users/Sjors/received_events",
+         "repos_url" : "https://api.github.com/users/Sjors/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Sjors/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Sjors/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Sjors"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "Concept ACK",
+      "created_at" : "2017-10-21T14:10:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-338402007",
+      "id" : 338402007,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-21T14:10:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338402007",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "utACK 59d0ede514f7754ad4df11ffe11f27e2ea63bf3e",
+      "created_at" : "2017-10-23T09:19:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11220#issuecomment-338598693",
+      "id" : 338598693,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11220",
+      "updated_at" : "2017-10-23T09:19:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338598693",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

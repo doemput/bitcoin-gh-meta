@@ -1,0 +1,873 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76521993"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76521993"
+         }
+      },
+      "body" : "Maybe it's worth mentioning the dependencies for the script here (or in the comments of the script)\r\n\r\nsudo apt-get install sleuthkit p7zip-full\r\n\r\n",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-27T20:28:39Z",
+      "diff_hunk" : "@@ -36,11 +36,20 @@ Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.1\n ```\n \n Unfortunately, the usual linux tools (7zip, hpmount, loopback mount) are incapable of opening this file.\n-To create a tarball suitable for Gitian input, mount the dmg in OS X, then create it with:\n+To create a tarball suitable for Gitian input, there are two options:\n+\n+Using Mac OS X, you can mount the dmg, and then create it with:\n ```\n+  $ hdiutil attach Xcode_7.3.1.dmg\n   $ tar -C /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/ -czf MacOSX10.11.sdk.tar.gz MacOSX10.11.sdk\n ```\n \n+Alternatively, you can use 7zip and SleuthKit to extract the files one by one.\n+The script contrib/macdeploy/extract-osx-sdk.sh automates this. First ensure\n+the dmg file is in the current directory, and then run the script. You may wish\n+to delete the intermediate 5.hfs file and MacOSX10.11.sdk (the directory) when\n+you've confirmed the extraction succeeded.\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76521993",
+      "id" : 76521993,
+      "original_commit_id" : "b6246891bef10e321e69787e7a25242466473086",
+      "original_position" : 18,
+      "path" : "doc/README_osx.md",
+      "position" : 18,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76521993",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522072"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522072"
+         }
+      },
+      "body" : "That's Debian/Ubuntu specific...?",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-27T20:37:20Z",
+      "diff_hunk" : "@@ -36,11 +36,20 @@ Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.1\n ```\n \n Unfortunately, the usual linux tools (7zip, hpmount, loopback mount) are incapable of opening this file.\n-To create a tarball suitable for Gitian input, mount the dmg in OS X, then create it with:\n+To create a tarball suitable for Gitian input, there are two options:\n+\n+Using Mac OS X, you can mount the dmg, and then create it with:\n ```\n+  $ hdiutil attach Xcode_7.3.1.dmg\n   $ tar -C /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/ -czf MacOSX10.11.sdk.tar.gz MacOSX10.11.sdk\n ```\n \n+Alternatively, you can use 7zip and SleuthKit to extract the files one by one.\n+The script contrib/macdeploy/extract-osx-sdk.sh automates this. First ensure\n+the dmg file is in the current directory, and then run the script. You may wish\n+to delete the intermediate 5.hfs file and MacOSX10.11.sdk (the directory) when\n+you've confirmed the extraction succeeded.\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522072",
+      "id" : 76522072,
+      "original_commit_id" : "b6246891bef10e321e69787e7a25242466473086",
+      "original_position" : 18,
+      "path" : "doc/README_osx.md",
+      "position" : 18,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522072",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522090"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522090"
+         }
+      },
+      "body" : "rogue space intent",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-27T20:39:19Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/sh\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283\n+fls 5.hfs -rpF ${SDKDIRINODE} |\n+ while read type inode filename; do",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522090",
+      "id" : 76522090,
+      "original_commit_id" : "b6246891bef10e321e69787e7a25242466473086",
+      "original_position" : 8,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522090",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522316"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522316"
+         }
+      },
+      "body" : "Yes.",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-27T21:00:30Z",
+      "diff_hunk" : "@@ -36,11 +36,20 @@ Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.1\n ```\n \n Unfortunately, the usual linux tools (7zip, hpmount, loopback mount) are incapable of opening this file.\n-To create a tarball suitable for Gitian input, mount the dmg in OS X, then create it with:\n+To create a tarball suitable for Gitian input, there are two options:\n+\n+Using Mac OS X, you can mount the dmg, and then create it with:\n ```\n+  $ hdiutil attach Xcode_7.3.1.dmg\n   $ tar -C /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/ -czf MacOSX10.11.sdk.tar.gz MacOSX10.11.sdk\n ```\n \n+Alternatively, you can use 7zip and SleuthKit to extract the files one by one.\n+The script contrib/macdeploy/extract-osx-sdk.sh automates this. First ensure\n+the dmg file is in the current directory, and then run the script. You may wish\n+to delete the intermediate 5.hfs file and MacOSX10.11.sdk (the directory) when\n+you've confirmed the extraction succeeded.\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522316",
+      "id" : 76522316,
+      "original_commit_id" : "b6246891bef10e321e69787e7a25242466473086",
+      "original_position" : 18,
+      "path" : "doc/README_osx.md",
+      "position" : 18,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522316",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522446"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522446"
+         }
+      },
+      "body" : "any reason not to `rm -rf MacOSX10.11.sdk 5.hfs`? it's not like we need them.",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-27T21:11:14Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/bash\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283\n+fls 5.hfs -rpF ${SDKDIRINODE} |\n+ while read type inode filename; do\n+\tinode=\"${inode::-1}\"\n+\tif [ \"${filename:0:14}\" = \"usr/share/man/\" ]; then\n+\t\tcontinue\n+\tfi\n+\tfilename=\"${SDKNAME}/$filename\"\n+\techo \"Extracting $filename ...\"\n+\tmkdir -p \"$(dirname \"$filename\")\"\n+\tif [ \"$type\" = \"l/l\" ]; then\n+\t\tln -s \"$(icat 5.hfs $inode)\" \"$filename\"\n+\telse\n+\t\ticat 5.hfs $inode >\"$filename\"\n+\tfi\n+done\n+echo \"Building ${SDKNAME}.tar.gz ...\"\n+tar -c MacOSX10.11.sdk | gzip -9 > \"${SDKNAME}.tar.gz\"\n+echo 'All done!'",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522446",
+      "id" : 76522446,
+      "original_commit_id" : "d3f5b4d60ee6c4b3579610232008ba8e630cd031",
+      "original_position" : 24,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522446",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522487"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522487"
+         }
+      },
+      "body" : "Not rogue: this is the target of the previous line's pipe.",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-27T21:15:38Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/sh\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283\n+fls 5.hfs -rpF ${SDKDIRINODE} |\n+ while read type inode filename; do",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522487",
+      "id" : 76522487,
+      "original_commit_id" : "b6246891bef10e321e69787e7a25242466473086",
+      "original_position" : 8,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522487",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522491"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522491"
+         }
+      },
+      "body" : "rm -rf is scary? :)",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-27T21:15:51Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/bash\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283\n+fls 5.hfs -rpF ${SDKDIRINODE} |\n+ while read type inode filename; do\n+\tinode=\"${inode::-1}\"\n+\tif [ \"${filename:0:14}\" = \"usr/share/man/\" ]; then\n+\t\tcontinue\n+\tfi\n+\tfilename=\"${SDKNAME}/$filename\"\n+\techo \"Extracting $filename ...\"\n+\tmkdir -p \"$(dirname \"$filename\")\"\n+\tif [ \"$type\" = \"l/l\" ]; then\n+\t\tln -s \"$(icat 5.hfs $inode)\" \"$filename\"\n+\telse\n+\t\ticat 5.hfs $inode >\"$filename\"\n+\tfi\n+done\n+echo \"Building ${SDKNAME}.tar.gz ...\"\n+tar -c MacOSX10.11.sdk | gzip -9 > \"${SDKNAME}.tar.gz\"\n+echo 'All done!'",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76522491",
+      "id" : 76522491,
+      "original_commit_id" : "d3f5b4d60ee6c4b3579610232008ba8e630cd031",
+      "original_position" : 24,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76522491",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "nits aside, I tested and ran gitian build for 0.13.0 osx using the result and got the same matches as with my Mac extracted version as well as the 0.13.0 release.",
+      "created_at" : "2016-08-27T21:31:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#issuecomment-242942015",
+      "id" : 242942015,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8617",
+      "updated_at" : "2016-08-27T21:31:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242942015",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76523940"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523940"
+         }
+      },
+      "body" : "Is it possible to specify this by name rather than by inode? That would make the script more future proof.",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-28T00:00:05Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/bash\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76523940",
+      "id" : 76523940,
+      "original_commit_id" : "d3f5b4d60ee6c4b3579610232008ba8e630cd031",
+      "original_position" : 6,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523940",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76523983"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523983"
+         }
+      },
+      "body" : "Using the tricks here: https://github.com/bitcoin/bitcoin/blob/v0.13.0/contrib/gitian-descriptors/gitian-linux.yml#L144\r\nyou could make the tar and tgz deterministic. That may be useful for people to compare their results?",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-28T00:06:26Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/bash\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283\n+fls 5.hfs -rpF ${SDKDIRINODE} |\n+ while read type inode filename; do\n+\tinode=\"${inode::-1}\"\n+\tif [ \"${filename:0:14}\" = \"usr/share/man/\" ]; then\n+\t\tcontinue\n+\tfi\n+\tfilename=\"${SDKNAME}/$filename\"\n+\techo \"Extracting $filename ...\"\n+\tmkdir -p \"$(dirname \"$filename\")\"\n+\tif [ \"$type\" = \"l/l\" ]; then\n+\t\tln -s \"$(icat 5.hfs $inode)\" \"$filename\"\n+\telse\n+\t\ticat 5.hfs $inode >\"$filename\"\n+\tfi\n+done\n+echo \"Building ${SDKNAME}.tar.gz ...\"\n+tar -c MacOSX10.11.sdk | gzip -9 > \"${SDKNAME}.tar.gz\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76523983",
+      "id" : 76523983,
+      "original_commit_id" : "d3f5b4d60ee6c4b3579610232008ba8e630cd031",
+      "original_position" : 23,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523983",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76524094"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76524094"
+         }
+      },
+      "body" : "I didn't see an easy way to do so. We'd have to iterate through each subdirectory's inode manually I think. Either that or go recursive from the root and filter, but that'd be much slower.",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-28T00:22:20Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/bash\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76524094",
+      "id" : 76524094,
+      "original_commit_id" : "d3f5b4d60ee6c4b3579610232008ba8e630cd031",
+      "original_position" : 6,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76524094",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76524168"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76524168"
+         }
+      },
+      "body" : "```\r\n$ ifind -n Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk 5.hfs \r\n154283\r\n```",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-28T00:33:15Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/bash\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76524168",
+      "id" : 76524168,
+      "original_commit_id" : "d3f5b4d60ee6c4b3579610232008ba8e630cd031",
+      "original_position" : 6,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76524168",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76525295"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76525295"
+         }
+      },
+      "body" : "Thanks, adding this.",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-28T02:54:38Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/bash\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76525295",
+      "id" : 76525295,
+      "original_commit_id" : "d3f5b4d60ee6c4b3579610232008ba8e630cd031",
+      "original_position" : 6,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76525295",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76525297"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76525297"
+         }
+      },
+      "body" : "```\r\n83c01f4e834e44a1b0f7208ed56fcf86c6d336290dbc4f4d625903b4bbbe9ece  1.tgz\r\n83c01f4e834e44a1b0f7208ed56fcf86c6d336290dbc4f4d625903b4bbbe9ece  MacOSX10.11.sdk.tar.gz\r\n```",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-28T02:54:57Z",
+      "diff_hunk" : "@@ -0,0 +1,24 @@\n+#!/bin/bash\n+set -e\n+\n+7z x Xcode_7.3.1.dmg 5.hfs\n+SDKNAME=\"MacOSX10.11.sdk\"\n+SDKDIRINODE=154283\n+fls 5.hfs -rpF ${SDKDIRINODE} |\n+ while read type inode filename; do\n+\tinode=\"${inode::-1}\"\n+\tif [ \"${filename:0:14}\" = \"usr/share/man/\" ]; then\n+\t\tcontinue\n+\tfi\n+\tfilename=\"${SDKNAME}/$filename\"\n+\techo \"Extracting $filename ...\"\n+\tmkdir -p \"$(dirname \"$filename\")\"\n+\tif [ \"$type\" = \"l/l\" ]; then\n+\t\tln -s \"$(icat 5.hfs $inode)\" \"$filename\"\n+\telse\n+\t\ticat 5.hfs $inode >\"$filename\"\n+\tfi\n+done\n+echo \"Building ${SDKNAME}.tar.gz ...\"\n+tar -c MacOSX10.11.sdk | gzip -9 > \"${SDKNAME}.tar.gz\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76525297",
+      "id" : 76525297,
+      "original_commit_id" : "d3f5b4d60ee6c4b3579610232008ba8e630cd031",
+      "original_position" : 23,
+      "path" : "contrib/macdeploy/extract-osx-sdk.sh",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76525297",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76529986"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76529986"
+         }
+      },
+      "body" : "Given that elsewhere we also list Debian-style package names for dependencies, I think that's acceptable.",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-28T11:07:10Z",
+      "diff_hunk" : "@@ -36,11 +36,20 @@ Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.1\n ```\n \n Unfortunately, the usual linux tools (7zip, hpmount, loopback mount) are incapable of opening this file.\n-To create a tarball suitable for Gitian input, mount the dmg in OS X, then create it with:\n+To create a tarball suitable for Gitian input, there are two options:\n+\n+Using Mac OS X, you can mount the dmg, and then create it with:\n ```\n+  $ hdiutil attach Xcode_7.3.1.dmg\n   $ tar -C /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/ -czf MacOSX10.11.sdk.tar.gz MacOSX10.11.sdk\n ```\n \n+Alternatively, you can use 7zip and SleuthKit to extract the files one by one.\n+The script contrib/macdeploy/extract-osx-sdk.sh automates this. First ensure\n+the dmg file is in the current directory, and then run the script. You may wish\n+to delete the intermediate 5.hfs file and MacOSX10.11.sdk (the directory) when\n+you've confirmed the extraction succeeded.\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76529986",
+      "id" : 76529986,
+      "original_commit_id" : "b6246891bef10e321e69787e7a25242466473086",
+      "original_position" : 18,
+      "path" : "doc/README_osx.md",
+      "position" : 18,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76529986",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Concept ACK, nice!",
+      "created_at" : "2016-08-28T11:11:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#issuecomment-242969061",
+      "id" : 242969061,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8617",
+      "updated_at" : "2016-08-28T11:11:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242969061",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Nice indeed!\r\nutACK\r\nJust out of curiosity: is the resulting file deterministic?",
+      "created_at" : "2016-08-28T12:07:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#issuecomment-242971295",
+      "id" : 242971295,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8617",
+      "updated_at" : "2016-08-28T12:07:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242971295",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@laanwj As of [the changes made here](https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76523983) the file is deterministic, yes.",
+      "created_at" : "2016-08-28T13:40:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#issuecomment-242975426",
+      "id" : 242975426,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8617",
+      "updated_at" : "2016-08-28T13:40:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242975426",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76543951"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76543951"
+         }
+      },
+      "body" : "Added to the doc, along with a rm command to cleanup.",
+      "commit_id" : "b729fcdb84f819e72d6d2bc264c76328d171abd8",
+      "created_at" : "2016-08-29T01:19:08Z",
+      "diff_hunk" : "@@ -36,11 +36,20 @@ Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.1\n ```\n \n Unfortunately, the usual linux tools (7zip, hpmount, loopback mount) are incapable of opening this file.\n-To create a tarball suitable for Gitian input, mount the dmg in OS X, then create it with:\n+To create a tarball suitable for Gitian input, there are two options:\n+\n+Using Mac OS X, you can mount the dmg, and then create it with:\n ```\n+  $ hdiutil attach Xcode_7.3.1.dmg\n   $ tar -C /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/ -czf MacOSX10.11.sdk.tar.gz MacOSX10.11.sdk\n ```\n \n+Alternatively, you can use 7zip and SleuthKit to extract the files one by one.\n+The script contrib/macdeploy/extract-osx-sdk.sh automates this. First ensure\n+the dmg file is in the current directory, and then run the script. You may wish\n+to delete the intermediate 5.hfs file and MacOSX10.11.sdk (the directory) when\n+you've confirmed the extraction succeeded.\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#discussion_r76543951",
+      "id" : 76543951,
+      "original_commit_id" : "b6246891bef10e321e69787e7a25242466473086",
+      "original_position" : 18,
+      "path" : "doc/README_osx.md",
+      "position" : 18,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8617",
+      "updated_at" : "2016-08-29T01:19:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76543951",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Nice!\r\nConceptACK / utACK",
+      "created_at" : "2016-08-29T06:39:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#issuecomment-243043666",
+      "id" : 243043666,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8617",
+      "updated_at" : "2016-08-29T06:39:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243043666",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Concept ACK\r\n",
+      "created_at" : "2016-08-29T12:18:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#issuecomment-243108048",
+      "id" : 243108048,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8617",
+      "updated_at" : "2016-08-29T12:18:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243108048",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Woohoo!",
+      "created_at" : "2016-08-29T20:03:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8617#issuecomment-243238585",
+      "id" : 243238585,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8617",
+      "updated_at" : "2016-08-29T20:03:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243238585",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   }
+]

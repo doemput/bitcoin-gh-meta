@@ -1,0 +1,799 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45082400"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45082400"
+         }
+      },
+      "body" : "Nit: Are you sure?",
+      "commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "created_at" : "2015-11-17T16:31:37Z",
+      "diff_hunk" : "@@ -46,21 +46,19 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI\n 2.  Build bitcoind:\n \n         ./autogen.sh\n-        ./configure --with-gui=qt5\n+        ./configure\n         make\n \n-3.  It is also a good idea to build and run the unit tests:\n+    By default 'make' will also run the unit tests.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45082400",
+      "id" : 45082400,
+      "original_commit_id" : "814d1f3a603e8ade1272dcf8e14f4e70955bcc57",
+      "original_position" : 27,
+      "path" : "doc/build-osx.md",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040",
+      "updated_at" : "2015-11-20T04:55:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45082400",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45169804"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45169804"
+         }
+      },
+      "body" : "You need to specifically call `make check` to run the unit-tests.",
+      "commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "created_at" : "2015-11-18T07:59:56Z",
+      "diff_hunk" : "@@ -46,21 +46,19 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI\n 2.  Build bitcoind:\n \n         ./autogen.sh\n-        ./configure --with-gui=qt5\n+        ./configure\n         make\n \n-3.  It is also a good idea to build and run the unit tests:\n+    By default 'make' will also run the unit tests.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45169804",
+      "id" : 45169804,
+      "original_commit_id" : "814d1f3a603e8ade1272dcf8e14f4e70955bcc57",
+      "original_position" : 27,
+      "path" : "doc/build-osx.md",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040",
+      "updated_at" : "2015-11-20T04:55:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45169804",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "I think we should either give instructions to build \"bitcoin-core\" (including the GUI) at point 2) or add another point in how to build the GUI (--with-gui). It's only mentioned in the Qt-Creator instructions (which is somehow pretty hard to setup and not really necessary).",
+      "created_at" : "2015-11-18T08:02:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-157638783",
+      "id" : 157638783,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-18T08:02:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157638783",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "It is already implicitly mentioned in this step. (via \"brew install [...] **qt5** libevent\"). So it should be sufficient to adjust the headings (or text to mention gui) and state that the qt-creator step is not needed.",
+      "created_at" : "2015-11-18T08:11:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-157640167",
+      "id" : 157640167,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-18T08:11:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157640167",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Agree with @MarcoFalke: just changing \"2. bitcoind\" to \"2. bitcoin-core\" would be enough. But still, I think we should mention how to build bitcoin-core without GUI then.\r\n",
+      "created_at" : "2015-11-18T08:14:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-157640684",
+      "id" : 157640684,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-18T08:14:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157640684",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45180339"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45180339"
+         }
+      },
+      "body" : "Not sure why I thought this was the case. 'make' is still only compiling the tests...",
+      "commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "created_at" : "2015-11-18T10:03:38Z",
+      "diff_hunk" : "@@ -46,21 +46,19 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI\n 2.  Build bitcoind:\n \n         ./autogen.sh\n-        ./configure --with-gui=qt5\n+        ./configure\n         make\n \n-3.  It is also a good idea to build and run the unit tests:\n+    By default 'make' will also run the unit tests.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45180339",
+      "id" : 45180339,
+      "original_commit_id" : "814d1f3a603e8ade1272dcf8e14f4e70955bcc57",
+      "original_position" : 27,
+      "path" : "doc/build-osx.md",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040",
+      "updated_at" : "2015-11-20T04:55:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45180339",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Reverted the 'make check' changes, and updated 2. to bitcoin-core",
+      "created_at" : "2015-11-18T10:08:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-157664825",
+      "id" : 157664825,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-18T10:08:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157664825",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45183673"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45183673"
+         }
+      },
+      "body" : "Nit: Change \" ### Building `bitcoind`\" to \" ### Building bitcoin\"\r\n\r\n",
+      "commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "created_at" : "2015-11-18T10:36:37Z",
+      "diff_hunk" : "@@ -43,10 +43,10 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI\n         git clone https://github.com/bitcoin/bitcoin.git\n         cd bitcoin\n \n-2.  Build bitcoind:\n+2.  Build bitcoin-core:\n ",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45183673",
+      "id" : 45183673,
+      "original_commit_id" : "3c3dd89fbf06d040eefec60c2f51e4e000205e82",
+      "original_position" : 24,
+      "path" : "doc/build-osx.md",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040",
+      "updated_at" : "2015-11-20T04:55:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45183673",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45183683"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45183683"
+         }
+      },
+      "body" : "Nit: Add a line with sth. like: \"This will configure and build the headless bitcoin binaries and the bitcoin gui (if qt is found). You can disable the gui build with `--disable-gui`\"?",
+      "commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "created_at" : "2015-11-18T10:36:43Z",
+      "diff_hunk" : "@@ -43,10 +43,10 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI\n         git clone https://github.com/bitcoin/bitcoin.git\n         cd bitcoin\n \n-2.  Build bitcoind:\n+2.  Build bitcoin-core:\n ",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45183683",
+      "id" : 45183683,
+      "original_commit_id" : "3c3dd89fbf06d040eefec60c2f51e4e000205e82",
+      "original_position" : 24,
+      "path" : "doc/build-osx.md",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040",
+      "updated_at" : "2015-11-20T04:55:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45183683",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "ACK\r\n\r\nYou can add something like this: If you want to build Bitcoin Core without graphical user interface, add an option `--without-gui` to the `configure` command line.\r\n",
+      "created_at" : "2015-11-18T19:44:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-157839455",
+      "id" : 157839455,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-18T19:44:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157839455",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Updated to address nits.",
+      "created_at" : "2015-11-19T01:39:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-157919855",
+      "id" : 157919855,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-19T01:39:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157919855",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45311922"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45311922"
+         }
+      },
+      "body" : "Sorry, another nit: remove `-with-gui=qt5`?",
+      "commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "created_at" : "2015-11-19T08:16:13Z",
+      "diff_hunk" : "@@ -60,7 +62,7 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI\n Use Qt Creator as IDE\n ------------------------\n You can use Qt Creator as IDE, for debugging and for manipulating forms, etc.\n-Download Qt Creator from http://www.qt.io/download/. Download the \"community edition\" and only install Qt Creator (uncheck the rest during the installation process).\n+Download Qt Creator from https://www.qt.io/download/. Download the \"community edition\" and only install Qt Creator (uncheck the rest during the installation process).\n \n 1. Make sure you installed everything through Homebrew mentioned above\n 2. Do a proper ./configure --with-gui=qt5 --enable-debug",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45311922",
+      "id" : 45311922,
+      "original_commit_id" : "d0cb5904f153cdc76eeb8d23c8b3b4e94067475f",
+      "original_position" : 49,
+      "path" : "doc/build-osx.md",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040",
+      "updated_at" : "2015-11-20T04:55:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45311922",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "@jonasschnelli nit fixed.",
+      "created_at" : "2015-11-19T08:20:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-157986772",
+      "id" : 157986772,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-19T08:20:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157986772",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "ACK",
+      "created_at" : "2015-11-19T08:22:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-157987050",
+      "id" : 157987050,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-19T08:22:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157987050",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "The reason to keep passing `--with-gui=qt5` explicitly would be to force building with the GUI. It will fail when the Qt headers are somehow misplaced. The default is `--with-gui=auto` which uses whatever Qt version works, preferring Qt5 if both are, building without GUI if none are usable. This was discussed in #6938 as well.\r\n",
+      "created_at" : "2015-11-19T10:02:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-158010141",
+      "id" : 158010141,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-19T10:02:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158010141",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@laanwj yes, but as someone already mentioned, this describes the build on OS X and *after* `brew install qt5`.",
+      "created_at" : "2015-11-19T10:10:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-158012080",
+      "id" : 158012080,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-19T10:10:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158012080",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45326135"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45326135"
+         }
+      },
+      "body" : "@paveljanik is right. This is incorrect. Should be `--without-gui`.",
+      "commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "created_at" : "2015-11-19T10:54:50Z",
+      "diff_hunk" : "@@ -36,17 +36,19 @@ Instructions: Homebrew\n \n NOTE: Building with Qt4 is still supported, however, could result in a broken UI. As such, building with Qt5 is recommended.\n \n-### Building `bitcoind`\n+### Building `bitcoin`\n \n 1. Clone the GitHub tree to get the source code and go into the directory.\n \n         git clone https://github.com/bitcoin/bitcoin.git\n         cd bitcoin\n \n-2.  Build bitcoind:\n+2.  Build bitcoin-core:\n+    This will configure and build the headless bitcoin binaries as well as the gui (if Qt is found).\n+    You can disable the gui build by passing `--disable-gui` to configure.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r45326135",
+      "id" : 45326135,
+      "original_commit_id" : "5ed397b2bcfc8e01e415864414f15ff1e41ce0d9",
+      "original_position" : 33,
+      "path" : "doc/build-osx.md",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040",
+      "updated_at" : "2015-11-20T04:55:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45326135",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Nit fixed.",
+      "created_at" : "2015-11-20T04:56:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-158279749",
+      "id" : 158279749,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-20T04:56:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158279749",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "ACK",
+      "created_at" : "2015-11-20T07:09:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-158300609",
+      "id" : 158300609,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-11-20T07:09:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158300609",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r46023766"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46023766"
+         }
+      },
+      "body" : "OS X 10.11: #7110",
+      "commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "created_at" : "2015-11-27T07:51:27Z",
+      "diff_hunk" : "@@ -5,7 +5,7 @@ This guide will show you how to build bitcoind (headless client) for OS X.\n Notes\n -----\n \n-* Tested on OS X 10.7 through 10.10 on 64-bit Intel processors only.\n+* Tested on OS X 10.7 through 10.11 on 64-bit Intel processors only.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r46023766",
+      "id" : 46023766,
+      "original_commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "original_position" : 5,
+      "path" : "doc/build-osx.md",
+      "position" : 5,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040",
+      "updated_at" : "2015-11-27T07:51:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46023766",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r46024119"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46024119"
+         }
+      },
+      "body" : "The build error in #7110 is unrelated to this change. Bitcoin builds fine on 10.11. The #7110 is very likely a QT issue. Will answer soon there.",
+      "commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "created_at" : "2015-11-27T08:00:14Z",
+      "diff_hunk" : "@@ -5,7 +5,7 @@ This guide will show you how to build bitcoind (headless client) for OS X.\n Notes\n -----\n \n-* Tested on OS X 10.7 through 10.10 on 64-bit Intel processors only.\n+* Tested on OS X 10.7 through 10.11 on 64-bit Intel processors only.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#discussion_r46024119",
+      "id" : 46024119,
+      "original_commit_id" : "b171c69c6010271fe793db1f84897b5fbc6d8dc6",
+      "original_position" : 5,
+      "path" : "doc/build-osx.md",
+      "position" : 5,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7040",
+      "updated_at" : "2015-11-27T08:00:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46024119",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "@jonasschnelli Does this need any further changes?",
+      "created_at" : "2015-12-02T08:10:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-161215116",
+      "id" : 161215116,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-12-02T08:10:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161215116",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Re-ACK. Only problem could be that someone ends up with a GUI-less bitcoin-core (missing bitcoin-qt) because he forget to install qt5 (would happen without error only a tiny warning/info in the `configure` output). But thats okay.",
+      "created_at" : "2015-12-02T08:42:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7040#issuecomment-161220572",
+      "id" : 161220572,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7040",
+      "updated_at" : "2015-12-02T08:42:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161220572",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   }
+]

@@ -1,0 +1,160 @@
+[
+   {
+      "body" : "I thought about this a bit: apparently some people use the stderr output to determine whether a test emitted e.g. sanitizer warnings.\r\nPossible idea: add a \"WARNINGS\" status, that is interpreted as PASS for the final tally but does show that something unexpected was printed.",
+      "created_at" : "2017-04-21T08:54:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10241#issuecomment-296133021",
+      "id" : 296133021,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10241",
+      "updated_at" : "2017-04-21T08:54:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/296133021",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Added a new status \"Passed with warnings\" which gets set when the test passed but stderr was not empty. The test will be flagged as \"successful\" for that new status.",
+      "created_at" : "2017-04-29T14:39:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10241#issuecomment-298172955",
+      "id" : 298172955,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10241",
+      "updated_at" : "2017-04-29T14:39:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298172955",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10241#discussion_r114071832"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10241"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114071832"
+         }
+      },
+      "body" : "```\r\nNameError: name 'ORANGE' is not defined\r\n",
+      "commit_id" : "41f392cf504cbfd3671ec019ed27e70574ea97f6",
+      "created_at" : "2017-04-30T10:14:31Z",
+      "diff_hunk" : "@@ -407,6 +409,9 @@ def __repr__(self):\n         if self.status == \"Passed\":\n             color = BLUE\n             glyph = TICK\n+        if self.status == \"Passed with warnings\":\n+            color = ORANGE",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10241#discussion_r114071832",
+      "id" : 114071832,
+      "original_commit_id" : "41f392cf504cbfd3671ec019ed27e70574ea97f6",
+      "original_position" : 14,
+      "path" : "test/functional/test_runner.py",
+      "position" : 14,
+      "pull_request_review_id" : 35513645,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10241",
+      "updated_at" : "2017-04-30T10:14:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114071832",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Concept ACK, but I will close this pull in case no one picks it up in the next couple of days.",
+      "created_at" : "2017-05-14T10:45:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10241#issuecomment-301304185",
+      "id" : 301304185,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10241",
+      "updated_at" : "2017-05-14T10:45:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/301304185",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Closing for now. Feel free to pick this up again.",
+      "created_at" : "2017-05-18T23:49:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10241#issuecomment-302571532",
+      "id" : 302571532,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10241",
+      "updated_at" : "2017-05-18T23:49:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302571532",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

@@ -1,0 +1,334 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113816919"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113816919"
+         }
+      },
+      "body" : "Is `pindexNewTip != NULL` guaranteed here?",
+      "commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "created_at" : "2017-04-27T22:26:43Z",
+      "diff_hunk" : "@@ -2537,6 +2537,9 @@ bool ActivateBestChain(CValidationState &state, const CChainParams& chainparams,\n         return false;\n     }\n \n+    int nStopAtHeight = GetArg(\"-stopatheight\", DEFAULT_STOPATHEIGHT);\n+    if (nStopAtHeight && pindexNewTip->nHeight >= nStopAtHeight) StartShutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113816919",
+      "id" : 113816919,
+      "original_commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 35239348,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290",
+      "updated_at" : "2017-04-27T22:26:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113816919",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "Concept ACK. Will test.\n\nOn Fri, 28 Apr 2017 at 06:26, practicalswift <notifications@github.com>\nwrote:\n\n> *@practicalswift* commented on this pull request.\n> ------------------------------\n>\n> In src/validation.cpp\n> <https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113816919>:\n>\n> > @@ -2537,6 +2537,9 @@ bool ActivateBestChain(CValidationState &state, const CChainParams& chainparams,\n>          return false;\n>      }\n>\n> +    int nStopAtHeight = GetArg(\"-stopatheight\", DEFAULT_STOPATHEIGHT);\n> +    if (nStopAtHeight && pindexNewTip->nHeight >= nStopAtHeight) StartShutdown();\n>\n> Is pindexNewTip != NULL guaranteed here?\n>\n> Ã¢ÂÂ\n> You are receiving this because you are subscribed to this thread.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/bitcoin/bitcoin/pull/10290#pullrequestreview-35239348>,\n> or mute the thread\n> <https://github.com/notifications/unsubscribe-auth/AA0t8gxZAtoKmYXr-a0xAB_nk0lIzx1Cks5r0RYogaJpZM4NKqhz>\n> .\n>\n",
+      "created_at" : "2017-04-27T23:05:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10290#issuecomment-297863017",
+      "id" : 297863017,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10290",
+      "updated_at" : "2017-04-27T23:05:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297863017",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113876217"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113876217"
+         }
+      },
+      "body" : "It is guaranteed non-null beyond line 2512, which is guaranteed to execute unless the function returns at line 2501 or 2506.",
+      "commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "created_at" : "2017-04-28T08:16:12Z",
+      "diff_hunk" : "@@ -2537,6 +2537,9 @@ bool ActivateBestChain(CValidationState &state, const CChainParams& chainparams,\n         return false;\n     }\n \n+    int nStopAtHeight = GetArg(\"-stopatheight\", DEFAULT_STOPATHEIGHT);\n+    if (nStopAtHeight && pindexNewTip->nHeight >= nStopAtHeight) StartShutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113876217",
+      "id" : 113876217,
+      "original_commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 35300900,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290",
+      "updated_at" : "2017-04-28T08:16:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113876217",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113926274"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113926274"
+         }
+      },
+      "body" : "Perhaps explain that with 0 it won't do anything?\r\nAlso, this is not only for the main chain, it will work with testnet3 and regtest right?",
+      "commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "created_at" : "2017-04-28T13:09:51Z",
+      "diff_hunk" : "@@ -436,6 +436,8 @@ std::string HelpMessage(HelpMessageMode mode)\n         strUsage += HelpMessageOpt(\"-dropmessagestest=<n>\", \"Randomly drop 1 of every <n> network messages\");\n         strUsage += HelpMessageOpt(\"-fuzzmessagestest=<n>\", \"Randomly fuzz 1 of every <n> network messages\");\n         strUsage += HelpMessageOpt(\"-stopafterblockimport\", strprintf(\"Stop running after importing blocks from disk (default: %u)\", DEFAULT_STOPAFTERBLOCKIMPORT));\n+        strUsage += HelpMessageOpt(\"-stopatheight\", strprintf(\"Stop running after reaching the given height in the main chain (default: %u)\", DEFAULT_STOPATHEIGHT));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113926274",
+      "id" : 113926274,
+      "original_commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 35355712,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290",
+      "updated_at" : "2017-04-28T13:09:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113926274",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "utACK b297426c9670fa83a12096f9db5666c15e1bb806",
+      "created_at" : "2017-04-28T13:10:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10290#issuecomment-297993494",
+      "id" : 297993494,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10290",
+      "updated_at" : "2017-04-28T13:10:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297993494",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113954232"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113954232"
+         }
+      },
+      "body" : "No, I dont believe so, in a crazy case you may have started shutdown (possibly due to stopatheight), and then gotten another call into ActivateBestChain(), which will break out of the main loop at the first chance it gets, and then blow up.",
+      "commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "created_at" : "2017-04-28T15:17:33Z",
+      "diff_hunk" : "@@ -2537,6 +2537,9 @@ bool ActivateBestChain(CValidationState &state, const CChainParams& chainparams,\n         return false;\n     }\n \n+    int nStopAtHeight = GetArg(\"-stopatheight\", DEFAULT_STOPATHEIGHT);\n+    if (nStopAtHeight && pindexNewTip->nHeight >= nStopAtHeight) StartShutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113954232",
+      "id" : 113954232,
+      "original_commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 35387370,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290",
+      "updated_at" : "2017-04-28T15:17:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113954232",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113960674"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113960674"
+         }
+      },
+      "body" : "Yes, line 2486. I missed that somehow. `pindexNewTip` is not guaranteed non-null. Sorry about misleading response.",
+      "commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "created_at" : "2017-04-28T15:45:47Z",
+      "diff_hunk" : "@@ -2537,6 +2537,9 @@ bool ActivateBestChain(CValidationState &state, const CChainParams& chainparams,\n         return false;\n     }\n \n+    int nStopAtHeight = GetArg(\"-stopatheight\", DEFAULT_STOPATHEIGHT);\n+    if (nStopAtHeight && pindexNewTip->nHeight >= nStopAtHeight) StartShutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r113960674",
+      "id" : 113960674,
+      "original_commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 35394670,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290",
+      "updated_at" : "2017-04-28T15:46:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113960674",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r114052722"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114052722"
+         }
+      },
+      "body" : "It's a debug option, so the user can figure out that -nostopatheight won't do anything?",
+      "commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "created_at" : "2017-04-29T12:39:32Z",
+      "diff_hunk" : "@@ -436,6 +436,8 @@ std::string HelpMessage(HelpMessageMode mode)\n         strUsage += HelpMessageOpt(\"-dropmessagestest=<n>\", \"Randomly drop 1 of every <n> network messages\");\n         strUsage += HelpMessageOpt(\"-fuzzmessagestest=<n>\", \"Randomly fuzz 1 of every <n> network messages\");\n         strUsage += HelpMessageOpt(\"-stopafterblockimport\", strprintf(\"Stop running after importing blocks from disk (default: %u)\", DEFAULT_STOPAFTERBLOCKIMPORT));\n+        strUsage += HelpMessageOpt(\"-stopatheight\", strprintf(\"Stop running after reaching the given height in the main chain (default: %u)\", DEFAULT_STOPATHEIGHT));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10290#discussion_r114052722",
+      "id" : 114052722,
+      "original_commit_id" : "b297426c9670fa83a12096f9db5666c15e1bb806",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 35495790,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10290",
+      "updated_at" : "2017-04-29T12:39:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114052722",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

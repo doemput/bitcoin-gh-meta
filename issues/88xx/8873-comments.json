@@ -1,0 +1,456 @@
+[
+   {
+      "body" : "Trying to compile this on OS X:\r\n```\r\nMaking all in src\r\n  CXXLD    bench/bench_bitcoin\r\nld: unknown option: --start-group\r\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\r\nmake[2]: *** [bench/bench_bitcoin] Error 1\r\nmake[1]: *** [all-recursive] Error 1\r\nmake: *** [all-recursive] Error 1\r\n```",
+      "created_at" : "2016-10-04T03:20:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#issuecomment-251286047",
+      "id" : 251286047,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8873",
+      "updated_at" : "2016-10-04T03:20:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251286047",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "After removing `--start-group` I see these numbers for the new benchmarks:\r\n```\r\nCCoinsCaching,14336,0.000036257319152,0.000077610835433,0.000076690073391\r\nCCoinsCaching,14336,0.000038111116737,0.000081880833022,0.000077795902533\r\n\r\nMempoolEviction,3072,0.000186952762306,0.000422742217779,0.000384807276229\r\nMempoolEviction,3072,0.000204847194254,0.000402882695198,0.000387265269334\r\n\r\nVerifyScriptBench,3584,0.000147988088429,0.000305769499391,0.000297257809767\r\nVerifyScriptBench,3584,0.000145800411701,0.000301757827401,0.000298310802983\r\n```",
+      "created_at" : "2016-10-04T03:26:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#issuecomment-251286773",
+      "id" : 251286773,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8873",
+      "updated_at" : "2016-10-04T03:26:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251286773",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r81688898"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81688898"
+         }
+      },
+      "body" : "Do we use some circular dependencies? Or why adding linker --start-group?",
+      "commit_id" : "18dacf9bd25154e184b097ee4e8f786d9be25637",
+      "created_at" : "2016-10-04T05:20:44Z",
+      "diff_hunk" : "@@ -34,11 +37,12 @@ bench_bench_bitcoin_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)\n endif\n \n if ENABLE_WALLET\n+bench_bench_bitcoin_SOURCES += bench/coin_selection.cpp\n bench_bench_bitcoin_LDADD += $(LIBBITCOIN_WALLET)\n endif\n \n bench_bench_bitcoin_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)\n-bench_bench_bitcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)\n+bench_bench_bitcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -Wl,--start-group",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r81688898",
+      "id" : 81688898,
+      "original_commit_id" : "456848695f4e58607e770ce3744301e63ee682a8",
+      "original_position" : 20,
+      "path" : "src/Makefile.bench.include",
+      "position" : null,
+      "pull_request_review_id" : 2650430,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873",
+      "updated_at" : "2016-10-18T20:00:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81688898",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Awesome! Thanks for doing this.\r\nConcept ACK.",
+      "created_at" : "2016-10-04T09:12:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#issuecomment-251335930",
+      "id" : 251335930,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8873",
+      "updated_at" : "2016-10-04T09:12:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251335930",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r81739766"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81739766"
+         }
+      },
+      "body" : "He probably added it because of a weird crypter link issue:\r\n```\r\nlibbitcoin_wallet.a(libbitcoin_wallet_a-crypter.o): In function `CCrypter::Encrypt(std::vector<unsigned char, secure_allocator<unsigned char> > const&, std::vector<unsigned char, std::allocator<unsigned char> >&) const':\r\n/.../bitcoin/src/wallet/crypter.cpp:85: undefined reference to `AES256CBCEncrypt::AES256CBCEncrypt(unsigned char const*, unsigned char const*, bool)'\r\n/.../bitcoin/src/wallet/crypter.cpp:86: undefined reference to `AES256CBCEncrypt::Encrypt(unsigned char const*, int, unsigned char*) const'\r\n```\r\nRather we should structure the libraries sanely than resort to linker groups, though.",
+      "commit_id" : "18dacf9bd25154e184b097ee4e8f786d9be25637",
+      "created_at" : "2016-10-04T11:57:41Z",
+      "diff_hunk" : "@@ -34,11 +37,12 @@ bench_bench_bitcoin_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)\n endif\n \n if ENABLE_WALLET\n+bench_bench_bitcoin_SOURCES += bench/coin_selection.cpp\n bench_bench_bitcoin_LDADD += $(LIBBITCOIN_WALLET)\n endif\n \n bench_bench_bitcoin_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)\n-bench_bench_bitcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)\n+bench_bench_bitcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -Wl,--start-group",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r81739766",
+      "id" : 81739766,
+      "original_commit_id" : "456848695f4e58607e770ce3744301e63ee682a8",
+      "original_position" : 20,
+      "path" : "src/Makefile.bench.include",
+      "position" : null,
+      "pull_request_review_id" : 2696322,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873",
+      "updated_at" : "2016-10-18T20:00:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81739766",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r81747154"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81747154"
+         }
+      },
+      "body" : "Yes, that's the issue I saw. I did try briefly to rearrange the link order and add dup library listings to work around the apparently circular dependencies, but for some reason nothing I tried worked so I resorted to --start-group. I can try again to figure find a working link order that doesn't require the flag, though.",
+      "commit_id" : "18dacf9bd25154e184b097ee4e8f786d9be25637",
+      "created_at" : "2016-10-04T12:43:48Z",
+      "diff_hunk" : "@@ -34,11 +37,12 @@ bench_bench_bitcoin_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)\n endif\n \n if ENABLE_WALLET\n+bench_bench_bitcoin_SOURCES += bench/coin_selection.cpp\n bench_bench_bitcoin_LDADD += $(LIBBITCOIN_WALLET)\n endif\n \n bench_bench_bitcoin_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)\n-bench_bench_bitcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)\n+bench_bench_bitcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -Wl,--start-group",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r81747154",
+      "id" : 81747154,
+      "original_commit_id" : "456848695f4e58607e770ce3744301e63ee682a8",
+      "original_position" : 20,
+      "path" : "src/Makefile.bench.include",
+      "position" : null,
+      "pull_request_review_id" : 2703146,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873",
+      "updated_at" : "2016-10-18T20:00:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81747154",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "I can't easily look at the source code now. What exactly causes the\ncircular dependency?\n",
+      "created_at" : "2016-10-04T12:46:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#issuecomment-251377705",
+      "id" : 251377705,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8873",
+      "updated_at" : "2016-10-04T12:46:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251377705",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "I think the problem is not a circular dependency here, but that `LIBBITCOIN_WALLET` is added after `LIBBITCOIN_CRYPTO`, whereas wallet needs crypto so it should go before that.",
+      "created_at" : "2016-10-04T14:59:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#issuecomment-251414036",
+      "id" : 251414036,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8873",
+      "updated_at" : "2016-10-04T14:59:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/251414036",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r81844896"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81844896"
+         }
+      },
+      "body" : "At least one circular dependency exists between the wallet and server libs:\r\n\r\n```\r\n./src/libbitcoin_server.a:libbitcoin_server_a-main.o:000000000000c6c0 T CheckFinalTx(CTransaction const&, int)\r\n./src/libbitcoin_wallet.a:libbitcoin_wallet_a-wallet.o:                 U CheckFinalTx(CTransaction const&, int)\r\n\r\n./src/libbitcoin_server.a:libbitcoin_server_a-init.o:                 U RegisterWalletRPCCommands(CRPCTable&)\r\n./src/libbitcoin_wallet.a:libbitcoin_wallet_a-rpcwallet.o:0000000000000370 T RegisterWalletRPCCommands(CRPCTable&)\r\n```\r\nBut this problem only manifests if you remove ccoins_caching.cpp, mempool_eviction.cpp, verify_script.cpp from the sources list (which is what I had done during development).\r\n\r\nOtherwise, adding the crypo lib after the wallet lib as Wladimir suggested seems to be sufficient to build, so I updated the PR with this change and removed start-group.",
+      "commit_id" : "18dacf9bd25154e184b097ee4e8f786d9be25637",
+      "created_at" : "2016-10-04T20:22:53Z",
+      "diff_hunk" : "@@ -34,11 +37,12 @@ bench_bench_bitcoin_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)\n endif\n \n if ENABLE_WALLET\n+bench_bench_bitcoin_SOURCES += bench/coin_selection.cpp\n bench_bench_bitcoin_LDADD += $(LIBBITCOIN_WALLET)\n endif\n \n bench_bench_bitcoin_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)\n-bench_bench_bitcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)\n+bench_bench_bitcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -Wl,--start-group",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r81844896",
+      "id" : 81844896,
+      "original_commit_id" : "456848695f4e58607e770ce3744301e63ee682a8",
+      "original_position" : 20,
+      "path" : "src/Makefile.bench.include",
+      "position" : null,
+      "pull_request_review_id" : 2795431,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873",
+      "updated_at" : "2016-10-18T20:00:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/81844896",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Compiling has been fixed on OS X.\r\n\r\n```\r\nCCoinsCaching,10240,0.000053781084716,0.000108781736344,0.000108645693399\r\nCCoinsCaching,10240,0.000053551048040,0.000109656713903,0.000109049887396\r\nCCoinsCaching,10240,0.000053836032748,0.000108591280878,0.000108507415280\r\n\r\nMempoolEviction,1536,0.000360749661922,0.000733753666282,0.000728020289292\r\nMempoolEviction,1536,0.000362284481525,0.000727366656065,0.000728628287713\r\nMempoolEviction,1536,0.000364426523447,0.000764504075050,0.000734255183488\r\n\r\nVerifyScriptBench,1536,0.000325001776218,0.000652246177197,0.000652723324796\r\nVerifyScriptBench,1536,0.000325386412442,0.000652894377708,0.000653158252438\r\nVerifyScriptBench,1536,0.000325437635183,0.000652890652418,0.000653182932486\r\n```",
+      "created_at" : "2016-10-09T10:20:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#issuecomment-252478032",
+      "id" : 252478032,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8873",
+      "updated_at" : "2016-10-09T10:20:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/252478032",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r82519619"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/82519619"
+         }
+      },
+      "body" : "Please clang-format the new code.",
+      "commit_id" : "18dacf9bd25154e184b097ee4e8f786d9be25637",
+      "created_at" : "2016-10-09T10:28:24Z",
+      "diff_hunk" : "@@ -0,0 +1,88 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#include \"bench.h\"\n+#include \"coins.h\"\n+#include \"policy/policy.h\"\n+#include \"wallet/crypter.h\"\n+\n+#include <vector>\n+\n+// FIXME: Dedup with SetupDummyInputs in test/transaction_tests.cpp.\n+//\n+// Helper: create two dummy transactions, each with\n+// two outputs.  The first has 11 and 50 CENT outputs\n+// paid to a TX_PUBKEY, the second 21 and 22 CENT outputs\n+// paid to a TX_PUBKEYHASH.\n+//\n+static std::vector<CMutableTransaction>\n+SetupDummyInputs(CBasicKeyStore& keystoreRet, CCoinsViewCache& coinsRet)\n+{\n+    std::vector<CMutableTransaction> dummyTransactions;\n+    dummyTransactions.resize(2);\n+\n+    // Add some keys to the keystore:\n+    CKey key[4];\n+    for (int i = 0; i < 4; i++)\n+    {\n+        key[i].MakeNewKey(i % 2);\n+        keystoreRet.AddKey(key[i]);\n+    }\n+\n+    // Create some dummy input transactions\n+    dummyTransactions[0].vout.resize(2);\n+    dummyTransactions[0].vout[0].nValue = 11*CENT;\n+    dummyTransactions[0].vout[0].scriptPubKey << ToByteVector(key[0].GetPubKey()) << OP_CHECKSIG;\n+    dummyTransactions[0].vout[1].nValue = 50*CENT;\n+    dummyTransactions[0].vout[1].scriptPubKey << ToByteVector(key[1].GetPubKey()) << OP_CHECKSIG;\n+    coinsRet.ModifyCoins(dummyTransactions[0].GetHash())->FromTx(dummyTransactions[0], 0);\n+\n+    dummyTransactions[1].vout.resize(2);\n+    dummyTransactions[1].vout[0].nValue = 21*CENT;\n+    dummyTransactions[1].vout[0].scriptPubKey = GetScriptForDestination(key[2].GetPubKey().GetID());\n+    dummyTransactions[1].vout[1].nValue = 22*CENT;\n+    dummyTransactions[1].vout[1].scriptPubKey = GetScriptForDestination(key[3].GetPubKey().GetID());\n+    coinsRet.ModifyCoins(dummyTransactions[1].GetHash())->FromTx(dummyTransactions[1], 0);\n+\n+    return dummyTransactions;\n+}\n+\n+// Microbenchmark for simple accesses to a CCoinsViewCache database. Note from\n+// laanwj, \"replicating the actual usage patterns of the client is hard though,\n+// many times micro-benchmarks of the database showed completely different\n+// characteristics than e.g. reindex timings. But that's not a requirement of\n+// every benchmark.\"\n+// (https://github.com/bitcoin/bitcoin/issues/7883#issuecomment-224807484)\n+static void CCoinsCaching(benchmark::State& state)\n+{\n+  CBasicKeyStore keystore;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#discussion_r82519619",
+      "id" : 82519619,
+      "original_commit_id" : "c9086edc5c507c6ce7c971bf1cbf122391c948f0",
+      "original_position" : 59,
+      "path" : "src/bench/ccoins_caching.cpp",
+      "position" : null,
+      "pull_request_review_id" : 3423278,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8873",
+      "updated_at" : "2016-10-18T20:00:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/82519619",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2016-10-09T10:30:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#issuecomment-252478499",
+      "id" : 252478499,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8873",
+      "updated_at" : "2016-10-09T10:30:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/252478499",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Applied clang-format to all the new files.",
+      "created_at" : "2016-10-18T20:02:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8873#issuecomment-254622577",
+      "id" : 254622577,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8873",
+      "updated_at" : "2016-10-18T20:02:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/254622577",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

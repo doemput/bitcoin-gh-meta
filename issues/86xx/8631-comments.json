@@ -1,0 +1,1701 @@
+[
+   {
+      "body" : "Concept ACK. \r\n\r\nWill review & test soon.\r\n\r\nThe boost interruption_point paradigm is messy and can make code hard to reason about. In my code for https://github.com/bitcoin/bitcoin/pull/8464 I have also removed boost::thread and interruption points, preferring more explicit quitting. Dealing with the interruption code made working on #8464  more difficult than it had to be.\r\n\r\nOne Nit, which I think is worth addressing. I would refactor the names from Interrupt to Quit, Shutdown, or even ControlledExit. Connotation of interrupt is a non-consensual break, whereas Quit or Shutdown implies being done as a normal part of control flow.",
+      "created_at" : "2016-08-31T03:46:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-243650672",
+      "id" : 243650672,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-08-31T03:46:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243650672",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "@JeremyRubin Nearly every thread uses separate interrupt/shutdown calls for exactly that reason.\r\n\r\nInterrupt is non-consensual, and means \"stop what you're doing and don't start anything else\". Shutdown means \"please gracefully exit now and don't return until you do\".",
+      "created_at" : "2016-08-31T03:52:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-243651371",
+      "id" : 243651371,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-08-31T03:52:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243651371",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@theuni Ah, gotcha. Was looking at small sample; my bad. I guess my comment should instead be, we should eventually migrate to shutdown only no interrupt threads; but this is a big step in that direction and precursor to that happening.",
+      "created_at" : "2016-08-31T03:59:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-243652147",
+      "id" : 243652147,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-08-31T03:59:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243652147",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "Concept ACK, testing.",
+      "created_at" : "2016-08-31T15:30:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-243802502",
+      "id" : 243802502,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-08-31T15:30:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243802502",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "OS X here:\r\n\r\n```\r\nMaking all in src\r\n  CXX      test/test_test_bitcoin-scheduler_tests.o\r\nIn file included from test/scheduler_tests.cpp:8:\r\nIn file included from ./test/test_bitcoin.h:16:\r\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/thread:337:5: error: attempt to use a deleted function\r\n    __invoke(std::__1::move(std::__1::get<0>(__t)), std::__1::move(std::__1::get<_Indices>(__t))...);\r\n    ^\r\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/thread:347:5: note: in instantiation of function template specialization 'std::__1::__thread_execute<void (CScheduler::*)(), std::__1::reference_wrapper<CScheduler> , 1>' requested here\r\n    __thread_execute(*__p, _Index());\r\n    ^\r\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/thread:359:42: note: in instantiation of function template specialization 'std::__1::__thread_proxy<std::__1::tuple<void (CScheduler::*)(), std::__1::reference_wrapper<CScheduler> > >' requested here\r\n    int __ec = pthread_create(&__t_, 0, &__thread_proxy<_Gp>, __p.get());\r\n                                         ^\r\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1673:31: note: in instantiation of function template specialization 'std::__1::thread::thread<void (CScheduler::*)(), std::__1::reference_wrapper<CScheduler> , void>' requested here\r\n            ::new((void*)__p) _Up(std::__1::forward<_Args>(__args)...);\r\n                              ^\r\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1600:18: note: in instantiation of function template specialization 'std::__1::allocator<std::__1::thread>::construct<std::__1::thread, void (CScheduler::*)(), std::__1::reference_wrapper<CScheduler> >' requested here\r\n            {__a.construct(__p, std::__1::forward<_Args>(__args)...);}\r\n                 ^\r\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1453:14: note: in instantiation of function template specialization 'std::__1::allocator_traits<std::__1::allocator<std::__1::thread> >::__construct<std::__1::thread, void (CScheduler::*)(), std::__1::reference_wrapper<CScheduler> >' requested here\r\n            {__construct(__has_construct<allocator_type, _Tp*, _Args...>(),\r\n             ^\r\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/vector:1643:25: note: in instantiation of function template specialization 'std::__1::allocator_traits<std::__1::allocator<std::__1::thread> >::construct<std::__1::thread, void (CScheduler::*)(), std::__1::reference_wrapper<CScheduler> >' requested here\r\n        __alloc_traits::construct(this->__alloc(),\r\n                        ^\r\ntest/scheduler_tests.cpp:89:22: note: in instantiation of function template specialization 'std::__1::vector<std::__1::thread, std::__1::allocator<std::__1::thread> >::emplace_back<void (CScheduler::*)(), std::__1::reference_wrapper<CScheduler> >' requested here\r\n        microThreads.emplace_back(&CScheduler::serviceQueue, std::ref(microTasks));\r\n                     ^\r\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/type_traits:1043:5: note: '~__nat' has been explicitly marked deleted here\r\n    ~__nat() = delete;\r\n    ^\r\n```",
+      "created_at" : "2016-08-31T16:02:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-243812773",
+      "id" : 243812773,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-08-31T16:02:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243812773",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Compile error fixed here.\r\n",
+      "created_at" : "2016-08-31T18:04:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-243849411",
+      "id" : 243849411,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-08-31T18:04:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243849411",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Needs rebase.",
+      "created_at" : "2016-08-31T23:06:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-243929430",
+      "id" : 243929430,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-08-31T23:06:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243929430",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "rebased and squashed in the compile fix.",
+      "created_at" : "2016-09-01T00:10:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-243939675",
+      "id" : 243939675,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-01T00:10:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243939675",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : ">  Nearly every thread uses separate interrupt/shutdown calls for exactly that reason.\r\n\r\nThere's another reason, and that is that interrupt is supposed to be an instant operation at the caller site, and shutdown is allowed to wait. This allows parallelism in the shutdown process:\r\n\r\n- Send module A interrupt  (A starts terminating its threads, which may take some time)\r\n- Send module B interrupt  (B starts terminating its threads, which may take some time)\r\n\r\n...\r\n\r\n- Module A shutdown (waits for A's threads to join)\r\n- Module B shutdown (waits for B's threads to join)\r\n\r\nSure, the naming may not be optimal, \"interrupt\" is more like a hint to stop work, but I think the approach makes sense.\r\n\r\n(I'm sure this can be implemented more thoroughly with explicit shutdown-dependencies and std::futures, but the idea is the same, to make shutdown as fast as possible)\r\n\r\nEdit: re-triggered travis, the failure was a timeout, probably has nothing to do with the changes here.",
+      "created_at" : "2016-09-01T12:10:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-244059787",
+      "id" : 244059787,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-01T12:57:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/244059787",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Travis does keep failing. There may be an issue after all.",
+      "created_at" : "2016-09-01T13:47:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-244083563",
+      "id" : 244083563,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-01T13:47:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/244083563",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Hmm, travis was happy before the rebase. I'll try to reproduce locally, maybe something changed.",
+      "created_at" : "2016-09-01T15:32:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-244117354",
+      "id" : 244117354,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-01T15:32:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/244117354",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "The travis failures were caused by the rebase after all. ab48c5e72156b34300db4a6521cb3c9969be3937 introduced a new test that relied on the interruptible semantics. I've added a commit that should fix that up.",
+      "created_at" : "2016-09-02T05:05:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-244284118",
+      "id" : 244284118,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-02T05:05:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/244284118",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "needs rebase again :( \r\n",
+      "created_at" : "2016-09-02T11:21:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-244349754",
+      "id" : 244349754,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-02T11:22:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/244349754",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77481047"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77481047"
+         }
+      },
+      "body" : "Nit:\r\n\r\nI find the semantics of bind to be pretty confusing confusing. If we're cleaning up threading semantics I think it might be clearer to do as follows:\r\n\r\nscheduler_thread = std::thread([](){ TraceThread(\"scheduler\", CScheduler::serviceQueue(scheduler)); };\r\n\r\nThis should also allow you to get rid of the explicit template param.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T07:46:05Z",
+      "diff_hunk" : "@@ -1078,7 +1086,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)\n \n     // Start the lightweight task scheduler thread\n     CScheduler::Function serviceLoop = boost::bind(&CScheduler::serviceQueue, &scheduler);\n-    threadGroup.create_thread(boost::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));\n+    scheduler_thread = std::thread(std::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77481047",
+      "id" : 77481047,
+      "original_commit_id" : "8447a96ee2e796b7de89968429b586206a40b04c",
+      "original_position" : 49,
+      "path" : "src/init.cpp",
+      "position" : 132,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T07:46:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77481047",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77482322"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77482322"
+         }
+      },
+      "body" : "This is OK -- initially, I was confused as to why you use an atomic var for the condition variable, as usually access is guarded by the lock so atomic would be overkill. But in this case, it's fine.\r\n\r\nMay be worth writing a profile at some point for if it is better to use a cond+atomic or to lock on writing the condition externally, or just throwing a comment in here as to why you're using an atomic.\r\n",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T07:58:20Z",
+      "diff_hunk" : "@@ -120,6 +120,12 @@ boost::condition_variable messageHandlerCondition;\n static CNodeSignals g_signals;\n CNodeSignals& GetNodeSignals() { return g_signals; }\n \n+static std::condition_variable net_interrupt_cond;\n+static std::mutex cs_net_interrupt;\n+static std::atomic<bool> net_interrupted(false);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77482322",
+      "id" : 77482322,
+      "original_commit_id" : "ed68c688d3f5f76d3a0d56924d4421a7ad8af977",
+      "original_position" : 6,
+      "path" : "src/net.cpp",
+      "position" : 23,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T07:58:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77482322",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77483473"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77483473"
+         }
+      },
+      "body" : "repeating comment about using lambdas.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:08:22Z",
+      "diff_hunk" : "@@ -2176,16 +2180,16 @@ void StartNode(boost::thread_group& threadGroup, CScheduler& scheduler)\n     MapPort(GetBoolArg(\"-upnp\", DEFAULT_UPNP));\n \n     // Send and receive from sockets, accept connections\n-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, \"net\", &ThreadSocketHandler));\n+    socket_handler_thread = std::thread(std::bind(&TraceThread<void (*)()>, \"net\", &ThreadSocketHandler));\n \n     // Initiate outbound connections from -addnode\n-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, \"addcon\", &ThreadOpenAddedConnections));\n+    open_added_connections_thread = std::thread(std::bind(&TraceThread<void (*)()>, \"addcon\", &ThreadOpenAddedConnections));\n \n     // Initiate outbound connections\n-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, \"opencon\", &ThreadOpenConnections));\n+    open_connections_thread = std::thread(std::bind(&TraceThread<void (*)()>, \"opencon\", &ThreadOpenConnections));\n \n     // Process messages\n-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, \"msghand\", &ThreadMessageHandler));\n+    message_handler_thread = std::thread(std::bind(&TraceThread<void (*)()>, \"msghand\", &ThreadMessageHandler));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77483473",
+      "id" : 77483473,
+      "original_commit_id" : "54cb55b2086ab93941d7f9ef96590c3bb4c2f7e3",
+      "original_position" : 55,
+      "path" : "src/net.cpp",
+      "position" : 395,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:08:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77483473",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77484688"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77484688"
+         }
+      },
+      "body" : "Just noting that there is a slight functional change here, the lock is released earlier but this seems a-OK.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:18:54Z",
+      "diff_hunk" : "@@ -145,12 +154,14 @@ class CCheckQueue\n     //! Add a batch of checks to the queue\n     void Add(std::vector<T>& vChecks)\n     {\n-        boost::unique_lock<boost::mutex> lock(mutex);\n-        BOOST_FOREACH (T& check, vChecks) {\n-            queue.push_back(T());\n-            check.swap(queue.back());\n+        {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77484688",
+      "id" : 77484688,
+      "original_commit_id" : "eb126ca39930036aa3a09befc9bda693542a7f1d",
+      "original_position" : 80,
+      "path" : "src/checkqueue.h",
+      "position" : 80,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77484688",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77484914"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77484914"
+         }
+      },
+      "body" : "It might be worth holding off on this commit given that my Lockfree Checkqueue PR also touches all these places; assuming i can get that merged, and it also swaps in std::thread.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:21:06Z",
+      "diff_hunk" : "@@ -9,9 +9,8 @@\n #include <vector>\n \n #include <boost/foreach.hpp>\n-#include <boost/thread/condition_variable.hpp>\n-#include <boost/thread/locks.hpp>\n-#include <boost/thread/mutex.hpp>\n+#include <condition_variable>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77484914",
+      "id" : 77484914,
+      "original_commit_id" : "eb126ca39930036aa3a09befc9bda693542a7f1d",
+      "original_position" : 7,
+      "path" : "src/checkqueue.h",
+      "position" : 7,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:21:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77484914",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77485788"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77485788"
+         }
+      },
+      "body" : "CConditionVariable is a boost::condition_variable!!",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:27:30Z",
+      "diff_hunk" : "@@ -172,6 +172,10 @@ static std::thread import_thread;\n static std::thread flush_wallet_thread;\n #endif\n \n+static bool fHaveGenesis = false;\n+static boost::mutex cs_GenesisWait;\n+static CConditionVariable condvar_GenesisWait;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77485788",
+      "id" : 77485788,
+      "original_commit_id" : "7b757d561e2643d72faf554087060b716e01e7e2",
+      "original_position" : 6,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:27:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77485788",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77487695"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77487695"
+         }
+      },
+      "body" : "nit: there is no interruption point in the new code",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:42:05Z",
+      "diff_hunk" : "@@ -1966,7 +1966,7 @@ void ThreadMessageHandler()\n         }\n \n         if (fSleep)\n-            messageHandlerCondition.timed_wait(lock, boost::posix_time::microsec_clock::universal_time() + boost::posix_time::milliseconds(100));\n+            messageHandlerCondition.wait_for(lock, std::chrono::milliseconds(100), []()->bool {return net_interrupted; });",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77487695",
+      "id" : 77487695,
+      "original_commit_id" : "69d38c0601574f197db71d38b4bc4d90336f4a7e",
+      "original_position" : 25,
+      "path" : "src/net.cpp",
+      "position" : 338,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:42:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77487695",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77487781"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77487781"
+         }
+      },
+      "body" : "Do these do anything? Can you just kill them? Was that mutex supposed to be (originally) static?",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:42:45Z",
+      "diff_hunk" : "@@ -1910,8 +1910,8 @@ bool OpenNetworkConnection(const CAddress& addrConnect, bool fCountFailure, CSem\n \n void ThreadMessageHandler()\n {\n-    boost::mutex condition_mutex;\n-    boost::unique_lock<boost::mutex> lock(condition_mutex);\n+    std::mutex condition_mutex;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77487781",
+      "id" : 77487781,
+      "original_commit_id" : "69d38c0601574f197db71d38b4bc4d90336f4a7e",
+      "original_position" : 15,
+      "path" : "src/net.cpp",
+      "position" : 305,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:42:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77487781",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77488059"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77488059"
+         }
+      },
+      "body" : "This is a good commit; throwing generates bad code Ã°ÂÂÂ ",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:45:05Z",
+      "diff_hunk" : "@@ -1115,7 +1115,7 @@ static void AcceptConnection(const ListenSocket& hListenSocket) {\n void ThreadSocketHandler()\n {\n     unsigned int nPrevNodeCount = 0;\n-    while (true)\n+    while (!net_interrupted)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77488059",
+      "id" : 77488059,
+      "original_commit_id" : "abc1ebf12c00d7d77da30dfd5a6e26392ebe6f9d",
+      "original_position" : 5,
+      "path" : "src/net.cpp",
+      "position" : 49,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:45:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77488059",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77488865"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77488865"
+         }
+      },
+      "body" : "might be better (although less clean) to use a noexcept version that returns a bool.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:51:16Z",
+      "diff_hunk" : "@@ -130,6 +130,16 @@ std::thread open_added_connections_thread;\n std::thread open_connections_thread;\n std::thread message_handler_thread;\n \n+static void InterruptibleSleep(uint64_t n)\n+{\n+    bool ret = false;\n+    {\n+        std::unique_lock<std::mutex> lock(cs_net_interrupt);\n+        ret = net_interrupt_cond.wait_for(lock, std::chrono::milliseconds(n), []()->bool{return net_interrupted; });\n+    }\n+    interruption_point(ret);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77488865",
+      "id" : 77488865,
+      "original_commit_id" : "d20fe536aae39d5a7b184918e0b12f4d972ba2a5",
+      "original_position" : 11,
+      "path" : "src/net.cpp",
+      "position" : 38,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:51:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77488865",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77488965"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77488965"
+         }
+      },
+      "body" : "Ã°ÂÂÂ ",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:52:14Z",
+      "diff_hunk" : "@@ -56,20 +59,7 @@ int64_t GetLogTimeMicros()\n \n void MilliSleep(int64_t n)\n {\n-\n-/**\n- * Boost's sleep_for was uninterruptable when backed by nanosleep from 1.50\n- * until fixed in 1.52. Use the deprecated sleep method for the broken case.\n- * See: https://svn.boost.org/trac/boost/ticket/7238\n- */\n-#if defined(HAVE_WORKING_BOOST_SLEEP_FOR)\n-    boost::this_thread::sleep_for(boost::chrono::milliseconds(n));\n-#elif defined(HAVE_WORKING_BOOST_SLEEP)\n-    boost::this_thread::sleep(boost::posix_time::milliseconds(n));\n-#else\n-//should never get here\n-#error missing boost sleep implementation\n-#endif\n+    std::this_thread::sleep_for(std::chrono::milliseconds(n));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77488965",
+      "id" : 77488965,
+      "original_commit_id" : "3f31fe5dff631abc9bfa179a7e13e442ff3b7266",
+      "original_position" : 28,
+      "path" : "src/utiltime.cpp",
+      "position" : 28,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:52:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77488965",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77489162"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77489162"
+         }
+      },
+      "body" : "same comment; this is fixed in my WIP lockfree stuff so may want to leave it assuming I get mine merged.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-05T08:53:53Z",
+      "diff_hunk" : "@@ -470,12 +470,14 @@ BOOST_AUTO_TEST_CASE(test_big_witness_transaction) {\n \n     // check all inputs concurrently, with the cache\n     PrecomputedTransactionData txdata(tx);\n-    boost::thread_group threadGroup;\n+    std::vector<std::thread> threadGroup;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77489162",
+      "id" : 77489162,
+      "original_commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "original_position" : 5,
+      "path" : "src/test/transaction_tests.cpp",
+      "position" : 5,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-05T08:53:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77489162",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "@theuni I've gone through and I'll give you a \"tentative\" utack. Mostly looks fine.\r\n\r\nI'd suggest mostly:\r\n\r\n- checking typedefs which secretly use boost::*\r\n- Getting rid of the exception throwing interruption point. It's a bad default.\r\n- Getting rid of std::bind in favor of lambdas.\r\n- depending on status of my wip scriptcheck queue stuff, leaving those two commits out.",
+      "created_at" : "2016-09-05T08:57:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-244694790",
+      "id" : 244694790,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-05T08:57:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/244694790",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77698821"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77698821"
+         }
+      },
+      "body" : "I don't think it's possible to do this without a bind, as TraceThread requires a bound instance, though I'd be happy to be proven wrong :)",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-06T19:06:53Z",
+      "diff_hunk" : "@@ -1078,7 +1086,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)\n \n     // Start the lightweight task scheduler thread\n     CScheduler::Function serviceLoop = boost::bind(&CScheduler::serviceQueue, &scheduler);\n-    threadGroup.create_thread(boost::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));\n+    scheduler_thread = std::thread(std::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77698821",
+      "id" : 77698821,
+      "original_commit_id" : "8447a96ee2e796b7de89968429b586206a40b04c",
+      "original_position" : 49,
+      "path" : "src/init.cpp",
+      "position" : 132,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-06T19:06:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77698821",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77699090"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77699090"
+         }
+      },
+      "body" : "Right, that's not at all clear from the individual commits. The atomic is used as the break condition for a few condvars, as well as the loop break condition in a few places. Rather than using separate bools for each, I just lumped them all into this one.\r\n\r\nWill add a comment.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-06T19:08:33Z",
+      "diff_hunk" : "@@ -120,6 +120,12 @@ boost::condition_variable messageHandlerCondition;\n static CNodeSignals g_signals;\n CNodeSignals& GetNodeSignals() { return g_signals; }\n \n+static std::condition_variable net_interrupt_cond;\n+static std::mutex cs_net_interrupt;\n+static std::atomic<bool> net_interrupted(false);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77699090",
+      "id" : 77699090,
+      "original_commit_id" : "ed68c688d3f5f76d3a0d56924d4421a7ad8af977",
+      "original_position" : 6,
+      "path" : "src/net.cpp",
+      "position" : 23,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-06T19:08:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77699090",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77701396"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77701396"
+         }
+      },
+      "body" : "Yep, these don't need the binds. Will fix.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-06T19:23:51Z",
+      "diff_hunk" : "@@ -2176,16 +2180,16 @@ void StartNode(boost::thread_group& threadGroup, CScheduler& scheduler)\n     MapPort(GetBoolArg(\"-upnp\", DEFAULT_UPNP));\n \n     // Send and receive from sockets, accept connections\n-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, \"net\", &ThreadSocketHandler));\n+    socket_handler_thread = std::thread(std::bind(&TraceThread<void (*)()>, \"net\", &ThreadSocketHandler));\n \n     // Initiate outbound connections from -addnode\n-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, \"addcon\", &ThreadOpenAddedConnections));\n+    open_added_connections_thread = std::thread(std::bind(&TraceThread<void (*)()>, \"addcon\", &ThreadOpenAddedConnections));\n \n     // Initiate outbound connections\n-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, \"opencon\", &ThreadOpenConnections));\n+    open_connections_thread = std::thread(std::bind(&TraceThread<void (*)()>, \"opencon\", &ThreadOpenConnections));\n \n     // Process messages\n-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, \"msghand\", &ThreadMessageHandler));\n+    message_handler_thread = std::thread(std::bind(&TraceThread<void (*)()>, \"msghand\", &ThreadMessageHandler));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77701396",
+      "id" : 77701396,
+      "original_commit_id" : "54cb55b2086ab93941d7f9ef96590c3bb4c2f7e3",
+      "original_position" : 55,
+      "path" : "src/net.cpp",
+      "position" : 395,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-06T19:23:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77701396",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77702135"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77702135"
+         }
+      },
+      "body" : "The condvar has to use some lock, I assume this was just done to avoid creating a mutex/condvar per loop iteration. The mutex doesn't need to guard anything since the wake condition is atomic.\r\n\r\nSure, they could be static.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-06T19:28:49Z",
+      "diff_hunk" : "@@ -1910,8 +1910,8 @@ bool OpenNetworkConnection(const CAddress& addrConnect, bool fCountFailure, CSem\n \n void ThreadMessageHandler()\n {\n-    boost::mutex condition_mutex;\n-    boost::unique_lock<boost::mutex> lock(condition_mutex);\n+    std::mutex condition_mutex;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77702135",
+      "id" : 77702135,
+      "original_commit_id" : "69d38c0601574f197db71d38b4bc4d90336f4a7e",
+      "original_position" : 15,
+      "path" : "src/net.cpp",
+      "position" : 305,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-06T19:28:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77702135",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77702364"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77702364"
+         }
+      },
+      "body" : "I agree, these were only kept as-is to avoid scope creep.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-06T19:30:27Z",
+      "diff_hunk" : "@@ -130,6 +130,16 @@ std::thread open_added_connections_thread;\n std::thread open_connections_thread;\n std::thread message_handler_thread;\n \n+static void InterruptibleSleep(uint64_t n)\n+{\n+    bool ret = false;\n+    {\n+        std::unique_lock<std::mutex> lock(cs_net_interrupt);\n+        ret = net_interrupt_cond.wait_for(lock, std::chrono::milliseconds(n), []()->bool{return net_interrupted; });\n+    }\n+    interruption_point(ret);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77702364",
+      "id" : 77702364,
+      "original_commit_id" : "d20fe536aae39d5a7b184918e0b12f4d972ba2a5",
+      "original_position" : 11,
+      "path" : "src/net.cpp",
+      "position" : 38,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-06T19:30:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77702364",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@JeremyRubin Thanks for the review! To your points:\r\n- I agree somewhat on the typedefs, but I'd like to avoid this PR getting bigger and bigger. So let's do these case-by-case.\r\n- I don't think we can get rid of the exception throwing yet. I hate the interruption_point logic, but I don't think it's realistic to remove it all in one PR. I certainly agree with minimizing it though.\r\n- Agree on losing the binds where possible\r\n- Without the scriptcheck changes, this can't be tested as we can't shutdown. So I'm afraid we'll have to step on eachother's toes until one is merged. Obviously I'm happy to drop the scriptcheck changes and adapt to the new stuff if it goes in first.",
+      "created_at" : "2016-09-06T19:36:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-245064563",
+      "id" : 245064563,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-06T19:36:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/245064563",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77705718"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77705718"
+         }
+      },
+      "body" : "Github weirdly formatted my comment so you couldn't see the lambda.\r\n\r\n    scheduler_thread = std::thread([&]{\r\n        TraceThread(\"scheduler\", [&]{scheduler.serviceQueue();} );\r\n     };\r\n\r\nDoes something like that not work? Maybe it's not much better than bind...",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-06T19:51:32Z",
+      "diff_hunk" : "@@ -1078,7 +1086,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)\n \n     // Start the lightweight task scheduler thread\n     CScheduler::Function serviceLoop = boost::bind(&CScheduler::serviceQueue, &scheduler);\n-    threadGroup.create_thread(boost::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));\n+    scheduler_thread = std::thread(std::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77705718",
+      "id" : 77705718,
+      "original_commit_id" : "8447a96ee2e796b7de89968429b586206a40b04c",
+      "original_position" : 49,
+      "path" : "src/init.cpp",
+      "position" : 132,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-06T19:51:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77705718",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77706578"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77706578"
+         }
+      },
+      "body" : "Ah, I didn't realize that you meant to replace the binds with lambdas. I'm not sure that I find this any less confusing, but I don't really mind either way:\r\n```c++\r\nscheduler_thread = std::thread([&scheduler] {\r\n    TraceThread(\"scheduler\", [&scheduler] {\r\n        scheduler.serviceQueue();\r\n    });\r\n});\r\n```",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-06T19:56:44Z",
+      "diff_hunk" : "@@ -1078,7 +1086,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)\n \n     // Start the lightweight task scheduler thread\n     CScheduler::Function serviceLoop = boost::bind(&CScheduler::serviceQueue, &scheduler);\n-    threadGroup.create_thread(boost::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));\n+    scheduler_thread = std::thread(std::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77706578",
+      "id" : 77706578,
+      "original_commit_id" : "8447a96ee2e796b7de89968429b586206a40b04c",
+      "original_position" : 49,
+      "path" : "src/init.cpp",
+      "position" : 132,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-06T19:56:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77706578",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@theuni The only one I think you need to fix for this pr is `CConditionVariable`. Were there others you're worried about?\r\n\r\nNo worries about the scriptcheck stuff, we'll cross that bridge when it comes.\r\n",
+      "created_at" : "2016-09-06T19:57:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-245070568",
+      "id" : 245070568,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-06T19:57:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/245070568",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77706950"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77706950"
+         }
+      },
+      "body" : "Heh, didn't see your response before I posted, but looks like we're on the same page. Either one is fine by me.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-06T19:58:51Z",
+      "diff_hunk" : "@@ -1078,7 +1086,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)\n \n     // Start the lightweight task scheduler thread\n     CScheduler::Function serviceLoop = boost::bind(&CScheduler::serviceQueue, &scheduler);\n-    threadGroup.create_thread(boost::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));\n+    scheduler_thread = std::thread(std::bind(&TraceThread<CScheduler::Function>, \"scheduler\", serviceLoop));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r77706950",
+      "id" : 77706950,
+      "original_commit_id" : "8447a96ee2e796b7de89968429b586206a40b04c",
+      "original_position" : 49,
+      "path" : "src/init.cpp",
+      "position" : 132,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-06T19:58:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77706950",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@JeremyRubin Fixing up CConditionVariable means doing lots of mutex/lock replacements all over the place. I'd really rather do that as a follow-up to keep this one minimal.\r\n\r\nNow that we're not using any boost::thread's, I don't believe there's any major functional difference.",
+      "created_at" : "2016-09-06T21:01:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-245090104",
+      "id" : 245090104,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-06T21:01:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/245090104",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@theuni sounds fine, this one is nuking boost::thread not boost::condition_variable after all :) ",
+      "created_at" : "2016-09-06T21:22:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-245097022",
+      "id" : 245097022,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-06T21:22:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/245097022",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r78488998"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/78488998"
+         }
+      },
+      "body" : "So I've actually discovered a nice little trick for this -- \r\n\r\n\r\n    struct dummy_mutex {\r\n    void lock(){};\r\n    void unlock(){};\r\n     };\r\n\r\nif you want to make it more clear that it's a worthless lock.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-09-13T02:47:05Z",
+      "diff_hunk" : "@@ -1910,8 +1910,8 @@ bool OpenNetworkConnection(const CAddress& addrConnect, bool fCountFailure, CSem\n \n void ThreadMessageHandler()\n {\n-    boost::mutex condition_mutex;\n-    boost::unique_lock<boost::mutex> lock(condition_mutex);\n+    std::mutex condition_mutex;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r78488998",
+      "id" : 78488998,
+      "original_commit_id" : "69d38c0601574f197db71d38b4bc4d90336f4a7e",
+      "original_position" : 15,
+      "path" : "src/net.cpp",
+      "position" : 305,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-09-13T02:47:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/78488998",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "body" : "needs rebase",
+      "created_at" : "2016-09-17T11:04:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-247763264",
+      "id" : 247763264,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-09-17T11:04:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/247763264",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r82758851"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/82758851"
+         }
+      },
+      "body" : "Does this still need to catch `boost::thread_interrupted`? (another one below)",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-10-11T09:48:19Z",
+      "diff_hunk" : "@@ -294,6 +294,8 @@ int CommandLineRPC(int argc, char *argv[])\n     catch (const boost::thread_interrupted&) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r82758851",
+      "id" : 82758851,
+      "original_commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "original_position" : 1,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : 1,
+      "pull_request_review_id" : 3643005,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-10-11T09:48:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/82758851",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r82762185"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/82762185"
+         }
+      },
+      "body" : "No, see \"future changes\" in the OP. There are a bunch of these to get rid of. I guess it doesn't make sense to do that later, I'll add it here.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-10-11T10:08:25Z",
+      "diff_hunk" : "@@ -294,6 +294,8 @@ int CommandLineRPC(int argc, char *argv[])\n     catch (const boost::thread_interrupted&) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r82762185",
+      "id" : 82762185,
+      "original_commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "original_position" : 1,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : 1,
+      "pull_request_review_id" : 3646011,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-10-11T10:08:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/82762185",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r82764350"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/82764350"
+         }
+      },
+      "body" : "Sorry, yes you mention it there. It just looked strange to me to add something instead of replace.",
+      "commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "created_at" : "2016-10-11T10:23:01Z",
+      "diff_hunk" : "@@ -294,6 +294,8 @@ int CommandLineRPC(int argc, char *argv[])\n     catch (const boost::thread_interrupted&) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#discussion_r82764350",
+      "id" : 82764350,
+      "original_commit_id" : "01f8700b0e5a40465a5bd7707a3e9a9a94f8023e",
+      "original_position" : 1,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : 1,
+      "pull_request_review_id" : 3648000,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8631",
+      "updated_at" : "2016-10-11T10:23:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/82764350",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Concept ACK. Needs a rebase. Tagging for 0.14.0",
+      "created_at" : "2016-11-06T12:30:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-258677941",
+      "id" : 258677941,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-11-06T12:30:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/258677941",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "There also some comments/examples about using boost thread [in scheduler](https://github.com/bitcoin/bitcoin/blob/master/src/scheduler.h#L9) that could be nuked.",
+      "created_at" : "2016-11-12T12:53:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-260120498",
+      "id" : 260120498,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-11-12T12:53:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260120498",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Closing for now, need to get a specific chunk of this in first.",
+      "created_at" : "2016-12-06T03:01:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8631#issuecomment-265047560",
+      "id" : 265047560,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8631",
+      "updated_at" : "2016-12-06T03:01:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/265047560",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   }
+]

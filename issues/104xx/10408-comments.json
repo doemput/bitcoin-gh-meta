@@ -1,0 +1,242 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10408#discussion_r116934975"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10408"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116934975"
+         }
+      },
+      "body" : "Wouldn't the fread already return `<=0` in the case of an error? (making it necessary to move the check outside of the loop)",
+      "commit_id" : "49a199bb51fc00659f8134e5b16f5d36364b0554",
+      "created_at" : "2017-05-17T08:09:07Z",
+      "diff_hunk" : "@@ -323,6 +376,10 @@ static std::pair<bool,std::string> ReadBinaryFile(const fs::path &filename, size\n     char buffer[128];\n     size_t n;\n     while ((n=fread(buffer, 1, sizeof(buffer), f)) > 0) {\n+        // Check for reading errors so we don't return any data if we couldn't\n+        // read the entire file (or up to maxsize)\n+        if (ferror(f))\n+            return std::make_pair(false,\"\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10408#discussion_r116934975",
+      "id" : 116934975,
+      "original_commit_id" : "49a199bb51fc00659f8134e5b16f5d36364b0554",
+      "original_position" : 115,
+      "path" : "src/torcontrol.cpp",
+      "position" : 115,
+      "pull_request_review_id" : 38595945,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10408",
+      "updated_at" : "2017-05-17T08:09:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116934975",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Thanks for the improvements; I still have to review the unescaping loop in detail but overall it looks good to me.",
+      "created_at" : "2017-05-17T08:14:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10408#issuecomment-302018877",
+      "id" : 302018877,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10408",
+      "updated_at" : "2017-05-17T08:14:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302018877",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10408#discussion_r116981511"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10408"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116981511"
+         }
+      },
+      "body" : "No, there is [no such guarantee](http://www.cplusplus.com/reference/cstdio/fread/#return):\r\n\r\n> If [the return value] differs from the _count_ parameter, either a reading error occurred or the _end-of-file_ was reached while reading. In both cases, the proper indicator is set, which can be checked with ferror and feof, respectively.\r\n\r\nSo it is entirely possible for `fread` to return a number `0 < retval < count` if a reading error occurs.",
+      "commit_id" : "49a199bb51fc00659f8134e5b16f5d36364b0554",
+      "created_at" : "2017-05-17T12:06:54Z",
+      "diff_hunk" : "@@ -323,6 +376,10 @@ static std::pair<bool,std::string> ReadBinaryFile(const fs::path &filename, size\n     char buffer[128];\n     size_t n;\n     while ((n=fread(buffer, 1, sizeof(buffer), f)) > 0) {\n+        // Check for reading errors so we don't return any data if we couldn't\n+        // read the entire file (or up to maxsize)\n+        if (ferror(f))\n+            return std::make_pair(false,\"\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10408#discussion_r116981511",
+      "id" : 116981511,
+      "original_commit_id" : "49a199bb51fc00659f8134e5b16f5d36364b0554",
+      "original_position" : 115,
+      "path" : "src/torcontrol.cpp",
+      "position" : 115,
+      "pull_request_review_id" : 38645843,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10408",
+      "updated_at" : "2017-05-17T12:06:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116981511",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/4993799?v=3",
+         "events_url" : "https://api.github.com/users/str4d/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/str4d/followers",
+         "following_url" : "https://api.github.com/users/str4d/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/str4d/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/str4d",
+         "id" : 4993799,
+         "login" : "str4d",
+         "organizations_url" : "https://api.github.com/users/str4d/orgs",
+         "received_events_url" : "https://api.github.com/users/str4d/received_events",
+         "repos_url" : "https://api.github.com/users/str4d/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/str4d/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/str4d/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/str4d"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10408#discussion_r116984200"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10408"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116984200"
+         }
+      },
+      "body" : "The reason we added this check was the possibility that a read error could occur at byte 33, resulting in 32 bytes of a larger file being returned and used as the cookie (which checks for exact length), in violation of `control-spec`. Thus we only need to defend against the case where `fread` returns a value greater than zero on error; since the buffer is larger than the cookie size, the only remaining way to return a 32-byte read is by reaching EOF.",
+      "commit_id" : "49a199bb51fc00659f8134e5b16f5d36364b0554",
+      "created_at" : "2017-05-17T12:22:13Z",
+      "diff_hunk" : "@@ -323,6 +376,10 @@ static std::pair<bool,std::string> ReadBinaryFile(const fs::path &filename, size\n     char buffer[128];\n     size_t n;\n     while ((n=fread(buffer, 1, sizeof(buffer), f)) > 0) {\n+        // Check for reading errors so we don't return any data if we couldn't\n+        // read the entire file (or up to maxsize)\n+        if (ferror(f))\n+            return std::make_pair(false,\"\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10408#discussion_r116984200",
+      "id" : 116984200,
+      "original_commit_id" : "49a199bb51fc00659f8134e5b16f5d36364b0554",
+      "original_position" : 115,
+      "path" : "src/torcontrol.cpp",
+      "position" : 115,
+      "pull_request_review_id" : 38648750,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10408",
+      "updated_at" : "2017-05-17T12:22:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/116984200",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/4993799?v=3",
+         "events_url" : "https://api.github.com/users/str4d/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/str4d/followers",
+         "following_url" : "https://api.github.com/users/str4d/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/str4d/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/str4d",
+         "id" : 4993799,
+         "login" : "str4d",
+         "organizations_url" : "https://api.github.com/users/str4d/orgs",
+         "received_events_url" : "https://api.github.com/users/str4d/received_events",
+         "repos_url" : "https://api.github.com/users/str4d/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/str4d/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/str4d/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/str4d"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10408#discussion_r117063812"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10408"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117063812"
+         }
+      },
+      "body" : "Interesting, I didn't know that, I though that only the EOF (or interrupted by signal) case would cause it to return a smaller amount larger or equal to zero (which according to the manual page is the case for `read`, but apparently not `fread`). ",
+      "commit_id" : "49a199bb51fc00659f8134e5b16f5d36364b0554",
+      "created_at" : "2017-05-17T17:29:44Z",
+      "diff_hunk" : "@@ -323,6 +376,10 @@ static std::pair<bool,std::string> ReadBinaryFile(const fs::path &filename, size\n     char buffer[128];\n     size_t n;\n     while ((n=fread(buffer, 1, sizeof(buffer), f)) > 0) {\n+        // Check for reading errors so we don't return any data if we couldn't\n+        // read the entire file (or up to maxsize)\n+        if (ferror(f))\n+            return std::make_pair(false,\"\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10408#discussion_r117063812",
+      "id" : 117063812,
+      "original_commit_id" : "49a199bb51fc00659f8134e5b16f5d36364b0554",
+      "original_position" : 115,
+      "path" : "src/torcontrol.cpp",
+      "position" : 115,
+      "pull_request_review_id" : 38736506,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10408",
+      "updated_at" : "2017-05-17T17:30:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117063812",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK 49a199b",
+      "created_at" : "2017-05-18T17:58:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10408#issuecomment-302490985",
+      "id" : 302490985,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10408",
+      "updated_at" : "2017-05-18T17:58:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302490985",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

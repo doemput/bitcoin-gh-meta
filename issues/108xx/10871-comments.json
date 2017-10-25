@@ -1,0 +1,1448 @@
+[
+   {
+      "body" : "Concept ACK.\r\nCan you add a tool test for that?",
+      "created_at" : "2017-07-19T08:15:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-316307749",
+      "id" : 316307749,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-07-19T08:15:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/316307749",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "> Can you add a tool test for that?\r\n\r\nA simple tool-test like -tx's wont work here as it requires a running bitcoind.\r\nBetter to wait for bitcoin-cli testing infrastructure to be in place I guess (#10798)?",
+      "created_at" : "2017-07-20T08:31:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-316634879",
+      "id" : 316634879,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-07-20T08:31:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/316634879",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "rebased",
+      "created_at" : "2017-08-15T21:39:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-322597386",
+      "id" : 322597386,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-08-15T21:39:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322597386",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "body" : "bad rebase:\r\n\r\n```\r\nbitcoin-cli.cpp: In function Ã¢ÂÂint CommandLineRPC(int, char**)Ã¢ÂÂ:\r\nbitcoin-cli.cpp:393:41: error: Ã¢ÂÂGetBoolArgÃ¢ÂÂ was not declared in this scope\r\n         if (GetBoolArg(\"-getinfo\", false)) {\r\n                                         ^\r\n```\r\n\r\n#10798 is now rebased and ready for merge. It should be fairly straightforward to rebase this on top of that to add a functional test.",
+      "created_at" : "2017-08-15T22:05:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-322602965",
+      "id" : 322602965,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-08-15T22:05:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322602965",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Test here if you want it:  https://github.com/jnewbery/bitcoin/tree/pr10871_test\r\n\r\nBuilds on top of #10798. Test currently fails because the output for `bitcoin-cli getinfo` and `bitcoin-cli -getinfo` is different in `keypoolsize` and `unlocked_until`. See https://github.com/bitcoin/bitcoin/pull/8843#discussion_r127599074 for information about `keypoolsize` discrepancy.",
+      "created_at" : "2017-08-23T18:32:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-324423353",
+      "id" : 324423353,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-08-23T18:32:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324423353",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "I think the docs should at least mention something about atomicity. Every other API to Bitcoin Core is atomic, so it feels very strange to add a new one which is not.",
+      "created_at" : "2017-08-23T18:59:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-324431201",
+      "id" : 324431201,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-08-23T18:59:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324431201",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "> I think the docs should at least mention something about atomicity. Every other API to Bitcoin Core is atomic, so it feels very strange to add a new one which is not.\r\n\r\nI know you don't like this particular changej, but this is reaching FUD levels here, what *exactly* are you concerned about happening here? `-getinfo` pulls the following information:\r\n```\r\ngetnetworkinfo:\r\n\"version\"\r\n\"protocolversion\"\r\n\"timeoffset\"\r\n\"connections\"\r\n\"proxy\"\r\n\"relayfee\"\r\n\"errors\"\r\n\r\ngetblockchaininfo:\r\n\"blocks\"\r\n\"difficulty\"\r\n\"testnet\"\r\n\r\ngetwalletinfo:\r\n\"walletversion\"\r\n\"balance\"\r\n\"keypoololdest\"\r\n\"keypoolsize\"\r\n\"unlocked_until\"\r\n\"paytxfee\"\r\n```\r\nWithin a group, the values are as atomic as ever. Some of these don't change at runtime at all, some hardly change.\r\n\r\nCan you indicate exactly between which two you're afraid non-atomicity is going to give a problem, in practice?\r\n\r\nIf not, let's please leave this behind us.",
+      "created_at" : "2017-08-23T19:26:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-324437840",
+      "id" : 324437840,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-08-23T19:26:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324437840",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "My only real atomicity concern is between blocks and balance - ie that you may call getinfo, see a balance and assume that it is current as of a given block height. It may be of lesser concern in just bitcoin-cli, as its not intended to be used in scripts, hence my note that I'd be ok with just documenting this behavior, though I could still see someone fucking it up in some way.",
+      "created_at" : "2017-08-24T16:38:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-324689680",
+      "id" : 324689680,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-08-24T16:38:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324689680",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "> My only real atomicity concern is between blocks and balance - ie that you may call getinfo, see a balance and assume that it is current as of a given block height.\r\n\r\nYes, that's a valid concern. Also outside this PR - there is currently no way to query up to which height the wallet has processed. Especially when the wallet and node are decoupled further w/ threads or even processes. We should add a `curheight` or such to `getwalletinfo`.",
+      "created_at" : "2017-08-24T16:47:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-324692066",
+      "id" : 324692066,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-08-24T16:47:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324692066",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "> there is currently no way to query up to which height the wallet has processed\r\n\r\nI believe that `getinfo` itself could be misleading here. `balance` could be for a different height than `blocks`.\r\n\r\nThere's been discussion of adding the wallet's best block to `getwalletinfo` on IRC: https://botbot.me/freenode/bitcoin-core-dev/2017-08-11/?msg=89723092&page=2 and I have a branch to do that, which I'm going to PR after #10286 ",
+      "created_at" : "2017-08-24T17:17:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-324699582",
+      "id" : 324699582,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-08-24T17:17:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324699582",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Is this still being actively worked on? Next steps would be:\r\n\r\n- take the functional test in https://github.com/jnewbery/bitcoin/tree/pr10871_test\r\n- fix the discrepencies between `getinfo` and `-getinfo`\r\n- rebase",
+      "created_at" : "2017-09-01T16:57:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-326632014",
+      "id" : 326632014,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-01T16:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326632014",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I am still working on this, just got sidetracked with other stuff.",
+      "created_at" : "2017-09-01T17:03:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-326633549",
+      "id" : 326633549,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-01T17:03:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/326633549",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Took the test and rebased.\r\n\r\n> fix the discrepencies between `getinfo` and `-getinfo`\r\n\r\nWhat discrepancies?",
+      "created_at" : "2017-09-05T17:10:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-327242551",
+      "id" : 327242551,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-05T17:10:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/327242551",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "> What discrepancies?\r\n\r\nSee above:\r\n\r\n> Test currently fails because the output for bitcoin-cli getinfo and bitcoin-cli -getinfo is different in keypoolsize and unlocked_until. See #8843 (comment) for information about keypoolsize discrepancy.\r\n\r\nOnce #10838 is merged, then that's no longer an issue.\r\n\r\nAfter #10838, I think the way to test this would be to collect the responses from `getwalletinfo`, `getblockchaininfo` and `getnetworkinfo`, merge those dictionaries (hint: https://stackoverflow.com/a/26853961) and then compare that to the response from `bitcoin-cli -getinfo`.",
+      "created_at" : "2017-09-05T17:21:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-327245675",
+      "id" : 327245675,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-05T17:21:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/327245675",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "> After #10838, I think the way to test this would be to collect the responses from `getwalletinfo`, `getblockchaininfo` and `getnetworkinfo`, merge those dictionaries (hint: https://stackoverflow.com/a/26853961) and then compare that to the response from `bitcoin-cli -getinfo`.\r\n\r\nI think that we should be doing that instead of comparing against `getinfo`. This is explicitly a new thing which is similar to `getinfo` but not exactly replicating it.",
+      "created_at" : "2017-09-05T17:29:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-327247674",
+      "id" : 327247674,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-05T17:29:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/327247674",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I modified the test to compare against the `get*info` RPCs instead of `getinfo`",
+      "created_at" : "2017-09-05T21:33:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-327309930",
+      "id" : 327309930,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-05T21:33:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/327309930",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137139681"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137139681"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "please also add braces to these if blocks",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-05T23:26:27Z",
+      "diff_hunk" : "@@ -135,3 +135,20 @@ void DeleteAuthCookie()\n     }\n }\n \n+std::vector<UniValue> JSONRPCProcessBatchReply(const UniValue &in, size_t num)\n+{\n+    if (!in.isArray()) {\n+        throw std::runtime_error(\"Batch must be an array\");\n+    }\n+    std::vector<UniValue> batch(num);\n+    for (size_t i=0; i<in.size(); ++i) {\n+        const UniValue &rec = in[i];\n+        if (!rec.isObject())",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137139681",
+      "id" : 137139681,
+      "original_commit_id" : "5d2341c976324f8b760838f8de47a4aaa7b5ce7e",
+      "original_position" : 21,
+      "path" : "src/rpc/protocol.cpp",
+      "position" : null,
+      "pull_request_review_id" : 60768398,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137139681",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Tidied up commits",
+      "created_at" : "2017-09-06T00:08:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-327337212",
+      "id" : 327337212,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-06T00:08:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/327337212",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137144838"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137144838"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Done",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-06T00:10:12Z",
+      "diff_hunk" : "@@ -135,3 +135,20 @@ void DeleteAuthCookie()\n     }\n }\n \n+std::vector<UniValue> JSONRPCProcessBatchReply(const UniValue &in, size_t num)\n+{\n+    if (!in.isArray()) {\n+        throw std::runtime_error(\"Batch must be an array\");\n+    }\n+    std::vector<UniValue> batch(num);\n+    for (size_t i=0; i<in.size(); ++i) {\n+        const UniValue &rec = in[i];\n+        if (!rec.isObject())",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137144838",
+      "id" : 137144838,
+      "in_reply_to_id" : 137139681,
+      "original_commit_id" : "5d2341c976324f8b760838f8de47a4aaa7b5ce7e",
+      "original_position" : 21,
+      "path" : "src/rpc/protocol.cpp",
+      "position" : null,
+      "pull_request_review_id" : 60774292,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137144838",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137149343"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137149343"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "You've lost the static keyword for this function in your rebase.",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-06T00:47:59Z",
+      "diff_hunk" : "@@ -191,7 +192,95 @@ static void http_error_cb(enum evhttp_request_error err, void *ctx)\n }\n #endif\n \n-static UniValue CallRPC(const std::string& strMethod, const UniValue& params)\n+/** Class that handles the conversion from a command-line to a JSON-RPC request,\n+ * as well as converting back to a JSON object that can be shown as result.\n+ */\n+class BaseRequestHandler\n+{\n+public:\n+    virtual UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) = 0;\n+    virtual UniValue ProcessReply(const UniValue &batch_in) = 0;\n+};\n+\n+/** Process getinfo requests */\n+class GetinfoRequestHandler: public BaseRequestHandler\n+{\n+public:\n+    const int ID_NETWORKINFO = 0;\n+    const int ID_BLOCKCHAININFO = 1;\n+    const int ID_WALLETINFO = 2;\n+\n+    /** Create a simulated `getinfo` request. */\n+    UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) override\n+    {\n+        UniValue result(UniValue::VARR);\n+        result.push_back(JSONRPCRequestObj(\"getnetworkinfo\", NullUniValue, ID_NETWORKINFO));\n+        result.push_back(JSONRPCRequestObj(\"getblockchaininfo\", NullUniValue, ID_BLOCKCHAININFO));\n+        result.push_back(JSONRPCRequestObj(\"getwalletinfo\", NullUniValue, ID_WALLETINFO));\n+        return result;\n+    }\n+\n+    /** Collect values from the batch and form a simulated `getinfo` reply. */\n+    UniValue ProcessReply(const UniValue &batch_in) override\n+    {\n+        UniValue result(UniValue::VOBJ);\n+        std::vector<UniValue> batch = JSONRPCProcessBatchReply(batch_in, 3);\n+        // Errors in getnetworkinfo() and getblockchaininfo() are fatal, pass them on\n+        // getwalletinfo() is allowed to fail in case there is no wallet.\n+        if (!batch[ID_NETWORKINFO][\"error\"].isNull()) {\n+            return batch[ID_NETWORKINFO];\n+        }\n+        if (!batch[ID_BLOCKCHAININFO][\"error\"].isNull()) {\n+            return batch[ID_BLOCKCHAININFO];\n+        }\n+        result.pushKV(\"version\", batch[ID_NETWORKINFO][\"result\"][\"version\"]);\n+        result.pushKV(\"protocolversion\", batch[ID_NETWORKINFO][\"result\"][\"protocolversion\"]);\n+        if (!batch[ID_WALLETINFO].isNull()) {\n+            result.pushKV(\"walletversion\", batch[ID_WALLETINFO][\"result\"][\"walletversion\"]);\n+            result.pushKV(\"balance\", batch[ID_WALLETINFO][\"result\"][\"balance\"]);\n+        }\n+        result.pushKV(\"blocks\", batch[ID_BLOCKCHAININFO][\"result\"][\"blocks\"]);\n+        result.pushKV(\"timeoffset\", batch[ID_NETWORKINFO][\"result\"][\"timeoffset\"]);\n+        result.pushKV(\"connections\", batch[ID_NETWORKINFO][\"result\"][\"connections\"]);\n+        result.pushKV(\"proxy\", batch[ID_NETWORKINFO][\"result\"][\"networks\"][0][\"proxy\"]);\n+        result.pushKV(\"difficulty\", batch[ID_BLOCKCHAININFO][\"result\"][\"difficulty\"]);\n+        result.pushKV(\"testnet\", UniValue(batch[ID_BLOCKCHAININFO][\"result\"][\"chain\"].get_str() == \"test\"));\n+        if (!batch[ID_WALLETINFO].isNull()) {\n+            result.pushKV(\"walletversion\", batch[ID_WALLETINFO][\"result\"][\"walletversion\"]);\n+            result.pushKV(\"balance\", batch[ID_WALLETINFO][\"result\"][\"balance\"]);\n+            result.pushKV(\"keypoololdest\", batch[ID_WALLETINFO][\"result\"][\"keypoololdest\"]);\n+            result.pushKV(\"keypoolsize\", batch[ID_WALLETINFO][\"result\"][\"keypoolsize\"]);\n+            if (!batch[ID_WALLETINFO][\"result\"][\"unlocked_until\"].isNull())\n+                result.pushKV(\"unlocked_until\", batch[ID_WALLETINFO][\"result\"][\"unlocked_until\"]);\n+            result.pushKV(\"paytxfee\", batch[ID_WALLETINFO][\"result\"][\"paytxfee\"]);\n+        }\n+        result.pushKV(\"relayfee\", batch[ID_NETWORKINFO][\"result\"][\"relayfee\"]);\n+        result.pushKV(\"warnings\", batch[ID_NETWORKINFO][\"result\"][\"warnings\"]);\n+        return JSONRPCReplyObj(result, NullUniValue, 1);\n+    }\n+};\n+\n+/** Process default single requests */\n+class DefaultRequestHandler: public BaseRequestHandler {\n+public:\n+    UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) override\n+    {\n+        UniValue params;\n+        if(gArgs.GetBoolArg(\"-named\", DEFAULT_NAMED)) {\n+            params = RPCConvertNamedValues(strMethod, args);\n+        } else {\n+            params = RPCConvertValues(strMethod, args);\n+        }\n+        return JSONRPCRequestObj(strMethod, params, 1);\n+    }\n+\n+    UniValue ProcessReply(const UniValue &reply) override\n+    {\n+        return reply.get_obj();\n+    }\n+};\n+\n+UniValue CallRPC(BaseRequestHandler *rh, const std::string& strMethod, const std::vector<std::string>& args)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137149343",
+      "id" : 137149343,
+      "original_commit_id" : "226fa64cb26649c77b3df81d3eedf7759c92f06b",
+      "original_position" : 101,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 60779043,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137149343",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137324189"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137324189"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "I think it would be clearer to not reset `args` here. The only reason you're doing this is to pass the `if (args.size() < 1)` check below and then extract `strMethod`.\r\n\r\nInstead, just move the `if (args.size() < 1)` check into the else branch. `GetinfoRequestHandler.PrepareRequest()` doesn't require `strMethod` or `args`.\r\n\r\nTaking this further, you could add a method to `DefaultRequestHandler` to update the `strMethod` and `args`, and then update the `PrepareRequest()` method to not take any arguments.",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-06T16:44:29Z",
+      "diff_hunk" : "@@ -307,23 +396,24 @@ int CommandLineRPC(int argc, char *argv[])\n             while (std::getline(std::cin,line))\n                 args.push_back(line);\n         }\n+        std::unique_ptr<BaseRequestHandler> rh;\n+        if (gArgs.GetBoolArg(\"-getinfo\", false)) {\n+            rh.reset(new GetinfoRequestHandler());\n+            args.clear();\n+            args.push_back(\"getinfo\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137324189",
+      "id" : 137324189,
+      "original_commit_id" : "226fa64cb26649c77b3df81d3eedf7759c92f06b",
+      "original_position" : 131,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 60976070,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137324189",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137324234"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137324234"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "nit: braces",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-06T16:44:38Z",
+      "diff_hunk" : "@@ -191,7 +192,95 @@ static void http_error_cb(enum evhttp_request_error err, void *ctx)\n }\n #endif\n \n-static UniValue CallRPC(const std::string& strMethod, const UniValue& params)\n+/** Class that handles the conversion from a command-line to a JSON-RPC request,\n+ * as well as converting back to a JSON object that can be shown as result.\n+ */\n+class BaseRequestHandler\n+{\n+public:\n+    virtual UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) = 0;\n+    virtual UniValue ProcessReply(const UniValue &batch_in) = 0;\n+};\n+\n+/** Process getinfo requests */\n+class GetinfoRequestHandler: public BaseRequestHandler\n+{\n+public:\n+    const int ID_NETWORKINFO = 0;\n+    const int ID_BLOCKCHAININFO = 1;\n+    const int ID_WALLETINFO = 2;\n+\n+    /** Create a simulated `getinfo` request. */\n+    UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) override\n+    {\n+        UniValue result(UniValue::VARR);\n+        result.push_back(JSONRPCRequestObj(\"getnetworkinfo\", NullUniValue, ID_NETWORKINFO));\n+        result.push_back(JSONRPCRequestObj(\"getblockchaininfo\", NullUniValue, ID_BLOCKCHAININFO));\n+        result.push_back(JSONRPCRequestObj(\"getwalletinfo\", NullUniValue, ID_WALLETINFO));\n+        return result;\n+    }\n+\n+    /** Collect values from the batch and form a simulated `getinfo` reply. */\n+    UniValue ProcessReply(const UniValue &batch_in) override\n+    {\n+        UniValue result(UniValue::VOBJ);\n+        std::vector<UniValue> batch = JSONRPCProcessBatchReply(batch_in, 3);\n+        // Errors in getnetworkinfo() and getblockchaininfo() are fatal, pass them on\n+        // getwalletinfo() is allowed to fail in case there is no wallet.\n+        if (!batch[ID_NETWORKINFO][\"error\"].isNull()) {\n+            return batch[ID_NETWORKINFO];\n+        }\n+        if (!batch[ID_BLOCKCHAININFO][\"error\"].isNull()) {\n+            return batch[ID_BLOCKCHAININFO];\n+        }\n+        result.pushKV(\"version\", batch[ID_NETWORKINFO][\"result\"][\"version\"]);\n+        result.pushKV(\"protocolversion\", batch[ID_NETWORKINFO][\"result\"][\"protocolversion\"]);\n+        if (!batch[ID_WALLETINFO].isNull()) {\n+            result.pushKV(\"walletversion\", batch[ID_WALLETINFO][\"result\"][\"walletversion\"]);\n+            result.pushKV(\"balance\", batch[ID_WALLETINFO][\"result\"][\"balance\"]);\n+        }\n+        result.pushKV(\"blocks\", batch[ID_BLOCKCHAININFO][\"result\"][\"blocks\"]);\n+        result.pushKV(\"timeoffset\", batch[ID_NETWORKINFO][\"result\"][\"timeoffset\"]);\n+        result.pushKV(\"connections\", batch[ID_NETWORKINFO][\"result\"][\"connections\"]);\n+        result.pushKV(\"proxy\", batch[ID_NETWORKINFO][\"result\"][\"networks\"][0][\"proxy\"]);\n+        result.pushKV(\"difficulty\", batch[ID_BLOCKCHAININFO][\"result\"][\"difficulty\"]);\n+        result.pushKV(\"testnet\", UniValue(batch[ID_BLOCKCHAININFO][\"result\"][\"chain\"].get_str() == \"test\"));\n+        if (!batch[ID_WALLETINFO].isNull()) {\n+            result.pushKV(\"walletversion\", batch[ID_WALLETINFO][\"result\"][\"walletversion\"]);\n+            result.pushKV(\"balance\", batch[ID_WALLETINFO][\"result\"][\"balance\"]);\n+            result.pushKV(\"keypoololdest\", batch[ID_WALLETINFO][\"result\"][\"keypoololdest\"]);\n+            result.pushKV(\"keypoolsize\", batch[ID_WALLETINFO][\"result\"][\"keypoolsize\"]);\n+            if (!batch[ID_WALLETINFO][\"result\"][\"unlocked_until\"].isNull())",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137324234",
+      "id" : 137324234,
+      "original_commit_id" : "226fa64cb26649c77b3df81d3eedf7759c92f06b",
+      "original_position" : 71,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 60976070,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137324234",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137324405"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137324405"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "nit: function arguments should not be hungarian/camel case `strMethod` -> `method`",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-06T16:45:21Z",
+      "diff_hunk" : "@@ -191,7 +192,95 @@ static void http_error_cb(enum evhttp_request_error err, void *ctx)\n }\n #endif\n \n-static UniValue CallRPC(const std::string& strMethod, const UniValue& params)\n+/** Class that handles the conversion from a command-line to a JSON-RPC request,\n+ * as well as converting back to a JSON object that can be shown as result.\n+ */\n+class BaseRequestHandler\n+{\n+public:\n+    virtual UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) = 0;\n+    virtual UniValue ProcessReply(const UniValue &batch_in) = 0;\n+};\n+\n+/** Process getinfo requests */\n+class GetinfoRequestHandler: public BaseRequestHandler\n+{\n+public:\n+    const int ID_NETWORKINFO = 0;\n+    const int ID_BLOCKCHAININFO = 1;\n+    const int ID_WALLETINFO = 2;\n+\n+    /** Create a simulated `getinfo` request. */\n+    UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) override",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r137324405",
+      "id" : 137324405,
+      "original_commit_id" : "226fa64cb26649c77b3df81d3eedf7759c92f06b",
+      "original_position" : 32,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 60976070,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137324405",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Fixed the test failure.",
+      "created_at" : "2017-09-18T15:36:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-330262415",
+      "id" : 330262415,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-18T15:36:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/330262415",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r140597924"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140597924"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "nit `strMethod` -> `method`",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-22T21:12:34Z",
+      "diff_hunk" : "@@ -191,7 +192,96 @@ static void http_error_cb(enum evhttp_request_error err, void *ctx)\n }\n #endif\n \n-static UniValue CallRPC(const std::string& strMethod, const UniValue& params)\n+/** Class that handles the conversion from a command-line to a JSON-RPC request,\n+ * as well as converting back to a JSON object that can be shown as result.\n+ */\n+class BaseRequestHandler\n+{\n+public:\n+    virtual UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) = 0;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r140597924",
+      "id" : 140597924,
+      "original_commit_id" : "2cf0866df792c40d7527a258d5bb09cbd24f7aa2",
+      "original_position" : 19,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 64700795,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140597924",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r140597987"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140597987"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "> nit: function arguments should not be hungarian/camel case strMethod -> method\r\n\r\nnot currently addressed",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-22T21:12:51Z",
+      "diff_hunk" : "@@ -191,7 +192,95 @@ static void http_error_cb(enum evhttp_request_error err, void *ctx)\n }\n #endif\n \n-static UniValue CallRPC(const std::string& strMethod, const UniValue& params)\n+/** Class that handles the conversion from a command-line to a JSON-RPC request,\n+ * as well as converting back to a JSON object that can be shown as result.\n+ */\n+class BaseRequestHandler\n+{\n+public:\n+    virtual UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) = 0;\n+    virtual UniValue ProcessReply(const UniValue &batch_in) = 0;\n+};\n+\n+/** Process getinfo requests */\n+class GetinfoRequestHandler: public BaseRequestHandler\n+{\n+public:\n+    const int ID_NETWORKINFO = 0;\n+    const int ID_BLOCKCHAININFO = 1;\n+    const int ID_WALLETINFO = 2;\n+\n+    /** Create a simulated `getinfo` request. */\n+    UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) override",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r140597987",
+      "id" : 140597987,
+      "in_reply_to_id" : 137324405,
+      "original_commit_id" : "226fa64cb26649c77b3df81d3eedf7759c92f06b",
+      "original_position" : 32,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 64700795,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140597987",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r140599396"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140599396"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "We know that the wallet isn't locked, so this won't be tested. I don't think there's any benefit in adding a test code that won't be executed (in fact it's slightly deleterious since a casual reader might think that we're actually testing this).\r\n\r\nEither:\r\n- lock the wallet and actually test this\r\n- add a comment saying we're not testing the field because the wallet isn't locked.\r\n\r\nI think either is fine.",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-22T21:21:29Z",
+      "diff_hunk" : "@@ -35,5 +35,30 @@ def run_test(self):\n         assert_equal([\"foo\", \"bar\"], self.nodes[0].cli('-rpcuser=%s' % user, '-stdin', '-stdinrpcpass', input=password + \"\\nfoo\\nbar\").echo())\n         assert_raises_process_error(1, \"incorrect rpcuser or rpcpassword\", self.nodes[0].cli('-rpcuser=%s' % user, '-stdin', '-stdinrpcpass', input=\"foo\").echo)\n \n+        self.log.info(\"Compare responses from `bitcoin-cli -getinfo` and the RPCs data is retrieved from.\")\n+        cli_get_info = self.nodes[0].cli('-getinfo').help()\n+        wallet_info = self.nodes[0].getwalletinfo()\n+        network_info = self.nodes[0].getnetworkinfo()\n+        blockchain_info = self.nodes[0].getblockchaininfo()\n+\n+        assert_equal(cli_get_info['version'], network_info['version'])\n+        assert_equal(cli_get_info['protocolversion'], network_info['protocolversion'])\n+        assert_equal(cli_get_info['walletversion'], wallet_info['walletversion'])\n+        assert_equal(cli_get_info['balance'], wallet_info['balance'])\n+        assert_equal(cli_get_info['blocks'], blockchain_info['blocks'])\n+        assert_equal(cli_get_info['timeoffset'], network_info['timeoffset'])\n+        assert_equal(cli_get_info['connections'], network_info['connections'])\n+        assert_equal(cli_get_info['proxy'], network_info['networks'][0]['proxy'])\n+        assert_equal(cli_get_info['difficulty'], blockchain_info['difficulty'])\n+        assert_equal(cli_get_info['testnet'], blockchain_info['chain'] == \"test\")\n+        assert_equal(cli_get_info['balance'], wallet_info['balance'])\n+        assert_equal(cli_get_info['keypoololdest'], wallet_info['keypoololdest'])\n+        assert_equal(cli_get_info['keypoolsize'], wallet_info['keypoolsize'])\n+        assert_equal(cli_get_info['paytxfee'], wallet_info['paytxfee'])\n+        assert_equal(cli_get_info['relayfee'], network_info['relayfee'])\n+\n+        if 'unlocked_until' in wallet_info:",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r140599396",
+      "id" : 140599396,
+      "original_commit_id" : "2cf0866df792c40d7527a258d5bb09cbd24f7aa2",
+      "original_position" : 26,
+      "path" : "test/functional/bitcoin_cli.py",
+      "position" : null,
+      "pull_request_review_id" : 64700795,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140599396",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141100283"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141100283"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Done",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-26T15:51:46Z",
+      "diff_hunk" : "@@ -191,7 +192,96 @@ static void http_error_cb(enum evhttp_request_error err, void *ctx)\n }\n #endif\n \n-static UniValue CallRPC(const std::string& strMethod, const UniValue& params)\n+/** Class that handles the conversion from a command-line to a JSON-RPC request,\n+ * as well as converting back to a JSON object that can be shown as result.\n+ */\n+class BaseRequestHandler\n+{\n+public:\n+    virtual UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) = 0;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141100283",
+      "id" : 141100283,
+      "in_reply_to_id" : 140597924,
+      "original_commit_id" : "2cf0866df792c40d7527a258d5bb09cbd24f7aa2",
+      "original_position" : 19,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65266099,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141100283",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141100310"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141100310"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Done",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-26T15:51:50Z",
+      "diff_hunk" : "@@ -191,7 +192,95 @@ static void http_error_cb(enum evhttp_request_error err, void *ctx)\n }\n #endif\n \n-static UniValue CallRPC(const std::string& strMethod, const UniValue& params)\n+/** Class that handles the conversion from a command-line to a JSON-RPC request,\n+ * as well as converting back to a JSON object that can be shown as result.\n+ */\n+class BaseRequestHandler\n+{\n+public:\n+    virtual UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) = 0;\n+    virtual UniValue ProcessReply(const UniValue &batch_in) = 0;\n+};\n+\n+/** Process getinfo requests */\n+class GetinfoRequestHandler: public BaseRequestHandler\n+{\n+public:\n+    const int ID_NETWORKINFO = 0;\n+    const int ID_BLOCKCHAININFO = 1;\n+    const int ID_WALLETINFO = 2;\n+\n+    /** Create a simulated `getinfo` request. */\n+    UniValue PrepareRequest(const std::string& strMethod, const std::vector<std::string>& args) override",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141100310",
+      "id" : 141100310,
+      "in_reply_to_id" : 137324405,
+      "original_commit_id" : "226fa64cb26649c77b3df81d3eedf7759c92f06b",
+      "original_position" : 32,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65266125,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141100310",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141100342"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141100342"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Done",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-26T15:51:55Z",
+      "diff_hunk" : "@@ -35,5 +35,30 @@ def run_test(self):\n         assert_equal([\"foo\", \"bar\"], self.nodes[0].cli('-rpcuser=%s' % user, '-stdin', '-stdinrpcpass', input=password + \"\\nfoo\\nbar\").echo())\n         assert_raises_process_error(1, \"incorrect rpcuser or rpcpassword\", self.nodes[0].cli('-rpcuser=%s' % user, '-stdin', '-stdinrpcpass', input=\"foo\").echo)\n \n+        self.log.info(\"Compare responses from `bitcoin-cli -getinfo` and the RPCs data is retrieved from.\")\n+        cli_get_info = self.nodes[0].cli('-getinfo').help()\n+        wallet_info = self.nodes[0].getwalletinfo()\n+        network_info = self.nodes[0].getnetworkinfo()\n+        blockchain_info = self.nodes[0].getblockchaininfo()\n+\n+        assert_equal(cli_get_info['version'], network_info['version'])\n+        assert_equal(cli_get_info['protocolversion'], network_info['protocolversion'])\n+        assert_equal(cli_get_info['walletversion'], wallet_info['walletversion'])\n+        assert_equal(cli_get_info['balance'], wallet_info['balance'])\n+        assert_equal(cli_get_info['blocks'], blockchain_info['blocks'])\n+        assert_equal(cli_get_info['timeoffset'], network_info['timeoffset'])\n+        assert_equal(cli_get_info['connections'], network_info['connections'])\n+        assert_equal(cli_get_info['proxy'], network_info['networks'][0]['proxy'])\n+        assert_equal(cli_get_info['difficulty'], blockchain_info['difficulty'])\n+        assert_equal(cli_get_info['testnet'], blockchain_info['chain'] == \"test\")\n+        assert_equal(cli_get_info['balance'], wallet_info['balance'])\n+        assert_equal(cli_get_info['keypoololdest'], wallet_info['keypoololdest'])\n+        assert_equal(cli_get_info['keypoolsize'], wallet_info['keypoolsize'])\n+        assert_equal(cli_get_info['paytxfee'], wallet_info['paytxfee'])\n+        assert_equal(cli_get_info['relayfee'], network_info['relayfee'])\n+\n+        if 'unlocked_until' in wallet_info:",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141100342",
+      "id" : 141100342,
+      "in_reply_to_id" : 140599396,
+      "original_commit_id" : "2cf0866df792c40d7527a258d5bb09cbd24f7aa2",
+      "original_position" : 26,
+      "path" : "test/functional/bitcoin_cli.py",
+      "position" : null,
+      "pull_request_review_id" : 65266161,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141100342",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Addressed nits (sorry for the delay).",
+      "created_at" : "2017-09-26T15:52:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-332244064",
+      "id" : 332244064,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-26T15:52:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332244064",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Tested ACK 5ca97e5f03d7352558991e8eb26bb58dc4eec453.\r\n\r\nThanks for sticking with this!",
+      "created_at" : "2017-09-26T16:25:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-332255436",
+      "id" : 332255436,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-26T16:25:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332255436",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141458729"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141458729"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Are you going to update the help text to note something about balance/height atomicity? The old getinfo takes cs_main and cs_wallet and returns atomic information, this no longer does. getwalletinfo will likely eventually return something so that you can report if a result was atomic here (probably a follow-up to #10286).",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-27T20:28:33Z",
+      "diff_hunk" : "@@ -37,6 +37,7 @@ std::string HelpMessageCli()\n     strUsage += HelpMessageOpt(\"-?\", _(\"This help message\"));\n     strUsage += HelpMessageOpt(\"-conf=<file>\", strprintf(_(\"Specify configuration file (default: %s)\"), BITCOIN_CONF_FILENAME));\n     strUsage += HelpMessageOpt(\"-datadir=<dir>\", _(\"Specify data directory\"));\n+    strUsage += HelpMessageOpt(\"-getinfo\", _(\"Get general information from the remote server\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141458729",
+      "id" : 141458729,
+      "original_commit_id" : "5ca97e5f03d7352558991e8eb26bb58dc4eec453",
+      "original_position" : 4,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65676204,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141458729",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141498012"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141498012"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "What do you suggest that the text for such a note be?",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-28T00:06:21Z",
+      "diff_hunk" : "@@ -37,6 +37,7 @@ std::string HelpMessageCli()\n     strUsage += HelpMessageOpt(\"-?\", _(\"This help message\"));\n     strUsage += HelpMessageOpt(\"-conf=<file>\", strprintf(_(\"Specify configuration file (default: %s)\"), BITCOIN_CONF_FILENAME));\n     strUsage += HelpMessageOpt(\"-datadir=<dir>\", _(\"Specify data directory\"));\n+    strUsage += HelpMessageOpt(\"-getinfo\", _(\"Get general information from the remote server\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141498012",
+      "id" : 141498012,
+      "in_reply_to_id" : 141458729,
+      "original_commit_id" : "5ca97e5f03d7352558991e8eb26bb58dc4eec453",
+      "original_position" : 4,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65721684,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T01:53:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141498012",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Something like \"Note that unlike server-side RPC calls, the results of getinfo is the result of multiple non-atomic requests. Some entries in the result may represent results from different states (eg wallet balance may be as of a different block from the chain state reported)\"\n\nOn September 27, 2017 8:06:29 PM EDT, Andrew Chow <notifications@github.com> wrote:\n>achow101 commented on this pull request.\n>\n>\n>\n>> @@ -37,6 +37,7 @@ std::string HelpMessageCli()\n>     strUsage += HelpMessageOpt(\"-?\", _(\"This help message\"));\n>strUsage += HelpMessageOpt(\"-conf=<file>\", strprintf(_(\"Specify\n>configuration file (default: %s)\"), BITCOIN_CONF_FILENAME));\n>strUsage += HelpMessageOpt(\"-datadir=<dir>\", _(\"Specify data\n>directory\"));\n>+    strUsage += HelpMessageOpt(\"-getinfo\", _(\"Get general information\n>from the remote server\"));\n>\n>What do you suggest that the text for such a note be?\n>\n>-- \n>You are receiving this because you commented.\n>Reply to this email directly or view it on GitHub:\n>https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141498012\n",
+      "created_at" : "2017-09-28T01:39:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-332702400",
+      "id" : 332702400,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-28T01:39:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332702400",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Added the atomicity note to the help text.",
+      "created_at" : "2017-09-28T01:53:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-332704361",
+      "id" : 332704361,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-28T01:53:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332704361",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141535399"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141535399"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "as getinfo is misleading here too, see https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-324699582, I still don't see this as a strong point, but as it seems to bother @TheBlueMatt very much let's just add it...",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-28T06:32:30Z",
+      "diff_hunk" : "@@ -37,6 +37,7 @@ std::string HelpMessageCli()\n     strUsage += HelpMessageOpt(\"-?\", _(\"This help message\"));\n     strUsage += HelpMessageOpt(\"-conf=<file>\", strprintf(_(\"Specify configuration file (default: %s)\"), BITCOIN_CONF_FILENAME));\n     strUsage += HelpMessageOpt(\"-datadir=<dir>\", _(\"Specify data directory\"));\n+    strUsage += HelpMessageOpt(\"-getinfo\", _(\"Get general information from the remote server\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141535399",
+      "id" : 141535399,
+      "in_reply_to_id" : 141458729,
+      "original_commit_id" : "5ca97e5f03d7352558991e8eb26bb58dc4eec453",
+      "original_position" : 4,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65762340,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T06:32:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141535399",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "utACK 5e69a43",
+      "created_at" : "2017-09-28T06:33:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-332741171",
+      "id" : 332741171,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-28T06:33:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332741171",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141747499"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141747499"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@laanwj I do not believe that to be the case in any release nor on master during normal operation (there are special cases for locked wallets). It will be the case after #10286, however there is no getinfo on master either....",
+      "commit_id" : "5e69a430ee260950b69e0c36394671381add2b94",
+      "created_at" : "2017-09-28T22:02:09Z",
+      "diff_hunk" : "@@ -37,6 +37,7 @@ std::string HelpMessageCli()\n     strUsage += HelpMessageOpt(\"-?\", _(\"This help message\"));\n     strUsage += HelpMessageOpt(\"-conf=<file>\", strprintf(_(\"Specify configuration file (default: %s)\"), BITCOIN_CONF_FILENAME));\n     strUsage += HelpMessageOpt(\"-datadir=<dir>\", _(\"Specify data directory\"));\n+    strUsage += HelpMessageOpt(\"-getinfo\", _(\"Get general information from the remote server\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#discussion_r141747499",
+      "id" : 141747499,
+      "in_reply_to_id" : 141458729,
+      "original_commit_id" : "5ca97e5f03d7352558991e8eb26bb58dc4eec453",
+      "original_position" : 4,
+      "path" : "src/bitcoin-cli.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66012683,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10871",
+      "updated_at" : "2017-09-28T22:02:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141747499",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "NONE",
+      "body" : "Thanks, helped.\n\nOn Thu, Sep 28, 2017 at 2:54 AM, Andrew Chow <notifications@github.com>\nwrote:\n\n> Added the atomicity note to the help text.\n>\n> Ã¢ÂÂ\n> You are receiving this because you are subscribed to this thread.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-332704361>,\n> or mute the thread\n> <https://github.com/notifications/unsubscribe-auth/AdBhR6LWhfiCahFF4ZmMTHD0vw0tUAmcks5smvxWgaJpZM4Ob_vu>\n> .\n>\n",
+      "created_at" : "2017-09-28T22:10:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10871#issuecomment-332978017",
+      "id" : 332978017,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10871",
+      "updated_at" : "2017-09-28T22:10:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/332978017",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/30433607?v=4",
+         "events_url" : "https://api.github.com/users/musabi/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/musabi/followers",
+         "following_url" : "https://api.github.com/users/musabi/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/musabi/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/musabi",
+         "id" : 30433607,
+         "login" : "musabi",
+         "organizations_url" : "https://api.github.com/users/musabi/orgs",
+         "received_events_url" : "https://api.github.com/users/musabi/received_events",
+         "repos_url" : "https://api.github.com/users/musabi/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/musabi/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/musabi/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/musabi"
+      }
+   }
+]

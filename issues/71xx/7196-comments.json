@@ -1,0 +1,260 @@
+[
+   {
+      "body" : "@fanquake: can you have a look at this? IIRC, you are a doxygen guy?",
+      "created_at" : "2015-12-10T07:41:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7196#issuecomment-163524715",
+      "id" : 163524715,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7196",
+      "updated_at" : "2015-12-10T07:41:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/163524715",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "What is the result of this in the rendered doxygen?\r\nI don't like changing every single comment in the source code.\r\nWould be good to focus on documentation bottlenecks: definitions of global variables, types, functions and methods.",
+      "created_at" : "2015-12-10T10:47:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7196#issuecomment-163576866",
+      "id" : 163576866,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7196",
+      "updated_at" : "2015-12-10T10:48:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/163576866",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Please also include the diff in the *rendered* output of doxygen. Only changes to comments where you can influence the output meaningful are preferred.",
+      "created_at" : "2015-12-10T12:42:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7196#issuecomment-163598984",
+      "id" : 163598984,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7196",
+      "updated_at" : "2015-12-10T12:42:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/163598984",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "NACK. I doubt we want all these comments in the rendered doxygen output; most of these are useless if read anywhere but the source. Per [the developer notes](https://github.com/bitcoin/bitcoin/blob/master/doc/developer-notes.md#doxygen-comments), we only want to doxygen-document functions, methods, and fields.",
+      "created_at" : "2015-12-10T16:35:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7196#issuecomment-163680438",
+      "id" : 163680438,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7196",
+      "updated_at" : "2015-12-10T16:35:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/163680438",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/73197?v=3",
+         "events_url" : "https://api.github.com/users/jamesob/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jamesob/followers",
+         "following_url" : "https://api.github.com/users/jamesob/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jamesob/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jamesob",
+         "id" : 73197,
+         "login" : "jamesob",
+         "organizations_url" : "https://api.github.com/users/jamesob/orgs",
+         "received_events_url" : "https://api.github.com/users/jamesob/received_events",
+         "repos_url" : "https://api.github.com/users/jamesob/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jamesob/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jamesob/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jamesob"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7196#discussion_r47317202"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7196"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/47317202"
+         }
+      },
+      "body" : "We don't want any of these comments included in Doxygen, as they don't add value to the dev documentation.",
+      "commit_id" : "1dfe4a0bbd1f9012d801f8e1f6c2d78411ca583e",
+      "created_at" : "2015-12-11T02:54:44Z",
+      "diff_hunk" : "@@ -1,6 +1,6 @@\n-// Copyright (c) 2012 Pieter Wuille\n-// Distributed under the MIT software license, see the accompanying\n-// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+/// Copyright (c) 2012 Pieter Wuille\n+/// Distributed under the MIT software license, see the accompanying\n+/// file COPYING or http://www.opensource.org/licenses/mit-license.php.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7196#discussion_r47317202",
+      "id" : 47317202,
+      "original_commit_id" : "1dfe4a0bbd1f9012d801f8e1f6c2d78411ca583e",
+      "original_position" : 6,
+      "path" : "src/addrman.cpp",
+      "position" : 6,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7196",
+      "updated_at" : "2015-12-11T02:54:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/47317202",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7196#discussion_r47317517"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7196"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/47317517"
+         }
+      },
+      "body" : "As pointed out, we also don't want these comments included, as they make the most sense in the context of the code. I'll add some screenshots of what they look like in Doxygen to this thread.",
+      "commit_id" : "1dfe4a0bbd1f9012d801f8e1f6c2d78411ca583e",
+      "created_at" : "2015-12-11T03:02:32Z",
+      "diff_hunk" : "@@ -31,19 +31,24 @@ int CAddrInfo::GetBucketPosition(const uint256 &nKey, bool fNew, int nBucket) co\n \n bool CAddrInfo::IsTerrible(int64_t nNow) const\n {\n-    if (nLastTry && nLastTry >= nNow - 60) // never remove things tried in the last minute\n+    /// never remove things tried in the last minute",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7196#discussion_r47317517",
+      "id" : 47317517,
+      "original_commit_id" : "1dfe4a0bbd1f9012d801f8e1f6c2d78411ca583e",
+      "original_position" : 15,
+      "path" : "src/addrman.cpp",
+      "position" : 15,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7196",
+      "updated_at" : "2015-12-11T03:02:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/47317517",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "This is how the changed comments in Addrman appear.\r\n![doxygen](https://cloud.githubusercontent.com/assets/863730/11734965/e15721be-9ff6-11e5-8615-ee49eb954eba.png)\r\n",
+      "created_at" : "2015-12-11T03:08:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7196#issuecomment-163824446",
+      "id" : 163824446,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7196",
+      "updated_at" : "2015-12-11T03:08:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/163824446",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Ok, closing this.\r\nBlanketly making function-internal comments visible in doxygen can be confusing, and generates a way-too-large diff.",
+      "created_at" : "2015-12-11T08:23:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7196#issuecomment-163872890",
+      "id" : 163872890,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7196",
+      "updated_at" : "2015-12-11T08:23:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/163872890",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

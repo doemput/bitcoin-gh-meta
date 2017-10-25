@@ -1,0 +1,160 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9630#discussion_r97853843"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9630"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97853843"
+         }
+      },
+      "body" : "This sounds like logic that belongs in LoadBlockIndex, not in the basic data structure logic.",
+      "commit_id" : "d180c15ef812a1053db941f56dbb4a1707c87b4b",
+      "created_at" : "2017-01-25T19:06:25Z",
+      "diff_hunk" : "@@ -99,8 +100,12 @@ CBlockIndex* CBlockIndex::GetAncestor(int height)\n             // Only follow pskip if pprev->pskip isn't better than pskip->pprev.\n             pindexWalk = pindexWalk->pskip;\n             heightWalk = heightSkip;\n+        } else if (pindexWalk->pprev == NULL) {\n+            // pindexWalk should always have a parent (since pindexWalk is not the genesis block)\n+            LogPrintf(\"%s: Block index is missing a block. Block %s, height %d has no parent.\\n\",  __func__, pindexWalk->GetBlockHash().ToString(), heightWalk);\n+            LogPrintf(\"%s: Run bitcoin with -reindex to rebuild the block index. This will redownload the entire blockchain if running a pruned node.\\n\",  __func__);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9630#discussion_r97853843",
+      "id" : 97853843,
+      "original_commit_id" : "d180c15ef812a1053db941f56dbb4a1707c87b4b",
+      "original_position" : 15,
+      "path" : "src/chain.cpp",
+      "position" : 15,
+      "pull_request_review_id" : 18476918,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9630",
+      "updated_at" : "2017-01-25T19:06:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97853843",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Concept ACK, also did this a few times while debugging but never bothered to PR it.\r\n\r\nAgree with @sipa that logging doesn't belong here, but in the caller, to which the error condition would need to be signalled in some way.\r\n\r\nAlso: should we use AbortNode instead of abort() to make sure GUI users get a popup to check the debug log?",
+      "created_at" : "2017-01-26T18:47:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9630#issuecomment-275475094",
+      "id" : 275475094,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9630",
+      "updated_at" : "2017-01-26T18:47:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/275475094",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@sipa @laanwj thanks for the feedback. I'll take a look at putting the logging into the caller.",
+      "created_at" : "2017-01-26T22:24:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9630#issuecomment-275533279",
+      "id" : 275533279,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9630",
+      "updated_at" : "2017-01-26T22:24:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/275533279",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Concept ACK but agree with the feedback.",
+      "created_at" : "2017-03-18T19:51:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9630#issuecomment-287570274",
+      "id" : 287570274,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9630",
+      "updated_at" : "2017-03-18T19:51:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/287570274",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "Closing this for now. I'll reopen once I've changed this to incorporate the feedback.",
+      "created_at" : "2017-03-30T18:34:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9630#issuecomment-290503960",
+      "id" : 290503960,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9630",
+      "updated_at" : "2017-03-30T18:34:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/290503960",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   }
+]

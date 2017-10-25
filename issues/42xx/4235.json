@@ -1,9 +1,28 @@
 {
    "assignee" : null,
-   "body" : "Also, oddly, it continues serving RPC commands to them.\r\n\r\nI found this using bitcoinrpc.authproxy in python. Open up a process that polls bitcoind in a loop from python, then issue a `stop` command from a different client. bitcoind does not stop until the python script is closed.",
-   "closed_at" : null,
-   "closed_by" : null,
-   "comments" : 0,
+   "assignees" : [],
+   "body" : "Also, oddly, it continues serving RPC commands to them.\n\nI found this using bitcoinrpc.authproxy in python. Open up a process that polls bitcoind in a loop from python, then issue a `stop` command from a different client. bitcoind does not stop until the python script is closed.\n",
+   "closed_at" : "2017-06-02T02:17:14Z",
+   "closed_by" : {
+      "avatar_url" : "https://avatars1.githubusercontent.com/u/863730?v=3",
+      "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+      "followers_url" : "https://api.github.com/users/fanquake/followers",
+      "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+      "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+      "gravatar_id" : "",
+      "html_url" : "https://github.com/fanquake",
+      "id" : 863730,
+      "login" : "fanquake",
+      "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+      "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+      "repos_url" : "https://api.github.com/users/fanquake/repos",
+      "site_admin" : false,
+      "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+      "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+      "type" : "User",
+      "url" : "https://api.github.com/users/fanquake"
+   },
+   "comments" : 2,
    "comments_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4235/comments",
    "created_at" : "2014-05-27T01:51:05Z",
    "events_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4235/events",
@@ -12,25 +31,30 @@
    "labels" : [
       {
          "color" : "FBBAAB",
+         "default" : false,
+         "id" : 64585,
          "name" : "Bug",
          "url" : "https://api.github.com/repos/bitcoin/bitcoin/labels/Bug"
       },
       {
          "color" : "0052cc",
-         "name" : "RPC",
-         "url" : "https://api.github.com/repos/bitcoin/bitcoin/labels/RPC"
+         "default" : false,
+         "id" : 98279177,
+         "name" : "RPC/REST/ZMQ",
+         "url" : "https://api.github.com/repos/bitcoin/bitcoin/labels/RPC/REST/ZMQ"
       }
    ],
    "labels_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4235/labels{/name}",
    "locked" : false,
    "milestone" : null,
    "number" : 4235,
-   "state" : "open",
+   "repository_url" : "https://api.github.com/repos/bitcoin/bitcoin",
+   "state" : "closed",
    "title" : "When issuing bitcoind the `stop` rpc command, it waits forever for existing clients to disconnect",
-   "updated_at" : "2014-05-27T07:13:09Z",
+   "updated_at" : "2017-06-02T02:17:14Z",
    "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/4235",
    "user" : {
-      "avatar_url" : "https://avatars.githubusercontent.com/u/656699?v=3",
+      "avatar_url" : "https://avatars0.githubusercontent.com/u/656699?v=3",
       "events_url" : "https://api.github.com/users/ryancdotorg/events{/privacy}",
       "followers_url" : "https://api.github.com/users/ryancdotorg/followers",
       "following_url" : "https://api.github.com/users/ryancdotorg/following{/other_user}",

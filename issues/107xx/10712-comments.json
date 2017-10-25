@@ -1,0 +1,908 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125092666"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125092666"
+         }
+      },
+      "body" : "please move first explanation a few lines before for the \"increase change\" to appropriate spot",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-06-30T17:42:38Z",
+      "diff_hunk" : "@@ -2744,8 +2751,18 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n                     // TODO: The case where nSubtractFeeFromAmount > 0 remains\n                     // to be addressed because it requires returning the fee to\n                     // the payees and not the change output.\n-                    // TODO: The case where there is no change output remains\n-                    // to be addressed so we avoid creating too small an output.\n+                    CAmount max_excess_fee = GetMinimumFee(change_prototype_size, currentConfirmationTarget, ::mempool, ::feeEstimator, nullptr) +\n+                        GetDustThreshold(change_prototype_txout, ::dustRelayFee);\n+                    // If we have no change and a big enough excess fee, then",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125092666",
+      "id" : 125092666,
+      "original_commit_id" : "93197a7cab1a2ee38f8ce41df573ba53d09d82ea",
+      "original_position" : 46,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47453075,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125092666",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125094011"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125094011"
+         }
+      },
+      "body" : "nit: slightly longer explanation for reader?\r\n\r\n\"This shouldn't happen, we should have had enough excess fee to pay for the newly created change output.\"\r\n\r\nWith fix on the nFeeRet, a very slight increase in fee between estimation calls(can that happen?) will result in this triggering.",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-06-30T17:48:51Z",
+      "diff_hunk" : "@@ -2754,6 +2771,11 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n                     }\n                     break; // Done, enough fee included.\n                 }\n+                else if (!pick_new_inputs) {\n+                    // This shouldn't happen",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125094011",
+      "id" : 125094011,
+      "original_commit_id" : "93197a7cab1a2ee38f8ce41df573ba53d09d82ea",
+      "original_position" : 64,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47453075,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125094011",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125094446"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125094446"
+         }
+      },
+      "body" : "looks like a capital \"K\" snuck in here.",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-06-30T17:51:02Z",
+      "diff_hunk" : "@@ -2774,6 +2773,8 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n             }\n         }\n \n+        if (nChangePosInOut == -1) reserveKey.ReturnKey(); // Return any reserved key if we don't have change",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125094446",
+      "id" : 125094446,
+      "original_commit_id" : "252837b04a9dd14e66c6fcc1268aae6505d7c17a",
+      "original_position" : 97,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47453075,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125094446",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125097059"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125097059"
+         }
+      },
+      "body" : "this needs to be `nFeeRet = nFeeNeeded + GetMinimumFee(change_prototype_size, currentConfirmationTarget, ::mempool, ::feeEstimator, nullptr) ;` at a minimum, right?\r\n\r\nnFeeNeeded at this point will not pay for the new change output.",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-06-30T18:02:09Z",
+      "diff_hunk" : "@@ -2744,8 +2751,18 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n                     // TODO: The case where nSubtractFeeFromAmount > 0 remains\n                     // to be addressed because it requires returning the fee to\n                     // the payees and not the change output.\n-                    // TODO: The case where there is no change output remains\n-                    // to be addressed so we avoid creating too small an output.\n+                    CAmount max_excess_fee = GetMinimumFee(change_prototype_size, currentConfirmationTarget, ::mempool, ::feeEstimator, nullptr) +\n+                        GetDustThreshold(change_prototype_txout, ::dustRelayFee);\n+                    // If we have no change and a big enough excess fee, then\n+                    // try to construct transaction again only without picking\n+                    // new inputs. We now know we only need the smaller fee\n+                    // (because of reduced tx size) and so we should add a\n+                    // change input. Only try this once.\n+                    if (nFeeRet > nFeeNeeded + max_excess_fee && nChangePosInOut == -1 && nSubtractFeeFromAmount == 0 && pick_new_inputs) {\n+                        pick_new_inputs = false;\n+                        nFeeRet = nFeeNeeded;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125097059",
+      "id" : 125097059,
+      "original_commit_id" : "93197a7cab1a2ee38f8ce41df573ba53d09d82ea",
+      "original_position" : 53,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47453075,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125097059",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125114245"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125114245"
+         }
+      },
+      "body" : "oops, correct \r\n",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-06-30T19:29:32Z",
+      "diff_hunk" : "@@ -2744,8 +2751,18 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n                     // TODO: The case where nSubtractFeeFromAmount > 0 remains\n                     // to be addressed because it requires returning the fee to\n                     // the payees and not the change output.\n-                    // TODO: The case where there is no change output remains\n-                    // to be addressed so we avoid creating too small an output.\n+                    CAmount max_excess_fee = GetMinimumFee(change_prototype_size, currentConfirmationTarget, ::mempool, ::feeEstimator, nullptr) +\n+                        GetDustThreshold(change_prototype_txout, ::dustRelayFee);\n+                    // If we have no change and a big enough excess fee, then\n+                    // try to construct transaction again only without picking\n+                    // new inputs. We now know we only need the smaller fee\n+                    // (because of reduced tx size) and so we should add a\n+                    // change input. Only try this once.\n+                    if (nFeeRet > nFeeNeeded + max_excess_fee && nChangePosInOut == -1 && nSubtractFeeFromAmount == 0 && pick_new_inputs) {\n+                        pick_new_inputs = false;\n+                        nFeeRet = nFeeNeeded;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125114245",
+      "id" : 125114245,
+      "original_commit_id" : "93197a7cab1a2ee38f8ce41df573ba53d09d82ea",
+      "original_position" : 53,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47477570,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125114245",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125114338"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125114338"
+         }
+      },
+      "body" : "weird, i fixed that but must have not committed before push\r\n",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-06-30T19:30:06Z",
+      "diff_hunk" : "@@ -2774,6 +2773,8 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n             }\n         }\n \n+        if (nChangePosInOut == -1) reserveKey.ReturnKey(); // Return any reserved key if we don't have change",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125114338",
+      "id" : 125114338,
+      "original_commit_id" : "252837b04a9dd14e66c6fcc1268aae6505d7c17a",
+      "original_position" : 97,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47477677,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125114338",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125114484"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125114484"
+         }
+      },
+      "body" : "yes, i don't think that can happen (a change in fee estimation) but belts and suspenders.\r\nIn any case will be cleaned up post 0.15 with effective value logic and only calculating the needed fee rate once.",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-06-30T19:31:04Z",
+      "diff_hunk" : "@@ -2754,6 +2771,11 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n                     }\n                     break; // Done, enough fee included.\n                 }\n+                else if (!pick_new_inputs) {\n+                    // This shouldn't happen",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125114484",
+      "id" : 125114484,
+      "original_commit_id" : "93197a7cab1a2ee38f8ce41df573ba53d09d82ea",
+      "original_position" : 64,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47477843,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125114484",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Fixed bug and nits and squashed\r\n\r\n@instagibbs I'm fine with doing the GetMinimumFeeRate refactor for 0.15, but I already did a lot of other work on GetMinimumFee in #10706 which I would really like to get in for 0.15, so I'm wary of piling on too many changes that touch the same lines of code and not being able to get them all in.\r\n\r\n\r\n",
+      "created_at" : "2017-06-30T19:51:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-312358618",
+      "id" : 312358618,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-06-30T19:51:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312358618",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125120879"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125120879"
+         }
+      },
+      "body" : "sorry to both you again on this but it appears to still be there",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-06-30T20:08:16Z",
+      "diff_hunk" : "@@ -2774,6 +2773,8 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n             }\n         }\n \n+        if (nChangePosInOut == -1) reserveKey.ReturnKey(); // Return any reserved key if we don't have change",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r125120879",
+      "id" : 125120879,
+      "original_commit_id" : "252837b04a9dd14e66c6fcc1268aae6505d7c17a",
+      "original_position" : 97,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 47485281,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125120879",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "All return points should call `reservekey.ReturnKey()`?",
+      "created_at" : "2017-07-03T09:06:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-312591291",
+      "id" : 312591291,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-03T09:06:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312591291",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "Reference #10247.",
+      "created_at" : "2017-07-03T09:16:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-312593651",
+      "id" : 312593651,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-03T09:16:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312593651",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "@promag this is a bugfix with limited scope. Switching to effective value calculation fixes this in a more natural fashion. See: https://github.com/bitcoin/bitcoin/pull/10360 and https://github.com/bitcoin/bitcoin/pull/10637",
+      "created_at" : "2017-07-03T12:20:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-312631038",
+      "id" : 312631038,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-03T12:20:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312631038",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "@promag \r\nNew variables are supposed to be snake_case, did I miss one?\r\nIf there are any other changes, I can fix the braces, but I didn't touch the moved code.\r\n\r\nAs for calling ReturnKey, I suppose that does make sense, but the existing code did not do that, and I haven't materially changed that behavior. I'm happy to add it though if I should?\r\n(Clarification: My only hesitation is that it looks to me like it's fine to call ReturnKey even if you haven't reserved one, but I'm just not that familiar with the code or it's design, so was hesitant to put in extra calls to ReturnKey where one might not have actually been reserved)\r\n",
+      "created_at" : "2017-07-05T16:36:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-313157515",
+      "id" : 313157515,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-05T16:41:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313157515",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "@morcos another PR is fine. As @instagibbs said, this is a bugfix.",
+      "created_at" : "2017-07-06T00:10:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-313260057",
+      "id" : 313260057,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-06T00:10:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313260057",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "Replaced #10333 with this one in \"High priority for review\" (reviewing a closed PR with high priority makes little sense).",
+      "created_at" : "2017-07-06T14:09:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-313407260",
+      "id" : 313407260,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-06T14:10:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/313407260",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126543900"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126543900"
+         }
+      },
+      "body" : "In commit \"Fix rare edge case of paying too many fees\"\r\n\r\nThis needs to be moved to the previous commit for it to compile.",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-07-10T21:38:20Z",
+      "diff_hunk" : "@@ -2773,7 +2800,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n             }\n         }\n \n-        if (nChangePosInOut == -1) reserveKey.ReturnKey(); // Return any reserved key if we don't have change\n+        if (nChangePosInOut == -1) reservekey.ReturnKey(); // Return any reserved key if we don't have change",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126543900",
+      "id" : 126543900,
+      "original_commit_id" : "d64a4b94ea809179e8cc9a92be75036bc8bd4fbf",
+      "original_position" : 94,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 49038958,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126543900",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126548824"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126548824"
+         }
+      },
+      "body" : "change output",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-07-10T22:03:14Z",
+      "diff_hunk" : "@@ -2736,16 +2743,30 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n                 }\n \n                 if (nFeeRet >= nFeeNeeded) {\n-                    // Reduce fee to only the needed amount if we have change\n-                    // output to increase.  This prevents potential overpayment\n-                    // in fees if the coins selected to meet nFeeNeeded result\n-                    // in a transaction that requires less fee than the prior\n-                    // iteration.\n+                    // Reduce fee to only the needed amount if possible. This\n+                    // prevents potential overpayment in fees if the coins\n+                    // selected to meet nFeeNeeded result in a transaction that\n+                    // requires less fee than the prior iteration.\n+\n                     // TODO: The case where nSubtractFeeFromAmount > 0 remains\n                     // to be addressed because it requires returning the fee to\n                     // the payees and not the change output.\n-                    // TODO: The case where there is no change output remains\n-                    // to be addressed so we avoid creating too small an output.\n+\n+                    // If we have no change and a big enough excess fee, then\n+                    // try to construct transaction again only without picking\n+                    // new inputs. We now know we only need the smaller fee\n+                    // (because of reduced tx size) and so we should add a\n+                    // change input. Only try this once.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126548824",
+      "id" : 126548824,
+      "original_commit_id" : "d64a4b94ea809179e8cc9a92be75036bc8bd4fbf",
+      "original_position" : 62,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 49038958,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126548824",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126552321"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126552321"
+         }
+      },
+      "body" : "> please move first explanation a few lines before for the \"increase change\" to appropriate spot\r\n\r\nI think order of the comments does makes sense. First comment describes the normal case, second comment describes unhandled special case, and third comment describes handled special case accompanied by implementation for that case.\r\n\r\nI might move the code for the normal case above the code & comments for the two special cases, though this would increase the size of the diff. Just a thought, though.",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-07-10T22:24:10Z",
+      "diff_hunk" : "@@ -2744,8 +2751,18 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n                     // TODO: The case where nSubtractFeeFromAmount > 0 remains\n                     // to be addressed because it requires returning the fee to\n                     // the payees and not the change output.\n-                    // TODO: The case where there is no change output remains\n-                    // to be addressed so we avoid creating too small an output.\n+                    CAmount max_excess_fee = GetMinimumFee(change_prototype_size, currentConfirmationTarget, ::mempool, ::feeEstimator, nullptr) +\n+                        GetDustThreshold(change_prototype_txout, ::dustRelayFee);\n+                    // If we have no change and a big enough excess fee, then",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126552321",
+      "id" : 126552321,
+      "original_commit_id" : "93197a7cab1a2ee38f8ce41df573ba53d09d82ea",
+      "original_position" : 46,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 49038958,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T00:17:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126552321",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "body" : "Fixed commit history and fixed comment nit\r\n\r\n```\r\ngit diff d64a4b9 533b3f0\r\n\r\n-                    // change input. Only try this once.\r\n+                    // change output. Only try this once.\r\n```",
+      "created_at" : "2017-07-11T00:21:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-314286684",
+      "id" : 314286684,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-11T00:21:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314286684",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126626320"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126626320"
+         }
+      },
+      "body" : "Nit: else on the same line as `}`",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-07-11T08:30:32Z",
+      "diff_hunk" : "@@ -2754,6 +2775,12 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n                     }\n                     break; // Done, enough fee included.\n                 }\n+                else if (!pick_new_inputs) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126626320",
+      "id" : 126626320,
+      "original_commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "original_position" : 80,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 161,
+      "pull_request_review_id" : 49125932,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T08:30:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126626320",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126695357"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126695357"
+         }
+      },
+      "body" : "He moved it, the comment wasn't marked as resolved. Happy with current arrangement.",
+      "commit_id" : "533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-07-11T13:56:07Z",
+      "diff_hunk" : "@@ -2744,8 +2751,18 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT\n                     // TODO: The case where nSubtractFeeFromAmount > 0 remains\n                     // to be addressed because it requires returning the fee to\n                     // the payees and not the change output.\n-                    // TODO: The case where there is no change output remains\n-                    // to be addressed so we avoid creating too small an output.\n+                    CAmount max_excess_fee = GetMinimumFee(change_prototype_size, currentConfirmationTarget, ::mempool, ::feeEstimator, nullptr) +\n+                        GetDustThreshold(change_prototype_txout, ::dustRelayFee);\n+                    // If we have no change and a big enough excess fee, then",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#discussion_r126695357",
+      "id" : 126695357,
+      "original_commit_id" : "93197a7cab1a2ee38f8ce41df573ba53d09d82ea",
+      "original_position" : 46,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_review_id" : 49202787,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10712",
+      "updated_at" : "2017-07-11T13:56:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/126695357",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "utACK https://github.com/bitcoin/bitcoin/pull/10712/commits/533b3f07f0525939d5fef2d22ec1ee699b7d437b",
+      "created_at" : "2017-07-11T13:57:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-314451972",
+      "id" : 314451972,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-11T13:57:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314451972",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "This was rebased to add 2 new arguments to GetMinimumFee line which were introduced in #10589 \r\n\r\nWill change again as it conflicts with #10706 on that same point (depending on which is merged first, but I think this is ready)",
+      "created_at" : "2017-07-11T16:28:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-314499307",
+      "id" : 314499307,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-11T16:29:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314499307",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Posthumous utACK 0f402b9",
+      "created_at" : "2017-07-11T18:03:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10712#issuecomment-314525205",
+      "id" : 314525205,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10712",
+      "updated_at" : "2017-07-11T18:03:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/314525205",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

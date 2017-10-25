@@ -1,0 +1,382 @@
+[
+   {
+      "body" : "utACK 6ab2ce8.",
+      "created_at" : "2017-07-31T14:50:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#issuecomment-319090491",
+      "id" : 319090491,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10961",
+      "updated_at" : "2017-07-31T14:50:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/319090491",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "This seems to be an over-cosmetic change... not sure if its worth.\r\nutACK 6ab2ce83d9268fc81ac3bec41365ce2d2adfd349",
+      "created_at" : "2017-08-03T09:52:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#issuecomment-319923686",
+      "id" : 319923686,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10961",
+      "updated_at" : "2017-08-03T09:52:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/319923686",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10961#discussion_r134709635"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10961"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134709635"
+         }
+      },
+      "body" : "I guess there's some reason `vchRet.end() - 4` doesn't work (pointer versus iterator conflict or something like that)?",
+      "commit_id" : "6ab2ce83d9268fc81ac3bec41365ce2d2adfd349",
+      "created_at" : "2017-08-23T10:05:43Z",
+      "diff_hunk" : "@@ -136,7 +136,7 @@ bool DecodeBase58Check(const char* psz, std::vector<unsigned char>& vchRet)\n     }\n     // re-calculate the checksum, ensure it matches the included 4-byte checksum\n     uint256 hash = Hash(vchRet.begin(), vchRet.end() - 4);\n-    if (memcmp(&hash, &vchRet.end()[-4], 4) != 0) {\n+    if (memcmp(&hash, vchRet.data() + vchRet.size() - 4, 4) != 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#discussion_r134709635",
+      "id" : 134709635,
+      "original_commit_id" : "6ab2ce83d9268fc81ac3bec41365ce2d2adfd349",
+      "original_position" : 5,
+      "path" : "src/base58.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 58031254,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10961",
+      "updated_at" : "2017-08-23T10:05:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134709635",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10961#discussion_r134859783"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10961"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134859783"
+         }
+      },
+      "body" : "Yeah `vchRet.end()-4` would still be an iterator I believe, so you'd have to do some ugly thing like `&*(vchRet.end()-4)` to make it into a pointer iirc?",
+      "commit_id" : "6ab2ce83d9268fc81ac3bec41365ce2d2adfd349",
+      "created_at" : "2017-08-23T20:20:28Z",
+      "diff_hunk" : "@@ -136,7 +136,7 @@ bool DecodeBase58Check(const char* psz, std::vector<unsigned char>& vchRet)\n     }\n     // re-calculate the checksum, ensure it matches the included 4-byte checksum\n     uint256 hash = Hash(vchRet.begin(), vchRet.end() - 4);\n-    if (memcmp(&hash, &vchRet.end()[-4], 4) != 0) {\n+    if (memcmp(&hash, vchRet.data() + vchRet.size() - 4, 4) != 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#discussion_r134859783",
+      "id" : 134859783,
+      "original_commit_id" : "6ab2ce83d9268fc81ac3bec41365ce2d2adfd349",
+      "original_position" : 5,
+      "path" : "src/base58.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 58202838,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10961",
+      "updated_at" : "2017-08-23T20:20:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134859783",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10961#discussion_r134891847"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10961"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134891847"
+         }
+      },
+      "body" : "How about `&vchRet[vchRet.size() - 4]` ?",
+      "commit_id" : "6ab2ce83d9268fc81ac3bec41365ce2d2adfd349",
+      "created_at" : "2017-08-23T22:59:15Z",
+      "diff_hunk" : "@@ -136,7 +136,7 @@ bool DecodeBase58Check(const char* psz, std::vector<unsigned char>& vchRet)\n     }\n     // re-calculate the checksum, ensure it matches the included 4-byte checksum\n     uint256 hash = Hash(vchRet.begin(), vchRet.end() - 4);\n-    if (memcmp(&hash, &vchRet.end()[-4], 4) != 0) {\n+    if (memcmp(&hash, vchRet.data() + vchRet.size() - 4, 4) != 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#discussion_r134891847",
+      "id" : 134891847,
+      "original_commit_id" : "6ab2ce83d9268fc81ac3bec41365ce2d2adfd349",
+      "original_position" : 5,
+      "path" : "src/base58.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 58239185,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10961",
+      "updated_at" : "2017-08-23T22:59:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134891847",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10961#discussion_r134905770"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10961"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134905770"
+         }
+      },
+      "body" : "Believe that would work, and yeah that's a lot clearer imo Ã°ÂÂÂ ",
+      "commit_id" : "6ab2ce83d9268fc81ac3bec41365ce2d2adfd349",
+      "created_at" : "2017-08-24T00:56:45Z",
+      "diff_hunk" : "@@ -136,7 +136,7 @@ bool DecodeBase58Check(const char* psz, std::vector<unsigned char>& vchRet)\n     }\n     // re-calculate the checksum, ensure it matches the included 4-byte checksum\n     uint256 hash = Hash(vchRet.begin(), vchRet.end() - 4);\n-    if (memcmp(&hash, &vchRet.end()[-4], 4) != 0) {\n+    if (memcmp(&hash, vchRet.data() + vchRet.size() - 4, 4) != 0) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#discussion_r134905770",
+      "id" : 134905770,
+      "original_commit_id" : "6ab2ce83d9268fc81ac3bec41365ce2d2adfd349",
+      "original_position" : 5,
+      "path" : "src/base58.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 58254085,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10961",
+      "updated_at" : "2017-08-24T00:56:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134905770",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "body" : "@laanwj @MeshCollider @sipa Thanks for reviewing! Changed to `&vchRet[vchRet.size() - 4]`. Looks good? :-)",
+      "created_at" : "2017-08-24T07:23:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#issuecomment-324555394",
+      "id" : 324555394,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10961",
+      "updated_at" : "2017-08-24T07:23:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324555394",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "Just confirmed this should be identical behavior, ACK https://github.com/bitcoin/bitcoin/pull/10961/commits/c6a995e7e5e6ae37dc1684f6060038e96864e947",
+      "created_at" : "2017-08-24T08:24:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#issuecomment-324568517",
+      "id" : 324568517,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10961",
+      "updated_at" : "2017-08-24T08:24:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324568517",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "body" : "Travis have completed without errors, but GitHub still reports \"1 pending check\". ",
+      "created_at" : "2017-08-25T07:49:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#issuecomment-324848742",
+      "id" : 324848742,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10961",
+      "updated_at" : "2017-08-25T07:49:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324848742",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "Seems like Travis CI is stuck. Anyone able to re-start Travis? :-)",
+      "created_at" : "2017-08-28T20:26:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#issuecomment-325470861",
+      "id" : 325470861,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10961",
+      "updated_at" : "2017-08-28T20:26:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/325470861",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "utACK c6a995e7e5e6ae37dc1684f6060038e96864e947",
+      "created_at" : "2017-08-29T18:12:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10961#issuecomment-325748347",
+      "id" : 325748347,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10961",
+      "updated_at" : "2017-08-29T18:12:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/325748347",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

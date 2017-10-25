@@ -1,0 +1,805 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76508551"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76508551"
+         }
+      },
+      "body" : "Normally we use --disable-* for the help for options which are enabled by default.",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-08-27T02:22:22Z",
+      "diff_hunk" : "@@ -167,6 +167,13 @@ AC_ARG_ENABLE([zmq],\n \n AC_ARG_WITH([protoc-bindir],[AS_HELP_STRING([--with-protoc-bindir=BIN_DIR],[specify protoc bin path])], [protoc_bin_path=$withval], [])\n \n+# Enable manpages\n+AC_ARG_ENABLE(man,\n+    [AS_HELP_STRING([--enable-man],",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76508551",
+      "id" : 76508551,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 6,
+      "path" : "configure.ac",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-01T16:17:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76508551",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76508555"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76508555"
+         }
+      },
+      "body" : "(I wonder if it should perhaps be disabled by default when building for Windows?)",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-08-27T02:22:44Z",
+      "diff_hunk" : "@@ -167,6 +167,13 @@ AC_ARG_ENABLE([zmq],\n \n AC_ARG_WITH([protoc-bindir],[AS_HELP_STRING([--with-protoc-bindir=BIN_DIR],[specify protoc bin path])], [protoc_bin_path=$withval], [])\n \n+# Enable manpages\n+AC_ARG_ENABLE(man,\n+    [AS_HELP_STRING([--enable-man],\n+                    [install man pages [default=yes]])],,\n+    enable_man=yes)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76508555",
+      "id" : 76508555,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 8,
+      "path" : "configure.ac",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-01T16:17:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76508555",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76508603"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76508603"
+         }
+      },
+      "body" : "Should probably mention the relevant binaries need to be in PATH, adjust it so the BITCOIND and/or BITCOINCLI environment variables are used, and/or just use the binaries in the build dir.",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-08-27T02:25:35Z",
+      "diff_hunk" : "@@ -40,6 +40,12 @@ would be changed to:\n \n ```// Copyright (c) 2009-2015 The Bitcoin Core developers```\n \n+gen-manpages.sh\n+===============\n+\n+A small script to automatically create manpages in ../../doc/man by running the release binaries with the -help option.\n+This requires help2man which can be found at: https://www.gnu.org/software/help2man/",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76508603",
+      "id" : 76508603,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 8,
+      "path" : "contrib/devtools/README.md",
+      "position" : 8,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-01T16:17:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76508603",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Why include generated files (the manpages in this case) in the git repo, rather than just building them during make? (configure can disable man by default if help2man isn't found)",
+      "created_at" : "2016-08-27T02:27:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-242890347",
+      "id" : 242890347,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-08-27T02:27:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242890347",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "> Why include generated files (the manpages in this case) in the git repo, rather than just building them during make? (configure can disable man by default if help2man isn't found)\r\n\r\nBecause this (now manual) step requires actually executing the built executables to get their help output. I disagree with making that a default step in the build process. It will also not work with cross-compilation, and besides that it's an ugly thing that build systems simply should not do.\r\n\r\nIt would also introduce an extra (build-time) dependency on help2man, which we don't want.\r\n\r\nThere's a similar situation for some other generated files which are 'expensive' to produce, such as the built-in seeds list, the translation files, etc. This should be part of the release process but not automatic in the build.",
+      "created_at" : "2016-08-27T06:30:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-242899755",
+      "id" : 242899755,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-08-27T06:35:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242899755",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK, will test.",
+      "created_at" : "2016-08-27T06:34:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-242899888",
+      "id" : 242899888,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-08-27T06:34:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242899888",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Agree with @laanwj that Ã¢ÂÂit is helpful to differentiate between generation of the man pages and installation. Keep in mind that this allows to fiddle with the output, in case help2man is not perfect.",
+      "created_at" : "2016-08-27T09:19:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-242906559",
+      "id" : 242906559,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-08-27T09:19:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242906559",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76523323"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523323"
+         }
+      },
+      "body" : "Makes sense after looking at the other configure options. Would this be better:\r\n```\r\n+    [AS_HELP_STRING([--disable-man],\r\n+                    [do not install man pages (default is to install)])],,\r\n```\r\nAnd should I remove \"# Enable manpages\" comment? only --disable-wallet and --debug has a comment everything else doesn't.",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-08-27T22:43:26Z",
+      "diff_hunk" : "@@ -167,6 +167,13 @@ AC_ARG_ENABLE([zmq],\n \n AC_ARG_WITH([protoc-bindir],[AS_HELP_STRING([--with-protoc-bindir=BIN_DIR],[specify protoc bin path])], [protoc_bin_path=$withval], [])\n \n+# Enable manpages\n+AC_ARG_ENABLE(man,\n+    [AS_HELP_STRING([--enable-man],",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76523323",
+      "id" : 76523323,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 6,
+      "path" : "configure.ac",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-01T16:17:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76523323",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1503969?v=3",
+         "events_url" : "https://api.github.com/users/nomnombtc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nomnombtc/followers",
+         "following_url" : "https://api.github.com/users/nomnombtc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nomnombtc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nomnombtc",
+         "id" : 1503969,
+         "login" : "nomnombtc",
+         "organizations_url" : "https://api.github.com/users/nomnombtc/orgs",
+         "received_events_url" : "https://api.github.com/users/nomnombtc/received_events",
+         "repos_url" : "https://api.github.com/users/nomnombtc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nomnombtc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nomnombtc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nomnombtc"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76524082"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76524082"
+         }
+      },
+      "body" : "Sounds good to me",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-08-28T00:21:02Z",
+      "diff_hunk" : "@@ -167,6 +167,13 @@ AC_ARG_ENABLE([zmq],\n \n AC_ARG_WITH([protoc-bindir],[AS_HELP_STRING([--with-protoc-bindir=BIN_DIR],[specify protoc bin path])], [protoc_bin_path=$withval], [])\n \n+# Enable manpages\n+AC_ARG_ENABLE(man,\n+    [AS_HELP_STRING([--enable-man],",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76524082",
+      "id" : 76524082,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 6,
+      "path" : "configure.ac",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-01T16:17:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76524082",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76524234"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76524234"
+         }
+      },
+      "body" : "Hmm, the script was already a bit ugly, but it was very short which was the good thing about it :)\r\nWould you like something like this better: http://pastebin.com/j6JFaiaq\r\n\r\nOr I could leave it like it is and write:\r\n>A small script to automatically create manpages in ../../doc/man by running binaries in $PATH with the --help option.",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-08-28T00:42:26Z",
+      "diff_hunk" : "@@ -40,6 +40,12 @@ would be changed to:\n \n ```// Copyright (c) 2009-2015 The Bitcoin Core developers```\n \n+gen-manpages.sh\n+===============\n+\n+A small script to automatically create manpages in ../../doc/man by running the release binaries with the -help option.\n+This requires help2man which can be found at: https://www.gnu.org/software/help2man/",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r76524234",
+      "id" : 76524234,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 8,
+      "path" : "contrib/devtools/README.md",
+      "position" : 8,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-01T16:17:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/76524234",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1503969?v=3",
+         "events_url" : "https://api.github.com/users/nomnombtc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nomnombtc/followers",
+         "following_url" : "https://api.github.com/users/nomnombtc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nomnombtc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nomnombtc",
+         "id" : 1503969,
+         "login" : "nomnombtc",
+         "organizations_url" : "https://api.github.com/users/nomnombtc/orgs",
+         "received_events_url" : "https://api.github.com/users/nomnombtc/received_events",
+         "repos_url" : "https://api.github.com/users/nomnombtc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nomnombtc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nomnombtc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nomnombtc"
+      }
+   },
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2016-08-29T11:41:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-243101217",
+      "id" : 243101217,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-08-29T11:41:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243101217",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Nits: \r\n- can we avoid the commit id being included in the generated manpages? This will generate diff noise every time they're regenerated for no good reason.\r\n```       Bitcoin Core RPC client version v0.13.0.0-ga402396```\r\n- `doc/release-process.md` should contain instructions to generate these pages (after bumping the version!)\r\n- `bitcoin-tx` has no man page.\r\n\r\nApart from that, tested ACK.\r\n\r\n",
+      "created_at" : "2016-08-31T13:57:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-243772524",
+      "id" : 243772524,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-08-31T13:58:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243772524",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77006145"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77006145"
+         }
+      },
+      "body" : "Why not use a makefile target instead? All of that info would be readily available there.",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-08-31T15:10:42Z",
+      "diff_hunk" : "@@ -40,6 +40,12 @@ would be changed to:\n \n ```// Copyright (c) 2009-2015 The Bitcoin Core developers```\n \n+gen-manpages.sh\n+===============\n+\n+A small script to automatically create manpages in ../../doc/man by running the release binaries with the -help option.\n+This requires help2man which can be found at: https://www.gnu.org/software/help2man/",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77006145",
+      "id" : 77006145,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 8,
+      "path" : "contrib/devtools/README.md",
+      "position" : 8,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-01T16:17:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77006145",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Concept ACK.\r\n\r\nAgreed with the points above. Though, if we're pre-generating the pages and keeping them in-repo, we need to be careful about \\#ifdefs in help output.\r\n\r\nFor example: https://github.com/bitcoin/bitcoin/blob/master/src/init.cpp#L317\r\n\r\nAlso, I'd much rather use a makefile target for generating, similar to the way the other generated files are produced. That helps to keep everything in sync since the vars are shared around.",
+      "created_at" : "2016-08-31T15:21:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-243799540",
+      "id" : 243799540,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-08-31T15:21:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/243799540",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "> Though, if we're pre-generating the pages and keeping them in-repo, we need to be careful about #ifdefs in help output.\r\n\r\nI just don't like the alternative. If this could be parsed from the C source *without* executing, I'd be fine with doing generation during build process.\r\nIn any case that can be done in the future, this is strictly an improvement to how things currently are.\r\n",
+      "created_at" : "2016-09-01T12:03:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-244058317",
+      "id" : 244058317,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-09-01T12:03:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/244058317",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : ">can we avoid the commit id being included in the generated manpages? This will generate diff noise every time they're regenerated for no good reason. Bitcoin Core RPC client version v0.13.0.0-ga402396\r\n\r\nYes I have updated the script somewhat to strip the commit id from the help2man output. It now also has some variables like BITCOIND BITCOINCLI and so on, as luke-jr suggested above somewhere and it now runs the binaries from the build dir,  not from $PATH anymore.\r\n\r\n>doc/release-process.md should contain instructions to generate these pages (after bumping the version!)\r\n\r\nOkay. Should I just write that it needs to be regenerated prior to release, like this?\r\n\r\n```\r\n[...]\r\nBefore every minor and major release:\r\n\r\nUpdate bips.md to account for changes since the last release.\r\nUpdate version in sources (see below)\r\nWrite release notes (see below)\r\nRegenerate manpages with script in contrib/devtools\r\n[...]\r\n```\r\n\r\n>bitcoin-tx has no man page.\r\n\r\nOops. Thanks for noticing this, somehow I forgot about bitcoin-tx. It is included now :)\r\n\r\nI also noticed another annoyance:\r\nWhen build with `--with-gui=no` it still installs the bitcoin-qt manpage...\r\nIf we want to prevent this, the Makefile.am in doc/man needs a check for this :(\r\n\r\n",
+      "created_at" : "2016-09-01T16:20:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-244132377",
+      "id" : 244132377,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-09-01T16:21:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/244132377",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1503969?v=3",
+         "events_url" : "https://api.github.com/users/nomnombtc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nomnombtc/followers",
+         "following_url" : "https://api.github.com/users/nomnombtc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nomnombtc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nomnombtc",
+         "id" : 1503969,
+         "login" : "nomnombtc",
+         "organizations_url" : "https://api.github.com/users/nomnombtc/orgs",
+         "received_events_url" : "https://api.github.com/users/nomnombtc/received_events",
+         "repos_url" : "https://api.github.com/users/nomnombtc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nomnombtc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nomnombtc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nomnombtc"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77211639"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77211639"
+         }
+      },
+      "body" : "> Why not use a makefile target instead? All of that info would be readily available there.\r\n\r\nDo you mean something like [this](https://github.com/bitcoin/bitcoin/blob/master/contrib/devtools/split-debug.sh.in) where it fills in some stuff in the script, or do you mean integrating help2man into the make buildprocess?\r\n\r\nBecause you can do this: https://www.gnu.org/software/help2man/#Makefile-usage \r\nuntil 5 minutes ago I assumed everyone building from source then needs help2man installed,\r\nbut this sentence suggest otherwise:\r\n>This usage allows a manual page to be generated by the maintainer and included in the distribution without requiring the end-user to have help2man installed.\r\n\r\nNow I am a bit confused :) Guess this needs more research.",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-09-01T16:52:07Z",
+      "diff_hunk" : "@@ -40,6 +40,12 @@ would be changed to:\n \n ```// Copyright (c) 2009-2015 The Bitcoin Core developers```\n \n+gen-manpages.sh\n+===============\n+\n+A small script to automatically create manpages in ../../doc/man by running the release binaries with the -help option.\n+This requires help2man which can be found at: https://www.gnu.org/software/help2man/",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77211639",
+      "id" : 77211639,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 8,
+      "path" : "contrib/devtools/README.md",
+      "position" : 8,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-01T16:52:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77211639",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1503969?v=3",
+         "events_url" : "https://api.github.com/users/nomnombtc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nomnombtc/followers",
+         "following_url" : "https://api.github.com/users/nomnombtc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nomnombtc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nomnombtc",
+         "id" : 1503969,
+         "login" : "nomnombtc",
+         "organizations_url" : "https://api.github.com/users/nomnombtc/orgs",
+         "received_events_url" : "https://api.github.com/users/nomnombtc/received_events",
+         "repos_url" : "https://api.github.com/users/nomnombtc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nomnombtc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nomnombtc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nomnombtc"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77233502"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77233502"
+         }
+      },
+      "body" : "@theuni \r\nI am playing around right now with the `help2man` Makefile method and it seems it indeed only\r\nruns `help2man`:  *if* the manpage files don't exist yet **OR** a string in the source cpp file changed (I have no idea how it does this - blackmagic?).\r\n\r\nSo if the man pages exist and the help options matches the source files, the end user can build  without having `help2man` installed. If this confirms it seems much better than the shell script... \r\n\r\nBut it has some side effects, now the commit id is back in the manpage. And some other small problem which my script was working around (matching copyright footer for all manpages)",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-09-01T18:58:53Z",
+      "diff_hunk" : "@@ -40,6 +40,12 @@ would be changed to:\n \n ```// Copyright (c) 2009-2015 The Bitcoin Core developers```\n \n+gen-manpages.sh\n+===============\n+\n+A small script to automatically create manpages in ../../doc/man by running the release binaries with the -help option.\n+This requires help2man which can be found at: https://www.gnu.org/software/help2man/",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77233502",
+      "id" : 77233502,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 8,
+      "path" : "contrib/devtools/README.md",
+      "position" : 8,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-01T18:58:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77233502",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1503969?v=3",
+         "events_url" : "https://api.github.com/users/nomnombtc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nomnombtc/followers",
+         "following_url" : "https://api.github.com/users/nomnombtc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nomnombtc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nomnombtc",
+         "id" : 1503969,
+         "login" : "nomnombtc",
+         "organizations_url" : "https://api.github.com/users/nomnombtc/orgs",
+         "received_events_url" : "https://api.github.com/users/nomnombtc/received_events",
+         "repos_url" : "https://api.github.com/users/nomnombtc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nomnombtc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nomnombtc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nomnombtc"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77284353"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77284353"
+         }
+      },
+      "body" : "@nomnombtc I think they're just saying that if you commit pre-generated files to the repo, users don't have to do it.\r\n\r\nFor a makefile target, i mean something like this: https://github.com/bitcoin/bitcoin/blob/master/src/Makefile.qt.include#L408\r\n\r\nIn this case, it would look something like (in src/Makefile.am):\r\n```Makefile\r\nupdate-man: $(bin_PROGRAMS)\r\n       $(AM_V_at)echo \"[COPYRIGHT]\" > footer.h2m\r\n       $(AM_V_at)echo \"Copyright $(COPYRIGHT_YEAR) $(COPYRIGHT_HOLDERS_FINAL)\" >> footer.h2m\r\n       $(AM_V_at)for prog in $^; do help2man -N --version-string=$(PACKAGE_VERSION) --include=footer.h2m -o $(top_builddir)/doc/man/`basename $$prog`.1 $(builddir)/$$prog$(EXEEXT); done\r\n```\r\n(that's not really tested)\r\n\r\nSince it's in a makefile, you have all of the vars at your disposal without trying to guess program names/paths.",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-09-02T02:14:59Z",
+      "diff_hunk" : "@@ -40,6 +40,12 @@ would be changed to:\n \n ```// Copyright (c) 2009-2015 The Bitcoin Core developers```\n \n+gen-manpages.sh\n+===============\n+\n+A small script to automatically create manpages in ../../doc/man by running the release binaries with the -help option.\n+This requires help2man which can be found at: https://www.gnu.org/software/help2man/",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77284353",
+      "id" : 77284353,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 8,
+      "path" : "contrib/devtools/README.md",
+      "position" : 8,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-02T02:14:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77284353",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77334227"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77334227"
+         }
+      },
+      "body" : "@theuni \r\n\r\nOh ok now I get it, I was playing around with something like this:\r\n\r\n```\r\nbitcoind.1: $(top_builddir)/src/bitcoind.cpp\r\n        -$(HELP2MAN) --no-info --version-string=$(PACKAGE_VERSION) \\\r\n          --output=$@ --name='manual page for $(BITCOIN_DAEMON_NAME) $(PACKAGE_VERSION)' \\\r\n          $(top_builddir)/src/$(BITCOIN_DAEMON_NAME)$(EXEEXT)\r\n        -sed -i 's/\\-$(shell git rev-parse HEAD | cut -c1-7)//g' $@\r\n\r\nbitcoin-cli.1: $(top_builddir)/src/bitcoin-cli.cpp\r\n        -$(HELP2MAN) --no-info --version-string=$(PACKAGE_VERSION) \\\r\n          --output=$@ --name='manual page for $(BITCOIN_CLI_NAME) $(PACKAGE_VERSION)' \\\r\n          $(top_builddir)/src/$(BITCOIN_CLI_NAME)$(EXEEXT)\r\n        -sed -i 's/\\-$(shell git rev-parse HEAD | cut -c1-7)//g' $@\r\n\r\nbitcoin-tx.1: $(top_builddir)/src/bitcoin-tx.cpp\r\n        -$(HELP2MAN) --no-info --version-string=$(PACKAGE_VERSION) \\\r\n          --output=$@ --name='manual page for $(BITCOIN_TX_NAME) $(PACKAGE_VERSION)' \\\r\n          $(top_builddir)/src/$(BITCOIN_TX_NAME)$(EXEEXT)\r\n        -sed -i 's/\\-$(shell git rev-parse HEAD | cut -c1-7)//g' $@\r\n\r\ndist_man1_MANS=bitcoind.1 bitcoin-cli.1 bitcoin-tx.1\r\n\r\nif ENABLE_QT\r\nbitcoin-qt.1: $(top_builddir)/src/qt/bitcoin.cpp\r\n        -$(HELP2MAN) --no-info --version-string=$(PACKAGE_VERSION) \\\r\n          --output=$@ --name='manual page for $(BITCOIN_GUI_NAME) $(PACKAGE_VERSION)' \\\r\n          $(top_builddir)/src/qt/$(BITCOIN_GUI_NAME)$(EXEEXT)\r\n        -sed -i 's/\\-$(shell git rev-parse HEAD | cut -c1-7)//g' $@\r\ndist_man1_MANS+=bitcoin-qt.1\r\nendif\r\n```\r\n\r\nBecause my hope was to automate it completly, so that maybe the gitian build process generates the manpages in the end.It works pretty ok, but a huge problem is that running help2man on bitcoin-qt needs access to a running X-Server -_-.\r\n\r\nSo someone needs to generate and commit the manpages anyway. May as well than use something like your maketarget, at least this is much more elegant than my shell script... :)\r\n\r\nGoing to look into it, thanks!",
+      "commit_id" : "d19583f478f4104ea8ff787a475f9064d2c388ae",
+      "created_at" : "2016-09-02T11:54:56Z",
+      "diff_hunk" : "@@ -40,6 +40,12 @@ would be changed to:\n \n ```// Copyright (c) 2009-2015 The Bitcoin Core developers```\n \n+gen-manpages.sh\n+===============\n+\n+A small script to automatically create manpages in ../../doc/man by running the release binaries with the -help option.\n+This requires help2man which can be found at: https://www.gnu.org/software/help2man/",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#discussion_r77334227",
+      "id" : 77334227,
+      "original_commit_id" : "a32c102fb1766301977d093c006f7f6cbf7fbea7",
+      "original_position" : 8,
+      "path" : "contrib/devtools/README.md",
+      "position" : 8,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8608",
+      "updated_at" : "2016-09-02T11:54:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/77334227",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1503969?v=3",
+         "events_url" : "https://api.github.com/users/nomnombtc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nomnombtc/followers",
+         "following_url" : "https://api.github.com/users/nomnombtc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nomnombtc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nomnombtc",
+         "id" : 1503969,
+         "login" : "nomnombtc",
+         "organizations_url" : "https://api.github.com/users/nomnombtc/orgs",
+         "received_events_url" : "https://api.github.com/users/nomnombtc/received_events",
+         "repos_url" : "https://api.github.com/users/nomnombtc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nomnombtc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nomnombtc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nomnombtc"
+      }
+   },
+   {
+      "body" : "here is something which is probably better.\r\nIt uses a Makefile target instead of a shellscript to run help2man and a few other small improvements.\r\n\r\nhttps://github.com/bitcoin/bitcoin/compare/master...nomnombtc:man_automake4\r\n\r\n>Changes compared to this here (8608):\r\n>* Shellscript replaced by Makefile target \"update-man\" - many thanks to @theuni\r\n>* DISTCHECK_CONFIGURE_FLAGS has been removed from Makefile.am, it seems not needed.\r\n> * AC_ARG_ENABLE and AM_CONDITIONAL  in configure.ac was modified to match the look of other options.\r\n> * The Makefile in doc/man now only installs bitcoin-qt.1  if ENABLE_QT is set.\r\n> * Added notes about updating man pages to release-process.md\r\n\r\nPlease tell me if you guys like this one better :) ~~If this is ok then only the text for release-process.md is missing. I have something [here](https://github.com/nomnombtc/bitcoin/blob/man_rptmp/doc/release-process.md) but it is not ready yet, the formatting is weird of the whole section.~~",
+      "created_at" : "2016-09-02T18:56:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-244459588",
+      "id" : 244459588,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-09-04T22:41:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/244459588",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1503969?v=3",
+         "events_url" : "https://api.github.com/users/nomnombtc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nomnombtc/followers",
+         "following_url" : "https://api.github.com/users/nomnombtc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nomnombtc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nomnombtc",
+         "id" : 1503969,
+         "login" : "nomnombtc",
+         "organizations_url" : "https://api.github.com/users/nomnombtc/orgs",
+         "received_events_url" : "https://api.github.com/users/nomnombtc/received_events",
+         "repos_url" : "https://api.github.com/users/nomnombtc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nomnombtc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nomnombtc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nomnombtc"
+      }
+   },
+   {
+      "body" : "Thanks for sticking with this, ACK d19583f\r\n",
+      "created_at" : "2016-09-13T08:25:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8608#issuecomment-246611106",
+      "id" : 246611106,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8608",
+      "updated_at" : "2016-09-13T08:25:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/246611106",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

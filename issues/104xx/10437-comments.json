@@ -1,0 +1,538 @@
+[
+   {
+      "body" : "Could someone advise why the new subtree would not be visible to the Travis build?\r\nI don't have a problem building and testing this locally.",
+      "created_at" : "2017-05-21T12:03:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#issuecomment-302932517",
+      "id" : 302932517,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10437",
+      "updated_at" : "2017-05-21T12:03:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/302932517",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/26766668?v=3",
+         "events_url" : "https://api.github.com/users/sanch0panza/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sanch0panza/followers",
+         "following_url" : "https://api.github.com/users/sanch0panza/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sanch0panza/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sanch0panza",
+         "id" : 26766668,
+         "login" : "sanch0panza",
+         "organizations_url" : "https://api.github.com/users/sanch0panza/orgs",
+         "received_events_url" : "https://api.github.com/users/sanch0panza/received_events",
+         "repos_url" : "https://api.github.com/users/sanch0panza/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sanch0panza/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sanch0panza/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sanch0panza"
+      }
+   },
+   {
+      "body" : "Why use CSV?\r\nWe already have an internal JSON parser (UniValue) or a flexible configuration file reader...",
+      "created_at" : "2017-05-22T12:18:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#issuecomment-303083791",
+      "id" : 303083791,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10437",
+      "updated_at" : "2017-05-22T12:18:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303083791",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117738154"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117738154"
+         }
+      },
+      "body" : "why not use CreateChainParams?\r\nwhen are the chainparams created here destroyed?",
+      "commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "created_at" : "2017-05-22T12:58:16Z",
+      "diff_hunk" : "@@ -339,6 +357,25 @@ const CChainParams &Params() {\n     return *globalChainParams;\n }\n \n+CChainParams& Params(const std::string& chain)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117738154",
+      "id" : 117738154,
+      "original_commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "original_position" : 122,
+      "path" : "src/chainparams.cpp",
+      "position" : 122,
+      "pull_request_review_id" : 39468131,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437",
+      "updated_at" : "2017-05-22T17:39:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117738154",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117738430"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117738430"
+         }
+      },
+      "body" : "this kind of thing can be done separately",
+      "commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "created_at" : "2017-05-22T12:59:44Z",
+      "diff_hunk" : "@@ -1,5 +1,5 @@\n // Copyright (c) 2009-2010 Satoshi Nakamoto\n-// Copyright (c) 2009-2016 The Bitcoin Core developers\n+// Copyright (c) 2009-2017 The Bitcoin Core developers",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117738430",
+      "id" : 117738430,
+      "original_commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "original_position" : 3,
+      "path" : "src/consensus/params.h",
+      "position" : 3,
+      "pull_request_review_id" : 39468131,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437",
+      "updated_at" : "2017-05-22T17:39:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117738430",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117738948"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117738948"
+         }
+      },
+      "body" : "This is not necessary",
+      "commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "created_at" : "2017-05-22T13:02:25Z",
+      "diff_hunk" : "@@ -16,39 +16,47 @@ static const int32_t VERSIONBITS_TOP_BITS = 0x20000000UL;\n static const int32_t VERSIONBITS_TOP_MASK = 0xE0000000UL;\n /** Total bits available for versionbits */\n static const int32_t VERSIONBITS_NUM_BITS = 29;\n+/** Size of window to use for assessing warning of unknown bits */\n+static const int BIT_WARNING_WINDOW = 100;\n+/** Threshold to use for assessing warning of unknown bits */\n+static const int BIT_WARNING_THRESHOLD = 50;\n \n+// bip135: assigned numbers to these enum values\n enum ThresholdState {\n-    THRESHOLD_DEFINED,",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117738948",
+      "id" : 117738948,
+      "original_commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "original_position" : 17,
+      "path" : "src/versionbits.h",
+      "position" : 17,
+      "pull_request_review_id" : 39468131,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437",
+      "updated_at" : "2017-05-22T17:39:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117738948",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117739356"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117739356"
+         }
+      },
+      "body" : "NACK both this method and ModifiableParams, neither of them should be needed.",
+      "commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "created_at" : "2017-05-22T13:04:28Z",
+      "diff_hunk" : "@@ -58,6 +58,8 @@ class CChainParams\n     };\n \n     const Consensus::Params& GetConsensus() const { return consensus; }\n+    /** Modifiable consensus parameters added by bip135 */\n+    Consensus::Params& GetModifiableConsensus() { return consensus; }",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117739356",
+      "id" : 117739356,
+      "original_commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "original_position" : 12,
+      "path" : "src/chainparams.h",
+      "position" : 12,
+      "pull_request_review_id" : 39468131,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437",
+      "updated_at" : "2017-05-22T17:39:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117739356",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "@jonasschnelli : I used CSV as it seemed more suited to the type of configuration, with all data for one deployment fitting compactly on a single line, and most parsers can parse a comment header so it met the \"self-documenting\" request received during BIP135 review.\r\n\r\nBut I agree, JSON could well be used.\r\n\r\nIn fact, the loading of data from a file could be removed entirely to streamline this implementation - it is something that an implementation can choose to do whichever way it wants. Others have suggested to be able to specify it using multiple `-bip135=<data>` arguments, which would be another option.\r\n\r\nI did not really want to mix this fork configuration with the users existing config file, as it seems something which which ordinary users should not really tinker.",
+      "created_at" : "2017-05-22T14:59:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#issuecomment-303125897",
+      "id" : 303125897,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10437",
+      "updated_at" : "2017-05-22T14:59:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303125897",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/26766668?v=3",
+         "events_url" : "https://api.github.com/users/sanch0panza/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sanch0panza/followers",
+         "following_url" : "https://api.github.com/users/sanch0panza/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sanch0panza/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sanch0panza",
+         "id" : 26766668,
+         "login" : "sanch0panza",
+         "organizations_url" : "https://api.github.com/users/sanch0panza/orgs",
+         "received_events_url" : "https://api.github.com/users/sanch0panza/received_events",
+         "repos_url" : "https://api.github.com/users/sanch0panza/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sanch0panza/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sanch0panza/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sanch0panza"
+      }
+   },
+   {
+      "body" : "I would like to include some more improvement commits based on code review feedback I received so far (on code parts which are common to https://github.com/BitcoinUnlimited/BitcoinUnlimited/pull/458) .\r\n\r\nI'll keep these as separate commits on top of this branch for now, for easier separate review of these additional changes.",
+      "created_at" : "2017-05-22T15:06:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#issuecomment-303127881",
+      "id" : 303127881,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10437",
+      "updated_at" : "2017-05-22T15:06:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303127881",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/26766668?v=3",
+         "events_url" : "https://api.github.com/users/sanch0panza/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sanch0panza/followers",
+         "following_url" : "https://api.github.com/users/sanch0panza/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sanch0panza/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sanch0panza",
+         "id" : 26766668,
+         "login" : "sanch0panza",
+         "organizations_url" : "https://api.github.com/users/sanch0panza/orgs",
+         "received_events_url" : "https://api.github.com/users/sanch0panza/received_events",
+         "repos_url" : "https://api.github.com/users/sanch0panza/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sanch0panza/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sanch0panza/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sanch0panza"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117807249"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117807249"
+         }
+      },
+      "body" : "I agree, this can probably be improved by re-using existing code.\r\nWill look into that - I'm not so familiar with the recent Core code and so used some methods from existing implementation.",
+      "commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "created_at" : "2017-05-22T17:55:33Z",
+      "diff_hunk" : "@@ -58,6 +58,8 @@ class CChainParams\n     };\n \n     const Consensus::Params& GetConsensus() const { return consensus; }\n+    /** Modifiable consensus parameters added by bip135 */\n+    Consensus::Params& GetModifiableConsensus() { return consensus; }",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117807249",
+      "id" : 117807249,
+      "original_commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "original_position" : 12,
+      "path" : "src/chainparams.h",
+      "position" : 12,
+      "pull_request_review_id" : 39544849,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437",
+      "updated_at" : "2017-05-22T17:55:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117807249",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/26766668?v=3",
+         "events_url" : "https://api.github.com/users/sanch0panza/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sanch0panza/followers",
+         "following_url" : "https://api.github.com/users/sanch0panza/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sanch0panza/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sanch0panza",
+         "id" : 26766668,
+         "login" : "sanch0panza",
+         "organizations_url" : "https://api.github.com/users/sanch0panza/orgs",
+         "received_events_url" : "https://api.github.com/users/sanch0panza/received_events",
+         "repos_url" : "https://api.github.com/users/sanch0panza/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sanch0panza/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sanch0panza/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sanch0panza"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117807532"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117807532"
+         }
+      },
+      "body" : "Agreed - will remove.\r\nI might have wanted to set these to known values for debugging purposes.",
+      "commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "created_at" : "2017-05-22T17:56:48Z",
+      "diff_hunk" : "@@ -16,39 +16,47 @@ static const int32_t VERSIONBITS_TOP_BITS = 0x20000000UL;\n static const int32_t VERSIONBITS_TOP_MASK = 0xE0000000UL;\n /** Total bits available for versionbits */\n static const int32_t VERSIONBITS_NUM_BITS = 29;\n+/** Size of window to use for assessing warning of unknown bits */\n+static const int BIT_WARNING_WINDOW = 100;\n+/** Threshold to use for assessing warning of unknown bits */\n+static const int BIT_WARNING_THRESHOLD = 50;\n \n+// bip135: assigned numbers to these enum values\n enum ThresholdState {\n-    THRESHOLD_DEFINED,",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117807532",
+      "id" : 117807532,
+      "original_commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "original_position" : 17,
+      "path" : "src/versionbits.h",
+      "position" : 17,
+      "pull_request_review_id" : 39545148,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437",
+      "updated_at" : "2017-05-22T17:56:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117807532",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/26766668?v=3",
+         "events_url" : "https://api.github.com/users/sanch0panza/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sanch0panza/followers",
+         "following_url" : "https://api.github.com/users/sanch0panza/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sanch0panza/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sanch0panza",
+         "id" : 26766668,
+         "login" : "sanch0panza",
+         "organizations_url" : "https://api.github.com/users/sanch0panza/orgs",
+         "received_events_url" : "https://api.github.com/users/sanch0panza/received_events",
+         "repos_url" : "https://api.github.com/users/sanch0panza/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sanch0panza/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sanch0panza/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sanch0panza"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117807659"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117807659"
+         }
+      },
+      "body" : "I have a habit of updating the copyright dates whenever I modify a file.\r\nWhat do you mean by done separately - should I not update them, or rather do it in a separate commit?",
+      "commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "created_at" : "2017-05-22T17:57:27Z",
+      "diff_hunk" : "@@ -1,5 +1,5 @@\n // Copyright (c) 2009-2010 Satoshi Nakamoto\n-// Copyright (c) 2009-2016 The Bitcoin Core developers\n+// Copyright (c) 2009-2017 The Bitcoin Core developers",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117807659",
+      "id" : 117807659,
+      "original_commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "original_position" : 3,
+      "path" : "src/consensus/params.h",
+      "position" : 3,
+      "pull_request_review_id" : 39545291,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437",
+      "updated_at" : "2017-05-22T18:04:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117807659",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/26766668?v=3",
+         "events_url" : "https://api.github.com/users/sanch0panza/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sanch0panza/followers",
+         "following_url" : "https://api.github.com/users/sanch0panza/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sanch0panza/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sanch0panza",
+         "id" : 26766668,
+         "login" : "sanch0panza",
+         "organizations_url" : "https://api.github.com/users/sanch0panza/orgs",
+         "received_events_url" : "https://api.github.com/users/sanch0panza/received_events",
+         "repos_url" : "https://api.github.com/users/sanch0panza/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sanch0panza/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sanch0panza/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sanch0panza"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117808976"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117808976"
+         }
+      },
+      "body" : "You're right, this function should not be needed and I will re-use CreateChainParams.\r\nThe params created in Params() are not explicitly destroyed.",
+      "commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "created_at" : "2017-05-22T18:03:20Z",
+      "diff_hunk" : "@@ -339,6 +357,25 @@ const CChainParams &Params() {\n     return *globalChainParams;\n }\n \n+CChainParams& Params(const std::string& chain)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#discussion_r117808976",
+      "id" : 117808976,
+      "original_commit_id" : "f1eb700562218df0a74e3c584887574dfbd61b3a",
+      "original_position" : 122,
+      "path" : "src/chainparams.cpp",
+      "position" : 122,
+      "pull_request_review_id" : 39546699,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10437",
+      "updated_at" : "2017-05-22T18:03:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117808976",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/26766668?v=3",
+         "events_url" : "https://api.github.com/users/sanch0panza/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sanch0panza/followers",
+         "following_url" : "https://api.github.com/users/sanch0panza/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sanch0panza/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sanch0panza",
+         "id" : 26766668,
+         "login" : "sanch0panza",
+         "organizations_url" : "https://api.github.com/users/sanch0panza/orgs",
+         "received_events_url" : "https://api.github.com/users/sanch0panza/received_events",
+         "repos_url" : "https://api.github.com/users/sanch0panza/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sanch0panza/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sanch0panza/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sanch0panza"
+      }
+   },
+   {
+      "body" : "Changing this to [WIP] ahead of a rebasing which will contain GetStateStatisticsFor() from https://github.com/bitcoin/bitcoin/commit/557c9a68fb72aeb535f2efe3cc82d3f5e66c6ad3 which needs to be checked, maybe it requires further adaptation to BIP135 .",
+      "created_at" : "2017-05-25T10:01:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#issuecomment-303973001",
+      "id" : 303973001,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10437",
+      "updated_at" : "2017-05-25T10:01:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303973001",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/26766668?v=3",
+         "events_url" : "https://api.github.com/users/sanch0panza/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sanch0panza/followers",
+         "following_url" : "https://api.github.com/users/sanch0panza/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sanch0panza/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sanch0panza",
+         "id" : 26766668,
+         "login" : "sanch0panza",
+         "organizations_url" : "https://api.github.com/users/sanch0panza/orgs",
+         "received_events_url" : "https://api.github.com/users/sanch0panza/received_events",
+         "repos_url" : "https://api.github.com/users/sanch0panza/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sanch0panza/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sanch0panza/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sanch0panza"
+      }
+   },
+   {
+      "body" : "Rebased.\r\n\r\nThe review comments addressing the \"Modifiable\" functions are still work in progress, as is revising the BIP9 statistics that were introduced by the rebase.",
+      "created_at" : "2017-05-25T10:58:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10437#issuecomment-303983127",
+      "id" : 303983127,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10437",
+      "updated_at" : "2017-05-25T10:58:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303983127",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/26766668?v=3",
+         "events_url" : "https://api.github.com/users/sanch0panza/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sanch0panza/followers",
+         "following_url" : "https://api.github.com/users/sanch0panza/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sanch0panza/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sanch0panza",
+         "id" : 26766668,
+         "login" : "sanch0panza",
+         "organizations_url" : "https://api.github.com/users/sanch0panza/orgs",
+         "received_events_url" : "https://api.github.com/users/sanch0panza/received_events",
+         "repos_url" : "https://api.github.com/users/sanch0panza/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sanch0panza/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sanch0panza/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sanch0panza"
+      }
+   }
+]

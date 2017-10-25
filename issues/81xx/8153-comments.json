@@ -1,0 +1,676 @@
+[
+   {
+      "body" : "Should actually be BTC (or satoshis?) per byte, since we no longer do it per kB...",
+      "created_at" : "2016-06-06T18:17:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#issuecomment-224042609",
+      "id" : 224042609,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8153",
+      "updated_at" : "2016-06-06T18:17:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224042609",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "All RPC arguments use BTC/kByte, no?",
+      "created_at" : "2016-06-06T18:18:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#issuecomment-224042955",
+      "id" : 224042955,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8153",
+      "updated_at" : "2016-06-06T18:18:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224042955",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "It should be the same format than bitcoind spit out when one calls `estimatefee`.",
+      "created_at" : "2016-06-06T18:19:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#issuecomment-224043222",
+      "id" : 224043222,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8153",
+      "updated_at" : "2016-06-06T18:19:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224043222",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66001494"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66001494"
+         }
+      },
+      "body" : "nit s/sat/set",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T02:27:05Z",
+      "diff_hunk" : "@@ -681,9 +681,9 @@ def run_test(self):\n         inputs = []\n         outputs = {self.nodes[2].getnewaddress() : 1}\n         rawtx = self.nodes[3].createrawtransaction(inputs, outputs)\n-        result = self.nodes[3].fundrawtransaction(rawtx, )\n-        result2 = self.nodes[3].fundrawtransaction(rawtx, {\"feeRate\": 2000})\n-        result3 = self.nodes[3].fundrawtransaction(rawtx, {\"feeRate\": 10000})\n+        result = self.nodes[3].fundrawtransaction(rawtx) # 1000 sat via settxfee",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66001494",
+      "id" : 66001494,
+      "original_commit_id" : "a9a64df3b4c8319bbbff896814e71f0dd8de4b05",
+      "original_position" : 7,
+      "path" : "qa/rpc-tests/fundrawtransaction.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T11:13:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66001494",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66007017"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66007017"
+         }
+      },
+      "body" : "it is probably satoshis. But not very clear, yes.",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T04:03:02Z",
+      "diff_hunk" : "@@ -681,9 +681,9 @@ def run_test(self):\n         inputs = []\n         outputs = {self.nodes[2].getnewaddress() : 1}\n         rawtx = self.nodes[3].createrawtransaction(inputs, outputs)\n-        result = self.nodes[3].fundrawtransaction(rawtx, )\n-        result2 = self.nodes[3].fundrawtransaction(rawtx, {\"feeRate\": 2000})\n-        result3 = self.nodes[3].fundrawtransaction(rawtx, {\"feeRate\": 10000})\n+        result = self.nodes[3].fundrawtransaction(rawtx) # 1000 sat via settxfee",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66007017",
+      "id" : 66007017,
+      "original_commit_id" : "a9a64df3b4c8319bbbff896814e71f0dd8de4b05",
+      "original_position" : 7,
+      "path" : "qa/rpc-tests/fundrawtransaction.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T11:13:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66007017",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "BTC/kB is fine, we use that for fee rates on the interface everywhere. The point of this change is to reduce the variety of different ways in which the same is expressed on the interface, not come up with something new.\r\n\r\nutACK https://github.com/bitcoin/bitcoin/pull/8153/commits/faf82e8fc819b2f1f8b60983ac72cb111c47e8ba",
+      "created_at" : "2016-06-07T06:46:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#issuecomment-224194564",
+      "id" : 224194564,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8153",
+      "updated_at" : "2016-06-07T06:47:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224194564",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "I think @luke-jr was referring to kB no longer being the smallest unit. Currently we use Byte to be the smallest unit.",
+      "created_at" : "2016-06-07T07:05:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#issuecomment-224197690",
+      "id" : 224197690,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8153",
+      "updated_at" : "2016-06-07T07:05:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224197690",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66019326"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66019326"
+         }
+      },
+      "body" : "Thanks, will fix the comment.",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T07:06:11Z",
+      "diff_hunk" : "@@ -681,9 +681,9 @@ def run_test(self):\n         inputs = []\n         outputs = {self.nodes[2].getnewaddress() : 1}\n         rawtx = self.nodes[3].createrawtransaction(inputs, outputs)\n-        result = self.nodes[3].fundrawtransaction(rawtx, )\n-        result2 = self.nodes[3].fundrawtransaction(rawtx, {\"feeRate\": 2000})\n-        result3 = self.nodes[3].fundrawtransaction(rawtx, {\"feeRate\": 10000})\n+        result = self.nodes[3].fundrawtransaction(rawtx) # 1000 sat via settxfee",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66019326",
+      "id" : 66019326,
+      "original_commit_id" : "a9a64df3b4c8319bbbff896814e71f0dd8de4b05",
+      "original_position" : 7,
+      "path" : "qa/rpc-tests/fundrawtransaction.py",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T11:13:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66019326",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66020090"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66020090"
+         }
+      },
+      "body" : "Looks muc hbetter in c++11 syntax",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T07:14:34Z",
+      "diff_hunk" : "@@ -675,7 +675,12 @@ UniValue signrawtransaction(const UniValue& params, bool fHelp)\n \n             UniValue prevOut = p.get_obj();\n \n-            RPCTypeCheckObj(prevOut, boost::assign::map_list_of(\"txid\", UniValue::VSTR)(\"vout\", UniValue::VNUM)(\"scriptPubKey\", UniValue::VSTR));\n+            RPCTypeCheckObj(prevOut,",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66020090",
+      "id" : 66020090,
+      "original_commit_id" : "7817d3fee1467a9459b2f1bc7966457de585b0d2",
+      "original_position" : 5,
+      "path" : "src/rpc/rawtransaction.cpp",
+      "position" : 5,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T11:13:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66020090",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "(Force pushed after fixing comment-nit)",
+      "created_at" : "2016-06-07T07:17:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#issuecomment-224199760",
+      "id" : 224199760,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8153",
+      "updated_at" : "2016-06-07T07:17:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224199760",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Not sure if I got this right, but why not just removing the `\"feeRate\"` from the `RPCTypeCheckObj` check (it's optional anyways)? I don't see the reason for the new `UniValueType` type.",
+      "created_at" : "2016-06-07T09:11:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#issuecomment-224223730",
+      "id" : 224223730,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8153",
+      "updated_at" : "2016-06-07T09:11:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224223730",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66039098"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66039098"
+         }
+      },
+      "body" : "typedef is not needed for structs and classes in C++.",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T09:38:40Z",
+      "diff_hunk" : "@@ -32,6 +32,15 @@ namespace RPCServer\n class CBlockIndex;\n class CNetAddr;\n \n+/** Wrapper for UniValue::VType, which includes typeAny:\n+ * Used to denote don't care type. Only used by RPCTypeCheckObj */\n+typedef struct UniValueType {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66039098",
+      "id" : 66039098,
+      "original_commit_id" : "fab362944cb27720de1e5a05dfea55d79a93646f",
+      "original_position" : 6,
+      "path" : "src/rpc/server.h",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T11:13:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66039098",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66043555"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66043555"
+         }
+      },
+      "body" : "Fixed.\r\n\r\nAlso changed to `union` as suggested by @jonasschnelli ",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T10:11:20Z",
+      "diff_hunk" : "@@ -32,6 +32,15 @@ namespace RPCServer\n class CBlockIndex;\n class CNetAddr;\n \n+/** Wrapper for UniValue::VType, which includes typeAny:\n+ * Used to denote don't care type. Only used by RPCTypeCheckObj */\n+typedef struct UniValueType {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66043555",
+      "id" : 66043555,
+      "original_commit_id" : "fab362944cb27720de1e5a05dfea55d79a93646f",
+      "original_position" : 6,
+      "path" : "src/rpc/server.h",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T11:13:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66043555",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Nice!\r\nutACK fa51551b7f5c2dbfae01f5cee8ee8251868609e2",
+      "created_at" : "2016-06-07T10:55:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#issuecomment-224246704",
+      "id" : 224246704,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8153",
+      "updated_at" : "2016-06-07T10:55:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224246704",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66049933"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66049933"
+         }
+      },
+      "body" : "This is not valid. You can only access fields of a union that you know was the last one assigned to. Testing both typeAny and type certains violates that property at least once.",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T11:02:53Z",
+      "diff_hunk" : "@@ -88,20 +88,18 @@ void RPCTypeCheck(const UniValue& params,\n }\n \n void RPCTypeCheckObj(const UniValue& o,\n-                  const map<string, UniValue::VType>& typesExpected,\n-                  bool fAllowNull,\n-                  bool fStrict)\n+    const map<string, UniValueType>& typesExpected,\n+    bool fAllowNull,\n+    bool fStrict)\n {\n-    BOOST_FOREACH(const PAIRTYPE(string, UniValue::VType)& t, typesExpected)\n-    {\n+    for (const auto& t : typesExpected) {\n         const UniValue& v = find_value(o, t.first);\n         if (!fAllowNull && v.isNull())\n             throw JSONRPCError(RPC_TYPE_ERROR, strprintf(\"Missing %s\", t.first));\n \n-        if (!((v.type() == t.second) || (fAllowNull && (v.isNull()))))\n-        {\n+        if (!(t.second.typeAny || v.type() == t.second.type || (fAllowNull && v.isNull()))) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66049933",
+      "id" : 66049933,
+      "original_commit_id" : "fa51551b7f5c2dbfae01f5cee8ee8251868609e2",
+      "original_position" : 20,
+      "path" : "src/rpc/server.cpp",
+      "position" : 20,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T11:13:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66049933",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66059776"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66059776"
+         }
+      },
+      "body" : "We slipped up with the review for #7967, shouldn't have allowed using get_real here. Good that this is being replaced.",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T12:22:05Z",
+      "diff_hunk" : "@@ -2431,7 +2443,7 @@ UniValue fundrawtransaction(const UniValue& params, bool fHelp)\n \n         if (options.exists(\"feeRate\"))\n         {\n-            feeRate = CFeeRate(options[\"feeRate\"].get_real());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66059776",
+      "id" : 66059776,
+      "original_commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "original_position" : 50,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 50,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T12:22:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66059776",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66060533"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66060533"
+         }
+      },
+      "body" : "done. Hope I got it right this time. :+1: ",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T12:26:33Z",
+      "diff_hunk" : "@@ -88,20 +88,18 @@ void RPCTypeCheck(const UniValue& params,\n }\n \n void RPCTypeCheckObj(const UniValue& o,\n-                  const map<string, UniValue::VType>& typesExpected,\n-                  bool fAllowNull,\n-                  bool fStrict)\n+    const map<string, UniValueType>& typesExpected,\n+    bool fAllowNull,\n+    bool fStrict)\n {\n-    BOOST_FOREACH(const PAIRTYPE(string, UniValue::VType)& t, typesExpected)\n-    {\n+    for (const auto& t : typesExpected) {\n         const UniValue& v = find_value(o, t.first);\n         if (!fAllowNull && v.isNull())\n             throw JSONRPCError(RPC_TYPE_ERROR, strprintf(\"Missing %s\", t.first));\n \n-        if (!((v.type() == t.second) || (fAllowNull && (v.isNull()))))\n-        {\n+        if (!(t.second.typeAny || v.type() == t.second.type || (fAllowNull && v.isNull()))) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66060533",
+      "id" : 66060533,
+      "original_commit_id" : "fa51551b7f5c2dbfae01f5cee8ee8251868609e2",
+      "original_position" : 20,
+      "path" : "src/rpc/server.cpp",
+      "position" : 20,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T12:26:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66060533",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66061358"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66061358"
+         }
+      },
+      "body" : "On the other hand, imagine if someone noticed it while reviewing #7967: The pull probably would have never made it into 0.13 before feature freeze, because adding the anytype is a non-trivial refactor and review is hard to do when there is substantial refactoring going on while adding new features.\r\n\r\nLooking at it from this perspective, it makes sense to have two pulls to aid review.",
+      "commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "created_at" : "2016-06-07T12:32:17Z",
+      "diff_hunk" : "@@ -2431,7 +2443,7 @@ UniValue fundrawtransaction(const UniValue& params, bool fHelp)\n \n         if (options.exists(\"feeRate\"))\n         {\n-            feeRate = CFeeRate(options[\"feeRate\"].get_real());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8153#discussion_r66061358",
+      "id" : 66061358,
+      "original_commit_id" : "fa7f4f577cbab2b4bc03b5427704c2ec16680c34",
+      "original_position" : 50,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 50,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8153",
+      "updated_at" : "2016-06-07T12:32:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66061358",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

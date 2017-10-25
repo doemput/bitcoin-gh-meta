@@ -1,0 +1,336 @@
+[
+   {
+      "body" : "Trivial no-code-change ACK c8cd2bf05c81508e173bf1e9f7a7f234b9d0e695",
+      "created_at" : "2017-08-03T09:54:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#issuecomment-319923985",
+      "id" : 319923985,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10956",
+      "updated_at" : "2017-08-03T09:54:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/319923985",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "@promag Thanks! Added the \"parameters\" fix.\r\n\r\nRegarding \"targeting\" - part of `leveldb` and should be reported upstreams.\r\n\r\nRegarding \"discardability\" - I think that one is OK.",
+      "created_at" : "2017-08-04T07:11:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#issuecomment-320175300",
+      "id" : 320175300,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10956",
+      "updated_at" : "2017-08-04T07:11:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/320175300",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "utACK e061983.",
+      "created_at" : "2017-08-04T07:22:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#issuecomment-320177201",
+      "id" : 320177201,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10956",
+      "updated_at" : "2017-08-04T07:22:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/320177201",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10956#discussion_r131779060"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10956"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/131779060"
+         }
+      },
+      "body" : "I would keep this as-is, since \"seek\" has a technical meaning (referring to the system call of the same name). It's not necessarily grammatical English, but I'd consider it grammatical programmer-English.",
+      "commit_id" : "9d5e98ff80479628492329b3b6bdce56d255baa0",
+      "created_at" : "2017-08-07T22:23:02Z",
+      "diff_hunk" : "@@ -46,7 +46,7 @@ linearize-hashes.py.\n (Default: `1000*1000*1000 bytes`)\n * `netmagic`: Network magic number.\n * `out_of_order_cache_sz`: If out-of-order blocks are being read, the block can\n-be written to a cache so that the blockchain doesn't have to be seeked again.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#discussion_r131779060",
+      "id" : 131779060,
+      "original_commit_id" : "e0619830a8b68bc61135e2a5f369598f5ba2c773",
+      "original_position" : 4,
+      "path" : "contrib/linearize/README.md",
+      "position" : 4,
+      "pull_request_review_id" : 54791351,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10956",
+      "updated_at" : "2017-08-08T15:13:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/131779060",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/2734?v=4",
+         "events_url" : "https://api.github.com/users/eklitzke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/eklitzke/followers",
+         "following_url" : "https://api.github.com/users/eklitzke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/eklitzke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/eklitzke",
+         "id" : 2734,
+         "login" : "eklitzke",
+         "organizations_url" : "https://api.github.com/users/eklitzke/orgs",
+         "received_events_url" : "https://api.github.com/users/eklitzke/received_events",
+         "repos_url" : "https://api.github.com/users/eklitzke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/eklitzke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/eklitzke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/eklitzke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10956#discussion_r131798671"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10956"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/131798671"
+         }
+      },
+      "body" : "Sure, but is the documentation referring to the system call in this specific case?",
+      "commit_id" : "9d5e98ff80479628492329b3b6bdce56d255baa0",
+      "created_at" : "2017-08-08T00:47:29Z",
+      "diff_hunk" : "@@ -46,7 +46,7 @@ linearize-hashes.py.\n (Default: `1000*1000*1000 bytes`)\n * `netmagic`: Network magic number.\n * `out_of_order_cache_sz`: If out-of-order blocks are being read, the block can\n-be written to a cache so that the blockchain doesn't have to be seeked again.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#discussion_r131798671",
+      "id" : 131798671,
+      "original_commit_id" : "e0619830a8b68bc61135e2a5f369598f5ba2c773",
+      "original_position" : 4,
+      "path" : "contrib/linearize/README.md",
+      "position" : 4,
+      "pull_request_review_id" : 54811427,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10956",
+      "updated_at" : "2017-08-08T15:13:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/131798671",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "Added corrections for three misspellings of the word \"transaction\" :-)",
+      "created_at" : "2017-08-08T15:14:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#issuecomment-320987511",
+      "id" : 320987511,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10956",
+      "updated_at" : "2017-08-08T15:14:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/320987511",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "ACK https://github.com/bitcoin/bitcoin/pull/10956/commits/9d5e98ff80479628492329b3b6bdce56d255baa0",
+      "created_at" : "2017-08-10T16:07:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#issuecomment-321597580",
+      "id" : 321597580,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10956",
+      "updated_at" : "2017-08-10T16:07:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/321597580",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/6848764?v=4",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "utACK 9d5e98f",
+      "created_at" : "2017-08-12T13:29:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#issuecomment-321981121",
+      "id" : 321981121,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10956",
+      "updated_at" : "2017-08-12T13:29:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/321981121",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/863730?v=4",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10956#discussion_r133307597"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10956"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133307597"
+         }
+      },
+      "body" : "how about \"...so that we don't need to seek through the blockchain again\"?",
+      "commit_id" : "9d5e98ff80479628492329b3b6bdce56d255baa0",
+      "created_at" : "2017-08-15T21:23:34Z",
+      "diff_hunk" : "@@ -46,7 +46,7 @@ linearize-hashes.py.\n (Default: `1000*1000*1000 bytes`)\n * `netmagic`: Network magic number.\n * `out_of_order_cache_sz`: If out-of-order blocks are being read, the block can\n-be written to a cache so that the blockchain doesn't have to be seeked again.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#discussion_r133307597",
+      "id" : 133307597,
+      "original_commit_id" : "e0619830a8b68bc61135e2a5f369598f5ba2c773",
+      "original_position" : 4,
+      "path" : "contrib/linearize/README.md",
+      "position" : 4,
+      "pull_request_review_id" : 56474554,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10956",
+      "updated_at" : "2017-08-15T21:23:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/133307597",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "utACK with one comment.",
+      "created_at" : "2017-08-15T21:24:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10956#issuecomment-322593904",
+      "id" : 322593904,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10956",
+      "updated_at" : "2017-08-15T21:24:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322593904",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   }
+]

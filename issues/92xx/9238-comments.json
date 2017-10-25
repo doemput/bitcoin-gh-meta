@@ -1,0 +1,336 @@
+[
+   {
+      "body" : "I think this is a bit radical. As long as no alternative for mempool sync exists (like mempool reconciliation), I think it's a useful feature. The resource usage and privacy concerns can be addressed by for example only responding incrementally (a second mempool request only gets invs for txn that were added since the previous mempool request) or further rate limiting.",
+      "created_at" : "2016-11-29T19:21:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#issuecomment-263670623",
+      "id" : 263670623,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9238",
+      "updated_at" : "2016-11-29T19:21:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263670623",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Shouldn't this be allowed only for whitelisted nodes?",
+      "created_at" : "2016-11-29T21:37:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#issuecomment-263707196",
+      "id" : 263707196,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9238",
+      "updated_at" : "2016-11-29T21:37:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263707196",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9238#discussion_r90120167"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9238"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90120167"
+         }
+      },
+      "body" : "l -> L",
+      "commit_id" : "2590acfa8208a91bb1b89504efb23a5d3639b663",
+      "created_at" : "2016-11-29T21:39:46Z",
+      "diff_hunk" : "@@ -45,4 +45,7 @@ static const int SHORT_IDS_BLOCKS_VERSION = 70014;\n //! not banning for invalid compact blocks starts with this version\n static const int INVALID_CB_NO_BAN_VERSION = 70015;\n \n+//! BIP35 mempool requests are ignored when the NODE_MEMPOOLCMD service bit is not set with this version\n+static const int DISABLE_MEMPOOl_CMD_VERSION = 70016;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#discussion_r90120167",
+      "id" : 90120167,
+      "original_commit_id" : "2590acfa8208a91bb1b89504efb23a5d3639b663",
+      "original_position" : 14,
+      "path" : "src/version.h",
+      "position" : 14,
+      "pull_request_review_id" : 10644657,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9238",
+      "updated_at" : "2016-11-29T21:39:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90120167",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9238#discussion_r90120290"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9238"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90120290"
+         }
+      },
+      "body" : "DOS -> DoS",
+      "commit_id" : "2590acfa8208a91bb1b89504efb23a5d3639b663",
+      "created_at" : "2016-11-29T21:40:21Z",
+      "diff_hunk" : "@@ -62,6 +62,14 @@ Removal of Priority Estimation\n   major version. To prepare for this, the default for the rate limit of priority\n   transactions (`-limitfreerelay`) has been set to `0` kB/minute.\n \n+\n+Disabling the p2p mempool command (BIP35)\n+------------------------------------------\n+\n+- The mempool command was repetitively misused for surveillance and DOS attacks and the current use case (SPV scanning of unconfirmed transactions) do not justify the risks.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#discussion_r90120290",
+      "id" : 90120290,
+      "original_commit_id" : "2590acfa8208a91bb1b89504efb23a5d3639b663",
+      "original_position" : 8,
+      "path" : "doc/release-notes.md",
+      "position" : 8,
+      "pull_request_review_id" : 10644770,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9238",
+      "updated_at" : "2016-11-29T21:40:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90120290",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "`p2p-mempool` test failing.",
+      "created_at" : "2016-11-29T21:40:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#issuecomment-263708080",
+      "id" : 263708080,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9238",
+      "updated_at" : "2016-11-29T21:40:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263708080",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9238#discussion_r90142745"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9238"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90142745"
+         }
+      },
+      "body" : "The command can ~~be~~ optionally be enabled with `-peermempool`.",
+      "commit_id" : "2590acfa8208a91bb1b89504efb23a5d3639b663",
+      "created_at" : "2016-11-29T23:57:03Z",
+      "diff_hunk" : "@@ -62,6 +62,14 @@ Removal of Priority Estimation\n   major version. To prepare for this, the default for the rate limit of priority\n   transactions (`-limitfreerelay`) has been set to `0` kB/minute.\n \n+\n+Disabling the p2p mempool command (BIP35)\n+------------------------------------------\n+\n+- The mempool command was repetitively misused for surveillance and DOS attacks and the current use case (SPV scanning of unconfirmed transactions) do not justify the risks.\n+\n+- The command can be optionally be enabled with `-peermempool`.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#discussion_r90142745",
+      "id" : 90142745,
+      "original_commit_id" : "2590acfa8208a91bb1b89504efb23a5d3639b663",
+      "original_position" : 10,
+      "path" : "doc/release-notes.md",
+      "position" : 10,
+      "pull_request_review_id" : 10666689,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9238",
+      "updated_at" : "2016-11-29T23:57:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90142745",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "body" : "I think this is far too disruptive right now. There are many things we can do to further close the attack surface without breaking SPV wallets which strongly expect this functionality.",
+      "created_at" : "2016-11-30T01:46:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#issuecomment-263758141",
+      "id" : 263758141,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9238",
+      "updated_at" : "2016-11-30T01:46:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263758141",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "What about setting the default to `true` (== mempool command enabled)?\r\nRight now, all you can do is `-peerbloomfilter=0` to disabled the mempool command which goes even further.\r\n\r\nThe only use-case for BIP35 I'm aware of is the SPV mempool filtering to detect unconfirmed transaction after a restart.\r\nSince we have the mempool persistence (#8448) miners probably shouldn't/won't use this anymore.\r\n\r\nThis PR would introduce a service bit, SPV nodes could make use of the DNS-seeder filter (https://github.com/sipa/bitcoin-seeder/commit/c9679dc98e53124f86ebee5f62ea6fe58cddd3d5) and I expect plenty of nodes supporting this feature.\r\nThey could optionally try to connect to a peer supporting mempool filtering (while they connect to other nodes with NODE_BLOOM for filtering blocks). During that state (trying to find a node that accept mempool requests), they could show an idle state for \"unconfirmed balance\".\r\n\r\nFiltering the mempool for SPV is also an relatively week concept. Nodes can trivially hide or fake transactions. IMO this feature is already broken or at least trivial to break. I think SPV nodes don't want to filter the mempool of untrusted nodes (but I guess there are no other options thats why they doing it).",
+      "created_at" : "2016-11-30T07:36:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#issuecomment-263803876",
+      "id" : 263803876,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9238",
+      "updated_at" : "2016-11-30T07:36:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263803876",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "> Right now, all you can do is -peerbloomfilter=0 to disabled the mempool command which goes even further\r\n\r\nRight, but why is that not sufficient for parties that just don't care to serve lite wallets at all? I don't really think it is a good use of a service bit for this.  We already closed off the use of the mempool requests for timing analysis (as much as relay is closed off, at least). ",
+      "created_at" : "2016-11-30T15:17:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#issuecomment-263899064",
+      "id" : 263899064,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9238",
+      "updated_at" : "2016-11-30T15:17:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263899064",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Closing as this tend to break SPV 0-conf.",
+      "created_at" : "2016-12-06T10:13:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9238#issuecomment-265111714",
+      "id" : 265111714,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9238",
+      "updated_at" : "2016-12-06T10:13:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/265111714",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   }
+]

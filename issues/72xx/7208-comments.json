@@ -1,0 +1,378 @@
+[
+   {
+      "body" : "ACK",
+      "created_at" : "2015-12-14T19:06:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#issuecomment-164528257",
+      "id" : 164528257,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7208",
+      "updated_at" : "2015-12-14T19:06:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/164528257",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "concept ACK, utACK 64360f1",
+      "created_at" : "2015-12-14T23:31:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#issuecomment-164593906",
+      "id" : 164593906,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7208",
+      "updated_at" : "2015-12-14T23:31:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/164593906",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "utACK 64360f1",
+      "created_at" : "2015-12-17T16:51:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#issuecomment-165507503",
+      "id" : 165507503,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7208",
+      "updated_at" : "2015-12-17T16:51:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/165507503",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7208#discussion_r48696149"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48696149"
+         }
+      },
+      "body" : "minor nit, maybe \r\n```\r\nnMaxTipAge = GetArg(\"-maxtipage\", nMaxTipAge);\r\n``` \r\nto not use DEFAULT_MAX_TIP_AGE twice (nMaxTipAge is already initialized to DEFAULT_MAX_TIP_AGE in main.cpp, this seems a little bit redundant)?\r\nAnyway, minor minor minor style nit. Feel more than free to ignore.\r\n",
+      "commit_id" : "64360f13044125fbb3cdcbe2e5e8f2bfb82a8b27",
+      "created_at" : "2016-01-03T19:36:25Z",
+      "diff_hunk" : "@@ -994,6 +995,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)\n     if (GetBoolArg(\"-peerbloomfilters\", true))\n         nLocalServices |= NODE_BLOOM;\n \n+    nMaxTipAge = GetArg(\"-maxtipage\", DEFAULT_MAX_TIP_AGE);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#discussion_r48696149",
+      "id" : 48696149,
+      "original_commit_id" : "64360f13044125fbb3cdcbe2e5e8f2bfb82a8b27",
+      "original_position" : 12,
+      "path" : "src/init.cpp",
+      "position" : 12,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7208",
+      "updated_at" : "2016-01-19T10:51:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48696149",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "utACK https://github.com/laanwj/bitcoin/commit/64360f13044125fbb3cdcbe2e5e8f2bfb82a8b27\r\nThere's definitely way too many things in chainparams that shouldn't be there.\r\nPing @luke-jr ",
+      "created_at" : "2016-01-03T19:41:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#issuecomment-168534453",
+      "id" : 168534453,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7208",
+      "updated_at" : "2016-01-03T19:41:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/168534453",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "Concept ACK. Do any RPC tests need this set for them?",
+      "created_at" : "2016-01-10T01:29:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#issuecomment-170299408",
+      "id" : 170299408,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7208",
+      "updated_at" : "2016-01-10T01:29:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/170299408",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Extended tests seem to pass.",
+      "created_at" : "2016-01-10T14:33:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#issuecomment-170353507",
+      "id" : 170353507,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7208",
+      "updated_at" : "2016-01-10T14:33:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/170353507",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7208#discussion_r49984684"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49984684"
+         }
+      },
+      "body" : "I've always tried to avoid using the current value as default anywhere for GetArg. Specifying DEFAULT_MAX_TIP_AGE is more clear when reading the code, and when at some point argument parsing is refactored it's nice to have the defaults on hand without having to 'reason back' about the value.",
+      "commit_id" : "64360f13044125fbb3cdcbe2e5e8f2bfb82a8b27",
+      "created_at" : "2016-01-18T10:54:17Z",
+      "diff_hunk" : "@@ -994,6 +995,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)\n     if (GetBoolArg(\"-peerbloomfilters\", true))\n         nLocalServices |= NODE_BLOOM;\n \n+    nMaxTipAge = GetArg(\"-maxtipage\", DEFAULT_MAX_TIP_AGE);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#discussion_r49984684",
+      "id" : 49984684,
+      "original_commit_id" : "64360f13044125fbb3cdcbe2e5e8f2bfb82a8b27",
+      "original_position" : 12,
+      "path" : "src/init.cpp",
+      "position" : 12,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7208",
+      "updated_at" : "2016-01-18T10:54:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49984684",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "> Concept ACK. Do any RPC tests need this set for them?\r\n\r\nI don't think this is used by any RPC tests. This was introduced because of testnet-in-a-box, which we don't use for RPC tests. @MarcoFalke's test seems to confirm this.\r\n",
+      "created_at" : "2016-01-18T10:55:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#issuecomment-172496904",
+      "id" : 172496904,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7208",
+      "updated_at" : "2016-01-18T10:55:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/172496904",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7208#discussion_r49985201"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49985201"
+         }
+      },
+      "body" : "@jtimon We use the `DEFAULT_*` values to make it easier to implement #1044.",
+      "commit_id" : "64360f13044125fbb3cdcbe2e5e8f2bfb82a8b27",
+      "created_at" : "2016-01-18T10:58:44Z",
+      "diff_hunk" : "@@ -994,6 +995,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)\n     if (GetBoolArg(\"-peerbloomfilters\", true))\n         nLocalServices |= NODE_BLOOM;\n \n+    nMaxTipAge = GetArg(\"-maxtipage\", DEFAULT_MAX_TIP_AGE);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#discussion_r49985201",
+      "id" : 49985201,
+      "original_commit_id" : "64360f13044125fbb3cdcbe2e5e8f2bfb82a8b27",
+      "original_position" : 12,
+      "path" : "src/init.cpp",
+      "position" : 12,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7208",
+      "updated_at" : "2016-01-18T10:58:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49985201",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7208#discussion_r50098573"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7208"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/50098573"
+         }
+      },
+      "body" : "It's  fine, as said it was a very minor nit. Maybe we can remove  the redundant initialization in main.cpp?\r\nWhatever we do, I'm fine, as long as we try to be consistent  among all the globals (which imo should be in globals/server.o of something of the short instead of main chainparams, etc [globals/common.o could take the globals in unit.o and basechainparams, for example]; but one step a a time...).",
+      "commit_id" : "64360f13044125fbb3cdcbe2e5e8f2bfb82a8b27",
+      "created_at" : "2016-01-19T10:56:37Z",
+      "diff_hunk" : "@@ -994,6 +995,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)\n     if (GetBoolArg(\"-peerbloomfilters\", true))\n         nLocalServices |= NODE_BLOOM;\n \n+    nMaxTipAge = GetArg(\"-maxtipage\", DEFAULT_MAX_TIP_AGE);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7208#discussion_r50098573",
+      "id" : 50098573,
+      "original_commit_id" : "64360f13044125fbb3cdcbe2e5e8f2bfb82a8b27",
+      "original_position" : 12,
+      "path" : "src/init.cpp",
+      "position" : 12,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7208",
+      "updated_at" : "2016-01-19T10:56:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/50098573",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   }
+]

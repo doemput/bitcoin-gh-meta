@@ -1,0 +1,372 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127591683"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127591683"
+         }
+      },
+      "body" : "Is it needed at all as `RandFailure()` aborts?",
+      "commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "created_at" : "2017-07-15T19:43:59Z",
+      "diff_hunk" : "@@ -191,6 +191,7 @@ void GetDevURandom(unsigned char *ent32)\n     do {\n         ssize_t n = read(f, ent32 + have, NUM_OS_RANDOM_BYTES - have);\n         if (n <= 0 || n + have > NUM_OS_RANDOM_BYTES) {\n+            close(f);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127591683",
+      "id" : 127591683,
+      "original_commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "original_position" : 4,
+      "path" : "src/random.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 50196293,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837",
+      "updated_at" : "2017-07-15T19:43:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127591683",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/6848764?v=4",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127592105"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127592105"
+         }
+      },
+      "body" : "As I understand it, most OS's will close descriptors on exit, but it is not guaranteed by the C language, so best practice is to close properly.\r\n\r\nAlso, depending on the behavior of RandFailure, which could change in the future, seems sloppy",
+      "commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "created_at" : "2017-07-15T20:11:12Z",
+      "diff_hunk" : "@@ -191,6 +191,7 @@ void GetDevURandom(unsigned char *ent32)\n     do {\n         ssize_t n = read(f, ent32 + have, NUM_OS_RANDOM_BYTES - have);\n         if (n <= 0 || n + have > NUM_OS_RANDOM_BYTES) {\n+            close(f);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127592105",
+      "id" : 127592105,
+      "original_commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "original_position" : 4,
+      "path" : "src/random.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 50196750,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837",
+      "updated_at" : "2017-07-15T21:05:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127592105",
+      "user" : {
+         "avatar_url" : "https://avatars7.githubusercontent.com/u/1276717?v=4",
+         "events_url" : "https://api.github.com/users/corebob/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/corebob/followers",
+         "following_url" : "https://api.github.com/users/corebob/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/corebob/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/corebob",
+         "id" : 1276717,
+         "login" : "corebob",
+         "organizations_url" : "https://api.github.com/users/corebob/orgs",
+         "received_events_url" : "https://api.github.com/users/corebob/received_events",
+         "repos_url" : "https://api.github.com/users/corebob/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/corebob/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/corebob/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/corebob"
+      }
+   },
+   {
+      "body" : "utACK a8ae0b252a2007568e77f5aca1c7fa3ec5941b72\r\n\r\n+1 for explicit closing. Reduces the number of false positives when hunting file descriptor leaks.\r\n\r\nThanks for a nice first-time contribution!",
+      "created_at" : "2017-07-15T21:14:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#issuecomment-315563465",
+      "id" : 315563465,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10837",
+      "updated_at" : "2017-07-15T21:14:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315563465",
+      "user" : {
+         "avatar_url" : "https://avatars7.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127595637"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127595637"
+         }
+      },
+      "body" : "Heh, if we abort() there's gonna be a lot of things left open, but OK.",
+      "commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "created_at" : "2017-07-16T00:07:29Z",
+      "diff_hunk" : "@@ -191,6 +191,7 @@ void GetDevURandom(unsigned char *ent32)\n     do {\n         ssize_t n = read(f, ent32 + have, NUM_OS_RANDOM_BYTES - have);\n         if (n <= 0 || n + have > NUM_OS_RANDOM_BYTES) {\n+            close(f);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127595637",
+      "id" : 127595637,
+      "original_commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "original_position" : 4,
+      "path" : "src/random.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 50200015,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837",
+      "updated_at" : "2017-07-16T00:07:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127595637",
+      "user" : {
+         "avatar_url" : "https://avatars4.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127595858"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127595858"
+         }
+      },
+      "body" : "Yeah, I can see that. I didn't want to add more code than necessary here, but personally I would have preferred to encapsulate the file descriptor in a scoped handler, and a better exit from GetDevURandom.\r\nAs it stands now, GetDevURandom still depend on RandFailure to actually exit the program completely.",
+      "commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "created_at" : "2017-07-16T00:26:06Z",
+      "diff_hunk" : "@@ -191,6 +191,7 @@ void GetDevURandom(unsigned char *ent32)\n     do {\n         ssize_t n = read(f, ent32 + have, NUM_OS_RANDOM_BYTES - have);\n         if (n <= 0 || n + have > NUM_OS_RANDOM_BYTES) {\n+            close(f);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127595858",
+      "id" : 127595858,
+      "original_commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "original_position" : 4,
+      "path" : "src/random.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 50200243,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837",
+      "updated_at" : "2017-07-16T00:47:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127595858",
+      "user" : {
+         "avatar_url" : "https://avatars7.githubusercontent.com/u/1276717?v=4",
+         "events_url" : "https://api.github.com/users/corebob/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/corebob/followers",
+         "following_url" : "https://api.github.com/users/corebob/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/corebob/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/corebob",
+         "id" : 1276717,
+         "login" : "corebob",
+         "organizations_url" : "https://api.github.com/users/corebob/orgs",
+         "received_events_url" : "https://api.github.com/users/corebob/received_events",
+         "repos_url" : "https://api.github.com/users/corebob/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/corebob/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/corebob/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/corebob"
+      }
+   },
+   {
+      "body" : "Follow-up PR: `RandFailure()` (which is called from `GetDevURandom(Ã¢ÂÂ¦)`) is marked as `[[noreturn]]` in #10843. Thanks for bringing this to my attention @corebob!",
+      "created_at" : "2017-07-16T13:10:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#issuecomment-315608300",
+      "id" : 315608300,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10837",
+      "updated_at" : "2017-07-16T13:10:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315608300",
+      "user" : {
+         "avatar_url" : "https://avatars7.githubusercontent.com/u/7826565?v=4",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127613556"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127613556"
+         }
+      },
+      "body" : "I'm so used to try to bring everything down brick by brick, I can't remember ever resorting to abort, or even exit :worried:",
+      "commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "created_at" : "2017-07-16T18:31:08Z",
+      "diff_hunk" : "@@ -191,6 +191,7 @@ void GetDevURandom(unsigned char *ent32)\n     do {\n         ssize_t n = read(f, ent32 + have, NUM_OS_RANDOM_BYTES - have);\n         if (n <= 0 || n + have > NUM_OS_RANDOM_BYTES) {\n+            close(f);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#discussion_r127613556",
+      "id" : 127613556,
+      "original_commit_id" : "a8ae0b252a2007568e77f5aca1c7fa3ec5941b72",
+      "original_position" : 4,
+      "path" : "src/random.cpp",
+      "position" : 4,
+      "pull_request_review_id" : 50217201,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10837",
+      "updated_at" : "2017-07-16T18:31:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/127613556",
+      "user" : {
+         "avatar_url" : "https://avatars7.githubusercontent.com/u/1276717?v=4",
+         "events_url" : "https://api.github.com/users/corebob/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/corebob/followers",
+         "following_url" : "https://api.github.com/users/corebob/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/corebob/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/corebob",
+         "id" : 1276717,
+         "login" : "corebob",
+         "organizations_url" : "https://api.github.com/users/corebob/orgs",
+         "received_events_url" : "https://api.github.com/users/corebob/received_events",
+         "repos_url" : "https://api.github.com/users/corebob/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/corebob/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/corebob/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/corebob"
+      }
+   },
+   {
+      "body" : "utACK a8ae0b252a2007568e77f5aca1c7fa3ec5941b72. Better to be explicit.",
+      "created_at" : "2017-07-16T18:57:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#issuecomment-315629400",
+      "id" : 315629400,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10837",
+      "updated_at" : "2017-07-16T18:57:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315629400",
+      "user" : {
+         "avatar_url" : "https://avatars5.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK a8ae0b2.",
+      "created_at" : "2017-07-16T20:59:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#issuecomment-315636824",
+      "id" : 315636824,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10837",
+      "updated_at" : "2017-07-16T20:59:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315636824",
+      "user" : {
+         "avatar_url" : "https://avatars5.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "ACK a8ae0b2",
+      "created_at" : "2017-07-17T07:22:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10837#issuecomment-315683467",
+      "id" : 315683467,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10837",
+      "updated_at" : "2017-07-17T07:22:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/315683467",
+      "user" : {
+         "avatar_url" : "https://avatars6.githubusercontent.com/u/6848764?v=4",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   }
+]

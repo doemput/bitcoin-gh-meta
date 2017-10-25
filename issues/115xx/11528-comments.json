@@ -1,0 +1,306 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11528#discussion_r145720029"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11528"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145720029"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "This would be portable and avoid the ifdef:\r\n```\r\nEncodeBase58(buff.data(), buff.data() + buff.size())\r\n```\r\n(another option would be to make buff a vector, and you could just do `EncodeBase58(buff)`)",
+      "commit_id" : "e026c21ee62b4da28e042c0ae2028650fb33d495",
+      "created_at" : "2017-10-19T14:38:44Z",
+      "diff_hunk" : "@@ -22,7 +22,11 @@ static void Base58Encode(benchmark::State& state)\n         }\n     };\n     while (state.KeepRunning()) {\n+#ifndef _MSC_VER\n         EncodeBase58(buff.begin(), buff.end());\n+#else\n+\t\tEncodeBase58(buff.begin()._Ptr, buff.end()._Ptr);\n+#endif",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11528#discussion_r145720029",
+      "id" : 145720029,
+      "original_commit_id" : "e026c21ee62b4da28e042c0ae2028650fb33d495",
+      "original_position" : 8,
+      "path" : "src/bench/base58.cpp",
+      "position" : 8,
+      "pull_request_review_id" : 70561318,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11528",
+      "updated_at" : "2017-10-19T14:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145720029",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11528#discussion_r145720924"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11528"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145720924"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "Changes to leveldb should go through upstream, either https://github.com/google/leveldb or if it's a specific change for us https://github.com/bitcoin-core/leveldb",
+      "commit_id" : "e026c21ee62b4da28e042c0ae2028650fb33d495",
+      "created_at" : "2017-10-19T14:41:32Z",
+      "diff_hunk" : "@@ -5,7 +5,9 @@\n #include \"leveldb/c.h\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11528#discussion_r145720924",
+      "id" : 145720924,
+      "original_commit_id" : "e026c21ee62b4da28e042c0ae2028650fb33d495",
+      "original_position" : 1,
+      "path" : "src/leveldb/db/c.cc",
+      "position" : 1,
+      "pull_request_review_id" : 70562380,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11528",
+      "updated_at" : "2017-10-19T14:41:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145720924",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11528#discussion_r145721889"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11528"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145721889"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "This should likely go into a compatiblity header?\r\nI wonder why the `ssize_t` in `netbase.cpp` doesn't trip it up.",
+      "commit_id" : "e026c21ee62b4da28e042c0ae2028650fb33d495",
+      "created_at" : "2017-10-19T14:44:41Z",
+      "diff_hunk" : "@@ -12,6 +12,14 @@\n \n #include <stdint.h>\n \n+#ifdef _MSC_VER",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11528#discussion_r145721889",
+      "id" : 145721889,
+      "original_commit_id" : "e026c21ee62b4da28e042c0ae2028650fb33d495",
+      "original_position" : 4,
+      "path" : "src/random.h",
+      "position" : 4,
+      "pull_request_review_id" : 70563518,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11528",
+      "updated_at" : "2017-10-19T14:44:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145721889",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11528#discussion_r145722319"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11528"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145722319"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "Please just remove the old code, don't comment it out..",
+      "commit_id" : "e026c21ee62b4da28e042c0ae2028650fb33d495",
+      "created_at" : "2017-10-19T14:46:03Z",
+      "diff_hunk" : "@@ -32,7 +36,8 @@ void memory_cleanse(void *ptr, size_t len)\n        might try to eliminate \"superfluous\" memsets. If there's an easy way to\n        detect memset_s, it would be better to use that. */\n #if defined(_MSC_VER)\n-    __asm;\n+    //__asm;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11528#discussion_r145722319",
+      "id" : 145722319,
+      "original_commit_id" : "e026c21ee62b4da28e042c0ae2028650fb33d495",
+      "original_position" : 16,
+      "path" : "src/support/cleanse.cpp",
+      "position" : 16,
+      "pull_request_review_id" : 70564017,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11528",
+      "updated_at" : "2017-10-19T14:46:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145722319",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Concept ACK",
+      "created_at" : "2017-10-19T18:44:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11528#issuecomment-338000638",
+      "id" : 338000638,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11528",
+      "updated_at" : "2017-10-19T18:44:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338000638",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "author_association" : "NONE",
+      "body" : "Closing this PR as the code changes either need some more work or need to go into the leveldb repo. In the interim anyone wanting to build with VS can apply the code changes manually to their own source tree.",
+      "created_at" : "2017-10-20T11:13:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11528#issuecomment-338177911",
+      "id" : 338177911,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11528",
+      "updated_at" : "2017-10-20T11:13:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338177911",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/197660?v=4",
+         "events_url" : "https://api.github.com/users/sipsorcery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipsorcery/followers",
+         "following_url" : "https://api.github.com/users/sipsorcery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipsorcery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipsorcery",
+         "id" : 197660,
+         "login" : "sipsorcery",
+         "organizations_url" : "https://api.github.com/users/sipsorcery/orgs",
+         "received_events_url" : "https://api.github.com/users/sipsorcery/received_events",
+         "repos_url" : "https://api.github.com/users/sipsorcery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipsorcery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipsorcery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipsorcery"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "Why close? Review comments aren't there to demotivate you, but to help you along getting it merged (after some rework, sure).",
+      "created_at" : "2017-10-20T11:22:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11528#issuecomment-338179532",
+      "id" : 338179532,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11528",
+      "updated_at" : "2017-10-20T11:22:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338179532",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "author_association" : "NONE",
+      "body" : "@laanwj Don't worry I've got thicker skin than that :).\r\n\r\nClosed this PR because as you mentioned a 3rd of the changes need to go to the leveldb repo. Another couple need some more work as they broke the Linux build. I'll resubmit when I've been able to sort those issues out.",
+      "created_at" : "2017-10-20T11:26:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11528#issuecomment-338180331",
+      "id" : 338180331,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11528",
+      "updated_at" : "2017-10-20T11:26:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338180331",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/197660?v=4",
+         "events_url" : "https://api.github.com/users/sipsorcery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipsorcery/followers",
+         "following_url" : "https://api.github.com/users/sipsorcery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipsorcery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipsorcery",
+         "id" : 197660,
+         "login" : "sipsorcery",
+         "organizations_url" : "https://api.github.com/users/sipsorcery/orgs",
+         "received_events_url" : "https://api.github.com/users/sipsorcery/received_events",
+         "repos_url" : "https://api.github.com/users/sipsorcery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipsorcery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipsorcery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipsorcery"
+      }
+   }
+]

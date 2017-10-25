@@ -1,0 +1,262 @@
+[
+   {
+      "body" : "utACK\r\n\r\nNice find! Can't believe I didn't catch this one myself :-)",
+      "created_at" : "2017-05-02T14:04:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10311#issuecomment-298645304",
+      "id" : 298645304,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10311",
+      "updated_at" : "2017-05-02T14:04:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298645304",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7826565?v=3",
+         "events_url" : "https://api.github.com/users/practicalswift/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/practicalswift/followers",
+         "following_url" : "https://api.github.com/users/practicalswift/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/practicalswift/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/practicalswift",
+         "id" : 7826565,
+         "login" : "practicalswift",
+         "organizations_url" : "https://api.github.com/users/practicalswift/orgs",
+         "received_events_url" : "https://api.github.com/users/practicalswift/received_events",
+         "repos_url" : "https://api.github.com/users/practicalswift/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/practicalswift/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/practicalswift/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/practicalswift"
+      }
+   },
+   {
+      "body" : "ACK https://github.com/bitcoin/bitcoin/pull/10311/commits/1ff2bb4e3e8edfa68797926be8aa3ab5949f2e0c",
+      "created_at" : "2017-05-02T14:51:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10311#issuecomment-298658925",
+      "id" : 298658925,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10311",
+      "updated_at" : "2017-05-02T14:51:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298658925",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10311#discussion_r114377281"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10311"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114377281"
+         }
+      },
+      "body" : "Any idea *why* these were being passed?\r\nLooked back in history and to me it seems that `CBlockIndex* pprev, const Consensus::Params& chainparams` were never used at all, since introduced in b8a97498df1e83f8dcc49bc3fa4344f9e9799242.\r\n@sipa @NicolasDorier  maybe?",
+      "commit_id" : "1ff2bb4e3e8edfa68797926be8aa3ab5949f2e0c",
+      "created_at" : "2017-05-02T17:33:23Z",
+      "diff_hunk" : "@@ -1162,7 +1162,7 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam\n     }\n }\n \n-uint32_t GetFetchFlags(CNode* pfrom, const CBlockIndex* pprev, const Consensus::Params& chainparams) {\n+uint32_t GetFetchFlags(CNode* pfrom) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10311#discussion_r114377281",
+      "id" : 114377281,
+      "original_commit_id" : "1ff2bb4e3e8edfa68797926be8aa3ab5949f2e0c",
+      "original_position" : 5,
+      "path" : "src/net_processing.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 35838186,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10311",
+      "updated_at" : "2017-05-02T17:33:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114377281",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "super-micro nit: can you please correct the function name in the commit message?\r\n",
+      "created_at" : "2017-05-02T17:59:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10311#issuecomment-298712716",
+      "id" : 298712716,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10311",
+      "updated_at" : "2017-05-02T17:59:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298712716",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10311#discussion_r114481529"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10311"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114481529"
+         }
+      },
+      "body" : "Before `GetFetchFlags` was using `IsWitnessEnabled`, not `fHaveWitness`and `GetLocalServices`",
+      "commit_id" : "1ff2bb4e3e8edfa68797926be8aa3ab5949f2e0c",
+      "created_at" : "2017-05-03T06:59:51Z",
+      "diff_hunk" : "@@ -1162,7 +1162,7 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam\n     }\n }\n \n-uint32_t GetFetchFlags(CNode* pfrom, const CBlockIndex* pprev, const Consensus::Params& chainparams) {\n+uint32_t GetFetchFlags(CNode* pfrom) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10311#discussion_r114481529",
+      "id" : 114481529,
+      "original_commit_id" : "1ff2bb4e3e8edfa68797926be8aa3ab5949f2e0c",
+      "original_position" : 5,
+      "path" : "src/net_processing.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 35949301,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10311",
+      "updated_at" : "2017-05-03T06:59:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114481529",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "Yeah, in older versions of the SegWit patch, fetch flags were based on the chain instead of explicit announcements. That led to too many edge cases to deal with, however. The dependency on pprev/params can safely go away.",
+      "created_at" : "2017-05-03T07:06:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10311#issuecomment-298837226",
+      "id" : 298837226,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10311",
+      "updated_at" : "2017-05-03T07:06:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298837226",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2017-05-03T09:35:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10311#issuecomment-298864509",
+      "id" : 298864509,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10311",
+      "updated_at" : "2017-05-03T09:35:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298864509",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "@sipa @NicolasDorier thanks for the explanation, so this change makes sense in that context\r\nutACK 1ff2bb4",
+      "created_at" : "2017-05-03T09:44:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10311#issuecomment-298866171",
+      "id" : 298866171,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10311",
+      "updated_at" : "2017-05-03T09:44:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298866171",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

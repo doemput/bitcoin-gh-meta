@@ -1,0 +1,418 @@
+[
+   {
+      "body" : "Please be aware the we use the [trivial] label for changes that are essentially non-code changes. i.e fixing typos. This PR would not be considered trivial.",
+      "created_at" : "2017-03-22T22:53:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#issuecomment-288564691",
+      "id" : 288564691,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10058",
+      "updated_at" : "2017-03-22T22:53:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/288564691",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Ack. will remove the trivial marker when I update the PR for the apparently broken test.",
+      "created_at" : "2017-03-22T23:18:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#issuecomment-288569440",
+      "id" : 288569440,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10058",
+      "updated_at" : "2017-03-22T23:18:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/288569440",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7519582?v=3",
+         "events_url" : "https://api.github.com/users/tjps/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/tjps/followers",
+         "following_url" : "https://api.github.com/users/tjps/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/tjps/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/tjps",
+         "id" : 7519582,
+         "login" : "tjps",
+         "organizations_url" : "https://api.github.com/users/tjps/orgs",
+         "received_events_url" : "https://api.github.com/users/tjps/received_events",
+         "repos_url" : "https://api.github.com/users/tjps/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/tjps/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/tjps/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/tjps"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r107601910"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107601910"
+         }
+      },
+      "body" : "~~AFAIK it was slightly wrong to free the ppmutexOpenSSL via `OPENSSL_free`. IMO only objects alloced by `OPENSSL_malloc()` should use `OPENSSL_free()`. This change makes sense.~~\r\nI was wrong: It is currently (master) alloced with `OPENSSL_malloc`.",
+      "commit_id" : "6d5dd60c881b790f1b5fc5ba470605b6bd7e2fe7",
+      "created_at" : "2017-03-23T07:25:45Z",
+      "diff_hunk" : "@@ -160,9 +159,8 @@ class CInit\n         RAND_cleanup();\n         // Shutdown OpenSSL library multithreading support\n         CRYPTO_set_locking_callback(NULL);\n-        for (int i = 0; i < CRYPTO_num_locks(); i++)\n-            delete ppmutexOpenSSL[i];\n-        OPENSSL_free(ppmutexOpenSSL);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r107601910",
+      "id" : 107601910,
+      "original_commit_id" : "0765b6c9f08c5bac848ba8ac7c03471513fa4654",
+      "original_position" : 34,
+      "path" : "src/util.cpp",
+      "position" : 38,
+      "pull_request_review_id" : 28582754,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058",
+      "updated_at" : "2017-03-29T00:42:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107601910",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "utACK 0765b6c9f08c5bac848ba8ac7c03471513fa4654",
+      "created_at" : "2017-03-23T07:26:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#issuecomment-288637683",
+      "id" : 288637683,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10058",
+      "updated_at" : "2017-03-23T07:26:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/288637683",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r107602686"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107602686"
+         }
+      },
+      "body" : "It is allocated via OPENSSL_malloc\r\n```\r\nppmutexOpenSSL = (CCriticalSection**)OPENSSL_malloc(CRYPTO_num_locks() * sizeof(CCriticalSection*));\r\n```",
+      "commit_id" : "6d5dd60c881b790f1b5fc5ba470605b6bd7e2fe7",
+      "created_at" : "2017-03-23T07:32:21Z",
+      "diff_hunk" : "@@ -160,9 +159,8 @@ class CInit\n         RAND_cleanup();\n         // Shutdown OpenSSL library multithreading support\n         CRYPTO_set_locking_callback(NULL);\n-        for (int i = 0; i < CRYPTO_num_locks(); i++)\n-            delete ppmutexOpenSSL[i];\n-        OPENSSL_free(ppmutexOpenSSL);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r107602686",
+      "id" : 107602686,
+      "original_commit_id" : "0765b6c9f08c5bac848ba8ac7c03471513fa4654",
+      "original_position" : 34,
+      "path" : "src/util.cpp",
+      "position" : 38,
+      "pull_request_review_id" : 28583576,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058",
+      "updated_at" : "2017-03-29T00:42:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107602686",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r107603098"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107603098"
+         }
+      },
+      "body" : "> It is allocated via OPENSSL_malloc\r\n\r\nOh. Right.. it was. Nervermind then.",
+      "commit_id" : "6d5dd60c881b790f1b5fc5ba470605b6bd7e2fe7",
+      "created_at" : "2017-03-23T07:35:53Z",
+      "diff_hunk" : "@@ -160,9 +159,8 @@ class CInit\n         RAND_cleanup();\n         // Shutdown OpenSSL library multithreading support\n         CRYPTO_set_locking_callback(NULL);\n-        for (int i = 0; i < CRYPTO_num_locks(); i++)\n-            delete ppmutexOpenSSL[i];\n-        OPENSSL_free(ppmutexOpenSSL);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r107603098",
+      "id" : 107603098,
+      "original_commit_id" : "0765b6c9f08c5bac848ba8ac7c03471513fa4654",
+      "original_position" : 34,
+      "path" : "src/util.cpp",
+      "position" : 38,
+      "pull_request_review_id" : 28584017,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058",
+      "updated_at" : "2017-03-29T00:42:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/107603098",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Bump, for one less OpenSSL eyesore",
+      "created_at" : "2017-03-28T21:52:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#issuecomment-289916309",
+      "id" : 289916309,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10058",
+      "updated_at" : "2017-03-28T21:52:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289916309",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7519582?v=3",
+         "events_url" : "https://api.github.com/users/tjps/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/tjps/followers",
+         "following_url" : "https://api.github.com/users/tjps/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/tjps/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/tjps",
+         "id" : 7519582,
+         "login" : "tjps",
+         "organizations_url" : "https://api.github.com/users/tjps/orgs",
+         "received_events_url" : "https://api.github.com/users/tjps/received_events",
+         "repos_url" : "https://api.github.com/users/tjps/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/tjps/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/tjps/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/tjps"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r108549031"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108549031"
+         }
+      },
+      "body" : "Probably cleaner to just use a `std::unique_ptr<CCriticalSection[]>`",
+      "commit_id" : "6d5dd60c881b790f1b5fc5ba470605b6bd7e2fe7",
+      "created_at" : "2017-03-28T22:05:57Z",
+      "diff_hunk" : "@@ -117,7 +117,7 @@ std::atomic<bool> fReopenDebugLog(false);\n CTranslationInterface translationInterface;\n \n /** Init OpenSSL library multithreading support */\n-static CCriticalSection** ppmutexOpenSSL;\n+static std::vector<std::unique_ptr<CCriticalSection>> ppmutexOpenSSL;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r108549031",
+      "id" : 108549031,
+      "original_commit_id" : "0765b6c9f08c5bac848ba8ac7c03471513fa4654",
+      "original_position" : 5,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_review_id" : 29587541,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058",
+      "updated_at" : "2017-03-29T00:42:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108549031",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r108549267"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108549267"
+         }
+      },
+      "body" : "and then here `ppmutexOpenSSL.reset(new CCriticalSection[CRYPTO_num_locks()]);` I think is correct.",
+      "commit_id" : "6d5dd60c881b790f1b5fc5ba470605b6bd7e2fe7",
+      "created_at" : "2017-03-28T22:07:12Z",
+      "diff_hunk" : "@@ -127,16 +127,15 @@ void locking_callback(int mode, int i, const char* file, int line) NO_THREAD_SAF\n     }\n }\n \n-// Init\n+// Singleton for wrapping OpenSSL setup/teardown.\n class CInit\n {\n public:\n     CInit()\n     {\n         // Init OpenSSL library multithreading support\n-        ppmutexOpenSSL = (CCriticalSection**)OPENSSL_malloc(CRYPTO_num_locks() * sizeof(CCriticalSection*));\n         for (int i = 0; i < CRYPTO_num_locks(); i++)\n-            ppmutexOpenSSL[i] = new CCriticalSection();\n+            ppmutexOpenSSL.emplace_back(new CCriticalSection());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r108549267",
+      "id" : 108549267,
+      "original_commit_id" : "0765b6c9f08c5bac848ba8ac7c03471513fa4654",
+      "original_position" : 24,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_review_id" : 29587779,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058",
+      "updated_at" : "2017-03-29T00:42:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108549267",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/886523?v=3",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r108570296"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108570296"
+         }
+      },
+      "body" : "You are correct.  I always like shaving lines off.",
+      "commit_id" : "6d5dd60c881b790f1b5fc5ba470605b6bd7e2fe7",
+      "created_at" : "2017-03-29T00:36:17Z",
+      "diff_hunk" : "@@ -127,16 +127,15 @@ void locking_callback(int mode, int i, const char* file, int line) NO_THREAD_SAF\n     }\n }\n \n-// Init\n+// Singleton for wrapping OpenSSL setup/teardown.\n class CInit\n {\n public:\n     CInit()\n     {\n         // Init OpenSSL library multithreading support\n-        ppmutexOpenSSL = (CCriticalSection**)OPENSSL_malloc(CRYPTO_num_locks() * sizeof(CCriticalSection*));\n         for (int i = 0; i < CRYPTO_num_locks(); i++)\n-            ppmutexOpenSSL[i] = new CCriticalSection();\n+            ppmutexOpenSSL.emplace_back(new CCriticalSection());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#discussion_r108570296",
+      "id" : 108570296,
+      "original_commit_id" : "0765b6c9f08c5bac848ba8ac7c03471513fa4654",
+      "original_position" : 24,
+      "path" : "src/util.cpp",
+      "position" : null,
+      "pull_request_review_id" : 29609859,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10058",
+      "updated_at" : "2017-03-29T00:42:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/108570296",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/7519582?v=3",
+         "events_url" : "https://api.github.com/users/tjps/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/tjps/followers",
+         "following_url" : "https://api.github.com/users/tjps/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/tjps/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/tjps",
+         "id" : 7519582,
+         "login" : "tjps",
+         "organizations_url" : "https://api.github.com/users/tjps/orgs",
+         "received_events_url" : "https://api.github.com/users/tjps/received_events",
+         "repos_url" : "https://api.github.com/users/tjps/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/tjps/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/tjps/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/tjps"
+      }
+   },
+   {
+      "body" : "utACK 6d5dd60c881b790f1b5fc5ba470605b6bd7e2fe7",
+      "created_at" : "2017-03-29T01:14:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10058#issuecomment-289952545",
+      "id" : 289952545,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10058",
+      "updated_at" : "2017-03-29T01:14:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/289952545",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

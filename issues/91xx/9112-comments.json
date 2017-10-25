@@ -1,0 +1,234 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9112#discussion_r87164772"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9112"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87164772"
+         }
+      },
+      "body" : "perfect",
+      "commit_id" : "e9f25ddd0063f7ea65595178d04370d27344305c",
+      "created_at" : "2016-11-09T10:17:57Z",
+      "diff_hunk" : "@@ -181,7 +181,11 @@ std::string CInv::GetCommand() const\n \n std::string CInv::ToString() const\n {\n-    return strprintf(\"%s %s\", GetCommand(), hash.ToString());\n+    try {\n+        return strprintf(\"%s %s\", GetCommand(), hash.ToString());\n+    } catch(const std::out_of_range &) {\n+        return strprintf(\"0x%08x %s\", type, hash.ToString());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9112#discussion_r87164772",
+      "id" : 87164772,
+      "original_commit_id" : "e9f25ddd0063f7ea65595178d04370d27344305c",
+      "original_position" : 8,
+      "path" : "src/protocol.cpp",
+      "position" : 8,
+      "pull_request_review_id" : 7786644,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9112",
+      "updated_at" : "2016-11-09T10:17:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87164772",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9112#discussion_r87165413"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9112"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87165413"
+         }
+      },
+      "body" : "is it worth changing the GetCommand() function to return this string for the default case also? ",
+      "commit_id" : "e9f25ddd0063f7ea65595178d04370d27344305c",
+      "created_at" : "2016-11-09T10:21:55Z",
+      "diff_hunk" : "@@ -181,7 +181,11 @@ std::string CInv::GetCommand() const\n \n std::string CInv::ToString() const\n {\n-    return strprintf(\"%s %s\", GetCommand(), hash.ToString());\n+    try {\n+        return strprintf(\"%s %s\", GetCommand(), hash.ToString());\n+    } catch(const std::out_of_range &) {\n+        return strprintf(\"0x%08x %s\", type, hash.ToString());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9112#discussion_r87165413",
+      "id" : 87165413,
+      "original_commit_id" : "e9f25ddd0063f7ea65595178d04370d27344305c",
+      "original_position" : 8,
+      "path" : "src/protocol.cpp",
+      "position" : 8,
+      "pull_request_review_id" : 7787226,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9112",
+      "updated_at" : "2016-11-09T10:21:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/87165413",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "I'd prefer `try` first and then one final line with `return`, ie. one exit route even if this is very simple.",
+      "created_at" : "2016-11-09T10:24:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9112#issuecomment-259380981",
+      "id" : 259380981,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9112",
+      "updated_at" : "2016-11-09T10:24:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/259380981",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "NACK I prefer the other solution #9113. No need to throw an exception at all. It also fixes the problem for other callers.\r\n",
+      "created_at" : "2016-11-09T10:32:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9112#issuecomment-259382748",
+      "id" : 259382748,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9112",
+      "updated_at" : "2016-11-09T10:32:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/259382748",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "Fucking damnit do we really need two pulls for this non issue\n",
+      "created_at" : "2016-11-09T10:35:49Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9112#issuecomment-259383321",
+      "id" : 259383321,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9112",
+      "updated_at" : "2016-11-09T10:35:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/259383321",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK e9f25ddd0063f7ea65595178d04370d27344305c. Safer to fix it at the site of the problem for now.",
+      "created_at" : "2016-11-09T14:58:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9112#issuecomment-259433853",
+      "id" : 259433853,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9112",
+      "updated_at" : "2016-11-09T14:58:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/259433853",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "utACK e9f25dd",
+      "created_at" : "2016-11-11T09:55:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9112#issuecomment-259922223",
+      "id" : 259922223,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9112",
+      "updated_at" : "2016-11-11T09:55:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/259922223",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   }
+]

@@ -1,0 +1,625 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142030075"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142030075"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Add test?",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-01T13:53:31Z",
+      "diff_hunk" : "@@ -1666,7 +1666,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n     connOptions.nSendBufferMaxSize = 1000*gArgs.GetArg(\"-maxsendbuffer\", DEFAULT_MAXSENDBUFFER);\n     connOptions.nReceiveFloodSize = 1000*gArgs.GetArg(\"-maxreceivebuffer\", DEFAULT_MAXRECEIVEBUFFER);\n     connOptions.m_added_nodes = gArgs.GetArgs(\"-addnode\");\n-\n+    connOptions.m_bantime = gArgs.GetArg(\"-bantime\", DEFAULT_MISBEHAVING_BANTIME);\n+    if (connOptions.m_bantime <= 0) {\n+        return InitError(strprintf(_(\"%s cannot be configured with a negative value.\"), \"-bantime\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142030075",
+      "id" : 142030075,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 7,
+      "path" : "src/init.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 66337259,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T07:28:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142030075",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142030191"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142030191"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Unrelated. IMO remove change, otherwise fix others.",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-01T13:58:22Z",
+      "diff_hunk" : "@@ -530,18 +530,22 @@ UniValue setban(const JSONRPCRequest& request)\n \n     if (strCommand == \"add\")\n     {\n-        if (isSubnet ? g_connman->IsBanned(subNet) : g_connman->IsBanned(netAddr))\n+        if (isSubnet ? g_connman->IsBanned(subNet) : g_connman->IsBanned(netAddr)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142030191",
+      "id" : 142030191,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 5,
+      "path" : "src/rpc/net.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 66337259,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T07:28:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142030191",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142068884"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142068884"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Could you point me to where bitcoind/cli args are tested? Can't seem to find any example.",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-02T07:25:40Z",
+      "diff_hunk" : "@@ -1666,7 +1666,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n     connOptions.nSendBufferMaxSize = 1000*gArgs.GetArg(\"-maxsendbuffer\", DEFAULT_MAXSENDBUFFER);\n     connOptions.nReceiveFloodSize = 1000*gArgs.GetArg(\"-maxreceivebuffer\", DEFAULT_MAXRECEIVEBUFFER);\n     connOptions.m_added_nodes = gArgs.GetArgs(\"-addnode\");\n-\n+    connOptions.m_bantime = gArgs.GetArg(\"-bantime\", DEFAULT_MISBEHAVING_BANTIME);\n+    if (connOptions.m_bantime <= 0) {\n+        return InitError(strprintf(_(\"%s cannot be configured with a negative value.\"), \"-bantime\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142068884",
+      "id" : 142068884,
+      "in_reply_to_id" : 142030075,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 7,
+      "path" : "src/init.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 66377521,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T07:28:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142068884",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1225267?v=4",
+         "events_url" : "https://api.github.com/users/benma/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/benma/followers",
+         "following_url" : "https://api.github.com/users/benma/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/benma/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/benma",
+         "id" : 1225267,
+         "login" : "benma",
+         "organizations_url" : "https://api.github.com/users/benma/orgs",
+         "received_events_url" : "https://api.github.com/users/benma/received_events",
+         "repos_url" : "https://api.github.com/users/benma/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/benma/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/benma/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/benma"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142069093"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142069093"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I put it into a separate commit so `git blame` doesn't show an unrelated commit description in those lines.\r\n\r\nI kept them however. Formatting changes adhere to the dev guide and so far we've been fixing up parts as we work touch during the work.",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-02T07:27:39Z",
+      "diff_hunk" : "@@ -530,18 +530,22 @@ UniValue setban(const JSONRPCRequest& request)\n \n     if (strCommand == \"add\")\n     {\n-        if (isSubnet ? g_connman->IsBanned(subNet) : g_connman->IsBanned(netAddr))\n+        if (isSubnet ? g_connman->IsBanned(subNet) : g_connman->IsBanned(netAddr)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142069093",
+      "id" : 142069093,
+      "in_reply_to_id" : 142030191,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 5,
+      "path" : "src/rpc/net.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 66377781,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T07:28:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142069093",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1225267?v=4",
+         "events_url" : "https://api.github.com/users/benma/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/benma/followers",
+         "following_url" : "https://api.github.com/users/benma/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/benma/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/benma",
+         "id" : 1225267,
+         "login" : "benma",
+         "organizations_url" : "https://api.github.com/users/benma/orgs",
+         "received_events_url" : "https://api.github.com/users/benma/received_events",
+         "repos_url" : "https://api.github.com/users/benma/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/benma/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/benma/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/benma"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142142567"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142142567"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Search for `assert_raises_process_error`.",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-02T13:45:43Z",
+      "diff_hunk" : "@@ -1666,7 +1666,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n     connOptions.nSendBufferMaxSize = 1000*gArgs.GetArg(\"-maxsendbuffer\", DEFAULT_MAXSENDBUFFER);\n     connOptions.nReceiveFloodSize = 1000*gArgs.GetArg(\"-maxreceivebuffer\", DEFAULT_MAXRECEIVEBUFFER);\n     connOptions.m_added_nodes = gArgs.GetArgs(\"-addnode\");\n-\n+    connOptions.m_bantime = gArgs.GetArg(\"-bantime\", DEFAULT_MISBEHAVING_BANTIME);\n+    if (connOptions.m_bantime <= 0) {\n+        return InitError(strprintf(_(\"%s cannot be configured with a negative value.\"), \"-bantime\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142142567",
+      "id" : 142142567,
+      "in_reply_to_id" : 142030075,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 7,
+      "path" : "src/init.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 66459966,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T13:45:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142142567",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142154227"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142154227"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "It is only used in `TestBitcoinCli`, which doesn't look like the right place. It looks like bitcoind command line args are not tested at all.\r\n\r\nShall we keep the check, but untested, like all the others?",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-02T14:28:07Z",
+      "diff_hunk" : "@@ -1666,7 +1666,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n     connOptions.nSendBufferMaxSize = 1000*gArgs.GetArg(\"-maxsendbuffer\", DEFAULT_MAXSENDBUFFER);\n     connOptions.nReceiveFloodSize = 1000*gArgs.GetArg(\"-maxreceivebuffer\", DEFAULT_MAXRECEIVEBUFFER);\n     connOptions.m_added_nodes = gArgs.GetArgs(\"-addnode\");\n-\n+    connOptions.m_bantime = gArgs.GetArg(\"-bantime\", DEFAULT_MISBEHAVING_BANTIME);\n+    if (connOptions.m_bantime <= 0) {\n+        return InitError(strprintf(_(\"%s cannot be configured with a negative value.\"), \"-bantime\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142154227",
+      "id" : 142154227,
+      "in_reply_to_id" : 142030075,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 7,
+      "path" : "src/init.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 66473825,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T14:28:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142154227",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1225267?v=4",
+         "events_url" : "https://api.github.com/users/benma/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/benma/followers",
+         "following_url" : "https://api.github.com/users/benma/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/benma/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/benma",
+         "id" : 1225267,
+         "login" : "benma",
+         "organizations_url" : "https://api.github.com/users/benma/orgs",
+         "received_events_url" : "https://api.github.com/users/benma/received_events",
+         "repos_url" : "https://api.github.com/users/benma/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/benma/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/benma/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/benma"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Pinging @theuni ",
+      "created_at" : "2017-10-02T14:28:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#issuecomment-333551230",
+      "id" : 333551230,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11434",
+      "updated_at" : "2017-10-02T14:28:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333551230",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1225267?v=4",
+         "events_url" : "https://api.github.com/users/benma/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/benma/followers",
+         "following_url" : "https://api.github.com/users/benma/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/benma/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/benma",
+         "id" : 1225267,
+         "login" : "benma",
+         "organizations_url" : "https://api.github.com/users/benma/orgs",
+         "received_events_url" : "https://api.github.com/users/benma/received_events",
+         "repos_url" : "https://api.github.com/users/benma/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/benma/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/benma/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/benma"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142159000"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142159000"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "No, it's not the right place. I was suggesting to add a right place :) IMO they should be tested but I may be alone here.",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-02T14:44:11Z",
+      "diff_hunk" : "@@ -1666,7 +1666,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n     connOptions.nSendBufferMaxSize = 1000*gArgs.GetArg(\"-maxsendbuffer\", DEFAULT_MAXSENDBUFFER);\n     connOptions.nReceiveFloodSize = 1000*gArgs.GetArg(\"-maxreceivebuffer\", DEFAULT_MAXRECEIVEBUFFER);\n     connOptions.m_added_nodes = gArgs.GetArgs(\"-addnode\");\n-\n+    connOptions.m_bantime = gArgs.GetArg(\"-bantime\", DEFAULT_MISBEHAVING_BANTIME);\n+    if (connOptions.m_bantime <= 0) {\n+        return InitError(strprintf(_(\"%s cannot be configured with a negative value.\"), \"-bantime\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142159000",
+      "id" : 142159000,
+      "in_reply_to_id" : 142030075,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 7,
+      "path" : "src/init.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 66479415,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T14:44:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142159000",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142194012"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142194012"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I don't disagree, but I think it's out of scope for this PR. Adding the test suite for this is needs to be prepared separately.",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-02T16:50:42Z",
+      "diff_hunk" : "@@ -1666,7 +1666,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n     connOptions.nSendBufferMaxSize = 1000*gArgs.GetArg(\"-maxsendbuffer\", DEFAULT_MAXSENDBUFFER);\n     connOptions.nReceiveFloodSize = 1000*gArgs.GetArg(\"-maxreceivebuffer\", DEFAULT_MAXRECEIVEBUFFER);\n     connOptions.m_added_nodes = gArgs.GetArgs(\"-addnode\");\n-\n+    connOptions.m_bantime = gArgs.GetArg(\"-bantime\", DEFAULT_MISBEHAVING_BANTIME);\n+    if (connOptions.m_bantime <= 0) {\n+        return InitError(strprintf(_(\"%s cannot be configured with a negative value.\"), \"-bantime\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142194012",
+      "id" : 142194012,
+      "in_reply_to_id" : 142030075,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 7,
+      "path" : "src/init.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 66519924,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T16:50:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142194012",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1225267?v=4",
+         "events_url" : "https://api.github.com/users/benma/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/benma/followers",
+         "following_url" : "https://api.github.com/users/benma/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/benma/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/benma",
+         "id" : 1225267,
+         "login" : "benma",
+         "organizations_url" : "https://api.github.com/users/benma/orgs",
+         "received_events_url" : "https://api.github.com/users/benma/received_events",
+         "repos_url" : "https://api.github.com/users/benma/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/benma/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/benma/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/benma"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142225162"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142225162"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "You need `assert_start_raises_init_error()`. See https://github.com/bitcoin/bitcoin/blob/90926db2381d87c68858659873230a3811ebdce5/test/functional/multiwallet.py#L26 for example",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-02T18:56:21Z",
+      "diff_hunk" : "@@ -1666,7 +1666,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n     connOptions.nSendBufferMaxSize = 1000*gArgs.GetArg(\"-maxsendbuffer\", DEFAULT_MAXSENDBUFFER);\n     connOptions.nReceiveFloodSize = 1000*gArgs.GetArg(\"-maxreceivebuffer\", DEFAULT_MAXRECEIVEBUFFER);\n     connOptions.m_added_nodes = gArgs.GetArgs(\"-addnode\");\n-\n+    connOptions.m_bantime = gArgs.GetArg(\"-bantime\", DEFAULT_MISBEHAVING_BANTIME);\n+    if (connOptions.m_bantime <= 0) {\n+        return InitError(strprintf(_(\"%s cannot be configured with a negative value.\"), \"-bantime\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142225162",
+      "id" : 142225162,
+      "in_reply_to_id" : 142030075,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 7,
+      "path" : "src/init.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 66556119,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T18:56:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142225162",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142226807"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142226807"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "That's right! Sorry for the misleading `assert_raises_process_error`.",
+      "commit_id" : "d7d35b3d4c6c5a1ccba25dacc64e4454c2f6ce35",
+      "created_at" : "2017-10-02T19:03:16Z",
+      "diff_hunk" : "@@ -1666,7 +1666,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)\n     connOptions.nSendBufferMaxSize = 1000*gArgs.GetArg(\"-maxsendbuffer\", DEFAULT_MAXSENDBUFFER);\n     connOptions.nReceiveFloodSize = 1000*gArgs.GetArg(\"-maxreceivebuffer\", DEFAULT_MAXRECEIVEBUFFER);\n     connOptions.m_added_nodes = gArgs.GetArgs(\"-addnode\");\n-\n+    connOptions.m_bantime = gArgs.GetArg(\"-bantime\", DEFAULT_MISBEHAVING_BANTIME);\n+    if (connOptions.m_bantime <= 0) {\n+        return InitError(strprintf(_(\"%s cannot be configured with a negative value.\"), \"-bantime\"));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#discussion_r142226807",
+      "id" : 142226807,
+      "in_reply_to_id" : 142030075,
+      "original_commit_id" : "7028fb0b70888028c4cde75bc1adca5873a70160",
+      "original_position" : 7,
+      "path" : "src/init.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 66558076,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11434",
+      "updated_at" : "2017-10-02T19:03:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142226807",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "mmm, this is another like #11387, but keeping it in CConnman is really not the right place for it :(\r\n\r\nI'd really like to move the bandb out of CConnman. But for now, let's just force this value to be passed in by the caller rather than providing a default.",
+      "created_at" : "2017-10-02T23:49:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#issuecomment-333697547",
+      "id" : 333697547,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11434",
+      "updated_at" : "2017-10-02T23:49:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333697547",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "The plan to move the ban db out of connman is a good one. I assume an instance of it would be passed to connman (or a callback or similar) so check for bans, which is easy to replace for mocking in tests.\r\n\r\nWherever the ban db code ends up, the PR that moves it is simpler after this PR. After all, the bandb class also shouldn't have globals and the bantime should be initialized in init.cpp.\r\n\r\nIf you don't mind, I'll take a stab at factoring out the ban code after (can coordinate on IRC beforehand).\r\n\r\n> But for now, let's just force this value to be passed in by the caller rather than providing a default.\r\n\r\nWhat exactly do you mean? This line?\r\n\r\n`int64_t m_bantime = DEFAULT_MISBEHAVING_BANTIME;` ",
+      "created_at" : "2017-10-03T08:29:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#issuecomment-333775063",
+      "id" : 333775063,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11434",
+      "updated_at" : "2017-10-03T08:29:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333775063",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1225267?v=4",
+         "events_url" : "https://api.github.com/users/benma/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/benma/followers",
+         "following_url" : "https://api.github.com/users/benma/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/benma/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/benma",
+         "id" : 1225267,
+         "login" : "benma",
+         "organizations_url" : "https://api.github.com/users/benma/orgs",
+         "received_events_url" : "https://api.github.com/users/benma/received_events",
+         "repos_url" : "https://api.github.com/users/benma/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/benma/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/benma/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/benma"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "> The plan to move the ban db out of connman is a good one. I assume an instance of it would be passed to connman (or a callback or similar) so check for bans, which is easy to replace for mocking in tests.\r\n\r\nYep.\r\n\r\n> If you don't mind, I'll take a stab at factoring out the ban code after (can coordinate on IRC beforehand).\r\n\r\nSorry, I had already been working on that before I saw your response here :(. See #11457. I think we agree that's the cleaner fix for this?\r\n\r\nIf you'd be interested, it'd be great for CAddrMan to be moved out next, the exact same way. We should definitely discuss on IRC, since our goals seem to be aligned, and because I'm slowing you down more than helping :(. Feel free to ping me (cfields) there any time.",
+      "created_at" : "2017-10-05T23:24:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#issuecomment-334618918",
+      "id" : 334618918,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11434",
+      "updated_at" : "2017-10-05T23:24:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334618918",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "The description of your PR alone won me over Ã°ÂÂÂ Closing this.\r\n\r\nThanks for the offer.",
+      "created_at" : "2017-10-06T06:57:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11434#issuecomment-334674539",
+      "id" : 334674539,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11434",
+      "updated_at" : "2017-10-06T06:58:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334674539",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1225267?v=4",
+         "events_url" : "https://api.github.com/users/benma/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/benma/followers",
+         "following_url" : "https://api.github.com/users/benma/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/benma/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/benma",
+         "id" : 1225267,
+         "login" : "benma",
+         "organizations_url" : "https://api.github.com/users/benma/orgs",
+         "received_events_url" : "https://api.github.com/users/benma/received_events",
+         "repos_url" : "https://api.github.com/users/benma/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/benma/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/benma/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/benma"
+      }
+   }
+]

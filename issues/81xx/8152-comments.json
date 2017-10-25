@@ -1,0 +1,1012 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r65938277"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/65938277"
+         }
+      },
+      "body" : "just curious: what is the reason to not keep a instance variable (within CWallet) that holds walletdb object? What are the benefits of constantly opening/instantiating the CWalletDB?",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-06-06T18:04:02Z",
+      "diff_hunk" : "@@ -687,8 +687,10 @@ void CWallet::MarkDirty()\n     }\n }\n \n-bool CWallet::AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet, CWalletDB* pwalletdb)\n+bool CWallet::AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet)\n {\n+    CWalletDB walletdb(strWalletFile);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r65938277",
+      "id" : 65938277,
+      "original_commit_id" : "27eb7fd7b00bff7109ed361c5f48b1aba884a7ce",
+      "original_position" : 7,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-19T21:35:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/65938277",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r65938583"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/65938583"
+         }
+      },
+      "body" : "If you have 10'000 wallet transaction, this would now result in 10'000 x `CWalletDB walletdb(strWalletFile);`.\r\nWhat about the performance impacts?",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-06-06T18:05:50Z",
+      "diff_hunk" : "@@ -400,7 +400,7 @@ ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,\n             if (wtx.nOrderPos == -1)\n                 wss.fAnyUnordered = true;\n \n-            pwallet->AddToWallet(wtx, true, NULL);\n+            pwallet->AddToWallet(wtx, true);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r65938583",
+      "id" : 65938583,
+      "original_commit_id" : "27eb7fd7b00bff7109ed361c5f48b1aba884a7ce",
+      "original_position" : 5,
+      "path" : "src/wallet/walletdb.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-19T21:35:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/65938583",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r66018156"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66018156"
+         }
+      },
+      "body" : "The scope is used to manage the lifetime of the (database) transaction.\r\n\r\nSo having a single CWalletDB object would change semantics significantly. Some people have had this idea before but it was always rejected.",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-06-07T06:50:55Z",
+      "diff_hunk" : "@@ -687,8 +687,10 @@ void CWallet::MarkDirty()\n     }\n }\n \n-bool CWallet::AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet, CWalletDB* pwalletdb)\n+bool CWallet::AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet)\n {\n+    CWalletDB walletdb(strWalletFile);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r66018156",
+      "id" : 66018156,
+      "original_commit_id" : "27eb7fd7b00bff7109ed361c5f48b1aba884a7ce",
+      "original_position" : 7,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-19T21:35:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66018156",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "I think the persistent CWalletDb object here is just there to prevent a flush to disk in between every added transaction, for performance reasons. Based on earlier pull requests by @pstratem around this, I think he intends to re-introduce a single CWalletDb* inside CWallet rather than reopening one all the time, after cleaning things up. Perhaps that will need to be done in the same PR, though?",
+      "created_at" : "2016-06-07T07:00:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-224196799",
+      "id" : 224196799,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-06-07T07:00:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224196799",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Regardless of the persistent CWalletDB * I think this PR has value (refactoring). But I guess we should **not** change the `ReadKeyValue`/`AddToWallet` in that way that it instantiate a new CWalletDB on each wallet transaction load from the wallet.dat (which this PR currently does).",
+      "created_at" : "2016-06-07T09:20:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-224225831",
+      "id" : 224225831,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-06-07T09:20:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224225831",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "A refactoring shouldn't result in behavioral changes. I'd rather stick with ugly code somewhat longer than introduce a temporary (but serious) performance regression.",
+      "created_at" : "2016-06-07T13:32:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-224281044",
+      "id" : 224281044,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-06-07T13:33:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224281044",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : ">  introduce a temporary (but serious) performance regression.\r\n\r\nAt least then you'll have users reminding you :laughing: ",
+      "created_at" : "2016-06-07T14:01:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-224289534",
+      "id" : 224289534,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-06-07T14:01:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224289534",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r66182712"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66182712"
+         }
+      },
+      "body" : "@jonasschnelli I will eventually get to that point, but it's going to take a significant amount of work to get there.",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-06-08T01:57:53Z",
+      "diff_hunk" : "@@ -687,8 +687,10 @@ void CWallet::MarkDirty()\n     }\n }\n \n-bool CWallet::AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet, CWalletDB* pwalletdb)\n+bool CWallet::AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet)\n {\n+    CWalletDB walletdb(strWalletFile);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r66182712",
+      "id" : 66182712,
+      "original_commit_id" : "27eb7fd7b00bff7109ed361c5f48b1aba884a7ce",
+      "original_position" : 7,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-19T21:35:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/66182712",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "I've split up AddToWallet into AddToWallet and LoadToWallet around the fFromLoadWallet flag.\r\n\r\nThis addresses the performance @jonasschnelli noticed and improves the API.",
+      "created_at" : "2016-06-08T02:08:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-224468339",
+      "id" : 224468339,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-06-08T02:08:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224468339",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "I swapped the order of the commits such that there's no performance issue at any point.\r\n\r\n22fa63e74150139c7c71108ee46ed87d31a4a2f3c171d16c34530f76ecc79f82",
+      "created_at" : "2016-06-08T04:42:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-224485574",
+      "id" : 224485574,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-06-08T04:43:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224485574",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "import hashlib;hashlib.sha256(\"there is still a performance issue\").hexdigest()\r\n\r\nthere isn't actually",
+      "created_at" : "2016-06-08T23:32:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-224762203",
+      "id" : 224762203,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-06-08T23:32:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/224762203",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r67295653"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67295653"
+         }
+      },
+      "body" : "IMO the non-file-backend state is only used in UnitTests, right? We should also consider dropping it completely (in a later PR).",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-06-16T07:04:03Z",
+      "diff_hunk" : "@@ -2435,9 +2435,6 @@ bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey)\n                 coin.BindWallet(this);\n                 NotifyTransactionChanged(this, coin.GetHash(), CT_UPDATED);\n             }\n-\n-            if (fFileBacked)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r67295653",
+      "id" : 67295653,
+      "original_commit_id" : "44d5267bfcd8abae5f0ae2a0f4052fc5a88acd2e",
+      "original_position" : 284,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 284,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-19T21:35:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67295653",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r67296049"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67296049"
+         }
+      },
+      "body" : "The third argument `fFlushOnClose` (`false` here) will be `true` after this PR (default value is `true`).\r\n= before this PR `importprunedfunds` will not flush on close. After this PR it will.\r\nBut I guess this is not a problem.",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-06-16T07:08:31Z",
+      "diff_hunk" : "@@ -302,8 +302,7 @@ UniValue importprunedfunds(const UniValue& params, bool fHelp)\n     LOCK2(cs_main, pwalletMain->cs_wallet);\n \n     if (pwalletMain->IsMine(tx)) {\n-        CWalletDB walletdb(pwalletMain->strWalletFile, \"r+\", false);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r67296049",
+      "id" : 67296049,
+      "original_commit_id" : "44d5267bfcd8abae5f0ae2a0f4052fc5a88acd2e",
+      "original_position" : 4,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-19T21:35:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67296049",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "utACK 44d5267bfcd8abae5f0ae2a0f4052fc5a88acd2e",
+      "created_at" : "2016-06-16T07:08:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-226405277",
+      "id" : 226405277,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-06-16T07:08:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/226405277",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r67299481"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67299481"
+         }
+      },
+      "body" : "Indeed this does change the default. There doesn't seem to be a good reason not to flush here.",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-06-16T07:39:24Z",
+      "diff_hunk" : "@@ -302,8 +302,7 @@ UniValue importprunedfunds(const UniValue& params, bool fHelp)\n     LOCK2(cs_main, pwalletMain->cs_wallet);\n \n     if (pwalletMain->IsMine(tx)) {\n-        CWalletDB walletdb(pwalletMain->strWalletFile, \"r+\", false);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r67299481",
+      "id" : 67299481,
+      "original_commit_id" : "44d5267bfcd8abae5f0ae2a0f4052fc5a88acd2e",
+      "original_position" : 4,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-19T21:35:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67299481",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r67299826"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67299826"
+         }
+      },
+      "body" : "I'll be able to easily remove it once more of the logic is encapsulated.",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-06-16T07:42:39Z",
+      "diff_hunk" : "@@ -2435,9 +2435,6 @@ bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey)\n                 coin.BindWallet(this);\n                 NotifyTransactionChanged(this, coin.GetHash(), CT_UPDATED);\n             }\n-\n-            if (fFileBacked)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r67299826",
+      "id" : 67299826,
+      "original_commit_id" : "44d5267bfcd8abae5f0ae2a0f4052fc5a88acd2e",
+      "original_position" : 284,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 284,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-19T21:35:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67299826",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "\r\n\r\nutACK 44d5267\r\n",
+      "created_at" : "2016-06-17T10:28:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-226736020",
+      "id" : 226736020,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-06-17T10:28:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/226736020",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "tACK 6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-07-21T18:56:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-234349669",
+      "id" : 234349669,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-21T18:56:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234349669",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "Seems 6246add is just  a plain rebase of 44d5267\r\n\r\nre-utACK  6246add",
+      "created_at" : "2016-07-21T19:09:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-234353160",
+      "id" : 234353160,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-21T19:09:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234353160",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "@MarcoFalke indeed it is",
+      "created_at" : "2016-07-21T21:38:49Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-234392276",
+      "id" : 234392276,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-21T21:38:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234392276",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "Looks good now!\r\nExtensive Code Review ACK (6246add89a46523526a57b66bb87daf9413c69d7), nit: maybe squash commit.",
+      "created_at" : "2016-07-22T09:43:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-234501510",
+      "id" : 234501510,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-22T09:43:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234501510",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "@jonasschnelli I'd rather not squash, each commit is logically independent.",
+      "created_at" : "2016-07-23T03:22:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-234696186",
+      "id" : 234696186,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-23T03:22:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234696186",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r72405937"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/72405937"
+         }
+      },
+      "body" : "This can go\r\n\r\nEdit: Note that the parameters under which walletdb are opened change here - it used to be specifically overriding the flush to false, but after this change, the walletdb will be opened inside AddToWallet with default parameters.\r\nWhat is the impact of this?",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-07-27T09:11:43Z",
+      "diff_hunk" : "@@ -904,7 +909,7 @@ bool CWallet::AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlock* pbl\n             // this is safe, as in case of a crash, we rescan the necessary blocks on startup through our SetBestChain-mechanism\n             CWalletDB walletdb(strWalletFile, \"r+\", false);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r72405937",
+      "id" : 72405937,
+      "original_commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "original_position" : 253,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 253,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-27T09:13:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/72405937",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r72550145"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/72550145"
+         }
+      },
+      "body" : "Indeed this can go. I'll run a benchmark of master and this pr doing a rescan with a wallet that has an enormous number of transactions and keys.",
+      "commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "created_at" : "2016-07-28T00:50:30Z",
+      "diff_hunk" : "@@ -904,7 +909,7 @@ bool CWallet::AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlock* pbl\n             // this is safe, as in case of a crash, we rescan the necessary blocks on startup through our SetBestChain-mechanism\n             CWalletDB walletdb(strWalletFile, \"r+\", false);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#discussion_r72550145",
+      "id" : 72550145,
+      "original_commit_id" : "6246add89a46523526a57b66bb87daf9413c69d7",
+      "original_position" : 253,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 253,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8152",
+      "updated_at" : "2016-07-28T00:50:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/72550145",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "utACK c04225e7fdb9651ae2f97ed0e3f9601205ea858b",
+      "created_at" : "2016-07-29T20:05:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-236280379",
+      "id" : 236280379,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-29T20:05:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/236280379",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@laanwj I was having trouble getting consistent benchmark results from -rescan (+-30 seconds on runs taking 160-200 seconds).\r\n\r\nSo I just added an fFlushOnClose parameter so it's now clearly doing the same thing as before the change.",
+      "created_at" : "2016-07-30T00:18:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-236324354",
+      "id" : 236324354,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-30T00:18:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/236324354",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "reutACK 5723bb44ce2c6bb14114aa7f211160702a47ac91 ",
+      "created_at" : "2016-07-30T00:39:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-236326449",
+      "id" : 236326449,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-30T00:39:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/236326449",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "> indeed it is\r\n\r\nI prefer no rebase when it is not necessary. Reviewers always have to reconstruct the history locally each time a rebase is done.",
+      "created_at" : "2016-07-31T10:55:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-236423575",
+      "id" : 236423575,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-31T10:55:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/236423575",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Indeed I generally agree, but I was already squashing adding the\nfFlushOnClose flag.\n\nWhenever possible I strongly prefer that each commit produces a complete\nworking build.\n\nOn Jul 31, 2016 3:56 AM, \"MarcoFalke\" <notifications@github.com> wrote:\n\n> indeed it is\n>\n> I prefer no rebase when it is not necessary. Reviewers always have to\n> reconstruct the history locally each time a rebase is done.\n>\n> Ã¢ÂÂ\n> You are receiving this because you were mentioned.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-236423575>, or mute\n> the thread\n> <https://github.com/notifications/unsubscribe-auth/AAl4Q5FO3twJijzI_pOno3iNIKzaHvLfks5qbH8-gaJpZM4IvJOB>\n> .\n>\n",
+      "created_at" : "2016-07-31T18:48:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-236449291",
+      "id" : 236449291,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-31T18:48:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/236449291",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "With rebase I meant changing the commit which the pull is based on,\nnot squashing.\n\n\nreACK 5723bb44ce2c6bb14114aa7f211160702a47ac91\n",
+      "created_at" : "2016-07-31T19:07:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8152#issuecomment-236450372",
+      "id" : 236450372,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8152",
+      "updated_at" : "2016-07-31T19:07:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/236450372",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

@@ -1,0 +1,502 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97172475"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97172475"
+         }
+      },
+      "body" : "Adapt comment here as well?",
+      "commit_id" : "dbb80724c6adcb73382684789f3e3cc232b4f721",
+      "created_at" : "2017-01-20T22:56:02Z",
+      "diff_hunk" : "@@ -23,7 +22,7 @@\n //\n // CScheduler* s = new CScheduler();\n // s->scheduleFromNow(doSomething, 11); // Assuming a: void doSomething() { }\n-// s->scheduleFromNow(boost::bind(Class::func, this, argument), 3);\n+// s->scheduleFromNow(std::bind(Class::func, this, argument), 3);\n // boost::thread* t = new boost::thread(boost::bind(CScheduler::serviceQueue, s));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97172475",
+      "id" : 97172475,
+      "original_commit_id" : "5d0d061480ad2262ab31ed1d8794031ad296dd8f",
+      "original_position" : 14,
+      "path" : "src/scheduler.h",
+      "position" : 14,
+      "pull_request_review_id" : 17782116,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605",
+      "updated_at" : "2017-02-08T18:19:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97172475",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97174496"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97174496"
+         }
+      },
+      "body" : "No, it still must run inside a boost::thread because it relies on boost::interruption_point. I believe @theuni is planning on cleaning that up.",
+      "commit_id" : "dbb80724c6adcb73382684789f3e3cc232b4f721",
+      "created_at" : "2017-01-20T23:14:32Z",
+      "diff_hunk" : "@@ -23,7 +22,7 @@\n //\n // CScheduler* s = new CScheduler();\n // s->scheduleFromNow(doSomething, 11); // Assuming a: void doSomething() { }\n-// s->scheduleFromNow(boost::bind(Class::func, this, argument), 3);\n+// s->scheduleFromNow(std::bind(Class::func, this, argument), 3);\n // boost::thread* t = new boost::thread(boost::bind(CScheduler::serviceQueue, s));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97174496",
+      "id" : 97174496,
+      "original_commit_id" : "5d0d061480ad2262ab31ed1d8794031ad296dd8f",
+      "original_position" : 14,
+      "path" : "src/scheduler.h",
+      "position" : 14,
+      "pull_request_review_id" : 17784162,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605",
+      "updated_at" : "2017-02-08T18:19:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97174496",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "I mean the boost::bind here.\n",
+      "created_at" : "2017-01-20T23:24:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#issuecomment-274206636",
+      "id" : 274206636,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9605",
+      "updated_at" : "2017-01-20T23:24:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274206636",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97176406"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97176406"
+         }
+      },
+      "body" : "well technically boost::thread takes a boost::function, so I assume if you uses std::bind it would create a boost::function around the std::function......I'll let cory do that when we kill boost::threads.",
+      "commit_id" : "dbb80724c6adcb73382684789f3e3cc232b4f721",
+      "created_at" : "2017-01-20T23:31:29Z",
+      "diff_hunk" : "@@ -23,7 +22,7 @@\n //\n // CScheduler* s = new CScheduler();\n // s->scheduleFromNow(doSomething, 11); // Assuming a: void doSomething() { }\n-// s->scheduleFromNow(boost::bind(Class::func, this, argument), 3);\n+// s->scheduleFromNow(std::bind(Class::func, this, argument), 3);\n // boost::thread* t = new boost::thread(boost::bind(CScheduler::serviceQueue, s));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97176406",
+      "id" : 97176406,
+      "original_commit_id" : "5d0d061480ad2262ab31ed1d8794031ad296dd8f",
+      "original_position" : 14,
+      "path" : "src/scheduler.h",
+      "position" : 14,
+      "pull_request_review_id" : 17786088,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605",
+      "updated_at" : "2017-02-08T18:19:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97176406",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97192826"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97192826"
+         }
+      },
+      "body" : "Yes, I have a local branch with CScheduler converted. I'm doing them in chunks, because the last huge PR proved to be too big to review/rebase. I'll submit that one next (#9566 is the current one).",
+      "commit_id" : "dbb80724c6adcb73382684789f3e3cc232b4f721",
+      "created_at" : "2017-01-21T07:08:49Z",
+      "diff_hunk" : "@@ -23,7 +22,7 @@\n //\n // CScheduler* s = new CScheduler();\n // s->scheduleFromNow(doSomething, 11); // Assuming a: void doSomething() { }\n-// s->scheduleFromNow(boost::bind(Class::func, this, argument), 3);\n+// s->scheduleFromNow(std::bind(Class::func, this, argument), 3);\n // boost::thread* t = new boost::thread(boost::bind(CScheduler::serviceQueue, s));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97192826",
+      "id" : 97192826,
+      "original_commit_id" : "5d0d061480ad2262ab31ed1d8794031ad296dd8f",
+      "original_position" : 14,
+      "path" : "src/scheduler.h",
+      "position" : 14,
+      "pull_request_review_id" : 17801902,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605",
+      "updated_at" : "2017-02-08T18:19:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97192826",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Concept ACK!. I've considered doing this a few times as well.",
+      "created_at" : "2017-01-21T07:09:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#issuecomment-274243734",
+      "id" : 274243734,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9605",
+      "updated_at" : "2017-01-21T07:09:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274243734",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97307597"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97307597"
+         }
+      },
+      "body" : "If you're renaming this function please, finally, change it to something else than FlushWalletDB. What is being done here is not merely a flush (those are done all the time as CWalletDB instances go out of scope) but more like \"database consolidation\", merging the log files into wallet.dat so that the wallet is self-contained. This has confused many people over time.",
+      "commit_id" : "dbb80724c6adcb73382684789f3e3cc232b4f721",
+      "created_at" : "2017-01-23T12:27:02Z",
+      "diff_hunk" : "@@ -768,67 +768,60 @@ DBErrors CWalletDB::ZapWalletTx(CWallet* pwallet, vector<CWalletTx>& vWtx)\n     return DB_LOAD_OK;\n }\n \n-void ThreadFlushWalletDB()\n+void MaybeFlushWalletDB()",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97307597",
+      "id" : 97307597,
+      "original_commit_id" : "5d0d061480ad2262ab31ed1d8794031ad296dd8f",
+      "original_position" : 5,
+      "path" : "src/wallet/walletdb.cpp",
+      "position" : null,
+      "pull_request_review_id" : 17911925,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605",
+      "updated_at" : "2017-02-08T18:19:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97307597",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2017-01-23T12:27:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#issuecomment-274476088",
+      "id" : 274476088,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9605",
+      "updated_at" : "2017-01-23T12:27:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274476088",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97327821"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97327821"
+         }
+      },
+      "body" : "Done, called it \"compact\"",
+      "commit_id" : "dbb80724c6adcb73382684789f3e3cc232b4f721",
+      "created_at" : "2017-01-23T14:28:47Z",
+      "diff_hunk" : "@@ -768,67 +768,60 @@ DBErrors CWalletDB::ZapWalletTx(CWallet* pwallet, vector<CWalletTx>& vWtx)\n     return DB_LOAD_OK;\n }\n \n-void ThreadFlushWalletDB()\n+void MaybeFlushWalletDB()",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#discussion_r97327821",
+      "id" : 97327821,
+      "original_commit_id" : "5d0d061480ad2262ab31ed1d8794031ad296dd8f",
+      "original_position" : 5,
+      "path" : "src/wallet/walletdb.cpp",
+      "position" : null,
+      "pull_request_review_id" : 17933181,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9605",
+      "updated_at" : "2017-02-08T18:19:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97327821",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Thank you! utACK https://github.com/bitcoin/bitcoin/pull/9605/commits/30f8d5083165a09c5d2b25d0ea2e373908846b8b",
+      "created_at" : "2017-01-26T09:05:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#issuecomment-275339109",
+      "id" : 275339109,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9605",
+      "updated_at" : "2017-01-26T09:05:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/275339109",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Rebased. Note that this now forms the first of a rather long patchset to move wallet callbacks into a background thread without introducing races in APIs or wallet consistency issues.",
+      "created_at" : "2017-02-08T18:20:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#issuecomment-278415933",
+      "id" : 278415933,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9605",
+      "updated_at" : "2017-02-08T18:20:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/278415933",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK. Needs rebase.",
+      "created_at" : "2017-03-06T23:13:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#issuecomment-284565858",
+      "id" : 284565858,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9605",
+      "updated_at" : "2017-03-06T23:13:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/284565858",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Rebased.",
+      "created_at" : "2017-03-06T23:35:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#issuecomment-284570453",
+      "id" : 284570453,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9605",
+      "updated_at" : "2017-03-06T23:35:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/284570453",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK 0235be1",
+      "created_at" : "2017-03-07T10:01:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9605#issuecomment-284676084",
+      "id" : 284676084,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9605",
+      "updated_at" : "2017-03-07T10:01:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/284676084",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

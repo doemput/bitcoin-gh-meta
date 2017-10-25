@@ -1,0 +1,535 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71107244"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71107244"
+         }
+      },
+      "body" : "Why 6?",
+      "commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "created_at" : "2016-07-18T07:24:58Z",
+      "diff_hunk" : "@@ -2097,6 +2097,9 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, bool ov\n bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet,\n                                 int& nChangePosInOut, std::string& strFailReason, const CCoinControl* coinControl, bool sign)\n {\n+    CFeeRate minValueRate = mempool.estimateFee(6);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71107244",
+      "id" : 71107244,
+      "original_commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "original_position" : 4,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356",
+      "updated_at" : "2016-07-18T07:24:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71107244",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71107487"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71107487"
+         }
+      },
+      "body" : "It's better to use the mempool relay fee here, I think. Estimatefee is\nabout getting into a block and depends on the speed. The relay fee is just\nabout being relayed.\n",
+      "commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "created_at" : "2016-07-18T07:27:56Z",
+      "diff_hunk" : "@@ -2097,6 +2097,9 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, bool ov\n bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet,\n                                 int& nChangePosInOut, std::string& strFailReason, const CCoinControl* coinControl, bool sign)\n {\n+    CFeeRate minValueRate = mempool.estimateFee(6);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71107487",
+      "id" : 71107487,
+      "original_commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "original_position" : 4,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356",
+      "updated_at" : "2016-07-18T07:27:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71107487",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "I could imagine this will confuse users \"Why can't I send this transaction? It has the same sized outputs as the transaction I send just 2 hours earlier...\"\r\n\r\nBut thanks for working on this. @Xekyo is working on improving the coin selection so make sure to discuss any conflicts with his work.",
+      "created_at" : "2016-07-18T07:27:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-233253822",
+      "id" : 233253822,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-18T07:27:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/233253822",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71109165"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71109165"
+         }
+      },
+      "body" : "As explained, the problem with relay fee (txMinRelayFee right ?) is that when we bump it as we did on #6793, then old wallet starts to send unrelayable  transaction which cause perturbations to users.\r\n\r\n6 is arbitrary, the goal is to not create output which would cost more than their value to redeem in 6 block.\r\nI'm open to any other number, I just wanted it to be a bit higher than txMinRelayFee so we have space to increase this default later without impacting users.",
+      "commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "created_at" : "2016-07-18T07:46:26Z",
+      "diff_hunk" : "@@ -2097,6 +2097,9 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, bool ov\n bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet,\n                                 int& nChangePosInOut, std::string& strFailReason, const CCoinControl* coinControl, bool sign)\n {\n+    CFeeRate minValueRate = mempool.estimateFee(6);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71109165",
+      "id" : 71109165,
+      "original_commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "original_position" : 4,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356",
+      "updated_at" : "2016-07-18T07:46:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71109165",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71109552"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71109552"
+         }
+      },
+      "body" : "@NicolasDorier Please note that 6793 has been reverted in the meantime while adding the size limit to the mempool. What @sipa meant, is to use the minimum relay fee of your current mempool and not the minimum relay fee of the node (hardcoded) nor the expected transaction fee to confirm within 6 blocks.",
+      "commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "created_at" : "2016-07-18T07:50:42Z",
+      "diff_hunk" : "@@ -2097,6 +2097,9 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, bool ov\n bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet,\n                                 int& nChangePosInOut, std::string& strFailReason, const CCoinControl* coinControl, bool sign)\n {\n+    CFeeRate minValueRate = mempool.estimateFee(6);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71109552",
+      "id" : 71109552,
+      "original_commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "original_position" : 4,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356",
+      "updated_at" : "2016-07-18T07:50:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71109552",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "@MarcoFalke oh that's cool, the coin selection code is very convoluted, I'm happy someone working on it.\r\n\r\n> I could imagine this will confuse users \"Why can't I send this transaction? It has the same sized outputs as the transaction I send just 2 hours earlier...\"\r\n\r\nThe code impact only the wallet, not the relay policy. Thus, for such thing to happen, you would need a sudden big fee variation AND not having enough satoshi for paying the small surplus. So this should be rather rare.\r\n\r\nThe bump of minTxRelayFee however, had long lasting impact until people upgraded their wallet (breadwallet was impacted, I reported the issue there long time ago, they also now use estimated fee for the min size of outputs)",
+      "created_at" : "2016-07-18T07:50:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-233257123",
+      "id" : 233257123,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-18T07:50:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/233257123",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "I agree with @NicolasDorier that we need to do something to prevent what happened last time we raised the min relay fee.\r\n\r\nI would suggest at least two things.\r\n1) The actual isDust check for policy should be separated from the minRelayFee.  We want to change this number as infrequently as possible.   It doesn't need to change from it's current value right now I don't think, but we don't want it to accidentally change if people adjust minRelayFee.\r\n2) The minimum output created by Bitcoin Core should be higher than the current isDust check.  I would suggest using some maximum of say 2x or 4x the isDust check (at it's current level) and a check using a fee rate from estimatefee, as you do here, but I'd use estimateFee(25) at least, and consider a higher target when we have the ability to do so.\r\n\r\n",
+      "created_at" : "2016-07-18T13:22:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-233326624",
+      "id" : 233326624,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-18T13:22:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/233326624",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71158270"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71158270"
+         }
+      },
+      "body" : "ohh I did not know that the mempool also had its own minimum relay fee.",
+      "commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "created_at" : "2016-07-18T14:35:38Z",
+      "diff_hunk" : "@@ -2097,6 +2097,9 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, bool ov\n bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet,\n                                 int& nChangePosInOut, std::string& strFailReason, const CCoinControl* coinControl, bool sign)\n {\n+    CFeeRate minValueRate = mempool.estimateFee(6);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#discussion_r71158270",
+      "id" : 71158270,
+      "original_commit_id" : "2467bd421c0d1c2ba6a396c20152d80a6f38ca94",
+      "original_position" : 4,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8356",
+      "updated_at" : "2016-07-18T14:35:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/71158270",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "> The actual isDust check for policy should be separated from the minRelayFee.\r\n\r\nYou mean changing the relay policy ? I think it should be eventually done, but in a separate PR.\r\nI remember trying to do it long time ago, and for some reason it was harder than I expected. (I don't remember why though)\r\n\r\n>  I would suggest using some maximum of say 2x or 4x the isDust check\r\n\r\n@morcos the last bump was x5, which is why I think using estimateFee is a better idea. I am fine for estimateFee(25).\r\n\r\nWhat about taking the max between estimateFee(25) and 4x txMinRelayFee ?\r\nOr maybe as sipa suggested, using the mempool relay fee instead of estimateFee. (I just learned such thing existed)",
+      "created_at" : "2016-07-18T14:39:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-233348189",
+      "id" : 233348189,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-18T14:39:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/233348189",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "Ah and just remembered https://github.com/bitcoin/bitcoin/blob/d612837814020ae832499d18e6ee5eb919a87907/src/qt/coincontroldialog.cpp#L454 need to be modified as well... ",
+      "created_at" : "2016-07-18T14:44:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-233349811",
+      "id" : 233349811,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-18T14:44:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/233349811",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "Updated: \r\n* Introduce `CWallet::GetDustRate` \r\n* Use of `mempool.GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000)` instead of `estimateFee`\r\n* `CoinControlDialog::updateLabels` also using `CWallet::GetDustRate`",
+      "created_at" : "2016-07-21T09:51:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-234208305",
+      "id" : 234208305,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-21T09:51:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234208305",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "@NicolasDorier What I meant by separating the min relay fee from isDust, is that I think the next time we adjust minRelayFee or if anyone adjusts it locally, it should not automatically change isDust.  They should be separate limits.  So if we do bump minRelayFee by 5x, isDust doesn't actually change at all, unless we intentionally change it.  And we can intentionally make sure it stays below whatever the min output value we have used in the past couple releases is.\r\n\r\nUsing minimum mempool fee or fee estimation is a mistake.  Both those things are completely volatile on a newly started node.   And even estimatefee(25) can shoot up high temporarily under network load, but shouldn't cause you to  adjust minimum output values unless its a more permanent shift.   I think longer term more stable fee estimates will eventually be possible, but we don't have them now.\r\n\r\n",
+      "created_at" : "2016-07-21T15:04:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-234282535",
+      "id" : 234282535,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-21T15:04:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234282535",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "@morcos I disagree here. Even without any IsDust rule implemented on the network, wallets should (purely for their own sake) avoid creating change outputs whose value is so low that it is anywhere near close to uneconomical to spend. Sure, we don't have an accurate long-term prediction of fee rates on the network, but our best guess is close enough - even if it easily fluctuates by some constant factor.",
+      "created_at" : "2016-07-21T15:09:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-234284161",
+      "id" : 234284161,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-21T15:09:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234284161",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "@morcos I agree that minRelayFee should be completely separate from IsDust definition to prevent this problem. However, the best we have now is estimatefee and the mempool.minRelayFee.\r\n\r\nKnowing whether an output is economical depends on 1. knowing when it will be spent, 2. how much the fees will be at this time. Both are unknown and can't be predicted in any way.\r\n\r\nWhat I want to do in this PR though is mainly to prevent future ::minRelayFee default change of impacting too much relaying. Two nice side effect is smaller UTXO and wallets likely wasting less money.\r\n\r\nI don't know how volatile is estimatefee if there is a smoother metric I'm all open.\r\nI don't know what is best between mempool's minRelayFee or estimatefee, what I know is that either of them are strictly better than only ::minRelayTxFee.\r\n\r\nWould have liked to talk about that in dev's meeting, sadly it starts at 4am for my place :(",
+      "created_at" : "2016-07-21T15:28:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-234289875",
+      "id" : 234289875,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-21T15:28:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234289875",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "@NicolasDorier Sure or we could talk at a different time.\r\nAll I'm suggesting is that I think a fixed value is better (at least for now).   Use 5 satoshi per byte or something for GetDustRate  (5 times the current minRelayFee but fixed)\r\n",
+      "created_at" : "2016-07-21T15:41:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-234294190",
+      "id" : 234294190,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-21T15:41:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/234294190",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "I am closing it for now. It seems that coin selection prevent change below 0.01 BTC. \r\nTo be sure about that I would need to test current behavior in more details, but I don't really have time for now. I may reopen after I tested the current behavior better.",
+      "created_at" : "2016-07-26T12:46:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8356#issuecomment-235256379",
+      "id" : 235256379,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8356",
+      "updated_at" : "2016-07-26T12:46:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/235256379",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   }
+]

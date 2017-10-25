@@ -1,0 +1,178 @@
+[
+   {
+      "body" : "Hi @gtsui welcome to the project!\r\nPlease tell me if you have any problems with this or other related PRs and I will try to help you\r\nEverything seems perfectly correct with this PR.\r\n\r\nutACK (stands for \"untested ACK\", see https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md#peer-review )\r\n\r\nThe only thing that I have to add is that there was some recent talk about replacing the checkpoints as a mechanism for guessing the verification progress. If that change were made, then LoadBlockIndexDB() and LoadBlockIndex() could take only a const Consensus::Params& instead of the full const CChainParams&.\r\nI hope that's not a blocker for this, but if it is, it should be easy for you to rebase and adapt it that change is merged.",
+      "created_at" : "2016-10-25T15:22:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9013#issuecomment-256067465",
+      "id" : 256067465,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9013",
+      "updated_at" : "2016-10-25T15:23:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/256067465",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "utACK https://github.com/bitcoin/bitcoin/pull/9013/commits/d0b01f3a859eacc51a28fc18d2ed7e361ec90833\r\n\r\nSure, in the future this could probably be reduced in scope to a ConsensusParams, but passing the entire chainparams doesn't hurt and changing the parameter would be a low-priority change afterward.",
+      "created_at" : "2016-10-28T12:26:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9013#issuecomment-256907580",
+      "id" : 256907580,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9013",
+      "updated_at" : "2016-10-28T12:26:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/256907580",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK d0b01f3a859eacc51a28fc18d2ed7e361ec90833",
+      "created_at" : "2016-10-28T17:11:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9013#issuecomment-256976065",
+      "id" : 256976065,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9013",
+      "updated_at" : "2016-10-28T17:11:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/256976065",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9013#discussion_r85633207"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9013"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/85633207"
+         }
+      },
+      "body" : "What is Params() anyway?",
+      "commit_id" : "d0b01f3a859eacc51a28fc18d2ed7e361ec90833",
+      "created_at" : "2016-10-29T03:52:27Z",
+      "diff_hunk" : "@@ -3966,9 +3966,8 @@ CBlockIndex * InsertBlockIndex(uint256 hash)\n     return pindexNew;\n }\n \n-bool static LoadBlockIndexDB()\n+bool static LoadBlockIndexDB(const CChainParams& chainparams)\n {\n-    const CChainParams& chainparams = Params();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9013#discussion_r85633207",
+      "id" : 85633207,
+      "original_commit_id" : "d0b01f3a859eacc51a28fc18d2ed7e361ec90833",
+      "original_position" : 7,
+      "path" : "src/main.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 6341344,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9013",
+      "updated_at" : "2016-10-29T03:52:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/85633207",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9013#discussion_r85641989"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9013"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/85641989"
+         }
+      },
+      "body" : "https://dev.visucore.com/bitcoin/doxygen/struct_consensus_1_1_params.html#details",
+      "commit_id" : "d0b01f3a859eacc51a28fc18d2ed7e361ec90833",
+      "created_at" : "2016-10-29T14:59:05Z",
+      "diff_hunk" : "@@ -3966,9 +3966,8 @@ CBlockIndex * InsertBlockIndex(uint256 hash)\n     return pindexNew;\n }\n \n-bool static LoadBlockIndexDB()\n+bool static LoadBlockIndexDB(const CChainParams& chainparams)\n {\n-    const CChainParams& chainparams = Params();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9013#discussion_r85641989",
+      "id" : 85641989,
+      "original_commit_id" : "d0b01f3a859eacc51a28fc18d2ed7e361ec90833",
+      "original_position" : 7,
+      "path" : "src/main.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 6348896,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9013",
+      "updated_at" : "2016-10-29T14:59:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/85641989",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

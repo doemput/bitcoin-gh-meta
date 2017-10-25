@@ -1,0 +1,510 @@
+[
+   {
+      "body" : "Concept ACK (not looked to closely at the code yet).\r\n10 blocks seems to be little... maybe it should be configurable (most memory consuming processes are configurable right now).\r\n",
+      "created_at" : "2017-06-29T20:13:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#issuecomment-312090907",
+      "id" : 312090907,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10708",
+      "updated_at" : "2017-06-29T20:13:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312090907",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "why would ten be too little?  If it made the code simpler I would have expected it to just do one, reading them isn't free but it's not that expensive-- shouldn't be the limiting factor in reorg performance.",
+      "created_at" : "2017-06-29T20:22:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#issuecomment-312093114",
+      "id" : 312093114,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10708",
+      "updated_at" : "2017-06-29T20:22:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312093114",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "> why would ten be too little?\r\n\r\nI kinda followed the assumption that some users want to reorg as fast as possible (I's probably often a tiny difference) regardless of the depth of the reorganisation. I guess those users do not care about using 200MB+ for tracing the blocks in mem during a reorg. But it's a wild assumptions and maybe I'm wrong.",
+      "created_at" : "2017-06-29T20:40:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#issuecomment-312099655",
+      "id" : 312099655,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10708",
+      "updated_at" : "2017-06-29T20:40:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312099655",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Well I'm not sure how many users are really focused on how long a 20 block reorg will take...should be sufficiently rare that a user spending a lot of time thinking about it is probably less than useful.",
+      "created_at" : "2017-06-29T20:56:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#issuecomment-312106389",
+      "id" : 312106389,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10708",
+      "updated_at" : "2017-06-29T20:56:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312106389",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@jonasschnelli reorgs are slow but for reasons that have nothing to do with reading blocks from the disk.  it can easily take many seconds to reorg 20 blocks, reading them will take a few milliseconds.  Making reorgs faster is great but I think this is the wrong place to optimize for that. ",
+      "created_at" : "2017-06-29T21:09:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#issuecomment-312109412",
+      "id" : 312109412,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10708",
+      "updated_at" : "2017-06-29T21:09:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/312109412",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r124933618"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/124933618"
+         }
+      },
+      "body" : "It seems the `prune` flag is implied by `mode != FLUSH_STATE_IS_NEEDED`.",
+      "commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "created_at" : "2017-06-29T23:14:34Z",
+      "diff_hunk" : "@@ -186,7 +186,7 @@ enum FlushStateMode {\n };\n \n // See definition for documentation\n-static bool FlushStateToDisk(const CChainParams& chainParams, CValidationState &state, FlushStateMode mode, int nManualPruneHeight=0);\n+static bool FlushStateToDisk(const CChainParams& chainParams, CValidationState &state, FlushStateMode mode, int nManualPruneHeight, bool prune);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r124933618",
+      "id" : 124933618,
+      "original_commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 47274808,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708",
+      "updated_at" : "2017-06-29T23:14:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/124933618",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r125350355"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125350355"
+         }
+      },
+      "body" : "Yes, you're right.  But is it reasonable to rely on that for prune's semantics?",
+      "commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "created_at" : "2017-07-03T19:57:48Z",
+      "diff_hunk" : "@@ -186,7 +186,7 @@ enum FlushStateMode {\n };\n \n // See definition for documentation\n-static bool FlushStateToDisk(const CChainParams& chainParams, CValidationState &state, FlushStateMode mode, int nManualPruneHeight=0);\n+static bool FlushStateToDisk(const CChainParams& chainParams, CValidationState &state, FlushStateMode mode, int nManualPruneHeight, bool prune);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r125350355",
+      "id" : 125350355,
+      "original_commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 47731653,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708",
+      "updated_at" : "2017-07-03T19:57:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/125350355",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/177646?v=3",
+         "events_url" : "https://api.github.com/users/narula/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/narula/followers",
+         "following_url" : "https://api.github.com/users/narula/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/narula/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/narula",
+         "id" : 177646,
+         "login" : "narula",
+         "organizations_url" : "https://api.github.com/users/narula/orgs",
+         "received_events_url" : "https://api.github.com/users/narula/received_events",
+         "repos_url" : "https://api.github.com/users/narula/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/narula/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/narula/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/narula"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r129950449"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/129950449"
+         }
+      },
+      "body" : "Why not preserve the default args?",
+      "commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "created_at" : "2017-07-27T20:27:50Z",
+      "diff_hunk" : "@@ -186,7 +186,7 @@ enum FlushStateMode {\n };\n \n // See definition for documentation\n-static bool FlushStateToDisk(const CChainParams& chainParams, CValidationState &state, FlushStateMode mode, int nManualPruneHeight=0);\n+static bool FlushStateToDisk(const CChainParams& chainParams, CValidationState &state, FlushStateMode mode, int nManualPruneHeight, bool prune);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r129950449",
+      "id" : 129950449,
+      "original_commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 52776268,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708",
+      "updated_at" : "2017-07-28T07:25:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/129950449",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r129952430"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/129952430"
+         }
+      },
+      "body" : "could collapse this with branch below?",
+      "commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "created_at" : "2017-07-27T20:36:11Z",
+      "diff_hunk" : "@@ -1755,18 +1755,20 @@ bool static FlushStateToDisk(const CChainParams& chainparams, CValidationState &\n     std::set<int> setFilesToPrune;\n     bool fFlushForPrune = false;\n     try {\n-    if (fPruneMode && (fCheckForPruning || nManualPruneHeight > 0) && !fReindex) {\n-        if (nManualPruneHeight > 0) {\n-            FindFilesToPruneManual(setFilesToPrune, nManualPruneHeight);\n-        } else {\n-            FindFilesToPrune(setFilesToPrune, chainparams.PruneAfterHeight());\n-            fCheckForPruning = false;\n-        }\n-        if (!setFilesToPrune.empty()) {\n-            fFlushForPrune = true;\n-            if (!fHavePruned) {\n-                pblocktree->WriteFlag(\"prunedblockfiles\", true);\n-                fHavePruned = true;\n+    if (prune) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r129952430",
+      "id" : 129952430,
+      "original_commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "original_position" : 43,
+      "path" : "src/validation.cpp",
+      "position" : 43,
+      "pull_request_review_id" : 52776268,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708",
+      "updated_at" : "2017-07-28T07:25:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/129952430",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r129953542"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/129953542"
+         }
+      },
+      "body" : "better to just call `reset()` explicitly, should the ptr ever be made non-smart.",
+      "commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "created_at" : "2017-07-27T20:40:58Z",
+      "diff_hunk" : "@@ -2029,6 +2032,12 @@ class ConnectTrace {\n         assert(pblock);\n         blocksConnected.back().pindex = pindex;\n         blocksConnected.back().pblock = std::move(pblock);\n+        if (++num_connected >= MAX_CONNECT_TRACE_BLOCKS_IN_MEMORY) {\n+            // Clear out a block\n+            int idx = blocksConnected.size() - num_connected;\n+            assert(idx >= 0);\n+            blocksConnected.at(idx).pblock = NULL;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r129953542",
+      "id" : 129953542,
+      "original_commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "original_position" : 115,
+      "path" : "src/validation.cpp",
+      "position" : 115,
+      "pull_request_review_id" : 52776268,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708",
+      "updated_at" : "2017-07-28T07:25:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/129953542",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r130026179"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/130026179"
+         }
+      },
+      "body" : "slight preference for \r\n\r\n```c++\r\n++num_connected;\r\nif (num_connected >= MAX_CONNECT_TRACE_BLOCKS_IN_MEMORY)\r\n```",
+      "commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "created_at" : "2017-07-28T07:12:35Z",
+      "diff_hunk" : "@@ -2029,6 +2032,12 @@ class ConnectTrace {\n         assert(pblock);\n         blocksConnected.back().pindex = pindex;\n         blocksConnected.back().pblock = std::move(pblock);\n+        if (++num_connected >= MAX_CONNECT_TRACE_BLOCKS_IN_MEMORY) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r130026179",
+      "id" : 130026179,
+      "original_commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "original_position" : 111,
+      "path" : "src/validation.cpp",
+      "position" : 111,
+      "pull_request_review_id" : 52776268,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708",
+      "updated_at" : "2017-07-28T07:25:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/130026179",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r130026605"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/130026605"
+         }
+      },
+      "body" : "probably a bit cleaner to just do:\r\n```c++\r\nstd::shared_ptr<const CBlock> pthisBlock(trace.pblock);\r\nif (!pThisBlock) {\r\n\r\n}\r\n```",
+      "commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "created_at" : "2017-07-28T07:15:26Z",
+      "diff_hunk" : "@@ -2336,8 +2345,18 @@ bool ActivateBestChain(CValidationState &state, const CChainParams& chainparams,\n             fInitialDownload = IsInitialBlockDownload();\n \n             for (const PerBlockConnectTrace& trace : connectTrace.GetBlocksConnected()) {\n-                assert(trace.pblock && trace.pindex);\n-                GetMainSignals().BlockConnected(trace.pblock, trace.pindex, *trace.conflictedTxs);\n+                assert(trace.pindex);\n+                std::shared_ptr<const CBlock> pthisBlock;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r130026605",
+      "id" : 130026605,
+      "original_commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "original_position" : 136,
+      "path" : "src/validation.cpp",
+      "position" : 136,
+      "pull_request_review_id" : 52776268,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708",
+      "updated_at" : "2017-07-28T07:25:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/130026605",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r130026819"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/130026819"
+         }
+      },
+      "body" : "probably no need to make pblockNew? Can just assign directly with make_shared to pthisBlock.",
+      "commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "created_at" : "2017-07-28T07:16:56Z",
+      "diff_hunk" : "@@ -2336,8 +2345,18 @@ bool ActivateBestChain(CValidationState &state, const CChainParams& chainparams,\n             fInitialDownload = IsInitialBlockDownload();\n \n             for (const PerBlockConnectTrace& trace : connectTrace.GetBlocksConnected()) {\n-                assert(trace.pblock && trace.pindex);\n-                GetMainSignals().BlockConnected(trace.pblock, trace.pindex, *trace.conflictedTxs);\n+                assert(trace.pindex);\n+                std::shared_ptr<const CBlock> pthisBlock;\n+                if (trace.pblock == NULL) {\n+                    std::shared_ptr<CBlock> pblockNew = std::make_shared<CBlock>();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10708#discussion_r130026819",
+      "id" : 130026819,
+      "original_commit_id" : "b7077bd98e218983d81be893195733c07efb62a6",
+      "original_position" : 138,
+      "path" : "src/validation.cpp",
+      "position" : 138,
+      "pull_request_review_id" : 52776268,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10708",
+      "updated_at" : "2017-07-28T07:25:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/130026819",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   }
+]

@@ -1,0 +1,252 @@
+[
+   {
+      "body" : "Please let me know if this is too basic a unit test. I'm using unit test writing as a way to get familiar with the code base.",
+      "created_at" : "2017-04-25T14:29:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10278#issuecomment-297048275",
+      "id" : 297048275,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10278",
+      "updated_at" : "2017-04-25T14:29:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297048275",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/524761?v=3",
+         "events_url" : "https://api.github.com/users/jimmysong/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jimmysong/followers",
+         "following_url" : "https://api.github.com/users/jimmysong/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jimmysong/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jimmysong",
+         "id" : 524761,
+         "login" : "jimmysong",
+         "organizations_url" : "https://api.github.com/users/jimmysong/orgs",
+         "received_events_url" : "https://api.github.com/users/jimmysong/received_events",
+         "repos_url" : "https://api.github.com/users/jimmysong/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jimmysong/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jimmysong/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jimmysong"
+      }
+   },
+   {
+      "body" : "This tests only one code path of `GetListenPort`. Possibly this could be extended with a test for the `-port` argument as well, e.g. temporarily set the option to something else and see if the returned value changes to that.\r\n\r\nAnyhow, thanks for adding a test.",
+      "created_at" : "2017-04-25T16:03:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10278#issuecomment-297079484",
+      "id" : 297079484,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10278",
+      "updated_at" : "2017-04-25T16:04:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297079484",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Also might make sense to compare against `Params().GetDefaultPort()` instead of hardcoding the number.",
+      "created_at" : "2017-04-25T16:05:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10278#issuecomment-297079864",
+      "id" : 297079864,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10278",
+      "updated_at" : "2017-04-25T16:05:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297079864",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Thanks for the review @laanwj, I've changed the test per your suggestions and squashed.",
+      "created_at" : "2017-04-25T17:17:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10278#issuecomment-297102259",
+      "id" : 297102259,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10278",
+      "updated_at" : "2017-04-25T17:17:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297102259",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/524761?v=3",
+         "events_url" : "https://api.github.com/users/jimmysong/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jimmysong/followers",
+         "following_url" : "https://api.github.com/users/jimmysong/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jimmysong/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jimmysong",
+         "id" : 524761,
+         "login" : "jimmysong",
+         "organizations_url" : "https://api.github.com/users/jimmysong/orgs",
+         "received_events_url" : "https://api.github.com/users/jimmysong/received_events",
+         "repos_url" : "https://api.github.com/users/jimmysong/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jimmysong/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jimmysong/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jimmysong"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10278#discussion_r115463190"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10278"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115463190"
+         }
+      },
+      "body" : "This will modify the global state of test run after this test case. There are other places in the test code where this already happens, but imo, unit tests should really be unit test.",
+      "commit_id" : "1b144495d006e49999eb396858610eb817d99d38",
+      "created_at" : "2017-05-09T11:13:00Z",
+      "diff_hunk" : "@@ -72,6 +73,18 @@ CDataStream AddrmanToStream(CAddrManSerializationMock& _addrman)\n \n BOOST_FIXTURE_TEST_SUITE(net_tests, BasicTestingSetup)\n \n+BOOST_AUTO_TEST_CASE(cnode_listen_port)\n+{\n+    // test default\n+    unsigned short port = GetListenPort();\n+    BOOST_CHECK(port == Params().GetDefaultPort());\n+    // test set port\n+    unsigned short altPort = 12345;\n+    SoftSetArg(\"-port\", std::to_string(altPort));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10278#discussion_r115463190",
+      "id" : 115463190,
+      "original_commit_id" : "1b144495d006e49999eb396858610eb817d99d38",
+      "original_position" : 19,
+      "path" : "src/test/net_tests.cpp",
+      "position" : 19,
+      "pull_request_review_id" : 37001309,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10278",
+      "updated_at" : "2017-05-09T11:19:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115463190",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10278#discussion_r115494670"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10278"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115494670"
+         }
+      },
+      "body" : "Thanks for the feedback!\r\n\r\nWhat should I do in the future? Unset the arg afterwards?",
+      "commit_id" : "1b144495d006e49999eb396858610eb817d99d38",
+      "created_at" : "2017-05-09T13:53:15Z",
+      "diff_hunk" : "@@ -72,6 +73,18 @@ CDataStream AddrmanToStream(CAddrManSerializationMock& _addrman)\n \n BOOST_FIXTURE_TEST_SUITE(net_tests, BasicTestingSetup)\n \n+BOOST_AUTO_TEST_CASE(cnode_listen_port)\n+{\n+    // test default\n+    unsigned short port = GetListenPort();\n+    BOOST_CHECK(port == Params().GetDefaultPort());\n+    // test set port\n+    unsigned short altPort = 12345;\n+    SoftSetArg(\"-port\", std::to_string(altPort));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10278#discussion_r115494670",
+      "id" : 115494670,
+      "original_commit_id" : "1b144495d006e49999eb396858610eb817d99d38",
+      "original_position" : 19,
+      "path" : "src/test/net_tests.cpp",
+      "position" : 19,
+      "pull_request_review_id" : 37036261,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10278",
+      "updated_at" : "2017-05-09T13:53:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115494670",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/524761?v=3",
+         "events_url" : "https://api.github.com/users/jimmysong/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jimmysong/followers",
+         "following_url" : "https://api.github.com/users/jimmysong/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jimmysong/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jimmysong",
+         "id" : 524761,
+         "login" : "jimmysong",
+         "organizations_url" : "https://api.github.com/users/jimmysong/orgs",
+         "received_events_url" : "https://api.github.com/users/jimmysong/received_events",
+         "repos_url" : "https://api.github.com/users/jimmysong/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jimmysong/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jimmysong/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jimmysong"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10278#discussion_r115508318"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10278"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115508318"
+         }
+      },
+      "body" : "Yes, I think this is reasonable for tests.",
+      "commit_id" : "1b144495d006e49999eb396858610eb817d99d38",
+      "created_at" : "2017-05-09T14:44:33Z",
+      "diff_hunk" : "@@ -72,6 +73,18 @@ CDataStream AddrmanToStream(CAddrManSerializationMock& _addrman)\n \n BOOST_FIXTURE_TEST_SUITE(net_tests, BasicTestingSetup)\n \n+BOOST_AUTO_TEST_CASE(cnode_listen_port)\n+{\n+    // test default\n+    unsigned short port = GetListenPort();\n+    BOOST_CHECK(port == Params().GetDefaultPort());\n+    // test set port\n+    unsigned short altPort = 12345;\n+    SoftSetArg(\"-port\", std::to_string(altPort));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10278#discussion_r115508318",
+      "id" : 115508318,
+      "original_commit_id" : "1b144495d006e49999eb396858610eb817d99d38",
+      "original_position" : 19,
+      "path" : "src/test/net_tests.cpp",
+      "position" : 19,
+      "pull_request_review_id" : 37051370,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10278",
+      "updated_at" : "2017-05-09T14:44:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/115508318",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   }
+]

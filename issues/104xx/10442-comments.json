@@ -1,0 +1,2462 @@
+[
+   {
+      "body" : "utACK",
+      "created_at" : "2017-05-22T20:11:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303207030",
+      "id" : 303207030,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-22T20:11:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303207030",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1492956?v=3",
+         "events_url" : "https://api.github.com/users/jmcorgan/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jmcorgan/followers",
+         "following_url" : "https://api.github.com/users/jmcorgan/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jmcorgan/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jmcorgan",
+         "id" : 1492956,
+         "login" : "jmcorgan",
+         "organizations_url" : "https://api.github.com/users/jmcorgan/orgs",
+         "received_events_url" : "https://api.github.com/users/jmcorgan/received_events",
+         "repos_url" : "https://api.github.com/users/jmcorgan/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jmcorgan/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jmcorgan/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jmcorgan"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117835429"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117835429"
+         }
+      },
+      "body" : "No https://? Do we want link to an external site? What if the contents of the site changes? What if the domain owner changes?",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T20:16:07Z",
+      "diff_hunk" : "@@ -451,6 +451,9 @@ Set maximum size of high\\-priority/low\\-fee transactions in bytes\n .IP\n Set lowest fee rate (in BTC/kB) for transactions to be included in block\n creation. (default: 0.00001)\n+\\fB\\-bip148\\fR\n+.IP\n+Enable BIP148 enforcement (see http://www.uasf.co)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117835429",
+      "id" : 117835429,
+      "original_commit_id" : "abbcfcd8b2401ef782f4769deff8288bd00ac858",
+      "original_position" : 6,
+      "path" : "doc/man/bitcoin-qt.1",
+      "position" : null,
+      "pull_request_review_id" : 39575184,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117835429",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117835558"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117835558"
+         }
+      },
+      "body" : "SPC before `DEFAULT_BIP148` please.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T20:16:51Z",
+      "diff_hunk" : "@@ -494,6 +494,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-blockmaxweight=<n>\", strprintf(_(\"Set maximum BIP141 block weight (default: %d)\"), DEFAULT_BLOCK_MAX_WEIGHT));\n     strUsage += HelpMessageOpt(\"-blockmaxsize=<n>\", strprintf(_(\"Set maximum block size in bytes (default: %d)\"), DEFAULT_BLOCK_MAX_SIZE));\n     strUsage += HelpMessageOpt(\"-blockmintxfee=<amt>\", strprintf(_(\"Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)\"), CURRENCY_UNIT, FormatMoney(DEFAULT_BLOCK_MIN_TX_FEE)));\n+    strUsage += HelpMessageOpt(\"-bip148\", strprintf(_(\"Enable BIP148/UASF (default: %d)\"),DEFAULT_BIP148));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117835558",
+      "id" : 117835558,
+      "original_commit_id" : "abbcfcd8b2401ef782f4769deff8288bd00ac858",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39575184,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117835558",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117835687"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117835687"
+         }
+      },
+      "body" : "SPC before `DEFAULT_BIP148 ` please.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T20:17:37Z",
+      "diff_hunk" : "@@ -1566,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (GetBoolArg(\"-bip148\",DEFAULT_BIP148)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117835687",
+      "id" : 117835687,
+      "original_commit_id" : "abbcfcd8b2401ef782f4769deff8288bd00ac858",
+      "original_position" : 4,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39575184,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117835687",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117837749"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117837749"
+         }
+      },
+      "body" : "yes, since the primary reason for including the flag would be for people who already know about it and were going to install it anyway, and at least think they know what they are doing, an external link is probably not needed.   ",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T20:28:02Z",
+      "diff_hunk" : "@@ -451,6 +451,9 @@ Set maximum size of high\\-priority/low\\-fee transactions in bytes\n .IP\n Set lowest fee rate (in BTC/kB) for transactions to be included in block\n creation. (default: 0.00001)\n+\\fB\\-bip148\\fR\n+.IP\n+Enable BIP148 enforcement (see http://www.uasf.co)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117837749",
+      "id" : 117837749,
+      "original_commit_id" : "abbcfcd8b2401ef782f4769deff8288bd00ac858",
+      "original_position" : 6,
+      "path" : "doc/man/bitcoin-qt.1",
+      "position" : null,
+      "pull_request_review_id" : 39577683,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117837749",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "body" : "For the record, previous discussions: https://github.com/bitcoin/bitcoin/pull/10417, https://github.com/bitcoin/bitcoin/pull/10428",
+      "created_at" : "2017-05-22T20:42:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303214425",
+      "id" : 303214425,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-22T20:42:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303214425",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/9156103?v=3",
+         "events_url" : "https://api.github.com/users/nopara73/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nopara73/followers",
+         "following_url" : "https://api.github.com/users/nopara73/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nopara73/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nopara73",
+         "id" : 9156103,
+         "login" : "nopara73",
+         "organizations_url" : "https://api.github.com/users/nopara73/orgs",
+         "received_events_url" : "https://api.github.com/users/nopara73/received_events",
+         "repos_url" : "https://api.github.com/users/nopara73/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nopara73/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nopara73/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nopara73"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2017-05-22T21:14:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303222061",
+      "id" : 303222061,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-22T21:14:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303222061",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4469280?v=3",
+         "events_url" : "https://api.github.com/users/ABISprotocol/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ABISprotocol/followers",
+         "following_url" : "https://api.github.com/users/ABISprotocol/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ABISprotocol/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ABISprotocol",
+         "id" : 4469280,
+         "login" : "ABISprotocol",
+         "organizations_url" : "https://api.github.com/users/ABISprotocol/orgs",
+         "received_events_url" : "https://api.github.com/users/ABISprotocol/received_events",
+         "repos_url" : "https://api.github.com/users/ABISprotocol/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ABISprotocol/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ABISprotocol/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ABISprotocol"
+      }
+   },
+   {
+      "body" : "NACK",
+      "created_at" : "2017-05-22T21:53:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303230307",
+      "id" : 303230307,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-22T21:53:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303230307",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/12585202?v=3",
+         "events_url" : "https://api.github.com/users/AllanDoensen/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/AllanDoensen/followers",
+         "following_url" : "https://api.github.com/users/AllanDoensen/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/AllanDoensen/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/AllanDoensen",
+         "id" : 12585202,
+         "login" : "AllanDoensen",
+         "organizations_url" : "https://api.github.com/users/AllanDoensen/orgs",
+         "received_events_url" : "https://api.github.com/users/AllanDoensen/received_events",
+         "repos_url" : "https://api.github.com/users/AllanDoensen/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/AllanDoensen/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/AllanDoensen/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/AllanDoensen"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2017-05-22T22:07:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303233193",
+      "id" : 303233193,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-22T22:07:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303233193",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/14859988?v=3",
+         "events_url" : "https://api.github.com/users/mkwia/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mkwia/followers",
+         "following_url" : "https://api.github.com/users/mkwia/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mkwia/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mkwia",
+         "id" : 14859988,
+         "login" : "mkwia",
+         "organizations_url" : "https://api.github.com/users/mkwia/orgs",
+         "received_events_url" : "https://api.github.com/users/mkwia/received_events",
+         "repos_url" : "https://api.github.com/users/mkwia/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mkwia/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mkwia/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mkwia"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117857547"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117857547"
+         }
+      },
+      "body" : "small details: you could use gArgs::GetBoolArg directly instead of the wrapper. You could also create a global that is set only in init.cpp",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T22:12:45Z",
+      "diff_hunk" : "@@ -1566,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117857547",
+      "id" : 117857547,
+      "original_commit_id" : "b360fd09c3638244dd852ccb378540a36b2db8de",
+      "original_position" : 4,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39598897,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117857547",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117857924"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117857924"
+         }
+      },
+      "body" : "I don't think \"please upgrade\" is a very appropriate comment here. Upgrade to what?",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T22:15:12Z",
+      "diff_hunk" : "@@ -1566,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117857924",
+      "id" : 117857924,
+      "original_commit_id" : "b360fd09c3638244dd852ccb378540a36b2db8de",
+      "original_position" : 15,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39599249,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117857924",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117858119"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117858119"
+         }
+      },
+      "body" : "Can't this be static?\r\n\r\nEDIT: or preferably inlined",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T22:16:31Z",
+      "diff_hunk" : "@@ -445,6 +447,9 @@ bool TestBlockValidity(CValidationState& state, const CChainParams& chainparams,\n /** Check whether witness commitments are required for block. */\n bool IsWitnessEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);\n \n+/** Check if Segregated Witness is Locked In */\n+bool IsWitnessLockedIn(const CBlockIndex* pindexPrev, const Consensus::Params& params);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117858119",
+      "id" : 117858119,
+      "original_commit_id" : "b360fd09c3638244dd852ccb378540a36b2db8de",
+      "original_position" : 14,
+      "path" : "src/validation.h",
+      "position" : null,
+      "pull_request_review_id" : 39599470,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117858119",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117869889"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117869889"
+         }
+      },
+      "body" : "yes, static is more consistent with other uses in the file, so i'll use that",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T23:46:04Z",
+      "diff_hunk" : "@@ -445,6 +447,9 @@ bool TestBlockValidity(CValidationState& state, const CChainParams& chainparams,\n /** Check whether witness commitments are required for block. */\n bool IsWitnessEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params);\n \n+/** Check if Segregated Witness is Locked In */\n+bool IsWitnessLockedIn(const CBlockIndex* pindexPrev, const Consensus::Params& params);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117869889",
+      "id" : 117869889,
+      "original_commit_id" : "b360fd09c3638244dd852ccb378540a36b2db8de",
+      "original_position" : 14,
+      "path" : "src/validation.h",
+      "position" : null,
+      "pull_request_review_id" : 39611736,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117869889",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117870059"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117870059"
+         }
+      },
+      "body" : "right?  maybe, please upgrade to Bitcoin version 0.13.2 or greater?",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T23:47:17Z",
+      "diff_hunk" : "@@ -1566,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117870059",
+      "id" : 117870059,
+      "original_commit_id" : "b360fd09c3638244dd852ccb378540a36b2db8de",
+      "original_position" : 15,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39611900,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117870059",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117870419"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117870419"
+         }
+      },
+      "body" : "i think the wrapper from util.h is more consistent with other uses in the code",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-22T23:50:04Z",
+      "diff_hunk" : "@@ -1566,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117870419",
+      "id" : 117870419,
+      "original_commit_id" : "b360fd09c3638244dd852ccb378540a36b2db8de",
+      "original_position" : 4,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39612264,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117870419",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117881523"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117881523"
+         }
+      },
+      "body" : "That's because the code was *just* refactored to create `gArgs`. New code should probably use it, rather than the wrappers which exist to avoid touching the old code.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T01:42:14Z",
+      "diff_hunk" : "@@ -1566,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117881523",
+      "id" : 117881523,
+      "original_commit_id" : "b360fd09c3638244dd852ccb378540a36b2db8de",
+      "original_position" : 4,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39623909,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117881523",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117883972"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117883972"
+         }
+      },
+      "body" : "Cool ok",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T02:10:43Z",
+      "diff_hunk" : "@@ -1566,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117883972",
+      "id" : 117883972,
+      "original_commit_id" : "b360fd09c3638244dd852ccb378540a36b2db8de",
+      "original_position" : 4,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39626369,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117883972",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117890157"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117890157"
+         }
+      },
+      "body" : "Why version 0.13.1?",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T03:21:05Z",
+      "diff_hunk" : "@@ -1566,6 +1567,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117890157",
+      "id" : 117890157,
+      "original_commit_id" : "5288ddab0f3f9bb001e1a92eeaa087160d78bf6c",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39632628,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117890157",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/429961?v=3",
+         "events_url" : "https://api.github.com/users/PRabahy/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/PRabahy/followers",
+         "following_url" : "https://api.github.com/users/PRabahy/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/PRabahy/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/PRabahy",
+         "id" : 429961,
+         "login" : "PRabahy",
+         "organizations_url" : "https://api.github.com/users/PRabahy/orgs",
+         "received_events_url" : "https://api.github.com/users/PRabahy/received_events",
+         "repos_url" : "https://api.github.com/users/PRabahy/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/PRabahy/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/PRabahy/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/PRabahy"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117890772"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117890772"
+         }
+      },
+      "body" : "@PRabahy Maybe `please upgrade to Bitcoin version >=0.13.1` ?",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T03:28:40Z",
+      "diff_hunk" : "@@ -1566,6 +1567,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117890772",
+      "id" : 117890772,
+      "original_commit_id" : "5288ddab0f3f9bb001e1a92eeaa087160d78bf6c",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39633260,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117890772",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/2578320?v=3",
+         "events_url" : "https://api.github.com/users/webcaetano/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/webcaetano/followers",
+         "following_url" : "https://api.github.com/users/webcaetano/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/webcaetano/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/webcaetano",
+         "id" : 2578320,
+         "login" : "webcaetano",
+         "organizations_url" : "https://api.github.com/users/webcaetano/orgs",
+         "received_events_url" : "https://api.github.com/users/webcaetano/received_events",
+         "repos_url" : "https://api.github.com/users/webcaetano/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/webcaetano/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/webcaetano/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/webcaetano"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2017-05-23T12:10:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303378323",
+      "id" : 303378323,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-23T12:10:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303378323",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3824379?v=3",
+         "events_url" : "https://api.github.com/users/Cocosoft/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Cocosoft/followers",
+         "following_url" : "https://api.github.com/users/Cocosoft/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Cocosoft/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Cocosoft",
+         "id" : 3824379,
+         "login" : "Cocosoft",
+         "organizations_url" : "https://api.github.com/users/Cocosoft/orgs",
+         "received_events_url" : "https://api.github.com/users/Cocosoft/received_events",
+         "repos_url" : "https://api.github.com/users/Cocosoft/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Cocosoft/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Cocosoft/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Cocosoft"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117978300"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117978300"
+         }
+      },
+      "body" : "Yeah",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T12:37:34Z",
+      "diff_hunk" : "@@ -1566,6 +1567,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117978300",
+      "id" : 117978300,
+      "original_commit_id" : "5288ddab0f3f9bb001e1a92eeaa087160d78bf6c",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39727482,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117978300",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117978578"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117978578"
+         }
+      },
+      "body" : "Perhaps \"Bitcoin **Core** version ...\"",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T12:39:07Z",
+      "diff_hunk" : "@@ -1566,6 +1567,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117978578",
+      "id" : 117978578,
+      "original_commit_id" : "5288ddab0f3f9bb001e1a92eeaa087160d78bf6c",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39727798,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117978578",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/14859988?v=3",
+         "events_url" : "https://api.github.com/users/mkwia/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mkwia/followers",
+         "following_url" : "https://api.github.com/users/mkwia/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mkwia/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mkwia",
+         "id" : 14859988,
+         "login" : "mkwia",
+         "organizations_url" : "https://api.github.com/users/mkwia/orgs",
+         "received_events_url" : "https://api.github.com/users/mkwia/received_events",
+         "repos_url" : "https://api.github.com/users/mkwia/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mkwia/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mkwia/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mkwia"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117979319"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117979319"
+         }
+      },
+      "body" : "I donÃ¢ÂÂt like \"core\".   Bitcoin has no RFC to refer to, so Bitcoin literally is defined by this reference implementation.  I think it would be great to use the RFC process, once Bitcoin is more mature.   ",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T12:42:38Z",
+      "diff_hunk" : "@@ -1566,6 +1567,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117979319",
+      "id" : 117979319,
+      "original_commit_id" : "5288ddab0f3f9bb001e1a92eeaa087160d78bf6c",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39728648,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117979319",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2017-05-23T12:55:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303388738",
+      "id" : 303388738,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-23T12:55:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303388738",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/26351349?v=3",
+         "events_url" : "https://api.github.com/users/forkwar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/forkwar/followers",
+         "following_url" : "https://api.github.com/users/forkwar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/forkwar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/forkwar",
+         "id" : 26351349,
+         "login" : "forkwar",
+         "organizations_url" : "https://api.github.com/users/forkwar/orgs",
+         "received_events_url" : "https://api.github.com/users/forkwar/received_events",
+         "repos_url" : "https://api.github.com/users/forkwar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/forkwar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/forkwar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/forkwar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117988427"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117988427"
+         }
+      },
+      "body" : "No, the person reading the error already has \"Bitcoin version >=0.13.1\", no?",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T13:21:23Z",
+      "diff_hunk" : "@@ -1566,6 +1567,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117988427",
+      "id" : 117988427,
+      "original_commit_id" : "5288ddab0f3f9bb001e1a92eeaa087160d78bf6c",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39738721,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117988427",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117994192"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117994192"
+         }
+      },
+      "body" : "No, they cannot have that.   0.13.1 signals segwit.   (if (!(fVersionBits && fSegbit)) ... ",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T13:42:51Z",
+      "diff_hunk" : "@@ -1566,6 +1567,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117994192",
+      "id" : 117994192,
+      "original_commit_id" : "5288ddab0f3f9bb001e1a92eeaa087160d78bf6c",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39745108,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117994192",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117997603"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117997603"
+         }
+      },
+      "body" : "@earonesty Node software does not control the block version header. Just remove the \"please upgrade\" bit.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T13:54:52Z",
+      "diff_hunk" : "@@ -1566,6 +1567,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r117997603",
+      "id" : 117997603,
+      "original_commit_id" : "5288ddab0f3f9bb001e1a92eeaa087160d78bf6c",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39748913,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/117997603",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118022050"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118022050"
+         }
+      },
+      "body" : "This is not enough. The user has to add `-bip148` in addition. But you do not know if he is running Bitcoin Core at all. So this is wrong by design.\r\n\r\nWho do you think should be/is the reader of this message?\r\n",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T15:17:45Z",
+      "diff_hunk" : "@@ -1578,7 +1578,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n             bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n             bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n             if (!(fVersionBits && fSegbit)) {\n-                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version >= 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118022050",
+      "id" : 118022050,
+      "original_commit_id" : "91722a0342e70e28e9f36438a861fa0a7f7be176",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39776048,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118022050",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118022885"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118022885"
+         }
+      },
+      "body" : "This message will only end up in the debug.log, so there shouldn't be anything asking someone to upgrade.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T15:20:40Z",
+      "diff_hunk" : "@@ -1578,7 +1578,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n             bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n             bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n             if (!(fVersionBits && fSegbit)) {\n-                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version >= 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118022885",
+      "id" : 118022885,
+      "original_commit_id" : "91722a0342e70e28e9f36438a861fa0a7f7be176",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39777035,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118022885",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/3782274?v=3",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118025142"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118025142"
+         }
+      },
+      "body" : "Just remove the `please upgrade to Bitcoin version >= 0.13.1` part.\r\nMake it short like `ConnectBlock(): relayed block must signal for segwit`",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-23T15:28:24Z",
+      "diff_hunk" : "@@ -1578,7 +1578,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n             bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n             bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n             if (!(fVersionBits && fSegbit)) {\n-                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit, please upgrade to Bitcoin version >= 0.13.1\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118025142",
+      "id" : 118025142,
+      "original_commit_id" : "91722a0342e70e28e9f36438a861fa0a7f7be176",
+      "original_position" : 5,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 39779493,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118025142",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/2578320?v=3",
+         "events_url" : "https://api.github.com/users/webcaetano/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/webcaetano/followers",
+         "following_url" : "https://api.github.com/users/webcaetano/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/webcaetano/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/webcaetano",
+         "id" : 2578320,
+         "login" : "webcaetano",
+         "organizations_url" : "https://api.github.com/users/webcaetano/orgs",
+         "received_events_url" : "https://api.github.com/users/webcaetano/received_events",
+         "repos_url" : "https://api.github.com/users/webcaetano/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/webcaetano/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/webcaetano/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/webcaetano"
+      }
+   },
+   {
+      "body" : "A miner only has to run 0.13.1 to be sure this code isn't triggered.",
+      "created_at" : "2017-05-23T17:12:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303469676",
+      "id" : 303469676,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-23T17:12:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303469676",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "body" : "Ok, changing it.",
+      "created_at" : "2017-05-23T17:12:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303469846",
+      "id" : 303469846,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-23T17:12:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303469846",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "body" : "Perhaps the PR should see a rebase to 1 commit.\r\nThe commit titles for newest two give no value and only works in context with the first commit.",
+      "created_at" : "2017-05-24T09:48:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-303674284",
+      "id" : 303674284,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-24T09:48:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/303674284",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3824379?v=3",
+         "events_url" : "https://api.github.com/users/Cocosoft/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Cocosoft/followers",
+         "following_url" : "https://api.github.com/users/Cocosoft/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Cocosoft/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Cocosoft",
+         "id" : 3824379,
+         "login" : "Cocosoft",
+         "organizations_url" : "https://api.github.com/users/Cocosoft/orgs",
+         "received_events_url" : "https://api.github.com/users/Cocosoft/received_events",
+         "repos_url" : "https://api.github.com/users/Cocosoft/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Cocosoft/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Cocosoft/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Cocosoft"
+      }
+   },
+   {
+      "body" : "Maybe i did something stupid.  I'll reopen when I get to a laptop",
+      "created_at" : "2017-05-25T23:07:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304148103",
+      "id" : 304148103,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-25T23:16:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304148103",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "body" : "@earonesty  You overwrote your PR branch with master.  Since the changes being PR were removed github won't let the PR stay open (as there is nothing to merge).  I'm not sure if restoring the commits will fix it, you might have to open a new PR.",
+      "created_at" : "2017-05-25T23:21:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304150335",
+      "id" : 304150335,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-25T23:21:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304150335",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Yeah, I tried to pull/rebase, and did something wrong.   Thx.",
+      "created_at" : "2017-05-26T00:30:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304159575",
+      "id" : 304159575,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-26T00:31:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304159575",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "body" : "utACK\r\n\r\nI was concerned by the issue luke-jr pointed out in #10428: \"There are circumstances where this won't upgrade cleanly from a non-BIP148 client: specifically, after July in the case where miners have produced invalid blocks, this will fail to reconsider them.\" But I think what will actually happen in the case of a chain split with only minority hashpower on BIP148, is if you restart bitcoind with -bip148 on, say, August 7th, is that you be highly unlikely to extend the chain you had, and eventually the initially shorter BIP148 chain will become longer than the non-BIP148 chain as at August-7th, and you'll reorg. This behaviour will get worse the longer a user waits after August 1st to enable the option; again assuming a chain split and only minority hashpower on BIP148. This doesn't seem too bad to me, though could be better. \r\n\r\nThis probably isn't good enough for mining the BIP148 chain in this scenario -- if you think BIP148 is going to win, but hasn't yet and has already started, enabling -bip148 will leave you mining on a new, post August-1st fork of the non-BIP148 chain, creating a new chain split, until the original BIP148 chain has caught up.\r\n\r\nIn the event of BIP148 failing, as far as I can see, users can just restart bitcoind without the option, and will reorg to the longer chain. That seems fine, and minimally painful, given the circumstances.\r\n\r\nThis seems like it should have some behavioural tests included before being deployed though, given it changes consensus behaviour...",
+      "created_at" : "2017-05-26T05:55:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304198555",
+      "id" : 304198555,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-26T05:55:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304198555",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "Okay, I've had a go at writing some functional tests, and I think the \"restart with -bip148 sometime after August 1st\" case is worse than I'd hoped -- a peer that mines on top of the chain they were following will get banned by BIP148 peers for passing on invalid blocks, and thus won't realise when the real BIP148 chain has overtaken their broken chain (at least until the BIP148 chain has somehow become the most work chain). That seems unreasonably fragile to me; I'll see if I can make a patch to prevent it happening.",
+      "created_at" : "2017-05-26T14:30:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304298046",
+      "id" : 304298046,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-26T14:30:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304298046",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118734389"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118734389"
+         }
+      },
+      "body" : "state.DoS(0, ...) here isn't entirely sufficient -- a non-BIP148 node will also forward any block building on the non-segwit block which will give a \"prev block not found\" or \"prev block invalid\" error which have DoS levels of 10 and 100 respectively.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-26T15:58:52Z",
+      "diff_hunk" : "@@ -1565,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118734389",
+      "id" : 118734389,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 40557824,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118734389",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118744036"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118744036"
+         }
+      },
+      "body" : "We shouldn't encounter prev block not found, because we should never fetch a block until all the headers are in the db.\r\n\r\nprev block invalid probably needs to be changed to 0 for softfork safety... this isn't BIP148-specific.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-26T16:48:20Z",
+      "diff_hunk" : "@@ -1565,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118744036",
+      "id" : 118744036,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 40568474,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118744036",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118774078"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118774078"
+         }
+      },
+      "body" : "My mistake, I'm seeing \"missing prev block\" messages despite having seen the previous block, not \"prev block not found\" errors. I changed the DoS level for \"prev block invalid\" to 0, but I'm still seeing some disconnections between my test peers though.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-26T19:27:57Z",
+      "diff_hunk" : "@@ -1565,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118774078",
+      "id" : 118774078,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 40601631,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118774078",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "I've made a pull request with a draft of a functional test and the \"prev block invalid\" DoS level changed to 0 when -bip148 is active: https://github.com/earonesty/bitcoin/pull/2\r\n\r\nI'm still getting less peer connectivity than I expect and I'm not really seeing why. For me, just enough peers remain connected for the entire network to achieve consensus, but that seems like it's due to luck...",
+      "created_at" : "2017-05-27T07:14:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304434172",
+      "id" : 304434172,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-27T07:14:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304434172",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118822551"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118822551"
+         }
+      },
+      "body" : "Wouldn't the expected behavior of someone starting with `-bip148` be that it rejected all non-segwit signaling blocks since the startdate? So a node that joins on Aug 7th with that flag should reorganize to the current `-bip148` branch?",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-27T15:14:45Z",
+      "diff_hunk" : "@@ -1565,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118822551",
+      "id" : 118822551,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 40654934,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118822551",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/4060799?v=3",
+         "events_url" : "https://api.github.com/users/Xekyo/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Xekyo/followers",
+         "following_url" : "https://api.github.com/users/Xekyo/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Xekyo/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Xekyo",
+         "id" : 4060799,
+         "login" : "Xekyo",
+         "organizations_url" : "https://api.github.com/users/Xekyo/orgs",
+         "received_events_url" : "https://api.github.com/users/Xekyo/received_events",
+         "repos_url" : "https://api.github.com/users/Xekyo/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Xekyo/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Xekyo/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Xekyo"
+      }
+   },
+   {
+      "body" : "utACK\r\n\r\nLooking upon the concerns of other reviewers, I'd prefer if there is a modification to the Title of the client or an identifying message that informs that the user is indeed signalling towards BIP148, I can see scripts that could intentionally add this flag without the user knowing (although really-highly-unlikely)",
+      "created_at" : "2017-05-27T16:04:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304460866",
+      "id" : 304460866,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-27T16:04:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304460866",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/16177938?v=3",
+         "events_url" : "https://api.github.com/users/plaxton/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/plaxton/followers",
+         "following_url" : "https://api.github.com/users/plaxton/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/plaxton/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/plaxton",
+         "id" : 16177938,
+         "login" : "plaxton",
+         "organizations_url" : "https://api.github.com/users/plaxton/orgs",
+         "received_events_url" : "https://api.github.com/users/plaxton/received_events",
+         "repos_url" : "https://api.github.com/users/plaxton/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/plaxton/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/plaxton/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/plaxton"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118942174"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118942174"
+         }
+      },
+      "body" : "Hmm, what if majority of nodes is forced to restart at some day in August (e.g. there can be major security issue)?",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-29T14:01:37Z",
+      "diff_hunk" : "@@ -1565,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r118942174",
+      "id" : 118942174,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 40780183,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/118942174",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "NACK for now. This seems dangerous if the whole ecosystem is not behind it - and it is very hard to measure, social media can be easily manipulated. Some people will enable it and potentially lose money. \r\n\r\nBut I would actually support it if other controversial BIP's also would be available via optional commandline switch, like BIP10{0,1,2,9}. Either give the user all available options or none.",
+      "created_at" : "2017-05-29T23:21:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304743181",
+      "id" : 304743181,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-29T23:21:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304743181",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1503969?v=3",
+         "events_url" : "https://api.github.com/users/nomnombtc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nomnombtc/followers",
+         "following_url" : "https://api.github.com/users/nomnombtc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nomnombtc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nomnombtc",
+         "id" : 1503969,
+         "login" : "nomnombtc",
+         "organizations_url" : "https://api.github.com/users/nomnombtc/orgs",
+         "received_events_url" : "https://api.github.com/users/nomnombtc/received_events",
+         "repos_url" : "https://api.github.com/users/nomnombtc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nomnombtc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nomnombtc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nomnombtc"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r119028733"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119028733"
+         }
+      },
+      "body" : "Restarting is OK; the chainstate persists between restarts. The issue Xekyo is referring to is about what happens if someone enables the -bip148 switch after the start date (1st August). This pull request could see them frozen on their very own 0-length fork forever (or at least until the BIP148 fork becomes the longest chain).",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-30T07:35:00Z",
+      "diff_hunk" : "@@ -1565,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r119028733",
+      "id" : 119028733,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 40870490,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119028733",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/573356?v=3",
+         "events_url" : "https://api.github.com/users/dooglus/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dooglus/followers",
+         "following_url" : "https://api.github.com/users/dooglus/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dooglus/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dooglus",
+         "id" : 573356,
+         "login" : "dooglus",
+         "organizations_url" : "https://api.github.com/users/dooglus/orgs",
+         "received_events_url" : "https://api.github.com/users/dooglus/received_events",
+         "repos_url" : "https://api.github.com/users/dooglus/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dooglus/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dooglus/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dooglus"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r119076537"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119076537"
+         }
+      },
+      "body" : "Only until the BIP148 fork becomes longer than your frozen chain, though -- the non-BIP148 chain could still be extending faster than the BIP148 chain in the meantime.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-30T11:45:48Z",
+      "diff_hunk" : "@@ -1565,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r119076537",
+      "id" : 119076537,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 40922591,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-30T17:50:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119076537",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "Okay, I'm a NACK on this PR for the following reasons:\r\n\r\n1. No functional tests demonstrating the code behaves as expected.\r\n2. Liklihood of partitioning the p2p network -- if there a chain split, BIP148 nodes will disconnect non-BIP148 nodes due to the non-BIP148 chain being invalid, and even if the BIP148 chain eventually becomes longer, that the non-BIP148 nodes still have an invalid chain to try to pass on still seems to cause disconnection before consensus can be achieved. (This is probably recoverable via a single peer passing on the BIP148 chain between partitions, but it's still pretty poor)\r\n3. Unexpected behaviour when switching to -bip148 after August 1st if the most work chain doesn't support BIP148 -- you won't immediately switch to a BIP148 chain, instead you'll stall until on the non-BIP148 chain until the BIP148 chain has caught up with where you were. This interacts with the previous problem -- if you switch to BIP148 after August, from a non-BIP148 chain with more work, you'll try passing on your chain to BIP148 peers and get disconnected for your troubles.\r\n\r\nI think those are solvable objections, but https://github.com/earonesty/bitcoin/pull/2 has been closed, so...",
+      "created_at" : "2017-05-30T11:53:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304855290",
+      "id" : 304855290,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-30T11:53:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304855290",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "Would it make sense to add the inverse option as well considering this is a risky change. The inverse here would mean something like \"reject all blocks after aug 1 that ARE signalling\". This means the potential gigantic reorg is not a (as) big worry as you can optionally stay on the old chain.",
+      "created_at" : "2017-05-30T16:15:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-304929984",
+      "id" : 304929984,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-30T16:15:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/304929984",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/125062?v=3",
+         "events_url" : "https://api.github.com/users/keis/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/keis/followers",
+         "following_url" : "https://api.github.com/users/keis/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/keis/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/keis",
+         "id" : 125062,
+         "login" : "keis",
+         "organizations_url" : "https://api.github.com/users/keis/orgs",
+         "received_events_url" : "https://api.github.com/users/keis/received_events",
+         "repos_url" : "https://api.github.com/users/keis/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/keis/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/keis/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/keis"
+      }
+   },
+   {
+      "body" : "Concept NACK: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014377.html\r\n\r\nAfter the IRC discussion from Thursday (https://botbot.me/freenode/bitcoin-core-dev/msg/86145297/), I think this PR should be closed.",
+      "created_at" : "2017-05-30T20:50:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305004154",
+      "id" : 305004154,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-30T20:50:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305004154",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "@keis The inverse is actually \"reject the chain where ALL blocks after aug 1 are signalling\" -- otherwise you'd get three chains: one where some signal and some don't (current), one where all signal (bip148), and one where none signal (your proposal). The easiest way to actually do that is to wait until Aug 1, take the first block on the bip148 chain and run \"invalidateblock\" on its hash, but you need to wait until Aug 1 to do that.",
+      "created_at" : "2017-05-31T13:10:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305181584",
+      "id" : 305181584,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-31T13:10:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305181584",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "A UASF, no matter the specific proposal, is built entirely upon user choice: it forces activation because an economic majority of users choose to use it over the other chain, even if the other chain has more work behind it.\r\n \r\nI believe it is the consensus of developers here that user choice is a critically important check on the ecosystem, and a vital part of maintaining the balance of power between various players:\r\n \r\n- Should \"the developers\" try to push an unpopular consensus rule change, user choice not to upgrade will prevent it;\r\n- Should industry try to mandate a change without widespread support, user choice not to upgrade it would prevent it;\r\n- Should miners force an unwanted miner-activated soft fork, proactive user action in invalidating that chain will prevent such a hostile fork; and\r\n- Should miners prevent miner-coordinated activation of otherwise popular and desired technology, the UASF forces the popular outcome in a timely manner.\r\n \r\nUser-activated soft forks, or at least the viable threat of them, is a critical check and balance in the game theory that makes bitcoin work. However it would be naive to believe that the economically significant majority of users have the capability to do much more than run their bitcoin wallets from the distribution channels already in place. In some cases it is ignorance -- not knowing how to build bitcoind, or not having a binary distribution pathway for their platform or environment. In other cases policy may prevent them from doing so -- maybe they are contractually obligated to Ã¢ÂÂrun Bitcoin CoreÃ¢ÂÂ and lawyers need to get involved to decided if a UASF patch on top counts as a contractual breach.\r\n \r\nFor this reason I believe it is the responsibility of Bitcoin Core -- and other wallets -- to provide an activation flag for any and all UASF proposals that have achieved a significant level of community backing, at least to the extent that it is practical to do so, and to make such a change available through the normal distribution channels. Arguing what level of community backing is required that would trigger that obligation of support, and how to measure it is interesting, but irrelevant to this case. Wherever that line is, weÃ¢ÂÂve clearly crossed it already.\r\n \r\nAs maintainers of wallet software we all have an obligation to the bitcoin ecosystem to proactively take actions which preserve user choice and therefore prevent handicapping the game theory incentives that keep bitcoin decentralized, regardless of how we may or may not feel about each proposal.\r\n \r\nBitcoin Core should, as a matter of its responsibilities to the community, properly review the BIP-148 implementation, fix edge cases identified, and merge a BIP-148 flag (off by default). Bitcoin Core should continue to do the same for any UASF proposal that achieves a similar level of user mindshare and interest as BIP-148 does today. To not do so would be harmful to the long-term incentives of bitcoin.",
+      "created_at" : "2017-05-31T15:03:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305215368",
+      "id" : 305215368,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-31T15:03:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305215368",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/69154?v=3",
+         "events_url" : "https://api.github.com/users/maaku/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/maaku/followers",
+         "following_url" : "https://api.github.com/users/maaku/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/maaku/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/maaku",
+         "id" : 69154,
+         "login" : "maaku",
+         "organizations_url" : "https://api.github.com/users/maaku/orgs",
+         "received_events_url" : "https://api.github.com/users/maaku/received_events",
+         "repos_url" : "https://api.github.com/users/maaku/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/maaku/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/maaku/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/maaku"
+      }
+   },
+   {
+      "body" : "@ajtowns You'd have to wait until a fork occurs, not just until 1 August.",
+      "created_at" : "2017-05-31T15:47:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305229922",
+      "id" : 305229922,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-31T15:47:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305229922",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1178779?v=3",
+         "events_url" : "https://api.github.com/users/Kixunil/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/Kixunil/followers",
+         "following_url" : "https://api.github.com/users/Kixunil/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/Kixunil/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/Kixunil",
+         "id" : 1178779,
+         "login" : "Kixunil",
+         "organizations_url" : "https://api.github.com/users/Kixunil/orgs",
+         "received_events_url" : "https://api.github.com/users/Kixunil/received_events",
+         "repos_url" : "https://api.github.com/users/Kixunil/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/Kixunil/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/Kixunil/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/Kixunil"
+      }
+   },
+   {
+      "body" : "At this point, I fully concur with the reasoning of @maaku as described [here](https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305215368).  The idea as described is simply to \"fix edge cases identified, and merge a BIP-148 flag (off by default).\"\r\n\r\nSome notes:  \r\n\r\n1) Function test has been proposed as described at https://github.com/bitcoin/bitcoin/pull/10442/commits/a020b85d213079a36b5f2ae94820b44e08dbbe07 for behavior with -bip148 flag.\r\n\r\n2) At Travis, build passing, there is job canceled and a job failed at the time of this comment, see details at https://travis-ci.org/bitcoin/bitcoin/builds/237618035\r\n\r\nWith fixes as described by @maaku I support the proposal as basically elucidated [here](https://github.com/bitcoin/bitcoin/pull/10442/commits/0f17665ac37fbbf405d8681ec9f4bdd63c77255e) with the additional commits necessary to address edge cases, which should be minimal.\r\n\r\nI also urge skeptics to be aware of the overall benefits of this proposal and to consider them rather than looking only at potential negatives or assuming danger. A balanced view is necessary in order to be able to approach this matter constructively.\r\n\r\n_Edit:_ ACK",
+      "created_at" : "2017-05-31T17:05:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305252815",
+      "id" : 305252815,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-31T18:30:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305252815",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4469280?v=3",
+         "events_url" : "https://api.github.com/users/ABISprotocol/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ABISprotocol/followers",
+         "following_url" : "https://api.github.com/users/ABISprotocol/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ABISprotocol/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ABISprotocol",
+         "id" : 4469280,
+         "login" : "ABISprotocol",
+         "organizations_url" : "https://api.github.com/users/ABISprotocol/orgs",
+         "received_events_url" : "https://api.github.com/users/ABISprotocol/received_events",
+         "repos_url" : "https://api.github.com/users/ABISprotocol/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ABISprotocol/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ABISprotocol/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ABISprotocol"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r119435071"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119435071"
+         }
+      },
+      "body" : "The issue that @dooglus mentioned regarding where someone enables -bip148 switch after start date, presumably August 1, and (assuming) the user experiences a 0-length fork, basically they'd have to delay usage of that wallet until BIP148 becomes the longest chain, or more generally, until there is a winner (if it's not BIP148 they'd have to sweep into another wallet that is supporting winner code).  This is not too hard to address, because you could set it with a date, where if someone is selecting the option after the date of August 1, 2017, then it would throw a warning.  The warning text would be something to the effect of \"Activating this option after Aug. 1, 2017 could result in delays in your being able to synchronize with network until the BIP148 fork becomes longer than your chain.  Do you wish to proceed?\"   Or something of that nature.  \r\n\r\nThe real issue is whether or not the proposal functions and passes as it was designed and intended and can be presented (merged) as an option (not default).  It can be, as I think @maaku pointed out in discussion, by addressing certain edge cases this could be merged into core.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-05-31T18:21:51Z",
+      "diff_hunk" : "@@ -1565,6 +1566,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd\n         flags |= SCRIPT_VERIFY_NULLDUMMY;\n     }\n \n+    if (gArgs.GetBoolArg(\"-bip148\", DEFAULT_BIP148)) {\n+        // BIP148 mandatory segwit signalling.\n+        int64_t nMedianTimePast = pindex->GetMedianTimePast();\n+        if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC\n+                (nMedianTimePast <= 1510704000) &&  // Wed 15 Nov 2017 00:00:00 UTC\n+                (!IsWitnessLockedIn(pindex->pprev, chainparams.GetConsensus()) &&  // Segwit is not locked in\n+                 !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) )   // and is not active.\n+        {\n+            bool fVersionBits = (pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;\n+            bool fSegbit = (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0;\n+            if (!(fVersionBits && fSegbit)) {\n+                return state.DoS(0, error(\"ConnectBlock(): relayed block must signal for segwit\"), REJECT_INVALID, \"bad-no-segwit\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r119435071",
+      "id" : 119435071,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 23,
+      "path" : "src/validation.cpp",
+      "position" : 24,
+      "pull_request_review_id" : 41314619,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-05-31T18:21:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119435071",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/4469280?v=3",
+         "events_url" : "https://api.github.com/users/ABISprotocol/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ABISprotocol/followers",
+         "following_url" : "https://api.github.com/users/ABISprotocol/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ABISprotocol/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ABISprotocol",
+         "id" : 4469280,
+         "login" : "ABISprotocol",
+         "organizations_url" : "https://api.github.com/users/ABISprotocol/orgs",
+         "received_events_url" : "https://api.github.com/users/ABISprotocol/received_events",
+         "repos_url" : "https://api.github.com/users/ABISprotocol/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ABISprotocol/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ABISprotocol/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ABISprotocol"
+      }
+   },
+   {
+      "body" : "If it is easy to do (I don't really know that part of the code) I would suggest a NODE_BIP148 service bit and try to maintain two peers with that bit set. If implementing this is non-trivial, I would not demand it however, since partitioned networks can be manually merged with a single bridge.",
+      "created_at" : "2017-05-31T19:16:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305288897",
+      "id" : 305288897,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-31T19:16:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305288897",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/69154?v=3",
+         "events_url" : "https://api.github.com/users/maaku/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/maaku/followers",
+         "following_url" : "https://api.github.com/users/maaku/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/maaku/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/maaku",
+         "id" : 69154,
+         "login" : "maaku",
+         "organizations_url" : "https://api.github.com/users/maaku/orgs",
+         "received_events_url" : "https://api.github.com/users/maaku/received_events",
+         "repos_url" : "https://api.github.com/users/maaku/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/maaku/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/maaku/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/maaku"
+      }
+   },
+   {
+      "body" : "Concept ACK.\r\n\r\nI've also prepared a rewritten branch (`bip148`) on my repo https://github.com/bitcoin/bitcoin/compare/master...luke-jr:bip148\r\n\r\nThis branch does a few things:\r\n\r\n* Replaces the extra \"UASF-Segwit:0.3(BIP148)/\" version component with a simple \"+BIP148\" (or \"!BIP148\" if disabled) UA comment. This uses \"+\" or \"!\" characters which are forbidden by Core (but not BIP 14) in `-uacomment` options to avoid confused users setting up their node incorrectly.\r\n* Adds a `NODE_BIP148` service bit used exclusively for ensuring at least some peers are also enforcing BIP148. Currently it uses temporary-experiments bit 27. I am uncertain if a permanent service bit *should* be assigned, since this will be useless once the risk of chain splitting is past.\r\n* Added logic to rewind the blockchain at startup when/if a user upgrades from a non-BIP148 node which had an invalid chain as its tip.\r\n* Replaced the conditional DoS banning on invalid prev-block. This will never ban for invalid prev-block, since that condition is possible for any softfork, and the cost of producing invalid blocks is prohibitively high enough to prevent trying to abuse this for DoS.\r\n\r\n@earonesty Please review my branch and overwrite your own when satisfied.",
+      "created_at" : "2017-05-31T22:46:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305339598",
+      "id" : 305339598,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-05-31T22:46:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305339598",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Concept ACK using a temporary-experimental service bit. That is the correct approach here, I believe, as it is basically only needed from Aug 1st until resolution.",
+      "created_at" : "2017-06-01T00:03:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305351674",
+      "id" : 305351674,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-06-01T00:03:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305351674",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/69154?v=3",
+         "events_url" : "https://api.github.com/users/maaku/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/maaku/followers",
+         "following_url" : "https://api.github.com/users/maaku/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/maaku/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/maaku",
+         "id" : 69154,
+         "login" : "maaku",
+         "organizations_url" : "https://api.github.com/users/maaku/orgs",
+         "received_events_url" : "https://api.github.com/users/maaku/received_events",
+         "repos_url" : "https://api.github.com/users/maaku/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/maaku/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/maaku/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/maaku"
+      }
+   },
+   {
+      "body" : "At first blush, luke-jr's proposed changes look like they should address all my concerns; haven't compiled and tested yet though.",
+      "created_at" : "2017-06-01T04:21:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305385163",
+      "id" : 305385163,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-06-01T04:21:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305385163",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r119549025"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119549025"
+         }
+      },
+      "body" : "Should be \"-reorgdefencebip148\"\r\nCore has the responsibility of providing users with the safest software. If BIP148 has a risk of wiping out blocks accepted by core, then it is also possible for miners to maliciously steer core nodes away from BIP148 for 1 or 2 blocks (in the case where the legacy chain has been reorged onto BIP148). At this point it is irresponsible for core to not have a solution ready \"please enable -reorgdefencebip148 flag\" and instead only have the option of scrambling to write, test, and release an emergency patch and say \"users please download this emergency release\".\r\n\r\nIf we're going to have more UASFs, which seems like a common opinion, reorg protection has to be considered and supported by core.\r\n\r\nHopefully this puts the bip148 in core discussion into perspective.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-06-01T07:54:48Z",
+      "diff_hunk" : "@@ -456,6 +456,9 @@ Set maximum size of high\\-priority/low\\-fee transactions in bytes\n .IP\n Set lowest fee rate (in BTC/kB) for transactions to be included in block\n creation. (default: 0.00001)\n+\\fB\\-bip148\\fR",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r119549025",
+      "id" : 119549025,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 4,
+      "path" : "doc/man/bitcoind.1",
+      "position" : 4,
+      "pull_request_review_id" : 41437256,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-06-01T08:04:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/119549025",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/29116498?v=3",
+         "events_url" : "https://api.github.com/users/dispardon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dispardon/followers",
+         "following_url" : "https://api.github.com/users/dispardon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dispardon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dispardon",
+         "id" : 29116498,
+         "login" : "dispardon",
+         "organizations_url" : "https://api.github.com/users/dispardon/orgs",
+         "received_events_url" : "https://api.github.com/users/dispardon/received_events",
+         "repos_url" : "https://api.github.com/users/dispardon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dispardon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dispardon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dispardon"
+      }
+   },
+   {
+      "body" : "In src/net_processing.cpp:ProcessMessage the \"missing prev block\" check has an additional DoS test that eventually gets triggered if the invalid chain reaches 50 blocks:\r\n\r\n```c++\r\n            if (nodestate->nUnconnectingHeaders % MAX_UNCONNECTING_HEADERS == 0) {\r\n                Misbehaving(pfrom->GetId(), 20);\r\n            }\r\n```\r\n\r\nThe \"if\" triggers every 10 blocks, and the Misbehaving() increments the ban score by 20 until it hits a default threshold of 100. So this should be enough to start partitioning the network if a UASF chain split lasts as little as 9 hours. This code was introduced in #8305 for context.\r\n\r\nWith the above code commented out, and the DoS score of \"prev block invalid\" changed from 100 to 0, the BIP148 and non-BIP148 nodes in my functional tests remain fully connected even if the chain split lasts for over 500 blocks.",
+      "created_at" : "2017-06-01T09:57:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305447398",
+      "id" : 305447398,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-06-01T09:57:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305447398",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/127186?v=3",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "Why do you \"return state.DoS(0,\" for all blocks, not just segwit invalid?\n\nOn Wed, May 31, 2017 at 6:47 PM, Luke Dashjr <notifications@github.com>\nwrote:\n\n> Concept ACK.\n>\n> I've also prepared a rewritten branch (bip148) on my repo\n> master...luke-jr:bip148\n> <https://github.com/bitcoin/bitcoin/compare/master...luke-jr:bip148>\n>\n> This branch does a few things:\n>\n>    - Replaces the extra \"UASF-Segwit:0.3(BIP148)/\" version component with\n>    a simple \"+BIP148\" (or \"!BIP148\" if disabled) UA comment. This uses \"+\" or\n>    \"!\" characters which are forbidden by Core (but not BIP 14) in\n>    -uacomment options to avoid confused users setting up their node\n>    incorrectly.\n>    - Adds a NODE_BIP148 service bit used exclusively for ensuring at\n>    least some peers are also enforcing BIP148. Currently it uses\n>    temporary-experiments bit 27. I am uncertain if a permanent service bit\n>    *should* be assigned, since this will be useless once the risk of\n>    chain splitting is past.\n>    - Added logic to rewind the blockchain at startup when/if a user\n>    upgrades from a non-BIP148 node which had an invalid chain as its tip.\n>    - Replaced the conditional DoS banning on invalid prev-block. This\n>    will never ban for invalid prev-block, since that condition is possible for\n>    any softfork, and the cost of producing invalid blocks is prohibitively\n>    high enough to prevent trying to abuse this for DoS.\n>\n> Ã¢ÂÂ\n> You are receiving this because you modified the open/close state.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305339598>,\n> or mute the thread\n> <https://github.com/notifications/unsubscribe-auth/AADGUcxVIVlgKvHCa5UKjtdIIgsfq1iHks5r_e3lgaJpZM4Ni0t5>\n> .\n>\n",
+      "created_at" : "2017-06-03T01:00:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-305939600",
+      "id" : 305939600,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-06-03T01:00:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/305939600",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/50769?v=3",
+         "events_url" : "https://api.github.com/users/earonesty/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/earonesty/followers",
+         "following_url" : "https://api.github.com/users/earonesty/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/earonesty/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/earonesty",
+         "id" : 50769,
+         "login" : "earonesty",
+         "organizations_url" : "https://api.github.com/users/earonesty/orgs",
+         "received_events_url" : "https://api.github.com/users/earonesty/received_events",
+         "repos_url" : "https://api.github.com/users/earonesty/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/earonesty/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/earonesty/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/earonesty"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r120330001"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/120330001"
+         }
+      },
+      "body" : "* 1 orphaned block happens about once a week\r\n* You are suggesting a completely different functionality\r\n* More info: [BIP148](https://github.com/bitcoin/bips/blob/master/bip-0148.mediawiki)",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-06-06T11:34:19Z",
+      "diff_hunk" : "@@ -456,6 +456,9 @@ Set maximum size of high\\-priority/low\\-fee transactions in bytes\n .IP\n Set lowest fee rate (in BTC/kB) for transactions to be included in block\n creation. (default: 0.00001)\n+\\fB\\-bip148\\fR",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r120330001",
+      "id" : 120330001,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 4,
+      "path" : "doc/man/bitcoind.1",
+      "position" : 4,
+      "pull_request_review_id" : 42282288,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-06-06T11:34:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/120330001",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/42750?v=3",
+         "events_url" : "https://api.github.com/users/eordano/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/eordano/followers",
+         "following_url" : "https://api.github.com/users/eordano/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/eordano/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/eordano",
+         "id" : 42750,
+         "login" : "eordano",
+         "organizations_url" : "https://api.github.com/users/eordano/orgs",
+         "received_events_url" : "https://api.github.com/users/eordano/received_events",
+         "repos_url" : "https://api.github.com/users/eordano/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/eordano/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/eordano/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/eordano"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r120984937"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/120984937"
+         }
+      },
+      "body" : "I'm not suggesting different functionality. Sorry if I wasn't clear. What I am suggesting is that the best way to protect users from a reorg is by switching to a segwit signaling chain (This PR).\r\n\r\nIt's best to be in a situation where users only need to switch a simple flag rather than download a brand new (maybe rushed) release.\r\n\r\nBut some are fighting the idea of bip148 on bitcoind. So what I am suggesting is a simple name change to put things into perspective to avoid that argument.\r\n\r\nThe perspective being: Users need a flag to prevent reorg so activating bip148 isn't about agreeing with bip148 but instead to protect their node from reorg.",
+      "commit_id" : "7f92d07958ee5c5449842b31d1a5843c432fe79d",
+      "created_at" : "2017-06-08T20:03:07Z",
+      "diff_hunk" : "@@ -456,6 +456,9 @@ Set maximum size of high\\-priority/low\\-fee transactions in bytes\n .IP\n Set lowest fee rate (in BTC/kB) for transactions to be included in block\n creation. (default: 0.00001)\n+\\fB\\-bip148\\fR",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#discussion_r120984937",
+      "id" : 120984937,
+      "original_commit_id" : "0f17665ac37fbbf405d8681ec9f4bdd63c77255e",
+      "original_position" : 4,
+      "path" : "doc/man/bitcoind.1",
+      "position" : 4,
+      "pull_request_review_id" : 42997988,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10442",
+      "updated_at" : "2017-06-09T04:26:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/120984937",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/29116498?v=3",
+         "events_url" : "https://api.github.com/users/dispardon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dispardon/followers",
+         "following_url" : "https://api.github.com/users/dispardon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dispardon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dispardon",
+         "id" : 29116498,
+         "login" : "dispardon",
+         "organizations_url" : "https://api.github.com/users/dispardon/orgs",
+         "received_events_url" : "https://api.github.com/users/dispardon/received_events",
+         "repos_url" : "https://api.github.com/users/dispardon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dispardon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dispardon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dispardon"
+      }
+   },
+   {
+      "body" : "BIP 148 was a big success.  Thanks to all involved.  I think this PR can be closed now.",
+      "created_at" : "2017-08-10T04:32:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10442#issuecomment-321448218",
+      "id" : 321448218,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10442",
+      "updated_at" : "2017-08-10T04:32:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/321448218",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/858454?v=4",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   }
+]

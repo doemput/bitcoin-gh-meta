@@ -1,0 +1,838 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43574695"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43574695"
+         }
+      },
+      "body" : "NACK defaulting nSigOps to 0 when we depend on it being accurate.",
+      "commit_id" : "b0fb264e84600562c9c50c07118fc57b3d7bdfcf",
+      "created_at" : "2015-10-31T18:30:00Z",
+      "diff_hunk" : "@@ -78,7 +80,8 @@ class CTxMemPoolEntry\n \n public:\n     CTxMemPoolEntry(const CTransaction& _tx, const CAmount& _nFee,\n-                    int64_t _nTime, double _dPriority, unsigned int _nHeight, bool poolHasNoInputsOf = false);\n+                    int64_t _nTime, double _dPriority, unsigned int _nHeight, bool poolHasNoInputsOf = false,\n+                    unsigned int nSigOps = 0);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43574695",
+      "id" : 43574695,
+      "original_commit_id" : "8f84ec4230a6845dc42f0c1b388074bd6cc38085",
+      "original_position" : 15,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898",
+      "updated_at" : "2015-11-19T18:56:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43574695",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43574702"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43574702"
+         }
+      },
+      "body" : "Why change exception to returning NULL here? IMO this should be an independent PR.",
+      "commit_id" : "b0fb264e84600562c9c50c07118fc57b3d7bdfcf",
+      "created_at" : "2015-10-31T18:30:55Z",
+      "diff_hunk" : "@@ -351,8 +296,10 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)\n         pblocktemplate->vTxSigOps[0] = GetLegacySigOpCount(pblock->vtx[0]);\n \n         CValidationState state;\n-        if (!TestBlockValidity(state, *pblock, pindexPrev, false, false))\n-            throw std::runtime_error(\"CreateNewBlock(): TestBlockValidity failed\");\n+        if (!TestBlockValidity(state, *pblock, pindexPrev, false, false)) {\n+            LogPrintf(\"ERROR: CNB TestBlockValidity failed: %s\\n\",FormatStateMessage(state));\n+            return NULL;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43574702",
+      "id" : 43574702,
+      "original_commit_id" : "8f84ec4230a6845dc42f0c1b388074bd6cc38085",
+      "original_position" : 378,
+      "path" : "src/miner.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898",
+      "updated_at" : "2015-11-19T18:56:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43574702",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43577964"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43577964"
+         }
+      },
+      "body" : "ok i agree, it makes more sense to default it high.",
+      "commit_id" : "b0fb264e84600562c9c50c07118fc57b3d7bdfcf",
+      "created_at" : "2015-11-01T01:22:16Z",
+      "diff_hunk" : "@@ -78,7 +80,8 @@ class CTxMemPoolEntry\n \n public:\n     CTxMemPoolEntry(const CTransaction& _tx, const CAmount& _nFee,\n-                    int64_t _nTime, double _dPriority, unsigned int _nHeight, bool poolHasNoInputsOf = false);\n+                    int64_t _nTime, double _dPriority, unsigned int _nHeight, bool poolHasNoInputsOf = false,\n+                    unsigned int nSigOps = 0);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43577964",
+      "id" : 43577964,
+      "original_commit_id" : "8f84ec4230a6845dc42f0c1b388074bd6cc38085",
+      "original_position" : 15,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898",
+      "updated_at" : "2015-11-19T18:56:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43577964",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43578050"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43578050"
+         }
+      },
+      "body" : "It does not make sense to default it period. Note the exact sigop count is part of the GBT response.",
+      "commit_id" : "b0fb264e84600562c9c50c07118fc57b3d7bdfcf",
+      "created_at" : "2015-11-01T01:38:28Z",
+      "diff_hunk" : "@@ -78,7 +80,8 @@ class CTxMemPoolEntry\n \n public:\n     CTxMemPoolEntry(const CTransaction& _tx, const CAmount& _nFee,\n-                    int64_t _nTime, double _dPriority, unsigned int _nHeight, bool poolHasNoInputsOf = false);\n+                    int64_t _nTime, double _dPriority, unsigned int _nHeight, bool poolHasNoInputsOf = false,\n+                    unsigned int nSigOps = 0);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43578050",
+      "id" : 43578050,
+      "original_commit_id" : "8f84ec4230a6845dc42f0c1b388074bd6cc38085",
+      "original_position" : 15,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898",
+      "updated_at" : "2015-11-19T18:56:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43578050",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43768315"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43768315"
+         }
+      },
+      "body" : "OK agreed.  The default is just for the tests, I think for now it makes sense to remove all defaults from the constructor and just make the tests fill them in.  Unfortunately there are 2 other pulls open which also add arguments to the constructor and require changing the tests.  I'm going to hold off updating the tests in this pull until we're a bit closer assuming those might be merged first.",
+      "commit_id" : "b0fb264e84600562c9c50c07118fc57b3d7bdfcf",
+      "created_at" : "2015-11-03T16:16:02Z",
+      "diff_hunk" : "@@ -78,7 +80,8 @@ class CTxMemPoolEntry\n \n public:\n     CTxMemPoolEntry(const CTransaction& _tx, const CAmount& _nFee,\n-                    int64_t _nTime, double _dPriority, unsigned int _nHeight, bool poolHasNoInputsOf = false);\n+                    int64_t _nTime, double _dPriority, unsigned int _nHeight, bool poolHasNoInputsOf = false,\n+                    unsigned int nSigOps = 0);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43768315",
+      "id" : 43768315,
+      "original_commit_id" : "8f84ec4230a6845dc42f0c1b388074bd6cc38085",
+      "original_position" : 15,
+      "path" : "src/txmempool.h",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898",
+      "updated_at" : "2015-11-19T18:56:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43768315",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43768487"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43768487"
+         }
+      },
+      "body" : "The idea was this is now more likely to happen, and it seemed to meet that the JSON error from GetBlockTemplate would still be sufficient notification, and it would be better to not bring the node down.  However, I'm happy to leave the existing behavior if people think crashing the node is the right outcome.",
+      "commit_id" : "b0fb264e84600562c9c50c07118fc57b3d7bdfcf",
+      "created_at" : "2015-11-03T16:17:28Z",
+      "diff_hunk" : "@@ -351,8 +296,10 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)\n         pblocktemplate->vTxSigOps[0] = GetLegacySigOpCount(pblock->vtx[0]);\n \n         CValidationState state;\n-        if (!TestBlockValidity(state, *pblock, pindexPrev, false, false))\n-            throw std::runtime_error(\"CreateNewBlock(): TestBlockValidity failed\");\n+        if (!TestBlockValidity(state, *pblock, pindexPrev, false, false)) {\n+            LogPrintf(\"ERROR: CNB TestBlockValidity failed: %s\\n\",FormatStateMessage(state));\n+            return NULL;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43768487",
+      "id" : 43768487,
+      "original_commit_id" : "8f84ec4230a6845dc42f0c1b388074bd6cc38085",
+      "original_position" : 378,
+      "path" : "src/miner.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898",
+      "updated_at" : "2015-11-19T18:56:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43768487",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "OK, this has been rewritten to use `CTxMemPoolEntry::GetPriority` for the priority sort.\r\nThis will make it very fast even when maintaining a priority space in the block.  So the commit changing the default blockprioritysize has been removed.  \r\n\r\nOf course until #6357 is merged or some other decision is taken regarding priority, it will not sort by an accurate measure of priority.",
+      "created_at" : "2015-11-03T16:27:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-153405578",
+      "id" : 153405578,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-11-03T16:27:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/153405578",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43779373"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43779373"
+         }
+      },
+      "body" : "Exceptions here should not crash the node... it just gets returned as a nicer JSON-RPC error.",
+      "commit_id" : "b0fb264e84600562c9c50c07118fc57b3d7bdfcf",
+      "created_at" : "2015-11-03T17:33:24Z",
+      "diff_hunk" : "@@ -351,8 +296,10 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)\n         pblocktemplate->vTxSigOps[0] = GetLegacySigOpCount(pblock->vtx[0]);\n \n         CValidationState state;\n-        if (!TestBlockValidity(state, *pblock, pindexPrev, false, false))\n-            throw std::runtime_error(\"CreateNewBlock(): TestBlockValidity failed\");\n+        if (!TestBlockValidity(state, *pblock, pindexPrev, false, false)) {\n+            LogPrintf(\"ERROR: CNB TestBlockValidity failed: %s\\n\",FormatStateMessage(state));\n+            return NULL;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r43779373",
+      "id" : 43779373,
+      "original_commit_id" : "8f84ec4230a6845dc42f0c1b388074bd6cc38085",
+      "original_position" : 378,
+      "path" : "src/miner.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898",
+      "updated_at" : "2015-11-19T18:56:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43779373",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "I addressed @luke-jr 's comment about changing the method of failure return.  I still modified it to give some extra state info.   That commit and other fixes will get squashed.\r\n\r\nAmong the remaining outstanding items is to fix the constructor for CTxMemPoolEntry to not have any default arguments.  It would be nice to know a merge order since this will conflict with #6357 and #6915 and involves tedious updating of a bunch of tests.\r\n",
+      "created_at" : "2015-11-12T14:02:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-156109463",
+      "id" : 156109463,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-11-12T14:02:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156109463",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "I rebased this and squashed fixes for comments so far.\r\n\r\nI rebased it on top of #7008, because I needed to pick some path forward on how priority would be addressed in this PR.  The first 3 commits are therefore part of that pull and not this one.  If we decide to merge #6357 as well, then it should be an easy change.\r\n\r\nI will continue testing, but I don't have any other changes planned right now.\r\n",
+      "created_at" : "2015-11-18T04:53:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-157604418",
+      "id" : 157604418,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-11-18T04:53:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157604418",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Thanks @sdaftuar for finding a bug in the way I was doing PrioritiseTransaction.   There should probably be RPC tests for those functions.",
+      "created_at" : "2015-11-18T20:10:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-157847565",
+      "id" : 157847565,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-11-18T20:10:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157847565",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Apologies for all the churn.  Squashed again and rebased off a slightly modified index @sdaftuar created for #7062.   This introduces one more minor difference from the original code in that fee rates are compared as doubles now.  \r\n\r\nIf I correct for these differences:\r\n- using a score index which compares fee rates not doubles\r\n- make the original code use the hash tie breakers\r\n- search up 5000 txs to fill the final 1000 bytes\r\n- implement #6357 to correctly compute priority\r\n\r\nThen I generate the exact same blocks as the old code modulo a few rare cases where double imprecision in the different priority calculation causes tx reordering in the priority space.\r\n",
+      "created_at" : "2015-11-19T18:33:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-158148816",
+      "id" : 158148816,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-11-19T18:33:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158148816",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r45600732"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45600732"
+         }
+      },
+      "body" : "can you ```strprintf(\"%: TestBlockValidity failed: %\", __func__, ...``` instead?",
+      "commit_id" : "b0fb264e84600562c9c50c07118fc57b3d7bdfcf",
+      "created_at" : "2015-11-23T13:06:51Z",
+      "diff_hunk" : "@@ -350,8 +287,9 @@ CBlockTemplate* CreateNewBlock(const CChainParams& chainparams, const CScript& s\n         pblocktemplate->vTxSigOps[0] = GetLegacySigOpCount(pblock->vtx[0]);\n \n         CValidationState state;\n-        if (!TestBlockValidity(state, chainparams, *pblock, pindexPrev, false, false))\n-            throw std::runtime_error(\"CreateNewBlock(): TestBlockValidity failed\");\n+        if (!TestBlockValidity(state, chainparams, *pblock, pindexPrev, false, false)) {\n+            throw std::runtime_error(\"CreateNewBlock(): TestBlockValidity failed: \" + FormatStateMessage(state));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#discussion_r45600732",
+      "id" : 45600732,
+      "original_commit_id" : "b0fb264e84600562c9c50c07118fc57b3d7bdfcf",
+      "original_position" : 378,
+      "path" : "src/miner.cpp",
+      "position" : 378,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6898",
+      "updated_at" : "2015-11-23T13:06:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45600732",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "Addressed @jtimon's nit.",
+      "created_at" : "2015-11-24T13:43:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-159270773",
+      "id" : 159270773,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-11-24T13:43:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159270773",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Needs rebase.",
+      "created_at" : "2015-11-29T08:20:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-160391129",
+      "id" : 160391129,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-11-29T08:20:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160391129",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "body" : "TestBlockValidity should probably be done in a background thread so that it does not delay GBT since TestBlockValidity is just a sanity check.",
+      "created_at" : "2015-11-29T10:00:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-160395642",
+      "id" : 160395642,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-11-29T10:00:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160395642",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3298484?v=3",
+         "events_url" : "https://api.github.com/users/jameshilliard/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jameshilliard/followers",
+         "following_url" : "https://api.github.com/users/jameshilliard/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jameshilliard/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jameshilliard",
+         "id" : 3298484,
+         "login" : "jameshilliard",
+         "organizations_url" : "https://api.github.com/users/jameshilliard/orgs",
+         "received_events_url" : "https://api.github.com/users/jameshilliard/received_events",
+         "repos_url" : "https://api.github.com/users/jameshilliard/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jameshilliard/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jameshilliard/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jameshilliard"
+      }
+   },
+   {
+      "body" : "rebased",
+      "created_at" : "2015-11-30T13:27:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-160626443",
+      "id" : 160626443,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-11-30T13:27:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160626443",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Concept ACK. Some tested-ack. Will test more now.\r\n\r\nEdit: Hm. needs some not totally trivial rebasing.",
+      "created_at" : "2015-12-01T10:09:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-160923054",
+      "id" : 160923054,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-12-01T10:18:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160923054",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "ut ACK\r\n",
+      "created_at" : "2015-12-01T12:06:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-160948386",
+      "id" : 160948386,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-12-01T12:06:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160948386",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/494411?v=3",
+         "events_url" : "https://api.github.com/users/jgarzik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jgarzik/followers",
+         "following_url" : "https://api.github.com/users/jgarzik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jgarzik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jgarzik",
+         "id" : 494411,
+         "login" : "jgarzik",
+         "organizations_url" : "https://api.github.com/users/jgarzik/orgs",
+         "received_events_url" : "https://api.github.com/users/jgarzik/received_events",
+         "repos_url" : "https://api.github.com/users/jgarzik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jgarzik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jgarzik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jgarzik"
+      }
+   },
+   {
+      "body" : "Needs rebase again...",
+      "created_at" : "2015-12-01T12:34:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-160955353",
+      "id" : 160955353,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-12-01T12:34:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160955353",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "that was an expected merge conflict, will rebase shortly\r\n\r\n@laanwj my warning about not having mined, was just a literal warning because i don't have sufficient hashpower to mine on mainnet.  I have created 1000s upon 1000s of block templates that all pass TestBlockValidity both in code running this pull live for the past 2 weeks (and prior iterations for weeks before that) and in historical simulation over 6 weeks of data.",
+      "created_at" : "2015-12-01T15:00:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-160991225",
+      "id" : 160991225,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-12-01T15:00:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160991225",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "ACK",
+      "created_at" : "2015-12-01T16:26:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-161021659",
+      "id" : 161021659,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-12-01T16:26:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161021659",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "rebased",
+      "created_at" : "2015-12-01T17:10:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-161035857",
+      "id" : 161035857,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-12-01T17:10:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161035857",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "This was not ready for merging. It needs #6357 first.",
+      "created_at" : "2015-12-01T20:18:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-161083652",
+      "id" : 161083652,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-12-01T20:18:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161083652",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "> This was not ready for merging. It needs #6357 first.\r\n\r\n#7008, which took the place of #6537 was merged\r\n",
+      "created_at" : "2015-12-02T09:26:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6898#issuecomment-161233018",
+      "id" : 161233018,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6898",
+      "updated_at" : "2015-12-02T09:26:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161233018",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

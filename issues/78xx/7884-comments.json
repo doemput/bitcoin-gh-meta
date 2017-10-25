@@ -1,0 +1,536 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r59951103"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59951103"
+         }
+      },
+      "body" : "A test for !nShift here would prevent copying everything upto the first match to itself",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-15T22:42:39Z",
+      "diff_hunk" : "@@ -571,16 +571,34 @@ class CScript : public CScriptBase\n         if (b.empty())\n             return nFound;\n         iterator pc = begin();\n+        iterator copied = begin();\n+        size_t nShift = 0;\n         opcodetype opcode;\n         do\n         {\n             while (end() - pc >= (long)b.size() && memcmp(&pc[0], &b[0], b.size()) == 0)\n             {\n-                pc = erase(pc, pc + b.size());\n+                // Lazy copy-in-place if there is a match:\n+                while (copied != pc-nShift) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r59951103",
+      "id" : 59951103,
+      "original_commit_id" : "ad1fa51e8da43d60a8fa3bb4e45be01d6f6f43c3",
+      "original_position" : 13,
+      "path" : "src/script/script.h",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-18T19:38:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59951103",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1047859?v=3",
+         "events_url" : "https://api.github.com/users/kazcw/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kazcw/followers",
+         "following_url" : "https://api.github.com/users/kazcw/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kazcw/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kazcw",
+         "id" : 1047859,
+         "login" : "kazcw",
+         "organizations_url" : "https://api.github.com/users/kazcw/orgs",
+         "received_events_url" : "https://api.github.com/users/kazcw/received_events",
+         "repos_url" : "https://api.github.com/users/kazcw/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kazcw/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kazcw/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kazcw"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r59951261"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59951261"
+         }
+      },
+      "body" : "I think this changes the result of FindAndDelete for invalid CScripts that end in a pushdata without enough data. Replacing \"pc\" with \"end()\" would keep the original behavior in this case.",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-15T22:44:34Z",
+      "diff_hunk" : "@@ -571,16 +571,34 @@ class CScript : public CScriptBase\n         if (b.empty())\n             return nFound;\n         iterator pc = begin();\n+        iterator copied = begin();\n+        size_t nShift = 0;\n         opcodetype opcode;\n         do\n         {\n             while (end() - pc >= (long)b.size() && memcmp(&pc[0], &b[0], b.size()) == 0)\n             {\n-                pc = erase(pc, pc + b.size());\n+                // Lazy copy-in-place if there is a match:\n+                while (copied != pc-nShift) {\n+                    *copied = *(copied+nShift);\n+                    ++copied;\n+                }\n+                pc += b.size();\n+                nShift += b.size();\n                 ++nFound;\n             }\n         }\n         while (GetOp(pc, opcode));\n+\n+        if (nShift > 0)\n+        {\n+            while (copied != pc-nShift) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r59951261",
+      "id" : 59951261,
+      "original_commit_id" : "ad1fa51e8da43d60a8fa3bb4e45be01d6f6f43c3",
+      "original_position" : 26,
+      "path" : "src/script/script.h",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-18T19:38:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/59951261",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1047859?v=3",
+         "events_url" : "https://api.github.com/users/kazcw/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kazcw/followers",
+         "following_url" : "https://api.github.com/users/kazcw/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kazcw/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kazcw",
+         "id" : 1047859,
+         "login" : "kazcw",
+         "organizations_url" : "https://api.github.com/users/kazcw/orgs",
+         "received_events_url" : "https://api.github.com/users/kazcw/received_events",
+         "repos_url" : "https://api.github.com/users/kazcw/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kazcw/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kazcw/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kazcw"
+      }
+   },
+   {
+      "body" : "Concept ACK on the improvement, but there are maybe a few more edge cases to test:\r\n* Removing a byte sequence that spans multiple opcodes\r\n* Trying to remove a sequence that only occurs in the middle of opcodes (which doesn't work)\r\n* Trying to remove \"OP_0 OP_1\" from \"OP_0 OP_0 OP_1 OP_1\" leaves \"OP_0 OP_1\" (because we don't go backward after a replacement)\r\n",
+      "created_at" : "2016-04-16T09:30:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#issuecomment-210780778",
+      "id" : 210780778,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7884",
+      "updated_at" : "2016-04-16T09:30:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/210780778",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Added unit tests as suggested by @sipa.\r\nFixed to be compatible with invalid CScripts that end with partial PUSHDATA's (and added unit tests) as suggested by @kazcw \r\n\r\nAnd saved a couple of lines of code (and probably made faster, but copying is never done in normal operation with reasonable transactions) by switching to using std::copy instead of an explicit loop.\r\n\r\nThanks for the code reviews!\r\n",
+      "created_at" : "2016-04-18T19:42:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#issuecomment-211546344",
+      "id" : 211546344,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7884",
+      "updated_at" : "2016-04-18T19:42:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/211546344",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/331997?v=3",
+         "events_url" : "https://api.github.com/users/gavinandresen/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gavinandresen/followers",
+         "following_url" : "https://api.github.com/users/gavinandresen/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gavinandresen/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gavinandresen",
+         "id" : 331997,
+         "login" : "gavinandresen",
+         "organizations_url" : "https://api.github.com/users/gavinandresen/orgs",
+         "received_events_url" : "https://api.github.com/users/gavinandresen/received_events",
+         "repos_url" : "https://api.github.com/users/gavinandresen/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gavinandresen/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gavinandresen/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gavinandresen"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60159788"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60159788"
+         }
+      },
+      "body" : "I'd prefer to not have tests that check that FindAndDelete do exactly what we currently do when called against invalid scripts when we dont require that in any callers.",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-19T00:58:12Z",
+      "diff_hunk" : "@@ -1051,4 +1051,121 @@ BOOST_AUTO_TEST_CASE(script_GetScriptAsm)\n     BOOST_CHECK_EQUAL(derSig + \"83 \" + pubKey, ScriptToAsmStr(CScript() << ToByteVector(ParseHex(derSig + \"83\")) << vchPubKey));\n }\n \n+static CScript\n+ScriptFromHex(const char* hex)\n+{\n+    std::vector<unsigned char> data = ParseHex(hex);\n+    return CScript(data.begin(), data.end());\n+}\n+\n+\n+BOOST_AUTO_TEST_CASE(script_FindAndDelete)\n+{\n+    // Exercise the FindAndDelete functionality\n+    CScript s;\n+    CScript d;\n+    CScript expect;\n+\n+    s = CScript() << OP_1 << OP_2;\n+    d = CScript(); // delete nothing should be a no-op\n+    expect = s;\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 0);\n+    BOOST_CHECK(s == expect);\n+\n+    s = CScript() << OP_1 << OP_2 << OP_3;\n+    d = CScript() << OP_2;\n+    expect = CScript() << OP_1 << OP_3;\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 1);\n+    BOOST_CHECK(s == expect);\n+\n+    s = CScript() << OP_3 << OP_1 << OP_3 << OP_3 << OP_4 << OP_3;\n+    d = CScript() << OP_3;\n+    expect = CScript() << OP_1 << OP_4;\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 4);\n+    BOOST_CHECK(s == expect);\n+\n+    s = ScriptFromHex(\"0302ff03\"); // PUSH 0x02ff03 onto stack\n+    d = ScriptFromHex(\"0302ff03\");\n+    expect = CScript();\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 1);\n+    BOOST_CHECK(s == expect);\n+\n+    s = ScriptFromHex(\"0302ff030302ff03\"); // PUSH 0x2ff03 PUSH 0x2ff03\n+    d = ScriptFromHex(\"0302ff03\");\n+    expect = CScript();\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 2);\n+    BOOST_CHECK(s == expect);\n+\n+    s = ScriptFromHex(\"0302ff030302ff03\");\n+    d = ScriptFromHex(\"02\");\n+    expect = s; // FindAndDelete matches entire opcodes\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 0);\n+    BOOST_CHECK(s == expect);\n+\n+    s = ScriptFromHex(\"0302ff030302ff03\");\n+    d = ScriptFromHex(\"ff\");\n+    expect = s;\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 0);\n+    BOOST_CHECK(s == expect);\n+\n+    // This is an odd edge case: strip of the push-three-bytes\n+    // prefix, leaving 02ff03 which is push-two-bytes:\n+    s = ScriptFromHex(\"0302ff030302ff03\");\n+    d = ScriptFromHex(\"03\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60159788",
+      "id" : 60159788,
+      "original_commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "original_position" : 64,
+      "path" : "src/test/script_tests.cpp",
+      "position" : 64,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-19T00:58:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60159788",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60518620"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60518620"
+         }
+      },
+      "body" : "Isn't `nShift` always `== 0` at the beginning?   Why bother initializing `copied` above?",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-21T02:27:37Z",
+      "diff_hunk" : "@@ -571,16 +572,30 @@ class CScript : public CScriptBase\n         if (b.empty())\n             return nFound;\n         iterator pc = begin();\n+        iterator copied = begin();\n+        size_t nShift = 0;\n         opcodetype opcode;\n         do\n         {\n             while (end() - pc >= (long)b.size() && memcmp(&pc[0], &b[0], b.size()) == 0)\n             {\n-                pc = erase(pc, pc + b.size());\n+                // Lazy copy-in-place if there is a match:\n+                if (nShift == 0) copied = pc;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60518620",
+      "id" : 60518620,
+      "original_commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "original_position" : 21,
+      "path" : "src/script/script.h",
+      "position" : 21,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-21T02:27:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60518620",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60563526"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60563526"
+         }
+      },
+      "body" : "Why initialize copied instead of just eliminating the if/else and always copying? Because std::copy behavior is undefined if the first and last arguments point to the same element.",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-21T11:14:38Z",
+      "diff_hunk" : "@@ -571,16 +572,30 @@ class CScript : public CScriptBase\n         if (b.empty())\n             return nFound;\n         iterator pc = begin();\n+        iterator copied = begin();\n+        size_t nShift = 0;\n         opcodetype opcode;\n         do\n         {\n             while (end() - pc >= (long)b.size() && memcmp(&pc[0], &b[0], b.size()) == 0)\n             {\n-                pc = erase(pc, pc + b.size());\n+                // Lazy copy-in-place if there is a match:\n+                if (nShift == 0) copied = pc;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60563526",
+      "id" : 60563526,
+      "original_commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "original_position" : 21,
+      "path" : "src/script/script.h",
+      "position" : 21,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-21T11:14:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60563526",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/331997?v=3",
+         "events_url" : "https://api.github.com/users/gavinandresen/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gavinandresen/followers",
+         "following_url" : "https://api.github.com/users/gavinandresen/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gavinandresen/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gavinandresen",
+         "id" : 331997,
+         "login" : "gavinandresen",
+         "organizations_url" : "https://api.github.com/users/gavinandresen/orgs",
+         "received_events_url" : "https://api.github.com/users/gavinandresen/received_events",
+         "repos_url" : "https://api.github.com/users/gavinandresen/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gavinandresen/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gavinandresen/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gavinandresen"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60608682"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60608682"
+         }
+      },
+      "body" : "Why would that be? The Standard's definition of `std::copy` doesn't seem to say anything that would prohibit an empty range.",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-21T16:03:23Z",
+      "diff_hunk" : "@@ -571,16 +572,30 @@ class CScript : public CScriptBase\n         if (b.empty())\n             return nFound;\n         iterator pc = begin();\n+        iterator copied = begin();\n+        size_t nShift = 0;\n         opcodetype opcode;\n         do\n         {\n             while (end() - pc >= (long)b.size() && memcmp(&pc[0], &b[0], b.size()) == 0)\n             {\n-                pc = erase(pc, pc + b.size());\n+                // Lazy copy-in-place if there is a match:\n+                if (nShift == 0) copied = pc;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60608682",
+      "id" : 60608682,
+      "original_commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "original_position" : 21,
+      "path" : "src/script/script.h",
+      "position" : 21,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-21T16:03:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60608682",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1047859?v=3",
+         "events_url" : "https://api.github.com/users/kazcw/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kazcw/followers",
+         "following_url" : "https://api.github.com/users/kazcw/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kazcw/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kazcw",
+         "id" : 1047859,
+         "login" : "kazcw",
+         "organizations_url" : "https://api.github.com/users/kazcw/orgs",
+         "received_events_url" : "https://api.github.com/users/kazcw/received_events",
+         "repos_url" : "https://api.github.com/users/kazcw/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kazcw/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kazcw/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kazcw"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60613472"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60613472"
+         }
+      },
+      "body" : "The standard says:\n\n\"result shall not be in the range [first,last).\" \n",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-21T16:30:36Z",
+      "diff_hunk" : "@@ -571,16 +572,30 @@ class CScript : public CScriptBase\n         if (b.empty())\n             return nFound;\n         iterator pc = begin();\n+        iterator copied = begin();\n+        size_t nShift = 0;\n         opcodetype opcode;\n         do\n         {\n             while (end() - pc >= (long)b.size() && memcmp(&pc[0], &b[0], b.size()) == 0)\n             {\n-                pc = erase(pc, pc + b.size());\n+                // Lazy copy-in-place if there is a match:\n+                if (nShift == 0) copied = pc;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60613472",
+      "id" : 60613472,
+      "original_commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "original_position" : 21,
+      "path" : "src/script/script.h",
+      "position" : 21,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-21T16:30:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60613472",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/331997?v=3",
+         "events_url" : "https://api.github.com/users/gavinandresen/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gavinandresen/followers",
+         "following_url" : "https://api.github.com/users/gavinandresen/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gavinandresen/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gavinandresen",
+         "id" : 331997,
+         "login" : "gavinandresen",
+         "organizations_url" : "https://api.github.com/users/gavinandresen/orgs",
+         "received_events_url" : "https://api.github.com/users/gavinandresen/received_events",
+         "repos_url" : "https://api.github.com/users/gavinandresen/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gavinandresen/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gavinandresen/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gavinandresen"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60620906"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60620906"
+         }
+      },
+      "body" : "`last` is not in the range `[first,last)`",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-21T17:21:07Z",
+      "diff_hunk" : "@@ -571,16 +572,30 @@ class CScript : public CScriptBase\n         if (b.empty())\n             return nFound;\n         iterator pc = begin();\n+        iterator copied = begin();\n+        size_t nShift = 0;\n         opcodetype opcode;\n         do\n         {\n             while (end() - pc >= (long)b.size() && memcmp(&pc[0], &b[0], b.size()) == 0)\n             {\n-                pc = erase(pc, pc + b.size());\n+                // Lazy copy-in-place if there is a match:\n+                if (nShift == 0) copied = pc;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60620906",
+      "id" : 60620906,
+      "original_commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "original_position" : 21,
+      "path" : "src/script/script.h",
+      "position" : 21,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-21T17:21:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60620906",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1047859?v=3",
+         "events_url" : "https://api.github.com/users/kazcw/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kazcw/followers",
+         "following_url" : "https://api.github.com/users/kazcw/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kazcw/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kazcw",
+         "id" : 1047859,
+         "login" : "kazcw",
+         "organizations_url" : "https://api.github.com/users/kazcw/orgs",
+         "received_events_url" : "https://api.github.com/users/kazcw/received_events",
+         "repos_url" : "https://api.github.com/users/kazcw/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kazcw/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kazcw/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kazcw"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60928403"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60928403"
+         }
+      },
+      "body" : "RE: behavior with invalid Scripts: I don't care one way or the other; seems safer to behave exactly the same, since this is consensus-critical code.",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-25T15:03:20Z",
+      "diff_hunk" : "@@ -1051,4 +1051,121 @@ BOOST_AUTO_TEST_CASE(script_GetScriptAsm)\n     BOOST_CHECK_EQUAL(derSig + \"83 \" + pubKey, ScriptToAsmStr(CScript() << ToByteVector(ParseHex(derSig + \"83\")) << vchPubKey));\n }\n \n+static CScript\n+ScriptFromHex(const char* hex)\n+{\n+    std::vector<unsigned char> data = ParseHex(hex);\n+    return CScript(data.begin(), data.end());\n+}\n+\n+\n+BOOST_AUTO_TEST_CASE(script_FindAndDelete)\n+{\n+    // Exercise the FindAndDelete functionality\n+    CScript s;\n+    CScript d;\n+    CScript expect;\n+\n+    s = CScript() << OP_1 << OP_2;\n+    d = CScript(); // delete nothing should be a no-op\n+    expect = s;\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 0);\n+    BOOST_CHECK(s == expect);\n+\n+    s = CScript() << OP_1 << OP_2 << OP_3;\n+    d = CScript() << OP_2;\n+    expect = CScript() << OP_1 << OP_3;\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 1);\n+    BOOST_CHECK(s == expect);\n+\n+    s = CScript() << OP_3 << OP_1 << OP_3 << OP_3 << OP_4 << OP_3;\n+    d = CScript() << OP_3;\n+    expect = CScript() << OP_1 << OP_4;\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 4);\n+    BOOST_CHECK(s == expect);\n+\n+    s = ScriptFromHex(\"0302ff03\"); // PUSH 0x02ff03 onto stack\n+    d = ScriptFromHex(\"0302ff03\");\n+    expect = CScript();\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 1);\n+    BOOST_CHECK(s == expect);\n+\n+    s = ScriptFromHex(\"0302ff030302ff03\"); // PUSH 0x2ff03 PUSH 0x2ff03\n+    d = ScriptFromHex(\"0302ff03\");\n+    expect = CScript();\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 2);\n+    BOOST_CHECK(s == expect);\n+\n+    s = ScriptFromHex(\"0302ff030302ff03\");\n+    d = ScriptFromHex(\"02\");\n+    expect = s; // FindAndDelete matches entire opcodes\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 0);\n+    BOOST_CHECK(s == expect);\n+\n+    s = ScriptFromHex(\"0302ff030302ff03\");\n+    d = ScriptFromHex(\"ff\");\n+    expect = s;\n+    BOOST_CHECK_EQUAL(s.FindAndDelete(d), 0);\n+    BOOST_CHECK(s == expect);\n+\n+    // This is an odd edge case: strip of the push-three-bytes\n+    // prefix, leaving 02ff03 which is push-two-bytes:\n+    s = ScriptFromHex(\"0302ff030302ff03\");\n+    d = ScriptFromHex(\"03\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60928403",
+      "id" : 60928403,
+      "original_commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "original_position" : 64,
+      "path" : "src/test/script_tests.cpp",
+      "position" : 64,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-25T15:03:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60928403",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/331997?v=3",
+         "events_url" : "https://api.github.com/users/gavinandresen/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gavinandresen/followers",
+         "following_url" : "https://api.github.com/users/gavinandresen/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gavinandresen/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gavinandresen",
+         "id" : 331997,
+         "login" : "gavinandresen",
+         "organizations_url" : "https://api.github.com/users/gavinandresen/orgs",
+         "received_events_url" : "https://api.github.com/users/gavinandresen/received_events",
+         "repos_url" : "https://api.github.com/users/gavinandresen/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gavinandresen/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gavinandresen/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gavinandresen"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60930596"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60930596"
+         }
+      },
+      "body" : "@kazcw :  The first time a match is found, copied will be begin(). nShift will be zero, and pc will be pointing into the array somewhere.\r\n\r\nIf we removed copied = pc and just did:\r\n   copied = std::copy(copied+nShift, pc, copied);\r\n\r\n... then first is copied, last is pc, and result is copied.\r\ncopied IS in the range [copied, pc)\r\n",
+      "commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "created_at" : "2016-04-25T15:14:21Z",
+      "diff_hunk" : "@@ -571,16 +572,30 @@ class CScript : public CScriptBase\n         if (b.empty())\n             return nFound;\n         iterator pc = begin();\n+        iterator copied = begin();\n+        size_t nShift = 0;\n         opcodetype opcode;\n         do\n         {\n             while (end() - pc >= (long)b.size() && memcmp(&pc[0], &b[0], b.size()) == 0)\n             {\n-                pc = erase(pc, pc + b.size());\n+                // Lazy copy-in-place if there is a match:\n+                if (nShift == 0) copied = pc;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#discussion_r60930596",
+      "id" : 60930596,
+      "original_commit_id" : "aae53f20dcda22c978144a79fc5aedcd3b14346b",
+      "original_position" : 21,
+      "path" : "src/script/script.h",
+      "position" : 21,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7884",
+      "updated_at" : "2016-04-25T15:14:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/60930596",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/331997?v=3",
+         "events_url" : "https://api.github.com/users/gavinandresen/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gavinandresen/followers",
+         "following_url" : "https://api.github.com/users/gavinandresen/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gavinandresen/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gavinandresen",
+         "id" : 331997,
+         "login" : "gavinandresen",
+         "organizations_url" : "https://api.github.com/users/gavinandresen/orgs",
+         "received_events_url" : "https://api.github.com/users/gavinandresen/received_events",
+         "repos_url" : "https://api.github.com/users/gavinandresen/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gavinandresen/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gavinandresen/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gavinandresen"
+      }
+   },
+   {
+      "body" : "Superseded by #7907.",
+      "created_at" : "2016-05-17T08:01:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7884#issuecomment-219646683",
+      "id" : 219646683,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7884",
+      "updated_at" : "2016-05-17T08:01:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/219646683",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

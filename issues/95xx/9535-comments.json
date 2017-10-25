@@ -1,0 +1,512 @@
+[
+   {
+      "body" : "Note that this commit was pulled out of #9419 as it stands alone and is by itself a big win.",
+      "created_at" : "2017-01-12T19:54:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-272265047",
+      "id" : 272265047,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-12T19:54:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272265047",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r95934476"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95934476"
+         }
+      },
+      "body" : "No need for the TRY_LOCK here. Death to 'em!",
+      "commit_id" : "376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "created_at" : "2017-01-13T03:59:13Z",
+      "diff_hunk" : "@@ -1887,7 +1883,7 @@ void CConnman::ThreadMessageHandler()\n \n             // Send messages\n             {\n-                TRY_LOCK(pnode->cs_vSend, lockSend);\n+                TRY_LOCK(pnode->cs_sendProcessing, lockSend);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r95934476",
+      "id" : 95934476,
+      "original_commit_id" : "53474fd5a352c780436f0182ec9f67fbd913b734",
+      "original_position" : 39,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16505688,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535",
+      "updated_at" : "2017-01-13T18:34:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95934476",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r95935161"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95935161"
+         }
+      },
+      "body" : "Ok",
+      "commit_id" : "376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "created_at" : "2017-01-13T04:09:50Z",
+      "diff_hunk" : "@@ -1887,7 +1883,7 @@ void CConnman::ThreadMessageHandler()\n \n             // Send messages\n             {\n-                TRY_LOCK(pnode->cs_vSend, lockSend);\n+                TRY_LOCK(pnode->cs_sendProcessing, lockSend);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r95935161",
+      "id" : 95935161,
+      "original_commit_id" : "53474fd5a352c780436f0182ec9f67fbd913b734",
+      "original_position" : 39,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16506309,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535",
+      "updated_at" : "2017-01-13T18:34:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95935161",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK 11290734ca7261f732c9f43f152c69de3a42546c, I ran a nearly identical version for over a week with no issues.\r\n\r\nShameless beg/plea for 0.14. This was originally intended for #9441, but left out because #9419 (which has since been dropped for 0.14) already included it. I understand that we all have deep review queues atm though, not everything can make it.",
+      "created_at" : "2017-01-13T04:38:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-272359448",
+      "id" : 272359448,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-13T04:38:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272359448",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Rebased after #9441 merge.",
+      "created_at" : "2017-01-13T18:35:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-272512577",
+      "id" : 272512577,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-13T18:35:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272512577",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK 376b3c2c6e329357e4793c1d1b90d1dc0f30fed0. Happy to see TRY_LOCKs go.",
+      "created_at" : "2017-01-14T03:41:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-272599002",
+      "id" : 272599002,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-14T03:41:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272599002",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "lock pleb utACK 376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "created_at" : "2017-01-16T21:48:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-272969630",
+      "id" : 272969630,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-16T21:48:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272969630",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "utACK 376b3c2 \r\n\r\nsimilar to @instagibbs, this is relatively new code to me, but it seems like it makes sense",
+      "created_at" : "2017-01-17T15:55:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-273209614",
+      "id" : 273209614,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-17T15:55:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273209614",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r96474354"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96474354"
+         }
+      },
+      "body" : "RecordBytesSent() needs to be called from inside the lock? If so, I assume the same would be needed in CConnman::PushMessage",
+      "commit_id" : "376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "created_at" : "2017-01-17T18:15:54Z",
+      "diff_hunk" : "@@ -1272,12 +1270,10 @@ void CConnman::ThreadSocketHandler()\n                 continue;\n             if (FD_ISSET(pnode->hSocket, &fdsetSend))\n             {\n-                TRY_LOCK(pnode->cs_vSend, lockSend);\n-                if (lockSend) {\n-                    size_t nBytes = SocketSendData(pnode);\n-                    if (nBytes) {\n-                        RecordBytesSent(nBytes);\n-                    }\n+                LOCK(pnode->cs_vSend);\n+                size_t nBytes = SocketSendData(pnode);\n+                if (nBytes) {\n+                    RecordBytesSent(nBytes);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r96474354",
+      "id" : 96474354,
+      "original_commit_id" : "376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "original_position" : 30,
+      "path" : "src/net.cpp",
+      "position" : 30,
+      "pull_request_review_id" : 17057246,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535",
+      "updated_at" : "2017-01-17T18:15:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96474354",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r96476299"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96476299"
+         }
+      },
+      "body" : "@jtimon No, RecordBytesSent does not require the lock. It has its own.",
+      "commit_id" : "376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "created_at" : "2017-01-17T18:25:20Z",
+      "diff_hunk" : "@@ -1272,12 +1270,10 @@ void CConnman::ThreadSocketHandler()\n                 continue;\n             if (FD_ISSET(pnode->hSocket, &fdsetSend))\n             {\n-                TRY_LOCK(pnode->cs_vSend, lockSend);\n-                if (lockSend) {\n-                    size_t nBytes = SocketSendData(pnode);\n-                    if (nBytes) {\n-                        RecordBytesSent(nBytes);\n-                    }\n+                LOCK(pnode->cs_vSend);\n+                size_t nBytes = SocketSendData(pnode);\n+                if (nBytes) {\n+                    RecordBytesSent(nBytes);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r96476299",
+      "id" : 96476299,
+      "original_commit_id" : "376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "original_position" : 30,
+      "path" : "src/net.cpp",
+      "position" : 30,
+      "pull_request_review_id" : 17059215,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535",
+      "updated_at" : "2017-01-17T18:25:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96476299",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r96477621"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96477621"
+         }
+      },
+      "body" : "Just double checked, it looks like every variable accessed in RecordBytesSent is only done with cs_totalBytesSent (and even if this weren't true, this change wouldnt be a regression, we still call PushMessage from other functions without cs_vSend).",
+      "commit_id" : "376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "created_at" : "2017-01-17T18:31:13Z",
+      "diff_hunk" : "@@ -1272,12 +1270,10 @@ void CConnman::ThreadSocketHandler()\n                 continue;\n             if (FD_ISSET(pnode->hSocket, &fdsetSend))\n             {\n-                TRY_LOCK(pnode->cs_vSend, lockSend);\n-                if (lockSend) {\n-                    size_t nBytes = SocketSendData(pnode);\n-                    if (nBytes) {\n-                        RecordBytesSent(nBytes);\n-                    }\n+                LOCK(pnode->cs_vSend);\n+                size_t nBytes = SocketSendData(pnode);\n+                if (nBytes) {\n+                    RecordBytesSent(nBytes);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#discussion_r96477621",
+      "id" : 96477621,
+      "original_commit_id" : "376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "original_position" : 30,
+      "path" : "src/net.cpp",
+      "position" : 30,
+      "pull_request_review_id" : 17060594,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9535",
+      "updated_at" : "2017-01-17T18:31:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96477621",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "I was told by @TheBlueMatt and @theuni:\r\n```\r\n<BlueMatt> well #9535 is just a lock split, so just going through each variable that is accessed in one side and making sure its not accessed on the other is a pretty good (though admittedly not 100% sufficient) review\r\n<BlueMatt> and one one of the sides in this case there are relatively few variables accessed, so its not so hard\r\n<cfields> BlueMatt: yep, will do after dinner\r\n<cfields> jtimon: yea, it's sane, just needs manual review of what's accessed under the locks before/after\r\n<cfields> (note that you can treat it as non-recursive, so very simple)\r\n```\r\n\r\nThis is what my \"manual review  what's accessed under the locks before/after\" contains at this point:\r\n```\r\n****** Variables accessed while LOCK(pnode->cs_vSend) or TRY_LOCK(pnode->cs_vSend, lockSend);\r\npnode->vSendMsg\r\npnode->nSendOffset\r\npnode->hSocket\r\npnode->nLastSend\r\npnode->nSendBytes\r\npnode->nSendSize\r\npnode->fPauseSend\r\nCConnman::nSendBufferMaxSize\r\npnode->mapSendBytesPerMsgCmd\r\npnode->cs_inventory\r\n****** Variables accessed while LOCK(pnode->cs_sendProcessing)\r\nGetNodeSignals().SendMessages(pnode, *this, flagInterruptMsgProc);\r\npto->nVersion\r\npto->fDisconnect\r\npto->GetSendVersion()\r\npto->fPingQueued\r\npto->nPingNonceSent\r\npto->nPingUsecStart\r\nconnman.PushMessage(pto, msgMaker.Make(NetMsgType::PING, nonce));\r\npto->nPingNonceSent\r\npto->GetId()\r\npto->fWhitelisted\r\npto->fAddnode\r\npto->addr\r\nAdvertiseLocal(pto\r\npto->nNextLocalAddrSend\r\npto->nNextAddrSend\r\npto->vAddrToSend\r\npto->fClient\r\npto->fOneShot\r\npto->id\r\npto->nStartingHeight\r\nReindex && !fImporting && !IsInitialBlockDownload()\r\nGetMainSignals().Broadcast(nTimeBestReceived, &connman)\r\npto->cs_inventory\r\npto->vBlockHashesToAnnounce\r\npto->PushInventory(CInv(MSG_BLOCK, hashToAnnounce));\r\npto->vInventoryBlockToSend\r\npto->nNextInvSend\r\npto->fInbound\r\npto->cs_filter\r\npto->fRelayTxes\r\npto->fSendMempool\r\npto->cs_feeFilter\r\npto->minFeeFilter\r\npto->pfilter\r\npto->pfilter->IsRelevantAndUpdate(*txinfo.tx)\r\npto->filterInventoryKnown\r\npto->timeLastMempoolReq\r\nGetFetchFlags(pto, pindex->pprev, consensusParams)\r\npto->mapAskFor\r\npto->nextSendTimeFeeFilter\r\n```\r\n\r\n...so far the method seems to be working, but would be nice to hear a confirmation that that's what I was told, to confirm that I'm not making any wrong assumption. Only SendMessages() left and already listed functions/methods to review, but it's long, the tempation of doing a reduced version of #4646 always come back whenever asked to review SendMessages()...sorry.\r\n\r\nAt this point I doubt I will make my review before 0.14 is forked, but I'm fully motivated to finish it before or after it is merged.\r\n\r\n@theuni can you detail the ```note that you can treat it as non-recursive``` part?",
+      "created_at" : "2017-01-18T00:59:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-273350502",
+      "id" : 273350502,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-18T23:59:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273350502",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "@jtimon looks good.\r\n\r\nRe #4646, something similar is definitely the plan. See https://github.com/theuni/bitcoin/commit/1a6b10aea129ac363727c2d68fae809c2861e4da. That's definitely the next step, it was just too much of a refactor for 0.14.\r\n\r\nAs for the non-recursive part, I simply meant that it should now be quite easy to spot potential deadlocks since cs_vSend is now limited enough in scope that it can't recurse. In other words, the lock never leaves PushMessage/SocketSendData/RecordBytesSent (where RecordBytesSent isn't necessary and could be avoided).",
+      "created_at" : "2017-01-18T02:05:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-273361472",
+      "id" : 273361472,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-18T02:05:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273361472",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Alright, going through all pnode->cs_vSend was easy, but after going though all SendMessages (I updated the list in my comment above), looking only at the pto parameter for the first pass (which is the most relevant for this pr) and not being exhaustive about all potential globals and not going recursively though connman.PushMessage() IsInitialBlockDownload(), Broadcast(nTimeBestReceived, &connman), pto->PushInventory(), pto->pfilter->IsRelevantAndUpdate()...the only \"conflict\" so far is cs_inventory, but it's just a finer smaller lock, so seems fine as well.\r\nI'm very sorry about not being able to give a full utACK for this one, I feel my ACK is worth way more than the simple concept ACK I was planning and I thank @TheBlueMatt and @theuni for pushing me to review further when I warned I'm not so familiar with the networking code and its concurrency.\r\nSlow review ACK.",
+      "created_at" : "2017-01-19T01:27:49Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-273655540",
+      "id" : 273655540,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-19T01:39:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273655540",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "utACK https://github.com/bitcoin/bitcoin/commit/376b3c2c6e329357e4793c1d1b90d1dc0f30fed0",
+      "created_at" : "2017-01-19T19:11:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9535#issuecomment-273869106",
+      "id" : 273869106,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9535",
+      "updated_at" : "2017-01-19T19:11:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273869106",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   }
+]

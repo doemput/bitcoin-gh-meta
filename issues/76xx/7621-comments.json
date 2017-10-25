@@ -1,0 +1,384 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54490759"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54490759"
+         }
+      },
+      "body" : "NACK, this implies that the caller calls `Shutdown()` if return is false.",
+      "commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "created_at" : "2016-02-29T22:32:23Z",
+      "diff_hunk" : "@@ -100,7 +100,6 @@ bool CZMQNotificationInterface::Initialize()\n \n     if (i!=notifiers.end())\n     {\n-        Shutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54490759",
+      "id" : 54490759,
+      "original_commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "original_position" : 4,
+      "path" : "src/zmq/zmqnotificationinterface.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621",
+      "updated_at" : "2016-02-29T22:32:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54490759",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54566171"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54566171"
+         }
+      },
+      "body" : "The destructor will call it, which will be invoked automatically whether Initialize returns false or not.",
+      "commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "created_at" : "2016-03-01T13:33:28Z",
+      "diff_hunk" : "@@ -100,7 +100,6 @@ bool CZMQNotificationInterface::Initialize()\n \n     if (i!=notifiers.end())\n     {\n-        Shutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54566171",
+      "id" : 54566171,
+      "original_commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "original_position" : 4,
+      "path" : "src/zmq/zmqnotificationinterface.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621",
+      "updated_at" : "2016-03-01T13:33:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54566171",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK 0040118",
+      "created_at" : "2016-03-01T13:35:49Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#issuecomment-190726584",
+      "id" : 190726584,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7621",
+      "updated_at" : "2016-03-01T13:35:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/190726584",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54616613"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54616613"
+         }
+      },
+      "body" : "@laanwj assuming you delete the object.. nevertheless `Initialize()` should be all or nothing. Removing the call to `Shutdown()` leaves the notification interface partially initialised.",
+      "commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "created_at" : "2016-03-01T19:01:16Z",
+      "diff_hunk" : "@@ -100,7 +100,6 @@ bool CZMQNotificationInterface::Initialize()\n \n     if (i!=notifiers.end())\n     {\n-        Shutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54616613",
+      "id" : 54616613,
+      "original_commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "original_position" : 4,
+      "path" : "src/zmq/zmqnotificationinterface.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621",
+      "updated_at" : "2016-03-01T19:01:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54616613",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54644759"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54644759"
+         }
+      },
+      "body" : "@promag CreateWithArguments deletes the object if initialization fails \r\n",
+      "commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "created_at" : "2016-03-01T22:10:50Z",
+      "diff_hunk" : "@@ -100,7 +100,6 @@ bool CZMQNotificationInterface::Initialize()\n \n     if (i!=notifiers.end())\n     {\n-        Shutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54644759",
+      "id" : 54644759,
+      "original_commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "original_position" : 4,
+      "path" : "src/zmq/zmqnotificationinterface.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621",
+      "updated_at" : "2016-03-01T22:10:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54644759",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7504522?v=3",
+         "events_url" : "https://api.github.com/users/mrbandrews/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mrbandrews/followers",
+         "following_url" : "https://api.github.com/users/mrbandrews/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mrbandrews/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mrbandrews",
+         "id" : 7504522,
+         "login" : "mrbandrews",
+         "organizations_url" : "https://api.github.com/users/mrbandrews/orgs",
+         "received_events_url" : "https://api.github.com/users/mrbandrews/received_events",
+         "repos_url" : "https://api.github.com/users/mrbandrews/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mrbandrews/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mrbandrews/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mrbandrews"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54660448"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54660448"
+         }
+      },
+      "body" : "@mrbandrews @laanwj right, forgot `Initialize()` is protected. I take it back.",
+      "commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "created_at" : "2016-03-02T00:23:18Z",
+      "diff_hunk" : "@@ -100,7 +100,6 @@ bool CZMQNotificationInterface::Initialize()\n \n     if (i!=notifiers.end())\n     {\n-        Shutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54660448",
+      "id" : 54660448,
+      "original_commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "original_position" : 4,
+      "path" : "src/zmq/zmqnotificationinterface.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621",
+      "updated_at" : "2016-03-02T00:23:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54660448",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "utACK 0040118.",
+      "created_at" : "2016-03-02T00:24:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#issuecomment-190986128",
+      "id" : 190986128,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7621",
+      "updated_at" : "2016-03-02T00:24:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/190986128",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3534524?v=3",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54875611"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54875611"
+         }
+      },
+      "body" : "> assuming you delete the object\r\n\r\nSure. But well if not that's a memory leak, and thus a bug in self.",
+      "commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "created_at" : "2016-03-03T12:57:41Z",
+      "diff_hunk" : "@@ -100,7 +100,6 @@ bool CZMQNotificationInterface::Initialize()\n \n     if (i!=notifiers.end())\n     {\n-        Shutdown();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#discussion_r54875611",
+      "id" : 54875611,
+      "original_commit_id" : "0040118959305c4f2b0e7e9c42cf3e865607a04a",
+      "original_position" : 4,
+      "path" : "src/zmq/zmqnotificationinterface.cpp",
+      "position" : 4,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7621",
+      "updated_at" : "2016-03-03T12:57:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/54875611",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2016-03-05T05:17:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#issuecomment-192577451",
+      "id" : 192577451,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7621",
+      "updated_at" : "2016-03-05T05:17:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/192577451",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK 0040118\r\n",
+      "created_at" : "2016-03-15T23:49:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7621#issuecomment-197071376",
+      "id" : 197071376,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7621",
+      "updated_at" : "2016-03-15T23:49:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/197071376",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   }
+]

@@ -1,0 +1,462 @@
+[
+   {
+      "body" : "This will create merge conflicts for #6871 -- let's try to get that reviewed and merged first, and I can resolve the merge conflicts in this PR afterward.",
+      "created_at" : "2015-11-19T20:11:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-158183611",
+      "id" : 158183611,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-11-19T20:11:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158183611",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Note that this leaks information about what transactions you've prioritised to the outside world even more so than before. Probably unavoidable right now, but in the long run it'd be better if we had a separate mempool for mining that kept priority deltas. Transactions themselves can be shared across both mempools and reference counted.",
+      "created_at" : "2015-11-20T20:35:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-158517367",
+      "id" : 158517367,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-11-20T20:35:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158517367",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7062#discussion_r45515378"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7062"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45515378"
+         }
+      },
+      "body" : "The term \"modified fees\" won't mean anything to the reader. How about \"fees of in-mempool descendants (including this one) with priority deltas applied\"",
+      "commit_id" : "4b0c38c310914662a075d86cde6b44ce7b1c9afb",
+      "created_at" : "2015-11-20T20:36:45Z",
+      "diff_hunk" : "@@ -244,13 +245,14 @@ UniValue getrawmempool(const UniValue& params, bool fHelp)\n             \"  \\\"transactionid\\\" : {       (json object)\\n\"\n             \"    \\\"size\\\" : n,             (numeric) transaction size in bytes\\n\"\n             \"    \\\"fee\\\" : n,              (numeric) transaction fee in \" + CURRENCY_UNIT + \"\\n\"\n+            \"    \\\"modifiedfee\\\" : n,      (numeric) transaction fee with fee deltas used for mining priority\\n\"\n             \"    \\\"time\\\" : n,             (numeric) local time transaction entered pool in seconds since 1 Jan 1970 GMT\\n\"\n             \"    \\\"height\\\" : n,           (numeric) block height when transaction entered pool\\n\"\n             \"    \\\"startingpriority\\\" : n, (numeric) priority when transaction entered pool\\n\"\n             \"    \\\"currentpriority\\\" : n,  (numeric) transaction priority now\\n\"\n             \"    \\\"descendantcount\\\" : n,  (numeric) number of in-mempool descendant transactions (including this one)\\n\"\n             \"    \\\"descendantsize\\\" : n,   (numeric) size of in-mempool descendants (including this one)\\n\"\n-            \"    \\\"descendantfees\\\" : n,   (numeric) fees of in-mempool descendants (including this one)\\n\"\n+            \"    \\\"descendantfees\\\" : n,   (numeric) modified fees of in-mempool descendants (including this one)\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#discussion_r45515378",
+      "id" : 45515378,
+      "original_commit_id" : "f60b9035c8bb71bf637a074cbef876547c0f1559",
+      "original_position" : 28,
+      "path" : "src/rpcblockchain.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7062",
+      "updated_at" : "2015-11-30T21:51:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45515378",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "Otherwise, utACK, though will want to recheck rebased version once #6871 is merged of course.",
+      "created_at" : "2015-11-20T20:43:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-158518999",
+      "id" : 158518999,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-11-20T20:43:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158518999",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7062#discussion_r45733812"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7062"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45733812"
+         }
+      },
+      "body" : "I was trying to make a reference to the term \"modifedfee\" which I added above without having to redefine the concept, what if I just do: \"modified fees (see above) of in-mempool descendants (including this one)\"",
+      "commit_id" : "4b0c38c310914662a075d86cde6b44ce7b1c9afb",
+      "created_at" : "2015-11-24T13:25:49Z",
+      "diff_hunk" : "@@ -244,13 +245,14 @@ UniValue getrawmempool(const UniValue& params, bool fHelp)\n             \"  \\\"transactionid\\\" : {       (json object)\\n\"\n             \"    \\\"size\\\" : n,             (numeric) transaction size in bytes\\n\"\n             \"    \\\"fee\\\" : n,              (numeric) transaction fee in \" + CURRENCY_UNIT + \"\\n\"\n+            \"    \\\"modifiedfee\\\" : n,      (numeric) transaction fee with fee deltas used for mining priority\\n\"\n             \"    \\\"time\\\" : n,             (numeric) local time transaction entered pool in seconds since 1 Jan 1970 GMT\\n\"\n             \"    \\\"height\\\" : n,           (numeric) block height when transaction entered pool\\n\"\n             \"    \\\"startingpriority\\\" : n, (numeric) priority when transaction entered pool\\n\"\n             \"    \\\"currentpriority\\\" : n,  (numeric) transaction priority now\\n\"\n             \"    \\\"descendantcount\\\" : n,  (numeric) number of in-mempool descendant transactions (including this one)\\n\"\n             \"    \\\"descendantsize\\\" : n,   (numeric) size of in-mempool descendants (including this one)\\n\"\n-            \"    \\\"descendantfees\\\" : n,   (numeric) fees of in-mempool descendants (including this one)\\n\"\n+            \"    \\\"descendantfees\\\" : n,   (numeric) modified fees of in-mempool descendants (including this one)\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#discussion_r45733812",
+      "id" : 45733812,
+      "original_commit_id" : "f60b9035c8bb71bf637a074cbef876547c0f1559",
+      "original_position" : 28,
+      "path" : "src/rpcblockchain.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7062",
+      "updated_at" : "2015-11-30T21:51:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45733812",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Rebased.\r\n\r\n@petertodd This pull has now been updated to use fee deltas for the replace-by-fee calculation, and the replace-by-fee rpc test has been updated to exercise that logic.  (I cherry-picked #7137, so if that gets merged first I'll rebase this one, or I can close that pull if that's easier.)",
+      "created_at" : "2015-11-30T21:55:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-160773784",
+      "id" : 160773784,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-11-30T21:55:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160773784",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7062#discussion_r46231549"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7062"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46231549"
+         }
+      },
+      "body" : "FYI, I've found bugs before by erroring out if any txs are stuck; not sure this is a good idea.",
+      "commit_id" : "4b0c38c310914662a075d86cde6b44ce7b1c9afb",
+      "created_at" : "2015-12-01T01:50:56Z",
+      "diff_hunk" : "@@ -63,8 +63,16 @@ def make_utxo(node, amount, confirmed=True, scriptPubKey=CScript([1])):\n \n     # If requested, ensure txouts are confirmed.\n     if confirmed:\n-        while len(node.getrawmempool()):\n+        mempool_size = len(node.getrawmempool())\n+        while mempool_size > 0:\n             node.generate(1)\n+            new_size = len(node.getrawmempool())\n+            if (mempool_size == new_size):\n+                # We might have stuck transactions; assume that\n+                # the transactions we needed mined were mined, and\n+                # don't worry about what is left.\n+                break\n+            mempool_size = new_size",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#discussion_r46231549",
+      "id" : 46231549,
+      "original_commit_id" : "4b0c38c310914662a075d86cde6b44ce7b1c9afb",
+      "original_position" : 14,
+      "path" : "qa/rpc-tests/replace-by-fee.py",
+      "position" : 14,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7062",
+      "updated_at" : "2015-12-01T01:50:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46231549",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7062#discussion_r46287540"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7062"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46287540"
+         }
+      },
+      "body" : "Fair enough -- I ran into an issue where the really large transaction created in one of the tests was too big to mined, but I should be able to rework that test and make this check error out instead.",
+      "commit_id" : "4b0c38c310914662a075d86cde6b44ce7b1c9afb",
+      "created_at" : "2015-12-01T14:57:59Z",
+      "diff_hunk" : "@@ -63,8 +63,16 @@ def make_utxo(node, amount, confirmed=True, scriptPubKey=CScript([1])):\n \n     # If requested, ensure txouts are confirmed.\n     if confirmed:\n-        while len(node.getrawmempool()):\n+        mempool_size = len(node.getrawmempool())\n+        while mempool_size > 0:\n             node.generate(1)\n+            new_size = len(node.getrawmempool())\n+            if (mempool_size == new_size):\n+                # We might have stuck transactions; assume that\n+                # the transactions we needed mined were mined, and\n+                # don't worry about what is left.\n+                break\n+            mempool_size = new_size",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#discussion_r46287540",
+      "id" : 46287540,
+      "original_commit_id" : "4b0c38c310914662a075d86cde6b44ce7b1c9afb",
+      "original_position" : 14,
+      "path" : "qa/rpc-tests/replace-by-fee.py",
+      "position" : 14,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7062",
+      "updated_at" : "2015-12-01T14:57:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46287540",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Rebased and changed rpc test to error out if the mempool ends up with stuck transactions.",
+      "created_at" : "2015-12-01T17:57:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-161047660",
+      "id" : 161047660,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-12-01T17:57:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161047660",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Rebased now that #6898 is merged",
+      "created_at" : "2015-12-01T19:34:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-161071963",
+      "id" : 161071963,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-12-01T19:34:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161071963",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Updated so that now mempool acceptance is also determined by including a transaction's fee delta from PrioritiseTransaction.\r\n\r\nIn doing so, I realized that `GetMinRelayFee` is not very useful, so I scrapped it.  With the `DEFAULT_BLOCK_PRIORITY_SIZE` set to 0, this function was stopping all free transactions from making it in (unless they were prioritised using `PrioritiseTransaction`).  Scrapping it means that there is a behavior change from before, where now we will allow in transactions between 50kb and 100kb that are free as long as they have sufficient priority.  Given that when the mempool is full we don't allow free transactions at all, and given that we expire things after 3 days, I think this should be okay.\r\n\r\nEDIT: Actually, there's a bug in `GetMinRelayFee` so that the comparison with `DEFAULT_BLOCK_PRIORITY_SIZE` was incorrect; the comparison is comparing two things as unsigned int's, but the right hand side is negative...  So this test isn't preventing anything from getting into the mempool now that the DEFAULT_BLOCK_PRIORITY_SIZE is 0.\r\n```\r\nif (nBytes < (DEFAULT_BLOCK_PRIORITY_SIZE - 1000))\t\t\r\n        nMinFee = 0;\r\n```",
+      "created_at" : "2015-12-02T16:28:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-161355377",
+      "id" : 161355377,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-12-03T20:33:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161355377",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "utACK (modulo comment above)",
+      "created_at" : "2015-12-02T16:50:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-161361808",
+      "id" : 161361808,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-12-02T16:50:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161361808",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Addressed @morcos' nit (and squashed into first commit).",
+      "created_at" : "2015-12-02T17:59:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-161381292",
+      "id" : 161381292,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-12-02T17:59:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161381292",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "utACK",
+      "created_at" : "2015-12-21T16:13:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7062#issuecomment-166345308",
+      "id" : 166345308,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7062",
+      "updated_at" : "2015-12-21T16:13:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/166345308",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

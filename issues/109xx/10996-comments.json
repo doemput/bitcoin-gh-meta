@@ -1,0 +1,390 @@
+[
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2017-08-05T19:13:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#issuecomment-320464722",
+      "id" : 320464722,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10996",
+      "updated_at" : "2017-08-05T19:13:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/320464722",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10996#discussion_r131527889"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10996"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/131527889"
+         }
+      },
+      "author_association" : "OWNER",
+      "body" : "I wonder - is there any practical point in being able to override this?\r\nIf not, it's a waste of an option (and help translation).",
+      "commit_id" : "906c2c11d498b6153f8aedd9578e846fc20368e6",
+      "created_at" : "2017-08-05T19:13:49Z",
+      "diff_hunk" : "@@ -22,6 +22,10 @@ This help message\n .IP\n Specify configuration file (default: bitcoin.conf)\n .HP\n+\\fB\\-netconf=\\fR<file>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#discussion_r131527889",
+      "id" : 131527889,
+      "original_commit_id" : "aed4b81e8c428e4d9a8d32a2dd90a1348dd87465",
+      "original_position" : 4,
+      "path" : "doc/man/bitcoin-cli.1",
+      "position" : 4,
+      "pull_request_review_id" : 54520900,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10996",
+      "updated_at" : "2017-08-25T05:50:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/131527889",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10996#discussion_r131534377"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10996"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/131534377"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "It could be useful if you wanted to temporarily restart bitcoind without using the network.conf file. You could have a bitcoin-alt.conf that specified netconf=network-alt.conf so that you could load bitcoind with -conf=bitcoin-alt.conf and have that load network specific alternative configurations too. Not sure how realistic/valuable those are, though. Not having the option would be inconsistent; and having the option makes the name of the config file at least a little discoverable...",
+      "commit_id" : "906c2c11d498b6153f8aedd9578e846fc20368e6",
+      "created_at" : "2017-08-06T04:55:28Z",
+      "diff_hunk" : "@@ -22,6 +22,10 @@ This help message\n .IP\n Specify configuration file (default: bitcoin.conf)\n .HP\n+\\fB\\-netconf=\\fR<file>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#discussion_r131534377",
+      "id" : 131534377,
+      "in_reply_to_id" : 131527889,
+      "original_commit_id" : "aed4b81e8c428e4d9a8d32a2dd90a1348dd87465",
+      "original_position" : 4,
+      "path" : "doc/man/bitcoin-cli.1",
+      "position" : 4,
+      "pull_request_review_id" : 54527292,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10996",
+      "updated_at" : "2017-08-25T05:50:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/131534377",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/127186?v=4",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "Commit 7a71b09 adds basic functional tests; it makes use of -netconf being a modifiable parameter to point bitcoind at different files in different ways and checks that has different results.\r\n\r\nCommit 8b48aa5 cleans up the code a little, but also allows you to specify an absolute path for network.conf if you want to for some reason (not that doing so actually makes a lot of sense).\r\n\r\nCommit 70f5388 removes the default for fNetSpecific for calls to Get/ReadConfigFile, which seems sensible since the default would need to be false to be backwards compatible with the old calls for bitcoin.conf, but is the opposite to the default for the same parameter for GetDataDir().",
+      "created_at" : "2017-08-06T11:22:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#issuecomment-320500860",
+      "id" : 320500860,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10996",
+      "updated_at" : "2017-08-06T11:22:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/320500860",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/127186?v=4",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "One possibly confusing behaviour: possible to set \"-testnet\" or \"-regtest\" in a network.conf where those parameters would be wrong; if you do so, they won't take effect or cause problems because ChainNameFromCommandLine() has already been called and isn't called again; but if some future change to the code does try to call ChainNameFromCommandLine() sometime after startup, and a network.conf sets a wrong parameter, it could blow up in your face.\r\n\r\nI'm not sure if this is worth fixing...\r\n\r\n(Adding a \"static const string *result;\" to ChainNameFromCommandLine() to memoise it at first call, and just reuse the result without reexamining the arguments later seems to be sufficient to fix the problem if it is worth fixing. Giving an error if regtest/testnet is specified in network.conf would probably be better, but seems like it violates the abstraction layer a fair bit...)",
+      "created_at" : "2017-08-06T11:29:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#issuecomment-320501145",
+      "id" : 320501145,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10996",
+      "updated_at" : "2017-08-06T11:29:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/320501145",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/127186?v=4",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "I've wanted to rebase and revive #9402 for some time, but I was waiting for #10267, both because this conflicts heavily with that PR, and also because I think once #10267 is merged, then this PR becomes more straightforward.",
+      "created_at" : "2017-08-06T21:10:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#issuecomment-320532933",
+      "id" : 320532933,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10996",
+      "updated_at" : "2017-08-06T21:10:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/320532933",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/1063656?v=4",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "@jnewbery Hmm, looking at #10267 in a bit more detail, the current patch seems to only allow a single includeconf directive to have an effect anyway, rather than multiple includes or recursive includes; so you could actually get the same effect as that patch with this one by just giving an absolute path to the netconf directory here. It doesn't look to me like there's really much difficulty in combining the two patches either once one or the other gets merged (I'm not seeing much room for either to get much simpler, though -- you still have to finish loading bitcoin.conf then load the chain params to work out which network you're on before you can load the right network.conf).",
+      "created_at" : "2017-08-07T02:07:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#issuecomment-320551469",
+      "id" : 320551469,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10996",
+      "updated_at" : "2017-08-07T02:07:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/320551469",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/127186?v=4",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "body" : "Squashed most of the commits, and rebased to current master.",
+      "created_at" : "2017-08-25T11:46:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#issuecomment-324895841",
+      "id" : 324895841,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10996",
+      "updated_at" : "2017-08-25T11:46:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324895841",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/127186?v=4",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10996#discussion_r139126017"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10996"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139126017"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Aren't the doc/man/ files automatically generated anyway so shouldn't be modified directly? Or is [this](https://github.com/bitcoin/bitcoin/blob/master/contrib/devtools/README.md#gen-manpagessh) information out of date",
+      "commit_id" : "906c2c11d498b6153f8aedd9578e846fc20368e6",
+      "created_at" : "2017-09-15T11:30:43Z",
+      "diff_hunk" : "@@ -22,6 +22,10 @@ This help message\n .IP\n Specify configuration file (default: bitcoin.conf)\n .HP\n+\\fB\\-netconf=\\fR<file>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#discussion_r139126017",
+      "id" : 139126017,
+      "in_reply_to_id" : 131527889,
+      "original_commit_id" : "aed4b81e8c428e4d9a8d32a2dd90a1348dd87465",
+      "original_position" : 4,
+      "path" : "doc/man/bitcoin-cli.1",
+      "position" : 4,
+      "pull_request_review_id" : 63016458,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10996",
+      "updated_at" : "2017-09-15T11:32:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139126017",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10996#discussion_r139137358"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10996"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139137358"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@MeshCollider Yep, that's correct; worse the help text for bitcoin-cli is missing. Will fix.",
+      "commit_id" : "906c2c11d498b6153f8aedd9578e846fc20368e6",
+      "created_at" : "2017-09-15T12:37:29Z",
+      "diff_hunk" : "@@ -22,6 +22,10 @@ This help message\n .IP\n Specify configuration file (default: bitcoin.conf)\n .HP\n+\\fB\\-netconf=\\fR<file>",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#discussion_r139137358",
+      "id" : 139137358,
+      "in_reply_to_id" : 131527889,
+      "original_commit_id" : "aed4b81e8c428e4d9a8d32a2dd90a1348dd87465",
+      "original_position" : 4,
+      "path" : "doc/man/bitcoin-cli.1",
+      "position" : 4,
+      "pull_request_review_id" : 63029332,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10996",
+      "updated_at" : "2017-09-15T12:37:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/139137358",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/127186?v=4",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Rebased to current master. Also: no longer committing changes to manpages, functional test updated due to API changes on master, help text for bitcoin-cli --netconf added, and minor code style fixes.",
+      "created_at" : "2017-10-10T05:22:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10996#issuecomment-335364078",
+      "id" : 335364078,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10996",
+      "updated_at" : "2017-10-10T05:22:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/335364078",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/127186?v=4",
+         "events_url" : "https://api.github.com/users/ajtowns/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ajtowns/followers",
+         "following_url" : "https://api.github.com/users/ajtowns/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ajtowns/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ajtowns",
+         "id" : 127186,
+         "login" : "ajtowns",
+         "organizations_url" : "https://api.github.com/users/ajtowns/orgs",
+         "received_events_url" : "https://api.github.com/users/ajtowns/received_events",
+         "repos_url" : "https://api.github.com/users/ajtowns/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ajtowns/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ajtowns/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ajtowns"
+      }
+   }
+]

@@ -1,0 +1,446 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r132848026"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/132848026"
+         }
+      },
+      "body" : "!pblockindex",
+      "commit_id" : "c5153911f5f3c97f26b7dab29e779889aa4cee3b",
+      "created_at" : "2017-08-13T17:39:50Z",
+      "diff_hunk" : "@@ -212,10 +211,11 @@ static bool rest_block(HTTPRequest* req,\n     CBlockIndex* pblockindex = NULL;\n     {\n         LOCK(cs_main);\n-        if (mapBlockIndex.count(hash) == 0)\n+        pblockindex = LookupBlockIndex(hash);\n+        if (pblockindex) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r132848026",
+      "id" : 132848026,
+      "original_commit_id" : "171213cb323e85630087e42e60967b56724d229a",
+      "original_position" : 16,
+      "path" : "src/rest.cpp",
+      "position" : null,
+      "pull_request_review_id" : 55971450,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041",
+      "updated_at" : "2017-08-15T15:07:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/132848026",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r132848037"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/132848037"
+         }
+      },
+      "body" : "Same as above.",
+      "commit_id" : "c5153911f5f3c97f26b7dab29e779889aa4cee3b",
+      "created_at" : "2017-08-13T17:40:23Z",
+      "diff_hunk" : "@@ -669,10 +669,10 @@ UniValue getblockheader(const JSONRPCRequest& request)\n     if (!request.params[1].isNull())\n         fVerbose = request.params[1].get_bool();\n \n-    if (mapBlockIndex.count(hash) == 0)\n+    CBlockIndex* pblockindex = LookupBlockIndex(hash);\n+    if (pblockindex == nullptr) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r132848037",
+      "id" : 132848037,
+      "original_commit_id" : "171213cb323e85630087e42e60967b56724d229a",
+      "original_position" : 6,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 55971450,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041",
+      "updated_at" : "2017-08-15T15:07:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/132848037",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r132848061"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/132848061"
+         }
+      },
+      "body" : "Remove assert.",
+      "commit_id" : "c5153911f5f3c97f26b7dab29e779889aa4cee3b",
+      "created_at" : "2017-08-13T17:40:52Z",
+      "diff_hunk" : "@@ -817,7 +816,9 @@ static bool GetUTXOStats(CCoinsView *view, CCoinsStats &stats)\n     stats.hashBlock = pcursor->GetBestBlock();\n     {\n         LOCK(cs_main);\n-        stats.nHeight = mapBlockIndex.find(stats.hashBlock)->second->nHeight;\n+        const CBlockIndex* pindex = LookupBlockIndex(stats.hashBlock);\n+        assert(pindex);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r132848061",
+      "id" : 132848061,
+      "original_commit_id" : "171213cb323e85630087e42e60967b56724d229a",
+      "original_position" : 35,
+      "path" : "src/rpc/blockchain.cpp",
+      "position" : null,
+      "pull_request_review_id" : 55971450,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041",
+      "updated_at" : "2017-08-15T15:07:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/132848061",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2017-08-14T10:27:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#issuecomment-322155803",
+      "id" : 322155803,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11041",
+      "updated_at" : "2017-08-14T10:27:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322155803",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/178464?v=4",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "This may make #10692 a bit simpler, though I'm not sure it matters what order they come in.",
+      "created_at" : "2017-08-14T14:45:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#issuecomment-322210067",
+      "id" : 322210067,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11041",
+      "updated_at" : "2017-08-14T14:45:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322210067",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Fixed bug and rebased.",
+      "created_at" : "2017-08-15T15:37:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#issuecomment-322503789",
+      "id" : 322503789,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11041",
+      "updated_at" : "2017-08-15T15:37:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/322503789",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "@laanwj I believe it's ready.",
+      "created_at" : "2017-08-22T14:56:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#issuecomment-324052747",
+      "id" : 324052747,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11041",
+      "updated_at" : "2017-08-22T14:56:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324052747",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2017-08-22T15:49:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#issuecomment-324069155",
+      "id" : 324069155,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11041",
+      "updated_at" : "2017-08-22T15:49:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324069155",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r134638513"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134638513"
+         }
+      },
+      "body" : "Maybe explicit cast to bool here for clarity",
+      "commit_id" : "c5153911f5f3c97f26b7dab29e779889aa4cee3b",
+      "created_at" : "2017-08-23T01:20:42Z",
+      "diff_hunk" : "@@ -904,7 +906,7 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)\n         }\n     case MSG_BLOCK:\n     case MSG_WITNESS_BLOCK:\n-        return mapBlockIndex.count(inv.hash);\n+        return LookupBlockIndex(inv.hash);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r134638513",
+      "id" : 134638513,
+      "original_commit_id" : "c5153911f5f3c97f26b7dab29e779889aa4cee3b",
+      "original_position" : 38,
+      "path" : "src/net_processing.cpp",
+      "position" : 38,
+      "pull_request_review_id" : 57952795,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041",
+      "updated_at" : "2017-08-23T01:21:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134638513",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r134649948"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134649948"
+         }
+      },
+      "body" : "Prefer this?\r\n```cpp\r\nreturn LookupBlockIndex(inv.hash) != nullptr;\r\n```",
+      "commit_id" : "c5153911f5f3c97f26b7dab29e779889aa4cee3b",
+      "created_at" : "2017-08-23T03:26:10Z",
+      "diff_hunk" : "@@ -904,7 +906,7 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)\n         }\n     case MSG_BLOCK:\n     case MSG_WITNESS_BLOCK:\n-        return mapBlockIndex.count(inv.hash);\n+        return LookupBlockIndex(inv.hash);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r134649948",
+      "id" : 134649948,
+      "original_commit_id" : "c5153911f5f3c97f26b7dab29e779889aa4cee3b",
+      "original_position" : 38,
+      "path" : "src/net_processing.cpp",
+      "position" : 38,
+      "pull_request_review_id" : 57965458,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041",
+      "updated_at" : "2017-08-23T03:26:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134649948",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r134655245"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134655245"
+         }
+      },
+      "body" : "Yeah or a ternary or even an if statement would be a lot clearer",
+      "commit_id" : "c5153911f5f3c97f26b7dab29e779889aa4cee3b",
+      "created_at" : "2017-08-23T04:33:37Z",
+      "diff_hunk" : "@@ -904,7 +906,7 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)\n         }\n     case MSG_BLOCK:\n     case MSG_WITNESS_BLOCK:\n-        return mapBlockIndex.count(inv.hash);\n+        return LookupBlockIndex(inv.hash);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#discussion_r134655245",
+      "id" : 134655245,
+      "original_commit_id" : "c5153911f5f3c97f26b7dab29e779889aa4cee3b",
+      "original_position" : 38,
+      "path" : "src/net_processing.cpp",
+      "position" : 38,
+      "pull_request_review_id" : 57971275,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11041",
+      "updated_at" : "2017-08-23T04:33:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/134655245",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "body" : "Rebased and fixed @MeshCollider comment.",
+      "created_at" : "2017-08-25T14:38:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11041#issuecomment-324939734",
+      "id" : 324939734,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11041",
+      "updated_at" : "2017-08-25T14:38:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/324939734",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/3534524?v=4",
+         "events_url" : "https://api.github.com/users/promag/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/promag/followers",
+         "following_url" : "https://api.github.com/users/promag/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/promag/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/promag",
+         "id" : 3534524,
+         "login" : "promag",
+         "organizations_url" : "https://api.github.com/users/promag/orgs",
+         "received_events_url" : "https://api.github.com/users/promag/received_events",
+         "repos_url" : "https://api.github.com/users/promag/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/promag/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/promag/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/promag"
+      }
+   }
+]

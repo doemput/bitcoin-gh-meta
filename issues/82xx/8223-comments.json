@@ -1,0 +1,339 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67604813"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67604813"
+         }
+      },
+      "body" : "Return value optimization applies here; I think using std::move is discouraged in that case.",
+      "commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "created_at" : "2016-06-18T18:37:36Z",
+      "diff_hunk" : "@@ -164,7 +165,7 @@ CBlockTemplate* BlockAssembler::CreateNewBlock(const CScript& scriptPubKeyIn)\n         throw std::runtime_error(strprintf(\"%s: TestBlockValidity failed: %s\", __func__, FormatStateMessage(state)));\n     }\n \n-    return pblocktemplate.release();\n+    return std::move(pblocktemplate);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67604813",
+      "id" : 67604813,
+      "original_commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "original_position" : 30,
+      "path" : "src/miner.cpp",
+      "position" : 30,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223",
+      "updated_at" : "2016-06-18T18:37:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67604813",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67604860"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67604860"
+         }
+      },
+      "body" : "No, it does not.  `pblocktemplate` is a member variable and not a local one, I think the code does not compile without `std::move`.",
+      "commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "created_at" : "2016-06-18T18:41:33Z",
+      "diff_hunk" : "@@ -164,7 +165,7 @@ CBlockTemplate* BlockAssembler::CreateNewBlock(const CScript& scriptPubKeyIn)\n         throw std::runtime_error(strprintf(\"%s: TestBlockValidity failed: %s\", __func__, FormatStateMessage(state)));\n     }\n \n-    return pblocktemplate.release();\n+    return std::move(pblocktemplate);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67604860",
+      "id" : 67604860,
+      "original_commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "original_position" : 30,
+      "path" : "src/miner.cpp",
+      "position" : 30,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223",
+      "updated_at" : "2016-06-18T18:41:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67604860",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4943644?v=3",
+         "events_url" : "https://api.github.com/users/domob1812/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/domob1812/followers",
+         "following_url" : "https://api.github.com/users/domob1812/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/domob1812/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/domob1812",
+         "id" : 4943644,
+         "login" : "domob1812",
+         "organizations_url" : "https://api.github.com/users/domob1812/orgs",
+         "received_events_url" : "https://api.github.com/users/domob1812/received_events",
+         "repos_url" : "https://api.github.com/users/domob1812/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/domob1812/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/domob1812/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/domob1812"
+      }
+   },
+   {
+      "body" : "Oops, I forgot we just merged the refactor that turned it into a class. You're right.",
+      "created_at" : "2016-06-18T18:42:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8223#issuecomment-226958479",
+      "id" : 226958479,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8223",
+      "updated_at" : "2016-06-18T18:42:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/226958479",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Concept ACK. But it might make more sense to use a shared_ptr so TestBlockValidity can be split off to a new thread while GBT returns...",
+      "created_at" : "2016-06-18T19:02:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8223#issuecomment-226959438",
+      "id" : 226959438,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8223",
+      "updated_at" : "2016-06-18T19:02:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/226959438",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "utACK 9fce062",
+      "created_at" : "2016-06-19T03:43:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8223#issuecomment-226977677",
+      "id" : 226977677,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8223",
+      "updated_at" : "2016-06-19T03:43:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/226977677",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67677930"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67677930"
+         }
+      },
+      "body" : "Shouldn't the caller decide in what kind of pointer to wrap the object?\r\nWhat if they want to e.g. have a shared pointer instead?",
+      "commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "created_at" : "2016-06-20T12:01:37Z",
+      "diff_hunk" : "@@ -160,7 +160,7 @@ class BlockAssembler\n public:\n     BlockAssembler(const CChainParams& chainparams);\n     /** Construct a new block template with coinbase to scriptPubKeyIn */\n-    CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn);\n+    std::unique_ptr<CBlockTemplate> CreateNewBlock(const CScript& scriptPubKeyIn);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67677930",
+      "id" : 67677930,
+      "original_commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "original_position" : 5,
+      "path" : "src/miner.h",
+      "position" : 5,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223",
+      "updated_at" : "2016-06-20T12:01:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67677930",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67678542"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67678542"
+         }
+      },
+      "body" : "Converting from unique_ptr to shared_ptr is relatively cheap (specifically, does not require copying the object).",
+      "commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "created_at" : "2016-06-20T12:06:47Z",
+      "diff_hunk" : "@@ -160,7 +160,7 @@ class BlockAssembler\n public:\n     BlockAssembler(const CChainParams& chainparams);\n     /** Construct a new block template with coinbase to scriptPubKeyIn */\n-    CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn);\n+    std::unique_ptr<CBlockTemplate> CreateNewBlock(const CScript& scriptPubKeyIn);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67678542",
+      "id" : 67678542,
+      "original_commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "original_position" : 5,
+      "path" : "src/miner.h",
+      "position" : 5,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223",
+      "updated_at" : "2016-06-20T12:06:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67678542",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67681016"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67681016"
+         }
+      },
+      "body" : "But does this mean we want all functions that currently return a bare pointer that will become caller ownership to returning `unique_ptr`?\r\nThis is probably the kind of c++11 refactoring that we want to leave for later.",
+      "commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "created_at" : "2016-06-20T12:29:20Z",
+      "diff_hunk" : "@@ -160,7 +160,7 @@ class BlockAssembler\n public:\n     BlockAssembler(const CChainParams& chainparams);\n     /** Construct a new block template with coinbase to scriptPubKeyIn */\n-    CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn);\n+    std::unique_ptr<CBlockTemplate> CreateNewBlock(const CScript& scriptPubKeyIn);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8223#discussion_r67681016",
+      "id" : 67681016,
+      "original_commit_id" : "9fce0629b437441cb09c14055ee810b8ee6b7978",
+      "original_position" : 5,
+      "path" : "src/miner.h",
+      "position" : 5,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8223",
+      "updated_at" : "2016-06-20T12:29:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67681016",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "utACK 9fce062",
+      "created_at" : "2016-10-18T19:13:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8223#issuecomment-254609275",
+      "id" : 254609275,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8223",
+      "updated_at" : "2016-10-18T19:13:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/254609275",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

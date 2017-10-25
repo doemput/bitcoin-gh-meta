@@ -1,0 +1,615 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90188370"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90188370"
+         }
+      },
+      "body" : "Please move this to a new include file `util_ioprio.h`.",
+      "commit_id" : "4073580a89951ab3334c953e04157615d47f23e0",
+      "created_at" : "2016-11-30T08:39:41Z",
+      "diff_hunk" : "@@ -131,6 +131,49 @@ void OpenDebugLog();\n void ShrinkDebugFile();\n void runCommand(const std::string& strCommand);\n \n+#ifdef HAVE_IOPRIO_SYSCALL",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90188370",
+      "id" : 90188370,
+      "original_commit_id" : "b9303aa36aa09073ef9dad2315d2c8f9abcba350",
+      "original_position" : 4,
+      "path" : "src/util.h",
+      "position" : null,
+      "pull_request_review_id" : 10709748,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245",
+      "updated_at" : "2017-02-04T21:29:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90188370",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Concept ACK. Though not very happy to introduce platform-specific voodoo - we only just got rid of thread priority manipulation. But it may be worth the hassle, I don't know.\r\n\r\nCan we quantify whether this works or not somehow?\r\n",
+      "created_at" : "2016-11-30T08:41:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-263815151",
+      "id" : 263815151,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2016-11-30T08:44:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263815151",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "This will also delay other processing, in particular block relay-- at least until the handling is made more concurrent-- no?  Not a reason to not do it, but maybe a reason to not do it by default for everyone. \r\n\r\nI second the need to quantify this-- I could imagine it making for a big usability improvement. ... or not mattering at all. If the former, I want it... if the latter...\r\n",
+      "created_at" : "2016-11-30T08:50:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-263816941",
+      "id" : 263816941,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2016-11-30T08:50:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263816941",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Whenever I restart my node lately, I find myself eventually manually `ionice`ing the entire process as it slows down other things monitoring it in `iotop`. I can't be sure it's sending out old blocks, but I can't imagine what else it'd be spending so much time reading... :/\r\n\r\nAdded Mac and Windows support for completeness.",
+      "created_at" : "2016-11-30T09:32:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-263825780",
+      "id" : 263825780,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2016-11-30T09:32:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/263825780",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90249552"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90249552"
+         }
+      },
+      "body" : "Maybe change this to `((void)false)` to prevent a compiler warning:\r\n\r\n```\r\nmain.cpp:1673:12: warning: statement has no effect [-Wunused-value]\r\n     ioprio_set_file_idle(filein.Get());\r\n```",
+      "commit_id" : "4073580a89951ab3334c953e04157615d47f23e0",
+      "created_at" : "2016-11-30T15:03:48Z",
+      "diff_hunk" : "@@ -0,0 +1,57 @@\n+// Copyright (c) 2016 Satoshi Nakamoto\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_UTIL_IOPRIO_H\n+#define BITCOIN_UTIL_IOPRIO_H\n+\n+#if defined(HAVE_IOPRIO_SYSCALL) || defined(HAVE_IOPOLICY)\n+int ioprio_get();\n+int ioprio_set(int ioprio);\n+int ioprio_set_idle();\n+\n+class ioprio_idler {\n+private:\n+    int orig;\n+\n+public:\n+    ioprio_idler(const bool actually_idle) {\n+        if (!actually_idle) {\n+            orig = -1;\n+            return;\n+        }\n+\n+        orig = ioprio_get();\n+        if (orig == -1) {\n+            return;\n+        }\n+        if (ioprio_set_idle() == -1) {\n+            orig = -1;\n+        }\n+    }\n+\n+    ~ioprio_idler() {\n+        if (orig == -1) {\n+            return;\n+        }\n+        if (ioprio_set(orig) == -1) {\n+            LogPrintf(\"failed to restore ioprio\\n\");\n+        }\n+    }\n+};\n+#define IOPRIO_IDLER(actually_idle)  ioprio_idler ioprio_idler_(actually_idle)\n+\n+#else\n+#define ioprio_get() (-1)\n+#define ioprio_set(ioprio) (-1)\n+#define ioprio_set_idle() (-1)\n+#define IOPRIO_IDLER(actually_idle)  (void)actually_idle;\n+#endif\n+\n+#ifdef WIN32\n+bool ioprio_set_file_idle(FILE *);\n+#else\n+#define ioprio_set_file_idle(f)  (false)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90249552",
+      "id" : 90249552,
+      "original_commit_id" : "6430b9232048666996d5d4c3ed154907e3daff67",
+      "original_position" : 54,
+      "path" : "src/utilioprio.h",
+      "position" : null,
+      "pull_request_review_id" : 10770703,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245",
+      "updated_at" : "2017-02-04T21:29:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90249552",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90250018"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90250018"
+         }
+      },
+      "body" : "It doesn't seem like it should be necessary to declare these if the `ioprio_idler` class isn't around to call them.",
+      "commit_id" : "4073580a89951ab3334c953e04157615d47f23e0",
+      "created_at" : "2016-11-30T15:06:05Z",
+      "diff_hunk" : "@@ -0,0 +1,57 @@\n+// Copyright (c) 2016 Satoshi Nakamoto\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_UTIL_IOPRIO_H\n+#define BITCOIN_UTIL_IOPRIO_H\n+\n+#if defined(HAVE_IOPRIO_SYSCALL) || defined(HAVE_IOPOLICY)\n+int ioprio_get();\n+int ioprio_set(int ioprio);\n+int ioprio_set_idle();\n+\n+class ioprio_idler {\n+private:\n+    int orig;\n+\n+public:\n+    ioprio_idler(const bool actually_idle) {\n+        if (!actually_idle) {\n+            orig = -1;\n+            return;\n+        }\n+\n+        orig = ioprio_get();\n+        if (orig == -1) {\n+            return;\n+        }\n+        if (ioprio_set_idle() == -1) {\n+            orig = -1;\n+        }\n+    }\n+\n+    ~ioprio_idler() {\n+        if (orig == -1) {\n+            return;\n+        }\n+        if (ioprio_set(orig) == -1) {\n+            LogPrintf(\"failed to restore ioprio\\n\");\n+        }\n+    }\n+};\n+#define IOPRIO_IDLER(actually_idle)  ioprio_idler ioprio_idler_(actually_idle)\n+\n+#else\n+#define ioprio_get() (-1)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90250018",
+      "id" : 90250018,
+      "original_commit_id" : "6430b9232048666996d5d4c3ed154907e3daff67",
+      "original_position" : 45,
+      "path" : "src/utilioprio.h",
+      "position" : null,
+      "pull_request_review_id" : 10770703,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245",
+      "updated_at" : "2017-02-04T21:29:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90250018",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90255335"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90255335"
+         }
+      },
+      "body" : "Needs `#include \"config/bitcoin-config.h\"` to prevent link errors.",
+      "commit_id" : "4073580a89951ab3334c953e04157615d47f23e0",
+      "created_at" : "2016-11-30T15:29:26Z",
+      "diff_hunk" : "@@ -0,0 +1,65 @@\n+// Copyright (c) 2016 The Bitcoin Core developers\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifdef HAVE_IOPRIO_SYSCALL",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90255335",
+      "id" : 90255335,
+      "original_commit_id" : "6430b9232048666996d5d4c3ed154907e3daff67",
+      "original_position" : 5,
+      "path" : "src/utilioprio.cpp",
+      "position" : null,
+      "pull_request_review_id" : 10770703,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245",
+      "updated_at" : "2017-02-04T21:29:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90255335",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90255640"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90255640"
+         }
+      },
+      "body" : "Should add `#include \"config/bitcoin-config.h\"`",
+      "commit_id" : "4073580a89951ab3334c953e04157615d47f23e0",
+      "created_at" : "2016-11-30T15:30:36Z",
+      "diff_hunk" : "@@ -0,0 +1,57 @@\n+// Copyright (c) 2016 Satoshi Nakamoto\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_UTIL_IOPRIO_H",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90255640",
+      "id" : 90255640,
+      "original_commit_id" : "6430b9232048666996d5d4c3ed154907e3daff67",
+      "original_position" : 5,
+      "path" : "src/utilioprio.h",
+      "position" : 5,
+      "pull_request_review_id" : 10770703,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245",
+      "updated_at" : "2017-02-04T21:29:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90255640",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7133040?v=3",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90332495"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90332495"
+         }
+      },
+      "body" : "We can simplify some of the other stuff (move the logic into the class itself) if low-level access is undesired, but for now it's too early to know if these won't be needed IMO.",
+      "commit_id" : "4073580a89951ab3334c953e04157615d47f23e0",
+      "created_at" : "2016-11-30T21:30:19Z",
+      "diff_hunk" : "@@ -0,0 +1,57 @@\n+// Copyright (c) 2016 Satoshi Nakamoto\n+// Distributed under the MIT software license, see the accompanying\n+// file COPYING or http://www.opensource.org/licenses/mit-license.php.\n+\n+#ifndef BITCOIN_UTIL_IOPRIO_H\n+#define BITCOIN_UTIL_IOPRIO_H\n+\n+#if defined(HAVE_IOPRIO_SYSCALL) || defined(HAVE_IOPOLICY)\n+int ioprio_get();\n+int ioprio_set(int ioprio);\n+int ioprio_set_idle();\n+\n+class ioprio_idler {\n+private:\n+    int orig;\n+\n+public:\n+    ioprio_idler(const bool actually_idle) {\n+        if (!actually_idle) {\n+            orig = -1;\n+            return;\n+        }\n+\n+        orig = ioprio_get();\n+        if (orig == -1) {\n+            return;\n+        }\n+        if (ioprio_set_idle() == -1) {\n+            orig = -1;\n+        }\n+    }\n+\n+    ~ioprio_idler() {\n+        if (orig == -1) {\n+            return;\n+        }\n+        if (ioprio_set(orig) == -1) {\n+            LogPrintf(\"failed to restore ioprio\\n\");\n+        }\n+    }\n+};\n+#define IOPRIO_IDLER(actually_idle)  ioprio_idler ioprio_idler_(actually_idle)\n+\n+#else\n+#define ioprio_get() (-1)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#discussion_r90332495",
+      "id" : 90332495,
+      "original_commit_id" : "6430b9232048666996d5d4c3ed154907e3daff67",
+      "original_position" : 45,
+      "path" : "src/utilioprio.h",
+      "position" : null,
+      "pull_request_review_id" : 10853429,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9245",
+      "updated_at" : "2017-02-04T21:29:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/90332495",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Travis failure:\r\n```\r\n'../../src/'`utilioprio.cpp\r\nIn file included from ../../src/utilioprio.cpp:9:0:\r\n../../src/utilioprio.h: In destructor Ã¢ÂÂioprio_idler::~ioprio_idler()Ã¢ÂÂ:\r\n../../src/utilioprio.h:42:51: error: Ã¢ÂÂLogPrintfÃ¢ÂÂ was not declared in this scope\r\n             LogPrintf(\"failed to restore ioprio\\n\");\r\n```",
+      "created_at" : "2016-12-01T00:18:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-264039629",
+      "id" : 264039629,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2016-12-01T00:18:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264039629",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Looks like to make the Windows part work, we need to bump _WIN32_WINNT to 0x0600 which means it will only run on Vista or newer. AFAIK this is okay(?), but I'm going to leave it for a separate PR...",
+      "created_at" : "2016-12-01T08:51:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-264115497",
+      "id" : 264115497,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2016-12-01T08:51:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264115497",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "I like this (concept ACK) although I wonder what the impact is on the p2p network as a whole if everyone ran this.",
+      "created_at" : "2016-12-19T04:35:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-267880247",
+      "id" : 267880247,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2016-12-19T04:35:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/267880247",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "body" : "> Looks like to make the Windows part work, we need to bump _WIN32_WINNT to 0x0600 which means it will only run on Vista or newer. \r\n\r\nThere are win32 and win64 builds. Can't this just be enabled on the win64 build only?",
+      "created_at" : "2017-03-11T19:57:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-285895748",
+      "id" : 285895748,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2017-03-11T19:57:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/285895748",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/5240319?v=3",
+         "events_url" : "https://api.github.com/users/martinschwarz/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/martinschwarz/followers",
+         "following_url" : "https://api.github.com/users/martinschwarz/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/martinschwarz/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/martinschwarz",
+         "id" : 5240319,
+         "login" : "martinschwarz",
+         "organizations_url" : "https://api.github.com/users/martinschwarz/orgs",
+         "received_events_url" : "https://api.github.com/users/martinschwarz/received_events",
+         "repos_url" : "https://api.github.com/users/martinschwarz/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/martinschwarz/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/martinschwarz/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/martinschwarz"
+      }
+   },
+   {
+      "body" : "> Looks like to make the Windows part work, we need to bump _WIN32_WINNT to 0x0600 which means it will only run on Vista or newer. AFAIK this is okay(?), but I'm going to leave it for a separate PR...\r\n\r\nIsn't Vista the version after Windows XP? As we dropped support for Windows XP in 0.13, it seems that requiring Vista for 0.15 is fine.\r\n\r\n> There are win32 and win64 builds. Can't this just be enabled on the win64 build only?\r\n\r\nCould be done, but it'd be confusing to couple those. The low-end systems running 32-bit versions would probably need this more.",
+      "created_at" : "2017-03-13T13:55:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-286113420",
+      "id" : 286113420,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2017-03-13T13:55:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/286113420",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Rebased...",
+      "created_at" : "2017-08-21T05:06:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-323647322",
+      "id" : 323647322,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2017-08-21T05:06:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323647322",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/1095675?v=4",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Hmm, I dont think this is really the best idea as long as our message processing is still single-threaded. Really we need to refactor stuff so that block reading is async and the network processing can continue for other peers while we're serving blocks for peers in IBD, otherwise we may block receiving a new block longer than required.",
+      "created_at" : "2017-08-21T15:31:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-323776002",
+      "id" : 323776002,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2017-08-21T15:31:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323776002",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "That's somewhat independent from this issue. If users need to shut off their node to use their computer, the delay for processing a new block will be even longer.",
+      "created_at" : "2017-08-21T16:04:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-323785647",
+      "id" : 323785647,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2017-08-21T16:04:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/323785647",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/1095675?v=4",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@TheBlueMatt @luke-jr, maybe a compromise would be to make this behavior configurable, and perhaps to default to dropping priority if user is running bitcoin-qt on a desktop.",
+      "created_at" : "2017-10-12T17:47:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9245#issuecomment-336213963",
+      "id" : 336213963,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9245",
+      "updated_at" : "2017-10-12T17:47:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336213963",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/7133040?v=4",
+         "events_url" : "https://api.github.com/users/ryanofsky/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ryanofsky/followers",
+         "following_url" : "https://api.github.com/users/ryanofsky/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ryanofsky/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ryanofsky",
+         "id" : 7133040,
+         "login" : "ryanofsky",
+         "organizations_url" : "https://api.github.com/users/ryanofsky/orgs",
+         "received_events_url" : "https://api.github.com/users/ryanofsky/received_events",
+         "repos_url" : "https://api.github.com/users/ryanofsky/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ryanofsky/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ryanofsky/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ryanofsky"
+      }
+   }
+]

@@ -1,0 +1,883 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137875149"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137875149"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Unrelated whitespace change.",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-09-08T19:47:07Z",
+      "diff_hunk" : "@@ -62,7 +62,7 @@ std::string DecodeDumpString(const std::string &str) {\n     for (unsigned int pos = 0; pos < str.length(); pos++) {\n         unsigned char c = str[pos];\n         if (c == '%' && pos+2 < str.length()) {\n-            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) | \n+            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) |",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137875149",
+      "id" : 137875149,
+      "original_commit_id" : "979cc374406c4817ea3f88810e994cef64444871",
+      "original_position" : 5,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 61605424,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-14T00:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137875149",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137875182"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137875182"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Unrelated whitespace change.",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-09-08T19:47:19Z",
+      "diff_hunk" : "@@ -644,7 +644,7 @@ UniValue dumpwallet(const JSONRPCRequest& request)\n     file << strprintf(\"#   mined on %s\\n\", EncodeDumpTime(chainActive.Tip()->GetBlockTime()));\n     file << \"\\n\";\n \n-    // add the base58check encoded extended master if the wallet uses HD \n+    // add the base58check encoded extended master if the wallet uses HD",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137875182",
+      "id" : 137875182,
+      "original_commit_id" : "979cc374406c4817ea3f88810e994cef64444871",
+      "original_position" : 41,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 61605424,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-14T00:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137875182",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137890184"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137890184"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "I mentioned that in the PR, is it an issue?",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-09-08T21:08:35Z",
+      "diff_hunk" : "@@ -62,7 +62,7 @@ std::string DecodeDumpString(const std::string &str) {\n     for (unsigned int pos = 0; pos < str.length(); pos++) {\n         unsigned char c = str[pos];\n         if (c == '%' && pos+2 < str.length()) {\n-            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) | \n+            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) |",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137890184",
+      "id" : 137890184,
+      "in_reply_to_id" : 137875149,
+      "original_commit_id" : "979cc374406c4817ea3f88810e994cef64444871",
+      "original_position" : 5,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 61623413,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-14T00:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137890184",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137892191"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137892191"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "I isn't really a problem, but you should try to avoid making such changes. Atom can be set to not make any whitespace changes at all.",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-09-08T21:20:17Z",
+      "diff_hunk" : "@@ -62,7 +62,7 @@ std::string DecodeDumpString(const std::string &str) {\n     for (unsigned int pos = 0; pos < str.length(); pos++) {\n         unsigned char c = str[pos];\n         if (c == '%' && pos+2 < str.length()) {\n-            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) | \n+            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) |",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137892191",
+      "id" : 137892191,
+      "in_reply_to_id" : 137875149,
+      "original_commit_id" : "979cc374406c4817ea3f88810e994cef64444871",
+      "original_position" : 5,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 61625744,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-14T00:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137892191",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Mind to add to `dumpwallet` that just backing up the private masterkey is likely insufficient?",
+      "created_at" : "2017-09-09T21:16:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-328303956",
+      "id" : 328303956,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-09-09T21:16:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/328303956",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Done :+1: ",
+      "created_at" : "2017-09-09T23:09:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-328308799",
+      "id" : 328308799,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-09-09T23:09:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/328308799",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137939378"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137939378"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "It is a problem, as it often breaks backporting cherry-picks.",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-09-10T02:34:04Z",
+      "diff_hunk" : "@@ -62,7 +62,7 @@ std::string DecodeDumpString(const std::string &str) {\n     for (unsigned int pos = 0; pos < str.length(); pos++) {\n         unsigned char c = str[pos];\n         if (c == '%' && pos+2 < str.length()) {\n-            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) | \n+            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) |",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137939378",
+      "id" : 137939378,
+      "in_reply_to_id" : 137875149,
+      "original_commit_id" : "979cc374406c4817ea3f88810e994cef64444871",
+      "original_position" : 5,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 61674967,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-14T00:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137939378",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/6399679?v=4",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137940116"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137940116"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Fixed.",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-09-10T03:30:07Z",
+      "diff_hunk" : "@@ -62,7 +62,7 @@ std::string DecodeDumpString(const std::string &str) {\n     for (unsigned int pos = 0; pos < str.length(); pos++) {\n         unsigned char c = str[pos];\n         if (c == '%' && pos+2 < str.length()) {\n-            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) | \n+            c = (((str[pos+1]>>6)*9+((str[pos+1]-'0')&15)) << 4) |",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r137940116",
+      "id" : 137940116,
+      "in_reply_to_id" : 137875149,
+      "original_commit_id" : "979cc374406c4817ea3f88810e994cef64444871",
+      "original_position" : 5,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 61675512,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-14T00:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/137940116",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Rebased to fix .bitcoin directory travis failure",
+      "created_at" : "2017-09-11T06:24:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-328428531",
+      "id" : 328428531,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-09-11T06:24:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/328428531",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "utACK 288dfaea9d987399b92514121f98a674e74d5580",
+      "created_at" : "2017-09-15T15:39:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-329819233",
+      "id" : 329819233,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-09-15T15:39:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/329819233",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r140361724"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140361724"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "This leaves me confused. The things I need to back up *are* in dumpwallet, just not the master key listed in dump wallet, right? So just the dumpwallet file is a sufficient backup (with rescan, including imported segwit addresses and p2sh redeemScripts?), but not only the master key?",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-09-21T21:18:24Z",
+      "diff_hunk" : "@@ -601,6 +601,7 @@ UniValue dumpwallet(const JSONRPCRequest& request)\n         throw std::runtime_error(\n             \"dumpwallet \\\"filename\\\"\\n\"\n             \"\\nDumps all wallet keys in a human-readable format.\\n\"\n+            \"Note that if your wallet contains keys which are not derived from your HD seed (e.g. imported keys), these are not covered by only backing up the seed itself, and must be backed up too.\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r140361724",
+      "id" : 140361724,
+      "original_commit_id" : "288dfaea9d987399b92514121f98a674e74d5580",
+      "original_position" : 31,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 64425650,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-14T00:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/140361724",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r141465960"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141465960"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "@TheBlueMatt would changing this string to something like `Dumps all wallet derived keys in a human-readable format.` help cleanup the confusion?",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-09-27T20:57:09Z",
+      "diff_hunk" : "@@ -601,6 +601,7 @@ UniValue dumpwallet(const JSONRPCRequest& request)\n         throw std::runtime_error(\n             \"dumpwallet \\\"filename\\\"\\n\"\n             \"\\nDumps all wallet keys in a human-readable format.\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r141465960",
+      "id" : 141465960,
+      "original_commit_id" : "288dfaea9d987399b92514121f98a674e74d5580",
+      "original_position" : 30,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 65684859,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-14T00:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141465960",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/226170?v=4",
+         "events_url" : "https://api.github.com/users/mess110/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/mess110/followers",
+         "following_url" : "https://api.github.com/users/mess110/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/mess110/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/mess110",
+         "id" : 226170,
+         "login" : "mess110",
+         "organizations_url" : "https://api.github.com/users/mess110/orgs",
+         "received_events_url" : "https://api.github.com/users/mess110/received_events",
+         "repos_url" : "https://api.github.com/users/mess110/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/mess110/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/mess110/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/mess110"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r141995393"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141995393"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "I've changed it, lmk what you think now",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-09-30T02:27:49Z",
+      "diff_hunk" : "@@ -601,6 +601,7 @@ UniValue dumpwallet(const JSONRPCRequest& request)\n         throw std::runtime_error(\n             \"dumpwallet \\\"filename\\\"\\n\"\n             \"\\nDumps all wallet keys in a human-readable format.\\n\"\n+            \"Note that if your wallet contains keys which are not derived from your HD seed (e.g. imported keys), these are not covered by only backing up the seed itself, and must be backed up too.\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r141995393",
+      "id" : 141995393,
+      "in_reply_to_id" : 140361724,
+      "original_commit_id" : "288dfaea9d987399b92514121f98a674e74d5580",
+      "original_position" : 31,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66301973,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-14T00:57:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/141995393",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Rebased + hopefully clarified the text as per @TheBlueMatt comments",
+      "created_at" : "2017-09-30T02:44:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-333277009",
+      "id" : 333277009,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-09-30T02:44:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333277009",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Wait, now I'm even more confused. AFAICT, dumpwallet *does* dump all imported keys, not just \"derived\" keys, so no need to back those up. It does not, however, dump imported scripts, so witness addresses and multisig addresses will be missed, right?",
+      "created_at" : "2017-10-02T19:57:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-333646789",
+      "id" : 333646789,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-10-02T19:57:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333646789",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "That's what I meant by `(e.g. ensure you back up the whole dumpfile)` (note that I didn't follow the suggested edit by mess110 because it's wrong, is that what you were looking at?). Are you suggesting mentioning that those imported scripts aren't backed up, or?",
+      "created_at" : "2017-10-02T21:52:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-333676092",
+      "id" : 333676092,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-10-02T21:52:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333676092",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Hmm, maybe I missed the parenthetical. Do we want to mention anything about the segwit addresses and imported scripts?",
+      "created_at" : "2017-10-04T00:10:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-334015014",
+      "id" : 334015014,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-10-04T00:10:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334015014",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "The description does currently specifically refer to 'keys' not scripts or segwit addresses. But is there any reason scripts aren't also dumped too?",
+      "created_at" : "2017-10-04T05:34:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-334054334",
+      "id" : 334054334,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-10-04T05:34:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334054334",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "> The description does currently specifically refer to 'keys' not scripts or segwit addresses. But is there any reason scripts aren't also dumped too?\r\n\r\nNo. just that (AFAIK) no one implemented that yet. Ideally a dumpwallet would not lose any relevant information.\r\n\r\n\r\n",
+      "created_at" : "2017-10-05T10:25:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-334424715",
+      "id" : 334424715,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-10-05T10:30:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334424715",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/126646?v=4",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I dont see why scripts shouldnt be dumped either. I'm not sure if its really in scope for this PR, but would be a welcome addition IMO.",
+      "created_at" : "2017-10-05T21:31:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-334598004",
+      "id" : 334598004,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-10-05T21:31:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334598004",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "@laanwj @TheBlueMatt I'll look into it and try get a PR open for that soon too then",
+      "created_at" : "2017-10-05T21:43:02Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-334600457",
+      "id" : 334600457,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-10-05T21:43:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334600457",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Rebased",
+      "created_at" : "2017-10-13T22:49:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-336585132",
+      "id" : 336585132,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-10-13T22:49:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336585132",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r145203402"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145203402"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Note that you may want to wrap this line.",
+      "commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "created_at" : "2017-10-17T17:46:40Z",
+      "diff_hunk" : "@@ -601,6 +601,7 @@ UniValue dumpwallet(const JSONRPCRequest& request)\n         throw std::runtime_error(\n             \"dumpwallet \\\"filename\\\"\\n\"\n             \"\\nDumps all wallet keys in a human-readable format to a server-side file. This does not allow overwriting existing files.\\n\"\n+            \"Note that if your wallet contains keys which are not derived from your HD seed (e.g. imported keys), these are not covered by only backing up the seed itself, and must be backed up too (e.g. ensure you back up the whole dumpfile).\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#discussion_r145203402",
+      "id" : 145203402,
+      "original_commit_id" : "a38bfbc51d0b98fffd8d79457f31c6fb196ff580",
+      "original_position" : 40,
+      "path" : "src/wallet/rpcdump.cpp",
+      "position" : 40,
+      "pull_request_review_id" : 69968923,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11289",
+      "updated_at" : "2017-10-17T17:47:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145203402",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I've wrapped the text, and added a note about scripts not being included, until I get the other PR up. Will remove that note in the other PR when it happens.",
+      "created_at" : "2017-10-19T09:03:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11289#issuecomment-337845913",
+      "id" : 337845913,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11289",
+      "updated_at" : "2017-10-19T09:03:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/337845913",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   }
+]

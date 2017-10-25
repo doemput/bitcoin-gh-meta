@@ -96,7 +96,7 @@
          }
       },
       "body" : "It should not be a `GET`... if this is intended to be a REST-ful interface.\r\nSome  proxies won't allow URL's longer than 2000 chars anyway,  so using this hacky [in-the-url] approach will be prone to issues.",
-      "commit_id" : "ff5f52cc4fb0b4df690dfd84f031c27f7c880918",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
       "created_at" : "2015-10-17T23:21:09Z",
       "diff_hunk" : "@@ -91,6 +91,13 @@ Only supports JSON as output format.\n Returns transactions in the TX mempool.\n Only supports JSON as output format.\n \n+####Send raw transaction\n+`GET /rest/sendrawtransaction/<raw-transaction>.<bin|hex|json>`",
       "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r42315229",
@@ -106,7 +106,7 @@
       "path" : "doc/REST-interface.md",
       "position" : null,
       "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
-      "updated_at" : "2015-10-18T13:17:38Z",
+      "updated_at" : "2015-10-28T07:20:53Z",
       "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/42315229",
       "user" : {
          "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
@@ -253,7 +253,7 @@
          }
       },
       "body" : "You should specify:\r\n\r\n- `\"application/octet-stream\"` for plain-old-data\r\n- `\"text/plain\"` for hex\r\n- `\"application/json\"` for JSON",
-      "commit_id" : "ff5f52cc4fb0b4df690dfd84f031c27f7c880918",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
       "created_at" : "2015-10-18T23:02:54Z",
       "diff_hunk" : "@@ -13,6 +13,15 @@ Given a transaction hash: returns a transaction in binary, hex-encoded binary, o\n \n For full TX query capability, one must enable the transaction index via \"txindex=1\" command line / configuration option.\n \n+####Send raw transaction\n+`POST /rest/tx.<bin|hex|json>`\n+\n+Parameter: transaction=\\<signed transaction\\>\n+\n+Submits transaction (serialized, hex-encoded) to local node and network.\n+\n+Returns transaction id in binary, hex-encoded binary, or JSON formats, or an error if the transaction is invalid for any reason.\n+",
       "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r42328057",
@@ -261,9 +261,9 @@
       "original_commit_id" : "ff5f52cc4fb0b4df690dfd84f031c27f7c880918",
       "original_position" : 12,
       "path" : "doc/REST-interface.md",
-      "position" : 12,
+      "position" : null,
       "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
-      "updated_at" : "2015-10-18T23:03:08Z",
+      "updated_at" : "2015-10-28T07:20:53Z",
       "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/42328057",
       "user" : {
          "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
@@ -438,7 +438,7 @@
          }
       },
       "body" : "I will ones we agreed on it :)\r\n\r\nIn the code in this version it's like in the other methods, determined by the ending, e.g.\r\nPOST 127.0.0.1:18332/rest/tx.hex",
-      "commit_id" : "ff5f52cc4fb0b4df690dfd84f031c27f7c880918",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
       "created_at" : "2015-10-19T06:39:37Z",
       "diff_hunk" : "@@ -13,6 +13,15 @@ Given a transaction hash: returns a transaction in binary, hex-encoded binary, o\n \n For full TX query capability, one must enable the transaction index via \"txindex=1\" command line / configuration option.\n \n+####Send raw transaction\n+`POST /rest/tx.<bin|hex|json>`\n+\n+Parameter: transaction=\\<signed transaction\\>\n+\n+Submits transaction (serialized, hex-encoded) to local node and network.\n+\n+Returns transaction id in binary, hex-encoded binary, or JSON formats, or an error if the transaction is invalid for any reason.\n+",
       "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r42339661",
@@ -446,9 +446,9 @@
       "original_commit_id" : "ff5f52cc4fb0b4df690dfd84f031c27f7c880918",
       "original_position" : 12,
       "path" : "doc/REST-interface.md",
-      "position" : 12,
+      "position" : null,
       "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
-      "updated_at" : "2015-10-19T06:39:37Z",
+      "updated_at" : "2015-10-28T07:20:53Z",
       "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/42339661",
       "user" : {
          "avatar_url" : "https://avatars.githubusercontent.com/u/1846033?v=3",
@@ -664,6 +664,854 @@
          "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
          "type" : "User",
          "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Re-reviewing latest version:\r\n* Send different URI/behavior to a different dispatch function - avoid rest_tx() - and you don't need to reformat huge amounts of untouched code, vastly shrinking diff.\r\n* Agree w/ @laanwj comments:  Verb should be PUT or POST (done) and avoid JSON input.\r\n\r\nACK with those updates\r\n\r\n",
+      "created_at" : "2015-10-27T19:34:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-151619197",
+      "id" : 151619197,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2015-10-27T19:34:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/151619197",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/494411?v=3",
+         "events_url" : "https://api.github.com/users/jgarzik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jgarzik/followers",
+         "following_url" : "https://api.github.com/users/jgarzik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jgarzik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jgarzik",
+         "id" : 494411,
+         "login" : "jgarzik",
+         "organizations_url" : "https://api.github.com/users/jgarzik/orgs",
+         "received_events_url" : "https://api.github.com/users/jgarzik/received_events",
+         "repos_url" : "https://api.github.com/users/jgarzik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jgarzik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jgarzik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jgarzik"
+      }
+   },
+   {
+      "body" : "Thanks for the review.  It's strange that Travis says the checks passed even when they actually didn't (https://travis-ci.org/bitcoin/bitcoin/builds/87533414).\r\n\r\nMakes sense, moved the POST /rest/tx (without /) code to rest_tx_sendrawtx (although the naming isn't consistent anymore now, anyone has a better idea for a function name?).\r\n\r\nMy binary tests (see latest part of rest.py) are still failing. Maybe someone has an idea whats wrong there or in the code? Thanks.",
+      "created_at" : "2015-10-27T20:31:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-151635154",
+      "id" : 151635154,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2015-10-27T20:31:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/151635154",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1846033?v=3",
+         "events_url" : "https://api.github.com/users/lclc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/lclc/followers",
+         "following_url" : "https://api.github.com/users/lclc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/lclc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/lclc",
+         "id" : 1846033,
+         "login" : "lclc",
+         "organizations_url" : "https://api.github.com/users/lclc/orgs",
+         "received_events_url" : "https://api.github.com/users/lclc/received_events",
+         "repos_url" : "https://api.github.com/users/lclc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/lclc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/lclc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/lclc"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43211038"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43211038"
+         }
+      },
+      "body" : "The 6th argument is not fRejectAbsurdFee currently.",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-10-28T01:43:16Z",
+      "diff_hunk" : "@@ -391,12 +393,96 @@ static bool rest_tx(HTTPRequest* req, const std::string& strURIPart)\n     }\n \n     default: {\n-        return RESTERR(req, HTTP_NOT_FOUND, \"output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+        return RESTERR(req, HTTP_NOT_FOUND, \"Output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+    }\n+    }\n+    // not reached\n+    return true;\n+}\n+\n+\n+static bool rest_tx_sendrawtx(HTTPRequest* req, const std::string& strURIPart)\n+{\n+    if (!CheckWarmup(req))\n+        return false;\n+    std::string hashStr;\n+    const RetFormat rf = ParseDataFormat(hashStr, strURIPart);\n+\n+    std::string strBody = req->ReadBody();\n+    if (std::string::npos == strBody.find(\"transaction=\"))\n+    {\n+        return RESTERR(req, HTTP_BAD_REQUEST, \"No transaction parameter found\");\n+    }\n+    std::string strTx = strBody.substr(std::string(\"transaction=\").length());\n+\n+    // parse parameter\n+    CTransaction tx;\n+    if(rf == RF_BINARY)\n+    {\n+        try {\n+            CDataStream bin(SER_NETWORK, PROTOCOL_VERSION);\n+            bin << strTx;\n+            bin >> tx;\n+        }\n+        catch (const std::exception&) {\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+        }\n+    }\n+    else\n+    {\n+        if (!DecodeHexTx(tx, strTx))\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+    }\n+    uint256 hashTx = tx.GetHash();\n+\n+    bool fRejectAbsurdFee = false;\n+\n+    CCoinsViewCache &view = *pcoinsTip;\n+    const CCoins* existingCoins = view.AccessCoins(hashTx);\n+    bool fHaveMempool = mempool.exists(hashTx);\n+    bool fHaveChain = existingCoins && existingCoins->nHeight < 1000000000;\n+    if (!fHaveMempool && !fHaveChain) {\n+        // push to local node and sync with wallets\n+        CValidationState state;\n+        bool fMissingInputs;\n+        if (!AcceptToMemoryPool(mempool, state, tx, false, &fMissingInputs, fRejectAbsurdFee)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43211038",
+      "id" : 43211038,
+      "original_commit_id" : "91687badef10c7770324cb2723bc07ee13a31095",
+      "original_position" : 66,
+      "path" : "src/rest.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-10-28T07:20:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43211038",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43223869"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43223869"
+         }
+      },
+      "body" : "Thanks, set both to false now.",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-10-28T07:22:34Z",
+      "diff_hunk" : "@@ -391,12 +393,96 @@ static bool rest_tx(HTTPRequest* req, const std::string& strURIPart)\n     }\n \n     default: {\n-        return RESTERR(req, HTTP_NOT_FOUND, \"output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+        return RESTERR(req, HTTP_NOT_FOUND, \"Output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+    }\n+    }\n+    // not reached\n+    return true;\n+}\n+\n+\n+static bool rest_tx_sendrawtx(HTTPRequest* req, const std::string& strURIPart)\n+{\n+    if (!CheckWarmup(req))\n+        return false;\n+    std::string hashStr;\n+    const RetFormat rf = ParseDataFormat(hashStr, strURIPart);\n+\n+    std::string strBody = req->ReadBody();\n+    if (std::string::npos == strBody.find(\"transaction=\"))\n+    {\n+        return RESTERR(req, HTTP_BAD_REQUEST, \"No transaction parameter found\");\n+    }\n+    std::string strTx = strBody.substr(std::string(\"transaction=\").length());\n+\n+    // parse parameter\n+    CTransaction tx;\n+    if(rf == RF_BINARY)\n+    {\n+        try {\n+            CDataStream bin(SER_NETWORK, PROTOCOL_VERSION);\n+            bin << strTx;\n+            bin >> tx;\n+        }\n+        catch (const std::exception&) {\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+        }\n+    }\n+    else\n+    {\n+        if (!DecodeHexTx(tx, strTx))\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+    }\n+    uint256 hashTx = tx.GetHash();\n+\n+    bool fRejectAbsurdFee = false;\n+\n+    CCoinsViewCache &view = *pcoinsTip;\n+    const CCoins* existingCoins = view.AccessCoins(hashTx);\n+    bool fHaveMempool = mempool.exists(hashTx);\n+    bool fHaveChain = existingCoins && existingCoins->nHeight < 1000000000;\n+    if (!fHaveMempool && !fHaveChain) {\n+        // push to local node and sync with wallets\n+        CValidationState state;\n+        bool fMissingInputs;\n+        if (!AcceptToMemoryPool(mempool, state, tx, false, &fMissingInputs, fRejectAbsurdFee)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43223869",
+      "id" : 43223869,
+      "original_commit_id" : "91687badef10c7770324cb2723bc07ee13a31095",
+      "original_position" : 66,
+      "path" : "src/rest.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-10-28T07:22:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43223869",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1846033?v=3",
+         "events_url" : "https://api.github.com/users/lclc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/lclc/followers",
+         "following_url" : "https://api.github.com/users/lclc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/lclc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/lclc",
+         "id" : 1846033,
+         "login" : "lclc",
+         "organizations_url" : "https://api.github.com/users/lclc/orgs",
+         "received_events_url" : "https://api.github.com/users/lclc/received_events",
+         "repos_url" : "https://api.github.com/users/lclc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/lclc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/lclc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/lclc"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43232970"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43232970"
+         }
+      },
+      "body" : "Why would you set it to false? A better (but not perfect) solution would be something like https://github.com/MarcoFalke/bitcoin/commit/18f5df4740c12c182667fc5c886e6605f4537a4b#diff-52257e4c1cedbf5e302f183065cab880L812\r\n\r\nBut #6726 is not yet merged and needs more work anyway. So let's just consider this as NIT and I will clean it up in a later PR if this gets merged before #6726.",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-10-28T09:33:32Z",
+      "diff_hunk" : "@@ -391,12 +393,94 @@ static bool rest_tx(HTTPRequest* req, const std::string& strURIPart)\n     }\n \n     default: {\n-        return RESTERR(req, HTTP_NOT_FOUND, \"output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+        return RESTERR(req, HTTP_NOT_FOUND, \"Output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+    }\n+    }\n+    // not reached\n+    return true;\n+}\n+\n+\n+static bool rest_tx_sendrawtx(HTTPRequest* req, const std::string& strURIPart)\n+{\n+    if (!CheckWarmup(req))\n+        return false;\n+    std::string hashStr;\n+    const RetFormat rf = ParseDataFormat(hashStr, strURIPart);\n+\n+    std::string strBody = req->ReadBody();\n+    if (std::string::npos == strBody.find(\"transaction=\"))\n+    {\n+        return RESTERR(req, HTTP_BAD_REQUEST, \"No transaction parameter found\");\n+    }\n+    std::string strTx = strBody.substr(std::string(\"transaction=\").length());\n+\n+    // parse parameter\n+    CTransaction tx;\n+    if(rf == RF_BINARY)\n+    {\n+        try {\n+            CDataStream bin(SER_NETWORK, PROTOCOL_VERSION);\n+            bin << strTx;\n+            bin >> tx;\n+        }\n+        catch (const std::exception&) {\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+        }\n+    }\n+    else\n+    {\n+        if (!DecodeHexTx(tx, strTx))\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+    }\n+    uint256 hashTx = tx.GetHash();\n+\n+    CCoinsViewCache &view = *pcoinsTip;\n+    const CCoins* existingCoins = view.AccessCoins(hashTx);\n+    bool fHaveMempool = mempool.exists(hashTx);\n+    bool fHaveChain = existingCoins && existingCoins->nHeight < 1000000000;\n+    if (!fHaveMempool && !fHaveChain) {\n+        // push to local node and sync with wallets\n+        CValidationState state;\n+        bool fMissingInputs;\n+        if (!AcceptToMemoryPool(mempool, state, tx, false, &fMissingInputs, false, false)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43232970",
+      "id" : 43232970,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 64,
+      "path" : "src/rest.cpp",
+      "position" : 64,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-10-28T09:33:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43232970",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43233080"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43233080"
+         }
+      },
+      "body" : "Also travis fails with \"absurdly-high-fee\" so you'd have to pass it on, I guess. (Haven't looked closely, yet)\r\n\r\nBut then this is more like a blocking NIT.",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-10-28T09:34:38Z",
+      "diff_hunk" : "@@ -391,12 +393,94 @@ static bool rest_tx(HTTPRequest* req, const std::string& strURIPart)\n     }\n \n     default: {\n-        return RESTERR(req, HTTP_NOT_FOUND, \"output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+        return RESTERR(req, HTTP_NOT_FOUND, \"Output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+    }\n+    }\n+    // not reached\n+    return true;\n+}\n+\n+\n+static bool rest_tx_sendrawtx(HTTPRequest* req, const std::string& strURIPart)\n+{\n+    if (!CheckWarmup(req))\n+        return false;\n+    std::string hashStr;\n+    const RetFormat rf = ParseDataFormat(hashStr, strURIPart);\n+\n+    std::string strBody = req->ReadBody();\n+    if (std::string::npos == strBody.find(\"transaction=\"))\n+    {\n+        return RESTERR(req, HTTP_BAD_REQUEST, \"No transaction parameter found\");\n+    }\n+    std::string strTx = strBody.substr(std::string(\"transaction=\").length());\n+\n+    // parse parameter\n+    CTransaction tx;\n+    if(rf == RF_BINARY)\n+    {\n+        try {\n+            CDataStream bin(SER_NETWORK, PROTOCOL_VERSION);\n+            bin << strTx;\n+            bin >> tx;\n+        }\n+        catch (const std::exception&) {\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+        }\n+    }\n+    else\n+    {\n+        if (!DecodeHexTx(tx, strTx))\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+    }\n+    uint256 hashTx = tx.GetHash();\n+\n+    CCoinsViewCache &view = *pcoinsTip;\n+    const CCoins* existingCoins = view.AccessCoins(hashTx);\n+    bool fHaveMempool = mempool.exists(hashTx);\n+    bool fHaveChain = existingCoins && existingCoins->nHeight < 1000000000;\n+    if (!fHaveMempool && !fHaveChain) {\n+        // push to local node and sync with wallets\n+        CValidationState state;\n+        bool fMissingInputs;\n+        if (!AcceptToMemoryPool(mempool, state, tx, false, &fMissingInputs, false, false)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43233080",
+      "id" : 43233080,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 64,
+      "path" : "src/rest.cpp",
+      "position" : 64,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-10-28T09:34:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43233080",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43237105"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43237105"
+         }
+      },
+      "body" : "I think it's job of the API user / wallet to check if the fee is too high or not, instead of trusting the node to check this and care about it.\r\n\r\nThe Travis error regarding \"absurdly-high-fee\" comes later, not because of this but because of the RPC-call to cross-check the result I do there. I'm aware of that, but it already fails earlier.",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-10-28T10:18:03Z",
+      "diff_hunk" : "@@ -391,12 +393,94 @@ static bool rest_tx(HTTPRequest* req, const std::string& strURIPart)\n     }\n \n     default: {\n-        return RESTERR(req, HTTP_NOT_FOUND, \"output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+        return RESTERR(req, HTTP_NOT_FOUND, \"Output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+    }\n+    }\n+    // not reached\n+    return true;\n+}\n+\n+\n+static bool rest_tx_sendrawtx(HTTPRequest* req, const std::string& strURIPart)\n+{\n+    if (!CheckWarmup(req))\n+        return false;\n+    std::string hashStr;\n+    const RetFormat rf = ParseDataFormat(hashStr, strURIPart);\n+\n+    std::string strBody = req->ReadBody();\n+    if (std::string::npos == strBody.find(\"transaction=\"))\n+    {\n+        return RESTERR(req, HTTP_BAD_REQUEST, \"No transaction parameter found\");\n+    }\n+    std::string strTx = strBody.substr(std::string(\"transaction=\").length());\n+\n+    // parse parameter\n+    CTransaction tx;\n+    if(rf == RF_BINARY)\n+    {\n+        try {\n+            CDataStream bin(SER_NETWORK, PROTOCOL_VERSION);\n+            bin << strTx;\n+            bin >> tx;\n+        }\n+        catch (const std::exception&) {\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+        }\n+    }\n+    else\n+    {\n+        if (!DecodeHexTx(tx, strTx))\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+    }\n+    uint256 hashTx = tx.GetHash();\n+\n+    CCoinsViewCache &view = *pcoinsTip;\n+    const CCoins* existingCoins = view.AccessCoins(hashTx);\n+    bool fHaveMempool = mempool.exists(hashTx);\n+    bool fHaveChain = existingCoins && existingCoins->nHeight < 1000000000;\n+    if (!fHaveMempool && !fHaveChain) {\n+        // push to local node and sync with wallets\n+        CValidationState state;\n+        bool fMissingInputs;\n+        if (!AcceptToMemoryPool(mempool, state, tx, false, &fMissingInputs, false, false)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43237105",
+      "id" : 43237105,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 64,
+      "path" : "src/rest.cpp",
+      "position" : 64,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-10-28T10:18:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43237105",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1846033?v=3",
+         "events_url" : "https://api.github.com/users/lclc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/lclc/followers",
+         "following_url" : "https://api.github.com/users/lclc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/lclc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/lclc",
+         "id" : 1846033,
+         "login" : "lclc",
+         "organizations_url" : "https://api.github.com/users/lclc/orgs",
+         "received_events_url" : "https://api.github.com/users/lclc/received_events",
+         "repos_url" : "https://api.github.com/users/lclc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/lclc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/lclc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/lclc"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43237619"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43237619"
+         }
+      },
+      "body" : "There is no wallet when you use raw transactions...\r\n\r\nThe rpc interface checks for high fee by default and you can disable it with an additional argument. Any chance you could implement something like that?",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-10-28T10:22:30Z",
+      "diff_hunk" : "@@ -391,12 +393,94 @@ static bool rest_tx(HTTPRequest* req, const std::string& strURIPart)\n     }\n \n     default: {\n-        return RESTERR(req, HTTP_NOT_FOUND, \"output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+        return RESTERR(req, HTTP_NOT_FOUND, \"Output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+    }\n+    }\n+    // not reached\n+    return true;\n+}\n+\n+\n+static bool rest_tx_sendrawtx(HTTPRequest* req, const std::string& strURIPart)\n+{\n+    if (!CheckWarmup(req))\n+        return false;\n+    std::string hashStr;\n+    const RetFormat rf = ParseDataFormat(hashStr, strURIPart);\n+\n+    std::string strBody = req->ReadBody();\n+    if (std::string::npos == strBody.find(\"transaction=\"))\n+    {\n+        return RESTERR(req, HTTP_BAD_REQUEST, \"No transaction parameter found\");\n+    }\n+    std::string strTx = strBody.substr(std::string(\"transaction=\").length());\n+\n+    // parse parameter\n+    CTransaction tx;\n+    if(rf == RF_BINARY)\n+    {\n+        try {\n+            CDataStream bin(SER_NETWORK, PROTOCOL_VERSION);\n+            bin << strTx;\n+            bin >> tx;\n+        }\n+        catch (const std::exception&) {\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+        }\n+    }\n+    else\n+    {\n+        if (!DecodeHexTx(tx, strTx))\n+            return RESTERR(req, HTTP_BAD_REQUEST, strprintf(\"TX decode failed %s\",strTx));\n+    }\n+    uint256 hashTx = tx.GetHash();\n+\n+    CCoinsViewCache &view = *pcoinsTip;\n+    const CCoins* existingCoins = view.AccessCoins(hashTx);\n+    bool fHaveMempool = mempool.exists(hashTx);\n+    bool fHaveChain = existingCoins && existingCoins->nHeight < 1000000000;\n+    if (!fHaveMempool && !fHaveChain) {\n+        // push to local node and sync with wallets\n+        CValidationState state;\n+        bool fMissingInputs;\n+        if (!AcceptToMemoryPool(mempool, state, tx, false, &fMissingInputs, false, false)) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43237619",
+      "id" : 43237619,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 64,
+      "path" : "src/rest.cpp",
+      "position" : 64,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-10-28T10:22:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43237619",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43240971"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43240971"
+         }
+      },
+      "body" : "You can't hard code this as `1`. Travis seems to fail here.",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-10-28T10:57:54Z",
+      "diff_hunk" : "@@ -339,5 +339,112 @@ def run_test(self):\n         json_obj = json.loads(json_string)\n         assert_equal(json_obj['bestblockhash'], bb_hash)\n \n+\n+        ######################################\n+        # POST /rest/tx/: Send raw transactions\n+        ######################################\n+        #########\n+        # sendrawtransaction with missing transaction parameter\n+        #########\n+        inputs  = [ {'txid' : \"1d1d4e24ed99057e84c3f80fd8fbec79ed9e1acee37da269356ecea000000000\", 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4 }\n+        raw_tx   = self.nodes[2].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[2].signrawtransaction(raw_tx)\n+\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", raw_tx['hex'], True)\n+        assert_equal(response.status, 400)\n+        error_str = response.read()\n+        assert_equal(\"No transaction parameter found\" in error_str, True);\n+\n+        #########\n+        # sendrawtransaction with missing input\n+        #########\n+        raw_tx_missing_input = \"transaction=\" + raw_tx['hex']\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", raw_tx_missing_input, True)\n+        assert_equal(response.status, 400)\n+        error_str = response.read()\n+        assert_equal(\"Missing inputs\" in error_str, True);\n+\n+        #########\n+        # sendrawtransaction with invalid raw tx\n+        #########\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=invalidrawtx\", True)\n+        assert_equal(response.status, 400)\n+        error_str = response.read()\n+        assert_equal(\"TX decode failed invalidrawtx\" in error_str, True);\n+\n+        #########\n+        # sendrawtransaction as hex, requesting result as hex\n+        #########\n+        txId = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), 5)\n+        inputs  = [ {'txid' : txId, 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4.8 }\n+        raw_tx   = self.nodes[0].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[0].signrawtransaction(raw_tx)\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=\" + raw_tx['hex'] , True)\n+        assert_equal(response.status, 200)\n+        response_str = response.read()\n+        assert_equal(self.nodes[0].sendrawtransaction(raw_tx['hex']) in response_str, True);\n+\n+        self.nodes[0].generate(1)\n+        self.sync_all()\n+        self.nodes[2].generate(1)\n+        self.sync_all()\n+\n+        #########\n+        # sendrawtransaction with transaction that is already in the block chain\n+        #########\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=\" + raw_tx['hex'] , True)\n+        assert_equal(response.status, 400)\n+        response_str = response.read()\n+        assert_equal(\"Transaction already in block chain\" in response_str, True);\n+\n+        #########\n+        # sendrawtransaction as hex, requesting result as json\n+        #########\n+        txId = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), 5)\n+        inputs  = [ {'txid' : txId, 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4.6 }\n+        raw_tx   = self.nodes[0].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[0].signrawtransaction(raw_tx)\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"json\", \"transaction=\" + raw_tx['hex'] , True)\n+        response_str = response.read()\n+        print response.status #lclc RAUS\n+        print response_str #lclc RAUS\n+        assert_equal(response.status, 200)\n+        assert_equal( \"{ \\\"txid\\\" : \\\"\" +self.nodes[0].sendrawtransaction(raw_tx['hex']) + \"\\\" }\" in response_str, True);\n+\n+        self.nodes[0].generate(1)\n+        self.sync_all()\n+\n+\n+        #########\n+        # sendrawtransaction as binary, requesting result as binary\n+        #########\n+        txId = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), 5.0)\n+        inputs  = [ {'txid' : txId, 'vout' : 1}]",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43240971",
+      "id" : 43240971,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 87,
+      "path" : "qa/rpc-tests/rest.py",
+      "position" : 87,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-10-28T10:57:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43240971",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43241005"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43241005"
+         }
+      },
+      "body" : "Fee of .6 btc is too high. Travis seems to fail here",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-10-28T10:58:27Z",
+      "diff_hunk" : "@@ -339,5 +339,112 @@ def run_test(self):\n         json_obj = json.loads(json_string)\n         assert_equal(json_obj['bestblockhash'], bb_hash)\n \n+\n+        ######################################\n+        # POST /rest/tx/: Send raw transactions\n+        ######################################\n+        #########\n+        # sendrawtransaction with missing transaction parameter\n+        #########\n+        inputs  = [ {'txid' : \"1d1d4e24ed99057e84c3f80fd8fbec79ed9e1acee37da269356ecea000000000\", 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4 }\n+        raw_tx   = self.nodes[2].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[2].signrawtransaction(raw_tx)\n+\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", raw_tx['hex'], True)\n+        assert_equal(response.status, 400)\n+        error_str = response.read()\n+        assert_equal(\"No transaction parameter found\" in error_str, True);\n+\n+        #########\n+        # sendrawtransaction with missing input\n+        #########\n+        raw_tx_missing_input = \"transaction=\" + raw_tx['hex']\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", raw_tx_missing_input, True)\n+        assert_equal(response.status, 400)\n+        error_str = response.read()\n+        assert_equal(\"Missing inputs\" in error_str, True);\n+\n+        #########\n+        # sendrawtransaction with invalid raw tx\n+        #########\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=invalidrawtx\", True)\n+        assert_equal(response.status, 400)\n+        error_str = response.read()\n+        assert_equal(\"TX decode failed invalidrawtx\" in error_str, True);\n+\n+        #########\n+        # sendrawtransaction as hex, requesting result as hex\n+        #########\n+        txId = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), 5)\n+        inputs  = [ {'txid' : txId, 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4.8 }\n+        raw_tx   = self.nodes[0].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[0].signrawtransaction(raw_tx)\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=\" + raw_tx['hex'] , True)\n+        assert_equal(response.status, 200)\n+        response_str = response.read()\n+        assert_equal(self.nodes[0].sendrawtransaction(raw_tx['hex']) in response_str, True);\n+\n+        self.nodes[0].generate(1)\n+        self.sync_all()\n+        self.nodes[2].generate(1)\n+        self.sync_all()\n+\n+        #########\n+        # sendrawtransaction with transaction that is already in the block chain\n+        #########\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=\" + raw_tx['hex'] , True)\n+        assert_equal(response.status, 400)\n+        response_str = response.read()\n+        assert_equal(\"Transaction already in block chain\" in response_str, True);\n+\n+        #########\n+        # sendrawtransaction as hex, requesting result as json\n+        #########\n+        txId = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), 5)\n+        inputs  = [ {'txid' : txId, 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4.6 }\n+        raw_tx   = self.nodes[0].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[0].signrawtransaction(raw_tx)\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"json\", \"transaction=\" + raw_tx['hex'] , True)\n+        response_str = response.read()\n+        print response.status #lclc RAUS\n+        print response_str #lclc RAUS\n+        assert_equal(response.status, 200)\n+        assert_equal( \"{ \\\"txid\\\" : \\\"\" +self.nodes[0].sendrawtransaction(raw_tx['hex']) + \"\\\" }\" in response_str, True);\n+\n+        self.nodes[0].generate(1)\n+        self.sync_all()\n+\n+\n+        #########\n+        # sendrawtransaction as binary, requesting result as binary\n+        #########\n+        txId = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), 5.0)\n+        inputs  = [ {'txid' : txId, 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4.4 }\n+        raw_tx   = self.nodes[0].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[0].signrawtransaction(raw_tx)\n+\n+        binaryRequest = binascii.unhexlify(raw_tx['hex'])\n+        print binaryRequest #lclc RAUS\n+        print 1 #lclc RAUS\n+        print \"transaction=\"+binaryRequest #lclc RAUS\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"bin\", \"transaction=\"+binaryRequest , True)\n+#        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=\" + raw_tx['hex'] , True) #lclc RAUS\n+\n+        print response.status #lclc RAUS\n+#        assert_equal(response.status, 200)\n+        response_str = response.read()\n+        print response_str #lclc RAUS\n+        response_str = binascii.hexlify(response.read())\n+        print response_str #lclc RAUS\n+        print 2 #lclc RAUS\n+        print self.nodes[0].sendrawtransaction(raw_tx['hex']) #lclc RAUS",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43241005",
+      "id" : 43241005,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 106,
+      "path" : "qa/rpc-tests/rest.py",
+      "position" : 106,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-10-28T10:58:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43241005",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43273376"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43273376"
+         }
+      },
+      "body" : "Lucas: in a raw API the creator of the transactions _cannot_ verify the\nfee, because he doesn't have the actual network's txouts, so they don't\nknow the amounts being spent.\n\nIt's a serious layer violation IMHO to make AcceptToMemoryPool perform this\ncheck, but I do agree that sendrawtransaction or its equivalent REST\ninterface should do this validation. People do shoot themselves in the foot\nby spending large inputs and not setting a (correct) change, crazy as it\nsounds.\n",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-10-28T15:44:13Z",
+      "diff_hunk" : "@@ -339,5 +339,112 @@ def run_test(self):\n         json_obj = json.loads(json_string)\n         assert_equal(json_obj['bestblockhash'], bb_hash)\n \n+\n+        ######################################\n+        # POST /rest/tx/: Send raw transactions\n+        ######################################\n+        #########\n+        # sendrawtransaction with missing transaction parameter\n+        #########\n+        inputs  = [ {'txid' : \"1d1d4e24ed99057e84c3f80fd8fbec79ed9e1acee37da269356ecea000000000\", 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4 }\n+        raw_tx   = self.nodes[2].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[2].signrawtransaction(raw_tx)\n+\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", raw_tx['hex'], True)\n+        assert_equal(response.status, 400)\n+        error_str = response.read()\n+        assert_equal(\"No transaction parameter found\" in error_str, True);\n+\n+        #########\n+        # sendrawtransaction with missing input\n+        #########\n+        raw_tx_missing_input = \"transaction=\" + raw_tx['hex']\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", raw_tx_missing_input, True)\n+        assert_equal(response.status, 400)\n+        error_str = response.read()\n+        assert_equal(\"Missing inputs\" in error_str, True);\n+\n+        #########\n+        # sendrawtransaction with invalid raw tx\n+        #########\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=invalidrawtx\", True)\n+        assert_equal(response.status, 400)\n+        error_str = response.read()\n+        assert_equal(\"TX decode failed invalidrawtx\" in error_str, True);\n+\n+        #########\n+        # sendrawtransaction as hex, requesting result as hex\n+        #########\n+        txId = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), 5)\n+        inputs  = [ {'txid' : txId, 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4.8 }\n+        raw_tx   = self.nodes[0].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[0].signrawtransaction(raw_tx)\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=\" + raw_tx['hex'] , True)\n+        assert_equal(response.status, 200)\n+        response_str = response.read()\n+        assert_equal(self.nodes[0].sendrawtransaction(raw_tx['hex']) in response_str, True);\n+\n+        self.nodes[0].generate(1)\n+        self.sync_all()\n+        self.nodes[2].generate(1)\n+        self.sync_all()\n+\n+        #########\n+        # sendrawtransaction with transaction that is already in the block chain\n+        #########\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=\" + raw_tx['hex'] , True)\n+        assert_equal(response.status, 400)\n+        response_str = response.read()\n+        assert_equal(\"Transaction already in block chain\" in response_str, True);\n+\n+        #########\n+        # sendrawtransaction as hex, requesting result as json\n+        #########\n+        txId = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), 5)\n+        inputs  = [ {'txid' : txId, 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4.6 }\n+        raw_tx   = self.nodes[0].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[0].signrawtransaction(raw_tx)\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"json\", \"transaction=\" + raw_tx['hex'] , True)\n+        response_str = response.read()\n+        print response.status #lclc RAUS\n+        print response_str #lclc RAUS\n+        assert_equal(response.status, 200)\n+        assert_equal( \"{ \\\"txid\\\" : \\\"\" +self.nodes[0].sendrawtransaction(raw_tx['hex']) + \"\\\" }\" in response_str, True);\n+\n+        self.nodes[0].generate(1)\n+        self.sync_all()\n+\n+\n+        #########\n+        # sendrawtransaction as binary, requesting result as binary\n+        #########\n+        txId = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), 5.0)\n+        inputs  = [ {'txid' : txId, 'vout' : 1}]\n+        outputs = { self.nodes[0].getnewaddress() : 4.4 }\n+        raw_tx   = self.nodes[0].createrawtransaction(inputs, outputs)\n+        raw_tx   = self.nodes[0].signrawtransaction(raw_tx)\n+\n+        binaryRequest = binascii.unhexlify(raw_tx['hex'])\n+        print binaryRequest #lclc RAUS\n+        print 1 #lclc RAUS\n+        print \"transaction=\"+binaryRequest #lclc RAUS\n+        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"bin\", \"transaction=\"+binaryRequest , True)\n+#        response = http_post_call(url.hostname, url.port, '/rest/tx'+self.FORMAT_SEPARATOR+\"hex\", \"transaction=\" + raw_tx['hex'] , True) #lclc RAUS\n+\n+        print response.status #lclc RAUS\n+#        assert_equal(response.status, 200)\n+        response_str = response.read()\n+        print response_str #lclc RAUS\n+        response_str = binascii.hexlify(response.read())\n+        print response_str #lclc RAUS\n+        print 2 #lclc RAUS\n+        print self.nodes[0].sendrawtransaction(raw_tx['hex']) #lclc RAUS",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r43273376",
+      "id" : 43273376,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 106,
+      "path" : "qa/rpc-tests/rest.py",
+      "position" : 106,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-10-28T15:44:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/43273376",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Ok.\r\nWhat do you prefer @sipa , fRejectAbsurdFee always to be true or as an extra parameter to pass?\r\n\r\n@MarcoFalke that's not the problem. You can run the same tx with hex (currently commented out) and it works. I'll look at this again when I've changed the Fee thing",
+      "created_at" : "2015-11-01T12:28:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-152822621",
+      "id" : 152822621,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2015-11-01T12:28:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/152822621",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1846033?v=3",
+         "events_url" : "https://api.github.com/users/lclc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/lclc/followers",
+         "following_url" : "https://api.github.com/users/lclc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/lclc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/lclc",
+         "id" : 1846033,
+         "login" : "lclc",
+         "organizations_url" : "https://api.github.com/users/lclc/orgs",
+         "received_events_url" : "https://api.github.com/users/lclc/received_events",
+         "repos_url" : "https://api.github.com/users/lclc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/lclc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/lclc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/lclc"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r45196759"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45196759"
+         }
+      },
+      "body" : "why is this parameter still here?\r\nIsn't the POST expecting a pure octet stream?",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-11-18T13:11:18Z",
+      "diff_hunk" : "@@ -391,12 +393,94 @@ static bool rest_tx(HTTPRequest* req, const std::string& strURIPart)\n     }\n \n     default: {\n-        return RESTERR(req, HTTP_NOT_FOUND, \"output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+        return RESTERR(req, HTTP_NOT_FOUND, \"Output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+    }\n+    }\n+    // not reached\n+    return true;\n+}\n+\n+\n+static bool rest_tx_sendrawtx(HTTPRequest* req, const std::string& strURIPart)\n+{\n+    if (!CheckWarmup(req))\n+        return false;\n+    std::string hashStr;\n+    const RetFormat rf = ParseDataFormat(hashStr, strURIPart);\n+\n+    std::string strBody = req->ReadBody();\n+    if (std::string::npos == strBody.find(\"transaction=\"))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r45196759",
+      "id" : 45196759,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 30,
+      "path" : "src/rest.cpp",
+      "position" : 30,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-11-18T13:12:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45196759",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r45196887"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45196887"
+         }
+      },
+      "body" : "It seems you're expecting: `transaction=<binary>`, that seems very odd.\r\nIt should just be `<binary>`",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-11-18T13:12:42Z",
+      "diff_hunk" : "@@ -391,12 +393,94 @@ static bool rest_tx(HTTPRequest* req, const std::string& strURIPart)\n     }\n \n     default: {\n-        return RESTERR(req, HTTP_NOT_FOUND, \"output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+        return RESTERR(req, HTTP_NOT_FOUND, \"Output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+    }\n+    }\n+    // not reached\n+    return true;\n+}\n+\n+\n+static bool rest_tx_sendrawtx(HTTPRequest* req, const std::string& strURIPart)\n+{\n+    if (!CheckWarmup(req))\n+        return false;\n+    std::string hashStr;\n+    const RetFormat rf = ParseDataFormat(hashStr, strURIPart);\n+\n+    std::string strBody = req->ReadBody();\n+    if (std::string::npos == strBody.find(\"transaction=\"))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r45196887",
+      "id" : 45196887,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 30,
+      "path" : "src/rest.cpp",
+      "position" : 30,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-11-18T13:12:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45196887",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "@lclc So why would travis fail if that's not the problem? You can try to set it to `false` and the see if `qa/pull-tester/rpc-tests.py rest` fails.",
+      "created_at" : "2015-11-18T15:54:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-157757525",
+      "id" : 157757525,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2015-11-18T15:54:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157757525",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r45293942"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45293942"
+         }
+      },
+      "body" : "Agreed.  This needs to be removed.  strBody should treated as equivalent to strTx.\r\n",
+      "commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "created_at" : "2015-11-19T02:46:02Z",
+      "diff_hunk" : "@@ -391,12 +393,94 @@ static bool rest_tx(HTTPRequest* req, const std::string& strURIPart)\n     }\n \n     default: {\n-        return RESTERR(req, HTTP_NOT_FOUND, \"output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+        return RESTERR(req, HTTP_NOT_FOUND, \"Output format not found (available: \" + AvailableDataFormatsString() + \")\");\n+    }\n+    }\n+    // not reached\n+    return true;\n+}\n+\n+\n+static bool rest_tx_sendrawtx(HTTPRequest* req, const std::string& strURIPart)\n+{\n+    if (!CheckWarmup(req))\n+        return false;\n+    std::string hashStr;\n+    const RetFormat rf = ParseDataFormat(hashStr, strURIPart);\n+\n+    std::string strBody = req->ReadBody();\n+    if (std::string::npos == strBody.find(\"transaction=\"))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#discussion_r45293942",
+      "id" : 45293942,
+      "original_commit_id" : "d28e97426555ddf4f71c2754e3494c381aed6146",
+      "original_position" : 30,
+      "path" : "src/rest.cpp",
+      "position" : 30,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6844",
+      "updated_at" : "2015-11-19T02:46:02Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45293942",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/494411?v=3",
+         "events_url" : "https://api.github.com/users/jgarzik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jgarzik/followers",
+         "following_url" : "https://api.github.com/users/jgarzik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jgarzik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jgarzik",
+         "id" : 494411,
+         "login" : "jgarzik",
+         "organizations_url" : "https://api.github.com/users/jgarzik/orgs",
+         "received_events_url" : "https://api.github.com/users/jgarzik/received_events",
+         "repos_url" : "https://api.github.com/users/jgarzik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jgarzik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jgarzik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jgarzik"
+      }
+   },
+   {
+      "body" : "@lclc I'm happy to take over this if you're busy",
+      "created_at" : "2015-11-19T03:01:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-157934133",
+      "id" : 157934133,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2015-11-19T03:01:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157934133",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "Sorry didn't have time for this, started at a new job (in Bitcoin), been abroad the last 3 weeks :)\r\n\r\n@dcousens If you like to finish it that would be great, so maybe this makes it into 0.12. I can give you merge rights on my Github fork so we don't lose the discussions in here?\r\n\r\nOtherwise I'll work on it again at the last weekend before December.",
+      "created_at" : "2015-11-19T19:50:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-158174711",
+      "id" : 158174711,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2015-11-19T19:50:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158174711",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1846033?v=3",
+         "events_url" : "https://api.github.com/users/lclc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/lclc/followers",
+         "following_url" : "https://api.github.com/users/lclc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/lclc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/lclc",
+         "id" : 1846033,
+         "login" : "lclc",
+         "organizations_url" : "https://api.github.com/users/lclc/orgs",
+         "received_events_url" : "https://api.github.com/users/lclc/received_events",
+         "repos_url" : "https://api.github.com/users/lclc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/lclc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/lclc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/lclc"
+      }
+   },
+   {
+      "body" : "@lclc sounds good, add me when you can.",
+      "created_at" : "2015-11-19T20:51:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-158194186",
+      "id" : 158194186,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2015-11-19T20:51:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/158194186",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "Needs rebase.",
+      "created_at" : "2016-01-20T20:48:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-173354698",
+      "id" : 173354698,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2016-01-20T20:48:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/173354698",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6848764?v=3",
+         "events_url" : "https://api.github.com/users/paveljanik/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/paveljanik/followers",
+         "following_url" : "https://api.github.com/users/paveljanik/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/paveljanik/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/paveljanik",
+         "id" : 6848764,
+         "login" : "paveljanik",
+         "organizations_url" : "https://api.github.com/users/paveljanik/orgs",
+         "received_events_url" : "https://api.github.com/users/paveljanik/received_events",
+         "repos_url" : "https://api.github.com/users/paveljanik/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/paveljanik/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/paveljanik/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/paveljanik"
+      }
+   },
+   {
+      "body" : "I'm still not entirely convinced that *submitting* anything belongs on this interface.\r\n\r\nI've always felt that the REST interface was read-only on purpose - a way to query data that is public anyway without authentication. Making is possible to submit something changes the security expectations.\r\n",
+      "created_at" : "2016-05-09T10:49:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-217833688",
+      "id" : 217833688,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2016-05-09T10:49:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/217833688",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Closing this PR for now, to keep this interface read-only.",
+      "created_at" : "2016-05-22T09:50:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-220823624",
+      "id" : 220823624,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2016-05-22T09:50:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/220823624",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1846033?v=3",
+         "events_url" : "https://api.github.com/users/lclc/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/lclc/followers",
+         "following_url" : "https://api.github.com/users/lclc/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/lclc/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/lclc",
+         "id" : 1846033,
+         "login" : "lclc",
+         "organizations_url" : "https://api.github.com/users/lclc/orgs",
+         "received_events_url" : "https://api.github.com/users/lclc/received_events",
+         "repos_url" : "https://api.github.com/users/lclc/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/lclc/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/lclc/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/lclc"
+      }
+   },
+   {
+      "body" : "> to keep this interface read-only.\r\n\r\nI think that is a valid reason :+1: ",
+      "created_at" : "2016-05-22T10:07:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6844#issuecomment-220824287",
+      "id" : 220824287,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6844",
+      "updated_at" : "2016-05-22T10:07:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/220824287",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
       }
    }
 ]

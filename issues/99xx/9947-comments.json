@@ -1,0 +1,400 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r104884545"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104884545"
+         }
+      },
+      "body" : "we should check the tx hash to find out if it's exist in `mapTx` before add `nFeeDelta` to `mapDeltas`.",
+      "commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "created_at" : "2017-03-08T10:11:21Z",
+      "diff_hunk" : "@@ -895,7 +895,7 @@ CTxMemPool::ReadFeeEstimates(CAutoFile& filein)\n     return true;\n }\n \n-void CTxMemPool::PrioritiseTransaction(const uint256& hash, const CAmount& nFeeDelta)\n+bool CTxMemPool::PrioritiseTransaction(const uint256& hash, const CAmount& nFeeDelta)\n {\n     {\n         LOCK(cs);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r104884545",
+      "id" : 104884545,
+      "original_commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "original_position" : 8,
+      "path" : "src/txmempool.cpp",
+      "position" : 8,
+      "pull_request_review_id" : 25738129,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947",
+      "updated_at" : "2017-03-08T10:12:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104884545",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/514951?v=3",
+         "events_url" : "https://api.github.com/users/bitkevin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/bitkevin/followers",
+         "following_url" : "https://api.github.com/users/bitkevin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/bitkevin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/bitkevin",
+         "id" : 514951,
+         "login" : "bitkevin",
+         "organizations_url" : "https://api.github.com/users/bitkevin/orgs",
+         "received_events_url" : "https://api.github.com/users/bitkevin/received_events",
+         "repos_url" : "https://api.github.com/users/bitkevin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/bitkevin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/bitkevin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/bitkevin"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r104885201"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104885201"
+         }
+      },
+      "body" : "~~Good point.. I'll fix that.~~",
+      "commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "created_at" : "2017-03-08T10:14:45Z",
+      "diff_hunk" : "@@ -895,7 +895,7 @@ CTxMemPool::ReadFeeEstimates(CAutoFile& filein)\n     return true;\n }\n \n-void CTxMemPool::PrioritiseTransaction(const uint256& hash, const CAmount& nFeeDelta)\n+bool CTxMemPool::PrioritiseTransaction(const uint256& hash, const CAmount& nFeeDelta)\n {\n     {\n         LOCK(cs);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r104885201",
+      "id" : 104885201,
+      "original_commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "original_position" : 8,
+      "path" : "src/txmempool.cpp",
+      "position" : 8,
+      "pull_request_review_id" : 25738812,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947",
+      "updated_at" : "2017-03-08T11:01:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104885201",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r104893955"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104893955"
+         }
+      },
+      "body" : "Oh wait. This seems to be intentional. This allows to increase fees (add a fee delta) before the transaction hits the mempool.",
+      "commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "created_at" : "2017-03-08T11:02:09Z",
+      "diff_hunk" : "@@ -895,7 +895,7 @@ CTxMemPool::ReadFeeEstimates(CAutoFile& filein)\n     return true;\n }\n \n-void CTxMemPool::PrioritiseTransaction(const uint256& hash, const CAmount& nFeeDelta)\n+bool CTxMemPool::PrioritiseTransaction(const uint256& hash, const CAmount& nFeeDelta)\n {\n     {\n         LOCK(cs);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r104893955",
+      "id" : 104893955,
+      "original_commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "original_position" : 8,
+      "path" : "src/txmempool.cpp",
+      "position" : 8,
+      "pull_request_review_id" : 25747660,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947",
+      "updated_at" : "2017-03-08T11:02:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104893955",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "As discussed on IRC,  the return value would probably better approximate \"whether the transaction was in the memory pool\",  as prioritization should always occur.",
+      "created_at" : "2017-03-08T11:27:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#issuecomment-285016948",
+      "id" : 285016948,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9947",
+      "updated_at" : "2017-03-09T03:18:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/285016948",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r104930047"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104930047"
+         }
+      },
+      "body" : "the `return true` can go here",
+      "commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "created_at" : "2017-03-08T14:39:27Z",
+      "diff_hunk" : "@@ -279,7 +279,7 @@ UniValue prioritisetransaction(const JSONRPCRequest& request)\n     uint256 hash = ParseHashStr(request.params[0].get_str(), \"txid\");\n     CAmount nAmount = request.params[1].get_int64();\n \n-    mempool.PrioritiseTransaction(hash, nAmount);\n+    return mempool.PrioritiseTransaction(hash, nAmount);\n     return true;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r104930047",
+      "id" : 104930047,
+      "original_commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "original_position" : 15,
+      "path" : "src/rpc/mining.cpp",
+      "position" : 15,
+      "pull_request_review_id" : 25786004,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947",
+      "updated_at" : "2017-03-08T14:39:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/104930047",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "I don't understand why this is required. As mentioned above, prioritisetransaction can be used for transactions which are not yet in the mempool, and then the fee delta is:\r\n\r\n- used to determine whether the transaction should be allowed into the mempool (the `ApplyDeltas()` call in `AcceptToMemoryPoolWorker()`)\r\n- applied to the transaction as it enters the mempool (`mapTx.modify(newit, update_fee_delta(deltas.second));` in `CTxMemPool::addUnchecked()`)\r\n\r\nIf you really need to check whether the transaction is already in the mempool you can use getrawmempool.",
+      "created_at" : "2017-03-08T15:06:49Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#issuecomment-285065832",
+      "id" : 285065832,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9947",
+      "updated_at" : "2017-03-08T15:06:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/285065832",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Agree with jnewbery. Imo it is confusing for prioritisetransaction to\nreturn a bool. (One could think that false means the call failed, which is\nnot true.)\n\nThere are other methods to check if a transaction is in the mempool.\n\nOn Wed, Mar 8, 2017 at 4:07 PM, John Newbery <notifications@github.com>\nwrote:\n\n> I don't understand why this is required. As mentioned above,\n> prioritisetransaction can be used for transactions which are not yet in the\n> mempool, and then the fee delta is:\n>\n>    - used to determine whether the transaction should be allowed into the\n>    mempool (the ApplyDeltas() call in AcceptToMemoryPoolWorker())\n>    - applied to the transaction as it enters the mempool (mapTx.modify(newit,\n>    update_fee_delta(deltas.second)); in CTxMemPool::addUnchecked())\n>\n> If you really need to check whether the transaction is already in the\n> mempool you can use getrawmempool.\n>\n> Ã¢ÂÂ\n> You are receiving this because you are subscribed to this thread.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/bitcoin/bitcoin/pull/9947#issuecomment-285065832>, or mute\n> the thread\n> <https://github.com/notifications/unsubscribe-auth/AGGmv9r7yqgfqZsLlkoin69fcVEkgfDWks5rjsQZgaJpZM4MWloU>\n> .\n>\n",
+      "created_at" : "2017-03-08T15:11:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#issuecomment-285067070",
+      "id" : 285067070,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9947",
+      "updated_at" : "2017-03-08T15:11:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/285067070",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r105011849"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105011849"
+         }
+      },
+      "body" : "And an important feature: without the ability to add deltas before a transaction exists, you may not be able to prioritize a transaction at all (because of rejection).",
+      "commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "created_at" : "2017-03-08T20:14:23Z",
+      "diff_hunk" : "@@ -895,7 +895,7 @@ CTxMemPool::ReadFeeEstimates(CAutoFile& filein)\n     return true;\n }\n \n-void CTxMemPool::PrioritiseTransaction(const uint256& hash, const CAmount& nFeeDelta)\n+bool CTxMemPool::PrioritiseTransaction(const uint256& hash, const CAmount& nFeeDelta)\n {\n     {\n         LOCK(cs);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#discussion_r105011849",
+      "id" : 105011849,
+      "original_commit_id" : "3e5d538b3023baea8dfa9308f5b25430bba7183c",
+      "original_position" : 8,
+      "path" : "src/txmempool.cpp",
+      "position" : 8,
+      "pull_request_review_id" : 25872254,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9947",
+      "updated_at" : "2017-03-08T20:14:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/105011849",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "You could return a struct that contains a bool, that way the said bool value is given a name, making the intention clear. ",
+      "created_at" : "2017-03-09T03:12:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#issuecomment-285242321",
+      "id" : 285242321,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9947",
+      "updated_at" : "2017-03-09T03:12:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/285242321",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/8813974?v=3",
+         "events_url" : "https://api.github.com/users/ericshawlinux/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/ericshawlinux/followers",
+         "following_url" : "https://api.github.com/users/ericshawlinux/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/ericshawlinux/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/ericshawlinux",
+         "id" : 8813974,
+         "login" : "ericshawlinux",
+         "organizations_url" : "https://api.github.com/users/ericshawlinux/orgs",
+         "received_events_url" : "https://api.github.com/users/ericshawlinux/received_events",
+         "repos_url" : "https://api.github.com/users/ericshawlinux/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/ericshawlinux/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/ericshawlinux/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/ericshawlinux"
+      }
+   },
+   {
+      "body" : "I think @jnewbery and @MarcoFalke are right. I misunderstood it's behaviour. It can prioritise future transaction and I wasn't aware of that fact.\r\n\r\nAn option would be to return true/false wether the transaction was in the mempool or not... ",
+      "created_at" : "2017-03-09T08:00:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#issuecomment-285281374",
+      "id" : 285281374,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9947",
+      "updated_at" : "2017-03-09T08:00:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/285281374",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "> There are other methods to check if a transaction is in the mempool.\r\n\r\n@MarcoFalke is right here.\r\nClosing... ",
+      "created_at" : "2017-03-29T14:27:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9947#issuecomment-290107211",
+      "id" : 290107211,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9947",
+      "updated_at" : "2017-03-29T14:27:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/290107211",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   }
+]

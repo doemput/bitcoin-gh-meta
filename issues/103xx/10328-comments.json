@@ -1,0 +1,1178 @@
+[
+   {
+      "body" : "> Forces GUI to Qt4 to fix various issues people have been seeing\r\non Ubuntu and elsewhere with Qt5.\r\n\r\nWhich issues have you seen with Qt5 apart from the Unity tray icon problem?\r\n\r\n> Reverts 70899d7 (Bitcoin does not enable \"instant payments\",\r\nnot is transaction management \"carried out collectively by the\r\nnetwork\", for whatever \"transaction management\" means, finally\r\nBitcoin Core is not the only way to use the Bitcoin currency,\r\nas seemingly implied in the description).\r\n\r\nProbably want to change the README.md too, then, as that's where that description came from.\r\n",
+      "created_at" : "2017-05-03T14:17:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-298924225",
+      "id" : 298924225,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T14:17:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298924225",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Hm, I was under the impression there were tray icon issues outside of Ubuntu, but that may be out-of-date (or a static-linking issue?)",
+      "created_at" : "2017-05-03T14:21:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-298925399",
+      "id" : 298925399,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T14:21:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298925399",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt There are no Qt5 issues besides Ubuntu. I've tested the build on Devuan's KDE5 (Plasma), which is in turn the exact same environment provided in Debian. So Ubuntu is your only problem. If you want to block all other distros from using current software because of one distro's bug, that's your choice, but it is not a sane one. Build it with Qt5 and then fix it in Ubuntu.",
+      "created_at" : "2017-05-03T14:29:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-298927699",
+      "id" : 298927699,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T14:29:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298927699",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/9220323?v=3",
+         "events_url" : "https://api.github.com/users/parazyd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/parazyd/followers",
+         "following_url" : "https://api.github.com/users/parazyd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/parazyd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/parazyd",
+         "id" : 9220323,
+         "login" : "parazyd",
+         "organizations_url" : "https://api.github.com/users/parazyd/orgs",
+         "received_events_url" : "https://api.github.com/users/parazyd/received_events",
+         "repos_url" : "https://api.github.com/users/parazyd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/parazyd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/parazyd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/parazyd"
+      }
+   },
+   {
+      "body" : "@parazyd up until today the *only* user of contrib/debian I was aware of was the PPA, and there are very few issues (aside from some cosmetic ones) with building with Qt4 instead of 5 (though that may be different on KDE5, apparently). I'm happy to keep on maintaining a fork of contrib/debain instead if you want to maintain contrib/debian, but at that point we might as well just delete the folder if everyone is gonna use their own.",
+      "created_at" : "2017-05-03T15:47:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-298952104",
+      "id" : 298952104,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T15:47:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298952104",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "I don't see how *optional* UPnP support is a bad thing. Even when built with it, it's still disabled by default.\r\n\r\nOther than that, utACK.",
+      "created_at" : "2017-05-03T19:48:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299015948",
+      "id" : 299015948,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T19:48:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299015948",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "ACK. Agreed with @luke-jr",
+      "created_at" : "2017-05-03T20:06:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299020177",
+      "id" : 299020177,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T20:06:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299020177",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/9220323?v=3",
+         "events_url" : "https://api.github.com/users/parazyd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/parazyd/followers",
+         "following_url" : "https://api.github.com/users/parazyd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/parazyd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/parazyd",
+         "id" : 9220323,
+         "login" : "parazyd",
+         "organizations_url" : "https://api.github.com/users/parazyd/orgs",
+         "received_events_url" : "https://api.github.com/users/parazyd/received_events",
+         "repos_url" : "https://api.github.com/users/parazyd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/parazyd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/parazyd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/parazyd"
+      }
+   },
+   {
+      "body" : "@luke I believe its enabled by default in Qt, no?",
+      "created_at" : "2017-05-03T20:09:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299021006",
+      "id" : 299021006,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T20:09:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299021006",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt Not since the last exploit IIRC.\r\n\r\nThis fails for precise:\r\n```\r\nThe following packages have unmet dependencies:\r\n sbuild-build-depends-bitcoin-dummy : Depends: libzmq3-dev but it is not installable\r\n```",
+      "created_at" : "2017-05-03T20:11:37Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299021492",
+      "id" : 299021492,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T20:11:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299021492",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Ah, ok, I suppose we could re-add UPnP to the builds. Not sure it matters much, but ok.\n\nWe can no longer build on precise period due to https://svn.boost.org/trac/boost/ticket/6198.\n\nOn May 3, 2017 4:11:46 PM EDT, Luke Dashjr <notifications@github.com> wrote:\n>@TheBlueMatt Not since the last exploit IIRC.\n>\n>This fails for precise:\n>```\n>The following packages have unmet dependencies:\n>sbuild-build-depends-bitcoin-dummy : Depends: libzmq3-dev but it is not\n>installable\n>```\n",
+      "created_at" : "2017-05-03T20:16:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299022782",
+      "id" : 299022782,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T20:16:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299022782",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Ah. I guess precise doesn't matter anymore anyway (supposedly support for it ended last month).",
+      "created_at" : "2017-05-03T23:24:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299063041",
+      "id" : 299063041,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-03T23:24:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299063041",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "You need a neew maintainer for Debian builds, not a new PR rushed by the old neglecting maintainer when a new contribution comes in, IMHO. This turf-war attitude calls for burn out. At Dyne we are actively testing the builds proposed and can well deal with guidelines and complexities of gnu/linux packaging, so @bluematt once again (like at the time of autoconf) you are missing an occasion for having more contributors to core. Friendly yours",
+      "created_at" : "2017-05-04T06:37:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299107311",
+      "id" : 299107311,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-04T06:37:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299107311",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/148059?v=3",
+         "events_url" : "https://api.github.com/users/jaromil/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jaromil/followers",
+         "following_url" : "https://api.github.com/users/jaromil/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jaromil/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jaromil",
+         "id" : 148059,
+         "login" : "jaromil",
+         "organizations_url" : "https://api.github.com/users/jaromil/orgs",
+         "received_events_url" : "https://api.github.com/users/jaromil/received_events",
+         "repos_url" : "https://api.github.com/users/jaromil/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jaromil/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jaromil/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jaromil"
+      }
+   },
+   {
+      "body" : "@jaromil are y'all using contrib/debian for anything? If it gets use I'm happy to start maintaining it again (or @parazyd can). The PPA never falls behind, just this dir which I've neglected updating (but I assume not many people used it given it was missing the libevent dep for a long time).\r\n\r\nUnrelatedly, would be nice if we have a way to switch to Qt5 when building on non-ubuntu, @parazyd any idea how to do that?",
+      "created_at" : "2017-05-04T14:45:11Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299206814",
+      "id" : 299206814,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-04T14:45:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299206814",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt Well, the `debian/rules` file is a Makefile. We could use environment flags to differ between Ubuntu and Debian I guess.\r\n\r\nThe contrib/debian is being used by at least three distributions at this moment: Ubuntu, Devuan, and heads.",
+      "created_at" : "2017-05-04T15:22:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299218717",
+      "id" : 299218717,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-04T15:22:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299218717",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/9220323?v=3",
+         "events_url" : "https://api.github.com/users/parazyd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/parazyd/followers",
+         "following_url" : "https://api.github.com/users/parazyd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/parazyd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/parazyd",
+         "id" : 9220323,
+         "login" : "parazyd",
+         "organizations_url" : "https://api.github.com/users/parazyd/orgs",
+         "received_events_url" : "https://api.github.com/users/parazyd/received_events",
+         "repos_url" : "https://api.github.com/users/parazyd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/parazyd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/parazyd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/parazyd"
+      }
+   },
+   {
+      "body" : "But the qt4/5 dep is in `debian/control` - can that have conditionals?",
+      "created_at" : "2017-05-04T15:25:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299219704",
+      "id" : 299219704,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-04T15:25:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299219704",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "@luke-jr I'll try to find out. If possible, then it is the best solution, since the configure script will then prefer what's found. And as long as it's built in some sort of CI, the environment is clean.\r\n\r\nEDIT:\r\nIndeed we have a thing like the following:\r\nhttps://raphaelhertzog.com/2010/09/27/different-dependencies-between-debian-and-ubuntu-but-common-source-package/",
+      "created_at" : "2017-05-04T15:32:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299221872",
+      "id" : 299221872,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-04T15:37:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299221872",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/9220323?v=3",
+         "events_url" : "https://api.github.com/users/parazyd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/parazyd/followers",
+         "following_url" : "https://api.github.com/users/parazyd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/parazyd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/parazyd",
+         "id" : 9220323,
+         "login" : "parazyd",
+         "organizations_url" : "https://api.github.com/users/parazyd/orgs",
+         "received_events_url" : "https://api.github.com/users/parazyd/received_events",
+         "repos_url" : "https://api.github.com/users/parazyd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/parazyd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/parazyd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/parazyd"
+      }
+   },
+   {
+      "body" : "@luke-jr the deps of the built package are auto-guessed from library deps, I believe, so it may be sufficient to just change which libraries configure links against, even if buildeps requires both qt4 and qt5 (though I havent tested this).",
+      "created_at" : "2017-05-04T15:44:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299225523",
+      "id" : 299225523,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-04T15:44:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299225523",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114850116"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114850116"
+         }
+      },
+      "body" : "Minimum boost for 0.14 is 1.47.",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T18:11:03Z",
+      "diff_hunk" : "@@ -1,27 +1,29 @@\n Source: bitcoin\n Section: utils\n Priority: optional\n-Maintainer: Jonas Smedegaard <dr@jones.dk>\n-Uploaders: Micah Anderson <micah@debian.org>\n+Maintainer: Matt Corallo <matt@mattcorallo.com>\n+Uploaders: Matt Corallo <matt@mattcorallo.com>\n Build-Depends: debhelper,\n  devscripts,\n  automake,\n  libtool,\n  bash-completion,\n- libboost-system-dev (>> 1.35) | libboost-system1.35-dev,\n  libdb4.8++-dev,\n  libssl-dev,\n  pkg-config,\n- libminiupnpc8-dev | libminiupnpc-dev (>> 1.6),\n- libboost-filesystem-dev (>> 1.35) | libboost-filesystem1.35-dev,\n- libboost-program-options-dev (>> 1.35) | libboost-program-options1.35-dev,\n- libboost-thread-dev (>> 1.35) | libboost-thread1.35-dev,\n- libboost-test-dev (>> 1.35) | libboost-test1.35-dev,\n+ libevent-dev,\n+ libboost-system1.48-dev | libboost-system-dev (>> 1.35),",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114850116",
+      "id" : 114850116,
+      "original_commit_id" : "997021986e02f8e59024ffca6437857d9d17f396",
+      "original_position" : 23,
+      "path" : "contrib/debian/control",
+      "position" : null,
+      "pull_request_review_id" : 36345430,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T21:16:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114850116",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt there are the distro efforts @parazyd mentions and we are planning for more hardened gnu/linux based VM environments (so to say containers) and what not, some fancy distro tricks for isolated environments. Within the sphere of Debian&co the backporting libdb4.8 to Jessie was a long due liberation step finally taken and you know well the berkeleydb mess we are talking about. So yea, there is attention on the contrib/debian and this and the other PR are here because we think we are ready to contribute. Said that I see nothing really problematic in this process and I'm glad you find the time to look into it. Knowing fairly well the autoconf pains your prolongued work deserves much respect.",
+      "created_at" : "2017-05-04T19:12:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299281393",
+      "id" : 299281393,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-04T19:12:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299281393",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/148059?v=3",
+         "events_url" : "https://api.github.com/users/jaromil/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jaromil/followers",
+         "following_url" : "https://api.github.com/users/jaromil/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jaromil/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jaromil",
+         "id" : 148059,
+         "login" : "jaromil",
+         "organizations_url" : "https://api.github.com/users/jaromil/orgs",
+         "received_events_url" : "https://api.github.com/users/jaromil/received_events",
+         "repos_url" : "https://api.github.com/users/jaromil/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jaromil/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jaromil/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jaromil"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114889631"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114889631"
+         }
+      },
+      "body" : "Fixed.",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T21:15:38Z",
+      "diff_hunk" : "@@ -1,27 +1,29 @@\n Source: bitcoin\n Section: utils\n Priority: optional\n-Maintainer: Jonas Smedegaard <dr@jones.dk>\n-Uploaders: Micah Anderson <micah@debian.org>\n+Maintainer: Matt Corallo <matt@mattcorallo.com>\n+Uploaders: Matt Corallo <matt@mattcorallo.com>\n Build-Depends: debhelper,\n  devscripts,\n  automake,\n  libtool,\n  bash-completion,\n- libboost-system-dev (>> 1.35) | libboost-system1.35-dev,\n  libdb4.8++-dev,\n  libssl-dev,\n  pkg-config,\n- libminiupnpc8-dev | libminiupnpc-dev (>> 1.6),\n- libboost-filesystem-dev (>> 1.35) | libboost-filesystem1.35-dev,\n- libboost-program-options-dev (>> 1.35) | libboost-program-options1.35-dev,\n- libboost-thread-dev (>> 1.35) | libboost-thread1.35-dev,\n- libboost-test-dev (>> 1.35) | libboost-test1.35-dev,\n+ libevent-dev,\n+ libboost-system1.48-dev | libboost-system-dev (>> 1.35),",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114889631",
+      "id" : 114889631,
+      "original_commit_id" : "997021986e02f8e59024ffca6437857d9d17f396",
+      "original_position" : 23,
+      "path" : "contrib/debian/control",
+      "position" : null,
+      "pull_request_review_id" : 36389745,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T21:16:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114889631",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@parazyd I pushed a version that should use Qt5 automagically on Debian-based distros, but dont have a machine handy to test on, care to give it a whirl?",
+      "created_at" : "2017-05-04T21:16:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299311565",
+      "id" : 299311565,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-04T21:16:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299311565",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114892421"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114892421"
+         }
+      },
+      "body" : "Don't forget to drop `--without-miniupnpc`?\r\n\r\n(and restore `libminiupnpc8-dev | libminiupnpc-dev (>> 1.6),` in build deps)",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T21:30:23Z",
+      "diff_hunk" : "@@ -12,10 +12,16 @@ override_dh_auto_clean:\n \tif [ -f Makefile ]; then $(MAKE) distclean; fi\n \trm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/bitcoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in\n \n+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)\n+\tQT=qt4\n+else\n+\tQT=qt5\n+endif\n+\n # Yea, autogen should be run on the source archive, but I like doing git archive\n override_dh_auto_configure:\n \t./autogen.sh\n-\t./configure\n+\t./configure --without-miniupnpc --with-gui=$(QT)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114892421",
+      "id" : 114892421,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 14,
+      "path" : "contrib/debian/rules",
+      "position" : 14,
+      "pull_request_review_id" : 36392713,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T21:50:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114892421",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114895126"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114895126"
+         }
+      },
+      "body" : "```\r\nQT=$(shell dpkg-vendor --derives-from Ubuntu && echo qt4 || echo qt5)\r\n```\r\n\r\nor better yet (to enable Qt5 on Ubuntu 17.10+ which is GNOME instead of Unity):\r\n\r\n```\r\nQT=$(shell { [ $(lsb_release -s -i) = Ubuntu ] && { [ $(lsb_release -s -r | cut -d. -f1) -lt 17 ] || [ $(lsb_release -s -r) = 17.04 ]; } } && echo qt4 || echo qt5)\r\n```",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T21:45:03Z",
+      "diff_hunk" : "@@ -12,10 +12,16 @@ override_dh_auto_clean:\n \tif [ -f Makefile ]; then $(MAKE) distclean; fi\n \trm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/bitcoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in\n \n+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114895126",
+      "id" : 114895126,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 4,
+      "path" : "contrib/debian/rules",
+      "position" : 4,
+      "pull_request_review_id" : 36392713,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T21:50:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114895126",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114896530"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114896530"
+         }
+      },
+      "body" : "Maybe lets wait until 10.17 before we lock in using qt5 in 17.10 in case they slip to the next release or so?",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T21:52:38Z",
+      "diff_hunk" : "@@ -12,10 +12,16 @@ override_dh_auto_clean:\n \tif [ -f Makefile ]; then $(MAKE) distclean; fi\n \trm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/bitcoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in\n \n+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114896530",
+      "id" : 114896530,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 4,
+      "path" : "contrib/debian/rules",
+      "position" : 4,
+      "pull_request_review_id" : 36397122,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T21:52:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114896530",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114897211"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114897211"
+         }
+      },
+      "body" : "k",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T21:56:32Z",
+      "diff_hunk" : "@@ -12,10 +12,16 @@ override_dh_auto_clean:\n \tif [ -f Makefile ]; then $(MAKE) distclean; fi\n \trm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/bitcoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in\n \n+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114897211",
+      "id" : 114897211,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 4,
+      "path" : "contrib/debian/rules",
+      "position" : 4,
+      "pull_request_review_id" : 36397873,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T21:56:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114897211",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114897235"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114897235"
+         }
+      },
+      "body" : "@TheBlueMatt Your if clause doesn't pass $QT correctly, on my Devuan build it stays empty. @luke-jr 's lsb_release oneliner works.",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T21:56:40Z",
+      "diff_hunk" : "@@ -12,10 +12,16 @@ override_dh_auto_clean:\n \tif [ -f Makefile ]; then $(MAKE) distclean; fi\n \trm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/bitcoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in\n \n+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114897235",
+      "id" : 114897235,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 4,
+      "path" : "contrib/debian/rules",
+      "position" : 4,
+      "pull_request_review_id" : 36397908,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T21:56:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114897235",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/9220323?v=3",
+         "events_url" : "https://api.github.com/users/parazyd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/parazyd/followers",
+         "following_url" : "https://api.github.com/users/parazyd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/parazyd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/parazyd",
+         "id" : 9220323,
+         "login" : "parazyd",
+         "organizations_url" : "https://api.github.com/users/parazyd/orgs",
+         "received_events_url" : "https://api.github.com/users/parazyd/received_events",
+         "repos_url" : "https://api.github.com/users/parazyd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/parazyd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/parazyd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/parazyd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114897340"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114897340"
+         }
+      },
+      "body" : "Wait, the dpkg-vendor version doesn't work, or the if doesnt hold the variable outside of the scope?",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T21:57:19Z",
+      "diff_hunk" : "@@ -12,10 +12,16 @@ override_dh_auto_clean:\n \tif [ -f Makefile ]; then $(MAKE) distclean; fi\n \trm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/bitcoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in\n \n+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114897340",
+      "id" : 114897340,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 4,
+      "path" : "contrib/debian/rules",
+      "position" : 4,
+      "pull_request_review_id" : 36398029,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T21:57:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114897340",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114897741"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114897741"
+         }
+      },
+      "body" : "Is there a reason for introducing these typos?",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T21:59:47Z",
+      "diff_hunk" : "@@ -179,7 +292,7 @@ bitcoin (0.5.3-natty0) natty; urgency=low\n bitcoin (0.5.2-natty1) natty; urgency=low\n \n   * Remove mentions on anonymity in package descriptions and manpage.\n-    These should never have been there, bitcoin isn't anonymous without\n+    These should never have been there, bitcoin isnt anonymous without",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114897741",
+      "id" : 114897741,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 122,
+      "path" : "contrib/debian/changelog",
+      "position" : 122,
+      "pull_request_review_id" : 36398477,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T22:01:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114897741",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/9220323?v=3",
+         "events_url" : "https://api.github.com/users/parazyd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/parazyd/followers",
+         "following_url" : "https://api.github.com/users/parazyd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/parazyd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/parazyd",
+         "id" : 9220323,
+         "login" : "parazyd",
+         "organizations_url" : "https://api.github.com/users/parazyd/orgs",
+         "received_events_url" : "https://api.github.com/users/parazyd/received_events",
+         "repos_url" : "https://api.github.com/users/parazyd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/parazyd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/parazyd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/parazyd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114900168"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114900168"
+         }
+      },
+      "body" : "$(QT) is empty on the ./configure call",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T22:15:59Z",
+      "diff_hunk" : "@@ -12,10 +12,16 @@ override_dh_auto_clean:\n \tif [ -f Makefile ]; then $(MAKE) distclean; fi\n \trm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/bitcoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in\n \n+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114900168",
+      "id" : 114900168,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 4,
+      "path" : "contrib/debian/rules",
+      "position" : 4,
+      "pull_request_review_id" : 36401171,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T22:15:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114900168",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/9220323?v=3",
+         "events_url" : "https://api.github.com/users/parazyd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/parazyd/followers",
+         "following_url" : "https://api.github.com/users/parazyd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/parazyd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/parazyd",
+         "id" : 9220323,
+         "login" : "parazyd",
+         "organizations_url" : "https://api.github.com/users/parazyd/orgs",
+         "received_events_url" : "https://api.github.com/users/parazyd/received_events",
+         "repos_url" : "https://api.github.com/users/parazyd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/parazyd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/parazyd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/parazyd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114900445"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114900445"
+         }
+      },
+      "body" : "Yes, read the OP...\r\n\r\n> Partially reverts 9f68ed6 (which fixed spelling in a changelog,\r\nthough generally changelogs should be append-only).",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T22:17:48Z",
+      "diff_hunk" : "@@ -179,7 +292,7 @@ bitcoin (0.5.3-natty0) natty; urgency=low\n bitcoin (0.5.2-natty1) natty; urgency=low\n \n   * Remove mentions on anonymity in package descriptions and manpage.\n-    These should never have been there, bitcoin isn't anonymous without\n+    These should never have been there, bitcoin isnt anonymous without",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114900445",
+      "id" : 114900445,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 122,
+      "path" : "contrib/debian/changelog",
+      "position" : 122,
+      "pull_request_review_id" : 36401485,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T22:17:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114900445",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114900523"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114900523"
+         }
+      },
+      "body" : "That's odd, I would expect both to *work*... :/",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T22:18:20Z",
+      "diff_hunk" : "@@ -12,10 +12,16 @@ override_dh_auto_clean:\n \tif [ -f Makefile ]; then $(MAKE) distclean; fi\n \trm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/bitcoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in\n \n+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114900523",
+      "id" : 114900523,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 4,
+      "path" : "contrib/debian/rules",
+      "position" : 4,
+      "pull_request_review_id" : 36401571,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T22:18:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114900523",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114900924"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114900924"
+         }
+      },
+      "body" : "OK, it seems if you don't indent the QT= assigns, it works.",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T22:20:45Z",
+      "diff_hunk" : "@@ -12,10 +12,16 @@ override_dh_auto_clean:\n \tif [ -f Makefile ]; then $(MAKE) distclean; fi\n \trm -rf Makefile.in aclocal.m4 configure src/Makefile.in src/bitcoin-config.h.in src/build-aux src/qt/Makefile.in src/qt/test/Makefile.in src/test/Makefile.in\n \n+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114900924",
+      "id" : 114900924,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 4,
+      "path" : "contrib/debian/rules",
+      "position" : 4,
+      "pull_request_review_id" : 36401980,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T22:20:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114900924",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/9220323?v=3",
+         "events_url" : "https://api.github.com/users/parazyd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/parazyd/followers",
+         "following_url" : "https://api.github.com/users/parazyd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/parazyd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/parazyd",
+         "id" : 9220323,
+         "login" : "parazyd",
+         "organizations_url" : "https://api.github.com/users/parazyd/orgs",
+         "received_events_url" : "https://api.github.com/users/parazyd/received_events",
+         "repos_url" : "https://api.github.com/users/parazyd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/parazyd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/parazyd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/parazyd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114902323"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114902323"
+         }
+      },
+      "body" : "I fail to understand the reasoning.",
+      "commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "created_at" : "2017-05-04T22:30:06Z",
+      "diff_hunk" : "@@ -179,7 +292,7 @@ bitcoin (0.5.3-natty0) natty; urgency=low\n bitcoin (0.5.2-natty1) natty; urgency=low\n \n   * Remove mentions on anonymity in package descriptions and manpage.\n-    These should never have been there, bitcoin isn't anonymous without\n+    These should never have been there, bitcoin isnt anonymous without",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#discussion_r114902323",
+      "id" : 114902323,
+      "original_commit_id" : "145d978abb80af95a5111e6acb66881120ecff78",
+      "original_position" : 122,
+      "path" : "contrib/debian/changelog",
+      "position" : 122,
+      "pull_request_review_id" : 36403490,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10328",
+      "updated_at" : "2017-05-04T22:30:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/114902323",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/9220323?v=3",
+         "events_url" : "https://api.github.com/users/parazyd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/parazyd/followers",
+         "following_url" : "https://api.github.com/users/parazyd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/parazyd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/parazyd",
+         "id" : 9220323,
+         "login" : "parazyd",
+         "organizations_url" : "https://api.github.com/users/parazyd/orgs",
+         "received_events_url" : "https://api.github.com/users/parazyd/received_events",
+         "repos_url" : "https://api.github.com/users/parazyd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/parazyd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/parazyd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/parazyd"
+      }
+   },
+   {
+      "body" : "Fixed Qt version auto-detection and re-enabled UPnP.****",
+      "created_at" : "2017-05-05T17:31:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10328#issuecomment-299526707",
+      "id" : 299526707,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10328",
+      "updated_at" : "2017-05-05T17:31:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/299526707",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   }
+]

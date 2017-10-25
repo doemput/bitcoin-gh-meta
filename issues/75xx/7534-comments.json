@@ -1,0 +1,280 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7534#discussion_r52887526"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7534"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/52887526"
+         }
+      },
+      "body" : "What about `cltv_time` as in the `createmultisig` RPC?",
+      "commit_id" : "bd7178a0e4077b3b413bb7dd71a01c3f2a5182aa",
+      "created_at" : "2016-02-15T11:23:38Z",
+      "diff_hunk" : "@@ -1070,7 +1070,10 @@ UniValue addmultisigaddress(const UniValue& params, bool fHelp)\n             \"       \\\"address\\\"  (string) bitcoin address or hex-encoded public key\\n\"\n             \"       ...,\\n\"\n             \"     ]\\n\"\n-            \"3. \\\"account\\\"      (string, optional) DEPRECATED. An account to assign the addresses to.\\n\"\n+            \"3. options        (object, optional)\\n\"\n+            \"   {\\n\"\n+            \"     \\\"cltv_height\\\"  (numeric, optional) Minimum block height before received funds can be spent\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7534#discussion_r52887526",
+      "id" : 52887526,
+      "original_commit_id" : "8cfb86d70e104d022901937f2f20012fb6af12c2",
+      "original_position" : 25,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 25,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7534",
+      "updated_at" : "2016-10-15T20:25:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/52887526",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7534#discussion_r52927431"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7534"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/52927431"
+         }
+      },
+      "body" : "This is more complex. SelectCoins will need to be taught not to mix height and time locked coins, and FundTransaction to use time rather than height (preferably in more than merely cases that require it, for privacy). Note the code in this RPC call specifically blocks cltv_time for now.",
+      "commit_id" : "bd7178a0e4077b3b413bb7dd71a01c3f2a5182aa",
+      "created_at" : "2016-02-15T17:52:19Z",
+      "diff_hunk" : "@@ -1070,7 +1070,10 @@ UniValue addmultisigaddress(const UniValue& params, bool fHelp)\n             \"       \\\"address\\\"  (string) bitcoin address or hex-encoded public key\\n\"\n             \"       ...,\\n\"\n             \"     ]\\n\"\n-            \"3. \\\"account\\\"      (string, optional) DEPRECATED. An account to assign the addresses to.\\n\"\n+            \"3. options        (object, optional)\\n\"\n+            \"   {\\n\"\n+            \"     \\\"cltv_height\\\"  (numeric, optional) Minimum block height before received funds can be spent\\n\"",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7534#discussion_r52927431",
+      "id" : 52927431,
+      "original_commit_id" : "8cfb86d70e104d022901937f2f20012fb6af12c2",
+      "original_position" : 25,
+      "path" : "src/wallet/rpcwallet.cpp",
+      "position" : 25,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7534",
+      "updated_at" : "2016-10-15T20:25:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/52927431",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7534#discussion_r53477578"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7534"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53477578"
+         }
+      },
+      "body" : "Maybe we should keep OP_U32INT independent from CLTV? Allow 0 as value? ",
+      "commit_id" : "bd7178a0e4077b3b413bb7dd71a01c3f2a5182aa",
+      "created_at" : "2016-02-19T15:53:18Z",
+      "diff_hunk" : "@@ -148,6 +154,19 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi\n                 else\n                     break;\n             }\n+            else if (opcode2 == OP_U32INT)\n+            {\n+                CScriptNum sn(0);\n+                try {\n+                    sn = CScriptNum(vch1, true, 5);\n+                } catch (scriptnum_error) {\n+                    break;\n+                }\n+                // 0 CLTV is pointless, so expect at least height 1",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7534#discussion_r53477578",
+      "id" : 53477578,
+      "original_commit_id" : "8cfb86d70e104d022901937f2f20012fb6af12c2",
+      "original_position" : 48,
+      "path" : "src/script/standard.cpp",
+      "position" : 48,
+      "pull_request_review_id" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7534",
+      "updated_at" : "2016-10-15T20:25:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/53477578",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Concept ACK.",
+      "created_at" : "2016-02-19T15:57:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7534#issuecomment-186275641",
+      "id" : 186275641,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7534",
+      "updated_at" : "2016-02-19T15:57:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/186275641",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "See also #7601.",
+      "created_at" : "2016-05-17T06:47:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7534#issuecomment-219633350",
+      "id" : 219633350,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7534",
+      "updated_at" : "2016-05-17T06:47:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/219633350",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Closing due to apparent lack of interest... If you want to review, poke me and I'll rebase/reopen...",
+      "created_at" : "2016-11-12T07:35:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7534#issuecomment-260107482",
+      "id" : 260107482,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7534",
+      "updated_at" : "2016-11-12T07:35:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260107482",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "The concept is great, puts new BIPs to the front, if this could get more interest , could result in developers making easy use of new functionality. ",
+      "created_at" : "2016-11-15T06:44:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7534#issuecomment-260560920",
+      "id" : 260560920,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7534",
+      "updated_at" : "2016-11-15T06:44:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260560920",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/22764823?v=3",
+         "events_url" : "https://api.github.com/users/nickrowley/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/nickrowley/followers",
+         "following_url" : "https://api.github.com/users/nickrowley/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/nickrowley/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/nickrowley",
+         "id" : 22764823,
+         "login" : "nickrowley",
+         "organizations_url" : "https://api.github.com/users/nickrowley/orgs",
+         "received_events_url" : "https://api.github.com/users/nickrowley/received_events",
+         "repos_url" : "https://api.github.com/users/nickrowley/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/nickrowley/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/nickrowley/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/nickrowley"
+      }
+   },
+   {
+      "body" : "luke-jr , sad that this did not get much support. From a user PoV this is exactly what people are clamoring for. ",
+      "created_at" : "2017-01-09T11:16:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7534#issuecomment-271260730",
+      "id" : 271260730,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7534",
+      "updated_at" : "2017-01-09T11:16:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271260730",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/24528627?v=3",
+         "events_url" : "https://api.github.com/users/BlockMechanic/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/BlockMechanic/followers",
+         "following_url" : "https://api.github.com/users/BlockMechanic/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/BlockMechanic/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/BlockMechanic",
+         "id" : 24528627,
+         "login" : "BlockMechanic",
+         "organizations_url" : "https://api.github.com/users/BlockMechanic/orgs",
+         "received_events_url" : "https://api.github.com/users/BlockMechanic/received_events",
+         "repos_url" : "https://api.github.com/users/BlockMechanic/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/BlockMechanic/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/BlockMechanic/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/BlockMechanic"
+      }
+   }
+]

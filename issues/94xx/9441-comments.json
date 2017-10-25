@@ -1,0 +1,2470 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94154588"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94154588"
+         }
+      },
+      "body" : "I'm not sure if github is messing with the formatting, but this line looks unnecessarily indented.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2016-12-29T16:37:40Z",
+      "diff_hunk" : "@@ -2438,48 +2438,53 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman)\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n-        ProcessGetData(pfrom, chainparams.GetConsensus(), connman);\n+        ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;\n+\n+    if (pfrom->fDisconnect)\n+        return false;\n \n-    std::deque<CNetMessage>::iterator it = pfrom->vRecvMsg.begin();\n-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n         // Don't bother if send buffer is too full to respond anyway",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94154588",
+      "id" : 94154588,
+      "original_commit_id" : "65e916c499658e656a6e23455f22666fb0068edc",
+      "original_position" : 121,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 14685561,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94154588",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94155625"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94155625"
+         }
+      },
+      "body" : "Yes, the indentation was just kept to avoid creating a huge whitespace diff. This can be cleaned up in a move-only commit as a next step.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2016-12-29T16:47:43Z",
+      "diff_hunk" : "@@ -2438,48 +2438,53 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman)\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n-        ProcessGetData(pfrom, chainparams.GetConsensus(), connman);\n+        ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;\n+\n+    if (pfrom->fDisconnect)\n+        return false;\n \n-    std::deque<CNetMessage>::iterator it = pfrom->vRecvMsg.begin();\n-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n         // Don't bother if send buffer is too full to respond anyway",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94155625",
+      "id" : 94155625,
+      "original_commit_id" : "65e916c499658e656a6e23455f22666fb0068edc",
+      "original_position" : 121,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 14686611,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94155625",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@sipa I've spent all day on changing this around some and breaking this up into logical commits in order to satisfy myself (and i hope others) that it's safe. I'll push up a fresh version in a few min, and drop the WIP tag.",
+      "created_at" : "2016-12-31T02:09:17Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-269843583",
+      "id" : 269843583,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2016-12-31T02:09:17Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/269843583",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Updated. Don't let the number of commits scare you off, the diffstat isn't too bad.\r\n\r\nI attempted to break this up into small/simple commits, in order to slowly remove the need for cs_vRecvMsg. The last commit actually removes it.\r\n\r\nI'm satisfied that this shouldn't be introducing any new races, as only a handful of vars were actually touched on the SocketHandler thread.\r\n\r\nEdit: time-ordered.",
+      "created_at" : "2016-12-31T04:39:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-269849078",
+      "id" : 269849078,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2016-12-31T07:04:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/269849078",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94270487"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94270487"
+         }
+      },
+      "body" : "Whoops, rebase gone bad here. It ends up right in the end. Will fix.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2016-12-31T07:39:29Z",
+      "diff_hunk" : "@@ -1243,9 +1243,10 @@ void CConnman::ThreadSocketHandler()\n                             bool notify = false;\n                             if (!pnode->ReceiveMsgBytes(pchBuf, nBytes, notify))\n                                 pnode->CloseSocketDisconnect();\n+                            RecordBytesRecv(nBytes);\n                             if(notify)\n                                 condMsgProc.notify_one();\n-                            RecordBytesRecv(nBytes);\n+                            }",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94270487",
+      "id" : 94270487,
+      "original_commit_id" : "3ab40f619dd1b9f3ff4140510e807a9e1fb577c8",
+      "original_position" : 8,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 14801377,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94270487",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94270593"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94270593"
+         }
+      },
+      "body" : "Need to clarify in the commit message: It was almost always the case that only one message was processed in this while loop. See the break at line 2538.\r\n\r\nThis commit changes the behavior so that it's _always_ one message processed per-loop. The only messages that show different behavior are the ones that used to \"continue\" the loop. I think it's perfectly reasonable to skip to the next node for processing in that case.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2016-12-31T07:57:52Z",
+      "diff_hunk" : "@@ -2439,44 +2439,44 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, std::atomic<bool>& interru\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n         ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;\n \n     auto it = pfrom->vRecvMsg.begin();\n-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n+    if (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94270593",
+      "id" : 94270593,
+      "original_commit_id" : "99599884147ea4db3f960b0e706b039ba1553c80",
+      "original_position" : 16,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 14801483,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94270593",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@theuni is this worth testing now?",
+      "created_at" : "2017-01-03T00:18:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270035728",
+      "id" : 270035728,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-03T00:18:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270035728",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "@dcousens Very much so!",
+      "created_at" : "2017-01-03T04:16:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270049933",
+      "id" : 270049933,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-03T04:16:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270049933",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94386537"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94386537"
+         }
+      },
+      "body" : "I think you meant /, not * here?",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-03T10:48:47Z",
+      "diff_hunk" : "@@ -682,18 +674,27 @@ bool CNode::ReceiveMsgBytes(const char *pch, unsigned int nBytes, bool& complete\n         pch += handled;\n         nBytes -= handled;\n \n-        if (msg.complete()) {\n+        if (msg.complete())\n+            complete = true;\n+    }\n+\n+    int64_t nTime = GetTimeMicros();\n+    LOCK(cs_vRecvMsg);\n+    nRecvBytes += nBytes;\n+    nLastRecv = nTime * 1000;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94386537",
+      "id" : 94386537,
+      "original_commit_id" : "b1b6772240f5135745e9c0b09be2155944c12f0a",
+      "original_position" : 50,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 14911886,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94386537",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94386795"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94386795"
+         }
+      },
+      "body" : "It might be nice in the RPC for mapRecvBytesPerMsgCmd to add up to nRecvBytes (ie to increment this in the loop per-msg instead of after receiving (which would also mean no api change)).",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-03T10:51:06Z",
+      "diff_hunk" : "@@ -682,18 +674,27 @@ bool CNode::ReceiveMsgBytes(const char *pch, unsigned int nBytes, bool& complete\n         pch += handled;\n         nBytes -= handled;\n \n-        if (msg.complete()) {\n+        if (msg.complete())\n+            complete = true;\n+    }\n+\n+    int64_t nTime = GetTimeMicros();\n+    LOCK(cs_vRecvMsg);\n+    nRecvBytes += nBytes;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94386795",
+      "id" : 94386795,
+      "original_commit_id" : "b1b6772240f5135745e9c0b09be2155944c12f0a",
+      "original_position" : 49,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 14912139,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94386795",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "See IRC discussion:\r\n\r\n```\r\n<BlueMatt> cfields: hmmm, regarding #9441, do we really want to run the entire ProcessMessages loop (calling SendMessages potentially umpteen times) just to process multiple messages from the same node?\r\n<BlueMatt> (ie remove the loop inside ProcessMessages and move it to ThreadProcessMessages)\r\n<sipa> BlueMatt: i was wondering about that too\r\n<sipa> BlueMatt: but there is hardly any (contentious) locking going on anymore in between\r\n<BlueMatt> yea, but SendMessages.....\r\n<sipa> Ah.\r\n<sipa> i hadn't considered that\r\n<sipa> that defeats the purpose\r\n<sipa> hmm, i was about to say that it negatively impacts batching of invs and addrs\r\n<sipa> but since we have explicit random delays for those, i don't think that's really an issue anymore\r\n<BlueMatt> yea, I dont think it breaks anything\r\n<BlueMatt> just repeatedly calls SendMessages to do nothing\r\n<sipa> oh, it won't break anything\r\n```",
+      "created_at" : "2017-01-03T11:11:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270093178",
+      "id" : 270093178,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-03T11:11:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270093178",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94419909"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94419909"
+         }
+      },
+      "body" : "Heh, sure did",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-03T15:11:55Z",
+      "diff_hunk" : "@@ -682,18 +674,27 @@ bool CNode::ReceiveMsgBytes(const char *pch, unsigned int nBytes, bool& complete\n         pch += handled;\n         nBytes -= handled;\n \n-        if (msg.complete()) {\n+        if (msg.complete())\n+            complete = true;\n+    }\n+\n+    int64_t nTime = GetTimeMicros();\n+    LOCK(cs_vRecvMsg);\n+    nRecvBytes += nBytes;\n+    nLastRecv = nTime * 1000;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94419909",
+      "id" : 94419909,
+      "original_commit_id" : "b1b6772240f5135745e9c0b09be2155944c12f0a",
+      "original_position" : 50,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 14946635,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94419909",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94420177"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94420177"
+         }
+      },
+      "body" : "Sure, that just means more locking. Though this is completely uncontested now, so that's not really a problem.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-03T15:13:30Z",
+      "diff_hunk" : "@@ -682,18 +674,27 @@ bool CNode::ReceiveMsgBytes(const char *pch, unsigned int nBytes, bool& complete\n         pch += handled;\n         nBytes -= handled;\n \n-        if (msg.complete()) {\n+        if (msg.complete())\n+            complete = true;\n+    }\n+\n+    int64_t nTime = GetTimeMicros();\n+    LOCK(cs_vRecvMsg);\n+    nRecvBytes += nBytes;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94420177",
+      "id" : 94420177,
+      "original_commit_id" : "b1b6772240f5135745e9c0b09be2155944c12f0a",
+      "original_position" : 49,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 14946908,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94420177",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt If I understand you correctly, as mentioned in the summary, that's the part that was cut out here for simplicity. The next set of changes would combine the loops and move them into net_processing. See here for how it looked in a previous iteration: https://github.com/theuni/bitcoin/commit/1a6b10aea129ac363727c2d68fae809c2861e4da#diff-eff7adeaec73a769788bb78858815c91R271\r\n\r\nI'd be happy to add that here, but I'm afraid it adds a significant review burden to this PR.",
+      "created_at" : "2017-01-03T15:19:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270137480",
+      "id" : 270137480,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-03T15:19:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270137480",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Also from IRC:\r\n```\r\n<BlueMatt> I assume you didnt touch cs_vSend due to https://github.com/bitcoin/bitcoin/pull/9419/commits/c214d120a363a05ba9afdccff6b4bda6e29ae7c4, cfields?\r\n<cfields> BlueMatt: yes, cs_vSend wasn't touched because of your PR. I've just been operating under the assumption that the lock around SendMessages will be removed by one PR or another.\r\n```",
+      "created_at" : "2017-01-03T16:15:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270152187",
+      "id" : 270152187,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-03T16:15:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270152187",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Digging further into the IRC conversation above, I'd like to clarify that the interaction here between ProcessMessages and SendMessages is _not_ changed substantially in this PR.\r\n\r\n@TheBlueMatt had missed a subtle part of the current behavior, and maybe @sipa too, so I'd just like to explicitly point out the current break here: https://github.com/bitcoin/bitcoin/blob/master/src/net_processing.cpp#L2543, added in https://github.com/bitcoin/bitcoin/pull/3180\r\n\r\nFor the sake of processing in a round-robin fashion, we currently end up running through SendMessages multiple times while draining a node's received message queue. That behavior is _far_ from ideal, and needs to be addressed, but is not changed here*. I have plans to work on this in next steps, but not for 0.14.\r\n\r\n*It's only changed in the case of an invalid header, or bad message checksum.",
+      "created_at" : "2017-01-03T18:27:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270185545",
+      "id" : 270185545,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-03T18:27:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270185545",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "> <BlueMatt> cfields: hmmm, regarding #9441, do we really want to run the entire ProcessMessages loop (calling SendMessages potentially umpteen times) just to process multiple messages from the same node?\r\n<BlueMatt> (ie remove the loop inside ProcessMessages and move it to ThreadProcessMessages)\r\n\r\nClearly people weren't reading PRs on this or you would have noticed that it only processes one at a time right now.  I actually fixed it to process as many as it could until it encountered lock contention, then specifically pinged people for input on the effect. After no response, I unfixed it because of concern about the latency impact.   Handling multiple messages at a time is good, if they're fast ones... \r\n\r\n",
+      "created_at" : "2017-01-04T03:15:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270286007",
+      "id" : 270286007,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-04T03:15:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270286007",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "I certainly noticed it only processed one message at a time. I missed that\nit calls SendMessages between each.\n",
+      "created_at" : "2017-01-04T03:21:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270286554",
+      "id" : 270286554,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-04T03:21:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270286554",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Needs rebase.",
+      "created_at" : "2017-01-04T14:42:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270386244",
+      "id" : 270386244,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-04T14:42:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270386244",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Rebased, and I believe I addressed all comments so far.\r\n\r\nI did a full mainnet sync last night with these (pre-rebase) changes, with no issues. I had extra logging to observe the recv pausing behavior, and verified that it's working as intended. It is paused quite frequently during IBD. Obviously that's intended, as it signals for the peer to slow down, but it may be worth discussing the consequences of a higher (or lower!) default for -maxreceivebuffer now that our recv is no longer blocked by processing. Out of scope for this PR, though.",
+      "created_at" : "2017-01-04T15:25:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270397280",
+      "id" : 270397280,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-04T15:25:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270397280",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94670409"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94670409"
+         }
+      },
+      "body" : "Is it just me, or were these always impossible to hit? Both ConnectNode and AcceptConnection do a AddRef() which is only countered by the Release a few lines further down here.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-04T21:38:55Z",
+      "diff_hunk" : "@@ -1051,8 +1051,7 @@ void CConnman::ThreadSocketHandler()\n             std::vector<CNode*> vNodesCopy = vNodes;\n             BOOST_FOREACH(CNode* pnode, vNodesCopy)\n             {\n-                if (pnode->fDisconnect ||\n-                    (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94670409",
+      "id" : 94670409,
+      "original_commit_id" : "f6315e07f9383f3f43e37ada0d6a835810d610b9",
+      "original_position" : 5,
+      "path" : "src/net.cpp",
+      "position" : 64,
+      "pull_request_review_id" : 15203555,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94670409",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94670463"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94670463"
+         }
+      },
+      "body" : "(obviously not an issue, just checking my logic).",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-04T21:39:17Z",
+      "diff_hunk" : "@@ -1051,8 +1051,7 @@ void CConnman::ThreadSocketHandler()\n             std::vector<CNode*> vNodesCopy = vNodes;\n             BOOST_FOREACH(CNode* pnode, vNodesCopy)\n             {\n-                if (pnode->fDisconnect ||\n-                    (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0))",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94670463",
+      "id" : 94670463,
+      "original_commit_id" : "f6315e07f9383f3f43e37ada0d6a835810d610b9",
+      "original_position" : 5,
+      "path" : "src/net.cpp",
+      "position" : 64,
+      "pull_request_review_id" : 15203613,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94670463",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "I believe you're correct, that's my reading of it as well. Regardless, I\nwasn't able to track down a path where fDisconnect wouldn't be set as\nnecessary.\n",
+      "created_at" : "2017-01-04T21:47:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270496443",
+      "id" : 270496443,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-04T21:47:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270496443",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94674801"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94674801"
+         }
+      },
+      "body" : "I think you actually meant / 1000 / 1000 :p",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-04T22:03:41Z",
+      "diff_hunk" : "@@ -649,16 +644,19 @@ void CNode::copyStats(CNodeStats &stats)\n }\n #undef X\n \n-// requires LOCK(cs_vRecvMsg)\n bool CNode::ReceiveMsgBytes(const char *pch, unsigned int nBytes, bool& complete)\n {\n+    LOCK(cs_vRecvMsg);\n     complete = false;\n+    int64_t nTime = GetTimeMicros();\n+    nLastRecv = nTime / 1000;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94674801",
+      "id" : 94674801,
+      "original_commit_id" : "1c779a8cfefb45f55f0686de3fccba5285f5cd7b",
+      "original_position" : 22,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15208077,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94674801",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94840361"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94840361"
+         }
+      },
+      "body" : "I completely missed that this was a full-second value. Thanks for catching this (twice!). Will fix.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T20:00:27Z",
+      "diff_hunk" : "@@ -649,16 +644,19 @@ void CNode::copyStats(CNodeStats &stats)\n }\n #undef X\n \n-// requires LOCK(cs_vRecvMsg)\n bool CNode::ReceiveMsgBytes(const char *pch, unsigned int nBytes, bool& complete)\n {\n+    LOCK(cs_vRecvMsg);\n     complete = false;\n+    int64_t nTime = GetTimeMicros();\n+    nLastRecv = nTime / 1000;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94840361",
+      "id" : 94840361,
+      "original_commit_id" : "1c779a8cfefb45f55f0686de3fccba5285f5cd7b",
+      "original_position" : 22,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15380505,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94840361",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94848354"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94848354"
+         }
+      },
+      "body" : "It seems that during this wait, fMoreWork will never change (and it isn't covered by the lock either), so this line could instead be written as\r\n```c++\r\nif (!fMoreWork) {\r\n    condMsgProc.wait_until(lock, std::chrono::steady_clock::now() + std::chrono::milliseconds(100), [this] { return fMsgProcWake; });\r\n}\r\n```\r\n",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T20:50:11Z",
+      "diff_hunk" : "@@ -1882,10 +1878,9 @@ void CConnman::ThreadMessageHandler()\n                 pnode->Release();\n         }\n \n-        if (fSleep) {\n-            std::unique_lock<std::mutex> lock(mutexMsgProc);\n-            condMsgProc.wait_until(lock, std::chrono::steady_clock::now() + std::chrono::milliseconds(100));\n-        }\n+        std::unique_lock<std::mutex> lock(mutexMsgProc);\n+        condMsgProc.wait_until(lock, std::chrono::steady_clock::now() + std::chrono::milliseconds(100), [this, &fMoreWork] { return fMoreWork || fMsgProcWake; });",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94848354",
+      "id" : 94848354,
+      "original_commit_id" : "4157c99cd81c57dbc934beadfdaf2a48a6110bd0",
+      "original_position" : 48,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15389104,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94848354",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94849266"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94849266"
+         }
+      },
+      "body" : "Can you clarify what the rationale is for switching from a `ProcessMessages` that processes multiple messages to just a single one? I'm not opposed to the change, but I'd like to understand what the reason for the change is.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T20:55:03Z",
+      "diff_hunk" : "@@ -2439,44 +2439,44 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, std::atomic<bool>& interru\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n         ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;\n \n     auto it = pfrom->vRecvMsg.begin();\n-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n+    if (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94849266",
+      "id" : 94849266,
+      "original_commit_id" : "99599884147ea4db3f960b0e706b039ba1553c80",
+      "original_position" : 16,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15389104,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94849266",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94849846"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94849846"
+         }
+      },
+      "body" : "I find it generally more readable to write something like this as\r\n```c++\r\nwhile (it != pnode->vRecvMsg.end() && it->complete()) ++it;\r\n```\r\n\r\nAlso, isn't iterating backwards more efficient?",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T20:58:08Z",
+      "diff_hunk" : "@@ -1239,8 +1239,18 @@ void CConnman::ThreadSocketHandler()\n                             if (!pnode->ReceiveMsgBytes(pchBuf, nBytes, notify))\n                                 pnode->CloseSocketDisconnect();\n                             RecordBytesRecv(nBytes);\n-                            if (notify)\n+                            if (notify) {\n+                                auto it(pnode->vRecvMsg.begin());\n+                                for (; it != pnode->vRecvMsg.end(); ++it) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94849846",
+      "id" : 94849846,
+      "original_commit_id" : "b5ea4f2199b66fdf2da844b884742b1d97448aab",
+      "original_position" : 7,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15389104,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94849846",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94852093"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94852093"
+         }
+      },
+      "body" : "Point is this is not a change. See https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270185545",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T21:10:46Z",
+      "diff_hunk" : "@@ -2439,44 +2439,44 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, std::atomic<bool>& interru\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n         ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;\n \n     auto it = pfrom->vRecvMsg.begin();\n-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n+    if (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94852093",
+      "id" : 94852093,
+      "original_commit_id" : "99599884147ea4db3f960b0e706b039ba1553c80",
+      "original_position" : 16,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15392904,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94852093",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94853525"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94853525"
+         }
+      },
+      "body" : "This is always false here.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T21:19:07Z",
+      "diff_hunk" : "@@ -2453,44 +2453,44 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, std::atomic<bool>& interru\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n         ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;\n \n     auto it = pfrom->vRecvMsg.begin();\n-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n+    if (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n         // Don't bother if send buffer is too full to respond anyway\n         if (pfrom->nSendSize >= nMaxSendBufferSize)\n-            break;\n-\n-        // get next message\n-        CNetMessage& msg = *it;\n+            return false;\n \n         // end, if an incomplete message is found\n-        if (!msg.complete())\n-            break;\n+        if (!it->complete())\n+            return false;\n+\n+        // get next message\n+        CNetMessage msg = std::move(*it);\n \n         // at this point, any failure means we can delete the current message\n-        it++;\n+        pfrom->vRecvMsg.erase(pfrom->vRecvMsg.begin());\n \n         msg.SetVersion(pfrom->GetRecvVersion());\n         // Scan for message start\n         if (memcmp(msg.hdr.pchMessageStart, chainparams.MessageStart(), CMessageHeader::MESSAGE_START_SIZE) != 0) {\n             LogPrintf(\"PROCESSMESSAGE: INVALID MESSAGESTART %s peer=%d\\n\", SanitizeString(msg.hdr.GetCommand()), pfrom->id);\n-            fOk = false;\n-            break;\n+            pfrom->fDisconnect = true;\n+            return false;\n         }\n \n         // Read header\n         CMessageHeader& hdr = msg.hdr;\n         if (!hdr.IsValid(chainparams.MessageStart()))\n         {\n             LogPrintf(\"PROCESSMESSAGE: ERRORS IN HEADER %s peer=%d\\n\", SanitizeString(hdr.GetCommand()), pfrom->id);\n-            continue;\n+            return fMoreWork;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94853525",
+      "id" : 94853525,
+      "original_commit_id" : "4157c99cd81c57dbc934beadfdaf2a48a6110bd0",
+      "original_position" : 54,
+      "path" : "src/net_processing.cpp",
+      "position" : 121,
+      "pull_request_review_id" : 15394370,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94853525",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94853574"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94853574"
+         }
+      },
+      "body" : "Sure, will change it to a while.\r\n\r\nIterating backwards would be preferable, but we end up hitting each msg anyway later (to add up message sizes) in a later commit, so i didn't bother (see https://github.com/bitcoin/bitcoin/pull/9441/commits/a109f7bd1801392bf99994a7165d495200156c4a#diff-9a82240fe7dfe86564178691cc57f2f1R1246). The sizes are added ahead of time in order to avoid iterating the list under cs_vProcessMsg.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T21:19:22Z",
+      "diff_hunk" : "@@ -1239,8 +1239,18 @@ void CConnman::ThreadSocketHandler()\n                             if (!pnode->ReceiveMsgBytes(pchBuf, nBytes, notify))\n                                 pnode->CloseSocketDisconnect();\n                             RecordBytesRecv(nBytes);\n-                            if (notify)\n+                            if (notify) {\n+                                auto it(pnode->vRecvMsg.begin());\n+                                for (; it != pnode->vRecvMsg.end(); ++it) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94853574",
+      "id" : 94853574,
+      "original_commit_id" : "b5ea4f2199b66fdf2da844b884742b1d97448aab",
+      "original_position" : 7,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15394421,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94853574",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94853866"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94853866"
+         }
+      },
+      "body" : "Yep. Will fix.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T21:21:03Z",
+      "diff_hunk" : "@@ -1882,10 +1878,9 @@ void CConnman::ThreadMessageHandler()\n                 pnode->Release();\n         }\n \n-        if (fSleep) {\n-            std::unique_lock<std::mutex> lock(mutexMsgProc);\n-            condMsgProc.wait_until(lock, std::chrono::steady_clock::now() + std::chrono::milliseconds(100));\n-        }\n+        std::unique_lock<std::mutex> lock(mutexMsgProc);\n+        condMsgProc.wait_until(lock, std::chrono::steady_clock::now() + std::chrono::milliseconds(100), [this, &fMoreWork] { return fMoreWork || fMsgProcWake; });",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94853866",
+      "id" : 94853866,
+      "original_commit_id" : "4157c99cd81c57dbc934beadfdaf2a48a6110bd0",
+      "original_position" : 48,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15394723,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94853866",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94854980"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94854980"
+         }
+      },
+      "body" : "This is unclear due to rebasing. In the end-result, this will return true if there are more messages.\r\n\r\nIn this commit, there's an interim chunk that's missing. line 2479 should have:\r\n```c++\r\nfMoreWork = !pfrom->vRecvMsg.empty()\r\n```\r\nI'll fix it in the next rebase so that it's more clear.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T21:27:11Z",
+      "diff_hunk" : "@@ -2453,44 +2453,44 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, std::atomic<bool>& interru\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n         ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;\n \n     auto it = pfrom->vRecvMsg.begin();\n-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n+    if (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n         // Don't bother if send buffer is too full to respond anyway\n         if (pfrom->nSendSize >= nMaxSendBufferSize)\n-            break;\n-\n-        // get next message\n-        CNetMessage& msg = *it;\n+            return false;\n \n         // end, if an incomplete message is found\n-        if (!msg.complete())\n-            break;\n+        if (!it->complete())\n+            return false;\n+\n+        // get next message\n+        CNetMessage msg = std::move(*it);\n \n         // at this point, any failure means we can delete the current message\n-        it++;\n+        pfrom->vRecvMsg.erase(pfrom->vRecvMsg.begin());\n \n         msg.SetVersion(pfrom->GetRecvVersion());\n         // Scan for message start\n         if (memcmp(msg.hdr.pchMessageStart, chainparams.MessageStart(), CMessageHeader::MESSAGE_START_SIZE) != 0) {\n             LogPrintf(\"PROCESSMESSAGE: INVALID MESSAGESTART %s peer=%d\\n\", SanitizeString(msg.hdr.GetCommand()), pfrom->id);\n-            fOk = false;\n-            break;\n+            pfrom->fDisconnect = true;\n+            return false;\n         }\n \n         // Read header\n         CMessageHeader& hdr = msg.hdr;\n         if (!hdr.IsValid(chainparams.MessageStart()))\n         {\n             LogPrintf(\"PROCESSMESSAGE: ERRORS IN HEADER %s peer=%d\\n\", SanitizeString(hdr.GetCommand()), pfrom->id);\n-            continue;\n+            return fMoreWork;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94854980",
+      "id" : 94854980,
+      "original_commit_id" : "4157c99cd81c57dbc934beadfdaf2a48a6110bd0",
+      "original_position" : 54,
+      "path" : "src/net_processing.cpp",
+      "position" : 121,
+      "pull_request_review_id" : 15395874,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94854980",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94857821"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94857821"
+         }
+      },
+      "body" : "This is never set to true until a later commit. I'm generally ok with this, but it is a bit strange.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T21:43:00Z",
+      "diff_hunk" : "@@ -650,6 +651,7 @@ class CNode\n     const NodeId id;\n \n     const uint64_t nKeyedNetGroup;\n+    std::atomic_bool fPauseRecv;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94857821",
+      "id" : 94857821,
+      "original_commit_id" : "a109f7bd1801392bf99994a7165d495200156c4a",
+      "original_position" : 12,
+      "path" : "src/net.h",
+      "position" : 73,
+      "pull_request_review_id" : 15398798,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94857821",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94859040"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94859040"
+         }
+      },
+      "body" : "You're not holding cs_vRecvMsg here, which hyou need to access vRecvMsg.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T21:50:05Z",
+      "diff_hunk" : "@@ -1239,8 +1239,18 @@ void CConnman::ThreadSocketHandler()\n                             if (!pnode->ReceiveMsgBytes(pchBuf, nBytes, notify))\n                                 pnode->CloseSocketDisconnect();\n                             RecordBytesRecv(nBytes);\n-                            if (notify)\n+                            if (notify) {\n+                                auto it(pnode->vRecvMsg.begin());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94859040",
+      "id" : 94859040,
+      "original_commit_id" : "b5ea4f2199b66fdf2da844b884742b1d97448aab",
+      "original_position" : 6,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15400063,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94859040",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94859110"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94859110"
+         }
+      },
+      "body" : "Grr, another artifact of breaking up an end-result into smaller commits. I'll add this where it belongs in the next rebase.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T21:50:33Z",
+      "diff_hunk" : "@@ -650,6 +651,7 @@ class CNode\n     const NodeId id;\n \n     const uint64_t nKeyedNetGroup;\n+    std::atomic_bool fPauseRecv;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94859110",
+      "id" : 94859110,
+      "original_commit_id" : "a109f7bd1801392bf99994a7165d495200156c4a",
+      "original_position" : 12,
+      "path" : "src/net.h",
+      "position" : 73,
+      "pull_request_review_id" : 15400144,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94859110",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94861479"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94861479"
+         }
+      },
+      "body" : "vRecvMsg no longer needs cs_vRecvMsg starting here. It's only ever used on this thread. In reality, cs_vRecvMsg isn't needed at all, so it would probably be more clear to just remove it. copyStats is the only thing that accesses some of these vars, but it already operates without any locks, so the situation isn't changed from before.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T22:03:46Z",
+      "diff_hunk" : "@@ -1239,8 +1239,18 @@ void CConnman::ThreadSocketHandler()\n                             if (!pnode->ReceiveMsgBytes(pchBuf, nBytes, notify))\n                                 pnode->CloseSocketDisconnect();\n                             RecordBytesRecv(nBytes);\n-                            if (notify)\n+                            if (notify) {\n+                                auto it(pnode->vRecvMsg.begin());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94861479",
+      "id" : 94861479,
+      "original_commit_id" : "b5ea4f2199b66fdf2da844b884742b1d97448aab",
+      "original_position" : 6,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15402708,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94861479",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94863381"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94863381"
+         }
+      },
+      "body" : "Hum, ok, can you just add a comment somewhere to note that cs_vRecvMsg no longer protects vRecvMsg, and instead protects other stuff.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-05T22:14:56Z",
+      "diff_hunk" : "@@ -1239,8 +1239,18 @@ void CConnman::ThreadSocketHandler()\n                             if (!pnode->ReceiveMsgBytes(pchBuf, nBytes, notify))\n                                 pnode->CloseSocketDisconnect();\n                             RecordBytesRecv(nBytes);\n-                            if (notify)\n+                            if (notify) {\n+                                auto it(pnode->vRecvMsg.begin());",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94863381",
+      "id" : 94863381,
+      "original_commit_id" : "b5ea4f2199b66fdf2da844b884742b1d97448aab",
+      "original_position" : 6,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15404644,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94863381",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "From @sipa\r\n> Can you clarify what the rationale is for switching from a ProcessMessages that processes multiple messages to just a single one? I'm not opposed to the change, but I'd like to understand what the reason for the change is.\r\n\r\nIn nearly all cases in the current code, only 1 message is processed. I thought that making this explicit would clarify the situation, but it seems it's only causing confusion in this PR. I'll change this back and we can address that later.",
+      "created_at" : "2017-01-06T15:12:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270923452",
+      "id" : 270923452,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-06T15:12:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270923452",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "@theuni Please ignore my request to keep processing multiple messages at the same time.\r\n\r\n> In nearly all cases in the current code, only 1 message is processed.\r\n\r\nI thought you were trying to say our send buffer was usually full, not that the code actually never loops (which is apparently behaviour that was intentionally changed in #3180).",
+      "created_at" : "2017-01-06T17:26:56Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270955845",
+      "id" : 270955845,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-06T17:26:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270955845",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Updated to address feedback. Most of it is just fixing up interim commits to be more correct for easier commit-by-commit review.\r\n\r\nActual changes:\r\n  - Fixed up the condvar as @sipa suggested\r\n  - Completely removed cs_vRecvMsg. See the commit message for more detail.\r\n\r\nDiff from before is here: https://gist.github.com/theuni/9c18405455a2569156671aadcf242500",
+      "created_at" : "2017-01-06T18:01:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270963654",
+      "id" : 270963654,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-06T18:01:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270963654",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94996847"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94996847"
+         }
+      },
+      "body" : "The comment above this code section describing the logic could be updated.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-06T18:44:47Z",
+      "diff_hunk" : "@@ -1167,10 +1159,7 @@ void CConnman::ThreadSocketHandler()\n                     }\n                 }\n                 {\n-                    TRY_LOCK(pnode->cs_vRecvMsg, lockRecv);\n-                    if (lockRecv && (\n-                        pnode->vRecvMsg.empty() || !pnode->vRecvMsg.front().complete() ||\n-                        pnode->GetTotalRecvSize() <= GetReceiveFloodSize()))\n+                    if (!pnode->fPauseRecv)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r94996847",
+      "id" : 94996847,
+      "original_commit_id" : "ddac068fa5d6b43925a96149f2d9b81ec736a5e7",
+      "original_position" : 74,
+      "path" : "src/net.cpp",
+      "position" : 111,
+      "pull_request_review_id" : 15542366,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94996847",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "@morcos I meant to expand on the commit message for c5b4e31fb87a9819330b83f4ac6cc92066e8337d, but apparently neglected to do so before pushing. I expect that we'll want to add connman.WakeMessageHandler() in a few places to take care of that as a follow-up.",
+      "created_at" : "2017-01-06T19:49:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-270989192",
+      "id" : 270989192,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-06T19:49:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/270989192",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "utACK ddac068fa5d6b43925a96149f2d9b81ec736a5e7",
+      "created_at" : "2017-01-08T02:21:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-271124533",
+      "id" : 271124533,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-08T02:21:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271124533",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95403337"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95403337"
+         }
+      },
+      "body" : "It would be nice if this was nTimeMicros instead of nTime",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-10T16:37:02Z",
+      "diff_hunk" : "@@ -648,6 +648,9 @@ void CNode::copyStats(CNodeStats &stats)\n bool CNode::ReceiveMsgBytes(const char *pch, unsigned int nBytes, bool& complete)\n {\n     complete = false;\n+    int64_t nTime = GetTimeMicros();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95403337",
+      "id" : 95403337,
+      "original_commit_id" : "f39dd534702a00ee46e9bdf2633bbc32f21c99f0",
+      "original_position" : 4,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15956592,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95403337",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95406662"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95406662"
+         }
+      },
+      "body" : "Please add the {} back even though it's now 1 line",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-10T16:50:49Z",
+      "diff_hunk" : "@@ -1882,10 +1878,10 @@ void CConnman::ThreadMessageHandler()\n                 pnode->Release();\n         }\n \n-        if (fSleep) {\n-            std::unique_lock<std::mutex> lock(mutexMsgProc);\n-            condMsgProc.wait_until(lock, std::chrono::steady_clock::now() + std::chrono::milliseconds(100));\n-        }\n+        std::unique_lock<std::mutex> lock(mutexMsgProc);\n+        if (!fMoreWork)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95406662",
+      "id" : 95406662,
+      "original_commit_id" : "ba4cae284f6acac4bbbfe08c89dcb8c2ace5da83",
+      "original_position" : 48,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15960011,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95406662",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95407030"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95407030"
+         }
+      },
+      "body" : "Probably should swap these around.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-10T16:52:29Z",
+      "diff_hunk" : "@@ -2453,44 +2453,51 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, std::atomic<bool>& interru\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n         ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95407030",
+      "id" : 95407030,
+      "original_commit_id" : "ba4cae284f6acac4bbbfe08c89dcb8c2ace5da83",
+      "original_position" : 12,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15960398,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95407030",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95409501"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95409501"
+         }
+      },
+      "body" : "This should set fDisconnect and return false unconditionally actually.\r\n\r\n(Yeah that changes the current behavior)",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-10T17:03:33Z",
+      "diff_hunk" : "@@ -2453,44 +2453,44 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, std::atomic<bool>& interru\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n         ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;\n \n     auto it = pfrom->vRecvMsg.begin();\n-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n+    if (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n         // Don't bother if send buffer is too full to respond anyway\n         if (pfrom->nSendSize >= nMaxSendBufferSize)\n-            break;\n-\n-        // get next message\n-        CNetMessage& msg = *it;\n+            return false;\n \n         // end, if an incomplete message is found\n-        if (!msg.complete())\n-            break;\n+        if (!it->complete())\n+            return false;\n+\n+        // get next message\n+        CNetMessage msg = std::move(*it);\n \n         // at this point, any failure means we can delete the current message\n-        it++;\n+        pfrom->vRecvMsg.erase(pfrom->vRecvMsg.begin());\n \n         msg.SetVersion(pfrom->GetRecvVersion());\n         // Scan for message start\n         if (memcmp(msg.hdr.pchMessageStart, chainparams.MessageStart(), CMessageHeader::MESSAGE_START_SIZE) != 0) {\n             LogPrintf(\"PROCESSMESSAGE: INVALID MESSAGESTART %s peer=%d\\n\", SanitizeString(msg.hdr.GetCommand()), pfrom->id);\n-            fOk = false;\n-            break;\n+            pfrom->fDisconnect = true;\n+            return false;\n         }\n \n         // Read header\n         CMessageHeader& hdr = msg.hdr;\n         if (!hdr.IsValid(chainparams.MessageStart()))\n         {\n             LogPrintf(\"PROCESSMESSAGE: ERRORS IN HEADER %s peer=%d\\n\", SanitizeString(hdr.GetCommand()), pfrom->id);\n-            continue;\n+            return fMoreWork;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95409501",
+      "id" : 95409501,
+      "original_commit_id" : "4157c99cd81c57dbc934beadfdaf2a48a6110bd0",
+      "original_position" : 54,
+      "path" : "src/net_processing.cpp",
+      "position" : 121,
+      "pull_request_review_id" : 15962998,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95409501",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95439862"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95439862"
+         }
+      },
+      "body" : "ok",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-10T19:34:44Z",
+      "diff_hunk" : "@@ -2453,44 +2453,51 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, std::atomic<bool>& interru\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n         ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95439862",
+      "id" : 95439862,
+      "original_commit_id" : "ba4cae284f6acac4bbbfe08c89dcb8c2ace5da83",
+      "original_position" : 12,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15994665,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95439862",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95439882"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95439882"
+         }
+      },
+      "body" : "will do",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-10T19:34:51Z",
+      "diff_hunk" : "@@ -1882,10 +1878,10 @@ void CConnman::ThreadMessageHandler()\n                 pnode->Release();\n         }\n \n-        if (fSleep) {\n-            std::unique_lock<std::mutex> lock(mutexMsgProc);\n-            condMsgProc.wait_until(lock, std::chrono::steady_clock::now() + std::chrono::milliseconds(100));\n-        }\n+        std::unique_lock<std::mutex> lock(mutexMsgProc);\n+        if (!fMoreWork)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95439882",
+      "id" : 95439882,
+      "original_commit_id" : "ba4cae284f6acac4bbbfe08c89dcb8c2ace5da83",
+      "original_position" : 48,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15994680,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95439882",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95439915"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95439915"
+         }
+      },
+      "body" : "will do",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-10T19:35:00Z",
+      "diff_hunk" : "@@ -648,6 +648,9 @@ void CNode::copyStats(CNodeStats &stats)\n bool CNode::ReceiveMsgBytes(const char *pch, unsigned int nBytes, bool& complete)\n {\n     complete = false;\n+    int64_t nTime = GetTimeMicros();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95439915",
+      "id" : 95439915,
+      "original_commit_id" : "f39dd534702a00ee46e9bdf2633bbc32f21c99f0",
+      "original_position" : 4,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15994713,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95439915",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95440528"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95440528"
+         }
+      },
+      "body" : "Yes, that would be a change of behavior, and I'm not entirely sure that we want it changed.\r\nPresumably this was done to avoid partitioning the network in the event that the header structure (or magic bytes) ever needs to change.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-10T19:38:14Z",
+      "diff_hunk" : "@@ -2453,44 +2453,44 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, std::atomic<bool>& interru\n     //  (4) checksum\n     //  (x) data\n     //\n-    bool fOk = true;\n+    bool fMoreWork = false;\n \n     if (!pfrom->vRecvGetData.empty())\n         ProcessGetData(pfrom, chainparams.GetConsensus(), connman, interruptMsgProc);\n \n     // this maintains the order of responses\n-    if (!pfrom->vRecvGetData.empty()) return fOk;\n+    if (!pfrom->vRecvGetData.empty()) return true;\n \n     auto it = pfrom->vRecvMsg.begin();\n-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n+    if (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {\n         // Don't bother if send buffer is too full to respond anyway\n         if (pfrom->nSendSize >= nMaxSendBufferSize)\n-            break;\n-\n-        // get next message\n-        CNetMessage& msg = *it;\n+            return false;\n \n         // end, if an incomplete message is found\n-        if (!msg.complete())\n-            break;\n+        if (!it->complete())\n+            return false;\n+\n+        // get next message\n+        CNetMessage msg = std::move(*it);\n \n         // at this point, any failure means we can delete the current message\n-        it++;\n+        pfrom->vRecvMsg.erase(pfrom->vRecvMsg.begin());\n \n         msg.SetVersion(pfrom->GetRecvVersion());\n         // Scan for message start\n         if (memcmp(msg.hdr.pchMessageStart, chainparams.MessageStart(), CMessageHeader::MESSAGE_START_SIZE) != 0) {\n             LogPrintf(\"PROCESSMESSAGE: INVALID MESSAGESTART %s peer=%d\\n\", SanitizeString(msg.hdr.GetCommand()), pfrom->id);\n-            fOk = false;\n-            break;\n+            pfrom->fDisconnect = true;\n+            return false;\n         }\n \n         // Read header\n         CMessageHeader& hdr = msg.hdr;\n         if (!hdr.IsValid(chainparams.MessageStart()))\n         {\n             LogPrintf(\"PROCESSMESSAGE: ERRORS IN HEADER %s peer=%d\\n\", SanitizeString(hdr.GetCommand()), pfrom->id);\n-            continue;\n+            return fMoreWork;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95440528",
+      "id" : 95440528,
+      "original_commit_id" : "4157c99cd81c57dbc934beadfdaf2a48a6110bd0",
+      "original_position" : 54,
+      "path" : "src/net_processing.cpp",
+      "position" : 121,
+      "pull_request_review_id" : 15995345,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95440528",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Addressed outstanding nits, will squash at the end.",
+      "created_at" : "2017-01-11T21:58:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272008534",
+      "id" : 272008534,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-11T21:58:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272008534",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "(Lightly) tested ACK 1c779a8. This is an older version but it's been running stable on a busy node for a week.\r\n",
+      "created_at" : "2017-01-12T10:54:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272133975",
+      "id" : 272133975,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-12T10:54:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272133975",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt @sipa @morcos care to re-ACK before final squash?",
+      "created_at" : "2017-01-12T14:23:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272175357",
+      "id" : 272175357,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-12T14:23:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272175357",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "utACK and ran on some nodes without error for several days ddac068\r\nutACK 7b44e18",
+      "created_at" : "2017-01-12T14:54:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272183451",
+      "id" : 272183451,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-12T14:54:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272183451",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Dont think its actually possible due to the sizes involved, but, theoretically, PushMessage could increment nSendSize to be > nSendBufferMaxSize, set fPauseSend to true, and then call opportunistic SocketSendData, which flushed the entire buffer, but didnt reset fPauseSend. I'd suggest moving the fPauseSend update to right beside the nSendSize decrement as it is for the increment.",
+      "created_at" : "2017-01-12T20:47:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272278780",
+      "id" : 272278780,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-12T20:47:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272278780",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95884670"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95884670"
+         }
+      },
+      "body" : "By moving the setting of fPauseRecv outside of the cs_vProcessMsg lock you've introduced a race where the message processing thread may have already taken the next message and set fPauseRecv to false before this line (seems pretty unlikely, but its not unheard of). I'd suggest simply dropping this commit.",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-12T21:06:41Z",
+      "diff_hunk" : "@@ -1239,20 +1239,16 @@ void CConnman::ThreadSocketHandler()\n                             RecordBytesRecv(nBytes);\n                             if (notify) {\n                                 size_t nSizeAdded = 0;\n+                                std::list<CNetMessage> completeMessages;\n                                 auto it(pnode->vRecvMsg.begin());\n                                 for (; it != pnode->vRecvMsg.end(); ++it) {\n                                     if (!it->complete())\n                                         break;\n                                     nSizeAdded += it->vRecv.size() + CMessageHeader::HEADER_SIZE;\n                                 }\n-                                {\n-                                    LOCK(pnode->cs_vProcessMsg);\n-                                    pnode->vProcessMsg.splice(pnode->vProcessMsg.end(), pnode->vRecvMsg, pnode->vRecvMsg.begin(), it);\n-                                    pnode->nProcessQueueSize += nSizeAdded;\n-                                    if (pnode->nProcessQueueSize >= nReceiveFloodSize)\n-                                        pnode->fPauseRecv = true;\n-                                }\n-                                WakeMessageHandler();\n+                                completeMessages.splice(completeMessages.end(), pnode->vRecvMsg, pnode->vRecvMsg.begin(), it);\n+                                if (!QueueReceivedMessages(pnode, std::move(completeMessages), nSizeAdded))\n+                                    pnode->fPauseRecv = true;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95884670",
+      "id" : 95884670,
+      "original_commit_id" : "975fc9dd6f55a87f7d0db62898e58169b2816baf",
+      "original_position" : 21,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16455191,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95884670",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95888318"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95888318"
+         }
+      },
+      "body" : "Good catch!",
+      "commit_id" : "e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-12T21:27:19Z",
+      "diff_hunk" : "@@ -1239,20 +1239,16 @@ void CConnman::ThreadSocketHandler()\n                             RecordBytesRecv(nBytes);\n                             if (notify) {\n                                 size_t nSizeAdded = 0;\n+                                std::list<CNetMessage> completeMessages;\n                                 auto it(pnode->vRecvMsg.begin());\n                                 for (; it != pnode->vRecvMsg.end(); ++it) {\n                                     if (!it->complete())\n                                         break;\n                                     nSizeAdded += it->vRecv.size() + CMessageHeader::HEADER_SIZE;\n                                 }\n-                                {\n-                                    LOCK(pnode->cs_vProcessMsg);\n-                                    pnode->vProcessMsg.splice(pnode->vProcessMsg.end(), pnode->vRecvMsg, pnode->vRecvMsg.begin(), it);\n-                                    pnode->nProcessQueueSize += nSizeAdded;\n-                                    if (pnode->nProcessQueueSize >= nReceiveFloodSize)\n-                                        pnode->fPauseRecv = true;\n-                                }\n-                                WakeMessageHandler();\n+                                completeMessages.splice(completeMessages.end(), pnode->vRecvMsg, pnode->vRecvMsg.begin(), it);\n+                                if (!QueueReceivedMessages(pnode, std::move(completeMessages), nSizeAdded))\n+                                    pnode->fPauseRecv = true;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#discussion_r95888318",
+      "id" : 95888318,
+      "original_commit_id" : "975fc9dd6f55a87f7d0db62898e58169b2816baf",
+      "original_position" : 21,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16459143,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9441",
+      "updated_at" : "2017-01-13T04:40:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95888318",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "utACK 7b44e18b2f3a39657699adff5dd39dcfde24f1fb if 975fc9dd6f55a87f7d0db62898e58169b2816baf is reverted and the fPauseSend updates are all placed directly beside the nSendSize updates.",
+      "created_at" : "2017-01-12T21:41:47Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272292726",
+      "id" : 272292726,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-12T21:41:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272292726",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK 0168bea73772a707c53952956a364262cea63cd3 (+/- squash-needed).",
+      "created_at" : "2017-01-13T00:37:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272328264",
+      "id" : 272328264,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-13T00:37:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272328264",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Squashed, and I believe this is now merge-ready.\r\n\r\n@sipa / @morcos See https://github.com/theuni/bitcoin/tree/connman-locks-tmp for the unsquashed version if you'd like. It's codewise-identical to e60360e139852c655930e99d4bb4db554cd8385e.",
+      "created_at" : "2017-01-13T04:45:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272360130",
+      "id" : 272360130,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-13T04:45:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272360130",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "re-utACK e60360e\r\n",
+      "created_at" : "2017-01-13T15:43:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272473940",
+      "id" : 272473940,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-13T15:43:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272473940",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Confirmed there is no diff-tree to e60360e139852c655930e99d4bb4db554cd8385e from my previous utACK",
+      "created_at" : "2017-01-13T16:48:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272485728",
+      "id" : 272485728,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-13T16:48:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272485728",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK e60360e139852c655930e99d4bb4db554cd8385e",
+      "created_at" : "2017-01-13T17:50:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9441#issuecomment-272501888",
+      "id" : 272501888,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9441",
+      "updated_at" : "2017-01-13T17:50:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272501888",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

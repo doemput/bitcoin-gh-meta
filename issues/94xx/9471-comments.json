@@ -1,0 +1,648 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94590961"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94590961"
+         }
+      },
+      "body" : "Minor note: This hash is not guaranteed to be constant, I think.",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-04T14:25:43Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz\n+$(package)_sha256_hash=548362d202e22fe24d4c3fad38287b4f6d683e6c21503341373b89785fa6f991",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94590961",
+      "id" : 94590961,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 10,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 10,
+      "pull_request_review_id" : 15119177,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-04T14:25:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94590961",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94736884"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94736884"
+         }
+      },
+      "body" : "Hm but not checking the hash at all would not be acceptable.\r\n",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-05T09:35:10Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz\n+$(package)_sha256_hash=548362d202e22fe24d4c3fad38287b4f6d683e6c21503341373b89785fa6f991",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94736884",
+      "id" : 94736884,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 10,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 10,
+      "pull_request_review_id" : 15271030,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-05T09:35:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94736884",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94749086"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94749086"
+         }
+      },
+      "body" : "Of course, but we need to keep a backup of the GitHub generated zip file. (Which reminds me we already do so on bitcoincore.org/)",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-05T10:59:41Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz\n+$(package)_sha256_hash=548362d202e22fe24d4c3fad38287b4f6d683e6c21503341373b89785fa6f991",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94749086",
+      "id" : 94749086,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 10,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 10,
+      "pull_request_review_id" : 15283750,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-05T10:59:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94749086",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94779093"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94779093"
+         }
+      },
+      "body" : "I may be off track, but if the hash changes for the given release, doesn't that mean we WANT the build system to explode in everyone's faces so people react? I can only imagine a hash change for the same package version would be due to some serious issue being hot-fixed upstream. Keeping and using a backup would mean that hot-fix goes unnoticed.",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-05T14:45:11Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz\n+$(package)_sha256_hash=548362d202e22fe24d4c3fad38287b4f6d683e6c21503341373b89785fa6f991",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94779093",
+      "id" : 94779093,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 10,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 10,
+      "pull_request_review_id" : 15315894,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-05T14:45:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94779093",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94797316"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94797316"
+         }
+      },
+      "body" : "> I can only imagine a hash change for the same package version would be due to some serious issue being hot-fixed upstream\r\n\r\nThis would require a new release of libevent. What I was referring to, is that the hash changes after GitHub purges its caches for zipped downloads of git tags/commits. (Note the above zip is not provided/signed by libevent but generated by GitHub for convenience.) I could image that GitHub does not deterministically generate zips.",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-05T16:15:37Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz\n+$(package)_sha256_hash=548362d202e22fe24d4c3fad38287b4f6d683e6c21503341373b89785fa6f991",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94797316",
+      "id" : 94797316,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 10,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 10,
+      "pull_request_review_id" : 15335401,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-05T16:15:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94797316",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94850882"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94850882"
+         }
+      },
+      "body" : "@MarcoFalke I remember dealing with this at one point already, and I seem to remember github fixing the downloads to be deterministic, but I can't find any reference to that now.\r\n\r\nIt looks like our native_cctools comes from a similar link, so I assume that we would've noticed new hashes by now.\r\n\r\n@kallewoof You're very much on-track. The issue (if I recall) is that github always serves the same .tar, but the gzipped result can change if it's been regenerated.",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-05T21:03:41Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz\n+$(package)_sha256_hash=548362d202e22fe24d4c3fad38287b4f6d683e6c21503341373b89785fa6f991",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94850882",
+      "id" : 94850882,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 10,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 10,
+      "pull_request_review_id" : 15391666,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-05T21:03:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94850882",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94851161"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94851161"
+         }
+      },
+      "body" : "Wouldn't it be possible to have a checksum check for the decompressed .tar then?",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-05T21:05:07Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz\n+$(package)_sha256_hash=548362d202e22fe24d4c3fad38287b4f6d683e6c21503341373b89785fa6f991",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94851161",
+      "id" : 94851161,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 10,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 10,
+      "pull_request_review_id" : 15391938,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-05T21:05:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94851161",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94851435"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94851435"
+         }
+      },
+      "body" : "@sipa Sure, if that's necessary. Given that we have similar downloads atm that aren't causing issues though, I suspect this is no longer an issue.",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-05T21:06:44Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz\n+$(package)_sha256_hash=548362d202e22fe24d4c3fad38287b4f6d683e6c21503341373b89785fa6f991",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r94851435",
+      "id" : 94851435,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 10,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 10,
+      "pull_request_review_id" : 15392213,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-05T21:06:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/94851435",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r95357144"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95357144"
+         }
+      },
+      "body" : "Let's just take the chance then and merge this.",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-10T12:50:56Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz\n+$(package)_sha256_hash=548362d202e22fe24d4c3fad38287b4f6d683e6c21503341373b89785fa6f991",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r95357144",
+      "id" : 95357144,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 10,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 10,
+      "pull_request_review_id" : 15908297,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-10T12:50:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95357144",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Is there any reason this still has a WIP tag?\r\n",
+      "created_at" : "2017-01-10T12:51:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#issuecomment-271567531",
+      "id" : 271567531,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9471",
+      "updated_at" : "2017-01-10T12:51:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271567531",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@laanwj Really only due to the URL uncertainty. However we can update to a more stable URL in future if needed.",
+      "created_at" : "2017-01-11T00:00:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#issuecomment-271737054",
+      "id" : 271737054,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9471",
+      "updated_at" : "2017-01-11T00:00:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271737054",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "body" : "Agree with @fanquake ",
+      "created_at" : "2017-01-11T00:05:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#issuecomment-271737868",
+      "id" : 271737868,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9471",
+      "updated_at" : "2017-01-11T00:05:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271737868",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "utACK 8217bd1. I'm not worried about the URL.",
+      "created_at" : "2017-01-11T12:57:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#issuecomment-271861710",
+      "id" : 271861710,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9471",
+      "updated_at" : "2017-01-11T12:57:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271861710",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "post-merge Concept ACK",
+      "created_at" : "2017-01-11T23:07:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#issuecomment-272024807",
+      "id" : 272024807,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9471",
+      "updated_at" : "2017-01-11T23:07:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272024807",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r98356139"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/98356139"
+         }
+      },
+      "body" : "Looks like they just released the stable version, so we could use that, maybe.",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-01-29T16:11:09Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r98356139",
+      "id" : 98356139,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 9,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 9,
+      "pull_request_review_id" : 18996002,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-01-29T16:11:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/98356139",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r99075482"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99075482"
+         }
+      },
+      "body" : "That's annoying, we delay this update for months in the expectation that there will be a new stable version any time, and after we merge this there suddenly it is, the new stable version.",
+      "commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "created_at" : "2017-02-02T09:05:47Z",
+      "diff_hunk" : "@@ -1,13 +1,11 @@\n package=libevent\n-$(package)_version=2.0.22\n-$(package)_download_path=https://github.com/libevent/libevent/releases/download/release-2.0.22-stable\n-$(package)_file_name=$(package)-$($(package)_version)-stable.tar.gz\n-$(package)_sha256_hash=71c2c49f0adadacfdbe6332a372c38cf9c8b7895bb73dabeaa53cdcc1d4e1fa3\n-$(package)_patches=reuseaddr.patch libevent-2-fixes.patch\n+$(package)_version=2.1.7\n+$(package)_download_path=https://github.com/libevent/libevent/archive/\n+$(package)_file_name=release-$($(package)_version)-rc.tar.gz",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9471#discussion_r99075482",
+      "id" : 99075482,
+      "original_commit_id" : "8217bd1d4cb9415dd507739b9040714677f9e8e8",
+      "original_position" : 9,
+      "path" : "depends/packages/libevent.mk",
+      "position" : 9,
+      "pull_request_review_id" : 19737273,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9471",
+      "updated_at" : "2017-02-02T09:05:47Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99075482",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

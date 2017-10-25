@@ -1,0 +1,1556 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142493120"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142493120"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Should probably wait until VERACK for this.\r\n\r\nAlso, walking mapBlockIndex seems a little heavy here, no?",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T19:04:08Z",
+      "diff_hunk" : "@@ -1370,6 +1375,17 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n             connman->PushMessage(pfrom, CNetMsgMaker(nSendVersion).Make(\"alert\", finalAlert));\n         }\n \n+        // Ask this peer for the block headers of all of the blocks we know are invalid\n+        // If we receive headers messages for these invalid blocks, we will ban them.\n+        std::vector<uint256> invalid_block_hashes;\n+        for (const std::pair<const uint256, CBlockIndex*>& item : mapBlockIndex)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142493120",
+      "id" : 142493120,
+      "original_commit_id" : "e41ceb2edf274d0aa88037f31f772926d3764fc7",
+      "original_position" : 19,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66863238,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142493120",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142495438"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142495438"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Besides walking `mapBlockIndex`, what do you suggest? I was considering making something to just store the hashes of the invalid blocks instead.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T19:13:46Z",
+      "diff_hunk" : "@@ -1370,6 +1375,17 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n             connman->PushMessage(pfrom, CNetMsgMaker(nSendVersion).Make(\"alert\", finalAlert));\n         }\n \n+        // Ask this peer for the block headers of all of the blocks we know are invalid\n+        // If we receive headers messages for these invalid blocks, we will ban them.\n+        std::vector<uint256> invalid_block_hashes;\n+        for (const std::pair<const uint256, CBlockIndex*>& item : mapBlockIndex)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142495438",
+      "id" : 142495438,
+      "in_reply_to_id" : 142493120,
+      "original_commit_id" : "e41ceb2edf274d0aa88037f31f772926d3764fc7",
+      "original_position" : 19,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66865972,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142495438",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Is it really necessary to request as many headers as possible on each bad chain?\r\n\r\nWhat about something like sending a request for non-deterministic headers from m to n, where```m = forkheight - rand(x), n = max(m + rand(2x), tip)``` from all chains (including the active one), that way we can also interpret ignored valid requests?",
+      "created_at" : "2017-10-03T19:43:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-333955982",
+      "id" : 333955982,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-03T19:43:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333955982",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142503177"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142503177"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Yea, I'd say the fork-points need to be cached. Unsure if it'd be best to just do it here and be done with it, or maintain something in validation.cpp that (for ex) getchaintips could also use.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T19:47:07Z",
+      "diff_hunk" : "@@ -1370,6 +1375,17 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n             connman->PushMessage(pfrom, CNetMsgMaker(nSendVersion).Make(\"alert\", finalAlert));\n         }\n \n+        // Ask this peer for the block headers of all of the blocks we know are invalid\n+        // If we receive headers messages for these invalid blocks, we will ban them.\n+        std::vector<uint256> invalid_block_hashes;\n+        for (const std::pair<const uint256, CBlockIndex*>& item : mapBlockIndex)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142503177",
+      "id" : 142503177,
+      "in_reply_to_id" : 142493120,
+      "original_commit_id" : "e41ceb2edf274d0aa88037f31f772926d3764fc7",
+      "original_position" : 19,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66874918,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142503177",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142505375"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142505375"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Well it would have to be something that is loaded/generated on startup too.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T19:56:04Z",
+      "diff_hunk" : "@@ -1370,6 +1375,17 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n             connman->PushMessage(pfrom, CNetMsgMaker(nSendVersion).Make(\"alert\", finalAlert));\n         }\n \n+        // Ask this peer for the block headers of all of the blocks we know are invalid\n+        // If we receive headers messages for these invalid blocks, we will ban them.\n+        std::vector<uint256> invalid_block_hashes;\n+        for (const std::pair<const uint256, CBlockIndex*>& item : mapBlockIndex)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142505375",
+      "id" : 142505375,
+      "in_reply_to_id" : 142493120,
+      "original_commit_id" : "e41ceb2edf274d0aa88037f31f772926d3764fc7",
+      "original_position" : 19,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66877529,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142505375",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142505404"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142505404"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Feedback loop here.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T19:56:06Z",
+      "diff_hunk" : "@@ -1972,6 +1989,11 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                     Misbehaving(pfrom->GetId(), nDoS);\n                 }\n                 LogPrintf(\"Peer %d sent us invalid header via cmpctblock\\n\", pfrom->GetId());\n+                // Send a getheaders message with the hash of the invalid block to all peers.\n+                // Those who respond to this message will be banned.\n+                connman->ForEachNode([cmpctblock, connman](CNode* pnode) {\n+                    connman->PushMessage(pnode, CNetMsgMaker(pnode->GetSendVersion()).Make(NetMsgType::GETHEADERS, CBlockLocator({cmpctblock.header.GetHash()}), uint256()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142505404",
+      "id" : 142505404,
+      "original_commit_id" : "ad944f3eedcbcfcecb5d66b33e2b80ba94718531",
+      "original_position" : 38,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66877543,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142505404",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142505576"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142505576"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "feedback loop here too :)",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T19:56:48Z",
+      "diff_hunk" : "@@ -2289,6 +2313,11 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n                 }\n+                // Send a getheaders message with the hash of the invalid block to all peers.\n+                // Those who respond to this message will be banned.\n+                connman->ForEachNode([header_hashes, connman](CNode* pnode) {\n+                    connman->PushMessage(pnode, CNetMsgMaker(pnode->GetSendVersion()).Make(NetMsgType::GETHEADERS, CBlockLocator(header_hashes), uint256()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142505576",
+      "id" : 142505576,
+      "original_commit_id" : "ad944f3eedcbcfcecb5d66b33e2b80ba94718531",
+      "original_position" : 66,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66877737,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142505576",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142505845"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142505845"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "how so?",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T19:57:58Z",
+      "diff_hunk" : "@@ -1972,6 +1989,11 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                     Misbehaving(pfrom->GetId(), nDoS);\n                 }\n                 LogPrintf(\"Peer %d sent us invalid header via cmpctblock\\n\", pfrom->GetId());\n+                // Send a getheaders message with the hash of the invalid block to all peers.\n+                // Those who respond to this message will be banned.\n+                connman->ForEachNode([cmpctblock, connman](CNode* pnode) {\n+                    connman->PushMessage(pnode, CNetMsgMaker(pnode->GetSendVersion()).Make(NetMsgType::GETHEADERS, CBlockLocator({cmpctblock.header.GetHash()}), uint256()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142505845",
+      "id" : 142505845,
+      "in_reply_to_id" : 142505404,
+      "original_commit_id" : "ad944f3eedcbcfcecb5d66b33e2b80ba94718531",
+      "original_position" : 38,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66878068,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142505845",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "> Is it really necessary to request as many headers as possible on each bad chain?\r\n\r\nNo.\r\n\r\n> that way we can also interpret ignored valid requests?\r\n\r\nI'm not sure if that is useful or necessary. How do you know the difference between a node not having a block, rejected the block, or is just slow to respond?",
+      "created_at" : "2017-10-03T20:01:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-333961048",
+      "id" : 333961048,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-03T20:01:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333961048",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142507824"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142507824"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Node sends you bad header, you request that header from all nodes (including the one that just sent it). Same node replies with same header, you request it again from all nodes... repeat until they get banned.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T20:05:46Z",
+      "diff_hunk" : "@@ -1972,6 +1989,11 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                     Misbehaving(pfrom->GetId(), nDoS);\n                 }\n                 LogPrintf(\"Peer %d sent us invalid header via cmpctblock\\n\", pfrom->GetId());\n+                // Send a getheaders message with the hash of the invalid block to all peers.\n+                // Those who respond to this message will be banned.\n+                connman->ForEachNode([cmpctblock, connman](CNode* pnode) {\n+                    connman->PushMessage(pnode, CNetMsgMaker(pnode->GetSendVersion()).Make(NetMsgType::GETHEADERS, CBlockLocator({cmpctblock.header.GetHash()}), uint256()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142507824",
+      "id" : 142507824,
+      "in_reply_to_id" : 142505404,
+      "original_commit_id" : "ad944f3eedcbcfcecb5d66b33e2b80ba94718531",
+      "original_position" : 38,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66880403,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142507824",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142508339"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142508339"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Isn't the node that sent it to you in the first place already banned by the time this runs?",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T20:07:56Z",
+      "diff_hunk" : "@@ -1972,6 +1989,11 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                     Misbehaving(pfrom->GetId(), nDoS);\n                 }\n                 LogPrintf(\"Peer %d sent us invalid header via cmpctblock\\n\", pfrom->GetId());\n+                // Send a getheaders message with the hash of the invalid block to all peers.\n+                // Those who respond to this message will be banned.\n+                connman->ForEachNode([cmpctblock, connman](CNode* pnode) {\n+                    connman->PushMessage(pnode, CNetMsgMaker(pnode->GetSendVersion()).Make(NetMsgType::GETHEADERS, CBlockLocator({cmpctblock.header.GetHash()}), uint256()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142508339",
+      "id" : 142508339,
+      "in_reply_to_id" : 142505404,
+      "original_commit_id" : "ad944f3eedcbcfcecb5d66b33e2b80ba94718531",
+      "original_position" : 38,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66880970,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142508339",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142517016"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142517016"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "No, not necessarily. See \"high-hash\" for example. But even still, the ban/disconnect should not be assumed. What if they're whitelisted?",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-03T20:42:30Z",
+      "diff_hunk" : "@@ -1972,6 +1989,11 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                     Misbehaving(pfrom->GetId(), nDoS);\n                 }\n                 LogPrintf(\"Peer %d sent us invalid header via cmpctblock\\n\", pfrom->GetId());\n+                // Send a getheaders message with the hash of the invalid block to all peers.\n+                // Those who respond to this message will be banned.\n+                connman->ForEachNode([cmpctblock, connman](CNode* pnode) {\n+                    connman->PushMessage(pnode, CNetMsgMaker(pnode->GetSendVersion()).Make(NetMsgType::GETHEADERS, CBlockLocator({cmpctblock.header.GetHash()}), uint256()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r142517016",
+      "id" : 142517016,
+      "in_reply_to_id" : 142505404,
+      "original_commit_id" : "ad944f3eedcbcfcecb5d66b33e2b80ba94718531",
+      "original_position" : 38,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 66891023,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/142517016",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "Cautious concept ack on doing this once, sometimes, post-handshake, but I think this needs to be thought through a bit more.\r\n\r\n- Amplification bugs seem easy to introduce here. I'd be more comfortable if the testing was non-deterministic, and done more like ~50% of the time.\r\n- Nodes can just ignore any block locator containing different chains.\r\n- It seems unnecessary/wasteful to do this for each block that comes in. Once you've been connected to a peer for a while and you're likely on the same chain, if you diverge, it should be already observable. What does this offer over the request done after the handshake?\r\n- I think this makes it trivial to construct a network-wide connection graph?",
+      "created_at" : "2017-10-03T20:46:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-333973033",
+      "id" : 333973033,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-03T20:46:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333973033",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I don't understand why this is generating any headers requests at all, we already will synchronize all headers on the peers best chain (obviously not transferring any we already know about).  We just need to see that they connect to an invalid block and disconnect.",
+      "created_at" : "2017-10-03T20:46:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-333973040",
+      "id" : 333973040,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-03T20:46:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333973040",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/858454?v=4",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : " I don't really like this policy, I wouldn't go as far as a Concept NACK though because I think it can be adjusted to do what you want.\r\n\r\nI think returning an invalid block when requested is a weak indicator of peer correctness overall. Nodes to assuming \"you get what you ask for\" and feeding you invalid data -- if you ask for it and they have it -- seems like a semi-sane behavior. (e.g., the bitcoin-wiki says \"Keep in mind that some clients may provide headers of blocks which are invalid if the block locator object contains a hash on the invalid branch. \" of getheaders)\r\n\r\nOf course, this isn't quite what Bitcoin Core assumes currently, but introducing more dependency on it seems like questionable design.\r\n\r\nA safer alternative design would be to do a getheaders on the highest known valid previous header on that chain. Then, see if the invalid block is relayed. That way we're only ever querying for valid data.\r\n\r\n\r\nFor example, if we have a block A and A is valid, and then B comes out with parent A, but B is invalid, doing GetHeaders on A and disconnecting if B is returned is safer.",
+      "created_at" : "2017-10-03T21:06:18Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-333978621",
+      "id" : 333978621,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-03T21:06:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333978621",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "Interleaving error (was taking my sweet time writing it up), but what @gmaxwell said should cover my suggestion as well.",
+      "created_at" : "2017-10-03T21:08:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-333979198",
+      "id" : 333979198,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-03T21:08:22Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333979198",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/886523?v=4",
+         "events_url" : "https://api.github.com/users/JeremyRubin/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/JeremyRubin/followers",
+         "following_url" : "https://api.github.com/users/JeremyRubin/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/JeremyRubin/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/JeremyRubin",
+         "id" : 886523,
+         "login" : "JeremyRubin",
+         "organizations_url" : "https://api.github.com/users/JeremyRubin/orgs",
+         "received_events_url" : "https://api.github.com/users/JeremyRubin/received_events",
+         "repos_url" : "https://api.github.com/users/JeremyRubin/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/JeremyRubin/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/JeremyRubin/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/JeremyRubin"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "> It seems unnecessary/wasteful to do this for each block that comes in.\r\n\r\nI doesn't. It does this for each invalid block.\r\n\r\n> What does this offer over the request done after the handshake?\r\n\r\nI suppose it doesn't do that much after the handshake. The part that makes a difference with peers that have been connected to a while is the banning on duplicate invalid headers.\r\n\r\n> we already will synchronize all headers on the peers best chain (obviously not transferring any we already know about).\r\n\r\nEven with synchronizing all headers, I'm not sure that we necessarily know what a peer's best chain is. I thought that with compact blocks blocks can be relayed before a node has accepted it and made it part of its best chain. So we may not necessarily know whether they actually accepted an invalid block even though it was relayed to us.\r\n\r\nAlso, I don't think we necessarily know the headers chain of a newly connected peer.\r\n\r\n> A safer alternative design would be to do a getheaders on the highest known valid previous header on that chain. Then, see if the invalid block is relayed. That way we're only ever querying for valid data.\r\n\r\nRight, that seems like a better way of checking. I think then it is harder to tell whether you are actually syncing the blockchain and whether you are testing the peer for correctness.\r\n\r\nEdit: I gave this a bit more thought. We may want to directly request an invalid block because the invalid block may not be part of their best chain yet they still could have accepted it as valid.",
+      "created_at" : "2017-10-03T21:52:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-333989899",
+      "id" : 333989899,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-04T03:53:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/333989899",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "> I think returning an invalid block when requested is a weak indicator of peer correctness overall. Nodes to assuming \"you get what you ask for\" and feeding you invalid data -- if you ask for it and they have it -- seems like a semi-sane behavior. \r\n\r\nI don't agree that what you describe is a sane behavior and it is not a behavior of the Bitcoin protocol in the past.  It's prudent and important to that we're able to punt peers that send us invalid data.  Usually when you ask for something you do not know it will be invalid.   If a peer will send you invalid data because you asked for it, then they'll send you invalid data when you were not expecting it either. :)\r\n\r\nIn general, being willing to forward something we know is invalid is begging for a transitive fault, cases where you send something invalid to a node, it forwards it on to a third party, and the third party really can't handle it and punts them.",
+      "created_at" : "2017-10-03T22:43:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-334000406",
+      "id" : 334000406,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-03T22:43:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334000406",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/858454?v=4",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : ">  I think then it is harder to tell whether you are actually syncing the blockchain and whether you are testing the peer for correctness.\r\n\r\nYes, well and I think it can actually be done with basically no extra network traffic, just responding differently to messages we already get (punt a peer if they give you a header whos parent is something we've marked invalid). ",
+      "created_at" : "2017-10-04T00:54:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-334020829",
+      "id" : 334020829,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-04T00:54:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334020829",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/858454?v=4",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "> punt a peer if they give you a header whos parent is something we've marked invalid\r\n\r\nWe already do that. I'm more concerned about how you get a peer to tell you what blocks are in its best chain without having to wait for a new block to be found.",
+      "created_at" : "2017-10-04T00:58:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-334021378",
+      "id" : 334021378,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-04T00:58:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334021378",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "After giving this some more thought and sleeping on it, I have a slightly different propsal:\r\n\r\n1. Ban all nodes who give us an invalid block even after we have already seen the block (Note: I'm not sure how this interacts with compact blocks).\r\n2. After the version handshake, send each node a `getheaders` request with the parent block of each invalid block that we have (i.e. a `getheaders` for each invalid block) and no stop block. If we get an invalid header, we will ban them per part 1. We won't send `getheaders` for blocks that are older than some time period (maybe 2000 blocks so we only need one `getheaders` since I think it is also unlikely that we wouldn't disconnect and ban a node that diverged from us several thousand blocks ago). The actual block requested in the `getheaders` can be fuzzed a bit too.\r\n\r\n@gmaxwell @theuni @JeremyRubin What do you think?",
+      "created_at" : "2017-10-04T15:22:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-334192077",
+      "id" : 334192077,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-04T15:22:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334192077",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "For peers that are sending us HB mode compact blocks we can only kick things off for a subset of invalidity reasons. ",
+      "created_at" : "2017-10-05T17:08:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-334530050",
+      "id" : 334530050,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-05T17:08:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334530050",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/858454?v=4",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I have updated this to be as we discussed in the IRC meeting. If we see a block header for a block we already know is invalid, we disconnect from the node that sent it. The only exception are our HB CB nodes.",
+      "created_at" : "2017-10-07T17:46:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-334953583",
+      "id" : 334953583,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-07T17:46:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/334953583",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "OWNER",
+      "body" : "Going to test this.",
+      "created_at" : "2017-10-13T00:33:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-336317957",
+      "id" : 336317957,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-13T00:33:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/336317957",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/548488?v=4",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144654182"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144654182"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Do we not want to disconnect if ban points were assigned?",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-13T20:50:08Z",
+      "diff_hunk" : "@@ -1970,6 +1970,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else if (std::find(lNodesAnnouncingHeaderAndIDs.begin(), lNodesAnnouncingHeaderAndIDs.end(), pfrom->GetId()) == lNodesAnnouncingHeaderAndIDs.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144654182",
+      "id" : 144654182,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 4,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69347207,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144654182",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144654688"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144654688"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Same here.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-13T20:52:45Z",
+      "diff_hunk" : "@@ -2288,6 +2290,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else {\n+                    pfrom->fDisconnect = true;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144654688",
+      "id" : 144654688,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 14,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69347806,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144654688",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144658071"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144658071"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Most of the time when ban points are assigned, 100 points are assigned and the peer is banned and disconnected. However there are a few cases (e.g. https://github.com/bitcoin/bitcoin/blob/master/src/validation.cpp#L3060) where ban points are assigned but not 100 of them, and we don't necessarily want to disconnect on those.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-13T21:12:26Z",
+      "diff_hunk" : "@@ -1970,6 +1970,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else if (std::find(lNodesAnnouncingHeaderAndIDs.begin(), lNodesAnnouncingHeaderAndIDs.end(), pfrom->GetId()) == lNodesAnnouncingHeaderAndIDs.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144658071",
+      "id" : 144658071,
+      "in_reply_to_id" : 144654182,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 4,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69351964,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144658071",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144662407"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144662407"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Mmm, that's not at all obvious. For now at least, ban points are rather arbitrary. Not completely, of course, but I don't think their values can be relied on to convey any particular meaning. ~~Besides that, they could've already gotten some ban points for some other message.~~\r\n\r\nAnyway, Misbehaving() already does what you've described. So this actually seems backwards. Now, they're disconnected immediately if no points were assigned, but giving 10 points keeps them connected...",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-13T21:39:19Z",
+      "diff_hunk" : "@@ -1970,6 +1970,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else if (std::find(lNodesAnnouncingHeaderAndIDs.begin(), lNodesAnnouncingHeaderAndIDs.end(), pfrom->GetId()) == lNodesAnnouncingHeaderAndIDs.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144662407",
+      "id" : 144662407,
+      "in_reply_to_id" : 144654182,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 4,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69357004,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144662407",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/417043?v=4",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144663206"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144663206"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Do you think we should just disconnect always when something is invalid?",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-13T21:44:18Z",
+      "diff_hunk" : "@@ -1970,6 +1970,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else if (std::find(lNodesAnnouncingHeaderAndIDs.begin(), lNodesAnnouncingHeaderAndIDs.end(), pfrom->GetId()) == lNodesAnnouncingHeaderAndIDs.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r144663206",
+      "id" : 144663206,
+      "in_reply_to_id" : 144654182,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 4,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 69357913,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/144663206",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145261255"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145261255"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "This is racy. There is no way to check if a peer might have been in compact-fast-relay mode when you receive a compact block header.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-17T21:28:08Z",
+      "diff_hunk" : "@@ -1970,6 +1970,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else if (std::find(lNodesAnnouncingHeaderAndIDs.begin(), lNodesAnnouncingHeaderAndIDs.end(), pfrom->GetId()) == lNodesAnnouncingHeaderAndIDs.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145261255",
+      "id" : 145261255,
+      "in_reply_to_id" : 144654182,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 4,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 70036661,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145261255",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145519932"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145519932"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Would it be better to just always disconnect on an invalid block, regardless?",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-18T19:38:52Z",
+      "diff_hunk" : "@@ -1970,6 +1970,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else if (std::find(lNodesAnnouncingHeaderAndIDs.begin(), lNodesAnnouncingHeaderAndIDs.end(), pfrom->GetId()) == lNodesAnnouncingHeaderAndIDs.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145519932",
+      "id" : 145519932,
+      "in_reply_to_id" : 144654182,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 4,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 70332271,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145519932",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145555589"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145555589"
+         }
+      },
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I think we should just ignore this case. My first reaction was to suggest you do a getheaders request, but then I went down a rabbit hole trying to decide whether the peer is required to respond with the header if they decided the block was valid (it turns out BIP 152 explicitly answers this question with a no). Per BIP 152, I believe the way to \"correctly\" handle this would be to reply with a getdata for the same compact block that you just received, and then handle that differently (!) but that seems absolutely crazy, and not worth it given that compact blocks are only allowed to build on the best chain so we should disconnect them immediately when they get the next block (see https://github.com/bitcoin/bips/pull/601)",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-18T22:03:43Z",
+      "diff_hunk" : "@@ -1970,6 +1970,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else if (std::find(lNodesAnnouncingHeaderAndIDs.begin(), lNodesAnnouncingHeaderAndIDs.end(), pfrom->GetId()) == lNodesAnnouncingHeaderAndIDs.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145555589",
+      "id" : 145555589,
+      "in_reply_to_id" : 144654182,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 4,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 70373225,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145555589",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145795318"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145795318"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "@TheBlueMatt \r\n\r\n> I think we should just ignore this case.\r\n\r\nDo you mean just disconnect regardless or just don't do anything here and let invalid blocks through here?",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-19T19:07:20Z",
+      "diff_hunk" : "@@ -1970,6 +1970,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else if (std::find(lNodesAnnouncingHeaderAndIDs.begin(), lNodesAnnouncingHeaderAndIDs.end(), pfrom->GetId()) == lNodesAnnouncingHeaderAndIDs.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145795318",
+      "id" : 145795318,
+      "in_reply_to_id" : 144654182,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 4,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 70649186,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145795318",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145815241"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145815241"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Ok, I just removed this check and disconnect. After reviewing BIP 152 again, the low bandwidth peers should already be disconnected by the disconnection in handling the `headers` message so our high bandwidth peers are still unaffected.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-19T20:31:39Z",
+      "diff_hunk" : "@@ -1970,6 +1970,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else if (std::find(lNodesAnnouncingHeaderAndIDs.begin(), lNodesAnnouncingHeaderAndIDs.end(), pfrom->GetId()) == lNodesAnnouncingHeaderAndIDs.end()) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145815241",
+      "id" : 145815241,
+      "in_reply_to_id" : 144654182,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 4,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 70672437,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145815241",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145815330"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145815330"
+         }
+      },
+      "author_association" : "MEMBER",
+      "body" : "Removed the `else` statement so it will always disconnect on an invalid block header.",
+      "commit_id" : "23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-19T20:32:00Z",
+      "diff_hunk" : "@@ -2288,6 +2290,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr\n                 if (nDoS > 0) {\n                     LOCK(cs_main);\n                     Misbehaving(pfrom->GetId(), nDoS);\n+                } else {\n+                    pfrom->fDisconnect = true;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#discussion_r145815330",
+      "id" : 145815330,
+      "in_reply_to_id" : 144654688,
+      "original_commit_id" : "eb1aa2c27aa91a4ddd93a370751490d10046dab7",
+      "original_position" : 14,
+      "path" : "src/net_processing.cpp",
+      "position" : null,
+      "pull_request_review_id" : 70672528,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/11446",
+      "updated_at" : "2017-10-19T20:33:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/145815330",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "utACK https://github.com/bitcoin/bitcoin/pull/11446/commits/23b7af0ac484ce4a7f46060c06e3dca5a8c26d0d",
+      "created_at" : "2017-10-19T22:34:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-338056762",
+      "id" : 338056762,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-19T22:34:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338056762",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/3211283?v=4",
+         "events_url" : "https://api.github.com/users/MeshCollider/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MeshCollider/followers",
+         "following_url" : "https://api.github.com/users/MeshCollider/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MeshCollider/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MeshCollider",
+         "id" : 3211283,
+         "login" : "MeshCollider",
+         "organizations_url" : "https://api.github.com/users/MeshCollider/orgs",
+         "received_events_url" : "https://api.github.com/users/MeshCollider/received_events",
+         "repos_url" : "https://api.github.com/users/MeshCollider/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MeshCollider/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MeshCollider/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MeshCollider"
+      }
+   },
+   {
+      "author_association" : "CONTRIBUTOR",
+      "body" : "I'm not sure how I feel about this - the current disconnection/ban logic on invalid headers is proabbly too conservative, but it helps in the case of soft forks where there are occasional invalid blocks relayed preventing us from banning all of our un-upgraded peers. Maybe we should ratchet up the agressiveness here, but only for outbound peers? I think just that change would be sufficient for 0.15.0.2, though I'd really like to see some refactoring of the CValidationState stuff happen so ProcessNewBlockHeaders could inform us of more granular error messages for net_processing to use here.",
+      "created_at" : "2017-10-20T00:11:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-338071627",
+      "id" : 338071627,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-20T00:11:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338071627",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/649246?v=4",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "I think there's a small race condition in the CMPCTBLOCK handler -- there's a circumstance where we would revert to headers processing, and we release cs_main before doing so.  If the block header is learned to be invalid in between initial processing and re-processing, then I think this patch would disconnect an HB compact block peer inappropriately.\r\n\r\nI'm not really sure what the best remedy is; if we moved headers processing to its own function in net_processing, then I'd say we could just pass in whether this is coming from a compact block or not.  Not sure that suggestion makes sense as long as it's living in ProcessMessages(), though.",
+      "created_at" : "2017-10-20T01:41:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-338082893",
+      "id" : 338082893,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-20T01:41:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338082893",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7463573?v=4",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "> I think there's a small race condition in the CMPCTBLOCK handler -- there's a circumstance where we would revert to headers processing, and we release cs_main before doing so. If the block header is learned to be invalid in between initial processing and re-processing, then I think this patch would disconnect an HB compact block peer inappropriately.\r\n\r\nWhy would it revert to headers processing?",
+      "created_at" : "2017-10-23T17:57:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-338744044",
+      "id" : 338744044,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-23T17:57:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338744044",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3782274?v=4",
+         "events_url" : "https://api.github.com/users/achow101/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/achow101/followers",
+         "following_url" : "https://api.github.com/users/achow101/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/achow101/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/achow101",
+         "id" : 3782274,
+         "login" : "achow101",
+         "organizations_url" : "https://api.github.com/users/achow101/orgs",
+         "received_events_url" : "https://api.github.com/users/achow101/received_events",
+         "repos_url" : "https://api.github.com/users/achow101/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/achow101/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/achow101/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/achow101"
+      }
+   },
+   {
+      "author_association" : "MEMBER",
+      "body" : "@achow101 See https://github.com/bitcoin/bitcoin/blob/57ee73990f1ce29916adfd99f93eae1ccea1a43b/src/net_processing.cpp#L2130\r\n",
+      "created_at" : "2017-10-23T19:03:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/11446#issuecomment-338763477",
+      "id" : 338763477,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/11446",
+      "updated_at" : "2017-10-23T19:03:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/338763477",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/7463573?v=4",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   }
+]

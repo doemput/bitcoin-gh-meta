@@ -1,0 +1,326 @@
+[
+   {
+      "body" : "Extended test run succeeds for me locally.",
+      "created_at" : "2017-03-31T18:26:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10135#issuecomment-290791057",
+      "id" : 290791057,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10135",
+      "updated_at" : "2017-03-31T18:26:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/290791057",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10135#discussion_r109222774"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10135"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109222774"
+         }
+      },
+      "body" : "nit: I don't feel strongly but we could leave this assert in, no?",
+      "commit_id" : "5d08c9c579ba8cc7b684105c6a08263992b08d52",
+      "created_at" : "2017-03-31T18:28:05Z",
+      "diff_hunk" : "@@ -855,8 +855,8 @@ void PeerLogicValidation::BlockChecked(const CBlock& block, const CValidationSta\n \n     int nDoS = 0;\n     if (state.IsInvalid(nDoS)) {\n-        if (it != mapBlockSource.end() && State(it->second.first)) {\n-            assert (state.GetRejectCode() < REJECT_INTERNAL); // Blocks are never rejected with internal reject codes",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10135#discussion_r109222774",
+      "id" : 109222774,
+      "original_commit_id" : "5d08c9c579ba8cc7b684105c6a08263992b08d52",
+      "original_position" : 5,
+      "path" : "src/net_processing.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 30315564,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10135",
+      "updated_at" : "2017-03-31T18:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109222774",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10135#discussion_r109224935"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10135"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109224935"
+         }
+      },
+      "body" : "Sorry I didn't think of this before, but perhaps we were sending a reject message here specifically because we're assigning DoS points.  Suppressing the reject message will just cause the peer to have less information about why they're being disconnected.\r\n\r\nI'm not sure I think BIP 61 is a great idea (in particular, the lack of versioning makes things difficult) but the motivation of it was in part to let peers know why they're being banned.  So maybe it makes more sense to use a REJECT_INVALID message here, rather than omit the reject message altogether, even though the block might not actually be invalid if its missing parent was provided? \r\n\r\nReally, though, I don't care what we do here, just raising the point in case others have an opinion.  Your change here is fine with me.",
+      "commit_id" : "5d08c9c579ba8cc7b684105c6a08263992b08d52",
+      "created_at" : "2017-03-31T18:37:55Z",
+      "diff_hunk" : "@@ -3083,7 +3085,7 @@ static bool AcceptBlockHeader(const CBlockHeader& block, CValidationState& state\n         CBlockIndex* pindexPrev = NULL;\n         BlockMap::iterator mi = mapBlockIndex.find(block.hashPrevBlock);\n         if (mi == mapBlockIndex.end())\n-            return state.DoS(10, error(\"%s: prev block not found\", __func__), 0, \"bad-prevblk\");\n+            return state.DoS(10, error(\"%s: prev block not found\", __func__), 0, \"prev-blk-not-found\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10135#discussion_r109224935",
+      "id" : 109224935,
+      "original_commit_id" : "5d08c9c579ba8cc7b684105c6a08263992b08d52",
+      "original_position" : 29,
+      "path" : "src/validation.cpp",
+      "position" : 29,
+      "pull_request_review_id" : 30315564,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10135",
+      "updated_at" : "2017-03-31T18:38:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109224935",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10135#discussion_r109236605"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10135"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109236605"
+         }
+      },
+      "body" : "The if statement has been modified to check that `state.GetRejectCode() < REJECT_INTERNAL` (so this assert can now never fail)",
+      "commit_id" : "5d08c9c579ba8cc7b684105c6a08263992b08d52",
+      "created_at" : "2017-03-31T19:46:03Z",
+      "diff_hunk" : "@@ -855,8 +855,8 @@ void PeerLogicValidation::BlockChecked(const CBlock& block, const CValidationSta\n \n     int nDoS = 0;\n     if (state.IsInvalid(nDoS)) {\n-        if (it != mapBlockSource.end() && State(it->second.first)) {\n-            assert (state.GetRejectCode() < REJECT_INTERNAL); // Blocks are never rejected with internal reject codes",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10135#discussion_r109236605",
+      "id" : 109236605,
+      "original_commit_id" : "5d08c9c579ba8cc7b684105c6a08263992b08d52",
+      "original_position" : 5,
+      "path" : "src/net_processing.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 30331234,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10135",
+      "updated_at" : "2017-03-31T19:46:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109236605",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10135#discussion_r109237648"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10135"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109237648"
+         }
+      },
+      "body" : "I'd rather extend BIP61 than deliberately send a reject message that's incorrect (the block here isn't INVALID, it just doesn't connect with our chain).\r\n\r\nIf you prefer that we send a reject message, I think we should at least change the error code to a 0x4* value and change the message to 'prev-blk-not-found'.",
+      "commit_id" : "5d08c9c579ba8cc7b684105c6a08263992b08d52",
+      "created_at" : "2017-03-31T19:52:08Z",
+      "diff_hunk" : "@@ -3083,7 +3085,7 @@ static bool AcceptBlockHeader(const CBlockHeader& block, CValidationState& state\n         CBlockIndex* pindexPrev = NULL;\n         BlockMap::iterator mi = mapBlockIndex.find(block.hashPrevBlock);\n         if (mi == mapBlockIndex.end())\n-            return state.DoS(10, error(\"%s: prev block not found\", __func__), 0, \"bad-prevblk\");\n+            return state.DoS(10, error(\"%s: prev block not found\", __func__), 0, \"prev-blk-not-found\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10135#discussion_r109237648",
+      "id" : 109237648,
+      "original_commit_id" : "5d08c9c579ba8cc7b684105c6a08263992b08d52",
+      "original_position" : 29,
+      "path" : "src/validation.cpp",
+      "position" : 29,
+      "pull_request_review_id" : 30332363,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10135",
+      "updated_at" : "2017-03-31T19:52:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/109237648",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "I don't really have any objection to making the behavior more correct, but I would rather more or less stop sending reject messages.\r\n\r\nThere is only one or two places where I'm aware of _any_ implementation doing anything remotely useful with them (some bitcoinj users use transaction rejection to figure out that their txn hasn't relayed at all, which isn't reliable but is arguably better than nothing).   They've been a source of serious bugs several times, add to code complexity, and like other error handling are fairly hard to get precise behavior from without more or less setting in stone algorithms that don't need to be set in stone.   Plus they waste bandwidth...\r\n \r\nI've personally never found them useful in troubleshooting an issue.\r\n\r\nI can't help but think that _any_ productive use for them could be better accomplished by some other means. ",
+      "created_at" : "2017-04-01T19:36:31Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10135#issuecomment-290942254",
+      "id" : 290942254,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10135",
+      "updated_at" : "2017-04-01T19:36:31Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/290942254",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "@gmaxwell - I've heard that argument from several people, and I'm mostly on board with it. Thanks for documenting it here.\r\n\r\nreject messages are somewhat useful in black box testing. We can send in invalid messages and assert that bitcoin rejected them _for the right reason_. The old style 'comparison' test cases use this a lot. That's not a justification for spending a heap of time on improving them, but I think there's no harm in small fixes like this. And if no-one's using them in live deployments, then it should be an uncontentious change, right? :)\r\n\r\nDefinitely agree with improving error-handling in general. I don't know exactly what that would look like, but it's beyond the scope of this PR.\r\n\r\nFor my own education, do you have references to the serious bugs that reject messages have caused?",
+      "created_at" : "2017-04-01T23:59:15Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10135#issuecomment-290955257",
+      "id" : 290955257,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10135",
+      "updated_at" : "2017-04-01T23:59:15Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/290955257",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "> For my own education, do you have references to the serious bugs that reject messages have caused?\r\n\r\nPR #4903  was mostly what I was thinking of there, also the original implementation of reject messages themselves printed unsanitized bytes to the logs and IIRC also didn't limit the size of strings, though I believe both of these were fixed before merge.  We have also had many PRs for where we broke sending reject messages (or sent the 'wrong' one)-- (PR #7179 comes to mind.)\r\n\r\nFor tests, we should eventually consider something more targeted. (I have thoughts there but it's too far a tangent for this discussion.-- My comment here was in vague support of your changes but also advising that I think we should be thinking about alternatives going forward.)\r\n",
+      "created_at" : "2017-04-02T01:07:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10135#issuecomment-290957663",
+      "id" : 290957663,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10135",
+      "updated_at" : "2017-04-02T01:08:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/290957663",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "utACK https://github.com/bitcoin/bitcoin/pull/10135/commits/5d08c9c579ba8cc7b684105c6a08263992b08d52\r\n\r\n> reject messages are somewhat useful in black box testing. We can send in invalid messages and assert that bitcoin rejected them for the right reason.\r\n\r\nAlso for things that do custom transaction broadcasting (for example [bitcoin-submittx](https://github.com/laanwj/bitcoin-submittx) ) it's marginally useful to see if transactions have been accepted or not, and why.  I wouldn't care deeply if they were removed, though I don't see any urgency in doing so.\r\n\r\nThere were indeed some bugs in initial deployment of this feature (including, as I remember, one that could cause a reject message to be sent for a reject message), but I'd say those have been ironed out by now. Attack surface is mostly introduced by parsing/accepting messages not by emitting them, and we don't do anything with them besides optional logging (which could be in a separate logging category from NET).\r\n",
+      "created_at" : "2017-04-02T12:23:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10135#issuecomment-290983044",
+      "id" : 290983044,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10135",
+      "updated_at" : "2017-04-02T12:23:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/290983044",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

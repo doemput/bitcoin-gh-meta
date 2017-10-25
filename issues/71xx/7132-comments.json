@@ -1,0 +1,1820 @@
+[
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46109520"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46109520"
+         }
+      },
+      "body" : "Parameter names shouldn't imply a default value (as \"opt-in\" does).",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2015-11-30T05:21:32Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46109520",
+      "id" : 46109520,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46109520",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Wasn't this already closed?\r\nhttps://github.com/bitcoin/bitcoin/pull/7119",
+      "created_at" : "2015-11-30T05:33:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160519636",
+      "id" : 160519636,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-11-30T05:33:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160519636",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46109906"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46109906"
+         }
+      },
+      "body" : "Perhaps `-walletusefullrbf`",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2015-11-30T05:34:24Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46109906",
+      "id" : 46109906,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46109906",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46109929"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46109929"
+         }
+      },
+      "body" : "@luke-jr What's your suggested name?",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2015-11-30T05:35:09Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46109929",
+      "id" : 46109929,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46109929",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "@dcousens The closed version defaulted to opt-in=true.",
+      "created_at" : "2015-11-30T05:35:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160519987",
+      "id" : 160519987,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-11-30T05:35:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160519987",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46114124"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46114124"
+         }
+      },
+      "body" : "-walletrbf maybe?",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2015-11-30T07:20:58Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46114124",
+      "id" : 46114124,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46114124",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46114152"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46114152"
+         }
+      },
+      "body" : "Also, don't forget the  #ifdef ENABLE_WALLET guard...",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2015-11-30T07:21:27Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46114152",
+      "id" : 46114152,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46114152",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "utACK\r\n",
+      "created_at" : "2015-11-30T12:59:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160621384",
+      "id" : 160621384,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-11-30T12:59:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160621384",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/3513077?v=3",
+         "events_url" : "https://api.github.com/users/rnicoll/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rnicoll/followers",
+         "following_url" : "https://api.github.com/users/rnicoll/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rnicoll/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rnicoll",
+         "id" : 3513077,
+         "login" : "rnicoll",
+         "organizations_url" : "https://api.github.com/users/rnicoll/orgs",
+         "received_events_url" : "https://api.github.com/users/rnicoll/received_events",
+         "repos_url" : "https://api.github.com/users/rnicoll/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rnicoll/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rnicoll/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rnicoll"
+      }
+   },
+   {
+      "body" : "utACK\r\n",
+      "created_at" : "2015-11-30T18:50:13Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160722177",
+      "id" : 160722177,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-11-30T18:50:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160722177",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/10285756?v=3",
+         "events_url" : "https://api.github.com/users/sawmarku/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sawmarku/followers",
+         "following_url" : "https://api.github.com/users/sawmarku/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sawmarku/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sawmarku",
+         "id" : 10285756,
+         "login" : "sawmarku",
+         "organizations_url" : "https://api.github.com/users/sawmarku/orgs",
+         "received_events_url" : "https://api.github.com/users/sawmarku/received_events",
+         "repos_url" : "https://api.github.com/users/sawmarku/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sawmarku/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sawmarku/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sawmarku"
+      }
+   },
+   {
+      "body" : "utACK, but does the wallet actually support the re-creation of a transaction in any sane way? Or is this a political thing?\r\n\r\nconcept ACK only if the wallet actually allows you to re-broadcast a replacement.",
+      "created_at" : "2015-12-01T00:27:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160807710",
+      "id" : 160807710,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-01T00:27:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160807710",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "@dcousens I suppose it's useful for testing software-- e.g. if you want something that identifies these transactions you need to generate some, if nothing else. Actual replacement will be a non-trivial amount of work.  Concept ACK at least...",
+      "created_at" : "2015-12-01T01:03:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160813412",
+      "id" : 160813412,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-01T01:03:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160813412",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46228411"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46228411"
+         }
+      },
+      "body" : "I think everything is under an ENABLE_WALLET guard; did I miss something?",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2015-12-01T01:05:58Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46228411",
+      "id" : 46228411,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46228411",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "> if you want something that identifies these transactions you need to generate some, if nothing else\r\n\r\nThen use `sendrawtransaction`?\r\n\r\n> Actual replacement will be a non-trivial amount of work.\r\n\r\nIMHO, then that is what should prefix this flag.  Otherwise its just misleading.",
+      "created_at" : "2015-12-01T01:07:00Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160813916",
+      "id" : 160813916,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-01T01:07:00Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160813916",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46228506"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46228506"
+         }
+      },
+      "body" : "Re: name, other names like -spendzeroconfchange and -sendfreetransactions have similar grammar as -optintofullrbf, so I'm inclined to continue that pattern.",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2015-12-01T01:07:33Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46228506",
+      "id" : 46228506,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46228506",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46228535"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46228535"
+         }
+      },
+      "body" : "No, I just failed to expand more of the code visible here.",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2015-12-01T01:07:59Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46228535",
+      "id" : 46228535,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46228535",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "Real world use case: Core's wallet is used in day-to-day operation, but occasionally stuck transactions need replacing to get confirmed, which the user then uses an external script for. It's not pretty, but it's a real use case.\r\n\r\nIf it was only needed for testing stuff, I'd say +1 to just telling people to use sendrawtransaction also - or modify the code.",
+      "created_at" : "2015-12-01T01:09:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160814317",
+      "id" : 160814317,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-01T01:09:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160814317",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "@dcousens I have scripts that do the rebroadcast, and using those scripts is a pain if Bitcoin Core isn't already sending txs with opt-in enabled, allowing those scripts to be used with existing txs. I'm sure we'll have even better support in the future, but this is a trivial first-step.\r\n\r\nParticularly with the opt-in defaulting to false, I can't see how this is political - we're just making it a little easier to use a feature that we've already merged.",
+      "created_at" : "2015-12-01T01:10:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160814479",
+      "id" : 160814479,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-01T01:10:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160814479",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46228846"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46228846"
+         }
+      },
+      "body" : "Cool, thanks for reminding me though - that it was under ENABLE_WALLET was just luck.",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2015-12-01T01:12:04Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r46228846",
+      "id" : 46228846,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/46228846",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "> Real world use case: Core's wallet is used in day-to-day operation, but occasionally stuck transactions need replacing to get confirmed, which the user then uses an external script for. It's not pretty, but it's a real use case.\r\n\r\nSure,  concept ACK then.\r\n\r\n>  I can't see how this is political - we're just making it a little easier to use a feature that we've already merged.\r\n\r\nIf you don't accept the above use case as a possibility, then, IMHO, it didn't really serve any other purpose. \r\n\r\nI didn't personally think people would be mixing scripts and the UI.",
+      "created_at" : "2015-12-01T01:17:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-160815935",
+      "id" : 160815935,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-01T01:20:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160815935",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "Needs rebase",
+      "created_at" : "2015-12-01T16:46:23Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161027348",
+      "id" : 161027348,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-01T16:46:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161027348",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Rebased",
+      "created_at" : "2015-12-02T00:57:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161145124",
+      "id" : 161145124,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T00:57:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161145124",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "Just changed this to set nSequence to maxint-2 instead, so that more of the nSequence bits are identical to non-opt-in behavior.\r\n\r\nThis might come in handy if we, for instance, ever implement proof-of-stake blocksize voting and need a default option that matches what most wallets already do.",
+      "created_at" : "2015-12-02T04:25:09Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161177325",
+      "id" : 161177325,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T04:25:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161177325",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "re-ACK ~~, but, if the idea is future proofing it.  Why not just allow say 64 `nSequence` bits?~~",
+      "created_at" : "2015-12-02T04:31:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161177848",
+      "id" : 161177848,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T04:50:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161177848",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "What do you mean by \"100 nSequence bits\"?\n\nOn 2 December 2015 12:32:11 GMT+08:00, Daniel Cousens <notifications@github.com> wrote:\n>re-ACK, but, if the idea is future proofing it.  Why not just allow say\n>100 `nSequence` bits?\n>\n>---\n>Reply to this email directly or view it on GitHub:\n>https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161177848\n\n",
+      "created_at" : "2015-12-02T04:35:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161178137",
+      "id" : 161178137,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T04:35:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161178137",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "`maxint-64`",
+      "created_at" : "2015-12-02T04:37:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161178338",
+      "id" : 161178338,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T04:44:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161178338",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "Sorry, I don't see what's the advantage of that; maxint-2 seems simpler.\n\nOn 2 December 2015 12:38:06 GMT+08:00, Daniel Cousens <notifications@github.com> wrote:\n>`maxint-64`\n>\n>---\n>Reply to this email directly or view it on GitHub:\n>https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161178338\n\n",
+      "created_at" : "2015-12-02T04:40:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161178597",
+      "id" : 161178597,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T04:40:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161178597",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "@petertodd my understanding is you're expanding the non-opt-in space by 1 to allow for possible future usage.\r\nWhy only increase that space by 1 bit, and not say 5 bits?",
+      "created_at" : "2015-12-02T04:45:36Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161179068",
+      "id" : 161179068,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T04:45:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161179068",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "@petertodd corrected my post to say `5 bits` (64 possible values), sorry. ",
+      "created_at" : "2015-12-02T04:46:01Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161179173",
+      "id" : 161179173,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T04:46:01Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161179173",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "@petertodd my bad.   Lost context.\r\n\r\nOn that note then, why not `0` as discussed in https://github.com/bitcoin/bitcoin/pull/6871#issuecomment-159778915?",
+      "created_at" : "2015-12-02T04:49:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161180081",
+      "id" : 161180081,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T04:49:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161180081",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "body" : "@dcousens Because of https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161177325\r\n\r\nRemember that all we need is for all users' to be using the same nSequence number for a given type of tx; for privacy the common standard is what matters, not exactly what number we pick.",
+      "created_at" : "2015-12-02T08:58:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161225542",
+      "id" : 161225542,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-02T08:58:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161225542",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "Sure.",
+      "created_at" : "2015-12-03T02:58:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-161501654",
+      "id" : 161501654,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2015-12-03T02:58:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/161501654",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r48696299"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48696299"
+         }
+      },
+      "body" : "This is  confusing, is it full RBF or opt-in RBF ?\r\nWe've been using fullRBF to refer to the relay policy that ignores the opt-in flag and always does RBF regardless of the sender's intentions.\r\nCan you just call it optinRBF instead of optinfullRBF ?  ",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2016-01-03T19:49:54Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r48696299",
+      "id" : 48696299,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/48696299",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "Concept ACK",
+      "created_at" : "2016-01-03T19:50:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-168534831",
+      "id" : 168534831,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-01-03T19:50:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/168534831",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r49235459"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49235459"
+         }
+      },
+      "body" : "Agree with @luke-jr 's suggestion: `-walletrbf`.",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2016-01-08T20:40:13Z",
+      "diff_hunk" : "@@ -405,6 +405,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-txconfirmtarget=<n>\", strprintf(_(\"If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)\"), DEFAULT_TX_CONFIRM_TARGET));\n     strUsage += HelpMessageOpt(\"-maxtxfee=<amt>\", strprintf(_(\"Maximum total fees (in %s) to use in a single wallet transaction; setting this too low may abort large transactions (default: %s)\"),\n         CURRENCY_UNIT, FormatMoney(DEFAULT_TRANSACTION_MAXFEE)));\n+    strUsage += HelpMessageOpt(\"-optintofullrbf\", strprintf(_(\"Send transactions with full-RBF opt-in enabled (default: %u)\"), DEFAULT_OPT_INTO_FULL_RBF));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r49235459",
+      "id" : 49235459,
+      "original_commit_id" : "412bf575f346deb004f0a5bc2a24f5df49cc8c9d",
+      "original_position" : 4,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-15T16:53:11Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/49235459",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Tend to NACK.\r\nI think there should be an option to selective opt-in a wtx. I guess some users like to use RBF by default, but still want to capability to create a non-RBF transaction if they spend to a \"0-conf-merchant\" (BitPay, Coinbase, etc.).\r\n\r\nI think base work for this (starting with rawtx command) could be #7159.",
+      "created_at" : "2016-01-20T13:00:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-173196753",
+      "id" : 173196753,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-01-20T13:00:38Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/173196753",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Agree with @jonasschnelli here, a global option is too coarse, need a way to have control over this per transaction.",
+      "created_at" : "2016-04-25T09:42:44Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-214237204",
+      "id" : 214237204,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-04-25T09:42:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/214237204",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Why not both?\n\nOn 25 April 2016 05:43:48 GMT-04:00, \"Wladimir J. van der Laan\" <notifications@github.com> wrote:\n>Agree with @jonasschnelli here, a global option is too coarse, need a\n>way to have control over this per transaction.\n>\n>---\n>You are receiving this because you were mentioned.\n>Reply to this email directly or view it on GitHub:\n>https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-214237204\n",
+      "created_at" : "2016-04-25T11:28:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-214273403",
+      "id" : 214273403,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-04-25T11:28:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/214273403",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "Especially as it's aimed at third-party scripts it is better if those scripts can specify the option, without requiring the user to change yet another option before they can be used.\r\n",
+      "created_at" : "2016-04-25T11:56:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-214281661",
+      "id" : 214281661,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-04-25T11:56:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/214281661",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Rebased",
+      "created_at" : "2016-05-20T14:49:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-220626862",
+      "id" : 220626862,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-05-20T14:49:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/220626862",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "Can one of the admins verify this patch?",
+      "created_at" : "2016-05-25T08:45:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-221510810",
+      "id" : 221510810,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-05-25T08:45:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/221510810",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/541066?v=3",
+         "events_url" : "https://api.github.com/users/arowser/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/arowser/followers",
+         "following_url" : "https://api.github.com/users/arowser/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/arowser/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/arowser",
+         "id" : 541066,
+         "login" : "arowser",
+         "organizations_url" : "https://api.github.com/users/arowser/orgs",
+         "received_events_url" : "https://api.github.com/users/arowser/received_events",
+         "repos_url" : "https://api.github.com/users/arowser/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/arowser/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/arowser/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/arowser"
+      }
+   },
+   {
+      "body" : "needs rebase",
+      "created_at" : "2016-06-14T10:36:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-225843521",
+      "id" : 225843521,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-06-14T10:36:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/225843521",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "body" : "@arowser can you stop posting \"Can one of the admins verify this patch?\" in every pull, this is annoying and completely redundant. You can help by reviewing or testing the code.",
+      "created_at" : "2016-06-14T11:24:49Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-225852919",
+      "id" : 225852919,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-06-14T11:24:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/225852919",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "Rebased",
+      "created_at" : "2016-06-15T16:53:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-226249523",
+      "id" : 226249523,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-06-15T16:53:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/226249523",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "Would this work with `-mempoolreplacement=0` ? Seems like the node will reject these. Perhaps check for that flag too.\r\n\r\nfurther nit: anything \"optin\" will become \"optout\" if the default changes, so perhaps: \"sendfullrbf\"? Makes it clearer it's about sending, not mempool replacement.  \r\n\r\nconcept ACK, I'd really like something for 0.13.",
+      "created_at" : "2016-06-17T13:44:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-226772313",
+      "id" : 226772313,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-06-17T13:44:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/226772313",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67516631"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67516631"
+         }
+      },
+      "body" : "Maybe constants for 1 and 2?",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2016-06-17T14:15:39Z",
+      "diff_hunk" : "@@ -2321,11 +2322,11 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt\n \n                 // Fill vin\n                 //\n-                // Note how the sequence number is set to max()-1 so that the\n-                // nLockTime set above actually works.\n+                // Note how the sequence number is set to non-maxint so that\n+                // the nLockTime set above actually works.\n                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)\n                     txNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second,CScript(),\n-                                              std::numeric_limits<unsigned int>::max()-1));\n+                                              std::numeric_limits<unsigned int>::max() - (fOptIntoFullRbf ? 2 : 1)));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67516631",
+      "id" : 67516631,
+      "original_commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "original_position" : 19,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 19,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-17T14:15:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67516631",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67518772"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67518772"
+         }
+      },
+      "body" : "those numbers aren't special, the 1st number just has to be bigger than 1. Not sure if that's a candidate for constant. ",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2016-06-17T14:28:18Z",
+      "diff_hunk" : "@@ -2321,11 +2322,11 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt\n \n                 // Fill vin\n                 //\n-                // Note how the sequence number is set to max()-1 so that the\n-                // nLockTime set above actually works.\n+                // Note how the sequence number is set to non-maxint so that\n+                // the nLockTime set above actually works.\n                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)\n                     txNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second,CScript(),\n-                                              std::numeric_limits<unsigned int>::max()-1));\n+                                              std::numeric_limits<unsigned int>::max() - (fOptIntoFullRbf ? 2 : 1)));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67518772",
+      "id" : 67518772,
+      "original_commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "original_position" : 19,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 19,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-17T14:28:18Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67518772",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67519624"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67519624"
+         }
+      },
+      "body" : "Mqybe more documentation solves it. I just cannot look at that line without wondering what the heck 1 and 2 mean...",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2016-06-17T14:33:16Z",
+      "diff_hunk" : "@@ -2321,11 +2322,11 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt\n \n                 // Fill vin\n                 //\n-                // Note how the sequence number is set to max()-1 so that the\n-                // nLockTime set above actually works.\n+                // Note how the sequence number is set to non-maxint so that\n+                // the nLockTime set above actually works.\n                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)\n                     txNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second,CScript(),\n-                                              std::numeric_limits<unsigned int>::max()-1));\n+                                              std::numeric_limits<unsigned int>::max() - (fOptIntoFullRbf ? 2 : 1)));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67519624",
+      "id" : 67519624,
+      "original_commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "original_position" : 19,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 19,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-17T14:33:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67519624",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67519745"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67519745"
+         }
+      },
+      "body" : "Fair enough. The comment should be revised further.",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2016-06-17T14:33:56Z",
+      "diff_hunk" : "@@ -2321,11 +2322,11 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt\n \n                 // Fill vin\n                 //\n-                // Note how the sequence number is set to max()-1 so that the\n-                // nLockTime set above actually works.\n+                // Note how the sequence number is set to non-maxint so that\n+                // the nLockTime set above actually works.\n                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)\n                     txNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second,CScript(),\n-                                              std::numeric_limits<unsigned int>::max()-1));\n+                                              std::numeric_limits<unsigned int>::max() - (fOptIntoFullRbf ? 2 : 1)));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67519745",
+      "id" : 67519745,
+      "original_commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "original_position" : 19,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 19,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-17T14:33:56Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67519745",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67606725"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67606725"
+         }
+      },
+      "body" : "How about this comment:\r\n\r\n\"BIP125 defines opt-in RBF as any nSequence < maxint-1, so we use the highest possible value in that range (maxint-2) to avoid conflicting with other possible uses of nSequence, and in the spirit of \"smallest posible change from prior behavior\"\"",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2016-06-18T21:13:12Z",
+      "diff_hunk" : "@@ -2321,11 +2322,11 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt\n \n                 // Fill vin\n                 //\n-                // Note how the sequence number is set to max()-1 so that the\n-                // nLockTime set above actually works.\n+                // Note how the sequence number is set to non-maxint so that\n+                // the nLockTime set above actually works.\n                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)\n                     txNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second,CScript(),\n-                                              std::numeric_limits<unsigned int>::max()-1));\n+                                              std::numeric_limits<unsigned int>::max() - (fOptIntoFullRbf ? 2 : 1)));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r67606725",
+      "id" : 67606725,
+      "original_commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "original_position" : 19,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 19,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-06-18T21:13:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/67606725",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7042?v=3",
+         "events_url" : "https://api.github.com/users/petertodd/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/petertodd/followers",
+         "following_url" : "https://api.github.com/users/petertodd/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/petertodd/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/petertodd",
+         "id" : 7042,
+         "login" : "petertodd",
+         "organizations_url" : "https://api.github.com/users/petertodd/orgs",
+         "received_events_url" : "https://api.github.com/users/petertodd/received_events",
+         "repos_url" : "https://api.github.com/users/petertodd/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/petertodd/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/petertodd/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/petertodd"
+      }
+   },
+   {
+      "body" : "Is there anything blocking this? (besides needing rebase again, sorry)\r\n",
+      "created_at" : "2016-08-19T10:10:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-240980762",
+      "id" : 240980762,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-08-19T10:10:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/240980762",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r75575101"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/75575101"
+         }
+      },
+      "body" : "Nit: Maybe we could introduce `std::numeric_limits<unsigned int>::max()-1` as some constant somewhere. `SEQUENCE_OPT_OUT = std::numeric_limits<unsigned int>::max()-1` is used in other places (mempool) as well.\r\n\r\nAnd then comment here \"Use any value less than SEQUENCE_OPT_OUT according to BIP125.\" or use the comment you wrote above.",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2016-08-20T08:24:28Z",
+      "diff_hunk" : "@@ -2321,11 +2322,11 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt\n \n                 // Fill vin\n                 //\n-                // Note how the sequence number is set to max()-1 so that the\n-                // nLockTime set above actually works.\n+                // Note how the sequence number is set to non-maxint so that\n+                // the nLockTime set above actually works.\n                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)\n                     txNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second,CScript(),\n-                                              std::numeric_limits<unsigned int>::max()-1));\n+                                              std::numeric_limits<unsigned int>::max() - (fOptIntoFullRbf ? 2 : 1)));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r75575101",
+      "id" : 75575101,
+      "original_commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "original_position" : 19,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 19,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-08-20T08:24:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/75575101",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "Concept ACK. Needs rebase.",
+      "created_at" : "2016-08-20T08:25:12Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-241187044",
+      "id" : 241187044,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-08-20T08:25:12Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/241187044",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r75575901"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/75575901"
+         }
+      },
+      "body" : "```\r\nfOptIntoFullRbf ? SEQUENCE_OPT_OUT -1 : SEQUENCE_OPT_OUT\r\n```\r\nIt's clrearer to me than:\r\n```\r\n std::numeric_limits<unsigned int>::max() - (fOptIntoFullRbf ? 2 : 1)\r\n```\r\n\r\nSpecially with the \"\"Use any value less than SEQUENCE_OPT_OUT...\" comment.\r\n\r\n",
+      "commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "created_at" : "2016-08-20T09:37:23Z",
+      "diff_hunk" : "@@ -2321,11 +2322,11 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt\n \n                 // Fill vin\n                 //\n-                // Note how the sequence number is set to max()-1 so that the\n-                // nLockTime set above actually works.\n+                // Note how the sequence number is set to non-maxint so that\n+                // the nLockTime set above actually works.\n                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)\n                     txNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second,CScript(),\n-                                              std::numeric_limits<unsigned int>::max()-1));\n+                                              std::numeric_limits<unsigned int>::max() - (fOptIntoFullRbf ? 2 : 1)));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#discussion_r75575901",
+      "id" : 75575901,
+      "original_commit_id" : "e272c26374cfb7d38af7569dbfcce12c56c271f1",
+      "original_position" : 19,
+      "path" : "src/wallet/wallet.cpp",
+      "position" : 19,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/7132",
+      "updated_at" : "2016-08-20T09:37:23Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/75575901",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "Closing in favor of #8601",
+      "created_at" : "2016-08-26T10:17:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/7132#issuecomment-242691443",
+      "id" : 242691443,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/7132",
+      "updated_at" : "2016-08-26T10:17:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/242691443",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]

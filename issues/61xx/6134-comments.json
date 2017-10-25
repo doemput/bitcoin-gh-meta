@@ -82,5 +82,1077 @@
          "type" : "User",
          "url" : "https://api.github.com/users/morcos"
       }
+   },
+   {
+      "body" : "The last commit is as of yet untested, but should resolve some of the issues around accidentally generating transactions that wouldn't be accepted to your own mempool",
+      "created_at" : "2015-11-10T23:29:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-155601549",
+      "id" : 155601549,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-10T23:29:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/155601549",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Needs rebase (trivial `main.h` conflict).\r\nTested a bit.\r\n\r\nQT: Probably not related to this PR, but is there a reason why the slider Ã¢ÂÂ by default Ã¢ÂÂ is on the left side \"slow confirmation time\" and not at the very right side? I guess less then <1% of transactions aim for confirmation >=25blocks.\r\n\r\nQT: In my case (mainnet at current height), num-blocks 25 till 18 had the same fee. This feels bad for users, because they might think, \"why should I pay a higher fee than i really need for my target?\". We need to aggregate num-blocks with the same fee (stop at block 18, don't go further down with the fee, up with the num block target). Also num-blocks 10 and 11 had the same fee, these should be aggregated.\r\n\r\nThere should be something when calling `estimatefee 1`. I know that there are to many unknowns for a precise calculation. But it's an **estimation**. We should not return -1. We should return a value as accurate as possible with the parameters that are available (even is there are hight risks that the estimation is wrong).",
+      "created_at" : "2015-11-13T19:58:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-156541793",
+      "id" : 156541793,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-13T19:58:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156541793",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "@jonasschnelli This PR should prevent getting a -1 unless you directly call the RPC call estimatefee.  I might still expose estimateapproxfee, but for anyone using GUI or wallet code that automatically generates fee, they should now get the best answer possible.  I figured that for outside users, they could emulate the logic of estimateapproxfee themselves for now.  In the future I agree there should be an RPC call which just does the right thing, but I wasn't ready to expose that now as I'm not sure exactly what it should look like yet.",
+      "created_at" : "2015-11-13T22:04:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-156571950",
+      "id" : 156571950,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-13T22:04:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156571950",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Rebased",
+      "created_at" : "2015-11-14T19:02:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-156734259",
+      "id" : 156734259,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-14T19:02:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156734259",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Concept(s) ACK.",
+      "created_at" : "2015-11-14T20:56:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-156745548",
+      "id" : 156745548,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-14T20:56:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156745548",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "added some checks in the unit test and exposed the functions via RPC (with a warning) and tested in the RPC test.\r\n\r\n",
+      "created_at" : "2015-11-15T17:59:42Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-156839819",
+      "id" : 156839819,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-15T17:59:42Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/156839819",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Concept ACK. Plans to test this soon.",
+      "created_at" : "2015-11-16T20:07:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-157154908",
+      "id" : 157154908,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-16T20:07:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157154908",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/178464?v=3",
+         "events_url" : "https://api.github.com/users/jonasschnelli/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jonasschnelli/followers",
+         "following_url" : "https://api.github.com/users/jonasschnelli/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jonasschnelli/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jonasschnelli",
+         "id" : 178464,
+         "login" : "jonasschnelli",
+         "organizations_url" : "https://api.github.com/users/jonasschnelli/orgs",
+         "received_events_url" : "https://api.github.com/users/jonasschnelli/received_events",
+         "repos_url" : "https://api.github.com/users/jonasschnelli/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jonasschnelli/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jonasschnelli/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jonasschnelli"
+      }
+   },
+   {
+      "body" : "Rebased with a name change to estimateSmartFee instead of Approx",
+      "created_at" : "2015-11-16T20:44:46Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-157163803",
+      "id" : 157163803,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-16T20:44:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157163803",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "ACK apart from those nits",
+      "created_at" : "2015-11-17T17:50:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-157451133",
+      "id" : 157451133,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-17T17:50:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157451133",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45216058"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45216058"
+         }
+      },
+      "body" : "Can ```GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE)``` be an attribute so that it can be calculated just once in the constructor?",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-18T15:47:48Z",
+      "diff_hunk" : "@@ -504,6 +505,33 @@ CFeeRate CBlockPolicyEstimator::estimateFee(int confTarget)\n     return CFeeRate(median);\n }\n \n+CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n+        return CFeeRate(0);\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= feeStats.GetMaxConfirms()) {\n+        median = feeStats.EstimateMedianVal(confTarget++, SUFFICIENT_FEETXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+\n+    // If mempool is limiting txs , return at least the min fee from the mempool\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45216058",
+      "id" : 45216058,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 29,
+      "path" : "src/policy/fees.cpp",
+      "position" : 29,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-18T15:47:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45216058",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "Concept ACK with a very fast review. Again, this would be simpler if there was no priority...",
+      "created_at" : "2015-11-18T15:49:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-157755539",
+      "id" : 157755539,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-18T15:49:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/157755539",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45216518"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45216518"
+         }
+      },
+      "body" : "style nit: https://github.com/bitcoin/bitcoin/blob/master/src/.clang-format#L41",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-18T15:50:53Z",
+      "diff_hunk" : "@@ -504,6 +505,33 @@ CFeeRate CBlockPolicyEstimator::estimateFee(int confTarget)\n     return CFeeRate(median);\n }\n \n+CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45216518",
+      "id" : 45216518,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 12,
+      "path" : "src/policy/fees.cpp",
+      "position" : 12,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-18T15:50:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45216518",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45216738"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45216738"
+         }
+      },
+      "body" : "style nit: too many new lines",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-18T15:52:14Z",
+      "diff_hunk" : "@@ -513,6 +541,31 @@ double CBlockPolicyEstimator::estimatePriority(int confTarget)\n     return priStats.EstimateMedianVal(confTarget, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n }\n \n+double CBlockPolicyEstimator::estimateSmartPriority(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > priStats.GetMaxConfirms())\n+        return -1;\n+\n+    // If mempool is limiting txs, no priority txs are allowed\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();\n+    if (minPoolFee > 0)\n+        return INF_PRIORITY;\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= priStats.GetMaxConfirms()) {\n+        median = priStats.EstimateMedianVal(confTarget++, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45216738",
+      "id" : 45216738,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 66,
+      "path" : "src/policy/fees.cpp",
+      "position" : 66,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-18T15:53:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45216738",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45217357"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45217357"
+         }
+      },
+      "body" : "Someone should prepare `clang-format-diff.py` for use in bitcoin?",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-18T15:56:19Z",
+      "diff_hunk" : "@@ -513,6 +541,31 @@ double CBlockPolicyEstimator::estimatePriority(int confTarget)\n     return priStats.EstimateMedianVal(confTarget, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n }\n \n+double CBlockPolicyEstimator::estimateSmartPriority(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > priStats.GetMaxConfirms())\n+        return -1;\n+\n+    // If mempool is limiting txs, no priority txs are allowed\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();\n+    if (minPoolFee > 0)\n+        return INF_PRIORITY;\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= priStats.GetMaxConfirms()) {\n+        median = priStats.EstimateMedianVal(confTarget++, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45217357",
+      "id" : 45217357,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 66,
+      "path" : "src/policy/fees.cpp",
+      "position" : 66,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-18T15:56:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45217357",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45218874"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45218874"
+         }
+      },
+      "body" : "Sure.  But honestly it seems a bit silly to me that this is not an attribute of the mempool.  I understand the point of keeping policy out of the mempool, but why should you need to be aware of the max size of the mempool just to ask what it's min fee is.   The one advantage I can see for the current structure is that you can call TrimToSize with some other number to do testing.\r\nPerhaps TrimToSize should take a sizelimit, and set an internal attribute of the mempool that GetMinFee uses?\r\n",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-18T16:06:20Z",
+      "diff_hunk" : "@@ -504,6 +505,33 @@ CFeeRate CBlockPolicyEstimator::estimateFee(int confTarget)\n     return CFeeRate(median);\n }\n \n+CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n+        return CFeeRate(0);\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= feeStats.GetMaxConfirms()) {\n+        median = feeStats.EstimateMedianVal(confTarget++, SUFFICIENT_FEETXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+\n+    // If mempool is limiting txs , return at least the min fee from the mempool\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45218874",
+      "id" : 45218874,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 29,
+      "path" : "src/policy/fees.cpp",
+      "position" : 29,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-18T16:06:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45218874",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45223295"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45223295"
+         }
+      },
+      "body" : "Yes, you are right: it should probably be an attribute of CTxMemPool instead, and minPoolFee could be passed here instead of the CTxMemPool pointer. In fact, CTxMemPool depend on CBlockPolicyEstimator, so CBlockPolicyEstimator shouldn't depend on CTxMemPool too (sigh, I had a branch in which neither one depended on the other at least once but now just https://github.com/jtimon/bitcoin/commits/policy-minrelayfee-0.12.99 ...).\r\n",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-18T16:36:21Z",
+      "diff_hunk" : "@@ -504,6 +505,33 @@ CFeeRate CBlockPolicyEstimator::estimateFee(int confTarget)\n     return CFeeRate(median);\n }\n \n+CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n+        return CFeeRate(0);\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= feeStats.GetMaxConfirms()) {\n+        median = feeStats.EstimateMedianVal(confTarget++, SUFFICIENT_FEETXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+\n+    // If mempool is limiting txs , return at least the min fee from the mempool\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45223295",
+      "id" : 45223295,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 29,
+      "path" : "src/policy/fees.cpp",
+      "position" : 29,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-18T16:36:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45223295",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45224193"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45224193"
+         }
+      },
+      "body" : "You can't pass the minFee it's dynamic, you have to ask the mempool for it.\r\nI think the CBlockPolicyEstimator should come out of the mempool though for sure.  \r\n",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-18T16:42:33Z",
+      "diff_hunk" : "@@ -504,6 +505,33 @@ CFeeRate CBlockPolicyEstimator::estimateFee(int confTarget)\n     return CFeeRate(median);\n }\n \n+CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n+        return CFeeRate(0);\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= feeStats.GetMaxConfirms()) {\n+        median = feeStats.EstimateMedianVal(confTarget++, SUFFICIENT_FEETXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+\n+    // If mempool is limiting txs , return at least the min fee from the mempool\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45224193",
+      "id" : 45224193,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 29,
+      "path" : "src/policy/fees.cpp",
+      "position" : 29,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-18T16:42:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45224193",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45228107"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45228107"
+         }
+      },
+      "body" : "What I'm saying is you can ask the mempool before calling this (ie rplace the pool pointer parameter with const CAmount& minPoolFee in this new method).",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-18T17:09:04Z",
+      "diff_hunk" : "@@ -504,6 +505,33 @@ CFeeRate CBlockPolicyEstimator::estimateFee(int confTarget)\n     return CFeeRate(median);\n }\n \n+CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n+        return CFeeRate(0);\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= feeStats.GetMaxConfirms()) {\n+        median = feeStats.EstimateMedianVal(confTarget++, SUFFICIENT_FEETXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+\n+    // If mempool is limiting txs , return at least the min fee from the mempool\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45228107",
+      "id" : 45228107,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 29,
+      "path" : "src/policy/fees.cpp",
+      "position" : 29,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-18T17:09:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45228107",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45264672"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45264672"
+         }
+      },
+      "body" : "Please look at https://github.com/jtimon/bitcoin/tree/6134-nits\r\nBy the way, we should solve the circular dependency by separating CTxMemPoolEntry. That way txmempool.cpp includes policy/fees.h, and policy/fees.cpp includes txmempoolentry.h (but not txmempool.h). Just came to mind again, not saying is within the scope of this PR.",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-18T21:41:49Z",
+      "diff_hunk" : "@@ -504,6 +505,33 @@ CFeeRate CBlockPolicyEstimator::estimateFee(int confTarget)\n     return CFeeRate(median);\n }\n \n+CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > feeStats.GetMaxConfirms())\n+        return CFeeRate(0);\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= feeStats.GetMaxConfirms()) {\n+        median = feeStats.EstimateMedianVal(confTarget++, SUFFICIENT_FEETXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+\n+    // If mempool is limiting txs , return at least the min fee from the mempool\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45264672",
+      "id" : 45264672,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 29,
+      "path" : "src/policy/fees.cpp",
+      "position" : 29,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-18T21:41:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45264672",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45384887"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45384887"
+         }
+      },
+      "body" : "Yes, we have talked about this many times, but so far nobody has done it.",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-19T19:06:28Z",
+      "diff_hunk" : "@@ -513,6 +541,31 @@ double CBlockPolicyEstimator::estimatePriority(int confTarget)\n     return priStats.EstimateMedianVal(confTarget, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n }\n \n+double CBlockPolicyEstimator::estimateSmartPriority(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > priStats.GetMaxConfirms())\n+        return -1;\n+\n+    // If mempool is limiting txs, no priority txs are allowed\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();\n+    if (minPoolFee > 0)\n+        return INF_PRIORITY;\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= priStats.GetMaxConfirms()) {\n+        median = priStats.EstimateMedianVal(confTarget++, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45384887",
+      "id" : 45384887,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 66,
+      "path" : "src/policy/fees.cpp",
+      "position" : 66,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-19T19:06:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45384887",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45386518"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45386518"
+         }
+      },
+      "body" : "I could do it (it's just like https://github.com/bitcoin/bitcoin/tree/master/contrib/devtools#clang-formatpy) but when no one is actually using it...",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-19T19:18:21Z",
+      "diff_hunk" : "@@ -513,6 +541,31 @@ double CBlockPolicyEstimator::estimatePriority(int confTarget)\n     return priStats.EstimateMedianVal(confTarget, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n }\n \n+double CBlockPolicyEstimator::estimateSmartPriority(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > priStats.GetMaxConfirms())\n+        return -1;\n+\n+    // If mempool is limiting txs, no priority txs are allowed\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();\n+    if (minPoolFee > 0)\n+        return INF_PRIORITY;\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= priStats.GetMaxConfirms()) {\n+        median = priStats.EstimateMedianVal(confTarget++, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45386518",
+      "id" : 45386518,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 66,
+      "path" : "src/policy/fees.cpp",
+      "position" : 66,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-19T19:18:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45386518",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45473892"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45473892"
+         }
+      },
+      "body" : "I didn't even knew that already existed, thanks. The problem with that is that \"This should only be applied to new files or files which are currently not actively developed on\". It would be nice (but more complicated) to have one that, applied to a specific commit, applies the format rules only on the lines you are touching (otherwise your diffs can get use).\r\nEDIT: anyway, we can take this to a new issue or to the ml.",
+      "commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "created_at" : "2015-11-20T14:31:57Z",
+      "diff_hunk" : "@@ -513,6 +541,31 @@ double CBlockPolicyEstimator::estimatePriority(int confTarget)\n     return priStats.EstimateMedianVal(confTarget, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n }\n \n+double CBlockPolicyEstimator::estimateSmartPriority(int confTarget, int *answerFoundAtTarget, const CTxMemPool *pool)\n+{\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget;\n+    // Return failure if trying to analyze a target we're not tracking\n+    if (confTarget <= 0 || (unsigned int)confTarget > priStats.GetMaxConfirms())\n+        return -1;\n+\n+    // If mempool is limiting txs, no priority txs are allowed\n+    CAmount minPoolFee = pool->GetMinFee(GetArg(\"-maxmempool\", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFeePerK();\n+    if (minPoolFee > 0)\n+        return INF_PRIORITY;\n+\n+    double median = -1;\n+    while (median < 0 && (unsigned int)confTarget <= priStats.GetMaxConfirms()) {\n+        median = priStats.EstimateMedianVal(confTarget++, SUFFICIENT_PRITXS, MIN_SUCCESS_PCT, true, nBestSeenHeight);\n+    }\n+\n+    if (answerFoundAtTarget)\n+        *answerFoundAtTarget = confTarget - 1;\n+",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#discussion_r45473892",
+      "id" : 45473892,
+      "original_commit_id" : "56106a3300f844afcadf6dce50d5ef1d337f50b9",
+      "original_position" : 66,
+      "path" : "src/policy/fees.cpp",
+      "position" : 66,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/6134",
+      "updated_at" : "2015-11-20T14:32:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/45473892",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "Addressed nits.",
+      "created_at" : "2015-11-24T13:52:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-159274080",
+      "id" : 159274080,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-24T13:52:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159274080",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "My main nit hasn't been addressed, which is not creating a new circular dependency (currently CTxMemPool depends on CBlockPolicyEstimator, but CBlockPolicyEstimator doesn't depend on CTxMemPool until this PR) that is unnecessary (as shown in https://github.com/jtimon/bitcoin/commit/6963b9ccb2c889564a2e0239aa73f03f6d406784 ).\r\n",
+      "created_at" : "2015-11-24T14:28:26Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-159282982",
+      "id" : 159282982,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-24T14:28:26Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/159282982",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "I guess I'll create a new PR removing the new and unnecessary circular dependency introduced...",
+      "created_at" : "2015-11-27T12:42:39Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-160132043",
+      "id" : 160132043,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-27T12:42:39Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160132043",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "Opened #7115 to fix the new circular dependency introduced despite my insistence and despite coding the commit to be squashed here to avoid that circular dependency...",
+      "created_at" : "2015-11-27T14:04:55Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-160146271",
+      "id" : 160146271,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-11-27T14:04:55Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160146271",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "For future reference NACK this PR. I'm really disappointed about @morcos being so stubborn and insisting on introducing the unnecessary circular dependency and that he can even accept the most minimal way to remove it (see the first commit in #7115 ), but I like circular discussions even less than I like circular dependencies and nobody else seems to care enough. So let's leave the circular dependency, but then I need to at least do what I should have done from the beginning and will do next time: nack instead of coding nits to be ignored. NACK nack nacking...",
+      "created_at" : "2015-12-01T12:07:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-160948893",
+      "id" : 160948893,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-12-01T12:07:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160948893",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "> but then I need to at least do what I should have done from the beginning and will do next time: nack instead of coding nits to be ignored. NACK nack nacking...\r\n\r\nThe practical problem is that we can't hold up required changes forever because they have some coding nits. There's, unfortunately, a compromise between accumulating some technical debt or having any single change take forever because of architectural concerns.\r\n",
+      "created_at" : "2015-12-01T12:11:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-160949619",
+      "id" : 160949619,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-12-01T12:12:14Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160949619",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "This was merged without my nit and morcos insists on nacking any code that removes the circular dependency he unnecessarily introduced. I think it has little to do with \"prs taking forever\".  But hey I'm in favor of merging bip68 and other PRs that are taking forever if you want to change the subject.",
+      "created_at" : "2015-12-01T12:16:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-160950671",
+      "id" : 160950671,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-12-01T12:16:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160950671",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "He does not nack removing the circular dependency. He disagrees with making\nthe estimation code users responsible for knowing there is a limit.\n",
+      "created_at" : "2015-12-01T12:28:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-160954041",
+      "id" : 160954041,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-12-01T12:28:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160954041",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "See yesterday's IRC discussion, yes, he even nacks the most minimal way to remove the circular dependency (the first commit currently in #7115  ) and he will not provide an alternative because he does not want to remove the dependency.",
+      "created_at" : "2015-12-01T12:35:22Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/6134#issuecomment-160955429",
+      "id" : 160955429,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/6134",
+      "updated_at" : "2015-12-01T12:37:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/160955429",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
    }
 ]

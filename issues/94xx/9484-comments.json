@@ -1,0 +1,2652 @@
+[
+   {
+      "body" : "par=4 chainstate reindex with dbcache 2000 goes from 6.15 hours to 2.96 hours. \r\n\r\n@petertodd  I know you had a reservation about keeping the default in chainparams but we also have a number of other similar heuristics there (such as bip34 height, total work in the best chain, various flags). I'd suggest in the future we should move those more policy like things into their own section of chain params. \r\n\r\nI'd rather do that as a separate refactor later than spread this setting out away from the other ones that need to get changed as part of the review process.",
+      "created_at" : "2017-01-06T23:23:19Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-271037343",
+      "id" : 271037343,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-06T23:23:19Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271037343",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95063846"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95063846"
+         }
+      },
+      "body" : "I assume when you saiy \"set the value two blocks back\" you mean \"set the value two blocks back from the tip at around the time rcs begin, so that it is a month back when release actually happens\"?",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-07T19:06:00Z",
+      "diff_hunk" : "@@ -13,6 +13,11 @@ Before every minor and major release:\n * Update version in sources (see below)\n * Write release notes (see below)\n * Update `src/chainparams.cpp` nMinimumChainWork with information from the getblockchaininfo rpc.\n+* Update `src/chainparams.cpp` defaultAssumeValid  with information from the getblockhash rpc.\n+  - The selected value must not be orphaned so it may be useful to set the value two blocks back from the tip.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95063846",
+      "id" : 95063846,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 5,
+      "path" : "doc/release-process.md",
+      "position" : 5,
+      "pull_request_review_id" : 15610271,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95063846",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95063927"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95063927"
+         }
+      },
+      "body" : "Is there any meaningful difference here between a month and a week? (let the bikeshedding begin!).",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-07T19:11:15Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex) {\n+                // This block is a member of the assumed verified chain: potentially disable script checks\n+                // The equivalent time check discourages hashpower from extorting the network via DOS attack\n+                //  into accepting an invalid block through telling users they must manually set assumevalid.\n+                //  Requiring a software change or burrying the invalid block, regardless of the setting, makes\n+                //  it hard to hide the implication of the demand.  This also avoids having release candidates\n+                //  that are hardly doing any signature verification at all in testing without having to\n+                //  artificially set the default assumed verified block further back.\n+                fScriptChecks = (GetBlockProofEquivalentTime(*pindexBestHeader, *pindex, *pindexBestHeader, chainparams.GetConsensus()) < 60 * 60 * 24 * 7);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95063927",
+      "id" : 95063927,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 33,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15610271,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95063927",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95066939"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95066939"
+         }
+      },
+      "body" : "I don't think so. I picked a week here because (1) that is the minimum time in our process between an RC and a release and (2) I think two days is likely sufficient for the purpose in the comment-- enough time for a widespread public response.\r\n\r\nBut if people preferred a month, that would be okay too.  I was half expecting this test to get bikesheded out rather than cranked up. \r\n\r\nOne downside of a longer value is that users on really slow devices who might put a very current value in from another node of theirs would get a diminished synctime improvement. ",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-07T22:20:56Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex) {\n+                // This block is a member of the assumed verified chain: potentially disable script checks\n+                // The equivalent time check discourages hashpower from extorting the network via DOS attack\n+                //  into accepting an invalid block through telling users they must manually set assumevalid.\n+                //  Requiring a software change or burrying the invalid block, regardless of the setting, makes\n+                //  it hard to hide the implication of the demand.  This also avoids having release candidates\n+                //  that are hardly doing any signature verification at all in testing without having to\n+                //  artificially set the default assumed verified block further back.\n+                fScriptChecks = (GetBlockProofEquivalentTime(*pindexBestHeader, *pindex, *pindexBestHeader, chainparams.GetConsensus()) < 60 * 60 * 24 * 7);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95066939",
+      "id" : 95066939,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 33,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15613303,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95066939",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95066977"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95066977"
+         }
+      },
+      "body" : "I don't _intend_ for it to be a month back at the release. There is no reason to set it back at all _except_ that  if the block falls out of the chain the speedup will be lost.  Another possiblity would be to advise setting it at the tip with a note that it must be fixed if the block falls out of the chain.\r\n\r\nI also don't see a reason that this couldn't be updated at the last RC or even between an RC and a release.  In general we should set it as far forward as possible... there is no benefit in setting it back, and the more forward it is, the longer it takes for the cached value to rot. \r\n",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-07T22:23:43Z",
+      "diff_hunk" : "@@ -13,6 +13,11 @@ Before every minor and major release:\n * Update version in sources (see below)\n * Write release notes (see below)\n * Update `src/chainparams.cpp` nMinimumChainWork with information from the getblockchaininfo rpc.\n+* Update `src/chainparams.cpp` defaultAssumeValid  with information from the getblockhash rpc.\n+  - The selected value must not be orphaned so it may be useful to set the value two blocks back from the tip.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95066977",
+      "id" : 95066977,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 5,
+      "path" : "doc/release-process.md",
+      "position" : 5,
+      "pull_request_review_id" : 15613340,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95066977",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95067847"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067847"
+         }
+      },
+      "body" : "Hum, at the risk of overdesign, I'd be ok with only a week or so if the user explicitly specified a trust anchor, but for default-release, I'm afraid a week isnt all that long in the context of relying on widespread public outcry to prevent failures.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-07T23:19:09Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex) {\n+                // This block is a member of the assumed verified chain: potentially disable script checks\n+                // The equivalent time check discourages hashpower from extorting the network via DOS attack\n+                //  into accepting an invalid block through telling users they must manually set assumevalid.\n+                //  Requiring a software change or burrying the invalid block, regardless of the setting, makes\n+                //  it hard to hide the implication of the demand.  This also avoids having release candidates\n+                //  that are hardly doing any signature verification at all in testing without having to\n+                //  artificially set the default assumed verified block further back.\n+                fScriptChecks = (GetBlockProofEquivalentTime(*pindexBestHeader, *pindex, *pindexBestHeader, chainparams.GetConsensus()) < 60 * 60 * 24 * 7);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95067847",
+      "id" : 95067847,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 33,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15614082,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067847",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95067870"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067870"
+         }
+      },
+      "body" : "OK. Fair enough, though I disagree that it should be allowed to change pre-release post-rc...for a parameter like this we really want lots of eyes and a few days of letting people reindex prior to release.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-07T23:20:05Z",
+      "diff_hunk" : "@@ -13,6 +13,11 @@ Before every minor and major release:\n * Update version in sources (see below)\n * Write release notes (see below)\n * Update `src/chainparams.cpp` nMinimumChainWork with information from the getblockchaininfo rpc.\n+* Update `src/chainparams.cpp` defaultAssumeValid  with information from the getblockhash rpc.\n+  - The selected value must not be orphaned so it may be useful to set the value two blocks back from the tip.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95067870",
+      "id" : 95067870,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 5,
+      "path" : "doc/release-process.md",
+      "position" : 5,
+      "pull_request_review_id" : 15614108,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95067870",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95068010"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95068010"
+         }
+      },
+      "body" : "> There is no reason to set it back at all except that if the block falls out of the chain the speedup will be lost.\r\n\r\nNote we *could* make it smart enough to see the common parent block, but I'm not sure it's worth the additional effort.\r\n\r\n> I also don't see a reason that this couldn't be updated at the last RC or even between an RC and a release. In general we should set it as far forward as possible...\r\n\r\nIf we're setting it last minute, I do think more than 2 blocks back would be best. Maybe 10.\r\n",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-07T23:32:12Z",
+      "diff_hunk" : "@@ -13,6 +13,11 @@ Before every minor and major release:\n * Update version in sources (see below)\n * Write release notes (see below)\n * Update `src/chainparams.cpp` nMinimumChainWork with information from the getblockchaininfo rpc.\n+* Update `src/chainparams.cpp` defaultAssumeValid  with information from the getblockhash rpc.\n+  - The selected value must not be orphaned so it may be useful to set the value two blocks back from the tip.",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95068010",
+      "id" : 95068010,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 5,
+      "path" : "doc/release-process.md",
+      "position" : 5,
+      "pull_request_review_id" : 15614233,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95068010",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "> if they set it to something crazy all that will happen is more time will be spend validating signatures.\r\n\r\nThat's not the worst-case scenario. They *could* set it to a block with invalid scripts in the history, which would break from consensus. I do think this is an acceptable risk, but maybe should get at least some warning.",
+      "created_at" : "2017-01-07T23:33:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-271117811",
+      "id" : 271117811,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-07T23:33:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271117811",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "@luke-jr yes but only if it is buried by a week (in current code), which is the reason for that additional test.  The logprint that it's assuming valid was my warning.. but if you'd like to suggest something more...\r\n",
+      "created_at" : "2017-01-08T00:03:10Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-271119212",
+      "id" : 271119212,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-08T00:03:10Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/271119212",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95069256"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95069256"
+         }
+      },
+      "body" : "You're concerned about it with respect to the default? I don't think that makes sense: It's correct or it isn't and stepping a few blocks back there doesn't make it more correct. If not for the extra complexity and the benefit that block validation gets better tested in the RC cycle I would have exempted the default from this test.\r\n\r\nIf the review process won't catch an invalid block in the chain-- a simple comparison with a constant-- how is it going to catch the invalidity being simply made valid by indirect and subtle changes to the consensus behavior?\r\n\r\nPetertodd's argument for this approach was that the review effort for these values is trivial compared to any of the rest of the software, making it safe and easy to update them with a minimum of additional scrutiny.\r\n\r\n@luke-jr \r\n> Note we could make it smart enough to see the common parent block, but I'm not sure it's worth the additional effort.\r\n\r\nWe could ship a tool that performed the entire set of updates for a release, it would be pretty easy to have such a tool use chain-tips to go back further if there is a competing fork.  Similarly, the tool could also be used to check, like we have for signed commits.  (though if we do that I think it should be a separate PR.)",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-08T01:02:33Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex) {\n+                // This block is a member of the assumed verified chain: potentially disable script checks\n+                // The equivalent time check discourages hashpower from extorting the network via DOS attack\n+                //  into accepting an invalid block through telling users they must manually set assumevalid.\n+                //  Requiring a software change or burrying the invalid block, regardless of the setting, makes\n+                //  it hard to hide the implication of the demand.  This also avoids having release candidates\n+                //  that are hardly doing any signature verification at all in testing without having to\n+                //  artificially set the default assumed verified block further back.\n+                fScriptChecks = (GetBlockProofEquivalentTime(*pindexBestHeader, *pindex, *pindexBestHeader, chainparams.GetConsensus()) < 60 * 60 * 24 * 7);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95069256",
+      "id" : 95069256,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 33,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15615350,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95069256",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95103944"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95103944"
+         }
+      },
+      "body" : "This seems to result in an out-of-bounds memory access when `-assumevalid=` (with no value) is supplied. `uint256S(..)` invokes `base_blob::SetHex(const char *)`, which assumes a supplied length of at least 1. An out-of-bounds access then occurs at [src/uint256.cpp:39](https://github.com/bitcoin/bitcoin/blob/c0ddd32bf629bb48426b0651def497ca1a78e6b1/src/uint256.cpp#L39).",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-09T05:34:56Z",
+      "diff_hunk" : "@@ -920,6 +921,12 @@ bool AppInitParameterInteraction()\n     fCheckBlockIndex = GetBoolArg(\"-checkblockindex\", chainparams.DefaultConsistencyChecks());\n     fCheckpointsEnabled = GetBoolArg(\"-checkpoints\", DEFAULT_CHECKPOINTS_ENABLED);\n \n+    hashAssumeValid = uint256S(GetArg(\"-assumevalid\", chainparams.GetConsensus().defaultAssumeValid.GetHex()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95103944",
+      "id" : 95103944,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 23,
+      "path" : "src/init.cpp",
+      "position" : 23,
+      "pull_request_review_id" : 15647864,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95103944",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/884115?v=3",
+         "events_url" : "https://api.github.com/users/robmcl4/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/robmcl4/followers",
+         "following_url" : "https://api.github.com/users/robmcl4/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/robmcl4/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/robmcl4",
+         "id" : 884115,
+         "login" : "robmcl4",
+         "organizations_url" : "https://api.github.com/users/robmcl4/orgs",
+         "received_events_url" : "https://api.github.com/users/robmcl4/received_events",
+         "repos_url" : "https://api.github.com/users/robmcl4/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/robmcl4/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/robmcl4/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/robmcl4"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95135183"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95135183"
+         }
+      },
+      "body" : "GetArg returns a std:string, base_blob<BITS>::SetHex(const std::string& str) invokes c_str() on the pinput and calls the c_str argumented version (which is null terminated). On a zero length input the input array with be pointer to a null byte. This will fail the psz[0] == '0' (note the quotes). No out of bounds access will occur on line 39 (nor below).  What am I misreading?",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-09T10:59:19Z",
+      "diff_hunk" : "@@ -920,6 +921,12 @@ bool AppInitParameterInteraction()\n     fCheckBlockIndex = GetBoolArg(\"-checkblockindex\", chainparams.DefaultConsistencyChecks());\n     fCheckpointsEnabled = GetBoolArg(\"-checkpoints\", DEFAULT_CHECKPOINTS_ENABLED);\n \n+    hashAssumeValid = uint256S(GetArg(\"-assumevalid\", chainparams.GetConsensus().defaultAssumeValid.GetHex()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95135183",
+      "id" : 95135183,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 23,
+      "path" : "src/init.cpp",
+      "position" : 23,
+      "pull_request_review_id" : 15679267,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95135183",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95152093"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95152093"
+         }
+      },
+      "body" : "Oh of course, the short-circuit eval there slipped my mind. Never mind, all good!",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-09T13:11:33Z",
+      "diff_hunk" : "@@ -920,6 +921,12 @@ bool AppInitParameterInteraction()\n     fCheckBlockIndex = GetBoolArg(\"-checkblockindex\", chainparams.DefaultConsistencyChecks());\n     fCheckpointsEnabled = GetBoolArg(\"-checkpoints\", DEFAULT_CHECKPOINTS_ENABLED);\n \n+    hashAssumeValid = uint256S(GetArg(\"-assumevalid\", chainparams.GetConsensus().defaultAssumeValid.GetHex()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95152093",
+      "id" : 95152093,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 23,
+      "path" : "src/init.cpp",
+      "position" : 23,
+      "pull_request_review_id" : 15697171,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95152093",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/884115?v=3",
+         "events_url" : "https://api.github.com/users/robmcl4/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/robmcl4/followers",
+         "following_url" : "https://api.github.com/users/robmcl4/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/robmcl4/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/robmcl4",
+         "id" : 884115,
+         "login" : "robmcl4",
+         "organizations_url" : "https://api.github.com/users/robmcl4/orgs",
+         "received_events_url" : "https://api.github.com/users/robmcl4/received_events",
+         "repos_url" : "https://api.github.com/users/robmcl4/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/robmcl4/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/robmcl4/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/robmcl4"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95260531"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95260531"
+         }
+      },
+      "body" : "knowledge",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-09T22:23:41Z",
+      "diff_hunk" : "@@ -71,6 +71,27 @@ P2P connection management\n \n - New connections to manually added peers are much faster.\n \n+Introduction of assumed-valid blocks\n+-------------------------------------\n+\n+- A signfigant portion of the initial block download time is spent verifying\n+  scripts/signatures.  Although the verification must pass to ensure the security\n+  of the system, no other result from this verification is needed: If the node\n+  knew the history of a given block were valid it could skip checking scripts\n+  for its ancestors.\n+\n+- A new configuration option 'assumevalid' is provided to express this knoweldge",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95260531",
+      "id" : 95260531,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 22,
+      "path" : "doc/release-notes.md",
+      "position" : null,
+      "pull_request_review_id" : 15810206,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95260531",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95261194"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95261194"
+         }
+      },
+      "body" : "Do we use `_text_` anywhere else in the help output? It seems a bit strange.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-09T22:26:57Z",
+      "diff_hunk" : "@@ -329,8 +329,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-blocknotify=<cmd>\", _(\"Execute command when the best block changes (%s in cmd is replaced by block hash)\"));\n     if (showDebug)\n         strUsage += HelpMessageOpt(\"-blocksonly\", strprintf(_(\"Whether to operate in a blocks only mode (default: %u)\"), DEFAULT_BLOCKSONLY));\n-    strUsage += HelpMessageOpt(\"-checkblocks=<n>\", strprintf(_(\"How many blocks to check at startup (default: %u, 0 = all)\"), DEFAULT_CHECKBLOCKS));\n-    strUsage += HelpMessageOpt(\"-checklevel=<n>\", strprintf(_(\"How thorough the block verification of -checkblocks is (0-4, default: %u)\"), DEFAULT_CHECKLEVEL));\n+    strUsage +=HelpMessageOpt(\"-assumevalid=<hex>\", strprintf(_(\"If this block is in the chain _assume_ that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)\"), Params(CBaseChainParams::MAIN).GetConsensus().defaultAssumeValid.GetHex(), Params(CBaseChainParams::TESTNET).GetConsensus().defaultAssumeValid.GetHex()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95261194",
+      "id" : 95261194,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 6,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15810206,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95261194",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95263755"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95263755"
+         }
+      },
+      "body" : "This seems weird. You're checking\r\n* Whether the to-be-connected block is an ancestor of the assumed-valid block.\r\n* Whether a specific headers chain is at least a week ahead of the to-be-connected block.\r\n\r\nThere is no guarantee however that `pindexBestHeader` descends from the to-be-connected block, so what is the relevance of it here?",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-09T22:42:43Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex) {\n+                // This block is a member of the assumed verified chain: potentially disable script checks\n+                // The equivalent time check discourages hashpower from extorting the network via DOS attack\n+                //  into accepting an invalid block through telling users they must manually set assumevalid.\n+                //  Requiring a software change or burrying the invalid block, regardless of the setting, makes\n+                //  it hard to hide the implication of the demand.  This also avoids having release candidates\n+                //  that are hardly doing any signature verification at all in testing without having to\n+                //  artificially set the default assumed verified block further back.\n+                fScriptChecks = (GetBlockProofEquivalentTime(*pindexBestHeader, *pindex, *pindexBestHeader, chainparams.GetConsensus()) < 60 * 60 * 24 * 7);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95263755",
+      "id" : 95263755,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 33,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15810206,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95263755",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95263801"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95263801"
+         }
+      },
+      "body" : "whose",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-09T22:43:00Z",
+      "diff_hunk" : "@@ -185,6 +185,9 @@ extern CAmount maxTxFee;\n extern int64_t nMaxTipAge;\n extern bool fEnableReplacement;\n \n+/** Block hash whos ancestors we will assume to have valid scripts without checking them. */",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95263801",
+      "id" : 95263801,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 4,
+      "path" : "src/validation.h",
+      "position" : null,
+      "pull_request_review_id" : 15810206,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95263801",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95263855"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95263855"
+         }
+      },
+      "body" : "significant",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-09T22:43:19Z",
+      "diff_hunk" : "@@ -71,6 +71,27 @@ P2P connection management\n \n - New connections to manually added peers are much faster.\n \n+Introduction of assumed-valid blocks\n+-------------------------------------\n+\n+- A signfigant portion of the initial block download time is spent verifying",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95263855",
+      "id" : 95263855,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 16,
+      "path" : "doc/release-notes.md",
+      "position" : null,
+      "pull_request_review_id" : 15810206,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95263855",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95264178"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95264178"
+         }
+      },
+      "body" : "Maybe list the height/time of that block in a comment?",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-09T22:45:15Z",
+      "diff_hunk" : "@@ -99,6 +99,9 @@ class CMainParams : public CChainParams {\n         // The best chain should have at least this much work.\n         consensus.nMinimumChainWork = uint256S(\"0x0000000000000000000000000000000000000000002cb971dd56d1c583c20f90\");\n \n+        // By default assume that the signatures in ancestors of this block are valid.\n+        consensus.defaultAssumeValid = uint256S(\"0x0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95264178",
+      "id" : 95264178,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15810206,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95264178",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95295976"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95295976"
+         }
+      },
+      "body" : "fixed.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-10T03:43:53Z",
+      "diff_hunk" : "@@ -71,6 +71,27 @@ P2P connection management\n \n - New connections to manually added peers are much faster.\n \n+Introduction of assumed-valid blocks\n+-------------------------------------\n+\n+- A signfigant portion of the initial block download time is spent verifying",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95295976",
+      "id" : 95295976,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 16,
+      "path" : "doc/release-notes.md",
+      "position" : null,
+      "pull_request_review_id" : 15845157,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95295976",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95295983"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95295983"
+         }
+      },
+      "body" : "fixed.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-10T03:43:58Z",
+      "diff_hunk" : "@@ -71,6 +71,27 @@ P2P connection management\n \n - New connections to manually added peers are much faster.\n \n+Introduction of assumed-valid blocks\n+-------------------------------------\n+\n+- A signfigant portion of the initial block download time is spent verifying\n+  scripts/signatures.  Although the verification must pass to ensure the security\n+  of the system, no other result from this verification is needed: If the node\n+  knew the history of a given block were valid it could skip checking scripts\n+  for its ancestors.\n+\n+- A new configuration option 'assumevalid' is provided to express this knoweldge",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95295983",
+      "id" : 95295983,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 22,
+      "path" : "doc/release-notes.md",
+      "position" : null,
+      "pull_request_review_id" : 15845164,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95295983",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95295995"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95295995"
+         }
+      },
+      "body" : "removed.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-10T03:44:09Z",
+      "diff_hunk" : "@@ -329,8 +329,7 @@ std::string HelpMessage(HelpMessageMode mode)\n     strUsage += HelpMessageOpt(\"-blocknotify=<cmd>\", _(\"Execute command when the best block changes (%s in cmd is replaced by block hash)\"));\n     if (showDebug)\n         strUsage += HelpMessageOpt(\"-blocksonly\", strprintf(_(\"Whether to operate in a blocks only mode (default: %u)\"), DEFAULT_BLOCKSONLY));\n-    strUsage += HelpMessageOpt(\"-checkblocks=<n>\", strprintf(_(\"How many blocks to check at startup (default: %u, 0 = all)\"), DEFAULT_CHECKBLOCKS));\n-    strUsage += HelpMessageOpt(\"-checklevel=<n>\", strprintf(_(\"How thorough the block verification of -checkblocks is (0-4, default: %u)\"), DEFAULT_CHECKLEVEL));\n+    strUsage +=HelpMessageOpt(\"-assumevalid=<hex>\", strprintf(_(\"If this block is in the chain _assume_ that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)\"), Params(CBaseChainParams::MAIN).GetConsensus().defaultAssumeValid.GetHex(), Params(CBaseChainParams::TESTNET).GetConsensus().defaultAssumeValid.GetHex()));",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95295995",
+      "id" : 95295995,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 6,
+      "path" : "src/init.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15845175,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95295995",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95296005"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95296005"
+         }
+      },
+      "body" : "fixed.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-10T03:44:19Z",
+      "diff_hunk" : "@@ -185,6 +185,9 @@ extern CAmount maxTxFee;\n extern int64_t nMaxTipAge;\n extern bool fEnableReplacement;\n \n+/** Block hash whos ancestors we will assume to have valid scripts without checking them. */",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95296005",
+      "id" : 95296005,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 4,
+      "path" : "src/validation.h",
+      "position" : null,
+      "pull_request_review_id" : 15845184,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95296005",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95296031"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95296031"
+         }
+      },
+      "body" : "added height. I'm trying to not make the update procedure too much work.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-10T03:44:38Z",
+      "diff_hunk" : "@@ -99,6 +99,9 @@ class CMainParams : public CChainParams {\n         // The best chain should have at least this much work.\n         consensus.nMinimumChainWork = uint256S(\"0x0000000000000000000000000000000000000000002cb971dd56d1c583c20f90\");\n \n+        // By default assume that the signatures in ancestors of this block are valid.\n+        consensus.defaultAssumeValid = uint256S(\"0x0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2\");",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95296031",
+      "id" : 95296031,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : null,
+      "pull_request_review_id" : 15845212,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95296031",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95447674"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95447674"
+         }
+      },
+      "body" : "Okay, fixed, I also require the block to be an ancestor of the BestHeader.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-10T20:15:17Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex) {\n+                // This block is a member of the assumed verified chain: potentially disable script checks\n+                // The equivalent time check discourages hashpower from extorting the network via DOS attack\n+                //  into accepting an invalid block through telling users they must manually set assumevalid.\n+                //  Requiring a software change or burrying the invalid block, regardless of the setting, makes\n+                //  it hard to hide the implication of the demand.  This also avoids having release candidates\n+                //  that are hardly doing any signature verification at all in testing without having to\n+                //  artificially set the default assumed verified block further back.\n+                fScriptChecks = (GetBlockProofEquivalentTime(*pindexBestHeader, *pindex, *pindexBestHeader, chainparams.GetConsensus()) < 60 * 60 * 24 * 7);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95447674",
+      "id" : 95447674,
+      "original_commit_id" : "d6598eeb19f4e0f7d154e7cad6a85b66bce228cd",
+      "original_position" : 33,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16002782,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95447674",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "utACK 739983db5dd799424738bc752eee7721fc94f1fb",
+      "created_at" : "2017-01-11T23:09:51Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272025362",
+      "id" : 272025362,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-11T23:09:51Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272025362",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK 739983db5dd799424738bc752eee7721fc94f1fb. I like the approach as well.",
+      "created_at" : "2017-01-12T01:20:24Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272048299",
+      "id" : 272048299,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-12T01:20:24Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272048299",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Looks good to me. I'm going to try to write a test case.\r\n\r\nOne comment: please remove or update the comment in `CheckInputs()` (validation.cpp, line 1392):\r\n\r\n```\r\n        // Skip ECDSA signature verification when connecting blocks before the\r\n        // last block chain checkpoint. Assuming the checkpoints are valid this\r\n        // is safe because block merkle hashes are still computed and checked,\r\n        // and any change will be caught at the next checkpoint. Of course, if\r\n        // the checkpoint is for a chain that's invalid due to false scriptSigs\r\n        // this optimization would allow an invalid chain to be accepted.\r\n```",
+      "created_at" : "2017-01-12T16:24:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272209087",
+      "id" : 272209087,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-12T16:24:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272209087",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95874086"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95874086"
+         }
+      },
+      "body" : "This can be in CChainParams instead of Consensus::Params, which is the consensus \"section of chainparams\".",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-12T20:08:52Z",
+      "diff_hunk" : "@@ -62,6 +62,7 @@ struct Params {\n     int64_t nPowTargetTimespan;\n     int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }\n     uint256 nMinimumChainWork;\n+    uint256 defaultAssumeValid;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95874086",
+      "id" : 95874086,
+      "original_commit_id" : "739983db5dd799424738bc752eee7721fc94f1fb",
+      "original_position" : 4,
+      "path" : "src/consensus/params.h",
+      "position" : 4,
+      "pull_request_review_id" : 16444336,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95874086",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95881703"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95881703"
+         }
+      },
+      "body" : "unlike with 'checkpoints'?",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-12T20:50:08Z",
+      "diff_hunk" : "@@ -71,6 +71,27 @@ P2P connection management\n \n - New connections to manually added peers are much faster.\n \n+Introduction of assumed-valid blocks\n+-------------------------------------\n+\n+- A significant portion of the initial block download time is spent verifying\n+  scripts/signatures.  Although the verification must pass to ensure the security\n+  of the system, no other result from this verification is needed: If the node\n+  knew the history of a given block were valid it could skip checking scripts\n+  for its ancestors.\n+\n+- A new configuration option 'assumevalid' is provided to express this knowledge\n+  to the software.  Unlike the 'checkpoints' in the past this setting does not\n+  force the use of a particular chain: chains that are consistent with it are\n+  processed quicker, but other chains are still accepted if they'd otherwise\n+  be chosen as best. Also unlike 'checkpoints' the user can configure which",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95881703",
+      "id" : 95881703,
+      "original_commit_id" : "739983db5dd799424738bc752eee7721fc94f1fb",
+      "original_position" : 26,
+      "path" : "doc/release-notes.md",
+      "position" : 26,
+      "pull_request_review_id" : 16452176,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95881703",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95882467"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95882467"
+         }
+      },
+      "body" : "Perhaps add \"To avoid releasing software with a 'too recent' default 'assumevalid', checks will never be skipped for blocks that are only a week or less away from the most-work known tip.\". Or something of the sort.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-12T20:54:19Z",
+      "diff_hunk" : "@@ -71,6 +71,27 @@ P2P connection management\n \n - New connections to manually added peers are much faster.\n \n+Introduction of assumed-valid blocks\n+-------------------------------------\n+\n+- A significant portion of the initial block download time is spent verifying\n+  scripts/signatures.  Although the verification must pass to ensure the security\n+  of the system, no other result from this verification is needed: If the node\n+  knew the history of a given block were valid it could skip checking scripts\n+  for its ancestors.\n+\n+- A new configuration option 'assumevalid' is provided to express this knowledge\n+  to the software.  Unlike the 'checkpoints' in the past this setting does not\n+  force the use of a particular chain: chains that are consistent with it are\n+  processed quicker, but other chains are still accepted if they'd otherwise\n+  be chosen as best. Also unlike 'checkpoints' the user can configure which\n+  block history is assumed true, this means that even outdated software can\n+  sync more quickly if the setting is updated by the user.\n+\n+- Because the validity of a chain history is a simple objective fact it is much\n+  easier to review this setting.  As a result the software ships with a default\n+  value adjusted to match the current chain shortly before release.  The use\n+  of this default value can be disabled by setting -assumevalid=0",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95882467",
+      "id" : 95882467,
+      "original_commit_id" : "739983db5dd799424738bc752eee7721fc94f1fb",
+      "original_position" : 33,
+      "path" : "doc/release-notes.md",
+      "position" : 33,
+      "pull_request_review_id" : 16452954,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95882467",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95882695"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95882695"
+         }
+      },
+      "body" : "```pindexBestHeader->GetAncestor(pindex->nHeight) == pindex``` could be moved to first if. Maybe with no gain and perhaps this is clearer.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-12T20:55:37Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex && pindexBestHeader->GetAncestor(pindex->nHeight) == pindex) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95882695",
+      "id" : 95882695,
+      "original_commit_id" : "739983db5dd799424738bc752eee7721fc94f1fb",
+      "original_position" : 25,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16453161,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95882695",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95883683"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95883683"
+         }
+      },
+      "body" : "~~I personally don't like this part. I think it's simpler to just \"artificially set the default assumed verified block further back\", don't see that as a big deal. But no strong opinion, if that's a concern, the solution seems good.~~",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-12T21:00:54Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex) {\n+                // This block is a member of the assumed verified chain: potentially disable script checks\n+                // The equivalent time check discourages hashpower from extorting the network via DOS attack\n+                //  into accepting an invalid block through telling users they must manually set assumevalid.\n+                //  Requiring a software change or burrying the invalid block, regardless of the setting, makes\n+                //  it hard to hide the implication of the demand.  This also avoids having release candidates\n+                //  that are hardly doing any signature verification at all in testing without having to\n+                //  artificially set the default assumed verified block further back.\n+                fScriptChecks = (GetBlockProofEquivalentTime(*pindexBestHeader, *pindex, *pindexBestHeader, chainparams.GetConsensus()) < 60 * 60 * 24 * 7);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95883683",
+      "id" : 95883683,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 33,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16454136,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95883683",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "utACK 739983d modulo small nits that I guess can be fixed later.\r\n",
+      "created_at" : "2017-01-12T21:05:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272283219",
+      "id" : 272283219,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-12T21:05:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272283219",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95902771"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95902771"
+         }
+      },
+      "body" : "Nah, I'm now convinced about using the mechanism, but not \"To avoid releasing software with a 'too recent' default 'assumevalid'\", rather \"To avoid using being fooled with too recent invalid 'assumevalid'\".",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-12T22:45:49Z",
+      "diff_hunk" : "@@ -71,6 +71,27 @@ P2P connection management\n \n - New connections to manually added peers are much faster.\n \n+Introduction of assumed-valid blocks\n+-------------------------------------\n+\n+- A significant portion of the initial block download time is spent verifying\n+  scripts/signatures.  Although the verification must pass to ensure the security\n+  of the system, no other result from this verification is needed: If the node\n+  knew the history of a given block were valid it could skip checking scripts\n+  for its ancestors.\n+\n+- A new configuration option 'assumevalid' is provided to express this knowledge\n+  to the software.  Unlike the 'checkpoints' in the past this setting does not\n+  force the use of a particular chain: chains that are consistent with it are\n+  processed quicker, but other chains are still accepted if they'd otherwise\n+  be chosen as best. Also unlike 'checkpoints' the user can configure which\n+  block history is assumed true, this means that even outdated software can\n+  sync more quickly if the setting is updated by the user.\n+\n+- Because the validity of a chain history is a simple objective fact it is much\n+  easier to review this setting.  As a result the software ships with a default\n+  value adjusted to match the current chain shortly before release.  The use\n+  of this default value can be disabled by setting -assumevalid=0",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95902771",
+      "id" : 95902771,
+      "original_commit_id" : "739983db5dd799424738bc752eee7721fc94f1fb",
+      "original_position" : 33,
+      "path" : "doc/release-notes.md",
+      "position" : 33,
+      "pull_request_review_id" : 16474224,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95902771",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95906450"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95906450"
+         }
+      },
+      "body" : "Micro-nit: regardless of the value chosen, ```60 * 60 * 24 * 7``` could use a const or #define.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-12T23:09:12Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex) {\n+                // This block is a member of the assumed verified chain: potentially disable script checks\n+                // The equivalent time check discourages hashpower from extorting the network via DOS attack\n+                //  into accepting an invalid block through telling users they must manually set assumevalid.\n+                //  Requiring a software change or burrying the invalid block, regardless of the setting, makes\n+                //  it hard to hide the implication of the demand.  This also avoids having release candidates\n+                //  that are hardly doing any signature verification at all in testing without having to\n+                //  artificially set the default assumed verified block further back.\n+                fScriptChecks = (GetBlockProofEquivalentTime(*pindexBestHeader, *pindex, *pindexBestHeader, chainparams.GetConsensus()) < 60 * 60 * 24 * 7);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r95906450",
+      "id" : 95906450,
+      "original_commit_id" : "d5988db393c55a892adef5561d5c520f73d19ca9",
+      "original_position" : 33,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16478126,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/95906450",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1008458?v=3",
+         "events_url" : "https://api.github.com/users/jtimon/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jtimon/followers",
+         "following_url" : "https://api.github.com/users/jtimon/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jtimon/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jtimon",
+         "id" : 1008458,
+         "login" : "jtimon",
+         "organizations_url" : "https://api.github.com/users/jtimon/orgs",
+         "received_events_url" : "https://api.github.com/users/jtimon/received_events",
+         "repos_url" : "https://api.github.com/users/jtimon/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jtimon/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jtimon/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jtimon"
+      }
+   },
+   {
+      "body" : "utACK 739983db5dd799424738bc752eee7721fc94f1fb if we change the time for comparison to anything above 2 weeks, though open to further discussion on IRC.",
+      "created_at" : "2017-01-12T23:11:21Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272313588",
+      "id" : 272313588,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-12T23:11:21Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272313588",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Another thing that just occurred to me - do we want -checkpoints=0 to imply -assumevalid=0? They seem rather equivalent in usage.\n\nOn January 12, 2017 3:09:16 PM PST, \"Jorge TimÃÂ³n\" <notifications@github.com> wrote:\n>jtimon commented on this pull request.\n>\n>\n>\n>> +        // We've been configured with the hash of a block which has\n>been externally verified to have a valid history.\n>+        // A suitable default value is included with the software and\n>updated from time to time.  Because validity\n>+        //  relative to a piece of software is an objective fact these\n>defaults can be easily reviewed.\n>+        // This setting doesn't force the selection of any particular\n>chain but makes validating some faster by\n>+        //  effectively caching the result of part of the\n>verification.\n>+        BlockMap::const_iterator  it =\n>mapBlockIndex.find(hashAssumeValid);\n>+        if (it != mapBlockIndex.end()) {\n>+            if (it->second->GetAncestor(pindex->nHeight) == pindex) {\n>+                // This block is a member of the assumed verified\n>chain: potentially disable script checks\n>+                // The equivalent time check discourages hashpower\n>from extorting the network via DOS attack\n>+                //  into accepting an invalid block through telling\n>users they must manually set assumevalid.\n>+                //  Requiring a software change or burrying the\n>invalid block, regardless of the setting, makes\n>+                //  it hard to hide the implication of the demand. \n>This also avoids having release candidates\n>+                //  that are hardly doing any signature verification\n>at all in testing without having to\n>+                //  artificially set the default assumed verified\n>block further back.\n>+                fScriptChecks =\n>(GetBlockProofEquivalentTime(*pindexBestHeader, *pindex,\n>*pindexBestHeader, chainparams.GetConsensus()) < 60 * 60 * 24 * 7);\n>\n>Micro-nit: regardless of the value chosen, ```60 * 60 * 24 * 7``` could\n>use a const or #define.\n>\n>-- \n>You are receiving this because you commented.\n>Reply to this email directly or view it on GitHub:\n>https://github.com/bitcoin/bitcoin/pull/9484\n",
+      "created_at" : "2017-01-12T23:35:54Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272318342",
+      "id" : 272318342,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-12T23:35:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272318342",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Actually I vote no - we dont need more parameter interactions and if folks are using -checkpoints=0 to avoid trusting the software they're running without reading the changelog (or the realease notes), then they're really not getting what they want. But others might have a different view?",
+      "created_at" : "2017-01-12T23:39:14Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272318952",
+      "id" : 272318952,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-12T23:41:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272318952",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "Tested this with -reindex-chainstate -dbcache=4096 -par=8\r\nReindex time to 447885 was 2h12m.",
+      "created_at" : "2017-01-13T08:55:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272392438",
+      "id" : 272392438,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-13T08:55:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272392438",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/863730?v=3",
+         "events_url" : "https://api.github.com/users/fanquake/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/fanquake/followers",
+         "following_url" : "https://api.github.com/users/fanquake/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/fanquake/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/fanquake",
+         "id" : 863730,
+         "login" : "fanquake",
+         "organizations_url" : "https://api.github.com/users/fanquake/orgs",
+         "received_events_url" : "https://api.github.com/users/fanquake/received_events",
+         "repos_url" : "https://api.github.com/users/fanquake/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/fanquake/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/fanquake/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/fanquake"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96012580"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96012580"
+         }
+      },
+      "body" : "I don't think the fine details of the implementation are of general interest for the release nodes. If people think this is less secure than it is -- thats not the end of the world, and a separate FAQ would be fine if there is confusion/concern.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-13T15:09:36Z",
+      "diff_hunk" : "@@ -71,6 +71,27 @@ P2P connection management\n \n - New connections to manually added peers are much faster.\n \n+Introduction of assumed-valid blocks\n+-------------------------------------\n+\n+- A significant portion of the initial block download time is spent verifying\n+  scripts/signatures.  Although the verification must pass to ensure the security\n+  of the system, no other result from this verification is needed: If the node\n+  knew the history of a given block were valid it could skip checking scripts\n+  for its ancestors.\n+\n+- A new configuration option 'assumevalid' is provided to express this knowledge\n+  to the software.  Unlike the 'checkpoints' in the past this setting does not\n+  force the use of a particular chain: chains that are consistent with it are\n+  processed quicker, but other chains are still accepted if they'd otherwise\n+  be chosen as best. Also unlike 'checkpoints' the user can configure which\n+  block history is assumed true, this means that even outdated software can\n+  sync more quickly if the setting is updated by the user.\n+\n+- Because the validity of a chain history is a simple objective fact it is much\n+  easier to review this setting.  As a result the software ships with a default\n+  value adjusted to match the current chain shortly before release.  The use\n+  of this default value can be disabled by setting -assumevalid=0",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96012580",
+      "id" : 96012580,
+      "original_commit_id" : "739983db5dd799424738bc752eee7721fc94f1fb",
+      "original_position" : 33,
+      "path" : "doc/release-notes.md",
+      "position" : 33,
+      "pull_request_review_id" : 16586776,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96012580",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96012837"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96012837"
+         }
+      },
+      "body" : "That test should pretty much never fail, so it runs later to avoid wasting time trying it for blocks past the assumedvalid point.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-13T15:10:48Z",
+      "diff_hunk" : "@@ -1720,11 +1721,24 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin\n     }\n \n     bool fScriptChecks = true;\n-    if (fCheckpointsEnabled) {\n-        CBlockIndex *pindexLastCheckpoint = Checkpoints::GetLastCheckpoint(chainparams.Checkpoints());\n-        if (pindexLastCheckpoint && pindexLastCheckpoint->GetAncestor(pindex->nHeight) == pindex) {\n-            // This block is an ancestor of a checkpoint: disable script checks\n-            fScriptChecks = false;\n+    if (!hashAssumeValid.IsNull()) {\n+        // We've been configured with the hash of a block which has been externally verified to have a valid history.\n+        // A suitable default value is included with the software and updated from time to time.  Because validity\n+        //  relative to a piece of software is an objective fact these defaults can be easily reviewed.\n+        // This setting doesn't force the selection of any particular chain but makes validating some faster by\n+        //  effectively caching the result of part of the verification.\n+        BlockMap::const_iterator  it = mapBlockIndex.find(hashAssumeValid);\n+        if (it != mapBlockIndex.end()) {\n+            if (it->second->GetAncestor(pindex->nHeight) == pindex && pindexBestHeader->GetAncestor(pindex->nHeight) == pindex) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96012837",
+      "id" : 96012837,
+      "original_commit_id" : "739983db5dd799424738bc752eee7721fc94f1fb",
+      "original_position" : 25,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16587029,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96012837",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "Updated, added a test against nMinimumChainWork to address some concerns, and moved the depth check to two weeks to satisfy Matt. I think it's overkill (and it would be better to have some different sanity checks) but it could be reduced in the future; and it's still better than we are now.",
+      "created_at" : "2017-01-13T15:24:43Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272469033",
+      "id" : 272469033,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-13T15:24:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272469033",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96017188"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96017188"
+         }
+      },
+      "body" : "nit: s/the that/that the",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-13T15:32:55Z",
+      "diff_hunk" : "@@ -1389,11 +1390,10 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi\n         // Only if ALL inputs pass do we perform expensive ECDSA signature checks.\n         // Helps prevent CPU exhaustion attacks.\n \n-        // Skip ECDSA signature verification when connecting blocks before the\n-        // last block chain checkpoint. Assuming the checkpoints are valid this\n+        // Skip script verification when connecting blocks under the\n+        // assumedvalid block. Assuming the that block is valid this",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96017188",
+      "id" : 96017188,
+      "original_commit_id" : "bbdb254951b5f8d5303903c1f925b0ccac0a5c15",
+      "original_position" : 15,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16591774,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96017188",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96019162"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96019162"
+         }
+      },
+      "body" : "fixed",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-13T15:42:43Z",
+      "diff_hunk" : "@@ -1389,11 +1390,10 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi\n         // Only if ALL inputs pass do we perform expensive ECDSA signature checks.\n         // Helps prevent CPU exhaustion attacks.\n \n-        // Skip ECDSA signature verification when connecting blocks before the\n-        // last block chain checkpoint. Assuming the checkpoints are valid this\n+        // Skip script verification when connecting blocks under the\n+        // assumedvalid block. Assuming the that block is valid this",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96019162",
+      "id" : 96019162,
+      "original_commit_id" : "bbdb254951b5f8d5303903c1f925b0ccac0a5c15",
+      "original_position" : 15,
+      "path" : "src/validation.cpp",
+      "position" : null,
+      "pull_request_review_id" : 16593883,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96019162",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "utACK e440ac7ef3b6f3ad1cd8fc7027cece40413202d9\r\n\r\nTravis may need a kick",
+      "created_at" : "2017-01-13T16:42:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272484348",
+      "id" : 272484348,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-13T16:42:07Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272484348",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "body" : "utACK e440ac7ef3b6f3ad1cd8fc7027cece40413202d9",
+      "created_at" : "2017-01-13T17:07:41Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272491011",
+      "id" : 272491011,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-13T17:07:41Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272491011",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "utACK e440ac7 , will also try to find time to test",
+      "created_at" : "2017-01-13T17:12:53Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272492351",
+      "id" : 272492351,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-13T17:12:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272492351",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "tested ACK.\r\n\r\nI've written a new qa testcase that exercises the assumevalid parameter here: https://github.com/jnewbery/bitcoin/commit/fffb047ecf838ca4ccce1dc1347263aef8e90cda\r\n\r\nTests:\r\n- without assumevalid we reject a chain containing a transaction with an invalid signature\r\n- with assumevalid we reject a chain containing a transaction with an invalid signature where the invalid signature is buried by less than two weeks' blocks\r\n- with assumevalid we accept a chain containing a transaction with an invalid signature where the invalid signature is buried by more than two weeks' blocks\r\n",
+      "created_at" : "2017-01-13T21:05:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272547796",
+      "id" : 272547796,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-13T21:05:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272547796",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96086460"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96086460"
+         }
+      },
+      "body" : "ACK 0x0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-13T22:27:54Z",
+      "diff_hunk" : "@@ -99,6 +99,9 @@ class CMainParams : public CChainParams {\n         // The best chain should have at least this much work.\n         consensus.nMinimumChainWork = uint256S(\"0x0000000000000000000000000000000000000000002cb971dd56d1c583c20f90\");\n \n+        // By default assume that the signatures in ancestors of this block are valid.\n+        consensus.defaultAssumeValid = uint256S(\"0x0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2\"); //447235",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96086460",
+      "id" : 96086460,
+      "original_commit_id" : "e440ac7ef3b6f3ad1cd8fc7027cece40413202d9",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 16665311,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-14T22:19:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96086460",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7463573?v=3",
+         "events_url" : "https://api.github.com/users/sdaftuar/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sdaftuar/followers",
+         "following_url" : "https://api.github.com/users/sdaftuar/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sdaftuar/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sdaftuar",
+         "id" : 7463573,
+         "login" : "sdaftuar",
+         "organizations_url" : "https://api.github.com/users/sdaftuar/orgs",
+         "received_events_url" : "https://api.github.com/users/sdaftuar/received_events",
+         "repos_url" : "https://api.github.com/users/sdaftuar/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sdaftuar/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sdaftuar/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sdaftuar"
+      }
+   },
+   {
+      "body" : "Edit: ACK.",
+      "created_at" : "2017-01-14T02:55:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272596456",
+      "id" : 272596456,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-16T22:16:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272596456",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "Please include @jnewbery's tests.",
+      "created_at" : "2017-01-14T03:44:03Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272599115",
+      "id" : 272599115,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-14T03:44:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272599115",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "Neat tests, I was surprised at how small it is for what it does.",
+      "created_at" : "2017-01-14T22:19:40Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272657450",
+      "id" : 272657450,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-14T22:19:40Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272657450",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96143479"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96143479"
+         }
+      },
+      "body" : "ACK 0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-15T17:46:37Z",
+      "diff_hunk" : "@@ -99,6 +99,9 @@ class CMainParams : public CChainParams {\n         // The best chain should have at least this much work.\n         consensus.nMinimumChainWork = uint256S(\"0x0000000000000000000000000000000000000000002cb971dd56d1c583c20f90\");\n \n+        // By default assume that the signatures in ancestors of this block are valid.\n+        consensus.defaultAssumeValid = uint256S(\"0x0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2\"); //447235",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96143479",
+      "id" : 96143479,
+      "original_commit_id" : "e440ac7ef3b6f3ad1cd8fc7027cece40413202d9",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 16719567,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-15T17:46:37Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96143479",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "utACK 7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-15T17:47:45Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272711136",
+      "id" : 272711136,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-15T17:47:45Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272711136",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "did some additional light testing...  still ACK\r\n",
+      "created_at" : "2017-01-15T19:01:28Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272715731",
+      "id" : 272715731,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-15T19:01:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272715731",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/4360349?v=3",
+         "events_url" : "https://api.github.com/users/morcos/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/morcos/followers",
+         "following_url" : "https://api.github.com/users/morcos/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/morcos/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/morcos",
+         "id" : 4360349,
+         "login" : "morcos",
+         "organizations_url" : "https://api.github.com/users/morcos/orgs",
+         "received_events_url" : "https://api.github.com/users/morcos/received_events",
+         "repos_url" : "https://api.github.com/users/morcos/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/morcos/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/morcos/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/morcos"
+      }
+   },
+   {
+      "body" : "Tested a full reindex together with #9512 with asan/lsan/ubsan, all good.",
+      "created_at" : "2017-01-16T21:35:20Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-272967332",
+      "id" : 272967332,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-16T21:35:20Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/272967332",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96308669"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96308669"
+         }
+      },
+      "body" : "ACK 0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-16T21:37:03Z",
+      "diff_hunk" : "@@ -99,6 +99,9 @@ class CMainParams : public CChainParams {\n         // The best chain should have at least this much work.\n         consensus.nMinimumChainWork = uint256S(\"0x0000000000000000000000000000000000000000002cb971dd56d1c583c20f90\");\n \n+        // By default assume that the signatures in ancestors of this block are valid.\n+        consensus.defaultAssumeValid = uint256S(\"0x0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2\"); //447235",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96308669",
+      "id" : 96308669,
+      "original_commit_id" : "e440ac7ef3b6f3ad1cd8fc7027cece40413202d9",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 16886857,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-16T21:37:03Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96308669",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/5767891?v=3",
+         "events_url" : "https://api.github.com/users/instagibbs/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/instagibbs/followers",
+         "following_url" : "https://api.github.com/users/instagibbs/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/instagibbs/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/instagibbs",
+         "id" : 5767891,
+         "login" : "instagibbs",
+         "organizations_url" : "https://api.github.com/users/instagibbs/orgs",
+         "received_events_url" : "https://api.github.com/users/instagibbs/received_events",
+         "repos_url" : "https://api.github.com/users/instagibbs/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/instagibbs/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/instagibbs/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/instagibbs"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96313301"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96313301"
+         }
+      },
+      "body" : "post-merge ACK 0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-16T22:15:43Z",
+      "diff_hunk" : "@@ -99,6 +99,9 @@ class CMainParams : public CChainParams {\n         // The best chain should have at least this much work.\n         consensus.nMinimumChainWork = uint256S(\"0x0000000000000000000000000000000000000000002cb971dd56d1c583c20f90\");\n \n+        // By default assume that the signatures in ancestors of this block are valid.\n+        consensus.defaultAssumeValid = uint256S(\"0x0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2\"); //447235",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96313301",
+      "id" : 96313301,
+      "original_commit_id" : "e440ac7ef3b6f3ad1cd8fc7027cece40413202d9",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 16891563,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-16T22:15:43Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96313301",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/417043?v=3",
+         "events_url" : "https://api.github.com/users/theuni/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/theuni/followers",
+         "following_url" : "https://api.github.com/users/theuni/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/theuni/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/theuni",
+         "id" : 417043,
+         "login" : "theuni",
+         "organizations_url" : "https://api.github.com/users/theuni/orgs",
+         "received_events_url" : "https://api.github.com/users/theuni/received_events",
+         "repos_url" : "https://api.github.com/users/theuni/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/theuni/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/theuni/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/theuni"
+      }
+   },
+   {
+      "body" : "utACK 7b5e3fe",
+      "created_at" : "2017-01-17T09:19:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-273062122",
+      "id" : 273062122,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-17T09:19:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/273062122",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/7275704?v=3",
+         "events_url" : "https://api.github.com/users/btcdrak/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/btcdrak/followers",
+         "following_url" : "https://api.github.com/users/btcdrak/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/btcdrak/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/btcdrak",
+         "id" : 7275704,
+         "login" : "btcdrak",
+         "organizations_url" : "https://api.github.com/users/btcdrak/orgs",
+         "received_events_url" : "https://api.github.com/users/btcdrak/received_events",
+         "repos_url" : "https://api.github.com/users/btcdrak/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/btcdrak/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/btcdrak/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/btcdrak"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96553224"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96553224"
+         }
+      },
+      "body" : "?",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-18T01:47:54Z",
+      "diff_hunk" : "@@ -49,7 +49,7 @@ Low-level RPC changes\n   than two arguments.\n \n Removal of Priority Estimation\n-------------------------------\n+-------------------------------",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96553224",
+      "id" : 96553224,
+      "original_commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "original_position" : 5,
+      "path" : "doc/release-notes.md",
+      "position" : 5,
+      "pull_request_review_id" : 17137820,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-18T01:47:54Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96553224",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96553427"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96553427"
+         }
+      },
+      "body" : "ACK the block, but NACK making this on by default. I love the feature, but I think there needs to be express consent by the user to avoid setting a potentially dangerous precedent.  Also, it would be nice to allow the user to stipulate their own block by which to do this - perhaps they trust a particular node on the network and would based their block chosen on that.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-18T01:49:43Z",
+      "diff_hunk" : "@@ -99,6 +99,9 @@ class CMainParams : public CChainParams {\n         // The best chain should have at least this much work.\n         consensus.nMinimumChainWork = uint256S(\"0x0000000000000000000000000000000000000000002cb971dd56d1c583c20f90\");\n \n+        // By default assume that the signatures in ancestors of this block are valid.\n+        consensus.defaultAssumeValid = uint256S(\"0x0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2\"); //447235",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96553427",
+      "id" : 96553427,
+      "original_commit_id" : "e440ac7ef3b6f3ad1cd8fc7027cece40413202d9",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 17138019,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-18T01:50:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96553427",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96553672"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96553672"
+         }
+      },
+      "body" : "no longer ECDSA?",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-18T01:51:52Z",
+      "diff_hunk" : "@@ -1389,11 +1390,10 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi\n         // Only if ALL inputs pass do we perform expensive ECDSA signature checks.\n         // Helps prevent CPU exhaustion attacks.\n \n-        // Skip ECDSA signature verification when connecting blocks before the",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r96553672",
+      "id" : 96553672,
+      "original_commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "original_position" : 12,
+      "path" : "src/validation.cpp",
+      "position" : 12,
+      "pull_request_review_id" : 17138241,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-18T01:51:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/96553672",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r97181715"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97181715"
+         }
+      },
+      "body" : "Script verification includes ECDSA verification, but does much more.",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-21T00:28:28Z",
+      "diff_hunk" : "@@ -1389,11 +1390,10 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi\n         // Only if ALL inputs pass do we perform expensive ECDSA signature checks.\n         // Helps prevent CPU exhaustion attacks.\n \n-        // Skip ECDSA signature verification when connecting blocks before the",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r97181715",
+      "id" : 97181715,
+      "original_commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "original_position" : 12,
+      "path" : "src/validation.cpp",
+      "position" : 12,
+      "pull_request_review_id" : 17791423,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-21T00:28:28Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97181715",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r97196402"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97196402"
+         }
+      },
+      "body" : "@rebroad This is possible, please read the docs. Also, if you are unsure about the block hash, you can always set -noassumevalid",
+      "commit_id" : "7b5e3fe0ccb434821927c9cc2e9f2fb0d7f01dc4",
+      "created_at" : "2017-01-21T11:17:49Z",
+      "diff_hunk" : "@@ -99,6 +99,9 @@ class CMainParams : public CChainParams {\n         // The best chain should have at least this much work.\n         consensus.nMinimumChainWork = uint256S(\"0x0000000000000000000000000000000000000000002cb971dd56d1c583c20f90\");\n \n+        // By default assume that the signatures in ancestors of this block are valid.\n+        consensus.defaultAssumeValid = uint256S(\"0x0000000000000000030abc968e1bd635736e880b946085c93152969b9a81a6e2\"); //447235",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#discussion_r97196402",
+      "id" : 97196402,
+      "original_commit_id" : "e440ac7ef3b6f3ad1cd8fc7027cece40413202d9",
+      "original_position" : 5,
+      "path" : "src/chainparams.cpp",
+      "position" : 5,
+      "pull_request_review_id" : 17805226,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/9484",
+      "updated_at" : "2017-01-21T11:17:49Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/97196402",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "@rebroad The reasoning is that people are already relying on peer review to make sure the consensus logic isn't being changed (which could also lead to invalid blocks being accepted), and that is much harder than checking whether a single block hash is part of a valid chain. This is different from chrckpoints, which do have an effect beyond skipping validation, and need much more careful choosing.",
+      "created_at" : "2017-01-21T15:26:25Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/9484#issuecomment-274268159",
+      "id" : 274268159,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/9484",
+      "updated_at" : "2017-01-21T15:26:25Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/274268159",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

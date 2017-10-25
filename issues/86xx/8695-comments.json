@@ -1,0 +1,650 @@
+[
+   {
+      "body" : "Doesn't this need a protection to only do this once? (we wouldn't want to repeat failing commands every 1ms)",
+      "created_at" : "2016-09-13T15:26:35Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-246719608",
+      "id" : 246719608,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2016-09-13T15:55:35Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/246719608",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@laanwj The address being connected it selected new each time the loop runs, because of how the logic works it won't try the same thing in a loop.",
+      "created_at" : "2016-09-13T16:40:59Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-246744232",
+      "id" : 246744232,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2016-09-13T16:40:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/246744232",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "Sure, so it won't 'DoS' a single host, but what if there is a connection problem with a whole IP range? E.g. from the local network to the internet. Then you don't want to keep retrying every ms either.",
+      "created_at" : "2016-09-14T16:35:16Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-247074003",
+      "id" : 247074003,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2016-09-14T16:35:16Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/247074003",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@laanwj It re-tries every 500ms",
+      "created_at" : "2016-09-15T12:36:48Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-247316067",
+      "id" : 247316067,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2016-09-15T12:36:48Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/247316067",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "ACK.  Maybe it could use a comment to point out that it uses and depends on the outer loop sleep.",
+      "created_at" : "2016-09-18T21:53:32Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-247883299",
+      "id" : 247883299,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2016-09-18T21:53:32Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/247883299",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "rebased and comment added",
+      "created_at" : "2016-11-14T22:25:57Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-260483493",
+      "id" : 260483493,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2016-11-14T22:25:57Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/260483493",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r88082991"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/88082991"
+         }
+      },
+      "body" : "nNextFeeler is in microseconds, so you should reuse the value of the call to GetTimeMicros instead (or just assign 0, which will have the same effect).\n",
+      "commit_id" : "7d18e69e510f696f30e3ba547924e678e3786cc0",
+      "created_at" : "2016-11-15T18:37:40Z",
+      "diff_hunk" : "@@ -1734,7 +1734,15 @@ void ThreadOpenConnections()\n                 LogPrint(\"net\", \"Making feeler connection to %s\\n\", addrConnect.ToString());\n             }\n \n-            OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+            int64_t nStartTime = GetTimeMicros();\n+\n+            bool fRet = OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+\n+            // Retry feeler connection if OpenNetworkConnection fails in under 1ms.\n+            // Avoids issues with feelers to IP space we don't know how to route.\n+            if (!fRet && GetTimeMicros() - nStartTime < 1000) {\n+                nNextFeeler = GetTime();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r88082991",
+      "id" : 88082991,
+      "original_commit_id" : "ce1e69ab936188d989489f306a5e337cb60a6160",
+      "original_position" : 12,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 8667499,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695",
+      "updated_at" : "2017-02-04T15:26:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/88082991",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "body" : "ping @pstratem ",
+      "created_at" : "2016-12-02T02:16:33Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-264355488",
+      "id" : 264355488,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2016-12-02T02:16:33Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/264355488",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r91847697"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/91847697"
+         }
+      },
+      "body" : "nit: \"ret\" seems to be the standard so far, with 69 instances, compared to only 10 instances of \"fRet\" in this project.",
+      "commit_id" : "7d18e69e510f696f30e3ba547924e678e3786cc0",
+      "created_at" : "2016-12-11T04:48:15Z",
+      "diff_hunk" : "@@ -1734,7 +1734,15 @@ void ThreadOpenConnections()\n                 LogPrint(\"net\", \"Making feeler connection to %s\\n\", addrConnect.ToString());\n             }\n \n-            OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+            int64_t nStartTime = GetTimeMicros();\n+\n+            bool fRet = OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r91847697",
+      "id" : 91847697,
+      "original_commit_id" : "ce1e69ab936188d989489f306a5e337cb60a6160",
+      "original_position" : 7,
+      "path" : "src/net.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 12359647,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695",
+      "updated_at" : "2017-02-04T15:26:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/91847697",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r93313375"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/93313375"
+         }
+      },
+      "body" : "I'm matching the style of code around this, all variable names start with their type.",
+      "commit_id" : "7d18e69e510f696f30e3ba547924e678e3786cc0",
+      "created_at" : "2016-12-20T19:59:23Z",
+      "diff_hunk" : "@@ -1734,7 +1734,15 @@ void ThreadOpenConnections()\n                 LogPrint(\"net\", \"Making feeler connection to %s\\n\", addrConnect.ToString());\n             }\n \n-            OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+            int64_t nStartTime = GetTimeMicros();\n+\n+            bool fRet = OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r93313375",
+      "id" : 93313375,
+      "original_commit_id" : "ce1e69ab936188d989489f306a5e337cb60a6160",
+      "original_position" : 7,
+      "path" : "src/net.cpp",
+      "position" : 7,
+      "pull_request_review_id" : 13838530,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695",
+      "updated_at" : "2017-02-04T15:26:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/93313375",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r93313398"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/93313398"
+         }
+      },
+      "body" : "Fixed.",
+      "commit_id" : "7d18e69e510f696f30e3ba547924e678e3786cc0",
+      "created_at" : "2016-12-20T19:59:30Z",
+      "diff_hunk" : "@@ -1734,7 +1734,15 @@ void ThreadOpenConnections()\n                 LogPrint(\"net\", \"Making feeler connection to %s\\n\", addrConnect.ToString());\n             }\n \n-            OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+            int64_t nStartTime = GetTimeMicros();\n+\n+            bool fRet = OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+\n+            // Retry feeler connection if OpenNetworkConnection fails in under 1ms.\n+            // Avoids issues with feelers to IP space we don't know how to route.\n+            if (!fRet && GetTimeMicros() - nStartTime < 1000) {\n+                nNextFeeler = GetTime();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r93313398",
+      "id" : 93313398,
+      "original_commit_id" : "ce1e69ab936188d989489f306a5e337cb60a6160",
+      "original_position" : 12,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 13838548,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695",
+      "updated_at" : "2017-02-04T15:26:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/93313398",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "tACK",
+      "created_at" : "2016-12-27T05:28:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-269271991",
+      "id" : 269271991,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2016-12-27T05:28:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/269271991",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/1530283?v=3",
+         "events_url" : "https://api.github.com/users/rebroad/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/rebroad/followers",
+         "following_url" : "https://api.github.com/users/rebroad/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/rebroad/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/rebroad",
+         "id" : 1530283,
+         "login" : "rebroad",
+         "organizations_url" : "https://api.github.com/users/rebroad/orgs",
+         "received_events_url" : "https://api.github.com/users/rebroad/received_events",
+         "repos_url" : "https://api.github.com/users/rebroad/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/rebroad/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/rebroad/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/rebroad"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r93948882"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/93948882"
+         }
+      },
+      "body" : "Not fixed.",
+      "commit_id" : "7d18e69e510f696f30e3ba547924e678e3786cc0",
+      "created_at" : "2016-12-27T16:44:56Z",
+      "diff_hunk" : "@@ -1734,7 +1734,15 @@ void ThreadOpenConnections()\n                 LogPrint(\"net\", \"Making feeler connection to %s\\n\", addrConnect.ToString());\n             }\n \n-            OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+            int64_t nStartTime = GetTimeMicros();\n+\n+            bool fRet = OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+\n+            // Retry feeler connection if OpenNetworkConnection fails in under 1ms.\n+            // Avoids issues with feelers to IP space we don't know how to route.\n+            if (!fRet && GetTimeMicros() - nStartTime < 1000) {\n+                nNextFeeler = GetTime();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r93948882",
+      "id" : 93948882,
+      "original_commit_id" : "ce1e69ab936188d989489f306a5e337cb60a6160",
+      "original_position" : 12,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 14479925,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695",
+      "updated_at" : "2017-02-04T15:26:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/93948882",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r99397250"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99397250"
+         }
+      },
+      "body" : "I changed it to be 0 but i've now changed it to GetTimeMicros()",
+      "commit_id" : "7d18e69e510f696f30e3ba547924e678e3786cc0",
+      "created_at" : "2017-02-03T18:44:33Z",
+      "diff_hunk" : "@@ -1734,7 +1734,15 @@ void ThreadOpenConnections()\n                 LogPrint(\"net\", \"Making feeler connection to %s\\n\", addrConnect.ToString());\n             }\n \n-            OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+            int64_t nStartTime = GetTimeMicros();\n+\n+            bool fRet = OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+\n+            // Retry feeler connection if OpenNetworkConnection fails in under 1ms.\n+            // Avoids issues with feelers to IP space we don't know how to route.\n+            if (!fRet && GetTimeMicros() - nStartTime < 1000) {\n+                nNextFeeler = GetTime();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r99397250",
+      "id" : 99397250,
+      "original_commit_id" : "ce1e69ab936188d989489f306a5e337cb60a6160",
+      "original_position" : 12,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 20076697,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695",
+      "updated_at" : "2017-02-04T15:26:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99397250",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r99401065"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99401065"
+         }
+      },
+      "body" : "Did you forget to push?",
+      "commit_id" : "7d18e69e510f696f30e3ba547924e678e3786cc0",
+      "created_at" : "2017-02-03T19:03:34Z",
+      "diff_hunk" : "@@ -1734,7 +1734,15 @@ void ThreadOpenConnections()\n                 LogPrint(\"net\", \"Making feeler connection to %s\\n\", addrConnect.ToString());\n             }\n \n-            OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+            int64_t nStartTime = GetTimeMicros();\n+\n+            bool fRet = OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+\n+            // Retry feeler connection if OpenNetworkConnection fails in under 1ms.\n+            // Avoids issues with feelers to IP space we don't know how to route.\n+            if (!fRet && GetTimeMicros() - nStartTime < 1000) {\n+                nNextFeeler = GetTime();",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r99401065",
+      "id" : 99401065,
+      "original_commit_id" : "ce1e69ab936188d989489f306a5e337cb60a6160",
+      "original_position" : 12,
+      "path" : "src/net.cpp",
+      "position" : null,
+      "pull_request_review_id" : 20080678,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695",
+      "updated_at" : "2017-02-04T15:26:13Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99401065",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r99852785"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99852785"
+         }
+      },
+      "body" : "Does this need an && fFeeler in ti?",
+      "commit_id" : "7d18e69e510f696f30e3ba547924e678e3786cc0",
+      "created_at" : "2017-02-07T15:48:09Z",
+      "diff_hunk" : "@@ -1701,7 +1701,16 @@ void CConnman::ThreadOpenConnections()\n                 LogPrint(\"net\", \"Making feeler connection to %s\\n\", addrConnect.ToString());\n             }\n \n-            OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+            int64_t nStartTime = GetTimeMicros();\n+\n+            bool fRet = OpenNetworkConnection(addrConnect, (int)setConnected.size() >= std::min(nMaxConnections - 1, 2), &grant, NULL, false, fFeeler);\n+\n+            // Retry feeler connection if OpenNetworkConnection fails in under 1ms.\n+            // Avoids issues with feelers to IP space we don't know how to route.\n+            // The outer loop has a 500ms delay, we rely on that delay here\n+            if (!fRet && GetTimeMicros() - nStartTime < 1000) {",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#discussion_r99852785",
+      "id" : 99852785,
+      "original_commit_id" : "7d18e69e510f696f30e3ba547924e678e3786cc0",
+      "original_position" : 12,
+      "path" : "src/net.cpp",
+      "position" : 12,
+      "pull_request_review_id" : 20540209,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/8695",
+      "updated_at" : "2017-02-07T15:48:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/99852785",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "@TheBlueMatt Currently if the address selected for the feeler logic is in ipv6 space and you can only route ipv4 you will wait about 120 seconds to retry, this is simply to avoid that delay.",
+      "created_at" : "2017-02-08T00:38:27Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-278192039",
+      "id" : 278192039,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2017-02-08T00:38:27Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/278192039",
+      "user" : {
+         "avatar_url" : "https://avatars.githubusercontent.com/u/620611?v=3",
+         "events_url" : "https://api.github.com/users/pstratem/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/pstratem/followers",
+         "following_url" : "https://api.github.com/users/pstratem/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/pstratem/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/pstratem",
+         "id" : 620611,
+         "login" : "pstratem",
+         "organizations_url" : "https://api.github.com/users/pstratem/orgs",
+         "received_events_url" : "https://api.github.com/users/pstratem/received_events",
+         "repos_url" : "https://api.github.com/users/pstratem/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/pstratem/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/pstratem/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/pstratem"
+      }
+   },
+   {
+      "body" : "@pstratem Can you address https://github.com/bitcoin/bitcoin/pull/8695/files#r99852785 ?",
+      "created_at" : "2017-04-09T15:27:34Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/8695#issuecomment-292792686",
+      "id" : 292792686,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/8695",
+      "updated_at" : "2017-04-09T15:27:34Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/292792686",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/548488?v=3",
+         "events_url" : "https://api.github.com/users/sipa/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/sipa/followers",
+         "following_url" : "https://api.github.com/users/sipa/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/sipa/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/sipa",
+         "id" : 548488,
+         "login" : "sipa",
+         "organizations_url" : "https://api.github.com/users/sipa/orgs",
+         "received_events_url" : "https://api.github.com/users/sipa/received_events",
+         "repos_url" : "https://api.github.com/users/sipa/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/sipa/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/sipa/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/sipa"
+      }
+   }
+]

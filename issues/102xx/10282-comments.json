@@ -1,0 +1,540 @@
+[
+   {
+      "body" : "(7-8 year target can be adjusted if an earlier expiration is generally acceptable)",
+      "created_at" : "2017-04-26T14:14:04Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-297421700",
+      "id" : 297421700,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-04-26T14:14:04Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297421700",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113464954"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113464954"
+         }
+      },
+      "body" : "Orbital period of the Earth == mean solar year != mean tropical year; 1 Earth year = 365.242199 days, or 365.2425 days in Gregorian calendar",
+      "commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "created_at" : "2017-04-26T14:21:56Z",
+      "diff_hunk" : "@@ -28,4 +30,8 @@ enum {\n     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),\n };\n \n+static const int64_t SECONDS_PER_YEAR = 31558060;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113464954",
+      "id" : 113464954,
+      "original_commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "original_position" : 13,
+      "path" : "src/consensus/consensus.h",
+      "position" : 13,
+      "pull_request_review_id" : 34855596,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282",
+      "updated_at" : "2017-04-26T14:30:59Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113464954",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/145747?v=3",
+         "events_url" : "https://api.github.com/users/wangchun/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/wangchun/followers",
+         "following_url" : "https://api.github.com/users/wangchun/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/wangchun/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/wangchun",
+         "id" : 145747,
+         "login" : "wangchun",
+         "organizations_url" : "https://api.github.com/users/wangchun/orgs",
+         "received_events_url" : "https://api.github.com/users/wangchun/received_events",
+         "repos_url" : "https://api.github.com/users/wangchun/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/wangchun/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/wangchun/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/wangchun"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113476732"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113476732"
+         }
+      },
+      "body" : "For some reason, that gets `ctime(47*(31556952))` => 'Sat Dec 31 09:32:24 2016'\r\n\r\nI agree your math looks more correct, but for some reason there are more seconds to get the desired result.",
+      "commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "created_at" : "2017-04-26T15:00:44Z",
+      "diff_hunk" : "@@ -28,4 +30,8 @@ enum {\n     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),\n };\n \n+static const int64_t SECONDS_PER_YEAR = 31558060;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113476732",
+      "id" : 113476732,
+      "original_commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "original_position" : 13,
+      "path" : "src/consensus/consensus.h",
+      "position" : 13,
+      "pull_request_review_id" : 34868532,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282",
+      "updated_at" : "2017-04-26T15:00:44Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113476732",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113477950"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113477950"
+         }
+      },
+      "body" : "Maybe a block height would be better?",
+      "commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "created_at" : "2017-04-26T15:05:06Z",
+      "diff_hunk" : "@@ -28,4 +30,8 @@ enum {\n     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),\n };\n \n+static const int64_t SECONDS_PER_YEAR = 31558060;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113477950",
+      "id" : 113477950,
+      "original_commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "original_position" : 13,
+      "path" : "src/consensus/consensus.h",
+      "position" : 13,
+      "pull_request_review_id" : 34869893,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282",
+      "updated_at" : "2017-04-26T15:05:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113477950",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/413395?v=3",
+         "events_url" : "https://api.github.com/users/dcousens/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/dcousens/followers",
+         "following_url" : "https://api.github.com/users/dcousens/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/dcousens/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/dcousens",
+         "id" : 413395,
+         "login" : "dcousens",
+         "organizations_url" : "https://api.github.com/users/dcousens/orgs",
+         "received_events_url" : "https://api.github.com/users/dcousens/received_events",
+         "repos_url" : "https://api.github.com/users/dcousens/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/dcousens/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/dcousens/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/dcousens"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113479337"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113479337"
+         }
+      },
+      "body" : "Can't compare a block height to system clock, unfortunately. :p",
+      "commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "created_at" : "2017-04-26T15:10:09Z",
+      "diff_hunk" : "@@ -28,4 +30,8 @@ enum {\n     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),\n };\n \n+static const int64_t SECONDS_PER_YEAR = 31558060;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113479337",
+      "id" : 113479337,
+      "original_commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "original_position" : 13,
+      "path" : "src/consensus/consensus.h",
+      "position" : 13,
+      "pull_request_review_id" : 34871491,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282",
+      "updated_at" : "2017-04-26T15:10:09Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113479337",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "_links" : {
+         "html" : {
+            "href" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113598835"
+         },
+         "pull_request" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282"
+         },
+         "self" : {
+            "href" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113598835"
+         }
+      },
+      "body" : "EPOCH seconds are not calculated by years * seconds_per_year,  there are time tweak gaps, leap years, historical time change reasons etc.  ",
+      "commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "created_at" : "2017-04-27T01:31:06Z",
+      "diff_hunk" : "@@ -28,4 +30,8 @@ enum {\n     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),\n };\n \n+static const int64_t SECONDS_PER_YEAR = 31558060;",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#discussion_r113598835",
+      "id" : 113598835,
+      "original_commit_id" : "21f123db98389b44fe898efc18c819228798b99e",
+      "original_position" : 13,
+      "path" : "src/consensus/consensus.h",
+      "position" : 13,
+      "pull_request_review_id" : 35000977,
+      "pull_request_url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/10282",
+      "updated_at" : "2017-04-27T01:31:06Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/pulls/comments/113598835",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/843892?v=3",
+         "events_url" : "https://api.github.com/users/yinyunqiao/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/yinyunqiao/followers",
+         "following_url" : "https://api.github.com/users/yinyunqiao/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/yinyunqiao/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/yinyunqiao",
+         "id" : 843892,
+         "login" : "yinyunqiao",
+         "organizations_url" : "https://api.github.com/users/yinyunqiao/orgs",
+         "received_events_url" : "https://api.github.com/users/yinyunqiao/received_events",
+         "repos_url" : "https://api.github.com/users/yinyunqiao/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/yinyunqiao/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/yinyunqiao/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/yinyunqiao"
+      }
+   },
+   {
+      "body" : "I think something like this is fine, so long as its easily user overridden and very clear whats happening.. why use the block headers rather than system date.\r\n\r\nRather than debating what an acceptable time frame would be, I think it might be interesting to first conduct a sealed poll among developers, to see what people think before we influence each other too much.",
+      "created_at" : "2017-04-27T04:44:08Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-297610304",
+      "id" : 297610304,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-04-27T04:44:08Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297610304",
+      "user" : {
+         "avatar_url" : "https://avatars2.githubusercontent.com/u/858454?v=3",
+         "events_url" : "https://api.github.com/users/gmaxwell/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/gmaxwell/followers",
+         "following_url" : "https://api.github.com/users/gmaxwell/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/gmaxwell/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/gmaxwell",
+         "id" : 858454,
+         "login" : "gmaxwell",
+         "organizations_url" : "https://api.github.com/users/gmaxwell/orgs",
+         "received_events_url" : "https://api.github.com/users/gmaxwell/received_events",
+         "repos_url" : "https://api.github.com/users/gmaxwell/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/gmaxwell/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/gmaxwell/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/gmaxwell"
+      }
+   },
+   {
+      "body" : "I don't really like planned obsolescence. But being able to plan hard forks years ahead is certainly a nice feature, it's how I always imagined long-term protocol changes would work. So as long as the expiration stays significant time ahead (the current value is good imo) I'm okay with it.",
+      "created_at" : "2017-04-27T14:13:38Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-297725557",
+      "id" : 297725557,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-04-27T14:16:46Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297725557",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "@gmaxwell So how about interested parties all hash a nonce + statement on preferred obsolescence timeframe(s), and post the hash on https://github.com/bitcoin-core/bitcoin-devwiki/wiki/PR10282-Hashes ?",
+      "created_at" : "2017-04-27T14:30:58Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-297730714",
+      "id" : 297730714,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-04-27T14:30:58Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297730714",
+      "user" : {
+         "avatar_url" : "https://avatars1.githubusercontent.com/u/1095675?v=3",
+         "events_url" : "https://api.github.com/users/luke-jr/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/luke-jr/followers",
+         "following_url" : "https://api.github.com/users/luke-jr/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/luke-jr/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/luke-jr",
+         "id" : 1095675,
+         "login" : "luke-jr",
+         "organizations_url" : "https://api.github.com/users/luke-jr/orgs",
+         "received_events_url" : "https://api.github.com/users/luke-jr/received_events",
+         "repos_url" : "https://api.github.com/users/luke-jr/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/luke-jr/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/luke-jr/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/luke-jr"
+      }
+   },
+   {
+      "body" : "I'd be much happier if this just alarmed and warned the user rather than shutdown the node, but even then I don't really see much benefit.\r\n\r\n> Furthermore, this enables a sort of certainty of old nodes ending by a deadline, turning any hardfork into a de facto softfork provided it is planned 8 years out.\r\n\r\nSlicing old nodes off the network doesn't magically turn a hard fork into a soft fork. Users either have to upgrade, or run the old node and fall out of consensus. It's still a hard fork.\r\n\r\nIf this proposal is simply to protect users from running an old, insecure version, then:\r\n\r\n1. why does this need to automatically shut down the node rather than alarm and warn the user;\r\n2. why pick an arbitrary time frame like 7 years? If a soft-fork is activated 6 months after a release which makes the release insecure, then the node will stop working 6.5 years after it became insecure. Doesn't seem like much of a benefit to me.\r\n\r\nI'm struggling to see what problem this solves.",
+      "created_at" : "2017-04-28T13:30:29Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-297998120",
+      "id" : 297998120,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-04-28T13:30:29Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/297998120",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/1063656?v=3",
+         "events_url" : "https://api.github.com/users/jnewbery/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/jnewbery/followers",
+         "following_url" : "https://api.github.com/users/jnewbery/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/jnewbery/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/jnewbery",
+         "id" : 1063656,
+         "login" : "jnewbery",
+         "organizations_url" : "https://api.github.com/users/jnewbery/orgs",
+         "received_events_url" : "https://api.github.com/users/jnewbery/received_events",
+         "repos_url" : "https://api.github.com/users/jnewbery/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/jnewbery/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/jnewbery/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/jnewbery"
+      }
+   },
+   {
+      "body" : "Not sure why the node must shut down. Note that there is already a state\n\"safe_mode\", which can trigger automatically after the node \"aged\" more\nthan X years instead of shutting down.\n",
+      "created_at" : "2017-04-28T14:07:05Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-298007334",
+      "id" : 298007334,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-04-28T14:07:05Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298007334",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/6399679?v=3",
+         "events_url" : "https://api.github.com/users/MarcoFalke/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/MarcoFalke/followers",
+         "following_url" : "https://api.github.com/users/MarcoFalke/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/MarcoFalke/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/MarcoFalke",
+         "id" : 6399679,
+         "login" : "MarcoFalke",
+         "organizations_url" : "https://api.github.com/users/MarcoFalke/orgs",
+         "received_events_url" : "https://api.github.com/users/MarcoFalke/received_events",
+         "repos_url" : "https://api.github.com/users/MarcoFalke/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/MarcoFalke/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/MarcoFalke/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/MarcoFalke"
+      }
+   },
+   {
+      "body" : "I think shutdown with an option to forcibly keep it running has benefits. Specifically, it prevents node runners who are assuming their node is safe and sound but aren't touching it from fooling themselves. Maybe because they're scared it might break if they do anything or they're just plain lazy.\r\n\r\nForcing them to go in and set a parameter to keep it running is a good incentive for them to upgrade the software, as they now no doubt realize they're running a node that is too old to be recommended by the developers.\r\n\r\nIn contrast, a warning message would most likely not only be ignored, but probably never be seen by the type of node runner mentioned above. Turning safe mode off may be a great middle ground, though.",
+      "created_at" : "2017-05-01T08:13:06Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-298303082",
+      "id" : 298303082,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-05-01T08:13:53Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298303082",
+      "user" : {
+         "avatar_url" : "https://avatars0.githubusercontent.com/u/250224?v=3",
+         "events_url" : "https://api.github.com/users/kallewoof/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/kallewoof/followers",
+         "following_url" : "https://api.github.com/users/kallewoof/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/kallewoof/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/kallewoof",
+         "id" : 250224,
+         "login" : "kallewoof",
+         "organizations_url" : "https://api.github.com/users/kallewoof/orgs",
+         "received_events_url" : "https://api.github.com/users/kallewoof/received_events",
+         "repos_url" : "https://api.github.com/users/kallewoof/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/kallewoof/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/kallewoof/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/kallewoof"
+      }
+   },
+   {
+      "body" : "As discussed on IRC extensively and at the last meeting, should probably tweak this to only fail to startup after 7 years with a clear error message noting the temporary workaround option.",
+      "created_at" : "2017-05-01T15:57:52Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-298360957",
+      "id" : 298360957,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-05-01T15:57:52Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298360957",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/649246?v=3",
+         "events_url" : "https://api.github.com/users/TheBlueMatt/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/TheBlueMatt/followers",
+         "following_url" : "https://api.github.com/users/TheBlueMatt/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/TheBlueMatt/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/TheBlueMatt",
+         "id" : 649246,
+         "login" : "TheBlueMatt",
+         "organizations_url" : "https://api.github.com/users/TheBlueMatt/orgs",
+         "received_events_url" : "https://api.github.com/users/TheBlueMatt/received_events",
+         "repos_url" : "https://api.github.com/users/TheBlueMatt/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/TheBlueMatt/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/TheBlueMatt/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/TheBlueMatt"
+      }
+   },
+   {
+      "body" : "> As discussed on IRC extensively and at the last meeting, should probably tweak this to only fail to startup after 7 years with a clear error message noting the temporary workaround option.\r\n\r\nAgree. Any other solution is too controversial and divisive, we should either do that or we should forget about this completely.",
+      "created_at" : "2017-05-03T05:45:50Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-298827683",
+      "id" : 298827683,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-05-03T05:45:50Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298827683",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   },
+   {
+      "body" : "I don't agree on this PR on a matter of principle: We should not be in charge to tell the user when he should update.\r\n\r\nI disagree also because it might be a systemic risk: A non negligeable number of node will start crashing almost at the same time.\r\n\r\nMoreover, some nodes might not need to validate soft fork rules as they are internal nodes, and their blocks are already validated by a gateway node.\r\n\r\nIn a big architecture where Bitcoin core is only one of many components, and where the original developers got away, there would be nothing more frustrating than a component crashing when no update has been done for several years to it. ",
+      "created_at" : "2017-05-03T12:57:07Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-298902914",
+      "id" : 298902914,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-05-03T12:57:36Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/298902914",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/3020646?v=3",
+         "events_url" : "https://api.github.com/users/NicolasDorier/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/NicolasDorier/followers",
+         "following_url" : "https://api.github.com/users/NicolasDorier/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/NicolasDorier/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/NicolasDorier",
+         "id" : 3020646,
+         "login" : "NicolasDorier",
+         "organizations_url" : "https://api.github.com/users/NicolasDorier/orgs",
+         "received_events_url" : "https://api.github.com/users/NicolasDorier/received_events",
+         "repos_url" : "https://api.github.com/users/NicolasDorier/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/NicolasDorier/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/NicolasDorier/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/NicolasDorier"
+      }
+   },
+   {
+      "body" : "Closing this, seems there is no agreement to do this as part of bitcoin core.",
+      "created_at" : "2017-06-25T09:01:30Z",
+      "html_url" : "https://github.com/bitcoin/bitcoin/pull/10282#issuecomment-310891226",
+      "id" : 310891226,
+      "issue_url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/10282",
+      "updated_at" : "2017-06-25T09:01:30Z",
+      "url" : "https://api.github.com/repos/bitcoin/bitcoin/issues/comments/310891226",
+      "user" : {
+         "avatar_url" : "https://avatars3.githubusercontent.com/u/126646?v=3",
+         "events_url" : "https://api.github.com/users/laanwj/events{/privacy}",
+         "followers_url" : "https://api.github.com/users/laanwj/followers",
+         "following_url" : "https://api.github.com/users/laanwj/following{/other_user}",
+         "gists_url" : "https://api.github.com/users/laanwj/gists{/gist_id}",
+         "gravatar_id" : "",
+         "html_url" : "https://github.com/laanwj",
+         "id" : 126646,
+         "login" : "laanwj",
+         "organizations_url" : "https://api.github.com/users/laanwj/orgs",
+         "received_events_url" : "https://api.github.com/users/laanwj/received_events",
+         "repos_url" : "https://api.github.com/users/laanwj/repos",
+         "site_admin" : false,
+         "starred_url" : "https://api.github.com/users/laanwj/starred{/owner}{/repo}",
+         "subscriptions_url" : "https://api.github.com/users/laanwj/subscriptions",
+         "type" : "User",
+         "url" : "https://api.github.com/users/laanwj"
+      }
+   }
+]
